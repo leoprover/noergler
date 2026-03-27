@@ -1,7 +1,7 @@
 package noergler
 
 import leo.datastructures.TPTP
-import noergler.ProofCheckController.{Configuration, NotVerified, Result, Verified, inferenceName, inferenceStatus}
+import noergler.ProofCheckController.{Configuration, NotVerified, Result, Verified, inferenceName, inferenceParents, inferenceStatus}
 import noergler.checks.{ConjectureNegationCheck, CorrectPremiseFromFileCheck, GenericTHMInferenceCheck, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
 
 import java.util.concurrent.Executors
@@ -79,6 +79,7 @@ class ProofCheckController(problem: TPTP.Problem,
     // (I.1) does the proof end with false?
     logger.fine("Check for $false at the end of proof.")
     val check1 = ProofEndsInFalseCheck.apply(proof)
+    // TODO: Handle negative result somehow, failed verified
     logger.info(s"Proof ends in $$false: $check1")
     // (I.2) are the inference parents acyclic?
     // TODO
@@ -95,6 +96,7 @@ class ProofCheckController(problem: TPTP.Problem,
       // (II.1) check that every inference parent (if any) actually exists (earlier in the proof)
       logger.fine("Check for existence of inference parents (if any).")
       val inferenceParentsCheck = InferenceParentsExistCheck.apply(proofstep, proofSteps)
+      // TODO: Handle negative result somehow, failed verified
       logger.info(s"Inference parents exist (${proofstep.name}): $inferenceParentsCheck")
 
       // (II.2) if it is a line copied from the problem (axiom or conjecture), check that it is corectly copied
@@ -102,6 +104,7 @@ class ProofCheckController(problem: TPTP.Problem,
         case "conjecture" | "axiom" =>
           logger.fine("Check for correct premise usage from problem.")
           val checkPremise = CorrectPremiseFromFileCheck.apply(proofstep, problemFormulas)
+          // TODO: Handle negative result somehow, failed verified
           logger.info(s"Formula equivalent to problem statement (${proofstep.name}): $checkPremise")
         case "negated_conjecture" => () // Nothing to do
         case "plain" => () // Nothing to do
@@ -120,18 +123,30 @@ class ProofCheckController(problem: TPTP.Problem,
                 // (III.1) if a "negated_conjecture" entry, does it correctly negate and has correct role?
                 logger.fine("Check for correct negation of conjecture")
                 val checkNegation = ConjectureNegationCheck.apply(proofstep, problemConjectureName.flatMap(problemFormulas.get))
+                // TODO: Handle negative result somehow, failed verified
                 logger.info(s"Negation of conjecture correct (${proofstep.name}): $checkNegation")
               case "skolemize" =>
                 // (III.2) if a "skolemization" entry, does it correctly skolemize, use ASK
                 logger.fine("Check for correct skolemization")
                 val checkSkolemize = SkolemizationCheck.apply(proofstep, ???) // TODO
+                // TODO: Handle negative result somehow, failed verified
                 logger.info(s"Skolemization correct (${proofstep.name}): $checkSkolemize")
               case rule if inferenceStatus(annotation).getOrElse("") == "thm" =>
                 // (III.3) if generic status(thm) entry, does it follow from its parents? (using external ATPs)
                 logger.fine(s"Check for correct entailment of inference rule '$rule'.")
-                val parents: Seq[TPTP.FOFAnnotated] = Seq.empty // TODO
-                val checkEntailment = GenericTHMInferenceCheck.apply(proofstep, parents)
-                logger.info(s"Entailment correct (${proofstep.name}): $checkEntailment")
+                val inferenceParentsNames: Option[Seq[String]] = inferenceParents(annotation) // TODO
+                inferenceParentsNames match {
+                  case Some(names) =>
+                    val inferenceParents = names.map(proofFormulas) // safe as we checked the existence of all parents before
+                    logger.finer(s"Inference parents: ${names.mkString(",")}")
+                    val checkEntailment = GenericTHMInferenceCheck.apply(proofstep, inferenceParents)
+                    // TODO: Handle negative result somehow, failed verified
+                    logger.info(s"Entailment correct (${proofstep.name}): $checkEntailment")
+                  case None =>
+                    logger.severe(s"Entailment check impossible (${proofstep.name}), inference parents entry malformed.")
+                  // TODO: Handle error somehow, failed verified
+                }
+
               case _ => // Error case: unknown inference rule with non-THM status
                 logger.severe(s"Unknown inference '$inference' with non-thm status in proof step '${proofstep.name}'.")
                 // TODO: Handle error someshow, failed verified/not verified?
@@ -221,5 +236,31 @@ object ProofCheckController {
         case _ => None
       }
     } else None
+  }
+  /** Returns a list of inference parents' names, if any.
+   * Empty list of parents is returned as Some(Seq()), None is an error case. */
+  final def inferenceParents(annotation: (TPTP.GeneralTerm, Option[Seq[TPTP.GeneralTerm]])): Option[Seq[String]] = {
+    val gt = annotation._1
+    if (gt.data.nonEmpty) {
+      gt.data.head match {
+        case TPTP.MetaFunctionData("inference", args) if args.size >= 3 => args.tail.tail.head.list match {
+          case Some(parentsAnnotation) =>
+            val result = parentsAnnotation.flatMap(inferenceParent0)
+            if (result.size == parentsAnnotation.size) Some(result)
+            else None // Not well-formed
+          case _ => None
+        }
+        case _ => None
+      }
+    } else None
+  }
+  private final def inferenceParent0(parentAnnotation: TPTP.GeneralTerm): Option[String] = {
+    if (parentAnnotation.list.isDefined) None
+    else {
+      parentAnnotation.data match {
+        case Seq(TPTP.MetaFunctionData(parentName, Seq())) => Some(parentName)
+        case _ => None
+      }
+    }
   }
 }
