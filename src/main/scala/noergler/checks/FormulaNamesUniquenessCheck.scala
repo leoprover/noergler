@@ -2,10 +2,6 @@ package noergler.checks
 
 import leo.datastructures.TPTP
 
-class FormulaNamesUniquenessCheck {
-
-}
-
 object FormulaNamesUniquenessCheck {
   import scala.collection.mutable
   final def apply(proofSteps: Seq[TPTP.FOFAnnotated]): Boolean = {
