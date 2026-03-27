@@ -1,8 +1,8 @@
 package noergler
 
 import leo.datastructures.TPTP
-import noergler.ProofCheckController.{Configuration, NotVerified, Result, Verified, inferenceName, inferenceParents, inferenceStatus}
-import noergler.checks.{ConjectureNegationCheck, CorrectPremiseFromFileCheck, FormulaNamesUniquenessCheck, GenericTHMInferenceCheck, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
+import noergler.ProofCheckController.Configuration
+import noergler.checks.{ConjectureNegationCheck, CorrectPremiseFromFileCheck, FormulaNamesUniquenessCheck, GenericTHMInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
 
 import java.util.concurrent.Executors
 import java.util.logging.Logger
@@ -87,8 +87,11 @@ class ProofCheckController(problem: TPTP.Problem,
     // TODO: Handle negative result somehow, failed verified
     logger.info(s"Formula names unique: $namesUniqueCheck")
     // (I.3) are the inference parents acyclic?
-    // TODO
-    // (I.n) ... more?
+    logger.fine("Check for acyclicity of inference parents.")
+    val inferenceParentsAreAcyclic = InferenceParentsAcyclicityCheck.apply(proofSteps, proofFormulas)
+    logger.info(s"Inference parents are acyclic: $inferenceParentsAreAcyclic")
+    // TODO: Handle negative result somehow, failed verified
+    // ... more checks here?
 
     //////////////////
     // iteration over every proof line, check each line depending on its character:
@@ -137,7 +140,7 @@ class ProofCheckController(problem: TPTP.Problem,
               case rule if inferenceStatus(annotation).getOrElse("") == "thm" =>
                 // (III.3) if generic status(thm) entry, does it follow from its parents? (using external ATPs)
                 logger.finer(s"Check for correct entailment of inference rule '$rule'.")
-                val inferenceParentsNames: Option[Seq[String]] = inferenceParents(annotation) // TODO
+                val inferenceParentsNames: Option[Seq[String]] = proofStepParents(annotation) // TODO
                 inferenceParentsNames match {
                   case Some(names) =>
                     val inferenceParents = names.map(proofFormulas) // safe as we checked the existence of all parents before
@@ -184,17 +187,12 @@ object ProofCheckController {
   final case class Configuration(timeout: Int,
                                  coreCount: Int)
 
-  final val defaultTimeout: Int = 60
-  final val defaultCoreCount: Int = 1
+  private final val defaultTimeout: Int = 60
+  private final val defaultCoreCount: Int = 1
 
   sealed abstract class Parameter
   final case class Timeout(timeout: Int) extends Parameter
   final case class Cores(coreCount: Int) extends Parameter
-
-  sealed abstract class Result
-  final case object Verified extends Result
-  final case class FailedVerified(reason: String) extends Result
-  final case class NotVerified(reason: String) extends Result
 
   /** Factory method for a [[ProofCheckController]] based on the given arguments. */
   final def apply(problem: TPTP.Problem, proof: TPTP.Problem, parameters: Seq[ProofCheckController.Parameter]): Result = {
@@ -209,62 +207,5 @@ object ProofCheckController {
     val config = Configuration(timeout, coreCount)
     val controller = new ProofCheckController(problem: TPTP.Problem, proof: TPTP.Problem, config)
     controller.apply()
-  }
-
-  final def inferenceName(annotation: (TPTP.GeneralTerm, Option[Seq[TPTP.GeneralTerm]])): Option[String] = {
-    val gt = annotation._1
-    if (gt.data.nonEmpty) {
-      gt.data.head match {
-        case TPTP.MetaFunctionData("inference", args) if args.nonEmpty => args.head.data match {
-          case Seq(TPTP.MetaFunctionData(inferenceName, Seq())) => Some(inferenceName)
-          case _ => None
-        }
-        case _ => None
-      }
-    } else None
-  }
-  final def inferenceStatus(annotation: (TPTP.GeneralTerm, Option[Seq[TPTP.GeneralTerm]])): Option[String] = {
-    val gt = annotation._1
-    if (gt.data.nonEmpty) {
-      gt.data.head match {
-        case TPTP.MetaFunctionData("inference", args) if args.size >= 2 => args.tail.head.list match {
-          case Some(Seq(gt0)) => gt0.data match {
-            case Seq(TPTP.MetaFunctionData("status", Seq(gt1))) => gt1.data match {
-              case Seq(TPTP.MetaFunctionData(status, Seq())) => Some(status)
-              case _ => None
-            }
-            case _ => None
-          }
-          case _ => None
-        }
-        case _ => None
-      }
-    } else None
-  }
-  /** Returns a list of inference parents' names, if any.
-   * Empty list of parents is returned as Some(Seq()), None is an error case. */
-  final def inferenceParents(annotation: (TPTP.GeneralTerm, Option[Seq[TPTP.GeneralTerm]])): Option[Seq[String]] = {
-    val gt = annotation._1
-    if (gt.data.nonEmpty) {
-      gt.data.head match {
-        case TPTP.MetaFunctionData("inference", args) if args.size >= 3 => args.tail.tail.head.list match {
-          case Some(parentsAnnotation) =>
-            val result = parentsAnnotation.flatMap(inferenceParent0)
-            if (result.size == parentsAnnotation.size) Some(result)
-            else None // Not well-formed
-          case _ => None
-        }
-        case _ => None
-      }
-    } else None
-  }
-  private final def inferenceParent0(parentAnnotation: TPTP.GeneralTerm): Option[String] = {
-    if (parentAnnotation.list.isDefined) None
-    else {
-      parentAnnotation.data match {
-        case Seq(TPTP.MetaFunctionData(parentName, Seq())) => Some(parentName)
-        case _ => None
-      }
-    }
   }
 }

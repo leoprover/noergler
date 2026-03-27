@@ -2,7 +2,6 @@ package noergler
 
 import leo.datastructures.TPTP
 import leo.modules.input.TPTPParser
-import ProofCheckController.Result
 
 import java.io.FileNotFoundException
 import java.util.logging.{ConsoleHandler, Level, Logger}
@@ -53,7 +52,6 @@ object Noergler {
         val result: Result = ProofCheckController.apply(problem, proof, parameters)
         // Generate SZS result
         val reporting: String = {
-          import ProofCheckController.{Verified, FailedVerified, NotVerified}
           result match {
             case Verified => generateSZSResult("status", "Verified", "", "", withPrefix = true)
             case FailedVerified(reason) => generateSZSResult("status", "FailedVerified", "", "", withPrefix = true, extraTSTPMessage = reason)
