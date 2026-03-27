@@ -13,9 +13,10 @@ object Noergler {
   final val version: String = "0.1"
 
   private[this] final val logger: Logger = Logger.getLogger("Nörgler")
-  private[this] var inputProblemName = ""
-  private[this] var inputProofName = ""
+  private[this] var inputProblemName: String = ""
+  private[this] var inputProofName: String = ""
   private[this] var parameters: Seq[ProofCheckController.Parameter] = Seq.empty
+  private[this] var verbosity: Level = Level.INFO
   private[this] val tptpHomeDirectory: Option[String] = sys.env.get("TPTP")
 
   final def main(args: Array[String]): Unit = {
@@ -36,7 +37,7 @@ object Noergler {
         // logging crap
         System.setProperty("java.util.logging.SimpleFormatter.format",
           "[%4$s] %3$s: %5$s%6$s%n")
-        logger.setLevel(Level.ALL)
+        logger.setLevel(verbosity)
         logger.setUseParentHandlers(false)
         val ch = new ConsoleHandler
         ch.setLevel(Level.ALL)
@@ -126,6 +127,8 @@ object Noergler {
          |
          |  --cores      TBA
          |
+         |  --verbosity  TBA
+         |
          |  --version    Print the version number of the executable and terminate.
          |
          |  --help       Print this description and terminate.
@@ -146,16 +149,31 @@ object Noergler {
             val count = args0.tail.head
             parameters = parameters :+ ProofCheckController.Cores(count.toInt)
             args0 = args0.tail
+          case "--verbosity" =>
+            val arg = args0.tail.head.toInt
+            val level = arg match {
+              case _ if arg <= 0  => Level.OFF
+              case 1 => Level.SEVERE
+              case 2 => Level.INFO
+              case 3 => Level.CONFIG
+              case 4 => Level.FINE
+              case 5 => Level.FINER
+              case _ if arg >= 6 => Level.FINEST
+            }
+            verbosity = level
+            args0 = args0.tail
           case _ => throw new IllegalArgumentException(s"Unknown parameter '$hd'.")
         }
         args0 = args0.tail
         hd = args0.head
       }
-      // Problem file
-      inputProblemName = args0.head
-      args0 = args0.tail
+      // main arguments
       inputProofName = args0.head
       args0 = args0.tail
+      if (args0.isEmpty) { // Optional problem file argument
+        inputProblemName = args0.head
+        args0 = args0.tail
+      }
       if (args0.nonEmpty) {
         throw new IllegalArgumentException(s"Superfluous arguments supplied: '${args0.toString()}'")
       }
