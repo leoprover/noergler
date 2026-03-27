@@ -168,12 +168,10 @@ object Noergler {
         hd = args0.head
       }
       // main arguments
+      inputProblemName = args0.head
+      args0 = args0.tail
       inputProofName = args0.head
       args0 = args0.tail
-      if (args0.isEmpty) { // Optional problem file argument
-        inputProblemName = args0.head
-        args0 = args0.tail
-      }
       if (args0.nonEmpty) {
         throw new IllegalArgumentException(s"Superfluous arguments supplied: '${args0.toString()}'")
       }
