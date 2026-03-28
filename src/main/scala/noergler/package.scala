@@ -20,8 +20,28 @@ package object noergler {
     }
   }
 
-  final def fileRecord(annotation: (TPTP.GeneralTerm, Option[Seq[TPTP.GeneralTerm]])): Option[(String, String)] = {
-    ???
+  final def fileRecord(annotation: TPTP.Annotations): Option[(String, String)] = {
+    annotation match {
+      case Some(annotation0) =>
+        val gt = annotation0._1
+        if (gt.data.nonEmpty) {
+          gt.data.head match {
+            case TPTP.MetaFunctionData("file", args) if args.size == 2 =>
+              val filenamePart = args.head
+              val formulaNamePart = args.tail.head
+              filenamePart.data match {
+                case Seq(TPTP.MetaFunctionData(filename, Seq())) =>
+                  formulaNamePart.data match {
+                    case Seq(TPTP.MetaFunctionData(formulaName, Seq())) =>
+                      Some((filename, formulaName))
+                    case _ => None
+                  }
+                case _ => None
+              }
+            case _ => None
+          }
+        } else None
+    }
   }
 
   final def inferenceName(annotation: TPTP.Annotations): Option[String] = {

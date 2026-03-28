@@ -23,8 +23,6 @@ class ProofCheckController(problem: TPTP.Problem,
 //  final private def coreCountToThreadCount(coreCount: Int): Int = coreCount
 //  final implicit val ec: ExecutionContext = ExecutionContext.fromExecutorService(
 //    Executors.newFixedThreadPool(coreCountToThreadCount(configuration.coreCount)))
-  // TODO: What do parellize? I think probably just the generic thm steps, everything
-  // else can be done internally and sequentially (quick fast, I think).
 
   /** Map of problem file TPTP annotated formula name (hopefully unique) -> the formula */
   private var problemFormulas: Map[String, TPTP.FOFAnnotated] = Map.empty
@@ -32,7 +30,7 @@ class ProofCheckController(problem: TPTP.Problem,
   private var problemConjectureName: Option[String] = None
 
   /** The sequence of proof steps as they appear in the proof. */
-  private var proofSteps: Seq[TPTP.FOFAnnotated] = Seq.empty
+  private var proofSteps: Seq[TPTP.FOFAnnotated] = Vector.empty
   /** Map of proof file TPTP annotated formula name (hopefully unique) -> the formula */
   private var proofFormulas: Map[String, TPTP.FOFAnnotated] = Map.empty
 
@@ -85,14 +83,15 @@ class ProofCheckController(problem: TPTP.Problem,
       //////////////////
       // iteration over every proof line, check each line depending on its character:
       //////////////////
+      /** All the steps that have already been processed. Initially empty. */
+      var previousProofSteps: Seq[TPTP.FOFAnnotated] = Vector.empty
       for (proofstep <- proofSteps) {
         logger.finer(s"Checking proof step '${proofstep.name}' with annotation '${proofstep.annotations.map(_._1.pretty).getOrElse("")}' ...")
+        logger.finer(proofstep.annotations.toString)
         //////
         // II. Checks that every line has to do regardless of their specific annotation
         //////
-        // (II.1) check that every inference parent (if any) actually exists (earlier in the proof)
-        checkInferenceParentsExist(proofstep)
-        // (II.2) check that role of proof step is admissible
+        // (II.1) check that role of proof step is admissible
         checkRole(proofstep)
         // ... more?
 
@@ -103,6 +102,9 @@ class ProofCheckController(problem: TPTP.Problem,
         annotationType(annotation) match {
           case Some(annotationType) => annotationType match {
             case "inference" =>
+              // (III.0) check that every inference parent (if any) actually exists (earlier in the proof)
+              checkInferenceParentsExist(proofstep, previousProofSteps)
+
               inferenceName(annotation) match {
                 case Some(inference) => inference match {
                   // (III.1) if a "negated_conjecture" entry, does it correctly negate and has correct role?
@@ -128,6 +130,7 @@ class ProofCheckController(problem: TPTP.Problem,
             throw new VerificationFailedException(s"Proof step '${proofstep.name}' has no or malformed annotation.")
         }
         logger.info(s"Check succeeded for step '${proofstep.name}'.") // Assuming we fail fast if anything happens before
+        previousProofSteps = previousProofSteps :+ proofstep
       }
 
       // TODO from here
@@ -146,6 +149,9 @@ class ProofCheckController(problem: TPTP.Problem,
     }
   }
 
+  // TODO: We can add parallelism in these check methods below
+  // What do parellize? I think probably just the generic thm steps, everything
+  // else can be done internally and sequentially (quick fast, I think).
   private def checkProofEndsInFalse(): Unit = {
     logger.fine("Check for $false at the end of proof.")
     val endsWithFalseCheck = ProofEndsInFalseCheck.apply(proof)
@@ -167,9 +173,9 @@ class ProofCheckController(problem: TPTP.Problem,
     if (!inferenceParentsAreAcyclic) throw new VerificationFailedException("Graph of inference parents from $false contains a cycle.")
   }
 
-  private def checkInferenceParentsExist(proofstep: TPTP.FOFAnnotated): Unit = {
+  private def checkInferenceParentsExist(proofstep: TPTP.FOFAnnotated, previousProofSteps: Seq[TPTP.FOFAnnotated]): Unit = {
     logger.finer("Check for existence of inference parents (if any).")
-    val inferenceParentsCheck = InferenceParentsExistCheck.apply(proofstep, proofSteps)
+    val inferenceParentsCheck = InferenceParentsExistCheck.apply(proofstep, previousProofSteps)
     logger.fine(s"Inference parents exist (${proofstep.name}): $inferenceParentsCheck")
     if (!inferenceParentsCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' has unknown inference parents.")
   }
