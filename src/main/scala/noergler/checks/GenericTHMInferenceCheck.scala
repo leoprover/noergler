@@ -8,7 +8,7 @@ import java.util.logging.Logger
 final class GenericTHMInferenceCheck(proofStep: TPTP.FOFAnnotated,
                                inferenceParents: Seq[TPTP.FOFAnnotated]) {
   def apply(): Boolean = {
-    ???
+    false
   }
 }
 object GenericTHMInferenceCheck {
