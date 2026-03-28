@@ -2,7 +2,7 @@ package noergler
 
 import leo.datastructures.TPTP
 import noergler.ProofCheckController.Configuration
-import noergler.checks.{ConjectureNegationCheck, CorrectPremiseFromFileCheck, FormulaNamesUniquenessCheck, GenericTHMInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
+import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericTHMInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
 
 import java.util.concurrent.Executors
 import java.util.logging.Logger
@@ -109,7 +109,7 @@ class ProofCheckController(problem: TPTP.Problem,
       proofstep.role match {
         case "conjecture" | "axiom" =>
           logger.finer("Check for correct premise usage from problem.")
-          val checkPremise = CorrectPremiseFromFileCheck.apply(proofstep, problemFormulas)
+          val checkPremise = CorrectFormulaFromFileCheck.apply(proofstep, problemFormulas)
           // TODO: Handle negative result somehow, failed verified
           logger.fine(s"Formula equivalent to problem statement (${proofstep.name}): $checkPremise")
         case "negated_conjecture" => () // Nothing to do
@@ -121,51 +121,52 @@ class ProofCheckController(problem: TPTP.Problem,
 
       //////
       // III. Checks that every line has to do individually, specific to their annotation
-      proofstep.annotations match {
-        case Some(annotation) =>
-          inferenceName(annotation) match {
-            case Some(inference) => inference match {
-              case "negated_conjecture" =>
-                // (III.1) if a "negated_conjecture" entry, does it correctly negate and has correct role?
-                logger.finer("Check for correct negation of conjecture")
-                val checkNegation = ConjectureNegationCheck.apply(proofstep, problemConjectureName.flatMap(problemFormulas.get))
-                // TODO: Handle negative result somehow, failed verified
-                logger.fine(s"Negation of conjecture correct (${proofstep.name}): $checkNegation")
-              case "skolemize" =>
-                // (III.2) if a "skolemization" entry, does it correctly skolemize, use ASK
-                logger.finer("Check for correct skolemization")
-                val checkSkolemize = SkolemizationCheck.apply(proofstep, ???) // TODO
-                // TODO: Handle negative result somehow, failed verified
-                logger.fine(s"Skolemization correct (${proofstep.name}): $checkSkolemize")
-              case rule if inferenceStatus(annotation).getOrElse("") == "thm" =>
-                // (III.3) if generic status(thm) entry, does it follow from its parents? (using external ATPs)
-                logger.finer(s"Check for correct entailment of inference rule '$rule'.")
-                val inferenceParentsNames: Option[Seq[String]] = proofStepParents(annotation) // TODO
-                inferenceParentsNames match {
-                  case Some(names) =>
-                    val inferenceParents = names.map(proofFormulas) // safe as we checked the existence of all parents before
-                    logger.finer(s"Inference parents: ${names.mkString(",")}")
-                    val checkEntailment = GenericTHMInferenceCheck.apply(proofstep, inferenceParents)
-                    // TODO: Handle negative result somehow, failed verified
-                    logger.fine(s"Entailment correct (${proofstep.name}): $checkEntailment")
-                  case None =>
-                    logger.severe(s"Entailment check impossible (${proofstep.name}), inference parents entry malformed.")
-                  // TODO: Handle error somehow, failed verified
-                }
+      val annotation = proofstep.annotations
+      annotationType(annotation) match {
+        case Some(annotationType) => annotationType match {
+          case "inference" =>
+            inferenceName(annotation) match {
+              case Some(inference) => inference match {
+                case "negated_conjecture" =>
+                  // (III.1) if a "negated_conjecture" entry, does it correctly negate and has correct role?
+                  logger.finer("Check for correct negation of conjecture")
+                  val checkNegation = ConjectureNegationCheck.apply(proofstep, problemConjectureName.flatMap(problemFormulas.get))
+                  // TODO: Handle negative result somehow, failed verified
+                  logger.fine(s"Negation of conjecture correct (${proofstep.name}): $checkNegation")
 
-              case _ => // Error case: unknown inference rule with non-THM status
-                logger.severe(s"Unknown inference '$inference' with non-thm status in proof step '${proofstep.name}'.")
+                // (III.2) if a "skolemize" entry, does it correctly skolemize (use ASK)
+                case "skolemize" => checkSkolemization(proofstep)
+                  // TODO: Handle negative result somehow, failed verified
+
+                // (III.3) if generic status(thm) entry, does it follow from its parents? (using external ATPs)
+                case rule if inferenceStatus(annotation).getOrElse("") == "thm" =>
+
+                  logger.finer(s"Check for correct entailment of inference rule '$rule'.")
+                  val checkEntailment = GenericTHMInferenceCheck.apply(proofstep, proofFormulas)
+                  // TODO: Handle negative result somehow, failed verified
+                  logger.fine(s"Entailment correct (${proofstep.name}): $checkEntailment")
+
+                case _ => // Error case: unknown inference rule with non-THM status
+                  logger.severe(s"Unknown inference '$inference' with non-thm status in proof step '${proofstep.name}'.")
                 // TODO: Handle error someshow, failed verified/not verified?
-            }
-            case None => // Unknown annotation, abort
-              logger.severe(s"Annotation of proof step '${proofstep.name}' unknown.")
+              }
+              case None => // Unknown annotation, abort
+                logger.severe(s"Annotation of proof step '${proofstep.name}' unknown.")
               // TODO: Handle error someshow, failed verified
-          }
-        // no annotation is an error for "plain" and "negated_conjecture" steps
-        case None if Seq("plain", "negated_conjecture").contains(proofstep.role) =>
-          logger.severe(s"Proof step '${proofstep.name}' has 'plain' role but no annotation.")
-        // TODO: Handle somehow
-        case None => () // do nothing. TODO: Check that axioms/conjecture never has annotations?
+            }
+
+          case "file" =>
+            logger.finer("Check for correct premise usage from problem file.")
+            val checkPremise = CorrectFormulaFromFileCheck.apply(proofstep, problemFormulas)
+            // TODO: Handle negative result somehow, failed verified
+            logger.fine(s"Formula equivalent to problem statement (${proofstep.name}): $checkPremise")
+
+          case _ => ???
+        }
+        case None =>
+          // no annotation is an error for all steps.
+          logger.severe(s"Proof step '${proofstep.name}' has no or malformed annotation.")
+          // TODO: Handle somehow
       }
       logger.info(s"Check succeeded for step '${proofstep.name}'.") // Assuming we fail fast if anything happens before
     }
@@ -181,6 +182,13 @@ class ProofCheckController(problem: TPTP.Problem,
     Verified
 
     NotVerified("gave up") // for now
+  }
+
+  private def checkSkolemization(proofstep: TPTP.FOFAnnotated): Boolean = {
+    logger.finer("Check for correct skolemization")
+    val checkSkolemize = SkolemizationCheck.apply(proofstep, ???) // TODO
+    logger.fine(s"Skolemization correct (${proofstep.name}): $checkSkolemize")
+    checkSkolemize
   }
 }
 object ProofCheckController {

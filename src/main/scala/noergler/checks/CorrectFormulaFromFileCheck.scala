@@ -2,9 +2,10 @@ package noergler.checks
 
 import leo.datastructures.TPTP
 
-final class CorrectPremiseFromFileCheck(proofstep: TPTP.FOFAnnotated,
-                                  problemFormulas: Map[String, TPTP.FOFAnnotated]) {
+final class CorrectFormulaFromFileCheck(proofstep: TPTP.FOFAnnotated,
+                                        problemFormulas: Map[String, TPTP.FOFAnnotated]) {
   def apply(): Boolean = {
+    // FIXME: Now use annotations
     problemFormulas.get(proofstep.name) match {
       case Some(formulaFromProblem) =>
         formulaFromProblem.role == proofstep.role &&
@@ -13,9 +14,9 @@ final class CorrectPremiseFromFileCheck(proofstep: TPTP.FOFAnnotated,
     }
   }
 }
-object CorrectPremiseFromFileCheck {
+object CorrectFormulaFromFileCheck {
   final def apply(proofstep: TPTP.FOFAnnotated,
                   problemFormulas: Map[String, TPTP.FOFAnnotated]): Boolean = {
-    new CorrectPremiseFromFileCheck(proofstep, problemFormulas).apply()
+    new CorrectFormulaFromFileCheck(proofstep, problemFormulas).apply()
   }
 }
