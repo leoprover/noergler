@@ -2,9 +2,6 @@ package noergler.checks
 
 import leo.datastructures.TPTP
 
-class InferenceParentsExistCheck {
-
-}
 object InferenceParentsExistCheck {
   final def apply(proofstep: TPTP.FOFAnnotated,
                   previousProofSteps: Seq[TPTP.FOFAnnotated]): Boolean = {
