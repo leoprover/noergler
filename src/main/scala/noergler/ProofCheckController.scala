@@ -4,6 +4,7 @@ import leo.datastructures.TPTP
 import noergler.ProofCheckController.{Configuration, VerificationFailedException}
 import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericTHMInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
 
+import java.nio.file.Path
 import java.util.concurrent.Executors
 import java.util.logging.Logger
 import scala.concurrent.{ExecutionContext, Future}
@@ -211,13 +212,16 @@ class ProofCheckController(problem: TPTP.Problem,
 
   private def checkFormulaFromFile(proofstep: TPTP.FOFAnnotated): Unit = {
     logger.finer("Check for correct premise usage from problem file.")
-    val checkFormulaFromFile = CorrectFormulaFromFileCheck.apply(proofstep, problemFormulas)
+    val problemFileName = configuration.problemPath.getFileName.toString
+    val checkFormulaFromFile = CorrectFormulaFromFileCheck.apply(proofstep, problemFileName, problemFormulas)
     logger.fine(s"Formula equivalent to problem statement (${proofstep.name}): $checkFormulaFromFile")
     if (!checkFormulaFromFile) throw new VerificationFailedException(s"Proof step '${proofstep.name}' does not use correct formula from file.")
   }
 }
 object ProofCheckController {
-  final case class Configuration(timeout: Int,
+  final case class Configuration(problemPath: Path,
+                                 proofPath: Path,
+                                 timeout: Int,
                                  coreCount: Int)
 
   /** Thrown during the check if some step yields that the proof definitely cannot be verified
@@ -234,7 +238,11 @@ object ProofCheckController {
   final case class Cores(coreCount: Int) extends Parameter
 
   /** Factory method for a [[ProofCheckController]] based on the given arguments. */
-  final def apply(problem: TPTP.Problem, proof: TPTP.Problem, parameters: Seq[ProofCheckController.Parameter]): Result = {
+  final def apply(problemPath: Path,
+                  proofPath:  Path,
+                  problem: TPTP.Problem,
+                  proof: TPTP.Problem,
+                  parameters: Seq[ProofCheckController.Parameter]): Result = {
     var timeout = defaultTimeout
     var coreCount = defaultCoreCount
     for (parameter <- parameters) {
@@ -243,7 +251,7 @@ object ProofCheckController {
         case Cores(cc) => coreCount = cc
       }
     }
-    val config = Configuration(timeout, coreCount)
+    val config = Configuration(problemPath, proofPath, timeout, coreCount)
     val controller = new ProofCheckController(problem: TPTP.Problem, proof: TPTP.Problem, config)
     controller.apply()
   }

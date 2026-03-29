@@ -27,8 +27,6 @@ object Noergler {
     }
     if (args.isEmpty) usage()
     else {
-      var problemPath: Option[Path] = None
-      var proofPath: Option[Path] = None
       var error: Option[String] = None
 
       try {
@@ -43,13 +41,13 @@ object Noergler {
         logger.addHandler(ch)
         logger.fine(s"Nörgler started.")
         // Read input
-        problemPath = Some(Path.of(inputProblemName).toAbsolutePath)
-        proofPath = Some(Path.of(inputProofName).toAbsolutePath)
+        val problemPath = Path.of(inputProblemName).toAbsolutePath
+        val proofPath = Path.of(inputProofName).toAbsolutePath
         // Parse input
-        val problem: TPTP.Problem = parseTPTPFile(problemPath.get)
-        val proof: TPTP.Problem = parseTPTPFile(proofPath.get)
+        val problem: TPTP.Problem = parseTPTPFile(problemPath)
+        val proof: TPTP.Problem = parseTPTPFile(proofPath)
         // Call checker controller
-        val result: Result = ProofCheckController.apply(problem, proof, parameters)
+        val result: Result = ProofCheckController.apply(problemPath, proofPath, problem, proof, parameters)
         // Generate SZS result
         val reporting: String = {
           result match {
