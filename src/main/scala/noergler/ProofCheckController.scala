@@ -35,6 +35,9 @@ class ProofCheckController(problem: TPTP.Problem,
   /** Map of proof file TPTP annotated formula name (hopefully unique) -> the formula */
   private var proofFormulas: Map[String, TPTP.FOFAnnotated] = Map.empty
 
+  private var usedSkolemSymbols: Set[String] = Set.empty
+  private lazy val problemSymbols: Set[String] = problem.formulas.flatMap(_.symbols).toSet
+
   final def apply(): Result = {
     //////////////////////////////////////////////////////////
     // preliminary steps
@@ -196,9 +199,15 @@ class ProofCheckController(problem: TPTP.Problem,
 
   private def checkSkolemization(proofstep: TPTP.FOFAnnotated): Unit = {
     logger.finer("Check for correct skolemization")
-    val checkSkolemize = SkolemizationCheck.apply(proofstep, ???) // TODO
-    logger.fine(s"Skolemization correct (${proofstep.name}): $checkSkolemize")
-    if (!checkSkolemize) throw new VerificationFailedException(s"Skolemization in step '${proofstep.name}' is incorrect.")
+    val checkSkolemize = SkolemizationCheck.apply(proofstep, proofFormulas, usedSkolemSymbols ++ problemSymbols)
+    checkSkolemize match {
+      case Left(msg) =>
+        throw new VerificationFailedException(s"Skolemization in step '${proofstep.name}' is incorrect: $msg")
+      case Right(skolemSymbolIntroduced) =>
+        usedSkolemSymbols = usedSkolemSymbols + skolemSymbolIntroduced
+    }
+    logger.fine(s"Skolemization correct (${proofstep.name}): ${checkSkolemize.isRight}")
+
   }
 
   private def checkTHMInference(rule: String, proofstep: TPTP.FOFAnnotated): Unit = {

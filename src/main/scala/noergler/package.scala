@@ -84,6 +84,16 @@ package object noergler {
     }
   }
 
+  @inline final def proofStepParentsAsFormulas(proofstep: TPTP.FOFAnnotated,
+                                               proofFormulas: Map[String, TPTP.FOFAnnotated]): Option[Seq[TPTP.FOFAnnotated]] = {
+    val parents = proofStepParents(proofstep)
+    parents.flatMap { parents =>
+      val asFormulas = parents.map(proofFormulas.get)
+      if (asFormulas.forall(_.isDefined)) Some(asFormulas.flatten)
+      else None
+    }
+  }
+
   @inline final def proofStepParents(proofStep: TPTP.FOFAnnotated): Option[Seq[String]] = {
     proofStepParents(proofStep.annotations)
   }

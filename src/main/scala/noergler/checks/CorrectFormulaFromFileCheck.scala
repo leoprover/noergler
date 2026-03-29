@@ -17,10 +17,17 @@ object CorrectFormulaFromFileCheck {
         logger.finer(s"Given from annotation: filename = $filename, formulaName = $formulaName")
         logger.finer(s"De facto problem file name: $problemFileName")
         logger.finer(s"De facto formula name of proofstep: ${proofstep.name}")
-        problemFormulas.get(formulaName).fold(false) { formulaFromProblem =>
-          problemFileName == stripQuotes(filename) &&
-            formulaFromProblem.role == proofstep.role &&
-            formulaFromProblem.formula == proofstep.formula
+        problemFormulas.get(formulaName).fold {
+          logger.finer(s"Formula with name $formulaName not found in problem formulas")
+          false
+        } { formulaFromProblem =>
+          val fileNamesMatch = problemFileName == stripQuotes(filename)
+          logger.finest(s"File names match: $fileNamesMatch")
+          val rolesMatch = formulaFromProblem.role == proofstep.role
+          logger.finest(s"Roles match: $rolesMatch")
+          val formulasMatch = formulaFromProblem.formula == proofstep.formula
+          logger.finest(s"formulas match: $formulasMatch")
+          fileNamesMatch && rolesMatch && formulasMatch
         }
       case None => false
     }
