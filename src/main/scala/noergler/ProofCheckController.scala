@@ -231,7 +231,7 @@ object ProofCheckController {
   final case class Configuration(problemPath: Path,
                                  proofPath: Path,
                                  timeout: Int,
-                                 coreCount: Int)
+                                 parallelism: Boolean)
 
   /** Thrown during the check if some step yields that the proof definitely cannot be verified
    * because it's not a valid proof. */
@@ -240,11 +240,11 @@ object ProofCheckController {
   private class NotVerifiedException(msg: String) extends RuntimeException(msg)
 
   private final val defaultTimeout: Int = 60
-  private final val defaultCoreCount: Int = 1
+  private final val defaultParallel: Boolean = false
 
   sealed abstract class Parameter
   final case class Timeout(timeout: Int) extends Parameter
-  final case class Cores(coreCount: Int) extends Parameter
+  final case object Parallelism extends Parameter
 
   /** Factory method for a [[ProofCheckController]] based on the given arguments. */
   final def apply(problemPath: Path,
@@ -253,14 +253,14 @@ object ProofCheckController {
                   proof: TPTP.Problem,
                   parameters: Seq[ProofCheckController.Parameter]): Result = {
     var timeout = defaultTimeout
-    var coreCount = defaultCoreCount
+    var parallel = defaultParallel
     for (parameter <- parameters) {
       parameter match {
         case Timeout(to) => timeout = to
-        case Cores(cc) => coreCount = cc
+        case Parallelism => parallel = true
       }
     }
-    val config = Configuration(problemPath, proofPath, timeout, coreCount)
+    val config = Configuration(problemPath, proofPath, timeout, parallel)
     val controller = new ProofCheckController(problem: TPTP.Problem, proof: TPTP.Problem, config)
     controller.apply()
   }
