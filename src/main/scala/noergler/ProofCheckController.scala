@@ -7,7 +7,8 @@ import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, Fo
 import java.nio.file.Path
 import java.util.concurrent.Executors
 import java.util.logging.Logger
-import scala.concurrent.{Await, ExecutionContext, Future, Promise}
+import scala.concurrent.duration.DurationInt
+import scala.concurrent.{Await, ExecutionContext, Future}
 
 /**
  * The Controller coordinates the checking process, i.e., how and when
@@ -21,9 +22,9 @@ class ProofCheckController(problem: TPTP.Problem,
                            proof: TPTP.Problem,
                            configuration: Configuration) {
   final val logger: Logger = Logger.getLogger("Nörgler.Controller")
-//  final private def coreCountToThreadCount(coreCount: Int): Int = coreCount
-//  final implicit val ec: ExecutionContext = ExecutionContext.fromExecutorService(
-//    Executors.newFixedThreadPool(coreCountToThreadCount(configuration.coreCount)))
+  final private def threadCount: Int = Runtime.getRuntime.availableProcessors()*2
+  final implicit val ec: ExecutionContext = ExecutionContext.fromExecutorService(
+    Executors.newFixedThreadPool(threadCount))
 
   /** Map of problem file TPTP annotated formula name (hopefully unique) -> the formula */
   private var problemFormulas: Map[String, TPTP.FOFAnnotated] = Map.empty
@@ -37,6 +38,8 @@ class ProofCheckController(problem: TPTP.Problem,
 
   private var usedSkolemSymbols: Set[String] = Set.empty
   private lazy val problemSymbols: Set[String] = problem.formulas.flatMap(_.symbols).toSet
+
+  private var openFutures: Seq[Future[Any]] = Seq.empty
 
   final def apply(): Result = {
     //////////////////////////////////////////////////////////
@@ -139,13 +142,12 @@ class ProofCheckController(problem: TPTP.Problem,
         previousProofSteps = previousProofSteps :+ proofstep
       }
 
-      // TODO from here
-      // wait on completion of individual tasks
-      // how? probably just in the order above, as they must finish all anyway for
-      // it to be a success
-      // if some on the way fail -> fail
-      // if some on the way timeout -> ???
-      // if none fails -> success
+
+      if (configuration.parallelism) {
+        // wait on completion of individual tasks
+        // TODO from here, I guess?
+        Await.result(Future.sequence(openFutures), configuration.timeout.seconds)
+      }
 
       // report success
       logger.info("Proof verified.")
@@ -155,6 +157,8 @@ class ProofCheckController(problem: TPTP.Problem,
         FailedVerified(e.getMessage)
       case e: VerificationTimedOutException =>
         NotVerified(e.getMessage)
+      case _: concurrent.TimeoutException =>
+        NotVerified("Timed out.")
     }
   }
 
@@ -216,14 +220,23 @@ class ProofCheckController(problem: TPTP.Problem,
   }
 
   private def checkGenericInference(rule: String, proofstep: TPTP.FOFAnnotated, status: Either[THM.type , CTH.type]): Unit = {
-    logger.finer(s"Check for correct entailment of inference rule '$rule'.")
-    val checkEntailment = GenericInferenceCheck.apply(proofstep, proofFormulas, status, configuration.eproverPath, timeout = 30) // TODO: Timeout from somewhere
-    checkEntailment match {
-      case Some(check) =>
-        logger.fine(s"Entailment correct (${proofstep.name}): $checkEntailment")
-        if (!check) throw new VerificationFailedException(s"Proof step '${proofstep.name}' not verified.")
-      case None => throw new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out.")
+    def run(): Unit = {
+      logger.finer(s"Check for correct entailment of inference rule '$rule'.")
+      val checkEntailment = GenericInferenceCheck.apply(proofstep, proofFormulas, status, configuration.eproverPath, timeout = 30) // TODO: Timeout from somewhere
+      checkEntailment match {
+        case Some(check) =>
+          logger.fine(s"Entailment correct (${proofstep.name}): $checkEntailment")
+          if (!check) throw new VerificationFailedException(s"Proof step '${proofstep.name}' not verified.")
+        case None => throw new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out.")
+      }
     }
+    if (configuration.parallelism) {
+      val f = Future.apply(run())
+      openFutures = openFutures :+ f
+    } else {
+      run()
+    }
+
   }
 
   private def checkFormulaFromFile(proofstep: TPTP.FOFAnnotated): Unit = {
