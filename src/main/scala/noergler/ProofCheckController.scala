@@ -166,8 +166,8 @@ class ProofCheckController(problem: TPTP.Problem,
   private def checkFormulaNamesAreUnique(): Unit = {
     logger.fine("Check for uniqueness of formula names.")
     val namesUniqueCheck = FormulaNamesUniquenessCheck.apply(proofSteps)
-    logger.info(s"Formula names unique: $namesUniqueCheck")
-    if (!namesUniqueCheck) throw new VerificationFailedException("Names of annotated formulas in proof are not unique.")
+    logger.info(s"Formula names unique: ${namesUniqueCheck.isEmpty}")
+    if (namesUniqueCheck.isDefined) throw new VerificationFailedException(s"Name '${namesUniqueCheck.get}' is used multiple times.")
   }
 
   private def checkInferencesAreAcyclic(): Unit = {
