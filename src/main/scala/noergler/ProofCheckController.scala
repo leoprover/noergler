@@ -1,13 +1,13 @@
 package noergler
 
 import leo.datastructures.TPTP
-import noergler.ProofCheckController.{Configuration, VerificationFailedException}
-import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericTHMInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
+import noergler.ProofCheckController.{Configuration, VerificationFailedException, VerificationTimedOutException}
+import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
 
 import java.nio.file.Path
 import java.util.concurrent.Executors
 import java.util.logging.Logger
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{Await, ExecutionContext, Future, Promise}
 
 /**
  * The Controller coordinates the checking process, i.e., how and when
@@ -116,7 +116,7 @@ class ProofCheckController(problem: TPTP.Problem,
                   // (III.2) if a "skolemize" entry, does it correctly skolemize (use ASK)
                   case "skolemize" => checkSkolemization(proofstep)
                   // (III.3) if generic status(thm) entry, does it follow from its parents? (using external ATPs)
-                  case rule if inferenceStatus(annotation).getOrElse("") == "thm" => checkTHMInference(rule, proofstep)
+                  case rule if inferenceStatus(annotation).getOrElse("") == "thm" => checkGenericInference(rule, proofstep)
                   case _ => // Error case: unknown inference rule with non-THM status
                     logger.severe(s"Unknown inference '$inference' with non-thm status in proof step '${proofstep.name}'.")
                     throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown inference rule '$inference' with non-thm status, cannot be checked.")
@@ -210,13 +210,15 @@ class ProofCheckController(problem: TPTP.Problem,
 
   }
 
-  private def checkTHMInference(rule: String, proofstep: TPTP.FOFAnnotated): Unit = {
+  private def checkGenericInference(rule: String, proofstep: TPTP.FOFAnnotated): Unit = {
     logger.finer(s"Check for correct entailment of inference rule '$rule'.")
-    val checkEntailment = GenericTHMInferenceCheck.apply(proofstep, proofFormulas)
-    // TODO: how to handle timeouts? Maybe Option[Boolean] instead of Boolean and None is for timeout?
-    //  So we can reschedule or so?
-    logger.fine(s"Entailment correct (${proofstep.name}): $checkEntailment")
-    if (!checkEntailment) throw new VerificationFailedException(s"Proof step '${proofstep.name}' cannot be verified.")
+    val checkEntailment = GenericInferenceCheck.apply(proofstep, proofFormulas)
+    checkEntailment match {
+      case Some(check) =>
+        logger.fine(s"Entailment correct (${proofstep.name}): $checkEntailment")
+        if (!check) throw new VerificationFailedException(s"Proof step '${proofstep.name}' not verified.")
+      case None => throw new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out.")
+    }
   }
 
   private def checkFormulaFromFile(proofstep: TPTP.FOFAnnotated): Unit = {
@@ -236,8 +238,9 @@ object ProofCheckController {
   /** Thrown during the check if some step yields that the proof definitely cannot be verified
    * because it's not a valid proof. */
   private class VerificationFailedException(msg: String) extends RuntimeException(msg)
+
   /** Thrown during the check by some step if it gives up (e.g. timeout of external prover). */
-  private class NotVerifiedException(msg: String) extends RuntimeException(msg)
+  private class VerificationTimedOutException(msg: String) extends RuntimeException(msg)
 
   private final val defaultTimeout: Int = 60
   private final val defaultParallel: Boolean = false
