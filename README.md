@@ -29,6 +29,9 @@ usage: noergler [options] <problem file> <proof file>
   --timeout t  Timeout after n seconds (soft limit, best effort).
                A timeout will result in a SZS status NotVerified output.
 
+  --eprover path
+               Path to eprover, if not findable by `which eprover`.
+
   --parallel   If set, Nörgler will make use of threaded parellelism, potentially
                on different CPU cores if available.
 
