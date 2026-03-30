@@ -94,6 +94,7 @@ class ProofCheckController(problem: TPTP.Problem,
       /** All the steps that have already been processed. Initially empty. */
       var previousProofSteps: Seq[TPTP.FOFAnnotated] = Vector.empty
       for (proofstep <- proofSteps) {
+        var addedNewFuture = false
         logger.finer(s"Checking proof step '${proofstep.name}' with annotation '${proofstep.annotations.map(_._1.pretty).getOrElse("")}' ...")
         logger.finer(proofstep.annotations.toString)
         //////
@@ -120,8 +121,12 @@ class ProofCheckController(problem: TPTP.Problem,
                   // (III.2) if a "skolemize" entry, does it correctly skolemize (use ASK)
                   case "skolemize" => checkSkolemization(proofstep)
                   // (III.3) if generic status(thm)/status(cth) entry, does it follow from its parents? (using external ATPs)
-                  case rule if inferenceStatus(annotation).contains(THM) => checkGenericInference(rule, proofstep, Left(THM))
-                  case rule if inferenceStatus(annotation).contains(CTH) => checkGenericInference(rule, proofstep, Right(CTH))
+                  case rule if inferenceStatus(annotation).contains(THM) =>
+                    checkGenericInference(rule, proofstep, Left(THM))
+                    if (configuration.parallelism) addedNewFuture = true
+                  case rule if inferenceStatus(annotation).contains(CTH) =>
+                    checkGenericInference(rule, proofstep, Right(CTH))
+                    if (configuration.parallelism) addedNewFuture = true
                   case _ => // Error case: unknown inference rule with non-THM/CTH status
                     logger.severe(s"Unknown inference '$inference' with non-thm status in proof step '${proofstep.name}'.")
                     throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown inference rule '$inference' with non-thm status, cannot be checked.")
@@ -138,7 +143,7 @@ class ProofCheckController(problem: TPTP.Problem,
             logger.severe(s"Proof step '${proofstep.name}' has no or malformed annotation.")
             throw new VerificationFailedException(s"Proof step '${proofstep.name}' has no or malformed annotation.")
         }
-        logger.info(s"Check succeeded for step '${proofstep.name}'.") // Assuming we fail fast if anything happens before
+        if (!configuration.parallelism || !addedNewFuture) logger.info(s"Check succeeded for step '${proofstep.name}'.") // Assuming we fail fast if anything happens before
         previousProofSteps = previousProofSteps :+ proofstep
       }
 
@@ -146,7 +151,9 @@ class ProofCheckController(problem: TPTP.Problem,
       if (configuration.parallelism) {
         // wait on completion of individual tasks
         // TODO from here, I guess?
+        logger.info(s"Waiting for verification tasks to finish ...")
         Await.result(Future.sequence(openFutures), configuration.timeout.seconds)
+        logger.info(s"All checks succeeded.")
       }
 
       // report success
@@ -233,6 +240,7 @@ class ProofCheckController(problem: TPTP.Problem,
     if (configuration.parallelism) {
       val f = Future.apply(run())
       openFutures = openFutures :+ f
+      logger.fine(s"Scheduled parallel inference check.")
     } else {
       run()
     }
