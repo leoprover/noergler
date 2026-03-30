@@ -226,7 +226,7 @@ class ProofCheckController(problem: TPTP.Problem,
       checkEntailment match {
         case Some(check) =>
           logger.fine(s"Entailment correct (${proofstep.name}): $checkEntailment")
-          if (!check) throw new VerificationFailedException(s"Proof step '${proofstep.name}' not verified.")
+          if (!check) throw new VerificationFailedException(s"Proof step '${proofstep.name}' is not correct.")
         case None => throw new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out.")
       }
     }
