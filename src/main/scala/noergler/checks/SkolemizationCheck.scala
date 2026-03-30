@@ -5,9 +5,6 @@ import noergler.proofStepParentsAsFormulas
 
 import java.util.logging.Logger
 
-class SkolemizationCheck {
-
-}
 object SkolemizationCheck {
   final val logger: Logger = Logger.getLogger("Nörgler.checks.SkolemizationCheck")
 
@@ -17,7 +14,6 @@ object SkolemizationCheck {
   final def apply(proofstep: TPTP.FOFAnnotated,
                   proofFormulas: Map[String, TPTP.FOFAnnotated],
                   alreadyUsedSkolemSymbols: Set[String]): Either[String, String] = {
-    logger.finer(s"proofstep annotation: ${proofstep.annotations.toString}")
     // read of skolem inference details according to format
     // read of skolemSymbol name N (check: new)
     // read of variable V that was skolemized
