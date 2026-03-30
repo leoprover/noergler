@@ -70,7 +70,8 @@ class ProofCheckController(problem: TPTP.Problem,
     //////////////////////////////////////////////////////////
     // Actual checking
     //////////////////////////////////////////////////////////
-    // create/start check tasks. for first iteration maybe just sequential?
+    // create/start check tasks. for first iteration just sequental.
+    // TODO: refactor to switch to parallel check
     logger.fine("Processing proof ...")
     try {
       //////////////////
@@ -115,9 +116,10 @@ class ProofCheckController(problem: TPTP.Problem,
                   case "negated_conjecture" => checkNegatedInference(proofstep)
                   // (III.2) if a "skolemize" entry, does it correctly skolemize (use ASK)
                   case "skolemize" => checkSkolemization(proofstep)
-                  // (III.3) if generic status(thm) entry, does it follow from its parents? (using external ATPs)
-                  case rule if inferenceStatus(annotation).getOrElse("") == "thm" => checkGenericInference(rule, proofstep)
-                  case _ => // Error case: unknown inference rule with non-THM status
+                  // (III.3) if generic status(thm)/status(cth) entry, does it follow from its parents? (using external ATPs)
+                  case rule if inferenceStatus(annotation).contains(THM) => checkGenericInference(rule, proofstep, Left(THM))
+                  case rule if inferenceStatus(annotation).contains(CTH) => checkGenericInference(rule, proofstep, Right(CTH))
+                  case _ => // Error case: unknown inference rule with non-THM/CTH status
                     logger.severe(s"Unknown inference '$inference' with non-thm status in proof step '${proofstep.name}'.")
                     throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown inference rule '$inference' with non-thm status, cannot be checked.")
                 }
@@ -146,10 +148,13 @@ class ProofCheckController(problem: TPTP.Problem,
       // if none fails -> success
 
       // report success
+      logger.info("Proof verified.")
       Verified
     } catch {
       case e: VerificationFailedException =>
         FailedVerified(e.getMessage)
+      case e: VerificationTimedOutException =>
+        NotVerified(e.getMessage)
     }
   }
 
@@ -210,9 +215,9 @@ class ProofCheckController(problem: TPTP.Problem,
 
   }
 
-  private def checkGenericInference(rule: String, proofstep: TPTP.FOFAnnotated): Unit = {
+  private def checkGenericInference(rule: String, proofstep: TPTP.FOFAnnotated, status: Either[THM.type , CTH.type]): Unit = {
     logger.finer(s"Check for correct entailment of inference rule '$rule'.")
-    val checkEntailment = GenericInferenceCheck.apply(proofstep, proofFormulas)
+    val checkEntailment = GenericInferenceCheck.apply(proofstep, proofFormulas, status, configuration.eproverPath, timeout = 30) // TODO: Timeout from somewhere
     checkEntailment match {
       case Some(check) =>
         logger.fine(s"Entailment correct (${proofstep.name}): $checkEntailment")
@@ -233,7 +238,8 @@ object ProofCheckController {
   final case class Configuration(problemPath: Path,
                                  proofPath: Path,
                                  timeout: Int,
-                                 parallelism: Boolean)
+                                 parallelism: Boolean,
+                                 eproverPath: Path)
 
   /** Thrown during the check if some step yields that the proof definitely cannot be verified
    * because it's not a valid proof. */
@@ -244,10 +250,13 @@ object ProofCheckController {
 
   private final val defaultTimeout: Int = 60
   private final val defaultParallel: Boolean = false
+  // a bit hacky:
+  private final val defaulteproverPath: Option[String] = scala.sys.process.Process("which eprover").lazyLines_!.headOption
 
   sealed abstract class Parameter
   final case class Timeout(timeout: Int) extends Parameter
   final case object Parallelism extends Parameter
+  final case class EproverPath(path: Path) extends Parameter
 
   /** Factory method for a [[ProofCheckController]] based on the given arguments. */
   final def apply(problemPath: Path,
@@ -257,13 +266,17 @@ object ProofCheckController {
                   parameters: Seq[ProofCheckController.Parameter]): Result = {
     var timeout = defaultTimeout
     var parallel = defaultParallel
+    var path: Option[Path] = defaulteproverPath.map(p => Path.of(p))
+
     for (parameter <- parameters) {
       parameter match {
         case Timeout(to) => timeout = to
         case Parallelism => parallel = true
+        case EproverPath(p) => path = Some(p)
       }
     }
-    val config = Configuration(problemPath, proofPath, timeout, parallel)
+    if (path.isEmpty) throw new IllegalArgumentException("eprover path unknown")
+    val config = Configuration(problemPath, proofPath, timeout, parallel, path.get)
     val controller = new ProofCheckController(problem: TPTP.Problem, proof: TPTP.Problem, config)
     controller.apply()
   }

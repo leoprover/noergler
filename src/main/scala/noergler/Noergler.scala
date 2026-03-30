@@ -5,7 +5,7 @@ import leo.modules.input.TPTPParser
 
 import java.io.FileNotFoundException
 import java.util.logging.{ConsoleHandler, Level, Logger}
-import java.nio.file.Path
+import java.nio.file.{InvalidPathException, Path}
 
 object Noergler {
   final val name: String = "noergler"
@@ -142,6 +142,8 @@ object Noergler {
          |  --timeout t  Timeout after n seconds (soft limit, best effort).
          |               A timeout will result in a SZS status NotVerified output.
          |
+         |  --eprover path
+         |
          |  --parallel   If set, Nörgler will make use of threaded parellelism, potentially
          |               on different CPU cores if available.
          |
@@ -164,6 +166,10 @@ object Noergler {
           case "--timeout" =>
             val to = args0.tail.head
             parameters = parameters :+ ProofCheckController.Timeout(to.toInt)
+            args0 = args0.tail
+          case "--eprover" =>
+            val path = args0.tail.head
+            parameters = parameters :+ ProofCheckController.EproverPath(Path.of(path))
             args0 = args0.tail
           case "--parallel" =>
             parameters = parameters :+ ProofCheckController.Parallelism
@@ -196,6 +202,8 @@ object Noergler {
     } catch {
       case _:NoSuchElementException | _:ArrayIndexOutOfBoundsException | _:NumberFormatException =>
         throw new IllegalArgumentException(s"Not enough or illegal arguments supplied: ${args.toString()}")
+      case e:InvalidPathException =>
+        throw new IllegalArgumentException(s"Supplied path invalid: ${e.toString}")
     }
   }
 }
