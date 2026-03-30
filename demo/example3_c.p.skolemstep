@@ -1,0 +1,6 @@
+%----At every marriage, there is a bride and groom who are in love
+fof(marriage, axiom, 
+    ! [Marriage] :
+    ? [Bride] :
+    ? [Groom] :
+    in_love(Groom, Bride)).

@@ -1,0 +1,5 @@
+% SZS output start ListOfFormulae
+fof(ax1, axiom, ![X]: (p(X) => p(f(X)))).
+fof(ax2, axiom, p(a)).
+fof(c, conjecture, p(f(f(a)))).
+% SZS output end ListOfFormulae
