@@ -3,11 +3,12 @@ package noergler.checks
 import leo.datastructures.TPTP
 import leo.datastructures.TPTP.FOF
 import noergler.checks.GenericInferenceCheck.logger
-import noergler.{CTH, InferenceStatus, THM, proofStepParents}
+import noergler.{CTH, THM, proofStepParents}
 
-import java.io.{ByteArrayInputStream, InputStream}
+import java.io.ByteArrayInputStream
 import java.nio.file.Path
 import java.util.logging.Logger
+import scala.sys.process.ProcessLogger
 
 final class GenericInferenceCheck(premises: Seq[TPTP.FOFAnnotated],
                                   conjecture: TPTP.FOFAnnotated,
@@ -18,14 +19,30 @@ final class GenericInferenceCheck(premises: Seq[TPTP.FOFAnnotated],
 
     logger.finer(s"External prover check premises ${premises.map(_.pretty).mkString(", ")}.")
     logger.finer(s"External prover check conjecture ${conjecture.pretty}.")
-
-    val eprocess = scala.sys.process.Process.apply(eproverPath.toString, Seq("-s", s"--cpu-limit=${timeout.toString}"))
     val problem = TPTP.Problem(Seq.empty, premises :+ conjecture, Map.empty)
-    val response = eprocess.#<(new ByteArrayInputStream(problem.pretty.getBytes)).!! // TODO: redirect errorsteam to logger, TODO: catch exception if non-zero exit status
-    logger.finest(s"E response: $response")
-    if (response.contains("SZS status Theorem")) Some(true)
-    else if (response.contains("SZS status ContradictoryAxioms")) Some(true)
-    else Some(false)
+
+    val stdout: StringBuffer = new StringBuffer()
+    val stderr: StringBuffer = new StringBuffer()
+    val eprocess = scala.sys.process.Process.apply(
+      eproverPath.toString,
+      Seq("-s", s"--cpu-limit=${timeout.toString}")).#<(new ByteArrayInputStream(problem.pretty.getBytes))
+    val processLogger = ProcessLogger.apply(
+      line => stdout.append(line),
+      line => stderr.append(line)
+    )
+    val _ = eprocess ! processLogger // exit code is dont-care
+
+    val result = stdout.toString
+    val errResult = stderr.toString
+    logger.finest(s"E response: $result")
+    logger.finest(s"E stderr: $errResult")
+    // TODO: Improve handling below
+    if (result.contains("SZS status Theorem")) Some(true)
+    else if (result.contains("SZS status ContradictoryAxioms")) Some(true)
+    else if (result.contains("SZS status CounterSatisfiable")) Some(false)
+    else if (result.contains("SZS status GaveUp")) None
+    else if (result.contains("SZS status Unknown")) None
+    else None
   }
 
 }
