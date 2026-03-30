@@ -1,4 +1,5 @@
-% SZS output start Prooffof(marriage, axiom, 
+% SZS output start Proof
+fof(marriage, axiom, 
     ! [Marriage] :
     ? [Bride] :
     ? [Groom] :
