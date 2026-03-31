@@ -113,23 +113,24 @@ class ProofCheckController(problem: TPTP.Problem,
             case "inference" =>
               // (III.0) check that every inference parent (if any) actually exists (earlier in the proof)
               checkInferenceParentsExist(proofstep, previousProofSteps)
+              val inferenceStatus0 = inferenceStatus(annotation)
 
               inferenceName(annotation) match {
                 case Some(inference) => inference match {
                   // (III.1) if a "negated_conjecture" entry, does it correctly negate and has correct role?
-                  case "negated_conjecture" => checkNegatedInference(proofstep)
+                  case "negated_conjecture" if inferenceStatus0.contains(CTH) => checkNegatedInference(proofstep)
                   // (III.2) if a "skolemize" entry, does it correctly skolemize (use ASK)
-                  case "skolemize" => checkSkolemization(proofstep)
+                  case "skolemize" if inferenceStatus0.contains(ESA) => checkSkolemization(proofstep)
                   // (III.3) if generic status(thm)/status(cth) entry, does it follow from its parents? (using external ATPs)
-                  case rule if inferenceStatus(annotation).contains(THM) =>
+                  case rule if inferenceStatus0.contains(THM) =>
                     checkGenericInference(rule, proofstep, Left(THM))
                     if (configuration.parallelism) addedNewFuture = true
-                  case rule if inferenceStatus(annotation).contains(CTH) =>
+                  case rule if inferenceStatus0.contains(CTH) =>
                     checkGenericInference(rule, proofstep, Right(CTH))
                     if (configuration.parallelism) addedNewFuture = true
                   case _ => // Error case: unknown inference rule with non-THM/CTH status
-                    logger.severe(s"Unknown inference '$inference' with non-thm status in proof step '${proofstep.name}'.")
-                    throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown inference rule '$inference' with non-thm status, cannot be checked.")
+                    logger.severe(s"Unknown inference '$inference' with status '${inferenceStatus0.getOrElse("")}' in proof step '${proofstep.name}'.")
+                    throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown inference rule '$inference' with non-thm/cth status ('${inferenceStatus0.getOrElse("")}') and cannot be checked.")
                 }
                 case None => // Unknown annotation, abort
                   logger.severe(s"Annotation of proof step '${proofstep.name}' unknown.")
