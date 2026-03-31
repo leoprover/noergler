@@ -25,7 +25,7 @@ final class GenericInferenceCheck(premises: Seq[TPTP.FOFAnnotated],
     val stderr: StringBuffer = new StringBuffer()
     val eprocess = scala.sys.process.Process.apply(
       eproverPath.toString,
-      Seq("-s", s"--cpu-limit=${timeout.toString}")).#<(new ByteArrayInputStream(problem.pretty.getBytes))
+      Seq("-s", "--auto", s"--cpu-limit=${timeout.toString}")).#<(new ByteArrayInputStream(problem.pretty.getBytes))
     val processLogger = ProcessLogger.apply(
       line => stdout.append(line),
       line => stderr.append(line)
