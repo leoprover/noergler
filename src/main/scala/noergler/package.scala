@@ -62,8 +62,12 @@ package object noergler {
   }
 
   sealed abstract class InferenceStatus
+  /** Theorem */
   final case object THM extends InferenceStatus
+  /** Counter-theorem */
   final case object CTH extends InferenceStatus
+  /** Equisatisfiable */
+  final case object ESA extends InferenceStatus
   final case class OtherStatus(name: String) extends InferenceStatus
 
   final def inferenceStatus(annotation: TPTP.Annotations): Option[InferenceStatus] = {
@@ -73,18 +77,28 @@ package object noergler {
         if (gt.data.nonEmpty) {
           gt.data.head match {
             case TPTP.MetaFunctionData("inference", args) if args.size >= 2 => args.tail.head.list match {
-              case Some(Seq(gt0)) => gt0.data match {
-                case Seq(TPTP.MetaFunctionData("status", Seq(gt1))) => gt1.data match {
-                  case Seq(TPTP.MetaFunctionData(status, Seq())) =>
-                     status match {
-                       case "thm" => Some(THM)
-                       case "cth" => Some(CTH)
-                       case _ => Some(OtherStatus(status))
-                     }
-                  case _ => None
+              case Some(entries) =>
+                val statusEntry = entries.find { entry =>
+                  entry.data match {
+                    case Seq(TPTP.MetaFunctionData("status", Seq(_))) => true
+                    case _ => false
+                  }
                 }
-                case _ => None
-              }
+                statusEntry.flatMap { entry =>
+                  entry.data match {
+                    case Seq(TPTP.MetaFunctionData("status", Seq(gt1))) => gt1.data match {
+                      case Seq(TPTP.MetaFunctionData(status, Seq())) =>
+                        status match {
+                          case "thm" => Some(THM)
+                          case "cth" => Some(CTH)
+                          case "esa" => Some(ESA)
+                          case _ => Some(OtherStatus(status))
+                        }
+                      case _ => None
+                    }
+                    case _ => None
+                  }
+                }
               case _ => None
             }
             case _ => None
