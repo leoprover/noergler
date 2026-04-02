@@ -41,6 +41,7 @@ package object noergler {
             case _ => None
           }
         } else None
+      case None => None
     }
   }
 
@@ -151,6 +152,23 @@ package object noergler {
         case Seq(TPTP.MetaFunctionData(parentName, Seq())) => Some(parentName)
         case _ => None
       }
+    }
+  }
+
+  final def metaFunctionDataToFOF(data: TPTP.GeneralData): Option[TPTP.FOF.Term] = {
+    data match {
+      case TPTP.MetaFunctionData(f, args) =>
+        val res = args.map {
+          case TPTP.GeneralTerm(Seq(entry), None) => metaFunctionDataToFOF(entry)
+          case _ => None
+        }
+        if (res.exists(_.isEmpty)) None
+        else Some(TPTP.FOF.AtomicTerm(f, res.flatten))
+      case TPTP.MetaVariable(variable) => Some(TPTP.FOF.Variable(variable))
+      case TPTP.NumberData(number) => Some(TPTP.FOF.NumberTerm(number))
+      case TPTP.DistinctObjectData(name) => Some(TPTP.FOF.DistinctObject(name))
+      case TPTP.GeneralFormulaData(TPTP.FOTData(term)) => Some(term)
+      case _ => None
     }
   }
 }
