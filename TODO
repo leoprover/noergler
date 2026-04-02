@@ -2,7 +2,7 @@
 - ist PNF check für negate_conjecture sinnvoll? oder lieber als externer check?
 - check annotation information für skolemization
 - allgemein: verbesserung von generic inference check
-  --> speziell: welcher model finder? nitpick, paradox, mace4, FEST, ...? alloy
+  --> [Happy] speziell: welcher model finder? nitpick, paradox, mace4, FEST, ...? alloy
   --> portfolio aus beweisern? oder nach-und-nach, gaveup->next?, ...? allgemeiner ablauf optimieren
   --> parallelism, wie funktioniert das mit verschiedenen cores?
 - testing, auf vielen beweisen mal testen
