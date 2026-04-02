@@ -1,7 +1,7 @@
 package noergler.checks
 
 import leo.datastructures.TPTP
-import noergler.proofStepParentsAsFormulas
+import noergler.{metaFunctionDataToFOF, proofStepParentsAsFormulas}
 
 import java.util.logging.Logger
 
@@ -9,7 +9,6 @@ object SkolemizationCheck {
   final val logger: Logger = Logger.getLogger("Nörgler.checks.SkolemizationCheck")
 
   @inline private final def fail(msg: String): Either[String, String] = Left(msg)
-//  @inline private final def succeed(skolemSymbol: String): Either[String, String] = Right(skolemSymbol)
 
   final def apply(proofstep: TPTP.FOFAnnotated,
                   proofFormulas: Map[String, TPTP.FOFAnnotated],
@@ -35,6 +34,7 @@ object SkolemizationCheck {
                   val manuallySkolemizedFormula = ask.apply(parent)
                   logger.fine(s"Skolemized from proof: ${proofstep.formula.pretty}")
                   logger.fine(s"Manually Skolemized result: ${manuallySkolemizedFormula.pretty}")
+                  logger.finer(s"Bind information: ${bind._2.pretty}")
                   // compare results
                   // TODO: Do we need to check if the bind information is correct?
                   Either.cond(
@@ -71,7 +71,7 @@ object SkolemizationCheck {
   private type Status = String
   private type NewSymbol = String
   private type SkolemizedVariable = String
-  private type Bind = (String, TPTP.MetaFunctionData)
+  private type Bind = (String, TPTP.FOF.Term)
   private type SkolemizeRecord = (Status, NewSymbol, SkolemizedVariable, Bind)
   /** None means not well-formed record --> error case. */
   private final def extractSkolemizeRecordInfos(annotation: TPTP.Annotations): Option[SkolemizeRecord] = {
@@ -115,15 +115,16 @@ object SkolemizationCheck {
                     case Seq(TPTP.MetaFunctionData("bind", args)) =>
                       args match {
                         case Seq(TPTP.GeneralTerm(Seq(TPTP.MetaVariable(v)), None),
-                                 TPTP.GeneralTerm(Seq(mf@TPTP.MetaFunctionData(_, _)), None)) =>
-                          if (bind.isDefined) malformed = true
-                          else bind = Some((v, mf))
+                                 TPTP.GeneralTerm(Seq(data), None)) =>
+                          val dataAsFOF = metaFunctionDataToFOF(data)
+                          if (bind.isDefined || dataAsFOF.isEmpty) malformed = true
+                          else bind = Some((v, dataAsFOF.get))
                         case _ => malformed = true
                       }
                     case _ => malformed = true // error
                   }
                 }
-                if (malformed) None
+                if (malformed || Seq(status, newsymbol, skolemizedVariable, bind).exists(_.isEmpty)) None
                 else Some((status.get, newsymbol.get, skolemizedVariable.get, bind.get))
               case None => None
             }
