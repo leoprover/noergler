@@ -26,6 +26,7 @@ object ProofEndsInFalseCheck {
         case TPTP.TFFAnnotated(_, _, formula, _) => formula match {
           case TFF.Logical(formula1) => formula1 match {
             case TFF.AtomicFormula(`falseFormula`, Seq()) => true
+            case _ => false
           }
           case _ => false
         }
