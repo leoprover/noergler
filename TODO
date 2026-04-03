@@ -1,6 +1,6 @@
 - [Melanie] check GDV-LP für weitere ideen für beweischecks
 - ist PNF check für negate_conjecture sinnvoll? oder lieber als externer check?
-- check annotation information für skolemization
+- [Alex, done] check annotation information für skolemization
 - allgemein: verbesserung von generic inference check
   --> [Happy] speziell: welcher model finder? nitpick, paradox, mace4, FEST, ...? alloy
   --> portfolio aus beweisern? oder nach-und-nach, gaveup->next?, ...? allgemeiner ablauf optimieren
