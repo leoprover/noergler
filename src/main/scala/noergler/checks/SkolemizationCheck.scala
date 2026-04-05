@@ -32,21 +32,27 @@ object SkolemizationCheck {
                   val ask = new leo.modules.skolemizer.SingleFormulaSkolemizer(newSymbol,
                     skolemizeAll = false, variableToSkolemize = Some(variable), choiceTerms = false)
                   val manuallySkolemizedFormula = ask.apply(parent)
-                  val skolemTermUsedByAsk = ask.fofSkolemTerms(variable)
+                  val skolemTermUsedByAsk = ask.fofSkolemTerms.get(variable)
                   logger.fine(s"Skolemized from proof: ${proofstep.formula.pretty}")
-                  logger.fine(s"Manually Skolemized result: ${manuallySkolemizedFormula.pretty}")
-                  logger.finer(s"Skolem term by ask: ${skolemTermUsedByAsk.pretty}")
+                  logger.fine(s"Manually Skolemized result: ${manuallySkolemizedFormula.formula.pretty}")
+                  logger.finer(s"Skolem term by ask: ${skolemTermUsedByAsk.map(_.pretty).getOrElse("")}")
                   logger.finer(s"Bind information: ${bind._2.pretty}")
-                  // compare results
-                  if (skolemTermUsedByAsk == bind._2)
-                    Either.cond(
-                      manuallySkolemizedFormula.formula == proofstep.formula,
-                      newSymbol,
-                      s"Skolemization result in proof step ${proofstep.name} wrong. It should be ${manuallySkolemizedFormula.pretty}")
-                  else {
-                    val error = s"Skolemization bind record incorrect in step '${proofstep.name}'."
-                    logger.severe(error)
-                    fail(error)
+                  skolemTermUsedByAsk match {
+                    case Some(askBind) =>
+                      if (askBind == bind._2)
+                        Either.cond(
+                          manuallySkolemizedFormula.formula == proofstep.formula,
+                          newSymbol,
+                          s"Skolemization result in proof step ${proofstep.name} wrong. It should be ${manuallySkolemizedFormula.pretty}")
+                      else {
+                        val error = s"Skolemization bind record incorrect in step '${proofstep.name}'."
+                        logger.severe(error)
+                        fail(error)
+                      }
+                    case None =>
+                      val error = s"Skolemization bind record cannot be compared to internal bind in step '${proofstep.name}'."
+                      logger.severe(error)
+                      fail(error)
                   }
                 case _ =>
                   val error = s"Skolemization parents not well-formed in step '${proofstep.name}'."
