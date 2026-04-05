@@ -19,7 +19,7 @@
   - Skolemization
     + [Alex, done] check annotation information für skolemization
   - Generic inference check
-    + [Happy] speziell: welcher model finder? nitpick, paradox, mace4, FEST, ...? alloy
+    + [Happy] speziell: welcher model finder? nitpick, paradox, mace4, FEST, cvc5 ...? alloy
     + portfolio aus beweisern? oder nach-und-nach, gaveup->next?, ...? allgemeiner ablauf optimieren
 
 ## Softwarearchitekturverbesserungen
