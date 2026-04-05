@@ -28,6 +28,8 @@ object Noergler {
     if (args.isEmpty) usage()
     else {
       var error: Option[String] = None
+      var problemFileParsed = false // only purpose is to differentiate between the two input files
+      // if parse errors happen
 
       try {
         parseArgs(args.toSeq)
@@ -45,6 +47,7 @@ object Noergler {
         val proofPath = Path.of(inputProofName).toAbsolutePath
         // Parse input
         val problem: TPTP.Problem = parseTPTPFile(problemPath)
+        problemFileParsed = true
         val proof: TPTP.Problem = parseTPTPFile(proofPath)
         // Call checker controller
         val result: Result = ProofCheckController.apply(problemPath, proofPath, problem, proof, parameters)
@@ -64,7 +67,7 @@ object Noergler {
         case e: FileNotFoundException =>
           error = Some(s"File cannot be found or is not readable/writable: ${e.getMessage}")
         case e: TPTPParser.TPTPParseException =>
-          error = Some(s"Input file could not be parsed, parse error at ${e.line}:${e.offset}: ${e.getMessage}")
+          error = Some(s"${if (problemFileParsed) "Proof" else "Problem"} file could not be parsed, parse error at ${e.line}:${e.offset}: ${e.getMessage}")
         case e: Throwable =>
           error = Some(s"Unexpected error: ${e.getMessage} (${e.printStackTrace()}). This is considered an implementation error; please report this!")
       } finally {
