@@ -9,5 +9,5 @@ lazy val root = (project in file("."))
     assembly/assemblyJarName := s"${name.value}-${version.value}.jar",
 
 
-    libraryDependencies += "io.github.leoprover" %% "scala-tptp-parser" % "1.7.3",
+    libraryDependencies += "io.github.leoprover" %% "scala-tptp-parser" % "1.7.4",
   )
