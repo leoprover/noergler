@@ -17,6 +17,8 @@ object Noergler {
   private[this] var parameters: Seq[ProofCheckController.Parameter] = Seq.empty
   private[this] var verbosity: Level = Level.INFO
   private[this] val tptpHomeDirectory: Option[String] = sys.env.get("TPTP")
+  // flags for proof variation tolerance
+  private[this] var ignoreFileAnnotations: Boolean = false
 
   final def main(args: Array[String]): Unit = {
     if (args.contains("--help")) {
@@ -158,6 +160,10 @@ object Noergler {
          |  --version    Print the version number of the executable and terminate.
          |
          |  --help       Print this description and terminate.
+         |
+         |  --ignore-file-annotations
+         |              If set, Nörgler will not check if formulas copied from problem files correspond
+         |              to the original formula.
          |""".stripMargin)
   }
 
@@ -190,6 +196,8 @@ object Noergler {
             }
             verbosity = level
             args0 = args0.tail
+          case "--ignore-file-annotations" =>
+            parameters = parameters :+ ProofCheckController.IgnoreFileAnnotations
           case _ => throw new IllegalArgumentException(s"Unknown parameter '$hd'.")
         }
         args0 = args0.tail

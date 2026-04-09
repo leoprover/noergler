@@ -136,7 +136,7 @@ class ProofCheckController(problem: TPTP.Problem,
                   logger.severe(s"Annotation of proof step '${proofstep.name}' unknown.")
                   throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses malformed inference annotation.")
               }
-            case "file" => checkFormulaFromFile(proofstep)
+            case "file" => if (!configuration.ignoreFileAnnotations) checkFormulaFromFile(proofstep)
             case "introduced" => ??? // TODO
             case record => throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown record '$record'.")
           }
@@ -177,7 +177,7 @@ class ProofCheckController(problem: TPTP.Problem,
     logger.fine("Check for $false at the end of proof.")
     val endsWithFalseCheck = ProofEndsInFalseCheck.apply(proof)
     logger.info(s"Proof ends in $$false: $endsWithFalseCheck")
-    if (!endsWithFalseCheck) throw new VerificationFailedException("Proof does not end it false")
+    if (!endsWithFalseCheck) throw new VerificationFailedException("Proof does not end in false")
   }
 
   private def checkFormulaNamesAreUnique(): Unit = {
@@ -261,6 +261,7 @@ object ProofCheckController {
                                  proofPath: Path,
                                  timeout: Int,
                                  parallelism: Boolean,
+                                 ignoreFileAnnotations: Boolean,
                                  eproverPath: Path)
 
   /** Thrown during the check if some step yields that the proof definitely cannot be verified
@@ -272,12 +273,15 @@ object ProofCheckController {
 
   private final val defaultTimeout: Int = 60
   private final val defaultParallel: Boolean = false
+  private final val defaultIgnoreFileAnnotations: Boolean = false
   // a bit hacky:
   private final val defaulteproverPath: Option[String] = scala.sys.process.Process("which eprover").lazyLines_!.headOption
 
   sealed abstract class Parameter
   final case class Timeout(timeout: Int) extends Parameter
   final case object Parallelism extends Parameter
+
+  final case object IgnoreFileAnnotations extends Parameter
   final case class EproverPath(path: Path) extends Parameter
 
   /** Factory method for a [[ProofCheckController]] based on the given arguments. */
@@ -288,17 +292,19 @@ object ProofCheckController {
                   parameters: Seq[ProofCheckController.Parameter]): Result = {
     var timeout = defaultTimeout
     var parallel = defaultParallel
+    var ignoreFileAnnotations = defaultIgnoreFileAnnotations
     var path: Option[Path] = defaulteproverPath.map(p => Path.of(p))
 
     for (parameter <- parameters) {
       parameter match {
         case Timeout(to) => timeout = to
         case Parallelism => parallel = true
+        case IgnoreFileAnnotations => ignoreFileAnnotations = true
         case EproverPath(p) => path = Some(p)
       }
     }
     if (path.isEmpty) throw new IllegalArgumentException("eprover path unknown")
-    val config = Configuration(problemPath, proofPath, timeout, parallel, path.get)
+    val config = Configuration(problemPath, proofPath, timeout, parallel, ignoreFileAnnotations, path.get)
     val controller = new ProofCheckController(problem: TPTP.Problem, proof: TPTP.Problem, config)
     controller.apply()
   }
