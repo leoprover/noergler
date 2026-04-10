@@ -150,6 +150,7 @@ package object noergler {
     else {
       parentAnnotation.data match {
         case Seq(TPTP.MetaFunctionData(parentName, Seq())) => Some(parentName)
+        case Seq(TPTP.NumberData(number)) => Some(number.pretty)
         case _ => None
       }
     }
