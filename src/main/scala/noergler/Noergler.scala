@@ -161,6 +161,11 @@ object Noergler {
          |
          |  --help       Print this description and terminate.
          |
+         |  --relax-annotation-format
+         |              If set, Nörgler will be more permissive about the format of the formula annotation
+         |              as long as parent-child relationships can still be inferred. In particular, Nörgler will
+         |              i) allow nested application of inferences in annotations
+         |
          |  --ignore-file-annotations
          |              If set, Nörgler will not check if formulas copied from problem files correspond
          |              to the original formula.
@@ -198,6 +203,9 @@ object Noergler {
             args0 = args0.tail
           case "--ignore-file-annotations" =>
             parameters = parameters :+ ProofCheckController.IgnoreFileAnnotations
+          case "--relax-annotation-format" =>
+            parameters = parameters :+ ProofCheckController.RelaxAnnotationFormat
+
           case _ => throw new IllegalArgumentException(s"Unknown parameter '$hd'.")
         }
         args0 = args0.tail

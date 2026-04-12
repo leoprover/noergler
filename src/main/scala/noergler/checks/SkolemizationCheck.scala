@@ -12,7 +12,8 @@ object SkolemizationCheck {
 
   final def apply(proofstep: TPTP.FOFAnnotated,
                   proofFormulas: Map[String, TPTP.FOFAnnotated],
-                  alreadyUsedSkolemSymbols: Set[String]): Either[String, String] = {
+                  alreadyUsedSkolemSymbols: Set[String],
+                  relaxAnnotationFormat: Boolean): Either[String, String] = {
     // read of skolem inference details according to format
     // read of skolemSymbol name N (check: new)
     // read of variable V that was skolemized
@@ -24,7 +25,7 @@ object SkolemizationCheck {
           if (variable == bind._1) {
             if (!alreadyUsedSkolemSymbols.contains(newSymbol)) {
               // read of parent from proof step (we know it exists)
-              val inferenceParent = proofStepParentsAsFormulas(proofstep, proofFormulas)
+              val inferenceParent = proofStepParentsAsFormulas(proofstep, proofFormulas, relaxAnnotationFormat)
               inferenceParent match {
                 case Some(Seq(parent)) =>
                   // execute trusted skolemization via ask using name N and variable V

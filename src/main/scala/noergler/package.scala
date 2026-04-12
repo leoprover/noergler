@@ -110,8 +110,9 @@ package object noergler {
   }
 
   @inline final def proofStepParentsAsFormulas(proofstep: TPTP.FOFAnnotated,
-                                               proofFormulas: Map[String, TPTP.FOFAnnotated]): Option[Seq[TPTP.FOFAnnotated]] = {
-    val parents = proofStepParents(proofstep)
+                                               proofFormulas: Map[String, TPTP.FOFAnnotated],
+                                               relaxAnnotationFormat: Boolean): Option[Seq[TPTP.FOFAnnotated]] = {
+    val parents = proofStepParents(proofstep,relaxAnnotationFormat)
     parents.flatMap { parents =>
       val asFormulas = parents.map(proofFormulas.get)
       if (asFormulas.forall(_.isDefined)) Some(asFormulas.flatten)
@@ -119,38 +120,47 @@ package object noergler {
     }
   }
 
-  @inline final def proofStepParents(proofStep: TPTP.FOFAnnotated): Option[Seq[String]] = {
-    proofStepParents(proofStep.annotations)
+  @inline final def proofStepParents(proofStep: TPTP.FOFAnnotated, relaxAnnotationFormat: Boolean): Option[Seq[String]] = {
+    proofStepParents(proofStep.annotations, relaxAnnotationFormat)
+  }
+
+  final def proofStepParents0(gt: TPTP.GeneralData, relaxAnnotationFormat: Boolean): Option[Seq[String]] = {
+    gt match {
+      case TPTP.MetaFunctionData(name, args) if args.size >= 3 && Seq("inference", "introduced").contains(name) => args.tail.tail.head.list match {
+        case Some(parentsAnnotation) =>
+          val result = parentsAnnotation.flatMap(an => inferenceParent0(an, relaxAnnotationFormat))
+          if (result.size == parentsAnnotation.size) Some(result.flatten)
+          else None // Not well-formed
+        case _ => None
+      }
+      case TPTP.MetaFunctionData("file", _) => Some(Seq.empty)
+      case _ => None
+    }
   }
 
   /** Returns a list of inference parents' names, if any.
    * Empty list of parents is returned as Some(Seq()), None is an error case. */
-  final def proofStepParents(annotation: TPTP.Annotations): Option[Seq[String]] = {
+  final def proofStepParents(annotation: TPTP.Annotations, relaxAnnotationFormat: Boolean): Option[Seq[String]] = {
     annotation match {
       case Some(annotation0) =>
         val gt = annotation0._1
         if (gt.data.nonEmpty) {
-          gt.data.head match {
-            case TPTP.MetaFunctionData(name, args) if args.size >= 3 && Seq("inference", "introduced").contains(name) => args.tail.tail.head.list match {
-              case Some(parentsAnnotation) =>
-                val result = parentsAnnotation.flatMap(inferenceParent0)
-                if (result.size == parentsAnnotation.size) Some(result)
-                else None // Not well-formed
-              case _ => None
-            }
-            case TPTP.MetaFunctionData("file", _) => Some(Seq.empty)
-            case _ => None
-          }
+          proofStepParents0(gt.data.head, relaxAnnotationFormat)
         } else None
       case None => None
     }
   }
-  private final def inferenceParent0(parentAnnotation: TPTP.GeneralTerm): Option[String] = {
+  private final def inferenceParent0(parentAnnotation: TPTP.GeneralTerm, relaxAnnotationFormat:Boolean): Option[Seq[String]] = {
     if (parentAnnotation.list.isDefined) None
     else {
       parentAnnotation.data match {
-        case Seq(TPTP.MetaFunctionData(parentName, Seq())) => Some(parentName)
-        case Seq(TPTP.NumberData(number)) => Some(number.pretty)
+        case Seq(TPTP.MetaFunctionData(parentName, Seq())) => Some(Seq(parentName))
+        case Seq(TPTP.NumberData(number)) => Some(Seq(number.pretty))
+        // nested application of inference
+        case Seq(TPTP.MetaFunctionData("inference", s)) if (relaxAnnotationFormat) => {
+          val parentSeq = proofStepParents0(TPTP.MetaFunctionData("inference", s),relaxAnnotationFormat)
+          parentSeq
+        }
         case _ => None
       }
     }

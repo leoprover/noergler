@@ -49,14 +49,17 @@ final class GenericInferenceCheck(premises: Seq[TPTP.FOFAnnotated],
 object GenericInferenceCheck {
   final val logger: Logger = Logger.getLogger("Nörgler.Controller")
 
+  final case class InferenceConfig( eproverPath: Path,
+                                    timeout: Int,
+                                    relaxAnnotationFormat: Boolean
+                                  )
 
 
   final def apply(proofstep: TPTP.FOFAnnotated,
                   proofFormulas: Map[String, TPTP.FOFAnnotated],
                   status: Either[THM.type , CTH.type],
-                  eproverPath: Path,
-                  timeout: Int): Option[Boolean] = {
-    val inferenceParentsNames: Option[Seq[String]] = proofStepParents(proofstep.annotations)
+                  config: InferenceConfig): Option[Boolean] = {
+    val inferenceParentsNames: Option[Seq[String]] = proofStepParents(proofstep.annotations, config.relaxAnnotationFormat)
     inferenceParentsNames match {
       case Some(names) =>
         val inferenceParents = names.map(proofFormulas) // safe as we checked the existence of all parents before
@@ -71,7 +74,7 @@ object GenericInferenceCheck {
           }
         }
         val annotatedToBeProved: TPTP.FOFAnnotated = TPTP.FOFAnnotated("c", "conjecture", formulatoBeProved, None)
-        new GenericInferenceCheck(premises, annotatedToBeProved, eproverPath, timeout).apply()
+        new GenericInferenceCheck(premises, annotatedToBeProved, config.eproverPath, config.timeout).apply()
       case None =>
         logger.severe(s"Entailment check impossible (${proofstep.name}), inference parents entry malformed.")
         Some(false)

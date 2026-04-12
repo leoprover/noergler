@@ -120,7 +120,7 @@ class ProofCheckController(problem: TPTP.Problem,
                   // (III.1) if a "negated_conjecture" entry, does it correctly negate and has correct role?
                   case "negated_conjecture" if inferenceStatus0.contains(CTH) => checkNegatedInference(proofstep)
                   // (III.2) if a "skolemize" entry, does it correctly skolemize (use ASK)
-                  case "skolemize" if inferenceStatus0.contains(ESA) => checkSkolemization(proofstep)
+                  case "skolemize" if inferenceStatus0.contains(ESA) => checkSkolemization(proofstep, configuration.relaxAnnotationFormat)
                   // (III.3) if generic status(thm)/status(cth) entry, does it follow from its parents? (using external ATPs)
                   case rule if inferenceStatus0.contains(THM) =>
                     checkGenericInference(rule, proofstep, Left(THM))
@@ -189,14 +189,14 @@ class ProofCheckController(problem: TPTP.Problem,
 
   private def checkInferencesAreAcyclic(): Unit = {
     logger.fine("Check for acyclicity of inference parents.")
-    val inferenceParentsAreAcyclic = InferenceParentsAcyclicityCheck.apply(proofSteps, proofFormulas)
+    val inferenceParentsAreAcyclic = InferenceParentsAcyclicityCheck.apply(proofSteps, proofFormulas,configuration.relaxAnnotationFormat)
     logger.info(s"Inference parents are acyclic: $inferenceParentsAreAcyclic")
     if (!inferenceParentsAreAcyclic) throw new VerificationFailedException("Graph of inference parents from $false contains a cycle.")
   }
 
   private def checkInferenceParentsExist(proofstep: TPTP.FOFAnnotated, previousProofSteps: Seq[TPTP.FOFAnnotated]): Unit = {
     logger.finer("Check for existence of inference parents (if any).")
-    val inferenceParentsCheck = InferenceParentsExistCheck.apply(proofstep, previousProofSteps)
+    val inferenceParentsCheck = InferenceParentsExistCheck.apply(proofstep, previousProofSteps, configuration.relaxAnnotationFormat)
     logger.fine(s"Inference parents exist (${proofstep.name}): $inferenceParentsCheck")
     if (!inferenceParentsCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' has unknown inference parents.")
   }
@@ -214,9 +214,9 @@ class ProofCheckController(problem: TPTP.Problem,
     if (!checkNegation) throw new VerificationFailedException("Negation of conjecture is incorrect.")
   }
 
-  private def checkSkolemization(proofstep: TPTP.FOFAnnotated): Unit = {
+  private def checkSkolemization(proofstep: TPTP.FOFAnnotated, relaxAnnotationFormat: Boolean): Unit = {
     logger.finer("Check for correct skolemization")
-    val checkSkolemize = SkolemizationCheck.apply(proofstep, proofFormulas, usedSkolemSymbols ++ problemSymbols)
+    val checkSkolemize = SkolemizationCheck.apply(proofstep, proofFormulas, usedSkolemSymbols ++ problemSymbols, relaxAnnotationFormat)
     checkSkolemize match {
       case Left(msg) =>
         throw new VerificationFailedException(s"Skolemization in step '${proofstep.name}' is incorrect: $msg")
@@ -230,7 +230,9 @@ class ProofCheckController(problem: TPTP.Problem,
   private def checkGenericInference(rule: String, proofstep: TPTP.FOFAnnotated, status: Either[THM.type , CTH.type]): Unit = {
     def run(): Unit = {
       logger.finer(s"Check for correct entailment of inference rule '$rule'.")
-      val checkEntailment = GenericInferenceCheck.apply(proofstep, proofFormulas, status, configuration.eproverPath, timeout = 30) // TODO: Timeout from somewhere
+      val timeout = 30 // TODO: Timeout from somewhere
+      val inferenceConfiguration = GenericInferenceCheck.InferenceConfig(configuration.eproverPath, timeout, configuration.relaxAnnotationFormat)
+      val checkEntailment = GenericInferenceCheck.apply(proofstep, proofFormulas, status, inferenceConfiguration)
       checkEntailment match {
         case Some(check) =>
           logger.fine(s"Entailment correct (${proofstep.name}): $checkEntailment")
@@ -262,6 +264,7 @@ object ProofCheckController {
                                  timeout: Int,
                                  parallelism: Boolean,
                                  ignoreFileAnnotations: Boolean,
+                                 relaxAnnotationFormat: Boolean,
                                  eproverPath: Path)
 
   /** Thrown during the check if some step yields that the proof definitely cannot be verified
@@ -274,6 +277,7 @@ object ProofCheckController {
   private final val defaultTimeout: Int = 60
   private final val defaultParallel: Boolean = false
   private final val defaultIgnoreFileAnnotations: Boolean = false
+  private final val defaultRelaxAnnotationFormat: Boolean = false
   // a bit hacky:
   private final val defaulteproverPath: Option[String] = scala.sys.process.Process("which eprover").lazyLines_!.headOption
 
@@ -282,6 +286,7 @@ object ProofCheckController {
   final case object Parallelism extends Parameter
 
   final case object IgnoreFileAnnotations extends Parameter
+  final case object RelaxAnnotationFormat extends Parameter
   final case class EproverPath(path: Path) extends Parameter
 
   /** Factory method for a [[ProofCheckController]] based on the given arguments. */
@@ -293,6 +298,7 @@ object ProofCheckController {
     var timeout = defaultTimeout
     var parallel = defaultParallel
     var ignoreFileAnnotations = defaultIgnoreFileAnnotations
+    var relaxAnnotationFormat = defaultRelaxAnnotationFormat
     var path: Option[Path] = defaulteproverPath.map(p => Path.of(p))
 
     for (parameter <- parameters) {
@@ -300,11 +306,12 @@ object ProofCheckController {
         case Timeout(to) => timeout = to
         case Parallelism => parallel = true
         case IgnoreFileAnnotations => ignoreFileAnnotations = true
+        case RelaxAnnotationFormat => relaxAnnotationFormat = true
         case EproverPath(p) => path = Some(p)
       }
     }
     if (path.isEmpty) throw new IllegalArgumentException("eprover path unknown")
-    val config = Configuration(problemPath, proofPath, timeout, parallel, ignoreFileAnnotations, path.get)
+    val config = Configuration(problemPath, proofPath, timeout, parallel, ignoreFileAnnotations, relaxAnnotationFormat, path.get)
     val controller = new ProofCheckController(problem: TPTP.Problem, proof: TPTP.Problem, config)
     controller.apply()
   }
