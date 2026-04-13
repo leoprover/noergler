@@ -18,7 +18,7 @@ object InferenceParentsAcyclicityCheck {
                         relaxAnnotationFormat: Boolean): Boolean = {
     if (visitedNames.contains(proofStep.name)) false
     else {
-      val parentsOfStep = noergler.proofStepParents(proofStep, relaxAnnotationFormat) 
+      val parentsOfStep = noergler.proofStepParents(proofStep, relaxAnnotationFormat)
       parentsOfStep match {
         case Some(parentNames) =>
           parentNames.forall { parentName =>

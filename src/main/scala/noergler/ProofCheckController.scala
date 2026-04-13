@@ -18,7 +18,7 @@ import scala.concurrent.{Await, ExecutionContext, Future}
  * @param proof The proof to be checked
  * @param configuration The checking configuration
  */
-class ProofCheckController(problem: TPTP.Problem,
+class ProofCheckController(problem: Option[TPTP.Problem],
                            proof: TPTP.Problem,
                            configuration: Configuration) {
   final val logger: Logger = Logger.getLogger("Nörgler.Controller")
@@ -37,7 +37,15 @@ class ProofCheckController(problem: TPTP.Problem,
   private var proofFormulas: Map[String, TPTP.FOFAnnotated] = Map.empty
 
   private var usedSkolemSymbols: Set[String] = Set.empty
-  private lazy val problemSymbols: Set[String] = problem.formulas.flatMap(_.symbols).toSet
+  private lazy val problemSymbols: Set[String] =
+    if (problem.isDefined) problem.get.formulas.flatMap(_.symbols).toSet
+    else {
+      // No problem file given -> reconstruct based on the problem formulas given in proof
+      // todo: instead use the forumulas with annotation "file" here
+      val problemFormulaRoles = Seq("axiom", "hypothesis", "definition", "assumption", "lemma", "theorem", "corollary", "conjecture", "negated_conjecture")
+      val problemFormulas = proof.formulas.filter(f => problemFormulaRoles.contains(f.role))
+      problemFormulas.flatMap(_.symbols).toSet
+    }
 
   private var openFutures: Seq[Future[Any]] = Seq.empty
 
@@ -46,19 +54,21 @@ class ProofCheckController(problem: TPTP.Problem,
     // preliminary steps
     //////////////////////////////////////////////////////////
     logger.config(s"Used configuration: ${configuration.toString}")
-    logger.fine("Processing problem file ...")
-    // process problem file, read to map, initialize conjecture name
-    for (af <- problem.formulas) {
-      af match {
-        case f@TPTP.FOFAnnotated(name, "conjecture", _, _) =>
-          problemFormulas += (name -> f)
-          problemConjectureName = Some(name)
-        case f@TPTP.FOFAnnotated(name, _, _, _) =>
-          problemFormulas += (name -> f)
-        case _ => throw new IllegalArgumentException("Only FOF input allowed at the moment.")
+    if (problem.isDefined){
+      logger.fine("Processing problem file ...")
+      // process problem file, read to map, initialize conjecture name
+      for (af <- problem.get.formulas) {
+        af match {
+          case f@TPTP.FOFAnnotated(name, "conjecture", _, _) =>
+            problemFormulas += (name -> f)
+            problemConjectureName = Some(name)
+          case f@TPTP.FOFAnnotated(name, _, _, _) =>
+            problemFormulas += (name -> f)
+          case _ => throw new IllegalArgumentException("Only FOF input allowed at the moment.")
+        }
       }
+      logger.info(s"Conjecture in problem found: ${problemConjectureName.toString}, ${problemFormulas.size - 1} axioms.")
     }
-    logger.info(s"Conjecture in problem found: ${problemConjectureName.toString}, ${problemFormulas.size-1} axioms.")
 
     // process proof file, read to map, initialize conjecture name
     for (af <- proof.formulas) {
@@ -136,7 +146,7 @@ class ProofCheckController(problem: TPTP.Problem,
                   logger.severe(s"Annotation of proof step '${proofstep.name}' unknown.")
                   throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses malformed inference annotation.")
               }
-            case "file" => if (!configuration.ignoreFileAnnotations) checkFormulaFromFile(proofstep)
+            case "file" => if (configuration.problemPath.isDefined) checkFormulaFromFile(proofstep)
             case "introduced" => ??? // TODO
             case record => throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown record '$record'.")
           }
@@ -252,14 +262,15 @@ class ProofCheckController(problem: TPTP.Problem,
 
   private def checkFormulaFromFile(proofstep: TPTP.FOFAnnotated): Unit = {
     logger.finer("Check for correct premise usage from problem file.")
-    val problemFileName = configuration.problemPath.getFileName.toString
+    assert(configuration.problemPath.isDefined)
+    val problemFileName = configuration.problemPath.get.getFileName.toString
     val checkFormulaFromFile = CorrectFormulaFromFileCheck.apply(proofstep, problemFileName, problemFormulas)
     logger.fine(s"Formula equivalent to problem statement (${proofstep.name}): $checkFormulaFromFile")
     if (!checkFormulaFromFile) throw new VerificationFailedException(s"Proof step '${proofstep.name}' does not use correct formula from file.")
   }
 }
 object ProofCheckController {
-  final case class Configuration(problemPath: Path,
+  final case class Configuration(problemPath: Option[Path],
                                  proofPath: Path,
                                  timeout: Int,
                                  parallelism: Boolean,
@@ -282,6 +293,8 @@ object ProofCheckController {
   private final val defaulteproverPath: Option[String] = scala.sys.process.Process("which eprover").lazyLines_!.headOption
 
   sealed abstract class Parameter
+
+  final case class ProblemPath(path: Path) extends Parameter
   final case class Timeout(timeout: Int) extends Parameter
   final case object Parallelism extends Parameter
 
@@ -290,9 +303,9 @@ object ProofCheckController {
   final case class EproverPath(path: Path) extends Parameter
 
   /** Factory method for a [[ProofCheckController]] based on the given arguments. */
-  final def apply(problemPath: Path,
+  final def apply(problemPath: Option[Path],
                   proofPath:  Path,
-                  problem: TPTP.Problem,
+                  problem: Option[TPTP.Problem],
                   proof: TPTP.Problem,
                   parameters: Seq[ProofCheckController.Parameter]): Result = {
     var timeout = defaultTimeout
@@ -312,7 +325,7 @@ object ProofCheckController {
     }
     if (path.isEmpty) throw new IllegalArgumentException("eprover path unknown")
     val config = Configuration(problemPath, proofPath, timeout, parallel, ignoreFileAnnotations, relaxAnnotationFormat, path.get)
-    val controller = new ProofCheckController(problem: TPTP.Problem, proof: TPTP.Problem, config)
+    val controller = new ProofCheckController(problem: Option[TPTP.Problem], proof: TPTP.Problem, config)
     controller.apply()
   }
 }

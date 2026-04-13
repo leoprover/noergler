@@ -12,13 +12,11 @@ object Noergler {
   final val version: String = "0.1"
 
   private[this] final val logger: Logger = Logger.getLogger("Nörgler")
-  private[this] var inputProblemName: String = ""
+  private[this] var inputProblemName: Option[String] = None
   private[this] var inputProofName: String = ""
   private[this] var parameters: Seq[ProofCheckController.Parameter] = Seq.empty
   private[this] var verbosity: Level = Level.INFO
   private[this] val tptpHomeDirectory: Option[String] = sys.env.get("TPTP")
-  // flags for proof variation tolerance
-  private[this] var ignoreFileAnnotations: Boolean = false
 
   final def main(args: Array[String]): Unit = {
     if (args.contains("--help")) {
@@ -45,11 +43,14 @@ object Noergler {
         logger.addHandler(ch)
         logger.fine(s"Nörgler started.")
         // Read input
-        val problemPath = Path.of(inputProblemName).toAbsolutePath
-        val proofPath = Path.of(inputProofName).toAbsolutePath
-        // Parse input
-        val problem: TPTP.Problem = parseTPTPFile(problemPath)
+        val (problemPath, problem): (Option[Path], Option[TPTP.Problem]) = if (inputProblemName.isDefined) {
+          val problemPath0 = Path.of(inputProblemName.get).toAbsolutePath
+          // Parse input problem
+          (Some(problemPath0),Some(parseTPTPFile(problemPath0)))
+        } else (None, None)
         problemFileParsed = true
+        val proofPath = Path.of(inputProofName).toAbsolutePath
+        // Parse input proof
         val proof: TPTP.Problem = parseTPTPFile(proofPath)
         // Call checker controller
         val result: Result = ProofCheckController.apply(problemPath, proofPath, problem, proof, parameters)
@@ -99,16 +100,16 @@ object Noergler {
     sb.toString()
   }
   private[this] final def generateSZSStatus(szsWord: String, szsStatus: String, extraTSTPMessage: String = ""): String = {
-    if (extraTSTPMessage == null || extraTSTPMessage.isEmpty) s"% SZS $szsWord $szsStatus for $inputProblemName\n"
-    else s"% SZS $szsWord $szsStatus for $inputProblemName : $extraTSTPMessage\n"
+    if (extraTSTPMessage == null || extraTSTPMessage.isEmpty) s"% SZS $szsWord $szsStatus for $inputProofName\n"
+    else s"% SZS $szsWord $szsStatus for $inputProofName : $extraTSTPMessage\n"
   }
   private[this] final def generateSZSOutput(result: String, szsDatatype: String): String = {
     val sb: StringBuilder = new StringBuilder()
     if (result.nonEmpty) {
-      sb.append(s"% SZS output start $szsDatatype for $inputProblemName\n")
+      sb.append(s"% SZS output start $szsDatatype for $inputProofName\n")
       if (result.nonEmpty) sb.append(result)
       sb.append("\n")
-      sb.append(s"% SZS output end $szsDatatype for $inputProblemName\n")
+      sb.append(s"% SZS output end $szsDatatype for $inputProofName\n")
     }
     sb.toString()
   }
@@ -118,23 +119,27 @@ object Noergler {
   }
 
   private[this] final def usage(): Unit = {
-    println(s"usage: $name [options] <problem file> <proof file>")
+    println(s"usage: $name [options] [--problem <problem file>] <proof file>")
     println(
       s"""
          | Nörgler is a proof checker for proofs from automated theorem provers
          | in the TSTP format from the TPTP infrastructure. Currently, only
          | checking of refutational FOF proofs is supported.
-         | The TSTP proof of <problem file> is supplied in <proof file>.
          |
-         | Nörgler will check the following things:
+         | The proof is supplied in <proof file>. If a <problem file> is also provided,
+         | Nörgler will verify the proof relative to the problem's axioms and conjecture.
+         |
+         | Nörgler will always check the following structural and logical properties:
          |   - Uniqueness of formula names
          |   - Conclusion of proof with $$false
          |   - Acyclicity of inference parent graph (from $$false upward)
          |   - Existence of inference parents in each proof step earlier in proof
-         |   - Correctness of copies of axioms/conjecture from problem file
-         |   - Correctness of negation of conjecture
          |   - Correctness of Skolemization steps wrt. simple internal skolemization procedure
          |   - Provability of thm/cth steps in proof using external provers
+         |
+         | If a <problem file> is provided, Nörgler additionally checks:
+         |   - Correctness of copies of axioms/conjecture from problem file
+         |   - Correctness of negation of conjecture
          |
          | If one of these steps fail with an error, Nörgler will return SZS status
          | FailedVerified.
@@ -165,10 +170,6 @@ object Noergler {
          |              If set, Nörgler will be more permissive about the format of the formula annotation
          |              as long as parent-child relationships can still be inferred. In particular, Nörgler will
          |              i) allow nested application of inferences in annotations
-         |
-         |  --ignore-file-annotations
-         |              If set, Nörgler will not check if formulas copied from problem files correspond
-         |              to the original formula.
          |""".stripMargin)
   }
 
@@ -178,6 +179,10 @@ object Noergler {
       var hd = args0.head
       while (hd.startsWith("--")) { // Optional flags
         hd match {
+          case "--problem" =>
+            val path = args0.tail.head
+            inputProblemName = Some(path)
+            args0 = args0.tail
           case "--timeout" =>
             val to = args0.tail.head
             parameters = parameters :+ ProofCheckController.Timeout(to.toInt)
@@ -201,8 +206,6 @@ object Noergler {
             }
             verbosity = level
             args0 = args0.tail
-          case "--ignore-file-annotations" =>
-            parameters = parameters :+ ProofCheckController.IgnoreFileAnnotations
           case "--relax-annotation-format" =>
             parameters = parameters :+ ProofCheckController.RelaxAnnotationFormat
 
@@ -212,8 +215,6 @@ object Noergler {
         hd = args0.head
       }
       // main arguments
-      inputProblemName = args0.head
-      args0 = args0.tail
       inputProofName = args0.head
       args0 = args0.tail
       if (args0.nonEmpty) {
