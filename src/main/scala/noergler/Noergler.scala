@@ -166,6 +166,10 @@ object Noergler {
          |
          |  --help       Print this description and terminate.
          |
+         |  --up-to-esa
+         |              If set, Nörgler will not attempt to verify ESA steps (including Skolemization).
+         |              Recommended for provers that do not follow to precise Skolemization annotation format.
+         |
          |  --relax-annotation-format
          |              If set, Nörgler will be more permissive about the format of the formula annotation
          |              as long as parent-child relationships can still be inferred. In particular, Nörgler will
@@ -208,6 +212,8 @@ object Noergler {
             args0 = args0.tail
           case "--relax-annotation-format" =>
             parameters = parameters :+ ProofCheckController.RelaxAnnotationFormat
+          case "--up-to-esa" =>
+            parameters = parameters :+ ProofCheckController.UpToESA
 
           case _ => throw new IllegalArgumentException(s"Unknown parameter '$hd'.")
         }

@@ -105,6 +105,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
       var previousProofSteps: Seq[TPTP.FOFAnnotated] = Vector.empty
       for (proofstep <- proofSteps) {
         var addedNewFuture = false
+        var skippedStep = false
         logger.finer(s"Checking proof step '${proofstep.name}' with annotation '${proofstep.annotations.map(_._1.pretty).getOrElse("")}' ...")
         logger.finer(proofstep.annotations.toString)
         //////
@@ -129,8 +130,14 @@ class ProofCheckController(problem: Option[TPTP.Problem],
                 case Some(inference) => inference match {
                   // (III.1) if a "negated_conjecture" entry, does it correctly negate and has correct role?
                   case "negated_conjecture" if inferenceStatus0.contains(CTH) => checkNegatedInference(proofstep)
-                  // (III.2) if a "skolemize" entry, does it correctly skolemize (use ASK)
-                  case "skolemize" if inferenceStatus0.contains(ESA) => checkSkolemization(proofstep, configuration.relaxAnnotationFormat)
+                  // ESA cases
+                  case rule if inferenceStatus0.contains(ESA) =>
+                    if (configuration.upToESA) {
+                      skippedStep = true
+                      logger.info(s"Skipping verification of ESA step '${proofstep.name}'")
+                    }
+                    // (III.2) if a "skolemize" entry, does it correctly skolemize (use ASK)
+                    else if (rule == "skolemize") checkSkolemization(proofstep, configuration.relaxAnnotationFormat)
                   // (III.3) if generic status(thm)/status(cth) entry, does it follow from its parents? (using external ATPs)
                   case rule if inferenceStatus0.contains(THM) =>
                     checkGenericInference(rule, proofstep, Left(THM))
@@ -276,6 +283,7 @@ object ProofCheckController {
                                  parallelism: Boolean,
                                  ignoreFileAnnotations: Boolean,
                                  relaxAnnotationFormat: Boolean,
+                                 upToESA: Boolean,
                                  eproverPath: Path)
 
   /** Thrown during the check if some step yields that the proof definitely cannot be verified
@@ -289,6 +297,7 @@ object ProofCheckController {
   private final val defaultParallel: Boolean = false
   private final val defaultIgnoreFileAnnotations: Boolean = false
   private final val defaultRelaxAnnotationFormat: Boolean = false
+  private final val defaultUpToESA: Boolean = false
   // a bit hacky:
   private final val defaulteproverPath: Option[String] = scala.sys.process.Process("which eprover").lazyLines_!.headOption
 
@@ -300,6 +309,8 @@ object ProofCheckController {
 
   final case object IgnoreFileAnnotations extends Parameter
   final case object RelaxAnnotationFormat extends Parameter
+
+  final case object UpToESA extends Parameter
   final case class EproverPath(path: Path) extends Parameter
 
   /** Factory method for a [[ProofCheckController]] based on the given arguments. */
@@ -312,6 +323,7 @@ object ProofCheckController {
     var parallel = defaultParallel
     var ignoreFileAnnotations = defaultIgnoreFileAnnotations
     var relaxAnnotationFormat = defaultRelaxAnnotationFormat
+    var upToESA = defaultUpToESA
     var path: Option[Path] = defaulteproverPath.map(p => Path.of(p))
 
     for (parameter <- parameters) {
@@ -320,11 +332,12 @@ object ProofCheckController {
         case Parallelism => parallel = true
         case IgnoreFileAnnotations => ignoreFileAnnotations = true
         case RelaxAnnotationFormat => relaxAnnotationFormat = true
+        case UpToESA => upToESA = true
         case EproverPath(p) => path = Some(p)
       }
     }
     if (path.isEmpty) throw new IllegalArgumentException("eprover path unknown")
-    val config = Configuration(problemPath, proofPath, timeout, parallel, ignoreFileAnnotations, relaxAnnotationFormat, path.get)
+    val config = Configuration(problemPath, proofPath, timeout, parallel, ignoreFileAnnotations, relaxAnnotationFormat, upToESA, path.get)
     val controller = new ProofCheckController(problem: Option[TPTP.Problem], proof: TPTP.Problem, config)
     controller.apply()
   }
