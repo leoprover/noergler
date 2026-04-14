@@ -2,35 +2,43 @@ package noergler.checks
 
 import leo.datastructures.TPTP
 
+import scala.collection.mutable
+
 object InferenceParentsAcyclicityCheck {
   final def apply(proofSteps: Seq[TPTP.FOFAnnotated], proofFormulas: Map[String, TPTP.FOFAnnotated], relaxAnnotationFormat:Boolean): Boolean = {
     if (proofSteps.isEmpty) true
     else {
       val lastStep = proofSteps.last
-      dfs(proofSteps, proofFormulas, lastStep, Set.empty,relaxAnnotationFormat)
+      dfs(proofFormulas, lastStep, mutable.Set.empty, mutable.Set.empty,relaxAnnotationFormat)
       }
   }
 
-  private final def dfs(proofSteps: Seq[TPTP.FOFAnnotated],
-                        proofFormulas: Map[String, TPTP.FOFAnnotated],
+  private final def dfs(proofFormulas: Map[String, TPTP.FOFAnnotated],
                         proofStep: TPTP.FOFAnnotated,
-                        visitedNames: Set[String],
+                        visiting: scala.collection.mutable.Set[String],
+                        done: scala.collection.mutable.Set[String],
                         relaxAnnotationFormat: Boolean): Boolean = {
-    if (visitedNames.contains(proofStep.name)) false
+    val stepName = proofStep.name
+    if (done.contains(stepName)) true
+    else if (visiting.contains(stepName)) false
     else {
+      visiting += stepName
       val parentsOfStep = noergler.proofStepParents(proofStep, relaxAnnotationFormat)
-      parentsOfStep match {
+      val result = parentsOfStep match {
         case Some(parentNames) =>
           parentNames.forall { parentName =>
             val parent = proofFormulas.get(parentName)
             parent match {
               case Some(parent0) =>
-                dfs(proofSteps, proofFormulas, parent0, visitedNames + proofStep.name, relaxAnnotationFormat)
+                dfs(proofFormulas, parent0, visiting, done, relaxAnnotationFormat)
               case None => true // it's acyclic because it does not exist!
             }
           }
         case None => true
       }
+      visiting -= stepName
+      if (result) done += stepName
+      result
     }
   }
 }
