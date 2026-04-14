@@ -154,7 +154,9 @@ package object noergler {
     if (parentAnnotation.list.isDefined) None
     else {
       parentAnnotation.data match {
-        case Seq(TPTP.MetaFunctionData(parentName, Seq())) => Some(Seq(parentName))
+        case Seq(TPTP.MetaFunctionData(parentName, Seq())) =>
+          val strippedParentName = stripQuotes(parentName)
+          Some(Seq(strippedParentName))
         case Seq(TPTP.NumberData(number)) => Some(Seq(number.pretty))
         // nested application of inference
         case Seq(TPTP.MetaFunctionData("inference", s)) if (relaxAnnotationFormat) => {
@@ -182,4 +184,11 @@ package object noergler {
       case _ => None
     }
   }
+
+  @inline final def stripQuotes(name: String): String = {
+    if (name.startsWith("'") && name.endsWith("'"))
+      name.tail.init
+    else name
+  }
+
 }

@@ -1,7 +1,7 @@
 package noergler.checks
 
 import leo.datastructures.TPTP
-import noergler.fileRecord
+import noergler.{fileRecord, stripQuotes}
 
 import java.util.logging.Logger
 
@@ -31,11 +31,5 @@ object CorrectFormulaFromFileCheck {
         }
       case None => false
     }
-  }
-
-  @inline private[this] final def stripQuotes(filename: String): String = {
-    if (filename.startsWith("'") && filename.endsWith("'"))
-      filename.tail.init
-    else filename
   }
 }
