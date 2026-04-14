@@ -10,7 +10,8 @@ object CorrectFormulaFromFileCheck {
 
   final def apply(proofstep: TPTP.FOFAnnotated,
                   problemFileName: String,
-                  problemFormulas: Map[String, TPTP.FOFAnnotated]): Boolean = {
+                  problemFormulas: Map[String, TPTP.FOFAnnotated],
+                  relaxProblemCheck: Boolean): Boolean = {
     val origin = fileRecord(proofstep.annotations)
     origin match {
       case Some((filename, formulaName)) =>
@@ -23,7 +24,14 @@ object CorrectFormulaFromFileCheck {
         } { formulaFromProblem =>
           val fileNamesMatch = problemFileName == stripQuotes(filename)
           logger.finest(s"File names match: $fileNamesMatch")
-          val rolesMatch = formulaFromProblem.role == proofstep.role
+          val rolesMatch: Boolean = if (formulaFromProblem.role == proofstep.role) {
+            true
+          } else {
+            if (relaxProblemCheck) {
+              logger.info(s"Roles of formula $formulaName do not match in problem (${formulaFromProblem.role}) and proof (${proofstep.role})")
+              true
+            } else false
+          }
           logger.finest(s"Roles match: $rolesMatch")
           val formulasMatch = formulaFromProblem.formula == proofstep.formula
           logger.finest(s"formulas match: $formulasMatch")

@@ -1,7 +1,7 @@
 package noergler
 
 import leo.datastructures.TPTP
-import noergler.ProofCheckController.{Configuration, VerificationFailedException, VerificationTimedOutException}
+import noergler.ProofCheckController.{Configuration, VerificationFailedException, VerificationTimedOutException, defaultRelaxAnnotationFormat}
 import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
 
 import java.nio.file.Path
@@ -153,7 +153,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
                   logger.severe(s"Annotation of proof step '${proofstep.name}' unknown.")
                   throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses malformed inference annotation.")
               }
-            case "file" => if (configuration.problemPath.isDefined) checkFormulaFromFile(proofstep)
+            case "file" => if (configuration.problemPath.isDefined) checkFormulaFromFile(proofstep, configuration.relaxProblemCheck)
             case "introduced" => ??? // TODO
             case record =>
               if (proofstep.role == "axiom" && configuration.allowProverAxioms){
@@ -272,11 +272,11 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
   }
 
-  private def checkFormulaFromFile(proofstep: TPTP.FOFAnnotated): Unit = {
+  private def checkFormulaFromFile(proofstep: TPTP.FOFAnnotated, relaxProblemCheck: Boolean): Unit = {
     logger.finer("Check for correct premise usage from problem file.")
     assert(configuration.problemPath.isDefined)
     val problemFileName = configuration.problemPath.get.getFileName.toString
-    val checkFormulaFromFile = CorrectFormulaFromFileCheck.apply(proofstep, problemFileName, problemFormulas)
+    val checkFormulaFromFile = CorrectFormulaFromFileCheck.apply(proofstep, problemFileName, problemFormulas, relaxProblemCheck)
     logger.fine(s"Formula equivalent to problem statement (${proofstep.name}): $checkFormulaFromFile")
     if (!checkFormulaFromFile) throw new VerificationFailedException(s"Proof step '${proofstep.name}' does not use correct formula from file.")
   }
@@ -288,6 +288,7 @@ object ProofCheckController {
                                  parallelism: Boolean,
                                  ignoreFileAnnotations: Boolean,
                                  relaxAnnotationFormat: Boolean,
+                                 relaxProblemCheck: Boolean,
                                  allowProverAxioms: Boolean,
                                  upToESA: Boolean,
                                  eproverPath: Path)
@@ -303,6 +304,7 @@ object ProofCheckController {
   private final val defaultParallel: Boolean = false
   private final val defaultIgnoreFileAnnotations: Boolean = false
   private final val defaultRelaxAnnotationFormat: Boolean = false
+  private final val defaultRelaxProblemCheck: Boolean = false
   private final val defaultAllowProverAxioms: Boolean = false
   private final val defaultUpToESA: Boolean = false
   // a bit hacky:
@@ -314,6 +316,8 @@ object ProofCheckController {
 
   final case object IgnoreFileAnnotations extends Parameter
   final case object RelaxAnnotationFormat extends Parameter
+
+  final case object RelaxProblemCheck extends Parameter
 
   final case object AllowProverAxioms extends Parameter
 
@@ -330,6 +334,7 @@ object ProofCheckController {
     var parallel = defaultParallel
     var ignoreFileAnnotations = defaultIgnoreFileAnnotations
     var relaxAnnotationFormat = defaultRelaxAnnotationFormat
+    var relaxProblemCheck = defaultRelaxProblemCheck
     var allowProverAxioms = defaultAllowProverAxioms
     var upToESA = defaultUpToESA
     var path: Option[Path] = defaulteproverPath.map(p => Path.of(p))
@@ -340,13 +345,14 @@ object ProofCheckController {
         case Parallelism => parallel = true
         case IgnoreFileAnnotations => ignoreFileAnnotations = true
         case RelaxAnnotationFormat => relaxAnnotationFormat = true
+        case RelaxProblemCheck => relaxProblemCheck = true
         case AllowProverAxioms => allowProverAxioms = true
         case UpToESA => upToESA = true
         case EproverPath(p) => path = Some(p)
       }
     }
     if (path.isEmpty) throw new IllegalArgumentException("eprover path unknown")
-    val config = Configuration(problemPath, proofPath, timeout, parallel, ignoreFileAnnotations, relaxAnnotationFormat, allowProverAxioms, upToESA, path.get)
+    val config = Configuration(problemPath, proofPath, timeout, parallel, ignoreFileAnnotations, relaxAnnotationFormat, relaxProblemCheck, allowProverAxioms, upToESA, path.get)
     val controller = new ProofCheckController(problem: Option[TPTP.Problem], proof: TPTP.Problem, config)
     controller.apply()
   }

@@ -175,6 +175,11 @@ object Noergler {
          |              as long as parent-child relationships can still be inferred. In particular, Nörgler will
          |              i) allow nested application of inferences in annotations
          |
+         |  --relax-problem-check
+         |              If set, Nörgler will be more permissive about the relationship between formulas from problem
+         |              files and their copies in the given proofs. In particular, Nörgler will
+         |              i) allow formulas with different roles
+         |
          |  --allow-prover-axioms
          |              If set, Nörgler will allow axioms with an annotation other than file, but print a warning
          |              indicating that an axiom was introduced. Recommended for provers that introduce built-in
@@ -217,6 +222,8 @@ object Noergler {
             args0 = args0.tail
           case "--relax-annotation-format" =>
             parameters = parameters :+ ProofCheckController.RelaxAnnotationFormat
+          case "--relax-problem-check" =>
+            parameters = parameters :+ ProofCheckController.RelaxProblemCheck
           case "--allow-prover-axioms" =>
             parameters = parameters :+ ProofCheckController.AllowProverAxioms
           case "--up-to-esa" =>
