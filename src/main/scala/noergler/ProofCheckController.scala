@@ -155,13 +155,18 @@ class ProofCheckController(problem: Option[TPTP.Problem],
               }
             case "file" => if (configuration.problemPath.isDefined) checkFormulaFromFile(proofstep)
             case "introduced" => ??? // TODO
-            case record => throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown record '$record'.")
+            case record =>
+              if (proofstep.role == "axiom" && configuration.allowProverAxioms){
+                skippedStep = true
+                logger.info(s"Prover introduced axiom ${proofstep.formula.pretty} (step '${proofstep.name}')")
+              }
+              else throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown record '$record'.")
           }
           case None => // no annotation is an error for all steps.
             logger.severe(s"Proof step '${proofstep.name}' has no or malformed annotation.")
             throw new VerificationFailedException(s"Proof step '${proofstep.name}' has no or malformed annotation.")
         }
-        if (!configuration.parallelism || !addedNewFuture) logger.info(s"Check succeeded for step '${proofstep.name}'.") // Assuming we fail fast if anything happens before
+        if (!skippedStep && (!configuration.parallelism || !addedNewFuture)) logger.info(s"Check succeeded for step '${proofstep.name}'.") // Assuming we fail fast if anything happens before
         previousProofSteps = previousProofSteps :+ proofstep
       }
 
@@ -283,6 +288,7 @@ object ProofCheckController {
                                  parallelism: Boolean,
                                  ignoreFileAnnotations: Boolean,
                                  relaxAnnotationFormat: Boolean,
+                                 allowProverAxioms: Boolean,
                                  upToESA: Boolean,
                                  eproverPath: Path)
 
@@ -297,18 +303,19 @@ object ProofCheckController {
   private final val defaultParallel: Boolean = false
   private final val defaultIgnoreFileAnnotations: Boolean = false
   private final val defaultRelaxAnnotationFormat: Boolean = false
+  private final val defaultAllowProverAxioms: Boolean = false
   private final val defaultUpToESA: Boolean = false
   // a bit hacky:
   private final val defaulteproverPath: Option[String] = scala.sys.process.Process("which eprover").lazyLines_!.headOption
 
   sealed abstract class Parameter
-
-  final case class ProblemPath(path: Path) extends Parameter
   final case class Timeout(timeout: Int) extends Parameter
   final case object Parallelism extends Parameter
 
   final case object IgnoreFileAnnotations extends Parameter
   final case object RelaxAnnotationFormat extends Parameter
+
+  final case object AllowProverAxioms extends Parameter
 
   final case object UpToESA extends Parameter
   final case class EproverPath(path: Path) extends Parameter
@@ -323,6 +330,7 @@ object ProofCheckController {
     var parallel = defaultParallel
     var ignoreFileAnnotations = defaultIgnoreFileAnnotations
     var relaxAnnotationFormat = defaultRelaxAnnotationFormat
+    var allowProverAxioms = defaultAllowProverAxioms
     var upToESA = defaultUpToESA
     var path: Option[Path] = defaulteproverPath.map(p => Path.of(p))
 
@@ -332,12 +340,13 @@ object ProofCheckController {
         case Parallelism => parallel = true
         case IgnoreFileAnnotations => ignoreFileAnnotations = true
         case RelaxAnnotationFormat => relaxAnnotationFormat = true
+        case AllowProverAxioms => allowProverAxioms = true
         case UpToESA => upToESA = true
         case EproverPath(p) => path = Some(p)
       }
     }
     if (path.isEmpty) throw new IllegalArgumentException("eprover path unknown")
-    val config = Configuration(problemPath, proofPath, timeout, parallel, ignoreFileAnnotations, relaxAnnotationFormat, upToESA, path.get)
+    val config = Configuration(problemPath, proofPath, timeout, parallel, ignoreFileAnnotations, relaxAnnotationFormat, allowProverAxioms, upToESA, path.get)
     val controller = new ProofCheckController(problem: Option[TPTP.Problem], proof: TPTP.Problem, config)
     controller.apply()
   }
