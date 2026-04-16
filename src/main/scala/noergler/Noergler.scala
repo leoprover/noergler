@@ -149,41 +149,54 @@ object Noergler {
          | does not make any claims with regard to correctness.
          |
          | Options:
-         |  --timeout t  Timeout after n seconds (soft limit, best effort).
-         |               A timeout will result in a SZS status NotVerified output.
+         |  --timeout t      Timeout after n seconds (soft limit, best effort).
+         |                   A timeout will result in a SZS status NotVerified output.
          |
-         |  --eprover path
-         |               Path to eprover, if not findable by `which eprover`.
+         |  --prover name(s) Select the prover(s) to use for verifying thm/cth steps.
+         |                   Options: 'eprover', 'vampire', 'all' (use all available),
+         |                   or a comma-separated list (e.g., 'eprover,vampire').
+         |                   If multiple provers are given and no parallelization
+         |                   strategy running multiple provers at once is given,
+         |                   the provers are tried in the sequence they are provided in.
+         |                   Otherwise, they are run in parallel.
          |
-         |  --parallel   If set, Nörgler will make use of threaded parellelism, potentially
-         |               on different CPU cores if available.
+         |  --eprover-path path
+         |                  Path to eprover, if not findable by `which eprover`.
          |
-         |  --verbosity n
-         |               Set the verbosity of logging to std.err. If n = 0, logging is disabled;
-         |               n = 6 is maximal verbosity (very fine-grained logging output).
+         |  --vampire-path path
+         |                  Path to vampire, if not findable by `which vampire`.
          |
-         |  --version    Print the version number of the executable and terminate.
+         |  --parallel-mode mode Set the parallelization strategy.
+         |                  Options:
+         |                     - none: Sequential execution (default).
+         |                     - steps: Verify different proof steps in parallel.
+         |                     - provers: Run multiple provers on the same step in parallel.
+         |                     - hybrid: Parallelize both steps and provers.
          |
-         |  --help       Print this description and terminate.
+         |  --verbosity n   Set the verbosity of logging to std.err. If n = 0, logging is disabled;
+         |                  n = 6 is maximal verbosity (very fine-grained logging output).
          |
-         |  --up-to-esa
-         |              If set, Nörgler will not attempt to verify ESA steps (including Skolemization).
-         |              Recommended for provers that do not follow to precise Skolemization annotation format.
+         |  --version       Print the version number of the executable and terminate.
+         |
+         |  --help          Print this description and terminate.
+         |
+         |  --up-to-esa     If set, Nörgler will not attempt to verify ESA steps (including Skolemization).
+         |                  Recommended for provers that do not follow to precise Skolemization annotation format.
          |
          |  --relax-annotation-format
-         |              If set, Nörgler will be more permissive about the format of the formula annotation
-         |              as long as parent-child relationships can still be inferred. In particular, Nörgler will
-         |              i) allow nested application of inferences in annotations
+         |                  If set, Nörgler will be more permissive about the format of the formula annotation
+         |                  as long as parent-child relationships can still be inferred. In particular, Nörgler will
+         |                  i) allow nested application of inferences in annotations
          |
          |  --relax-problem-check
-         |              If set, Nörgler will be more permissive about the relationship between formulas from problem
-         |              files and their copies in the given proofs. In particular, Nörgler will
-         |              i) allow formulas with different roles
+         |                  If set, Nörgler will be more permissive about the relationship between formulas from problem
+         |                  files and their copies in the given proofs. In particular, Nörgler will
+         |                  i) allow formulas with different roles
          |
          |  --allow-prover-axioms
-         |              If set, Nörgler will allow axioms with an annotation other than file, but print a warning
-         |              indicating that an axiom was introduced. Recommended for provers that introduce built-in
-         |              theory axioms.
+         |                  If set, Nörgler will allow axioms with an annotation other than file, but print a warning
+         |                  indicating that an axiom was introduced. Recommended for provers that introduce built-in
+         |                  theory axioms.
          |""".stripMargin)
   }
 
@@ -201,12 +214,32 @@ object Noergler {
             val to = args0.tail.head
             parameters = parameters :+ ProofCheckController.Timeout(to.toInt)
             args0 = args0.tail
-          case "--eprover" =>
+          case "--prover" =>
+            val input = args0.tail.head
+            // Logic: Handle 'all', then split by comma and trim whitespace
+            val selectedProvers = if (input == "all") {
+              List("eprover", "vampire")
+            } else {
+              input.split(",").map(_.trim).toList
+            }
+            parameters = parameters :+ ProofCheckController.ProverSelection(selectedProvers)
+            args0 = args0.tail
+          case "--eprover-path" =>
             val path = args0.tail.head
             parameters = parameters :+ ProofCheckController.EproverPath(Path.of(path))
             args0 = args0.tail
-          case "--parallel" =>
-            parameters = parameters :+ ProofCheckController.Parallelism
+          case "--vampire-path" =>
+            val path = args0.tail.head
+            parameters = parameters :+ ProofCheckController.VampirePath(Path.of(path))
+            args0 = args0.tail
+          case "--parallel-mode" =>
+            val mode = args0.tail.head
+            val validModes = Set("none", "steps", "provers", "hybrid")
+            if (!validModes.contains(mode)) {
+              throw new IllegalArgumentException(s"Invalid parallel-mode '$mode'. Must be one of: ${validModes.mkString(", ")}")
+            }
+            parameters = parameters :+ ProofCheckController.SetParallelMode(mode)
+            args0 = args0.tail
           case "--verbosity" =>
             val arg = args0.tail.head.toInt
             val level = arg match {
