@@ -10,7 +10,7 @@ import java.util.concurrent.Executors
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.logging.Logger
 import scala.concurrent.duration.DurationInt
-import scala.concurrent.{Await, ExecutionContext, Future, Promise}
+import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutorService, Future, Promise}
 
 /**
  * The Controller coordinates the checking process, i.e., how and when
@@ -25,8 +25,18 @@ class ProofCheckController(problem: Option[TPTP.Problem],
                            configuration: Configuration) {
   final val logger: Logger = Logger.getLogger("Nörgler.Controller")
   final private def threadCount: Int = Runtime.getRuntime.availableProcessors()*2
-  final implicit val ec: ExecutionContext = ExecutionContext.fromExecutorService(
-    Executors.newFixedThreadPool(threadCount))
+
+  private val stepEc: ExecutionContextExecutorService =
+    ExecutionContext.fromExecutorService(
+      Executors.newFixedThreadPool(threadCount)
+    )
+
+  private implicit val ec: ExecutionContext = stepEc
+
+  private val proverEc: ExecutionContextExecutorService =
+    ExecutionContext.fromExecutorService(
+      Executors.newCachedThreadPool()
+    )
 
   /** Map of problem file TPTP annotated formula name (hopefully unique) -> the formula */
   private var problemFormulas: Map[String, TPTP.FOFAnnotated] = Map.empty
@@ -191,6 +201,9 @@ class ProofCheckController(problem: Option[TPTP.Problem],
         NotVerified(e.getMessage)
       case _: concurrent.TimeoutException =>
         NotVerified("Timed out.")
+    } finally {
+      stepEc.shutdown()
+      proverEc.shutdown()
     }
   }
 
@@ -254,88 +267,33 @@ class ProofCheckController(problem: Option[TPTP.Problem],
   private def checkGenericInference(rule: String, proofstep: TPTP.FOFAnnotated, status: Either[THM.type , CTH.type], provers: Set[Prover]): Unit = {
 
     def runSingleProver(proverToUse: Prover, timeout: Int): (Option[Boolean], Prover) = {
-      val inferenceConfiguration = GenericInferenceCheck.InferenceConfig(proverToUse, timeout, configuration.relaxAnnotationFormat)
-      val res = GenericInferenceCheck.apply(proofstep, proofFormulas, status, inferenceConfiguration)
+      val inferenceConfiguration = GenericInferenceCheck.SerialInferenceConfig(proverToUse, timeout, configuration.relaxAnnotationFormat)
+      val res = GenericInferenceCheck.apply_serial(proofstep, proofFormulas, status, inferenceConfiguration)(proverEc)
       (res, proverToUse)
+    }
+
+    def runParallelProvers(provers: Set[Prover], timeout: Int): (Option[Boolean], Prover) = {
+      val inferenceConfiguration = GenericInferenceCheck.ParallelInferenceConfig(provers, timeout, configuration.relaxAnnotationFormat)
+      val res = GenericInferenceCheck.apply_parallel(proofstep, proofFormulas, status, inferenceConfiguration)(proverEc)
+      res
     }
 
     def run(): Unit = {
       logger.finer(s"Check for correct entailment of inference rule '$rule'.")
-      val timeout = 30 // TODO: Timeout from somewhere
+      val individual_run_timeout = configuration.timeout / 2 // todo: rasonable?
       assert(provers.nonEmpty)
       val (checkEntailment, usedProver): (Option[Boolean], Prover) = if (provers.size == 1){
         val proverToUse = provers.head
-        runSingleProver(proverToUse, timeout)
+        runSingleProver(proverToUse, individual_run_timeout)
 
         // if we have set multiple provers, we use them differently depending on the parallelization mode set.
       }else if (ProverParallelisazionModes.contains(configuration.parallelMode)){
         // run selected provers in parallel
-        val inferenceInputs = {
-          val inferenceParentsNames = proofStepParents(proofstep.annotations, configuration.relaxAnnotationFormat)
-          inferenceParentsNames match {
-            case Some(names) =>
-              val (premises, annotatedToBeProved) = constructInferenceProblem(proofstep,names, proofFormulas, status)
-              Some((premises, annotatedToBeProved))
-            case None => None
-          }
-        }
-
-        inferenceInputs match {
-          case None =>
-            logger.severe(s"Entailment check impossible (${proofstep.name}), inference parents entry malformed.")
-            (Some(false), provers.head)
-
-          case Some((premises, annotatedToBeProved)) =>
-            val completed = new AtomicBoolean(false)
-            val winner = Promise[(Option[Boolean], Prover)]()
-
-            // run all processes and update the result as soon as prover finishes
-            val running = provers.toSeq.map { prover =>
-              val checker = new GenericInferenceCheck(premises, annotatedToBeProved, prover, timeout)
-              val (proc, fut) = checker.start()
-
-              fut.onComplete { tr =>
-                val res = tr.toOption.flatten
-                if (res.isDefined && completed.compareAndSet(false, true)) winner.trySuccess((res, prover))
-              }
-              (prover, proc, fut)
-            }
-
-            try {
-              val result = Await.result(winner.future, (timeout + 5).seconds)
-
-              // kill all other processes
-              running.foreach {
-                case (prover, proc, _) if prover != result._2 =>
-                  logger.info(s"Destroying losing prover ${prover.name} for step ${proofstep.name}")
-                  try proc.destroy()
-                  catch {
-                    case ex: Throwable =>
-                      logger.fine(s"Failed to destroy ${prover.name}: ${ex.getMessage}")
-                  }
-
-                case _ => ()
-              }
-
-              result
-            } catch {
-              case _: java.util.concurrent.TimeoutException =>
-                // nobody produced Some(...) in time -> kill all
-                running.foreach {
-                  case (_, proc, _) =>
-                    try proc.destroy()
-                    catch {
-                      case ex: Throwable =>
-                        logger.fine(s"Failed to destroy prover process: ${ex.getMessage}")
-                    }
-                }
-                (None, provers.head)
-            }
-        }
+        runParallelProvers(provers,individual_run_timeout)
 
       } else {
         // run selected provers in sequence in case of failure
-        provers.iterator.map(prover => runSingleProver(prover, timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
+        provers.iterator.map(prover => runSingleProver(prover, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
       }
 
       checkEntailment match {
