@@ -9,22 +9,22 @@ import noergler.{CTH, ProofCheckController, THM, proofStepParents}
 import java.io.ByteArrayInputStream
 import java.nio.file.Path
 import java.util.logging.Logger
+import scala.concurrent.{ExecutionContext, Future}
 import scala.sys.process
-import scala.sys.process.ProcessLogger
+import scala.sys.process.{ProcessLogger, Process => RunningProcess}
 
 final class GenericInferenceCheck(premises: Seq[TPTP.FOFAnnotated],
                                   conjecture: TPTP.FOFAnnotated,
                                   prover: Prover,
-                                  timeout: Int) {
+                                  timeout: Int)
+                                 (implicit ec: ExecutionContext) {
 
   /**
-   * Runs chosen prover on a given inference
-   *
-   * @return Some(true) if E returns ContradictoryAxioms or Theorem
-   *         Some(false) if E returns CounterSatisfiable
-   *         None otherwise (including timeout)
+   * Start the prover process and return:
+   *   - the running process handle
+   *   - a Future that completes with the parsed prover result
    */
-  def apply(): Option[Boolean] = {
+  def start(): (RunningProcess, Future[Option[Boolean]]) = {
     logger.finer(s"${prover.name} check premises ${premises.map(_.pretty).mkString(", ")}.")
     logger.finer(s"${prover.name} check conjecture ${conjecture.pretty}.")
     val problem = TPTP.Problem(Seq.empty, premises :+ conjecture, Map.empty)
@@ -32,7 +32,7 @@ final class GenericInferenceCheck(premises: Seq[TPTP.FOFAnnotated],
     val stdout: StringBuffer = new StringBuffer()
     val stderr: StringBuffer = new StringBuffer()
 
-    val process = prover match {
+    val proverProcess = prover match {
       case ProofCheckController.EProver(path) => run_eprover(path, problem)
       case ProofCheckController.Vampire(path) => run_vampire(path, problem)
     }
@@ -41,7 +41,53 @@ final class GenericInferenceCheck(premises: Seq[TPTP.FOFAnnotated],
       line => stdout.append(line),
       line => stderr.append(line)
     )
-    val _ = process ! processLogger // exit code is dont-care
+
+    val running: scala.sys.process.Process = proverProcess.run(processLogger)
+
+    val resultFuture: Future[Option[Boolean]] = Future {
+      val exitCode = running.exitValue() // blocks until process exits
+      val errResult = stderr.toString
+      logger.finest(s"${prover.name} stderr: $errResult")
+      val result = stdout.toString
+      logger.finest(s"${prover.name} exit code: $exitCode")
+      logger.finest(s"${prover.name} response: $result")
+      parse_TSTP_output(result)
+    }
+
+    (running, resultFuture)
+  }
+
+  def apply(): Option[Boolean] = {
+    val (_, future) = start()
+    scala.concurrent.Await.result(future, scala.concurrent.duration.Duration.Inf)
+  }
+
+  /**
+   * Runs chosen prover on a given inference
+   *
+   * @return Some(true) if E returns ContradictoryAxioms or Theorem
+   *         Some(false) if E returns CounterSatisfiable
+   *         None otherwise (including timeout)
+   */
+  def apply_old(): Option[Boolean] = {
+    logger.finer(s"${prover.name} check premises ${premises.map(_.pretty).mkString(", ")}.")
+    logger.finer(s"${prover.name} check conjecture ${conjecture.pretty}.")
+    val problem = TPTP.Problem(Seq.empty, premises :+ conjecture, Map.empty)
+
+    val stdout: StringBuffer = new StringBuffer()
+    val stderr: StringBuffer = new StringBuffer()
+
+    val proverProcess = prover match {
+      case ProofCheckController.EProver(path) => run_eprover(path, problem)
+      case ProofCheckController.Vampire(path) => run_vampire(path, problem)
+    }
+
+    val processLogger = ProcessLogger.apply(
+      line => stdout.append(line),
+      line => stderr.append(line)
+    )
+
+    val running: scala.sys.process.Process = proverProcess.run(processLogger)
 
     val errResult = stderr.toString
     logger.finest(s"${prover.name} stderr: $errResult")
@@ -71,7 +117,7 @@ final class GenericInferenceCheck(premises: Seq[TPTP.FOFAnnotated],
     // TODO: Ugly quick-shot implementation, just for testing. needs to be refactored.
     scala.sys.process.Process.apply(
       vampirePath.toString,
-      Seq("--input_syntax","tptp","--time_limit",timeout.toString)).#<(new ByteArrayInputStream(problem.pretty.getBytes))
+      Seq("--input_syntax","tptp","--proof","off","--avatar","off","--time_limit",timeout.toString)).#<(new ByteArrayInputStream(problem.pretty.getBytes))
   }
 
 }
@@ -83,26 +129,34 @@ object GenericInferenceCheck {
                                     relaxAnnotationFormat: Boolean
                                   )
 
+  final def constructInferenceProblem(proofstep: TPTP.FOFAnnotated,
+                                      names: Seq[String],
+                                      proofFormulas: Map[String, TPTP.FOFAnnotated],
+                                      status: Either[THM.type , CTH.type])={
+    val inferenceParents = names.map(proofFormulas) // safe as we checked the existence of all parents before
+    logger.finer(s"Inference parents: ${names.mkString(",")}")
+    val premises = inferenceParents.map { af =>
+      TPTP.FOFAnnotated(af.name, "axiom", af.formula, None)
+    }
+    val formulatoBeProved: TPTP.FOF.Statement = status match {
+      case Left(_) => proofstep.formula
+      case Right(_) => proofstep.formula match {
+        case FOF.Logical(formula) => FOF.Logical(FOF.UnaryFormula(FOF.~, formula))
+      }
+    }
+    val annotatedToBeProved: TPTP.FOFAnnotated = TPTP.FOFAnnotated("c", "conjecture", formulatoBeProved, None)
+    (premises, annotatedToBeProved)
+  }
 
   final def apply(proofstep: TPTP.FOFAnnotated,
                   proofFormulas: Map[String, TPTP.FOFAnnotated],
                   status: Either[THM.type , CTH.type],
-                  config: InferenceConfig): Option[Boolean] = {
+                  config: InferenceConfig)
+                 (implicit ec: ExecutionContext): Option[Boolean] = {
     val inferenceParentsNames: Option[Seq[String]] = proofStepParents(proofstep.annotations, config.relaxAnnotationFormat)
     inferenceParentsNames match {
       case Some(names) =>
-        val inferenceParents = names.map(proofFormulas) // safe as we checked the existence of all parents before
-        logger.finer(s"Inference parents: ${names.mkString(",")}")
-        val premises = inferenceParents.map { af =>
-          TPTP.FOFAnnotated(af.name, "axiom", af.formula, None)
-        }
-        val formulatoBeProved: TPTP.FOF.Statement = status match {
-          case Left(_) => proofstep.formula
-          case Right(_) => proofstep.formula match {
-            case FOF.Logical(formula) => FOF.Logical(FOF.UnaryFormula(FOF.~, formula))
-          }
-        }
-        val annotatedToBeProved: TPTP.FOFAnnotated = TPTP.FOFAnnotated("c", "conjecture", formulatoBeProved, None)
+        val (premises, annotatedToBeProved) = constructInferenceProblem(proofstep,names, proofFormulas, status)
         new GenericInferenceCheck(premises, annotatedToBeProved, config.prover, config.timeout).apply()
       case None =>
         logger.severe(s"Entailment check impossible (${proofstep.name}), inference parents entry malformed.")

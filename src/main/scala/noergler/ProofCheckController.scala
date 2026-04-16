@@ -2,13 +2,15 @@ package noergler
 
 import leo.datastructures.TPTP
 import noergler.ProofCheckController.{Configuration, Prover, ProverParallelisazionModes, StepParallelisazionModes, VerificationFailedException, VerificationTimedOutException, defaultRelaxAnnotationFormat}
+import noergler.checks.GenericInferenceCheck.constructInferenceProblem
 import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
 
 import java.nio.file.Path
 import java.util.concurrent.Executors
+import java.util.concurrent.atomic.AtomicBoolean
 import java.util.logging.Logger
 import scala.concurrent.duration.DurationInt
-import scala.concurrent.{Await, ExecutionContext, Future}
+import scala.concurrent.{Await, ExecutionContext, Future, Promise}
 
 /**
  * The Controller coordinates the checking process, i.e., how and when
@@ -264,15 +266,73 @@ class ProofCheckController(problem: Option[TPTP.Problem],
       val (checkEntailment, usedProver): (Option[Boolean], Prover) = if (provers.size == 1){
         val proverToUse = provers.head
         runSingleProver(proverToUse, timeout)
-      }else
-      // if we have set multiple provers, we use them differently depending on the parallelization mode set.
-      if (ProverParallelisazionModes.contains(configuration.parallelMode)){
+
+        // if we have set multiple provers, we use them differently depending on the parallelization mode set.
+      }else if (ProverParallelisazionModes.contains(configuration.parallelMode)){
         // run selected provers in parallel
-        val futures: Seq[Future[(Option[Boolean], Prover)]] = provers.toSeq.map{prover => Future {runSingleProver(prover, timeout)}}
-        // find the first one to finish
-        val firstDefined: Future[Option[(Option[Boolean], Prover)]] = Future.find(futures)(res => res._1.isDefined)
-        val result: (Option[Boolean], Prover) = Await.result(firstDefined, (timeout + 5).seconds).getOrElse((None, provers.head))
-        result
+        val inferenceInputs = {
+          val inferenceParentsNames = proofStepParents(proofstep.annotations, configuration.relaxAnnotationFormat)
+          inferenceParentsNames match {
+            case Some(names) =>
+              val (premises, annotatedToBeProved) = constructInferenceProblem(proofstep,names, proofFormulas, status)
+              Some((premises, annotatedToBeProved))
+            case None => None
+          }
+        }
+
+        inferenceInputs match {
+          case None =>
+            logger.severe(s"Entailment check impossible (${proofstep.name}), inference parents entry malformed.")
+            (Some(false), provers.head)
+
+          case Some((premises, annotatedToBeProved)) =>
+            val completed = new AtomicBoolean(false)
+            val winner = Promise[(Option[Boolean], Prover)]()
+
+            // run all processes and update the result as soon as prover finishes
+            val running = provers.toSeq.map { prover =>
+              val checker = new GenericInferenceCheck(premises, annotatedToBeProved, prover, timeout)
+              val (proc, fut) = checker.start()
+
+              fut.onComplete { tr =>
+                val res = tr.toOption.flatten
+                if (res.isDefined && completed.compareAndSet(false, true)) winner.trySuccess((res, prover))
+              }
+              (prover, proc, fut)
+            }
+
+            try {
+              val result = Await.result(winner.future, (timeout + 5).seconds)
+
+              // kill all other processes
+              running.foreach {
+                case (prover, proc, _) if prover != result._2 =>
+                  logger.info(s"Destroying losing prover ${prover.name} for step ${proofstep.name}")
+                  try proc.destroy()
+                  catch {
+                    case ex: Throwable =>
+                      logger.fine(s"Failed to destroy ${prover.name}: ${ex.getMessage}")
+                  }
+
+                case _ => ()
+              }
+
+              result
+            } catch {
+              case _: java.util.concurrent.TimeoutException =>
+                // nobody produced Some(...) in time -> kill all
+                running.foreach {
+                  case (_, proc, _) =>
+                    try proc.destroy()
+                    catch {
+                      case ex: Throwable =>
+                        logger.fine(s"Failed to destroy prover process: ${ex.getMessage}")
+                    }
+                }
+                (None, provers.head)
+            }
+        }
+
       } else {
         // run selected provers in sequence in case of failure
         provers.iterator.map(prover => runSingleProver(prover, timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
