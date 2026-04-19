@@ -1,14 +1,16 @@
 package noergler
 
 import leo.datastructures.TPTP
-import noergler.ProofCheckController.{Configuration, VerificationFailedException, VerificationTimedOutException}
+import noergler.ProofCheckController.{Configuration, Prover, ProverParallelisazionModes, StepParallelisazionModes, VerificationFailedException, VerificationTimedOutException, defaultRelaxAnnotationFormat}
+import noergler.checks.GenericInferenceCheck.constructInferenceProblem
 import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
 
 import java.nio.file.Path
 import java.util.concurrent.Executors
+import java.util.concurrent.atomic.AtomicBoolean
 import java.util.logging.Logger
 import scala.concurrent.duration.DurationInt
-import scala.concurrent.{Await, ExecutionContext, Future}
+import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutorService, Future, Promise}
 
 /**
  * The Controller coordinates the checking process, i.e., how and when
@@ -18,13 +20,23 @@ import scala.concurrent.{Await, ExecutionContext, Future}
  * @param proof The proof to be checked
  * @param configuration The checking configuration
  */
-class ProofCheckController(problem: TPTP.Problem,
+class ProofCheckController(problem: Option[TPTP.Problem],
                            proof: TPTP.Problem,
                            configuration: Configuration) {
   final val logger: Logger = Logger.getLogger("Nörgler.Controller")
   final private def threadCount: Int = Runtime.getRuntime.availableProcessors()*2
-  final implicit val ec: ExecutionContext = ExecutionContext.fromExecutorService(
-    Executors.newFixedThreadPool(threadCount))
+
+  private val stepEc: ExecutionContextExecutorService =
+    ExecutionContext.fromExecutorService(
+      Executors.newFixedThreadPool(threadCount)
+    )
+
+  private implicit val ec: ExecutionContext = stepEc
+
+  private val proverEc: ExecutionContextExecutorService =
+    ExecutionContext.fromExecutorService(
+      Executors.newCachedThreadPool()
+    )
 
   /** Map of problem file TPTP annotated formula name (hopefully unique) -> the formula */
   private var problemFormulas: Map[String, TPTP.FOFAnnotated] = Map.empty
@@ -37,7 +49,15 @@ class ProofCheckController(problem: TPTP.Problem,
   private var proofFormulas: Map[String, TPTP.FOFAnnotated] = Map.empty
 
   private var usedSkolemSymbols: Set[String] = Set.empty
-  private lazy val problemSymbols: Set[String] = problem.formulas.flatMap(_.symbols).toSet
+  private lazy val problemSymbols: Set[String] =
+    if (problem.isDefined) problem.get.formulas.flatMap(_.symbols).toSet
+    else {
+      // No problem file given -> reconstruct based on the problem formulas given in proof
+      // todo: instead use the forumulas with annotation "file" here
+      val problemFormulaRoles = Seq("axiom", "hypothesis", "definition", "assumption", "lemma", "theorem", "corollary", "conjecture", "negated_conjecture")
+      val problemFormulas = proof.formulas.filter(f => problemFormulaRoles.contains(f.role))
+      problemFormulas.flatMap(_.symbols).toSet
+    }
 
   private var openFutures: Seq[Future[Any]] = Seq.empty
 
@@ -46,19 +66,21 @@ class ProofCheckController(problem: TPTP.Problem,
     // preliminary steps
     //////////////////////////////////////////////////////////
     logger.config(s"Used configuration: ${configuration.toString}")
-    logger.fine("Processing problem file ...")
-    // process problem file, read to map, initialize conjecture name
-    for (af <- problem.formulas) {
-      af match {
-        case f@TPTP.FOFAnnotated(name, "conjecture", _, _) =>
-          problemFormulas += (name -> f)
-          problemConjectureName = Some(name)
-        case f@TPTP.FOFAnnotated(name, _, _, _) =>
-          problemFormulas += (name -> f)
-        case _ => throw new IllegalArgumentException("Only FOF input allowed at the moment.")
+    if (problem.isDefined){
+      logger.fine("Processing problem file ...")
+      // process problem file, read to map, initialize conjecture name
+      for (af <- problem.get.formulas) {
+        af match {
+          case f@TPTP.FOFAnnotated(name, "conjecture", _, _) =>
+            problemFormulas += (name -> f)
+            problemConjectureName = Some(name)
+          case f@TPTP.FOFAnnotated(name, _, _, _) =>
+            problemFormulas += (name -> f)
+          case _ => throw new IllegalArgumentException("Only FOF input allowed at the moment.")
+        }
       }
+      logger.info(s"Conjecture in problem found: ${problemConjectureName.toString}, ${problemFormulas.size - 1} axioms.")
     }
-    logger.info(s"Conjecture in problem found: ${problemConjectureName.toString}, ${problemFormulas.size-1} axioms.")
 
     // process proof file, read to map, initialize conjecture name
     for (af <- proof.formulas) {
@@ -95,6 +117,7 @@ class ProofCheckController(problem: TPTP.Problem,
       var previousProofSteps: Seq[TPTP.FOFAnnotated] = Vector.empty
       for (proofstep <- proofSteps) {
         var addedNewFuture = false
+        var skippedStep = false
         logger.finer(s"Checking proof step '${proofstep.name}' with annotation '${proofstep.annotations.map(_._1.pretty).getOrElse("")}' ...")
         logger.finer(proofstep.annotations.toString)
         //////
@@ -119,15 +142,21 @@ class ProofCheckController(problem: TPTP.Problem,
                 case Some(inference) => inference match {
                   // (III.1) if a "negated_conjecture" entry, does it correctly negate and has correct role?
                   case "negated_conjecture" if inferenceStatus0.contains(CTH) => checkNegatedInference(proofstep)
-                  // (III.2) if a "skolemize" entry, does it correctly skolemize (use ASK)
-                  case "skolemize" if inferenceStatus0.contains(ESA) => checkSkolemization(proofstep)
+                  // ESA cases
+                  case rule if inferenceStatus0.contains(ESA) =>
+                    if (configuration.upToESA) {
+                      skippedStep = true
+                      logger.info(s"Skipping verification of ESA step '${proofstep.name}'")
+                    }
+                    // (III.2) if a "skolemize" entry, does it correctly skolemize (use ASK)
+                    else if (rule == "skolemize") checkSkolemization(proofstep, configuration.relaxAnnotationFormat)
                   // (III.3) if generic status(thm)/status(cth) entry, does it follow from its parents? (using external ATPs)
                   case rule if inferenceStatus0.contains(THM) =>
-                    checkGenericInference(rule, proofstep, Left(THM))
-                    if (configuration.parallelism) addedNewFuture = true
+                    checkGenericInference(rule, proofstep, Left(THM), configuration.provers)
+                    if (StepParallelisazionModes.contains(configuration.parallelMode)) addedNewFuture = true
                   case rule if inferenceStatus0.contains(CTH) =>
-                    checkGenericInference(rule, proofstep, Right(CTH))
-                    if (configuration.parallelism) addedNewFuture = true
+                    checkGenericInference(rule, proofstep, Right(CTH), configuration.provers)
+                    if (StepParallelisazionModes.contains(configuration.parallelMode)) addedNewFuture = true
                   case _ => // Error case: unknown inference rule with non-THM/CTH status
                     logger.severe(s"Unknown inference '$inference' with status '${inferenceStatus0.getOrElse("")}' in proof step '${proofstep.name}'.")
                     throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown inference rule '$inference' with non-thm/cth status ('${inferenceStatus0.getOrElse("")}') and cannot be checked.")
@@ -136,20 +165,25 @@ class ProofCheckController(problem: TPTP.Problem,
                   logger.severe(s"Annotation of proof step '${proofstep.name}' unknown.")
                   throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses malformed inference annotation.")
               }
-            case "file" => checkFormulaFromFile(proofstep)
+            case "file" => if (configuration.problemPath.isDefined) checkFormulaFromFile(proofstep, configuration.relaxProblemCheck)
             case "introduced" => ??? // TODO
-            case record => throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown record '$record'.")
+            case record =>
+              if (proofstep.role == "axiom" && configuration.allowProverAxioms){
+                skippedStep = true
+                logger.info(s"Prover introduced axiom ${proofstep.formula.pretty} (step '${proofstep.name}')")
+              }
+              else throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown record '$record'.")
           }
           case None => // no annotation is an error for all steps.
             logger.severe(s"Proof step '${proofstep.name}' has no or malformed annotation.")
             throw new VerificationFailedException(s"Proof step '${proofstep.name}' has no or malformed annotation.")
         }
-        if (!configuration.parallelism || !addedNewFuture) logger.info(s"Check succeeded for step '${proofstep.name}'.") // Assuming we fail fast if anything happens before
+        if (!skippedStep && (!StepParallelisazionModes.contains(configuration.parallelMode) || !addedNewFuture)) logger.info(s"Check succeeded for step '${proofstep.name}'.") // Assuming we fail fast if anything happens before
         previousProofSteps = previousProofSteps :+ proofstep
       }
 
 
-      if (configuration.parallelism) {
+      if (StepParallelisazionModes.contains(configuration.parallelMode)) {
         // wait on completion of individual tasks
         // TODO from here, I guess?
         logger.info(s"Waiting for verification tasks to finish ...")
@@ -167,6 +201,9 @@ class ProofCheckController(problem: TPTP.Problem,
         NotVerified(e.getMessage)
       case _: concurrent.TimeoutException =>
         NotVerified("Timed out.")
+    } finally {
+      stepEc.shutdown()
+      proverEc.shutdown()
     }
   }
 
@@ -177,7 +214,7 @@ class ProofCheckController(problem: TPTP.Problem,
     logger.fine("Check for $false at the end of proof.")
     val endsWithFalseCheck = ProofEndsInFalseCheck.apply(proof)
     logger.info(s"Proof ends in $$false: $endsWithFalseCheck")
-    if (!endsWithFalseCheck) throw new VerificationFailedException("Proof does not end it false")
+    if (!endsWithFalseCheck) throw new VerificationFailedException("Proof does not end in false")
   }
 
   private def checkFormulaNamesAreUnique(): Unit = {
@@ -189,14 +226,14 @@ class ProofCheckController(problem: TPTP.Problem,
 
   private def checkInferencesAreAcyclic(): Unit = {
     logger.fine("Check for acyclicity of inference parents.")
-    val inferenceParentsAreAcyclic = InferenceParentsAcyclicityCheck.apply(proofSteps, proofFormulas)
+    val inferenceParentsAreAcyclic = InferenceParentsAcyclicityCheck.apply(proofSteps, proofFormulas,configuration.relaxAnnotationFormat)
     logger.info(s"Inference parents are acyclic: $inferenceParentsAreAcyclic")
     if (!inferenceParentsAreAcyclic) throw new VerificationFailedException("Graph of inference parents from $false contains a cycle.")
   }
 
   private def checkInferenceParentsExist(proofstep: TPTP.FOFAnnotated, previousProofSteps: Seq[TPTP.FOFAnnotated]): Unit = {
     logger.finer("Check for existence of inference parents (if any).")
-    val inferenceParentsCheck = InferenceParentsExistCheck.apply(proofstep, previousProofSteps)
+    val inferenceParentsCheck = InferenceParentsExistCheck.apply(proofstep, previousProofSteps, configuration.relaxAnnotationFormat)
     logger.fine(s"Inference parents exist (${proofstep.name}): $inferenceParentsCheck")
     if (!inferenceParentsCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' has unknown inference parents.")
   }
@@ -214,9 +251,9 @@ class ProofCheckController(problem: TPTP.Problem,
     if (!checkNegation) throw new VerificationFailedException("Negation of conjecture is incorrect.")
   }
 
-  private def checkSkolemization(proofstep: TPTP.FOFAnnotated): Unit = {
+  private def checkSkolemization(proofstep: TPTP.FOFAnnotated, relaxAnnotationFormat: Boolean): Unit = {
     logger.finer("Check for correct skolemization")
-    val checkSkolemize = SkolemizationCheck.apply(proofstep, proofFormulas, usedSkolemSymbols ++ problemSymbols)
+    val checkSkolemize = SkolemizationCheck.apply(proofstep, proofFormulas, usedSkolemSymbols ++ problemSymbols, relaxAnnotationFormat)
     checkSkolemize match {
       case Left(msg) =>
         throw new VerificationFailedException(s"Skolemization in step '${proofstep.name}' is incorrect: $msg")
@@ -227,18 +264,46 @@ class ProofCheckController(problem: TPTP.Problem,
 
   }
 
-  private def checkGenericInference(rule: String, proofstep: TPTP.FOFAnnotated, status: Either[THM.type , CTH.type]): Unit = {
+  private def checkGenericInference(rule: String, proofstep: TPTP.FOFAnnotated, status: Either[THM.type , CTH.type], provers: Set[Prover]): Unit = {
+
+    def runSingleProver(proverToUse: Prover, timeout: Int): (Option[Boolean], Prover) = {
+      val inferenceConfiguration = GenericInferenceCheck.SerialInferenceConfig(proverToUse, timeout, configuration.relaxAnnotationFormat)
+      val res = GenericInferenceCheck.apply_serial(proofstep, proofFormulas, status, inferenceConfiguration)(proverEc)
+      (res, proverToUse)
+    }
+
+    def runParallelProvers(provers: Set[Prover], timeout: Int): (Option[Boolean], Prover) = {
+      val inferenceConfiguration = GenericInferenceCheck.ParallelInferenceConfig(provers, timeout, configuration.relaxAnnotationFormat)
+      val res = GenericInferenceCheck.apply_parallel(proofstep, proofFormulas, status, inferenceConfiguration)(proverEc)
+      res
+    }
+
     def run(): Unit = {
       logger.finer(s"Check for correct entailment of inference rule '$rule'.")
-      val checkEntailment = GenericInferenceCheck.apply(proofstep, proofFormulas, status, configuration.eproverPath, timeout = 30) // TODO: Timeout from somewhere
+      val individual_run_timeout = configuration.timeout / 2 // todo: rasonable?
+      assert(provers.nonEmpty)
+      val (checkEntailment, usedProver): (Option[Boolean], Prover) = if (provers.size == 1){
+        val proverToUse = provers.head
+        runSingleProver(proverToUse, individual_run_timeout)
+
+        // if we have set multiple provers, we use them differently depending on the parallelization mode set.
+      }else if (ProverParallelisazionModes.contains(configuration.parallelMode)){
+        // run selected provers in parallel
+        runParallelProvers(provers,individual_run_timeout)
+
+      } else {
+        // run selected provers in sequence in case of failure
+        provers.iterator.map(prover => runSingleProver(prover, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
+      }
+
       checkEntailment match {
         case Some(check) =>
-          logger.fine(s"Entailment correct (${proofstep.name}): $checkEntailment")
+          logger.fine(s"${usedProver.name} found entailment result for ${proofstep.name}: $check")
           if (!check) throw new VerificationFailedException(s"Proof step '${proofstep.name}' is not correct.")
         case None => throw new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out.")
       }
     }
-    if (configuration.parallelism) {
+    if (StepParallelisazionModes.contains(configuration.parallelMode)) {
       val f = Future.apply(run())
       openFutures = openFutures :+ f
       logger.fine(s"Scheduled parallel inference check.")
@@ -248,20 +313,47 @@ class ProofCheckController(problem: TPTP.Problem,
 
   }
 
-  private def checkFormulaFromFile(proofstep: TPTP.FOFAnnotated): Unit = {
+  private def checkFormulaFromFile(proofstep: TPTP.FOFAnnotated, relaxProblemCheck: Boolean): Unit = {
     logger.finer("Check for correct premise usage from problem file.")
-    val problemFileName = configuration.problemPath.getFileName.toString
-    val checkFormulaFromFile = CorrectFormulaFromFileCheck.apply(proofstep, problemFileName, problemFormulas)
+    assert(configuration.problemPath.isDefined)
+    val problemFileName = configuration.problemPath.get.getFileName.toString
+    val checkFormulaFromFile = CorrectFormulaFromFileCheck.apply(proofstep, problemFileName, problemFormulas, relaxProblemCheck)
     logger.fine(s"Formula equivalent to problem statement (${proofstep.name}): $checkFormulaFromFile")
     if (!checkFormulaFromFile) throw new VerificationFailedException(s"Proof step '${proofstep.name}' does not use correct formula from file.")
   }
 }
 object ProofCheckController {
-  final case class Configuration(problemPath: Path,
+
+  // Provers
+  sealed trait Prover {
+    def path: Path
+    def name: String
+  }
+
+  case class EProver(path: Path) extends Prover {val name = "eprover"}
+  case class Vampire(path: Path) extends Prover {val name = "vampire"}
+
+  // Parallelization Modes
+  sealed trait ParallelMode
+
+  case object Sequential extends ParallelMode
+  case object ParallelSteps extends ParallelMode
+  case object ParallelProvers extends ParallelMode
+  case object Hybrid extends ParallelMode
+
+  val StepParallelisazionModes = Seq(ParallelSteps, Hybrid)
+  val ProverParallelisazionModes = Seq(ParallelProvers, Hybrid)
+
+  final case class Configuration(problemPath: Option[Path],
                                  proofPath: Path,
                                  timeout: Int,
-                                 parallelism: Boolean,
-                                 eproverPath: Path)
+                                 parallelMode: ParallelMode,
+                                 provers: Set[Prover],
+                                 ignoreFileAnnotations: Boolean,
+                                 relaxAnnotationFormat: Boolean,
+                                 relaxProblemCheck: Boolean,
+                                 allowProverAxioms: Boolean,
+                                 upToESA: Boolean)
 
   /** Thrown during the check if some step yields that the proof definitely cannot be verified
    * because it's not a valid proof. */
@@ -271,35 +363,90 @@ object ProofCheckController {
   private class VerificationTimedOutException(msg: String) extends RuntimeException(msg)
 
   private final val defaultTimeout: Int = 60
-  private final val defaultParallel: Boolean = false
+  private final val defaultParallelMode: ParallelMode = Sequential
+  private final val defaultIgnoreFileAnnotations: Boolean = false
+  private final val defaultRelaxAnnotationFormat: Boolean = false
+  private final val defaultRelaxProblemCheck: Boolean = false
+  private final val defaultAllowProverAxioms: Boolean = false
+  private final val defaultUpToESA: Boolean = false
+  private final val defaultProvers: Set[String] = Set("eprover")
   // a bit hacky:
   private final val defaulteproverPath: Option[String] = scala.sys.process.Process("which eprover").lazyLines_!.headOption
+  private final val defaultvampirePath: Option[String] = scala.sys.process.Process("which vampire").lazyLines_!.headOption
 
   sealed abstract class Parameter
   final case class Timeout(timeout: Int) extends Parameter
-  final case object Parallelism extends Parameter
+  final case class SetParallelMode(mode: String) extends Parameter
+
+  final case object IgnoreFileAnnotations extends Parameter
+  final case object RelaxAnnotationFormat extends Parameter
+
+  final case object RelaxProblemCheck extends Parameter
+
+  final case object AllowProverAxioms extends Parameter
+
+  final case object UpToESA extends Parameter
+
+  final case class ProverSelection(provers: Seq[String]) extends Parameter
   final case class EproverPath(path: Path) extends Parameter
 
+  final case class VampirePath(path: Path) extends Parameter
+
   /** Factory method for a [[ProofCheckController]] based on the given arguments. */
-  final def apply(problemPath: Path,
+  final def apply(problemPath: Option[Path],
                   proofPath:  Path,
-                  problem: TPTP.Problem,
+                  problem: Option[TPTP.Problem],
                   proof: TPTP.Problem,
                   parameters: Seq[ProofCheckController.Parameter]): Result = {
     var timeout = defaultTimeout
-    var parallel = defaultParallel
-    var path: Option[Path] = defaulteproverPath.map(p => Path.of(p))
+    var parallel = defaultParallelMode
+    var selectedProvers = defaultProvers
+    var ignoreFileAnnotations = defaultIgnoreFileAnnotations
+    var relaxAnnotationFormat = defaultRelaxAnnotationFormat
+    var relaxProblemCheck = defaultRelaxProblemCheck
+    var allowProverAxioms = defaultAllowProverAxioms
+    var upToESA = defaultUpToESA
+    var eproverPath: Option[Path] = defaulteproverPath.map(p => Path.of(p))
+    var vampirePath: Option[Path] = defaultvampirePath.map(p => Path.of(p))
 
     for (parameter <- parameters) {
       parameter match {
         case Timeout(to) => timeout = to
-        case Parallelism => parallel = true
-        case EproverPath(p) => path = Some(p)
+        case SetParallelMode(mode0) => parallel = mode0 match {
+          case "steps" => ParallelSteps
+          case "provers" => ParallelProvers
+          case "hybrid" => Hybrid
+          case _ => Sequential
+        }
+        case ProverSelection(names) => selectedProvers = names.toSet
+        case IgnoreFileAnnotations => ignoreFileAnnotations = true
+        case RelaxAnnotationFormat => relaxAnnotationFormat = true
+        case RelaxProblemCheck => relaxProblemCheck = true
+        case AllowProverAxioms => allowProverAxioms = true
+        case UpToESA => upToESA = true
+        case EproverPath(p) => eproverPath = Some(p)
+        case VampirePath(p) => vampirePath = Some(p)
       }
     }
-    if (path.isEmpty) throw new IllegalArgumentException("eprover path unknown")
-    val config = Configuration(problemPath, proofPath, timeout, parallel, path.get)
-    val controller = new ProofCheckController(problem: TPTP.Problem, proof: TPTP.Problem, config)
+
+    val provers: Set[Prover] = selectedProvers.map {
+      case "eprover" =>
+        if (!eproverPath.isDefined) throw new IllegalArgumentException("eprover path unknown")
+        EProver(eproverPath.get)
+      case "vampire" =>
+        if (!vampirePath.isDefined) throw new IllegalArgumentException("vampire path unknown")
+        Vampire(vampirePath.get)
+      case p => throw new IllegalArgumentException(s"Unknown prover '$p' requested")
+    }
+
+    assert(provers.size > 0)
+    // check if parallelisazion mode requires mutliple provers and if multiple provers were chosen
+    if (ProverParallelisazionModes.contains(parallel) && provers.size == 1){
+      throw new IllegalArgumentException(s"Selected parallelisazion mode $parallel requires multiple provers, but only ${provers.head.name} was chosen. Either provide multiple provers explicitly, or set '--prover all'")
+    }
+
+    val config = Configuration(problemPath, proofPath, timeout, parallel, provers, ignoreFileAnnotations, relaxAnnotationFormat, relaxProblemCheck, allowProverAxioms, upToESA)
+    val controller = new ProofCheckController(problem: Option[TPTP.Problem], proof: TPTP.Problem, config)
     controller.apply()
   }
 }

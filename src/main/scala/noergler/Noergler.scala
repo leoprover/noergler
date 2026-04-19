@@ -12,7 +12,7 @@ object Noergler {
   final val version: String = "0.1"
 
   private[this] final val logger: Logger = Logger.getLogger("Nörgler")
-  private[this] var inputProblemName: String = ""
+  private[this] var inputProblemName: Option[String] = None
   private[this] var inputProofName: String = ""
   private[this] var parameters: Seq[ProofCheckController.Parameter] = Seq.empty
   private[this] var verbosity: Level = Level.INFO
@@ -43,11 +43,14 @@ object Noergler {
         logger.addHandler(ch)
         logger.fine(s"Nörgler started.")
         // Read input
-        val problemPath = Path.of(inputProblemName).toAbsolutePath
-        val proofPath = Path.of(inputProofName).toAbsolutePath
-        // Parse input
-        val problem: TPTP.Problem = parseTPTPFile(problemPath)
+        val (problemPath, problem): (Option[Path], Option[TPTP.Problem]) = if (inputProblemName.isDefined) {
+          val problemPath0 = Path.of(inputProblemName.get).toAbsolutePath
+          // Parse input problem
+          (Some(problemPath0),Some(parseTPTPFile(problemPath0)))
+        } else (None, None)
         problemFileParsed = true
+        val proofPath = Path.of(inputProofName).toAbsolutePath
+        // Parse input proof
         val proof: TPTP.Problem = parseTPTPFile(proofPath)
         // Call checker controller
         val result: Result = ProofCheckController.apply(problemPath, proofPath, problem, proof, parameters)
@@ -97,16 +100,16 @@ object Noergler {
     sb.toString()
   }
   private[this] final def generateSZSStatus(szsWord: String, szsStatus: String, extraTSTPMessage: String = ""): String = {
-    if (extraTSTPMessage == null || extraTSTPMessage.isEmpty) s"% SZS $szsWord $szsStatus for $inputProblemName\n"
-    else s"% SZS $szsWord $szsStatus for $inputProblemName : $extraTSTPMessage\n"
+    if (extraTSTPMessage == null || extraTSTPMessage.isEmpty) s"% SZS $szsWord $szsStatus for $inputProofName\n"
+    else s"% SZS $szsWord $szsStatus for $inputProofName : $extraTSTPMessage\n"
   }
   private[this] final def generateSZSOutput(result: String, szsDatatype: String): String = {
     val sb: StringBuilder = new StringBuilder()
     if (result.nonEmpty) {
-      sb.append(s"% SZS output start $szsDatatype for $inputProblemName\n")
+      sb.append(s"% SZS output start $szsDatatype for $inputProofName\n")
       if (result.nonEmpty) sb.append(result)
       sb.append("\n")
-      sb.append(s"% SZS output end $szsDatatype for $inputProblemName\n")
+      sb.append(s"% SZS output end $szsDatatype for $inputProofName\n")
     }
     sb.toString()
   }
@@ -116,23 +119,27 @@ object Noergler {
   }
 
   private[this] final def usage(): Unit = {
-    println(s"usage: $name [options] <problem file> <proof file>")
+    println(s"usage: $name [options] [--problem <problem file>] <proof file>")
     println(
       s"""
          | Nörgler is a proof checker for proofs from automated theorem provers
          | in the TSTP format from the TPTP infrastructure. Currently, only
          | checking of refutational FOF proofs is supported.
-         | The TSTP proof of <problem file> is supplied in <proof file>.
          |
-         | Nörgler will check the following things:
+         | The proof is supplied in <proof file>. If a <problem file> is also provided,
+         | Nörgler will verify the proof relative to the problem's axioms and conjecture.
+         |
+         | Nörgler will always check the following structural and logical properties:
          |   - Uniqueness of formula names
          |   - Conclusion of proof with $$false
          |   - Acyclicity of inference parent graph (from $$false upward)
          |   - Existence of inference parents in each proof step earlier in proof
-         |   - Correctness of copies of axioms/conjecture from problem file
-         |   - Correctness of negation of conjecture
          |   - Correctness of Skolemization steps wrt. simple internal skolemization procedure
          |   - Provability of thm/cth steps in proof using external provers
+         |
+         | If a <problem file> is provided, Nörgler additionally checks:
+         |   - Correctness of copies of axioms/conjecture from problem file
+         |   - Correctness of negation of conjecture
          |
          | If one of these steps fail with an error, Nörgler will return SZS status
          | FailedVerified.
@@ -142,22 +149,54 @@ object Noergler {
          | does not make any claims with regard to correctness.
          |
          | Options:
-         |  --timeout t  Timeout after n seconds (soft limit, best effort).
-         |               A timeout will result in a SZS status NotVerified output.
+         |  --timeout t      Timeout after n seconds (soft limit, best effort).
+         |                   A timeout will result in a SZS status NotVerified output.
          |
-         |  --eprover path
-         |               Path to eprover, if not findable by `which eprover`.
+         |  --prover name(s) Select the prover(s) to use for verifying thm/cth steps.
+         |                   Options: 'eprover', 'vampire', 'all' (use all available),
+         |                   or a comma-separated list (e.g., 'eprover,vampire').
+         |                   If multiple provers are given and no parallelization
+         |                   strategy running multiple provers at once is given,
+         |                   the provers are tried in the sequence they are provided in.
+         |                   Otherwise, they are run in parallel.
          |
-         |  --parallel   If set, Nörgler will make use of threaded parellelism, potentially
-         |               on different CPU cores if available.
+         |  --eprover-path path
+         |                  Path to eprover, if not findable by `which eprover`.
          |
-         |  --verbosity n
-         |               Set the verbosity of logging to std.err. If n = 0, logging is disabled;
-         |               n = 6 is maximal verbosity (very fine-grained logging output).
+         |  --vampire-path path
+         |                  Path to vampire, if not findable by `which vampire`.
          |
-         |  --version    Print the version number of the executable and terminate.
+         |  --parallel-mode mode Set the parallelization strategy.
+         |                  Options:
+         |                     - none: Sequential execution (default).
+         |                     - steps: Verify different proof steps in parallel.
+         |                     - provers: Run multiple provers on the same step in parallel.
+         |                     - hybrid: Parallelize both steps and provers.
          |
-         |  --help       Print this description and terminate.
+         |  --verbosity n   Set the verbosity of logging to std.err. If n = 0, logging is disabled;
+         |                  n = 6 is maximal verbosity (very fine-grained logging output).
+         |
+         |  --version       Print the version number of the executable and terminate.
+         |
+         |  --help          Print this description and terminate.
+         |
+         |  --up-to-esa     If set, Nörgler will not attempt to verify ESA steps (including Skolemization).
+         |                  Recommended for provers that do not follow to precise Skolemization annotation format.
+         |
+         |  --relax-annotation-format
+         |                  If set, Nörgler will be more permissive about the format of the formula annotation
+         |                  as long as parent-child relationships can still be inferred. In particular, Nörgler will
+         |                  i) allow nested application of inferences in annotations
+         |
+         |  --relax-problem-check
+         |                  If set, Nörgler will be more permissive about the relationship between formulas from problem
+         |                  files and their copies in the given proofs. In particular, Nörgler will
+         |                  i) allow formulas with different roles
+         |
+         |  --allow-prover-axioms
+         |                  If set, Nörgler will allow axioms with an annotation other than file, but print a warning
+         |                  indicating that an axiom was introduced. Recommended for provers that introduce built-in
+         |                  theory axioms.
          |""".stripMargin)
   }
 
@@ -167,16 +206,40 @@ object Noergler {
       var hd = args0.head
       while (hd.startsWith("--")) { // Optional flags
         hd match {
+          case "--problem" =>
+            val path = args0.tail.head
+            inputProblemName = Some(path)
+            args0 = args0.tail
           case "--timeout" =>
             val to = args0.tail.head
             parameters = parameters :+ ProofCheckController.Timeout(to.toInt)
             args0 = args0.tail
-          case "--eprover" =>
+          case "--prover" =>
+            val input = args0.tail.head
+            // Logic: Handle 'all', then split by comma and trim whitespace
+            val selectedProvers = if (input == "all") {
+              List("eprover", "vampire")
+            } else {
+              input.split(",").map(_.trim).toList
+            }
+            parameters = parameters :+ ProofCheckController.ProverSelection(selectedProvers)
+            args0 = args0.tail
+          case "--eprover-path" =>
             val path = args0.tail.head
             parameters = parameters :+ ProofCheckController.EproverPath(Path.of(path))
             args0 = args0.tail
-          case "--parallel" =>
-            parameters = parameters :+ ProofCheckController.Parallelism
+          case "--vampire-path" =>
+            val path = args0.tail.head
+            parameters = parameters :+ ProofCheckController.VampirePath(Path.of(path))
+            args0 = args0.tail
+          case "--parallel-mode" =>
+            val mode = args0.tail.head
+            val validModes = Set("none", "steps", "provers", "hybrid")
+            if (!validModes.contains(mode)) {
+              throw new IllegalArgumentException(s"Invalid parallel-mode '$mode'. Must be one of: ${validModes.mkString(", ")}")
+            }
+            parameters = parameters :+ ProofCheckController.SetParallelMode(mode)
+            args0 = args0.tail
           case "--verbosity" =>
             val arg = args0.tail.head.toInt
             val level = arg match {
@@ -190,14 +253,21 @@ object Noergler {
             }
             verbosity = level
             args0 = args0.tail
+          case "--relax-annotation-format" =>
+            parameters = parameters :+ ProofCheckController.RelaxAnnotationFormat
+          case "--relax-problem-check" =>
+            parameters = parameters :+ ProofCheckController.RelaxProblemCheck
+          case "--allow-prover-axioms" =>
+            parameters = parameters :+ ProofCheckController.AllowProverAxioms
+          case "--up-to-esa" =>
+            parameters = parameters :+ ProofCheckController.UpToESA
+
           case _ => throw new IllegalArgumentException(s"Unknown parameter '$hd'.")
         }
         args0 = args0.tail
         hd = args0.head
       }
       // main arguments
-      inputProblemName = args0.head
-      args0 = args0.tail
       inputProofName = args0.head
       args0 = args0.tail
       if (args0.nonEmpty) {
