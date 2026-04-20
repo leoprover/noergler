@@ -142,6 +142,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
                 case Some(inference) => inference match {
                   // (III.1) if a "negated_conjecture" entry, does it correctly negate and has correct role?
                   case "negated_conjecture" if inferenceStatus0.contains(CTH) => checkNegatedInference(proofstep)
+                  case _ if configuration.relaxAnnotationFormat && inferenceStatus0.contains(CTH) && proofstep.role == "negated_conjecture" => checkNegatedInference(proofstep)
                   // All cases that are not the negation of the conjecture
                   case non_conjecture_negation_cases =>
                     // (III.2) check that none of the inference parents (if any) are the conjecture

@@ -187,6 +187,8 @@ object Noergler {
          |                  If set, Nörgler will be more permissive about the format of the formula annotation
          |                  as long as parent-child relationships can still be inferred. In particular, Nörgler will
          |                  i) allow nested application of inferences in annotations
+         |                  ii) allow negation of the conjecture with inference names other than negated_conjecture, as
+         |                      long as the status of the inference is cth, and the step has role "negated_conjecture"
          |
          |  --relax-problem-check
          |                  If set, Nörgler will be more permissive about the relationship between formulas from problem
