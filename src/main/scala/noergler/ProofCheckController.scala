@@ -3,7 +3,7 @@ package noergler
 import leo.datastructures.TPTP
 import noergler.ProofCheckController.{Configuration, Prover, ProverParallelisazionModes, StepParallelisazionModes, VerificationFailedException, VerificationTimedOutException, defaultRelaxAnnotationFormat}
 import noergler.checks.GenericInferenceCheck.constructInferenceProblem
-import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
+import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsAreNotConjecture, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
 
 import java.nio.file.Path
 import java.util.concurrent.Executors
@@ -142,24 +142,32 @@ class ProofCheckController(problem: Option[TPTP.Problem],
                 case Some(inference) => inference match {
                   // (III.1) if a "negated_conjecture" entry, does it correctly negate and has correct role?
                   case "negated_conjecture" if inferenceStatus0.contains(CTH) => checkNegatedInference(proofstep)
-                  // ESA cases
-                  case rule if inferenceStatus0.contains(ESA) =>
-                    if (configuration.upToESA) {
-                      skippedStep = true
-                      logger.info(s"Skipping verification of ESA step '${proofstep.name}'")
+                  // All cases that are not the negation of the conjecture
+                  case non_conjecture_negation_cases =>
+                    // (III.2) check that none of the inference parents (if any) are the conjecture
+                    checkInferenceParentsAreNotConjecture(proofstep)
+                    // (III.3) check that the inference status is not cth
+                    checkStatusIsNotCth(proofstep, inferenceStatus0)
+                    non_conjecture_negation_cases match {
+                      // ESA cases
+                      case rule if inferenceStatus0.contains(ESA) =>
+                        if (configuration.upToESA) {
+                          skippedStep = true
+                          logger.info(s"Skipping verification of ESA step '${proofstep.name}'")
+                        }
+                        // (III.4) if a "skolemize" entry, does it correctly skolemize (use ASK)
+                        else if (rule == "skolemize") checkSkolemization(proofstep, configuration.relaxAnnotationFormat)
+                      // (III.5) if generic status(thm)/status(cth) entry, does it follow from its parents? (using external ATPs)
+                      case rule if inferenceStatus0.contains(THM) =>
+                        checkGenericInference(rule, proofstep, Left(THM), configuration.provers)
+                        if (StepParallelisazionModes.contains(configuration.parallelMode)) addedNewFuture = true
+                      case rule if inferenceStatus0.contains(CTH) =>
+                        checkGenericInference(rule, proofstep, Right(CTH), configuration.provers)
+                        if (StepParallelisazionModes.contains(configuration.parallelMode)) addedNewFuture = true
+                      case _ => // Error case: unknown inference rule with non-THM/CTH status
+                        logger.severe(s"Unknown inference '$inference' with status '${inferenceStatus0.getOrElse("")}' in proof step '${proofstep.name}'.")
+                        throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown inference rule '$inference' with non-thm/cth status ('${inferenceStatus0.getOrElse("")}') and cannot be checked.")
                     }
-                    // (III.2) if a "skolemize" entry, does it correctly skolemize (use ASK)
-                    else if (rule == "skolemize") checkSkolemization(proofstep, configuration.relaxAnnotationFormat)
-                  // (III.3) if generic status(thm)/status(cth) entry, does it follow from its parents? (using external ATPs)
-                  case rule if inferenceStatus0.contains(THM) =>
-                    checkGenericInference(rule, proofstep, Left(THM), configuration.provers)
-                    if (StepParallelisazionModes.contains(configuration.parallelMode)) addedNewFuture = true
-                  case rule if inferenceStatus0.contains(CTH) =>
-                    checkGenericInference(rule, proofstep, Right(CTH), configuration.provers)
-                    if (StepParallelisazionModes.contains(configuration.parallelMode)) addedNewFuture = true
-                  case _ => // Error case: unknown inference rule with non-THM/CTH status
-                    logger.severe(s"Unknown inference '$inference' with status '${inferenceStatus0.getOrElse("")}' in proof step '${proofstep.name}'.")
-                    throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown inference rule '$inference' with non-thm/cth status ('${inferenceStatus0.getOrElse("")}') and cannot be checked.")
                 }
                 case None => // Unknown annotation, abort
                   logger.severe(s"Annotation of proof step '${proofstep.name}' unknown.")
@@ -236,6 +244,20 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     val inferenceParentsCheck = InferenceParentsExistCheck.apply(proofstep, previousProofSteps, configuration.relaxAnnotationFormat)
     logger.fine(s"Inference parents exist (${proofstep.name}): $inferenceParentsCheck")
     if (!inferenceParentsCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' has unknown inference parents.")
+  }
+
+  private def checkInferenceParentsAreNotConjecture(proofstep: TPTP.FOFAnnotated): Unit = {
+    logger.finer("Check that the inference parents (if any) are not the conjecture.")
+    val inferenceParentsNotConjCheck = InferenceParentsAreNotConjecture.apply(proofstep, problemConjectureName, configuration.relaxAnnotationFormat)
+    logger.fine(s"Inference parents are not the conjecture (${proofstep.name}): $inferenceParentsNotConjCheck")
+    if (!inferenceParentsNotConjCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' has the conjecture as a parent.")
+  }
+
+  private def checkStatusIsNotCth(proofstep: TPTP.FOFAnnotated, inferenceStatus0: Option[InferenceStatus]): Unit = {
+    logger.finer("Check that the status of step (that is not the negation of the conjecture) is not cth.")
+    val statusNotCthCheck = !inferenceStatus0.contains(CTH)
+    logger.fine(s"Status of step (that is not the negation of the conjecture) is not cth (${proofstep.name}): $statusNotCthCheck")
+    if (!statusNotCthCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' is not the negation of the conjecture but has status cth.")
   }
 
   private def checkRole(proofstep: TPTP.FOFAnnotated): Unit = {
