@@ -239,6 +239,10 @@ class ProofCheckController(problem: Option[TPTP.Problem],
   }
 
   private def checkRole(proofstep: TPTP.FOFAnnotated): Unit = {
+    if (!problem.isDefined && proofstep.role == "conjecture") {
+      logger.finer(s"Found conjecture in proof: ${proofstep.name}")
+      problemConjectureName = Some(proofstep.name)
+    }
     val allowedRoles = Seq("axiom", "conjecture", "negated_conjecture", "plain")
     val roleCheck = allowedRoles.contains(proofstep.role)
     if (!roleCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' has unknown role.")
@@ -246,7 +250,10 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
   private def checkNegatedInference(proofstep: TPTP.FOFAnnotated): Unit = {
     logger.finer("Check for correct negation of conjecture")
-    val checkNegation = ConjectureNegationCheck.apply(proofstep, problemConjectureName.flatMap(problemFormulas.get))
+    val conjFormula =
+      if (problem.isDefined) problemConjectureName.flatMap(problemFormulas.get)
+      else problemConjectureName.flatMap(proofFormulas.get)
+    val checkNegation = ConjectureNegationCheck.apply(proofstep, conjFormula)
     logger.fine(s"Negation of conjecture correct (${proofstep.name}): $checkNegation")
     if (!checkNegation) throw new VerificationFailedException("Negation of conjecture is incorrect.")
   }
