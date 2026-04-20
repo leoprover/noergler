@@ -41,7 +41,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
   /** Map of problem file TPTP annotated formula name (hopefully unique) -> the formula */
   private var problemFormulas: Map[String, TPTP.FOFAnnotated] = Map.empty
   /** Name of the conjecture from the problem file, if known  */
-  private var problemConjectureName: Option[String] = None
+  private var conjectureName: Option[String] = None
 
   /** The sequence of proof steps as they appear in the proof. */
   private var proofSteps: Seq[TPTP.FOFAnnotated] = Vector.empty
@@ -73,13 +73,13 @@ class ProofCheckController(problem: Option[TPTP.Problem],
         af match {
           case f@TPTP.FOFAnnotated(name, "conjecture", _, _) =>
             problemFormulas += (name -> f)
-            problemConjectureName = Some(name)
+            conjectureName = Some(name)
           case f@TPTP.FOFAnnotated(name, _, _, _) =>
             problemFormulas += (name -> f)
           case _ => throw new IllegalArgumentException("Only FOF input allowed at the moment.")
         }
       }
-      logger.info(s"Conjecture in problem found: ${problemConjectureName.toString}, ${problemFormulas.size - 1} axioms.")
+      logger.info(s"Conjecture in problem found: ${conjectureName.toString}, ${problemFormulas.size - 1} axioms.")
     }
 
     // process proof file, read to map, initialize conjecture name
@@ -249,7 +249,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
   private def checkInferenceParentsAreNotConjecture(proofstep: TPTP.FOFAnnotated): Unit = {
     logger.finer("Check that the inference parents (if any) are not the conjecture.")
-    val inferenceParentsNotConjCheck = InferenceParentsAreNotConjecture.apply(proofstep, problemConjectureName, configuration.relaxAnnotationFormat)
+    val inferenceParentsNotConjCheck = InferenceParentsAreNotConjecture.apply(proofstep, conjectureName, configuration.relaxAnnotationFormat)
     logger.fine(s"Inference parents are not the conjecture (${proofstep.name}): $inferenceParentsNotConjCheck")
     if (!inferenceParentsNotConjCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' has the conjecture as a parent.")
   }
@@ -264,7 +264,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
   private def checkRole(proofstep: TPTP.FOFAnnotated): Unit = {
     if (!problem.isDefined && proofstep.role == "conjecture") {
       logger.finer(s"Found conjecture in proof: ${proofstep.name}")
-      problemConjectureName = Some(proofstep.name)
+      conjectureName = Some(proofstep.name)
     }
     val allowedRoles = Seq("axiom", "conjecture", "negated_conjecture", "plain")
     val roleCheck = allowedRoles.contains(proofstep.role)
@@ -274,8 +274,8 @@ class ProofCheckController(problem: Option[TPTP.Problem],
   private def checkNegatedInference(proofstep: TPTP.FOFAnnotated): Unit = {
     logger.finer("Check for correct negation of conjecture")
     val conjFormula =
-      if (problem.isDefined) problemConjectureName.flatMap(problemFormulas.get)
-      else problemConjectureName.flatMap(proofFormulas.get)
+      if (problem.isDefined) conjectureName.flatMap(problemFormulas.get)
+      else conjectureName.flatMap(proofFormulas.get)
     val checkNegation = ConjectureNegationCheck.apply(proofstep, conjFormula)
     logger.fine(s"Negation of conjecture correct (${proofstep.name}): $checkNegation")
     if (!checkNegation) throw new VerificationFailedException("Negation of conjecture is incorrect.")
