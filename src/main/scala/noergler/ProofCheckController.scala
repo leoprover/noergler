@@ -1,16 +1,14 @@
 package noergler
 
 import leo.datastructures.TPTP
-import noergler.ProofCheckController.{Configuration, Prover, ProverParallelisazionModes, StepParallelisazionModes, VerificationFailedException, VerificationTimedOutException, defaultRelaxAnnotationFormat}
-import noergler.checks.GenericInferenceCheck.constructInferenceProblem
+import noergler.ProofCheckController.{Configuration, Prover, ProverParallelisazionModes, StepParallelisazionModes, VerificationFailedException, VerificationTimedOutException}
 import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
 
 import java.nio.file.Path
 import java.util.concurrent.Executors
-import java.util.concurrent.atomic.AtomicBoolean
 import java.util.logging.Logger
-import scala.concurrent.duration.DurationInt
-import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutorService, Future, Promise}
+import scala.concurrent.{ExecutionContext, ExecutionContextExecutorService, Future, blocking}
+import scala.util.{Failure, Success}
 
 /**
  * The Controller coordinates the checking process, i.e., how and when
@@ -184,10 +182,26 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
 
       if (StepParallelisazionModes.contains(configuration.parallelMode)) {
-        // wait on completion of individual tasks
-        // TODO from here, I guess?
         logger.info(s"Waiting for verification tasks to finish ...")
-        Await.result(Future.sequence(openFutures), configuration.timeout.seconds)
+        val totalNumberOfFutures = openFutures.size
+        blocking {
+          while (openFutures.nonEmpty) {
+            try {
+              val (finishedFutures, notYetFinishedFutures) = openFutures.partition(_.isCompleted)
+              openFutures = notYetFinishedFutures
+              finishedFutures.foreach { f =>
+                f.value.get match {
+                  case Failure(exception) => throw exception
+                  case Success(_) => () // We don't care about the value, do we?
+                } }
+              logger.info(s"${totalNumberOfFutures-notYetFinishedFutures.size}/${totalNumberOfFutures} tasks done.")
+              Thread.sleep(50)
+            } catch {
+              case _:InterruptedException => ()
+            }
+          }
+        }
+        //Await.result(Future.sequence(openFutures), configuration.timeout.seconds)
         logger.info(s"All checks succeeded.")
       }
 
