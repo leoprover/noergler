@@ -8,8 +8,8 @@ import java.nio.file.Path
 import java.util.concurrent.Executors
 import java.util.logging.Logger
 import scala.concurrent.duration.DurationInt
-import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutorService, Future, blocking}
-import scala.util.{Failure, Success}
+import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutorService, Future}
+import scala.util.{Failure}
 
 /**
  * The Controller coordinates the checking process, i.e., how and when
@@ -59,7 +59,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     }
 
   private var openFutures: Seq[Future[Any]] = Seq.empty
-  private val already_showed_false: java.util.concurrent.atomic.AtomicReference[Option[String]] = new java.util.concurrent.atomic.AtomicReference(None)
+  private val already_showed_false: java.util.concurrent.atomic.AtomicReference[Option[Throwable]] = new java.util.concurrent.atomic.AtomicReference(None)
 
   final def apply(): Result = {
     //////////////////////////////////////////////////////////
@@ -205,8 +205,8 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 //        }
 
         already_showed_false.get() match {
-          case Some(stepName) =>
-            throw new VerificationFailedException(s"Proof step '$stepName' is not cccorrect.")
+          case Some(exception) =>
+            throw exception
           case None =>
             logger.info(s"Waiting for verification tasks to finish ...")
             Await.result(Future.sequence(openFutures), configuration.timeout.seconds)
@@ -303,7 +303,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
     def run(): Unit = {
       if (already_showed_false.get().isDefined) {
-        logger.fine(s"Cancelling verification of step '${proofstep.name}' as step ${already_showed_false.get().get} has already shown to be false")
+        logger.fine(s"Cancelling verification of step '${proofstep.name}' as proof has already shown to be false")
         return
       }
       logger.finer(s"Check for correct entailment of inference rule '$rule'.")
@@ -315,6 +315,10 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
         // if we have set multiple provers, we use them differently depending on the parallelization mode set.
       }else if (ProverParallelisazionModes.contains(configuration.parallelMode)){
+        if (already_showed_false.get().isDefined) {
+          logger.fine(s"Cancelling verification of step '${proofstep.name}' as proof has already shown to be false")
+          return
+        }
         // run selected provers in parallel
         runParallelProvers(provers,individual_run_timeout)
 
@@ -332,11 +336,11 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     }
     if (StepParallelisazionModes.contains(configuration.parallelMode)) {
       if (already_showed_false.get().isDefined) {
-        logger.fine(s"Cancelling verification of step '${proofstep.name}' as step ${already_showed_false.get().get} has already shown to be false")
+        logger.fine(s"Cancelling verification of step '${proofstep.name}' as proof has already shown to be false")
         return
       }
       val f = Future.apply(run()).andThen {
-        case Failure(_) => already_showed_false.compareAndSet(None, Some(proofstep.name))
+        case Failure(e) => already_showed_false.compareAndSet(None, Some(e))
       }
       openFutures = openFutures :+ f
       logger.fine(s"Scheduled parallel inference check.")
