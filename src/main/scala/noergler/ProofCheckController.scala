@@ -7,7 +7,8 @@ import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, Fo
 import java.nio.file.Path
 import java.util.concurrent.Executors
 import java.util.logging.Logger
-import scala.concurrent.{ExecutionContext, ExecutionContextExecutorService, Future, blocking}
+import scala.concurrent.duration.DurationInt
+import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutorService, Future, blocking}
 import scala.util.{Failure, Success}
 
 /**
@@ -183,27 +184,34 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
 
       if (StepParallelisazionModes.contains(configuration.parallelMode)) {
-        logger.info(s"Waiting for verification tasks to finish ...")
-        val totalNumberOfFutures = openFutures.size
-        blocking {
-          while (openFutures.nonEmpty) {
-            try {
-              val (finishedFutures, notYetFinishedFutures) = openFutures.partition(_.isCompleted)
-              openFutures = notYetFinishedFutures
-              finishedFutures.foreach { f =>
-                f.value.get match {
-                  case Failure(exception) => throw exception
-                  case Success(_) => () // We don't care about the value, do we?
-                } }
-              logger.info(s"${totalNumberOfFutures-notYetFinishedFutures.size}/${totalNumberOfFutures} tasks done.")
-              Thread.sleep(50)
-            } catch {
-              case _:InterruptedException => ()
-            }
-          }
+//        logger.info(s"Waiting for verification tasks to finish ...")
+//        val totalNumberOfFutures = openFutures.size
+//        blocking {
+//          while (openFutures.nonEmpty) {
+//            try {
+//              val (finishedFutures, notYetFinishedFutures) = openFutures.partition(_.isCompleted)
+//              openFutures = notYetFinishedFutures
+//              finishedFutures.foreach { f =>
+//                f.value.get match {
+//                  case Failure(exception) => throw exception
+//                  case Success(_) => () // We don't care about the value, do we?
+//                } }
+//              logger.info(s"${totalNumberOfFutures-notYetFinishedFutures.size}/${totalNumberOfFutures} tasks done.")
+//              Thread.sleep(10)
+//            } catch {
+//              case _:InterruptedException => ()
+//            }
+//          }
+//        }
+
+        already_showed_false.get() match {
+          case Some(stepName) =>
+            throw new VerificationFailedException(s"Proof step '$stepName' is not cccorrect.")
+          case None =>
+            logger.info(s"Waiting for verification tasks to finish ...")
+            Await.result(Future.sequence(openFutures), configuration.timeout.seconds)
+            logger.info(s"All checks succeeded.")
         }
-        //Await.result(Future.sequence(openFutures), configuration.timeout.seconds)
-        logger.info(s"All checks succeeded.")
       }
 
       // report success
