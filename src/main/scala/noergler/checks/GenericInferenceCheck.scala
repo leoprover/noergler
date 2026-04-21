@@ -102,17 +102,20 @@ object GenericInferenceCheck {
 
   final case class SerialInferenceConfig(prover: Prover,
                                          timeout: Int,
-                                         relaxAnnotationFormat: Boolean
+                                         relaxAnnotationFormat: Boolean,
+                                         declarations: Seq[TPTP.AnnotatedFormula]
                                   )
 
   final case class ParallelInferenceConfig(provers: Set[Prover],
                                          timeout: Int,
-                                         relaxAnnotationFormat: Boolean
+                                         relaxAnnotationFormat: Boolean,
+                                         declarations: Seq[TPTP.AnnotatedFormula]
                                         )
 
   final def constructInferenceProblem(proofstep: TPTP.AnnotatedFormula,
                                       names: Seq[String],
                                       proofFormulas: Map[String, TPTP.AnnotatedFormula],
+                                      declarations: Seq[TPTP.AnnotatedFormula],
                                       status: Either[THM.type , CTH.type]): (Seq[TPTP.AnnotatedFormula], TPTP.AnnotatedFormula) = {
     import TPTP.{THF, TFF, FOF, TCF, CNF}
     val inferenceParents = names.map(proofFormulas) // safe as we checked the existence of all parents before
@@ -149,7 +152,8 @@ object GenericInferenceCheck {
         TPTP.CNFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.CNF.Statement], None)
       case _ => throw new IllegalArgumentException("TPI formulas cannot be used for verification.")
     }
-    (premises, annotatedToBeProved)
+    //todo: only pass the declarations that are actually necessary?
+    (declarations ++ premises, annotatedToBeProved)
   }
 
   final def apply_serial(proofstep: TPTP.AnnotatedFormula,
@@ -160,7 +164,7 @@ object GenericInferenceCheck {
     val inferenceParentsNames: Option[Seq[String]] = proofStepParents(proofstep.annotations, config.relaxAnnotationFormat)
     inferenceParentsNames match {
       case Some(names) =>
-        val (premises, annotatedToBeProved) = constructInferenceProblem(proofstep,names, proofFormulas, status)
+        val (premises, annotatedToBeProved) = constructInferenceProblem(proofstep,names, proofFormulas, config.declarations, status)
         new GenericInferenceCheck(premises, annotatedToBeProved, config.prover, config.timeout).apply_serial()
       case None =>
         logger.severe(s"Entailment check impossible (${proofstep.name}), inference parents entry malformed.")
@@ -176,7 +180,7 @@ object GenericInferenceCheck {
     val inferenceParentsNames = proofStepParents(proofstep.annotations, config.relaxAnnotationFormat)
     inferenceParentsNames match {
       case Some(names) =>
-        val (premises, annotatedToBeProved) = constructInferenceProblem(proofstep, names, proofFormulas, status)
+        val (premises, annotatedToBeProved) = constructInferenceProblem(proofstep, names, proofFormulas, config.declarations, status)
         val completed = new AtomicBoolean(false)
         val winner = Promise[(Option[Boolean], Prover)]()
 

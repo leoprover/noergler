@@ -48,6 +48,8 @@ class ProofCheckController(problem: Option[TPTP.Problem],
   /** Map of proof file TPTP annotated formula name (hopefully unique) -> the formula */
   private var proofFormulas: Map[String, TPTP.AnnotatedFormula] = Map.empty
 
+  private var declarations: Seq[TPTP.AnnotatedFormula] = Seq.empty
+
   private var usedSkolemSymbols: Set[String] = Set.empty
   private lazy val problemSymbols: Set[String] =
     if (problem.isDefined) problem.get.formulas.flatMap(_.symbols).toSet
@@ -70,10 +72,13 @@ class ProofCheckController(problem: Option[TPTP.Problem],
       logger.fine("Processing problem file ...")
       // process problem file, read to map, initialize conjecture name
       for (af <- problem.get.formulas) {
-        problemFormulas += (af.name -> af)
-        if (af.role == "conjecture") problemConjectureName = Some(af.name)
+        if (af.role == "type") declarations = declarations :+ af
+        else {
+          problemFormulas += (af.name -> af)
+          if (af.role == "conjecture") problemConjectureName = Some(af.name)
+        }
       }
-      logger.info(s"Conjecture in problem found: ${problemConjectureName.toString}, ${problemFormulas.size - 1} axioms.")
+      logger.info(s"Conjecture in problem found: ${problemConjectureName.toString}, ${problemFormulas.size - 1} axioms, ${declarations.size} type declarations.")
     }
     // process proof file, read to map, initialize conjecture name
     for (af <- proof.formulas) {
@@ -162,6 +167,9 @@ class ProofCheckController(problem: Option[TPTP.Problem],
               }
               else throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown record '$record'.")
           }
+          case None if proofstep.role == "type" =>
+            if (!problem.isDefined) declarations = declarations :+ proofstep
+          logger.fine(s"found type annotation ${proofstep.pretty}")
           case None => // no annotation is an error for all steps.
             logger.severe(s"Proof step '${proofstep.name}' has no or malformed annotation.")
             throw new VerificationFailedException(s"Proof step '${proofstep.name}' has no or malformed annotation.")
@@ -227,7 +235,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
   }
 
   private def checkRole(proofstep: TPTP.AnnotatedFormula): Unit = {
-    val allowedRoles = Seq("axiom", "conjecture", "negated_conjecture", "plain")
+    val allowedRoles = Seq("axiom", "conjecture", "negated_conjecture", "plain", "type")
     val roleCheck = allowedRoles.contains(proofstep.role)
     if (!roleCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' has unknown role.")
   }
@@ -255,13 +263,13 @@ class ProofCheckController(problem: Option[TPTP.Problem],
   private def checkGenericInference(rule: String, proofstep: TPTP.AnnotatedFormula, status: Either[THM.type , CTH.type], provers: Set[Prover]): Unit = {
 
     def runSingleProver(proverToUse: Prover, timeout: Int): (Option[Boolean], Prover) = {
-      val inferenceConfiguration = GenericInferenceCheck.SerialInferenceConfig(proverToUse, timeout, configuration.relaxAnnotationFormat)
+      val inferenceConfiguration = GenericInferenceCheck.SerialInferenceConfig(proverToUse, timeout, configuration.relaxAnnotationFormat, declarations)
       val res = GenericInferenceCheck.apply_serial(proofstep, proofFormulas, status, inferenceConfiguration)(proverEc)
       (res, proverToUse)
     }
 
     def runParallelProvers(provers: Set[Prover], timeout: Int): (Option[Boolean], Prover) = {
-      val inferenceConfiguration = GenericInferenceCheck.ParallelInferenceConfig(provers, timeout, configuration.relaxAnnotationFormat)
+      val inferenceConfiguration = GenericInferenceCheck.ParallelInferenceConfig(provers, timeout, configuration.relaxAnnotationFormat, declarations)
       val res = GenericInferenceCheck.apply_parallel(proofstep, proofFormulas, status, inferenceConfiguration)(proverEc)
       res
     }
