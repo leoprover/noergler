@@ -8,9 +8,9 @@ import java.util.logging.Logger
 object CorrectFormulaFromFileCheck {
   final val logger: Logger = Logger.getLogger("Nörgler.checks.CorrectFormulaFromFileCheck")
 
-  final def apply(proofstep: TPTP.FOFAnnotated,
+  final def apply(proofstep: TPTP.AnnotatedFormula,
                   problemFileName: String,
-                  problemFormulas: Map[String, TPTP.FOFAnnotated],
+                  problemFormulas: Map[String, TPTP.AnnotatedFormula],
                   relaxProblemCheck: Boolean): Boolean = {
     val origin = fileRecord(proofstep.annotations)
     origin match {

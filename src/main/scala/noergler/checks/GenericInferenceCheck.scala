@@ -1,7 +1,6 @@
 package noergler.checks
 
 import leo.datastructures.TPTP
-import leo.datastructures.TPTP.FOF
 import noergler.ProofCheckController.Prover
 import noergler.checks.GenericInferenceCheck.logger
 import noergler.{CTH, ProofCheckController, THM, proofStepParents}
@@ -15,8 +14,8 @@ import scala.concurrent.{Await, ExecutionContext, Future, Promise}
 import scala.sys.process
 import scala.sys.process.{ProcessLogger, Process => RunningProcess}
 
-final class GenericInferenceCheck(premises: Seq[TPTP.FOFAnnotated],
-                                  conjecture: TPTP.FOFAnnotated,
+final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
+                                  conjecture: TPTP.AnnotatedFormula,
                                   prover: Prover,
                                   timeout: Int)
                                  (implicit ec: ExecutionContext) {
@@ -73,7 +72,7 @@ final class GenericInferenceCheck(premises: Seq[TPTP.FOFAnnotated],
     collectResult(started)
   }
 
-  def parse_TSTP_output(result: String): Option[Boolean] = {
+  private def parse_TSTP_output(result: String): Option[Boolean] = {
     // TODO: Improve handling below
     if (result.contains("SZS status Theorem")) Some(true)
     else if (result.contains("SZS status ContradictoryAxioms")) Some(true)
@@ -83,14 +82,14 @@ final class GenericInferenceCheck(premises: Seq[TPTP.FOFAnnotated],
     else None
   }
 
-  def run_eprover(eproverPath: Path, problem: TPTP.Problem): process.ProcessBuilder = {
+  private def run_eprover(eproverPath: Path, problem: TPTP.Problem): process.ProcessBuilder = {
     // TODO: Ugly quick-shot implementation, just for testing. needs to be refactored.
     scala.sys.process.Process.apply(
       eproverPath.toString,
       Seq("-s", "--auto", s"--cpu-limit=${timeout.toString}")).#<(new ByteArrayInputStream(problem.pretty.getBytes))
   }
 
-  def run_vampire(vampirePath: Path, problem: TPTP.Problem): process.ProcessBuilder = {
+  private def run_vampire(vampirePath: Path, problem: TPTP.Problem): process.ProcessBuilder = {
     // TODO: Ugly quick-shot implementation, just for testing. needs to be refactored.
     scala.sys.process.Process.apply(
       vampirePath.toString,
@@ -111,27 +110,50 @@ object GenericInferenceCheck {
                                          relaxAnnotationFormat: Boolean
                                         )
 
-  final def constructInferenceProblem(proofstep: TPTP.FOFAnnotated,
+  final def constructInferenceProblem(proofstep: TPTP.AnnotatedFormula,
                                       names: Seq[String],
-                                      proofFormulas: Map[String, TPTP.FOFAnnotated],
-                                      status: Either[THM.type , CTH.type])={
+                                      proofFormulas: Map[String, TPTP.AnnotatedFormula],
+                                      status: Either[THM.type , CTH.type]): (Seq[TPTP.AnnotatedFormula], TPTP.AnnotatedFormula) = {
+    import TPTP.{THF, TFF, FOF, TCF, CNF}
     val inferenceParents = names.map(proofFormulas) // safe as we checked the existence of all parents before
     logger.finer(s"Inference parents: ${names.mkString(",")}")
-    val premises = inferenceParents.map { af =>
-      TPTP.FOFAnnotated(af.name, "axiom", af.formula, None)
+    val premises: Seq[TPTP.AnnotatedFormula] = inferenceParents.map {
+      case TPTP.THFAnnotated(name, _, formula, _) => TPTP.THFAnnotated(name, "axiom", formula, None)
+      case TPTP.TFFAnnotated(name, _, formula, _) => TPTP.TFFAnnotated(name, "axiom", formula, None)
+      case TPTP.FOFAnnotated(name, _, formula, _) => TPTP.FOFAnnotated(name, "axiom", formula, None)
+      case TPTP.TCFAnnotated(name, _, formula, _) => TPTP.TCFAnnotated(name, "axiom", formula, None)
+      case TPTP.CNFAnnotated(name, _, formula, _) => TPTP.CNFAnnotated(name, "axiom", formula, None)
+      case TPTP.TPIAnnotated(name, _, formula, _) => TPTP.TPIAnnotated(name, "axiom", formula, None)
     }
-    val formulatoBeProved: TPTP.FOF.Statement = status match {
+    val formulatoBeProved: proofstep.F = status match {
       case Left(_) => proofstep.formula
       case Right(_) => proofstep.formula match {
-        case FOF.Logical(formula) => FOF.Logical(FOF.UnaryFormula(FOF.~, formula))
+        case THF.Logical(formula) => THF.Logical(THF.UnaryFormula(THF.~, formula)).asInstanceOf[proofstep.F]
+        case TFF.Logical(formula) => TFF.Logical(TFF.UnaryFormula(TFF.~, formula)).asInstanceOf[proofstep.F]
+        case FOF.Logical(formula) => FOF.Logical(FOF.UnaryFormula(FOF.~, formula)).asInstanceOf[proofstep.F]
+        case TCF.Logical(_) => ??? // TODO
+        case CNF.Logical(_) => ??? // TODO
+        case _ => throw new IllegalArgumentException("TPI formulas cannot be used for verification.")
       }
     }
-    val annotatedToBeProved: TPTP.FOFAnnotated = TPTP.FOFAnnotated("c", "conjecture", formulatoBeProved, None)
+    val annotatedToBeProved: TPTP.AnnotatedFormula = proofstep match {
+      case TPTP.THFAnnotated(name, _, _, _) =>
+        TPTP.THFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.THF.Statement], None)
+      case TPTP.TFFAnnotated(name, _, _, _) =>
+        TPTP.TFFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.TFF.Statement], None)
+      case TPTP.FOFAnnotated(name, _, _, _) =>
+        TPTP.FOFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.FOF.Statement], None)
+      case TPTP.TCFAnnotated(name, _, _, _) => // FIXME: I think TCF/CNF does not have conjectures
+        TPTP.TCFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.TCF.Statement], None)
+      case TPTP.CNFAnnotated(name, _, _, _) =>
+        TPTP.CNFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.CNF.Statement], None)
+      case _ => throw new IllegalArgumentException("TPI formulas cannot be used for verification.")
+    }
     (premises, annotatedToBeProved)
   }
 
-  final def apply_serial(proofstep: TPTP.FOFAnnotated,
-                  proofFormulas: Map[String, TPTP.FOFAnnotated],
+  final def apply_serial(proofstep: TPTP.AnnotatedFormula,
+                  proofFormulas: Map[String, TPTP.AnnotatedFormula],
                   status: Either[THM.type , CTH.type],
                   config: SerialInferenceConfig)
                  (implicit ec: ExecutionContext): Option[Boolean] = {
@@ -146,8 +168,8 @@ object GenericInferenceCheck {
     }
   }
 
-  final def apply_parallel(proofstep: TPTP.FOFAnnotated,
-                         proofFormulas: Map[String, TPTP.FOFAnnotated],
+  final def apply_parallel(proofstep: TPTP.AnnotatedFormula,
+                         proofFormulas: Map[String, TPTP.AnnotatedFormula],
                          status: Either[THM.type, CTH.type],
                          config: ParallelInferenceConfig)
                         (implicit ec: ExecutionContext): (Option[Boolean], Prover) = {

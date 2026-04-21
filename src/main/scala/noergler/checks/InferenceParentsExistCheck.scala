@@ -4,8 +4,8 @@ import leo.datastructures.TPTP
 import noergler.stripQuotes
 
 object InferenceParentsExistCheck {
-  final def apply(proofstep: TPTP.FOFAnnotated,
-                  previousProofSteps: Seq[TPTP.FOFAnnotated],
+  final def apply(proofstep: TPTP.AnnotatedFormula,
+                  previousProofSteps: Seq[TPTP.AnnotatedFormula],
                   relaxAnnotationFormat: Boolean): Boolean = {
     val parentsOfStep = noergler.proofStepParents(proofstep, relaxAnnotationFormat)
     parentsOfStep match {
