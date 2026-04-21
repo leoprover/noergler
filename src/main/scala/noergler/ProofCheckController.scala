@@ -333,10 +333,6 @@ class ProofCheckController(problem: Option[TPTP.Problem],
       openFutures = openFutures :+ f
       logger.fine(s"Scheduled parallel inference check.")
     } else {
-      if (already_showed_false.compareAndSet(None, Some(proofstep.name))) {
-        logger.fine(s"Cancelling verification of step '${proofstep.name}' as step ${already_showed_false.get().get} has already shown to be false")
-        return
-      }
       run()
     }
 
