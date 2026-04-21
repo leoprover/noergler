@@ -58,7 +58,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     }
 
   private var openFutures: Seq[Future[Any]] = Seq.empty
-  private val already_showed_false_verified = new java.util.concurrent.atomic.AtomicBoolean(false)
+  private val already_showed_false: java.util.concurrent.atomic.AtomicReference[Option[String]] = new java.util.concurrent.atomic.AtomicReference(None)
 
   final def apply(): Result = {
     //////////////////////////////////////////////////////////
@@ -114,7 +114,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
       //////////////////
       /** All the steps that have already been processed. Initially empty. */
       var previousProofSteps: Seq[TPTP.FOFAnnotated] = Vector.empty
-      for (proofstep <- proofSteps if !already_showed_false_verified.get()) {
+      for (proofstep <- proofSteps if !already_showed_false.get().isDefined) {
         var addedNewFuture = false
         var skippedStep = false
         logger.finer(s"Checking proof step '${proofstep.name}' with annotation '${proofstep.annotations.map(_._1.pretty).getOrElse("")}' ...")
@@ -182,7 +182,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
       }
 
 
-      if (StepParallelisazionModes.contains(configuration.parallelMode) && !already_showed_false_verified.get()) {
+      if (StepParallelisazionModes.contains(configuration.parallelMode)) {
         logger.info(s"Waiting for verification tasks to finish ...")
         val totalNumberOfFutures = openFutures.size
         blocking {
@@ -294,6 +294,10 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     }
 
     def run(): Unit = {
+      if (already_showed_false.get().isDefined) {
+        logger.fine(s"Cancelling verification of step '${proofstep.name}' as step ${already_showed_false.get().get} has already shown to be false")
+        return
+      }
       logger.finer(s"Check for correct entailment of inference rule '$rule'.")
       val individual_run_timeout = configuration.timeout / 2 // todo: rasonable?
       assert(provers.nonEmpty)
@@ -319,12 +323,20 @@ class ProofCheckController(problem: Option[TPTP.Problem],
       }
     }
     if (StepParallelisazionModes.contains(configuration.parallelMode)) {
+      if (already_showed_false.get().isDefined) {
+        logger.fine(s"Cancelling verification of step '${proofstep.name}' as step ${already_showed_false.get().get} has already shown to be false")
+        return
+      }
       val f = Future.apply(run()).andThen {
-        case Failure(_) => already_showed_false_verified.set(true)
+        case Failure(_) => already_showed_false.compareAndSet(None, Some(proofstep.name))
       }
       openFutures = openFutures :+ f
       logger.fine(s"Scheduled parallel inference check.")
     } else {
+      if (already_showed_false.compareAndSet(None, Some(proofstep.name))) {
+        logger.fine(s"Cancelling verification of step '${proofstep.name}' as step ${already_showed_false.get().get} has already shown to be false")
+        return
+      }
       run()
     }
 
