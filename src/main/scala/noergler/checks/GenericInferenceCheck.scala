@@ -26,9 +26,10 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
                                         )
 
   private def startProcess():RunningProver = {
-    logger.finer(s"${prover.name} check premises ${premises.map(_.pretty).mkString(", ")}.")
+    val uniquePremises = premises.distinct
+    logger.finer(s"${prover.name} check premises ${uniquePremises.map(_.pretty).mkString(", ")}.")
     logger.finer(s"${prover.name} check conjecture ${conjecture.pretty}.")
-    val problem = TPTP.Problem(Seq.empty, premises :+ conjecture, Map.empty)
+    val problem = TPTP.Problem(Seq.empty, uniquePremises :+ conjecture, Map.empty)
 
     val stdout: StringBuffer = new StringBuffer()
     val stderr: StringBuffer = new StringBuffer()
