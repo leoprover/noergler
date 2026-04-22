@@ -9,7 +9,7 @@ import java.nio.file.Path
 import java.util.concurrent.Executors
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.logging.Logger
-import scala.concurrent.duration.DurationInt
+import scala.concurrent.duration.{Deadline, DurationInt, FiniteDuration}
 import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutorService, Future, Promise}
 
 /**
@@ -49,6 +49,9 @@ class ProofCheckController(problem: Option[TPTP.Problem],
   private var proofFormulas: Map[String, TPTP.AnnotatedFormula] = Map.empty
 
   private var declarations: Seq[TPTP.AnnotatedFormula] = Seq.empty
+
+  val deadline: Deadline = (configuration.timeout).seconds.fromNow //timeout.fromNow
+  private val knownNotVerifiable: java.util.concurrent.atomic.AtomicReference[Option[Throwable]] = new java.util.concurrent.atomic.AtomicReference(None)
 
   private var usedSkolemSymbols: Set[String] = Set.empty
   private lazy val problemSymbols: Set[String] =
@@ -187,9 +190,14 @@ class ProofCheckController(problem: Option[TPTP.Problem],
         logger.info(s"All checks succeeded.")
       }
 
-      // report success
-      logger.info("Proof verified.")
-      Verified
+      knownNotVerifiable.get() match {
+        case Some(exception) =>
+          throw exception
+        case None =>
+          // report success
+          logger.info("Proof verified.")
+          Verified
+      }
     } catch {
       case e: VerificationFailedException =>
         FailedVerified(e.getMessage)
@@ -296,7 +304,17 @@ class ProofCheckController(problem: Option[TPTP.Problem],
         case Some(check) =>
           logger.fine(s"${usedProver.name} found entailment result for ${proofstep.name}: $check")
           if (!check) throw new VerificationFailedException(s"Proof step '${proofstep.name}' is not correct.")
-        case None => throw new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out.")
+        case None =>
+          val non_verifiable_exception = new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out.")
+          val remaining: FiniteDuration = deadline.timeLeft
+          if (remaining > 0.seconds) {
+            logger.info(s"Proof is not verifiable due to step '${proofstep.name}', searching for false steps in the remaining time...")
+            // if we still have time, we can continue searching proof for false steps
+            knownNotVerifiable.compareAndSet(None,Some(non_verifiable_exception))
+          } else {
+            // otherwise return non_verifiable
+            throw non_verifiable_exception
+          }
       }
     }
     if (StepParallelisazionModes.contains(configuration.parallelMode)) {
