@@ -10,8 +10,8 @@ object SkolemizationCheck {
 
   @inline private final def fail(msg: String): Either[String, String] = Left(msg)
 
-  final def apply(proofstep: TPTP.FOFAnnotated,
-                  proofFormulas: Map[String, TPTP.FOFAnnotated],
+  final def apply(proofstep: TPTP.AnnotatedFormula,
+                  proofFormulas: Map[String, TPTP.AnnotatedFormula],
                   alreadyUsedSkolemSymbols: Set[String],
                   relaxAnnotationFormat: Boolean): Either[String, String] = {
     // read of skolem inference details according to format
