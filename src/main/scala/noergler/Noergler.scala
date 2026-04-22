@@ -195,6 +195,12 @@ object Noergler {
          |                  files and their copies in the given proofs. In particular, Nörgler will
          |                  i) allow formulas with different roles
          |
+         |  --relax-specified-inference-checks
+         |                  Effects those steps derived by inferences with specified inference rules that trigger
+         |                  checks via comparison to internally derived results (currently negate3d_conjecture
+         |                  and Skolemization). If set, Nörgler will test if the step of the proof is derivable from the
+         |                  internally produced version, as a fallback if formulas are not identical.
+         |
          |  --allow-prover-axioms
          |                  If set, Nörgler will allow axioms with an annotation other than file, but print a warning
          |                  indicating that an axiom was introduced. Recommended for provers that introduce built-in
@@ -259,6 +265,8 @@ object Noergler {
             parameters = parameters :+ ProofCheckController.RelaxAnnotationFormat
           case "--relax-problem-check" =>
             parameters = parameters :+ ProofCheckController.RelaxProblemCheck
+          case "--relax-specified-inference-checks" =>
+            parameters = parameters :+ ProofCheckController.RelaxSpecifiedInferenceCheck
           case "--allow-prover-axioms" =>
             parameters = parameters :+ ProofCheckController.AllowProverAxioms
           case "--up-to-esa" =>

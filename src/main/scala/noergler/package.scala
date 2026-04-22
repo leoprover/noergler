@@ -20,6 +20,28 @@ package object noergler {
     }
   }
 
+  final def constructInferenceAnnotation(ruleName: String, parents: Seq[String]): TPTP.Annotations = {
+    val nameTerm = TPTP.GeneralTerm(Seq(TPTP.MetaFunctionData(ruleName, Seq.empty)), None)
+
+    val statusInner = TPTP.GeneralTerm(Seq(TPTP.MetaFunctionData("thm", Seq.empty)), None)
+    val statusMeta = TPTP.MetaFunctionData("status", Seq(statusInner))
+    val statusEntry = TPTP.GeneralTerm(Seq(statusMeta), None)
+    val statusTerm = TPTP.GeneralTerm(Seq.empty, Some(Seq(statusEntry)))
+
+    val parentTerms = parents.map { p =>
+      TPTP.GeneralTerm(Seq(TPTP.MetaFunctionData(p, Seq.empty)), None)
+    }
+    val parentsTerm = TPTP.GeneralTerm(Seq.empty, Some(parentTerms))
+
+    val inferenceData = TPTP.MetaFunctionData(
+      "inference",
+      Seq(nameTerm, statusTerm, parentsTerm)
+    )
+
+    val finalGt = TPTP.GeneralTerm(Seq(inferenceData), None)
+    Some((finalGt, None: Option[Seq[TPTP.GeneralTerm]]))
+  }
+
   final def fileRecord(annotation: TPTP.Annotations): Option[(String, String)] = {
     annotation match {
       case Some(annotation0) =>

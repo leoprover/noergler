@@ -9,7 +9,7 @@ final class ConjectureNegationCheck(proofstep: TPTP.FOFAnnotated,
                                     conjecture: TPTP.FOFAnnotated) {
   val logger: Logger = Logger.getLogger("Nörgler.checks.ConjectureNegationCheck")
 
-  def apply(): Boolean = {
+  def apply(): (Boolean, Option[TPTP.FOF.Formula]) = {
     conjecture.formula match {
       case FOF.Logical(conj) =>
         val manuallyNegatedConjecture: TPTP.FOF.Formula = TPTP.FOF.UnaryFormula(TPTP.FOF.~, conj)
@@ -26,15 +26,19 @@ final class ConjectureNegationCheck(proofstep: TPTP.FOFAnnotated,
             logger.fine(s"negated conjecture from proof NF: ${deFactoNF.pretty}")
             val correctNegation = manualNF == deFactoNF
             val correctRole = proofstep.role == "negated_conjecture"
-            correctNegation && correctRole
+
+            if (correctRole) {
+              if (correctNegation) (true, None) // formulas are identical -> will be accepted
+              else (false, Some(manuallyNegatedConjecture)) // potentially test for entailment
+            } else (false, None) // Negated conjecture has wrong role -> Reject without potential further tests
+          //correctNegation && correctRole
         }
     }
-
   }
 }
 object ConjectureNegationCheck {
   final def apply(proofstep: TPTP.FOFAnnotated,
-                  conjecture: Option[TPTP.FOFAnnotated]): Boolean = {
-    conjecture.fold(false)(new ConjectureNegationCheck(proofstep, _).apply())
+                  conjecture: Option[TPTP.FOFAnnotated]): (Boolean, Option[TPTP.FOF.Formula]) = {
+    conjecture.fold((false, None : Option[TPTP.FOF.Formula]))(new ConjectureNegationCheck(proofstep, _).apply())
   }
 }

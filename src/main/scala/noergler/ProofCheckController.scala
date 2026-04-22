@@ -1,6 +1,7 @@
 package noergler
 
 import leo.datastructures.TPTP
+import leo.datastructures.TPTP.FOF
 import noergler.ProofCheckController.{Configuration, Prover, ProverParallelisazionModes, StepParallelisazionModes, VerificationFailedException, VerificationTimedOutException, defaultRelaxAnnotationFormat}
 import noergler.checks.GenericInferenceCheck.constructInferenceProblem
 import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsAreNotConjecture, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
@@ -277,8 +278,16 @@ class ProofCheckController(problem: Option[TPTP.Problem],
       if (problem.isDefined) conjectureName.flatMap(problemFormulas.get)
       else conjectureName.flatMap(proofFormulas.get)
     val checkNegation = ConjectureNegationCheck.apply(proofstep, conjFormula)
-    logger.fine(s"Negation of conjecture correct (${proofstep.name}): $checkNegation")
-    if (!checkNegation) throw new VerificationFailedException("Negation of conjecture is incorrect.")
+    logger.fine(s"Negation of conjecture correct (${proofstep.name}): ${checkNegation._1}")
+    if (!checkNegation._1) {
+      if (configuration.relaxSpecifiedInferenceCheck && checkNegation._2.isDefined){
+        logger.info(s"Negation of the conjecture in the proof is not identical to internally derived negation. Fallback: Checking for entailment.")
+        runFallbackEntailmentCheck(proofstep,checkNegation._2.get,Left(noergler.THM))
+        //if (StepParallelisazionModes.contains(configuration.parallelMode)) addedNewFuture = true
+        // todo: signal that new future was added
+      }
+      else throw new VerificationFailedException("Negation of conjecture is incorrect. Consider rerunning with flag --relax-specified-inference-check .")
+    }
   }
 
   private def checkSkolemization(proofstep: TPTP.FOFAnnotated, relaxAnnotationFormat: Boolean): Unit = {
@@ -294,23 +303,25 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
   }
 
-  private def checkGenericInference(rule: String, proofstep: TPTP.FOFAnnotated, status: Either[THM.type , CTH.type], provers: Set[Prover]): Unit = {
+  private def checkGenericInference(rule: String, proofstep: TPTP.FOFAnnotated, status: Either[THM.type , CTH.type], provers: Set[Prover], custumProofFormulas: Option[Map[String, TPTP.FOFAnnotated]] = None): Unit = {
+
+    val usedProofFormulas = custumProofFormulas.getOrElse(proofFormulas)
 
     def runSingleProver(proverToUse: Prover, timeout: Int): (Option[Boolean], Prover) = {
       val inferenceConfiguration = GenericInferenceCheck.SerialInferenceConfig(proverToUse, timeout, configuration.relaxAnnotationFormat)
-      val res = GenericInferenceCheck.apply_serial(proofstep, proofFormulas, status, inferenceConfiguration)(proverEc)
+      val res = GenericInferenceCheck.apply_serial(proofstep, usedProofFormulas, status, inferenceConfiguration)(proverEc)
       (res, proverToUse)
     }
 
     def runParallelProvers(provers: Set[Prover], timeout: Int): (Option[Boolean], Prover) = {
       val inferenceConfiguration = GenericInferenceCheck.ParallelInferenceConfig(provers, timeout, configuration.relaxAnnotationFormat)
-      val res = GenericInferenceCheck.apply_parallel(proofstep, proofFormulas, status, inferenceConfiguration)(proverEc)
+      val res = GenericInferenceCheck.apply_parallel(proofstep, usedProofFormulas, status, inferenceConfiguration)(proverEc)
       res
     }
 
     def run(): Unit = {
       logger.finer(s"Check for correct entailment of inference rule '$rule'.")
-      val individual_run_timeout = configuration.timeout / 2 // todo: rasonable?
+      val individual_run_timeout = configuration.timeout // / 2 // todo: rasonable?
       assert(provers.nonEmpty)
       val (checkEntailment, usedProver): (Option[Boolean], Prover) = if (provers.size == 1){
         val proverToUse = provers.head
@@ -341,6 +352,23 @@ class ProofCheckController(problem: Option[TPTP.Problem],
       run()
     }
 
+  }
+
+  private def runFallbackEntailmentCheck(toBeProved: TPTP.FOFAnnotated, premise: TPTP.FOF.Formula, status: Either[THM.type, CTH.type]): Unit = {
+
+    // construct an annotated formula for the premise
+    val namePremise = toBeProved.name + "_manually_created"
+    val annotatedPremise: TPTP.FOFAnnotated = TPTP.FOFAnnotated(namePremise, "axiom", FOF.Logical(premise), None)
+
+    // construct a map pointing to the annotated premise formula
+    val custumProofFormulas: Map[String, TPTP.FOFAnnotated] = Map(namePremise -> annotatedPremise)
+
+    // construct a version of the formula to be Proved that has (only) the given premise as a parent
+    val annotations: TPTP.Annotations = constructInferenceAnnotation("fallback_entailment_check",Seq(namePremise))
+    val annotatedToBeProved: TPTP.FOFAnnotated = TPTP.FOFAnnotated("c", "conjecture", toBeProved.formula, annotations)
+
+    // run generic inference check
+    checkGenericInference("Fallback_entailment_check", annotatedToBeProved, status, configuration.provers, Some(custumProofFormulas))
   }
 
   private def checkFormulaFromFile(proofstep: TPTP.FOFAnnotated, relaxProblemCheck: Boolean): Unit = {
@@ -382,6 +410,7 @@ object ProofCheckController {
                                  ignoreFileAnnotations: Boolean,
                                  relaxAnnotationFormat: Boolean,
                                  relaxProblemCheck: Boolean,
+                                 relaxSpecifiedInferenceCheck: Boolean,
                                  allowProverAxioms: Boolean,
                                  upToESA: Boolean)
 
@@ -397,6 +426,7 @@ object ProofCheckController {
   private final val defaultIgnoreFileAnnotations: Boolean = false
   private final val defaultRelaxAnnotationFormat: Boolean = false
   private final val defaultRelaxProblemCheck: Boolean = false
+  private final val defaultRelaxSpecifiedInferenceCheck: Boolean = false
   private final val defaultAllowProverAxioms: Boolean = false
   private final val defaultUpToESA: Boolean = false
   private final val defaultProvers: Set[String] = Set("eprover")
@@ -412,6 +442,8 @@ object ProofCheckController {
   final case object RelaxAnnotationFormat extends Parameter
 
   final case object RelaxProblemCheck extends Parameter
+
+  final case object RelaxSpecifiedInferenceCheck extends Parameter
 
   final case object AllowProverAxioms extends Parameter
 
@@ -434,6 +466,7 @@ object ProofCheckController {
     var ignoreFileAnnotations = defaultIgnoreFileAnnotations
     var relaxAnnotationFormat = defaultRelaxAnnotationFormat
     var relaxProblemCheck = defaultRelaxProblemCheck
+    var relaxSpecifiedInferenceCheck = defaultRelaxSpecifiedInferenceCheck
     var allowProverAxioms = defaultAllowProverAxioms
     var upToESA = defaultUpToESA
     var eproverPath: Option[Path] = defaulteproverPath.map(p => Path.of(p))
@@ -452,6 +485,7 @@ object ProofCheckController {
         case IgnoreFileAnnotations => ignoreFileAnnotations = true
         case RelaxAnnotationFormat => relaxAnnotationFormat = true
         case RelaxProblemCheck => relaxProblemCheck = true
+        case RelaxSpecifiedInferenceCheck => relaxSpecifiedInferenceCheck = true
         case AllowProverAxioms => allowProverAxioms = true
         case UpToESA => upToESA = true
         case EproverPath(p) => eproverPath = Some(p)
@@ -475,7 +509,7 @@ object ProofCheckController {
       throw new IllegalArgumentException(s"Selected parallelisazion mode $parallel requires multiple provers, but only ${provers.head.name} was chosen. Either provide multiple provers explicitly, or set '--prover all'")
     }
 
-    val config = Configuration(problemPath, proofPath, timeout, parallel, provers, ignoreFileAnnotations, relaxAnnotationFormat, relaxProblemCheck, allowProverAxioms, upToESA)
+    val config = Configuration(problemPath, proofPath, timeout, parallel, provers, ignoreFileAnnotations, relaxAnnotationFormat, relaxProblemCheck, relaxSpecifiedInferenceCheck, allowProverAxioms, upToESA)
     val controller = new ProofCheckController(problem: Option[TPTP.Problem], proof: TPTP.Problem, config)
     controller.apply()
   }
