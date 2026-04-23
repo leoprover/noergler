@@ -5,7 +5,7 @@ import leo.datastructures.TPTP
 import scala.collection.mutable
 
 object InferenceParentsAcyclicityCheck {
-  final def apply(proofSteps: Seq[TPTP.FOFAnnotated], proofFormulas: Map[String, TPTP.FOFAnnotated], relaxAnnotationFormat:Boolean): Boolean = {
+  final def apply(proofSteps: Seq[TPTP.AnnotatedFormula], proofFormulas: Map[String, TPTP.AnnotatedFormula], relaxAnnotationFormat:Boolean): Boolean = {
     if (proofSteps.isEmpty) true
     else {
       val lastStep = proofSteps.last
@@ -13,8 +13,8 @@ object InferenceParentsAcyclicityCheck {
       }
   }
 
-  private final def dfs(proofFormulas: Map[String, TPTP.FOFAnnotated],
-                        proofStep: TPTP.FOFAnnotated,
+  private final def dfs(proofFormulas: Map[String, TPTP.AnnotatedFormula],
+                        proofStep: TPTP.AnnotatedFormula,
                         visiting: scala.collection.mutable.Set[String],
                         done: scala.collection.mutable.Set[String],
                         relaxAnnotationFormat: Boolean): Boolean = {

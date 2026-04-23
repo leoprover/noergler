@@ -40,14 +40,16 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     )
 
   /** Map of problem file TPTP annotated formula name (hopefully unique) -> the formula */
-  private var problemFormulas: Map[String, TPTP.FOFAnnotated] = Map.empty
+  private var problemFormulas: Map[String, TPTP.AnnotatedFormula] = Map.empty
   /** Name of the conjecture from the problem file, if known  */
-  private var conjectureName: Option[String] = None
+  private var problemConjectureName: Option[String] = None
 
   /** The sequence of proof steps as they appear in the proof. */
-  private var proofSteps: Seq[TPTP.FOFAnnotated] = Vector.empty
+  private var proofSteps: Seq[TPTP.AnnotatedFormula] = Vector.from(proof.formulas)
   /** Map of proof file TPTP annotated formula name (hopefully unique) -> the formula */
-  private var proofFormulas: Map[String, TPTP.FOFAnnotated] = Map.empty
+  private var proofFormulas: Map[String, TPTP.AnnotatedFormula] = Map.empty
+
+  private var declarations: Seq[TPTP.AnnotatedFormula] = Seq.empty
 
   private var usedSkolemSymbols: Set[String] = Set.empty
   private lazy val problemSymbols: Set[String] =
@@ -67,30 +69,21 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     // preliminary steps
     //////////////////////////////////////////////////////////
     logger.config(s"Used configuration: ${configuration.toString}")
-    if (problem.isDefined){
+    if (problem.isDefined) {
       logger.fine("Processing problem file ...")
       // process problem file, read to map, initialize conjecture name
       for (af <- problem.get.formulas) {
-        af match {
-          case f@TPTP.FOFAnnotated(name, "conjecture", _, _) =>
-            problemFormulas += (name -> f)
-            conjectureName = Some(name)
-          case f@TPTP.FOFAnnotated(name, _, _, _) =>
-            problemFormulas += (name -> f)
-          case _ => throw new IllegalArgumentException("Only FOF input allowed at the moment.")
+        if (af.role == "type") declarations = declarations :+ af
+        else {
+          problemFormulas += (af.name -> af)
+          if (af.role == "conjecture") problemConjectureName = Some(af.name)
         }
       }
-      logger.info(s"Conjecture in problem found: ${conjectureName.toString}, ${problemFormulas.size - 1} axioms.")
+      logger.info(s"Conjecture in problem found: ${problemConjectureName.toString}, ${problemFormulas.size - 1} axioms, ${declarations.size} type declarations.")
     }
-
     // process proof file, read to map, initialize conjecture name
     for (af <- proof.formulas) {
-      af match {
-        case f@TPTP.FOFAnnotated(name, _, _, _) =>
-          proofFormulas += (name -> f)
-          proofSteps = proofSteps :+ f
-        case _ => throw new IllegalArgumentException("Only FOF input allowed at the moment.")
-      }
+      proofFormulas += (af.name -> af)
     }
 
     //////////////////////////////////////////////////////////
@@ -115,7 +108,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
       // iteration over every proof line, check each line depending on its character:
       //////////////////
       /** All the steps that have already been processed. Initially empty. */
-      var previousProofSteps: Seq[TPTP.FOFAnnotated] = Vector.empty
+      var previousProofSteps: Seq[TPTP.AnnotatedFormula] = Vector.empty
       for (proofstep <- proofSteps) {
         var addedNewFuture = false
         var skippedStep = false
@@ -184,6 +177,9 @@ class ProofCheckController(problem: Option[TPTP.Problem],
               }
               else throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown record '$record'.")
           }
+          case None if proofstep.role == "type" =>
+            if (!problem.isDefined) declarations = declarations :+ proofstep
+          logger.fine(s"found type annotation ${proofstep.pretty}")
           case None => // no annotation is an error for all steps.
             logger.severe(s"Proof step '${proofstep.name}' has no or malformed annotation.")
             throw new VerificationFailedException(s"Proof step '${proofstep.name}' has no or malformed annotation.")
@@ -241,42 +237,43 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     if (!inferenceParentsAreAcyclic) throw new VerificationFailedException("Graph of inference parents from $false contains a cycle.")
   }
 
-  private def checkInferenceParentsExist(proofstep: TPTP.FOFAnnotated, previousProofSteps: Seq[TPTP.FOFAnnotated]): Unit = {
+  private def checkInferenceParentsExist(proofstep: TPTP.AnnotatedFormula, previousProofSteps: Seq[TPTP.AnnotatedFormula]): Unit = {
     logger.finer("Check for existence of inference parents (if any).")
     val inferenceParentsCheck = InferenceParentsExistCheck.apply(proofstep, previousProofSteps, configuration.relaxAnnotationFormat)
     logger.fine(s"Inference parents exist (${proofstep.name}): $inferenceParentsCheck")
     if (!inferenceParentsCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' has unknown inference parents.")
   }
 
-  private def checkInferenceParentsAreNotConjecture(proofstep: TPTP.FOFAnnotated): Unit = {
+  private def checkInferenceParentsAreNotConjecture(proofstep: TPTP.AnnotatedFormula): Unit = {
     logger.finer("Check that the inference parents (if any) are not the conjecture.")
-    val inferenceParentsNotConjCheck = InferenceParentsAreNotConjecture.apply(proofstep, conjectureName, configuration.relaxAnnotationFormat)
+    val inferenceParentsNotConjCheck = InferenceParentsAreNotConjecture.apply(proofstep, problemConjectureName, configuration.relaxAnnotationFormat)
     logger.fine(s"Inference parents are not the conjecture (${proofstep.name}): $inferenceParentsNotConjCheck")
     if (!inferenceParentsNotConjCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' has the conjecture as a parent.")
   }
 
-  private def checkStatusIsNotCth(proofstep: TPTP.FOFAnnotated, inferenceStatus0: Option[InferenceStatus]): Unit = {
+  private def checkStatusIsNotCth(proofstep: TPTP.AnnotatedFormula, inferenceStatus0: Option[InferenceStatus]): Unit = {
     logger.finer("Check that the status of step (that is not the negation of the conjecture) is not cth.")
     val statusNotCthCheck = !inferenceStatus0.contains(CTH)
     logger.fine(s"Status of step (that is not the negation of the conjecture) is not cth (${proofstep.name}): $statusNotCthCheck")
     if (!statusNotCthCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' is not the negation of the conjecture but has status cth.")
   }
 
-  private def checkRole(proofstep: TPTP.FOFAnnotated): Unit = {
+
+  private def checkRole(proofstep: TPTP.AnnotatedFormula): Unit = {
     if (!problem.isDefined && proofstep.role == "conjecture") {
       logger.finer(s"Found conjecture in proof: ${proofstep.name}")
-      conjectureName = Some(proofstep.name)
+      problemConjectureName = Some(proofstep.name)
     }
-    val allowedRoles = Seq("axiom", "conjecture", "negated_conjecture", "plain")
+    val allowedRoles = Seq("axiom", "conjecture", "negated_conjecture", "plain", "type")
     val roleCheck = allowedRoles.contains(proofstep.role)
     if (!roleCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' has unknown role.")
   }
 
-  private def checkNegatedInference(proofstep: TPTP.FOFAnnotated): Unit = {
+  private def checkNegatedInference(proofstep: TPTP.AnnotatedFormula): Unit = {
     logger.finer("Check for correct negation of conjecture")
     val conjFormula =
-      if (problem.isDefined) conjectureName.flatMap(problemFormulas.get)
-      else conjectureName.flatMap(proofFormulas.get)
+      if (problem.isDefined) problemConjectureName.flatMap(problemFormulas.get)
+      else problemConjectureName.flatMap(proofFormulas.get)
     val checkNegation = ConjectureNegationCheck.apply(proofstep, conjFormula)
     logger.fine(s"Negation of conjecture correct (${proofstep.name}): ${checkNegation._1}")
     if (!checkNegation._1) {
@@ -290,7 +287,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     }
   }
 
-  private def checkSkolemization(proofstep: TPTP.FOFAnnotated, relaxAnnotationFormat: Boolean): Unit = {
+  private def checkSkolemization(proofstep: TPTP.AnnotatedFormula, relaxAnnotationFormat: Boolean): Unit = {
     logger.finer("Check for correct skolemization")
     val checkSkolemize = SkolemizationCheck.apply(proofstep, proofFormulas, usedSkolemSymbols ++ problemSymbols, relaxAnnotationFormat)
     checkSkolemize match {
@@ -303,18 +300,19 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
   }
 
-  private def checkGenericInference(rule: String, proofstep: TPTP.FOFAnnotated, status: Either[THM.type , CTH.type], provers: Set[Prover], custumProofFormulas: Option[Map[String, TPTP.FOFAnnotated]] = None): Unit = {
+
+  private def checkGenericInference(rule: String, proofstep: TPTP.AnnotatedFormula, status: Either[THM.type , CTH.type], provers: Set[Prover], custumProofFormulas:  Option[Map[String, TPTP.AnnotatedFormula]] = None): Unit = {
 
     val usedProofFormulas = custumProofFormulas.getOrElse(proofFormulas)
 
     def runSingleProver(proverToUse: Prover, timeout: Int): (Option[Boolean], Prover) = {
-      val inferenceConfiguration = GenericInferenceCheck.SerialInferenceConfig(proverToUse, timeout, configuration.relaxAnnotationFormat)
+      val inferenceConfiguration = GenericInferenceCheck.SerialInferenceConfig(proverToUse, timeout, configuration.relaxAnnotationFormat, declarations)
       val res = GenericInferenceCheck.apply_serial(proofstep, usedProofFormulas, status, inferenceConfiguration)(proverEc)
       (res, proverToUse)
     }
 
     def runParallelProvers(provers: Set[Prover], timeout: Int): (Option[Boolean], Prover) = {
-      val inferenceConfiguration = GenericInferenceCheck.ParallelInferenceConfig(provers, timeout, configuration.relaxAnnotationFormat)
+      val inferenceConfiguration = GenericInferenceCheck.ParallelInferenceConfig(provers, timeout, configuration.relaxAnnotationFormat, declarations)
       val res = GenericInferenceCheck.apply_parallel(proofstep, usedProofFormulas, status, inferenceConfiguration)(proverEc)
       res
     }
@@ -354,7 +352,8 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
   }
 
-  private def runFallbackEntailmentCheck(toBeProved: TPTP.FOFAnnotated, premise: TPTP.FOF.Formula, status: Either[THM.type, CTH.type]): Unit = {
+
+  private def runFallbackEntailmentCheck(toBeProved: TPTP.AnnotatedFormula, premise: TPTP.FOF.Formula, status: Either[THM.type, CTH.type]): Unit = {
 
     // construct an annotated formula for the premise
     val namePremise = toBeProved.name + "_manually_created"
@@ -365,13 +364,17 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
     // construct a version of the formula to be Proved that has (only) the given premise as a parent
     val annotations: TPTP.Annotations = constructInferenceAnnotation("fallback_entailment_check",Seq(namePremise))
-    val annotatedToBeProved: TPTP.FOFAnnotated = TPTP.FOFAnnotated("c", "conjecture", toBeProved.formula, annotations)
+    val annotatedToBeProved: TPTP.AnnotatedFormula = toBeProved.formula match {
+      case f0@FOF.Logical(_) => TPTP.FOFAnnotated("c", "conjecture", f0, annotations)
+      case _ => ??? //todo: other logics
+    }
+
 
     // run generic inference check
     checkGenericInference("Fallback_entailment_check", annotatedToBeProved, status, configuration.provers, Some(custumProofFormulas))
   }
 
-  private def checkFormulaFromFile(proofstep: TPTP.FOFAnnotated, relaxProblemCheck: Boolean): Unit = {
+  private def checkFormulaFromFile(proofstep: TPTP.AnnotatedFormula, relaxProblemCheck: Boolean): Unit = {
     logger.finer("Check for correct premise usage from problem file.")
     assert(configuration.problemPath.isDefined)
     val problemFileName = configuration.problemPath.get.getFileName.toString

@@ -5,12 +5,13 @@ import leo.datastructures.TPTP.FOF
 
 import java.util.logging.Logger
 
-final class ConjectureNegationCheck(proofstep: TPTP.FOFAnnotated,
-                                    conjecture: TPTP.FOFAnnotated) {
+final class ConjectureNegationCheck(proofstep: TPTP.AnnotatedFormula,
+                                    conjecture: TPTP.AnnotatedFormula) {
   val logger: Logger = Logger.getLogger("Nörgler.checks.ConjectureNegationCheck")
 
   def apply(): (Boolean, Option[TPTP.FOF.Formula]) = {
     conjecture.formula match {
+      // todo: add other logics as well
       case FOF.Logical(conj) =>
         val manuallyNegatedConjecture: TPTP.FOF.Formula = TPTP.FOF.UnaryFormula(TPTP.FOF.~, conj)
         proofstep.formula match {
@@ -37,8 +38,13 @@ final class ConjectureNegationCheck(proofstep: TPTP.FOFAnnotated,
   }
 }
 object ConjectureNegationCheck {
-  final def apply(proofstep: TPTP.FOFAnnotated,
-                  conjecture: Option[TPTP.FOFAnnotated]): (Boolean, Option[TPTP.FOF.Formula]) = {
-    conjecture.fold((false, None : Option[TPTP.FOF.Formula]))(new ConjectureNegationCheck(proofstep, _).apply())
+//  final def apply(proofstep: TPTP.FOFAnnotated,
+//                  conjecture: Option[TPTP.FOFAnnotated]): (Boolean, Option[TPTP.FOF.Formula]) = {
+//    conjecture.fold((false, None : Option[TPTP.FOF.Formula]))(new ConjectureNegationCheck(proofstep, _).apply())
+
+  final def apply(proofstep: TPTP.AnnotatedFormula,
+                  conjecture: Option[TPTP.AnnotatedFormula]): (Boolean, Option[TPTP.FOF.Formula]) = {
+    conjecture.fold(false, None : Option[TPTP.FOF.Formula])(new ConjectureNegationCheck(proofstep, _).apply())
+
   }
 }

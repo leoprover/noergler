@@ -131,9 +131,9 @@ package object noergler {
     }
   }
 
-  @inline final def proofStepParentsAsFormulas(proofstep: TPTP.FOFAnnotated,
-                                               proofFormulas: Map[String, TPTP.FOFAnnotated],
-                                               relaxAnnotationFormat: Boolean): Option[Seq[TPTP.FOFAnnotated]] = {
+  @inline final def proofStepParentsAsFormulas(proofstep: TPTP.AnnotatedFormula,
+                                               proofFormulas: Map[String, TPTP.AnnotatedFormula],
+                                               relaxAnnotationFormat: Boolean): Option[Seq[TPTP.AnnotatedFormula]] = {
     val parents = proofStepParents(proofstep,relaxAnnotationFormat)
     parents.flatMap { parents =>
       val asFormulas = parents.map(proofFormulas.get)
@@ -142,7 +142,7 @@ package object noergler {
     }
   }
 
-  @inline final def proofStepParents(proofStep: TPTP.FOFAnnotated, relaxAnnotationFormat: Boolean): Option[Seq[String]] = {
+  @inline final def proofStepParents(proofStep: TPTP.AnnotatedFormula, relaxAnnotationFormat: Boolean): Option[Seq[String]] = {
     proofStepParents(proofStep.annotations, relaxAnnotationFormat)
   }
 
