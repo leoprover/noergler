@@ -4,7 +4,7 @@ import leo.datastructures.TPTP
 import noergler.stripQuotes
 
 object InferenceParentsAreNotConjecture {
-  final def apply(proofstep: TPTP.FOFAnnotated,
+  final def apply(proofstep: TPTP.AnnotatedFormula,
                   conjectureName: Option[String],
                   relaxAnnotationFormat: Boolean): Boolean = {
     if (conjectureName.isDefined){
