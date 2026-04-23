@@ -482,11 +482,17 @@ object ProofCheckController {
   sealed trait ProofSystem {
     def name: String
     def path: Path
+
+    def kind: String
   }
 
-  sealed trait Prover extends ProofSystem
+  sealed trait Prover extends ProofSystem{
+    val kind = "prover"
+  }
 
-  sealed trait ModelFinder extends ProofSystem
+  sealed trait ModelFinder extends ProofSystem{
+    val kind = "modelFinder"
+  }
 
 
 

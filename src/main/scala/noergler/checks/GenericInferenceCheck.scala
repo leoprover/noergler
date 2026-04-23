@@ -113,7 +113,7 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
     // TODO: Ugly quick-shot implementation, just for testing. needs to be refactored.
     scala.sys.process.Process.apply(
       mace4Path.toString,
-      Seq("-tptp","-t", modelFinderTimeout.toString, "-f")).#<(new ByteArrayInputStream(problem.pretty.getBytes))
+      Seq("-t", modelFinderTimeout.toString)).#<(new ByteArrayInputStream(problem.pretty.getBytes))
   }
 
 }
@@ -194,6 +194,22 @@ object GenericInferenceCheck {
     }
   }
 
+  type RunningEntry = (RunningProcess, Future[Option[Boolean]])
+
+  def destroyRunningProcesses( running: TrieMap[ProofSystem, RunningEntry], keep: Option[ProofSystem] = None): Unit = {
+    running.foreach {
+      case (system, (proc, _)) if keep.forall(_ != system) =>
+        logger.fine(s"Destroying ${system.kind} ${system.name}")
+        try proc.destroy()
+        catch {
+          case ex: Throwable =>
+            logger.fine(s"Failed to destroy ${system.name}: ${ex.getMessage}")
+        }
+
+      case _ => ()
+    }
+  }
+
   final def apply_parallel(proofstep: TPTP.AnnotatedFormula,
                          proofFormulas: Map[String, TPTP.AnnotatedFormula],
                          status: Either[THM.type, CTH.type],
@@ -246,17 +262,8 @@ object GenericInferenceCheck {
           val result = Await.result(winner.future, (config.timeout + 5).seconds)
 
           // kill all other processes
-          running.foreach {
-            case (system, (proc, _)) if system != result._2 =>
-              logger.info(s"Destroying ${system.name} for step ${proofstep.name}")
-              try proc.destroy()
-              catch {
-                case ex: Throwable =>
-                  logger.fine(s"Failed to destroy ${system.name}: ${ex.getMessage}")
-              }
-
-            case _ => ()
-          }
+          logger.info(s"Destroying external systems for step ${proofstep.name}...")
+          destroyRunningProcesses(running,Some(result._2))
 
           result
         } catch {
