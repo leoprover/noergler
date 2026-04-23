@@ -190,7 +190,6 @@ class ProofCheckController(problem: Option[TPTP.Problem],
         previousProofSteps = previousProofSteps :+ proofstep
       }
 
-
       if (StepParallelisazionModes.contains(configuration.parallelMode)) {
 //        logger.info(s"Waiting for verification tasks to finish ...")
 //        val totalNumberOfFutures = openFutures.size
@@ -433,6 +432,14 @@ object ProofCheckController {
   case class EProver(path: Path) extends Prover {val name = "eprover"}
   case class Vampire(path: Path) extends Prover {val name = "vampire"}
 
+  sealed trait ModelFinder {
+    def path: Path
+
+    def name: String
+  }
+
+  case class VampireMF(path: Path) extends  ModelFinder {val name = "vampire"}
+
   // Parallelization Modes
   sealed trait ParallelMode
 
@@ -441,6 +448,16 @@ object ProofCheckController {
   case object ParallelProvers extends ParallelMode
   case object Hybrid extends ParallelMode
 
+  sealed trait ParallelCountermodelMode
+
+  case object Fallback extends ParallelCountermodelMode
+
+  case class Offset(t: Int) extends ParallelCountermodelMode
+
+  case object Always extends ParallelCountermodelMode
+
+
+
   val StepParallelisazionModes = Seq(ParallelSteps, Hybrid)
   val ProverParallelisazionModes = Seq(ParallelProvers, Hybrid)
 
@@ -448,7 +465,9 @@ object ProofCheckController {
                                  proofPath: Path,
                                  timeout: Int,
                                  parallelMode: ParallelMode,
+                                 parallelCountermodelMode: ParallelCountermodelMode,
                                  provers: Set[Prover],
+                                 modelFinders: Set[ModelFinder],
                                  ignoreFileAnnotations: Boolean,
                                  relaxAnnotationFormat: Boolean,
                                  relaxProblemCheck: Boolean,
@@ -465,6 +484,7 @@ object ProofCheckController {
 
   private final val defaultTimeout: Int = 60
   private final val defaultParallelMode: ParallelMode = Sequential
+  private final val defaultParallelCountermodelMode: ParallelCountermodelMode = Fallback
   private final val defaultIgnoreFileAnnotations: Boolean = false
   private final val defaultRelaxAnnotationFormat: Boolean = false
   private final val defaultRelaxProblemCheck: Boolean = false
@@ -472,6 +492,7 @@ object ProofCheckController {
   private final val defaultAllowProverAxioms: Boolean = false
   private final val defaultUpToESA: Boolean = false
   private final val defaultProvers: Set[String] = Set("eprover")
+  private final val defaultModelFinder: Set[String] = Set("vampire")
   // a bit hacky:
   private final val defaulteproverPath: Option[String] = scala.sys.process.Process("which eprover").lazyLines_!.headOption
   private final val defaultvampirePath: Option[String] = scala.sys.process.Process("which vampire").lazyLines_!.headOption
@@ -479,6 +500,8 @@ object ProofCheckController {
   sealed abstract class Parameter
   final case class Timeout(timeout: Int) extends Parameter
   final case class SetParallelMode(mode: String) extends Parameter
+
+  final case class SetParallelCountermodelMode(mode: String) extends Parameter
 
   final case object IgnoreFileAnnotations extends Parameter
   final case object RelaxAnnotationFormat extends Parameter
@@ -492,6 +515,8 @@ object ProofCheckController {
   final case object UpToESA extends Parameter
 
   final case class ProverSelection(provers: Seq[String]) extends Parameter
+
+  final case class ModelFinderSelection(modelFinders: Seq[String]) extends Parameter
   final case class EproverPath(path: Path) extends Parameter
 
   final case class VampirePath(path: Path) extends Parameter
@@ -504,7 +529,9 @@ object ProofCheckController {
                   parameters: Seq[ProofCheckController.Parameter]): Result = {
     var timeout = defaultTimeout
     var parallel = defaultParallelMode
+    var parallelCountermodel = defaultParallelCountermodelMode
     var selectedProvers = defaultProvers
+    var selectedModelFinders = defaultModelFinder
     var ignoreFileAnnotations = defaultIgnoreFileAnnotations
     var relaxAnnotationFormat = defaultRelaxAnnotationFormat
     var relaxProblemCheck = defaultRelaxProblemCheck
@@ -514,6 +541,8 @@ object ProofCheckController {
     var eproverPath: Option[Path] = defaulteproverPath.map(p => Path.of(p))
     var vampirePath: Option[Path] = defaultvampirePath.map(p => Path.of(p))
 
+    var useModelFinders: Boolean = false
+
     for (parameter <- parameters) {
       parameter match {
         case Timeout(to) => timeout = to
@@ -521,9 +550,16 @@ object ProofCheckController {
           case "steps" => ParallelSteps
           case "provers" => ParallelProvers
           case "hybrid" => Hybrid
-          case _ => Sequential
+          case _ => Sequential //todo: print message
+        }
+        case SetParallelCountermodelMode(mode0) => parallelCountermodel = mode0 match {
+          case "none" => Fallback
+          case "offset" => useModelFinders = true; Offset(1) //todo: make choosing time possibly
+          case "always" => useModelFinders = true; Always
+          case _ => Fallback //todo: print message
         }
         case ProverSelection(names) => selectedProvers = names.toSet
+        case ModelFinderSelection(names) => useModelFinders = true; selectedModelFinders = names.toSet
         case IgnoreFileAnnotations => ignoreFileAnnotations = true
         case RelaxAnnotationFormat => relaxAnnotationFormat = true
         case RelaxProblemCheck => relaxProblemCheck = true
@@ -545,13 +581,23 @@ object ProofCheckController {
       case p => throw new IllegalArgumentException(s"Unknown prover '$p' requested")
     }
 
+    val modelFinders: Set[ModelFinder] =
+      if (useModelFinders) {
+        selectedModelFinders.map {
+          case "vampire" =>
+            if (!vampirePath.isDefined) throw new IllegalArgumentException("vampire path unknown")
+            VampireMF(vampirePath.get)
+          case p => throw new IllegalArgumentException(s"Unknown model-finder '$p' requested")
+        }
+      } else Set[ModelFinder]()
+
     assert(provers.size > 0)
     // check if parallelisazion mode requires mutliple provers and if multiple provers were chosen
     if (ProverParallelisazionModes.contains(parallel) && provers.size == 1){
       throw new IllegalArgumentException(s"Selected parallelisazion mode $parallel requires multiple provers, but only ${provers.head.name} was chosen. Either provide multiple provers explicitly, or set '--prover all'")
     }
 
-    val config = Configuration(problemPath, proofPath, timeout, parallel, provers, ignoreFileAnnotations, relaxAnnotationFormat, relaxProblemCheck, relaxSpecifiedInferenceCheck, allowProverAxioms, upToESA)
+    val config = Configuration(problemPath, proofPath, timeout, parallel, parallelCountermodel, provers, modelFinders, ignoreFileAnnotations, relaxAnnotationFormat, relaxProblemCheck, relaxSpecifiedInferenceCheck, allowProverAxioms, upToESA)
     val controller = new ProofCheckController(problem: Option[TPTP.Problem], proof: TPTP.Problem, config)
     controller.apply()
   }

@@ -166,12 +166,26 @@ object Noergler {
          |  --vampire-path path
          |                  Path to vampire, if not findable by `which vampire`.
          |
+         |  --model-finder  Select the model finder to be used. If not parallelization
+         |                  mode is set, any model finder chosen here will onl be run
+         |                  if the given prover(s) are not successful in finding a solution.
+         |                  Options:'vampire'
+         |
          |  --parallel-mode mode Set the parallelization strategy.
          |                  Options:
          |                     - none: Sequential execution (default).
          |                     - steps: Verify different proof steps in parallel.
          |                     - provers: Run multiple provers on the same step in parallel.
          |                     - hybrid: Parallelize both steps and provers.
+         |
+         |  --parallel-countermodel-mode
+         |                  Options:
+         |                     - none: Countermodel finder used only used as a fallback after
+         |                       all chosen provers failed to find a solution
+         |                     - always: Always also run counter model finder in parallel to provers
+         |                       when running generic inference checks.
+         |                     - offset: start countermodel-finder in parallel after running
+         |                       provers without success for 1 second.
          |
          |  --verbosity n   Set the verbosity of logging to std.err. If n = 0, logging is disabled;
          |                  n = 6 is maximal verbosity (very fine-grained logging output).
@@ -208,6 +222,8 @@ object Noergler {
          |""".stripMargin)
   }
 
+  //todo: other potential model finders: princess, metis, fest, alloy, Nitpick, kodkod
+
   private[this] final def parseArgs(args: Seq[String]): Unit = {
     var args0 = args
     try {
@@ -236,6 +252,16 @@ object Noergler {
             val path = args0.tail.head
             parameters = parameters :+ ProofCheckController.EproverPath(Path.of(path))
             args0 = args0.tail
+          case "--model-finder" =>
+            val input = args0.tail.head
+            // Logic: Handle 'all', then split by comma and trim whitespace
+            val selectedModelFinders = if (input == "all") {
+              List("vampire")
+            } else {
+              input.split(",").map(_.trim).toList
+            }
+            parameters = parameters :+ ProofCheckController.ModelFinderSelection(selectedModelFinders)
+            args0 = args0.tail
           case "--vampire-path" =>
             val path = args0.tail.head
             parameters = parameters :+ ProofCheckController.VampirePath(Path.of(path))
@@ -247,6 +273,14 @@ object Noergler {
               throw new IllegalArgumentException(s"Invalid parallel-mode '$mode'. Must be one of: ${validModes.mkString(", ")}")
             }
             parameters = parameters :+ ProofCheckController.SetParallelMode(mode)
+            args0 = args0.tail
+          case "--parallel-countermodel-mode" =>
+            val mode = args0.tail.head
+            val validModes = Set("none", "always", "offest")
+            if (!validModes.contains(mode)) {
+              throw new IllegalArgumentException(s"Invalid parallel-countermodel-mode '$mode'. Must be one of: ${validModes.mkString(", ")}")
+            }
+            parameters = parameters :+ ProofCheckController.SetParallelCountermodelMode(mode)
             args0 = args0.tail
           case "--verbosity" =>
             val arg = args0.tail.head.toInt
