@@ -547,7 +547,7 @@ object ProofCheckController {
 
   private final val defaultTimeout: Int = 60
   private final val defaultParallelMode: ParallelMode = Sequential
-  private final val defaultParallelCountermodelMode: ParallelCountermodelMode = Fallback
+  private final val defaultParallelCountermodelMode: ParallelCountermodelMode = NoModelFinder
   private final val defaultIgnoreFileAnnotations: Boolean = false
   private final val defaultRelaxAnnotationFormat: Boolean = false
   private final val defaultRelaxProblemCheck: Boolean = false
