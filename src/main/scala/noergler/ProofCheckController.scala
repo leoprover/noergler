@@ -4,6 +4,7 @@ import leo.datastructures.TPTP
 import leo.datastructures.TPTP.FOF
 import noergler.ProofCheckController.{Configuration, ModelCheckerParallelisazionModes, ModelFinder, Prover, ProverParallelisazionModes, StepParallelisazionModes, VerificationFailedException, VerificationTimedOutException, defaultRelaxAnnotationFormat}
 import noergler.checks.GenericInferenceCheck.constructInferenceProblem
+import noergler.ProofCheckController.{ModelFinder, ProofSystem, Prover}
 import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsAreNotConjecture, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
 
 import java.nio.file.Path
@@ -334,20 +335,20 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     //  if (ModelCheckerParallelisazionModes.contains(configuration.parallelCountermodelMode)) Some(modelFinder)
     //  else None
 
-    def runSingleProver(proverToUse: Either[Prover,ModelFinder], timeout: Int): (Option[Boolean], Either[Prover,ModelFinder]) = {
+    def runSingleProver(proverToUse: ProofSystem, timeout: Int): (Option[Boolean], ProofSystem) = {
       val inferenceConfiguration = GenericInferenceCheck.SerialInferenceConfig(proverToUse, timeout, configuration.relaxAnnotationFormat, declarations)
       val res = GenericInferenceCheck.apply_serial(proofstep, usedProofFormulas, status, inferenceConfiguration)(proverEc)
       (res, proverToUse)
     }
 
-    def runParallelProvers(provers: Set[Prover], modelFinder: Option[ModelFinder], timeout: Int, offset: Int): (Option[Boolean], Either[Prover, ModelFinder]) = {
+    def runParallelProvers(provers: Set[Prover], modelFinder: Option[ModelFinder], timeout: Int, offset: Int): (Option[Boolean], ProofSystem) = {
       val inferenceConfiguration = GenericInferenceCheck.ParallelInferenceConfig(provers, modelFinder, offset, timeout, configuration.relaxAnnotationFormat, declarations)
       val res = GenericInferenceCheck.apply_parallel(proofstep, usedProofFormulas, status, inferenceConfiguration)(proverEc)
       res
     }
 
-    def runInSequence(systems: Iterator[Either[Prover, ModelFinder]], individual_run_timeout: Int) = {
-      systems.map(system => runSingleProver(system, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, Left(provers.head)))
+    def runInSequence(systems: Iterator[ProofSystem], individual_run_timeout: Int):(Option[Boolean], ProofSystem) = {
+      systems.map(system => runSingleProver(system, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
     }
 
     def run(): Unit = {
@@ -358,17 +359,17 @@ class ProofCheckController(problem: Option[TPTP.Problem],
       logger.finer(s"Check for correct entailment of inference rule '$rule'.")
       val individual_run_timeout = configuration.timeout // / 2 // todo: rasonable?
       assert(provers.nonEmpty)
-      val (checkEntailment, usedProver): (Option[Boolean], Either[Prover, ModelFinder]) =
+      val (checkEntailment, usedProver): (Option[Boolean], ProofSystem) =
         if (provers.size == 1){
         val proverToUse = provers.head
 
         configuration.parallelCountermodelMode match {
           case ProofCheckController.NoModelFinder =>
             // we do not apply model finders in parallel, just start the prover
-            runSingleProver(Left(proverToUse):Either[Prover, ModelFinder], individual_run_timeout)
+            runSingleProver(proverToUse, individual_run_timeout)
           case ProofCheckController.Fallback =>
             // we do not apply model finders in parallel, just start the prover
-            val systemsToRun: Iterator[Either[Prover, ModelFinder]] = Iterator(Left(proverToUse), Right(modelFinder))
+            val systemsToRun: Iterator[ProofSystem] = Iterator(proverToUse, modelFinder)
             runInSequence(systemsToRun,individual_run_timeout)
           case ProofCheckController.Offset(t) =>
             // we start proof checker after waiting for a given time
@@ -392,7 +393,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
               case Some(_) => parallelResult
               case None =>
                 logger.fine(s"None of the chosen provers found a proof for step ${proofstep.name}, running ${modelFinder.name}")
-                runSingleProver(Right(modelFinder), individual_run_timeout)
+                runSingleProver(modelFinder, individual_run_timeout)
             }
           case ProofCheckController.Offset(t) =>
             runParallelProvers(provers, Some(modelFinder), individual_run_timeout, t)
@@ -405,11 +406,11 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
         configuration.parallelCountermodelMode match {
           case ProofCheckController.NoModelFinder =>
-            val allSystemsToRun: Iterator[Either[Prover, ModelFinder]] = provers.map(Left(_): Either[Prover, ModelFinder]).toIterator
-            allSystemsToRun.map(prover => runSingleProver(prover, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, Left(provers.head)))
+            val allSystemsToRun: Iterator[ProofSystem] = provers.toIterator
+            allSystemsToRun.map(prover => runSingleProver(prover, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
           case ProofCheckController.Fallback =>
-            val allSystemsToRun: Iterator[Either[Prover, ModelFinder]] = (provers.map(Left(_): Either[Prover, ModelFinder]) + Right(modelFinder)).toIterator
-            allSystemsToRun.map(prover => runSingleProver(prover, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, Left(provers.head)))
+            val allSystemsToRun: Set[ProofSystem] = provers.map(p => p: ProofSystem) + modelFinder
+            allSystemsToRun.toIterator.map(prover => runSingleProver(prover, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
           case ProofCheckController.Offset(t) =>
             // start running the provers in sequence and if there is no result after x seconds, also start the counter model finder
             ???
@@ -422,11 +423,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
       checkEntailment match {
         case Some(check) =>
-          val systemName = usedProver match {
-            case Left(atp) => atp.name
-            case Right(mf) => mf.name
-          }
-          logger.fine(s"$systemName found entailment result for ${proofstep.name}: $check")
+          logger.fine(s"${usedProver.name} found entailment result for ${proofstep.name}: $check")
           if (!check) throw new VerificationFailedException(s"Proof step '${proofstep.name}' is not correct.")
         case None => throw new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out.")
       }
@@ -481,21 +478,20 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 object ProofCheckController {
 
   // Provers
-  sealed trait Prover {
-    def path: Path
+
+  sealed trait ProofSystem {
     def name: String
+    def path: Path
   }
+
+  sealed trait Prover extends ProofSystem
+
+  sealed trait ModelFinder extends ProofSystem
+
+
 
   case class EProver(path: Path) extends Prover {val name = "eprover"}
   case class Vampire(path: Path) extends Prover {val name = "vampire"}
-
-  sealed trait ModelFinder {
-    def path: Path
-
-    def name: String
-  }
-
-  case class VampireMF(path: Path) extends  ModelFinder {val name = "vampire"}
 
   case class Mace4(path: Path) extends  ModelFinder {val name = "mace4"}
 
