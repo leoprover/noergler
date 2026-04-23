@@ -159,6 +159,7 @@ object Noergler {
          |                   strategy running multiple provers at once is given,
          |                   the provers are tried in the sequence they are provided in.
          |                   Otherwise, they are run in parallel.
+         |                   Default:'eprover'
          |
          |  --eprover-path path
          |                  Path to eprover, if not findable by `which eprover`.
@@ -166,10 +167,12 @@ object Noergler {
          |  --vampire-path path
          |                  Path to vampire, if not findable by `which vampire`.
          |
-         |  --model-finder  Select the model finder to be used. If not parallelization
-         |                  mode is set, any model finder chosen here will onl be run
-         |                  if the given prover(s) are not successful in finding a solution.
-         |                  Options:'vampire'
+         |  --mace4-path path
+         |                  Path to mace4, if not findable by `which mace4`.
+         |
+         |  --model-finder  Select the model finder to be used.
+         |                  Options:'mace4'
+         |                  Default:'mace4'
          |
          |  --parallel-mode mode Set the parallelization strategy.
          |                  Options:
@@ -178,9 +181,10 @@ object Noergler {
          |                     - provers: Run multiple provers on the same step in parallel.
          |                     - hybrid: Parallelize both steps and provers.
          |
-         |  --parallel-countermodel-mode
+         |  --parallel-model-finder-mode
          |                  Options:
-         |                     - none: Countermodel finder used only used as a fallback after
+         |                     - none: Do not apply model finders (default)
+         |                     - fallback: Countermodel finder only used as a fallback after
          |                       all chosen provers failed to find a solution
          |                     - always: Always also run counter model finder in parallel to provers
          |                       when running generic inference checks.
@@ -240,7 +244,6 @@ object Noergler {
             args0 = args0.tail
           case "--prover" =>
             val input = args0.tail.head
-            // Logic: Handle 'all', then split by comma and trim whitespace
             val selectedProvers = if (input == "all") {
               List("eprover", "vampire")
             } else {
@@ -254,17 +257,15 @@ object Noergler {
             args0 = args0.tail
           case "--model-finder" =>
             val input = args0.tail.head
-            // Logic: Handle 'all', then split by comma and trim whitespace
-            val selectedModelFinders = if (input == "all") {
-              List("vampire")
-            } else {
-              input.split(",").map(_.trim).toList
-            }
-            parameters = parameters :+ ProofCheckController.ModelFinderSelection(selectedModelFinders)
+            parameters = parameters :+ ProofCheckController.ModelFinderSelection(input)
             args0 = args0.tail
           case "--vampire-path" =>
             val path = args0.tail.head
             parameters = parameters :+ ProofCheckController.VampirePath(Path.of(path))
+            args0 = args0.tail
+          case "--mace4-path" =>
+            val path = args0.tail.head
+            parameters = parameters :+ ProofCheckController.Mace4Path(Path.of(path))
             args0 = args0.tail
           case "--parallel-mode" =>
             val mode = args0.tail.head
@@ -274,9 +275,9 @@ object Noergler {
             }
             parameters = parameters :+ ProofCheckController.SetParallelMode(mode)
             args0 = args0.tail
-          case "--parallel-countermodel-mode" =>
+          case "--parallel-model-finder-mode" =>
             val mode = args0.tail.head
-            val validModes = Set("none", "always", "offest")
+            val validModes = Set("none", "fallback", "always", "offset")
             if (!validModes.contains(mode)) {
               throw new IllegalArgumentException(s"Invalid parallel-countermodel-mode '$mode'. Must be one of: ${validModes.mkString(", ")}")
             }

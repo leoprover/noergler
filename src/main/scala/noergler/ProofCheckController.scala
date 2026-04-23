@@ -2,17 +2,16 @@ package noergler
 
 import leo.datastructures.TPTP
 import leo.datastructures.TPTP.FOF
-import noergler.ProofCheckController.{Configuration, Prover, ProverParallelisazionModes, StepParallelisazionModes, VerificationFailedException, VerificationTimedOutException, defaultRelaxAnnotationFormat}
+import noergler.ProofCheckController.{Configuration, ModelCheckerParallelisazionModes, ModelFinder, Prover, ProverParallelisazionModes, StepParallelisazionModes, VerificationFailedException, VerificationTimedOutException, defaultRelaxAnnotationFormat}
 import noergler.checks.GenericInferenceCheck.constructInferenceProblem
 import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsAreNotConjecture, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
-
 
 import java.nio.file.Path
 import java.util.concurrent.Executors
 import java.util.logging.Logger
 import scala.concurrent.duration.DurationInt
 import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutorService, Future}
-import scala.util.{Failure}
+import scala.util.Failure
 
 /**
  * The Controller coordinates the checking process, i.e., how and when
@@ -156,10 +155,10 @@ class ProofCheckController(problem: Option[TPTP.Problem],
                         else if (rule == "skolemize") checkSkolemization(proofstep, configuration.relaxAnnotationFormat)
                       // (III.5) if generic status(thm)/status(cth) entry, does it follow from its parents? (using external ATPs)
                       case rule if inferenceStatus0.contains(THM) =>
-                        checkGenericInference(rule, proofstep, Left(THM), configuration.provers)
+                        checkGenericInference(rule, proofstep, Left(THM), configuration.provers, configuration.modelFinder)
                         if (StepParallelisazionModes.contains(configuration.parallelMode)) addedNewFuture = true
                       case rule if inferenceStatus0.contains(CTH) =>
-                        checkGenericInference(rule, proofstep, Right(CTH), configuration.provers)
+                        checkGenericInference(rule, proofstep, Right(CTH), configuration.provers, configuration.modelFinder)
                         if (StepParallelisazionModes.contains(configuration.parallelMode)) addedNewFuture = true
                       case _ => // Error case: unknown inference rule with non-THM/CTH status
                         logger.severe(s"Unknown inference '$inference' with status '${inferenceStatus0.getOrElse("")}' in proof step '${proofstep.name}'.")
@@ -325,20 +324,30 @@ class ProofCheckController(problem: Option[TPTP.Problem],
   }
 
 
-  private def checkGenericInference(rule: String, proofstep: TPTP.AnnotatedFormula, status: Either[THM.type , CTH.type], provers: Set[Prover], custumProofFormulas:  Option[Map[String, TPTP.AnnotatedFormula]] = None): Unit = {
+  private def checkGenericInference(rule: String, proofstep: TPTP.AnnotatedFormula, status: Either[THM.type , CTH.type], provers: Set[Prover], modelFinder: ModelFinder, custumProofFormulas:  Option[Map[String, TPTP.AnnotatedFormula]] = None): Unit = {
+
+    // todo: clean up, adding the model finders here resulted in terrible branching
+
 
     val usedProofFormulas = custumProofFormulas.getOrElse(proofFormulas)
+    //val modelFinderToUse: Option[ModelFinder] =
+    //  if (ModelCheckerParallelisazionModes.contains(configuration.parallelCountermodelMode)) Some(modelFinder)
+    //  else None
 
-    def runSingleProver(proverToUse: Prover, timeout: Int): (Option[Boolean], Prover) = {
+    def runSingleProver(proverToUse: Either[Prover,ModelFinder], timeout: Int): (Option[Boolean], Either[Prover,ModelFinder]) = {
       val inferenceConfiguration = GenericInferenceCheck.SerialInferenceConfig(proverToUse, timeout, configuration.relaxAnnotationFormat, declarations)
       val res = GenericInferenceCheck.apply_serial(proofstep, usedProofFormulas, status, inferenceConfiguration)(proverEc)
       (res, proverToUse)
     }
 
-    def runParallelProvers(provers: Set[Prover], timeout: Int): (Option[Boolean], Prover) = {
-      val inferenceConfiguration = GenericInferenceCheck.ParallelInferenceConfig(provers, timeout, configuration.relaxAnnotationFormat, declarations)
+    def runParallelProvers(provers: Set[Prover], modelFinder: Option[ModelFinder], timeout: Int, offset: Int): (Option[Boolean], Either[Prover, ModelFinder]) = {
+      val inferenceConfiguration = GenericInferenceCheck.ParallelInferenceConfig(provers, modelFinder, offset, timeout, configuration.relaxAnnotationFormat, declarations)
       val res = GenericInferenceCheck.apply_parallel(proofstep, usedProofFormulas, status, inferenceConfiguration)(proverEc)
       res
+    }
+
+    def runInSequence(systems: Iterator[Either[Prover, ModelFinder]], individual_run_timeout: Int) = {
+      systems.map(system => runSingleProver(system, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, Left(provers.head)))
     }
 
     def run(): Unit = {
@@ -349,27 +358,75 @@ class ProofCheckController(problem: Option[TPTP.Problem],
       logger.finer(s"Check for correct entailment of inference rule '$rule'.")
       val individual_run_timeout = configuration.timeout // / 2 // todo: rasonable?
       assert(provers.nonEmpty)
-      val (checkEntailment, usedProver): (Option[Boolean], Prover) = if (provers.size == 1){
+      val (checkEntailment, usedProver): (Option[Boolean], Either[Prover, ModelFinder]) =
+        if (provers.size == 1){
         val proverToUse = provers.head
-        runSingleProver(proverToUse, individual_run_timeout)
+
+        configuration.parallelCountermodelMode match {
+          case ProofCheckController.NoModelFinder =>
+            // we do not apply model finders in parallel, just start the prover
+            runSingleProver(Left(proverToUse):Either[Prover, ModelFinder], individual_run_timeout)
+          case ProofCheckController.Fallback =>
+            // we do not apply model finders in parallel, just start the prover
+            val systemsToRun: Iterator[Either[Prover, ModelFinder]] = Iterator(Left(proverToUse), Right(modelFinder))
+            runInSequence(systemsToRun,individual_run_timeout)
+          case ProofCheckController.Offset(t) =>
+            // we start proof checker after waiting for a given time
+            runParallelProvers(Set(proverToUse),Some(modelFinder),individual_run_timeout,t)
+          case ProofCheckController.Always =>
+            // just start the model-finders without an offset todo: this can probably be done more nicely
+            runParallelProvers(Set(proverToUse),Some(modelFinder),individual_run_timeout,0)
+        }
 
         // if we have set multiple provers, we use them differently depending on the parallelization mode set.
       }else if (ProverParallelisazionModes.contains(configuration.parallelMode)){
-        if (already_showed_false.get().isDefined) {
-          logger.fine(s"Cancelling verification of step '${proofstep.name}' as proof has already shown to be false")
-          return
+          // multiple provers were given and should be run in parallel
+
+        configuration.parallelCountermodelMode match {
+          case ProofCheckController.NoModelFinder =>
+            runParallelProvers(provers, None, individual_run_timeout, 0) //todo: redefine offset and mf as a option pair
+          case ProofCheckController.Fallback =>
+            // run the provers in parallel and if none of them are successful, start the model finder as well.
+            val parallelResult = runParallelProvers(provers, None, individual_run_timeout, 0)
+            parallelResult._1 match {
+              case Some(_) => parallelResult
+              case None =>
+                logger.fine(s"None of the chosen provers found a proof for step ${proofstep.name}, running ${modelFinder.name}")
+                runSingleProver(Right(modelFinder), individual_run_timeout)
+            }
+          case ProofCheckController.Offset(t) =>
+            runParallelProvers(provers, Some(modelFinder), individual_run_timeout, t)
+          case ProofCheckController.Always =>
+            runParallelProvers(provers, Some(modelFinder), individual_run_timeout, 0)
         }
-        // run selected provers in parallel
-        runParallelProvers(provers,individual_run_timeout)
 
       } else {
-        // run selected provers in sequence in case of failure
-        provers.iterator.map(prover => runSingleProver(prover, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
+          // multiple provers were given and should be run in sequence
+
+        configuration.parallelCountermodelMode match {
+          case ProofCheckController.NoModelFinder =>
+            val allSystemsToRun: Iterator[Either[Prover, ModelFinder]] = provers.map(Left(_): Either[Prover, ModelFinder]).toIterator
+            allSystemsToRun.map(prover => runSingleProver(prover, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, Left(provers.head)))
+          case ProofCheckController.Fallback =>
+            val allSystemsToRun: Iterator[Either[Prover, ModelFinder]] = (provers.map(Left(_): Either[Prover, ModelFinder]) + Right(modelFinder)).toIterator
+            allSystemsToRun.map(prover => runSingleProver(prover, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, Left(provers.head)))
+          case ProofCheckController.Offset(t) =>
+            // start running the provers in sequence and if there is no result after x seconds, also start the counter model finder
+            ???
+          case ProofCheckController.Always =>
+            // at the same time start running the provers in sequence and in parallel to that also start the model finder in parallel
+            ???
+        }
+
       }
 
       checkEntailment match {
         case Some(check) =>
-          logger.fine(s"${usedProver.name} found entailment result for ${proofstep.name}: $check")
+          val systemName = usedProver match {
+            case Left(atp) => atp.name
+            case Right(mf) => mf.name
+          }
+          logger.fine(s"$systemName found entailment result for ${proofstep.name}: $check")
           if (!check) throw new VerificationFailedException(s"Proof step '${proofstep.name}' is not correct.")
         case None => throw new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out.")
       }
@@ -409,7 +466,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
 
     // run generic inference check
-    checkGenericInference("Fallback_entailment_check", annotatedToBeProved, status, configuration.provers, Some(custumProofFormulas))
+    checkGenericInference("Fallback_entailment_check", annotatedToBeProved, status, configuration.provers, configuration.modelFinder, Some(custumProofFormulas))
   }
 
   private def checkFormulaFromFile(proofstep: TPTP.AnnotatedFormula, relaxProblemCheck: Boolean): Unit = {
@@ -440,6 +497,8 @@ object ProofCheckController {
 
   case class VampireMF(path: Path) extends  ModelFinder {val name = "vampire"}
 
+  case class Mace4(path: Path) extends  ModelFinder {val name = "mace4"}
+
   // Parallelization Modes
   sealed trait ParallelMode
 
@@ -450,6 +509,7 @@ object ProofCheckController {
 
   sealed trait ParallelCountermodelMode
 
+  case object NoModelFinder extends ParallelCountermodelMode
   case object Fallback extends ParallelCountermodelMode
 
   case class Offset(t: Int) extends ParallelCountermodelMode
@@ -460,6 +520,7 @@ object ProofCheckController {
 
   val StepParallelisazionModes = Seq(ParallelSteps, Hybrid)
   val ProverParallelisazionModes = Seq(ParallelProvers, Hybrid)
+  val ModelCheckerParallelisazionModes = Seq(Offset, Always)
 
   final case class Configuration(problemPath: Option[Path],
                                  proofPath: Path,
@@ -467,7 +528,7 @@ object ProofCheckController {
                                  parallelMode: ParallelMode,
                                  parallelCountermodelMode: ParallelCountermodelMode,
                                  provers: Set[Prover],
-                                 modelFinders: Set[ModelFinder],
+                                 modelFinder: ModelFinder,
                                  ignoreFileAnnotations: Boolean,
                                  relaxAnnotationFormat: Boolean,
                                  relaxProblemCheck: Boolean,
@@ -492,10 +553,11 @@ object ProofCheckController {
   private final val defaultAllowProverAxioms: Boolean = false
   private final val defaultUpToESA: Boolean = false
   private final val defaultProvers: Set[String] = Set("eprover")
-  private final val defaultModelFinder: Set[String] = Set("vampire")
+  private final val defaultModelFinder: String = "mace4"
   // a bit hacky:
   private final val defaulteproverPath: Option[String] = scala.sys.process.Process("which eprover").lazyLines_!.headOption
   private final val defaultvampirePath: Option[String] = scala.sys.process.Process("which vampire").lazyLines_!.headOption
+  private final val defaultMace4Path: Option[String] = scala.sys.process.Process("which mace4").lazyLines_!.headOption
 
   sealed abstract class Parameter
   final case class Timeout(timeout: Int) extends Parameter
@@ -516,10 +578,13 @@ object ProofCheckController {
 
   final case class ProverSelection(provers: Seq[String]) extends Parameter
 
-  final case class ModelFinderSelection(modelFinders: Seq[String]) extends Parameter
+  final case class ModelFinderSelection(modelFinder: String) extends Parameter
   final case class EproverPath(path: Path) extends Parameter
 
   final case class VampirePath(path: Path) extends Parameter
+
+  final case class Mace4Path(path: Path) extends Parameter
+
 
   /** Factory method for a [[ProofCheckController]] based on the given arguments. */
   final def apply(problemPath: Option[Path],
@@ -540,6 +605,7 @@ object ProofCheckController {
     var upToESA = defaultUpToESA
     var eproverPath: Option[Path] = defaulteproverPath.map(p => Path.of(p))
     var vampirePath: Option[Path] = defaultvampirePath.map(p => Path.of(p))
+    var mace4Path: Option[Path] = defaultMace4Path.map(p => Path.of(p))
 
     var useModelFinders: Boolean = false
 
@@ -553,13 +619,14 @@ object ProofCheckController {
           case _ => Sequential //todo: print message
         }
         case SetParallelCountermodelMode(mode0) => parallelCountermodel = mode0 match {
-          case "none" => Fallback
+          case "none" => NoModelFinder
+          case "fallback" => useModelFinders = true; Fallback
           case "offset" => useModelFinders = true; Offset(1) //todo: make choosing time possibly
           case "always" => useModelFinders = true; Always
-          case _ => Fallback //todo: print message
+          case _ => NoModelFinder //todo: print message
         }
         case ProverSelection(names) => selectedProvers = names.toSet
-        case ModelFinderSelection(names) => useModelFinders = true; selectedModelFinders = names.toSet
+        case ModelFinderSelection(name) => useModelFinders = true; selectedModelFinders = name
         case IgnoreFileAnnotations => ignoreFileAnnotations = true
         case RelaxAnnotationFormat => relaxAnnotationFormat = true
         case RelaxProblemCheck => relaxProblemCheck = true
@@ -568,6 +635,7 @@ object ProofCheckController {
         case UpToESA => upToESA = true
         case EproverPath(p) => eproverPath = Some(p)
         case VampirePath(p) => vampirePath = Some(p)
+        case Mace4Path(p) => mace4Path = Some(p)
       }
     }
 
@@ -581,15 +649,14 @@ object ProofCheckController {
       case p => throw new IllegalArgumentException(s"Unknown prover '$p' requested")
     }
 
-    val modelFinders: Set[ModelFinder] =
-      if (useModelFinders) {
-        selectedModelFinders.map {
-          case "vampire" =>
-            if (!vampirePath.isDefined) throw new IllegalArgumentException("vampire path unknown")
-            VampireMF(vampirePath.get)
-          case p => throw new IllegalArgumentException(s"Unknown model-finder '$p' requested")
-        }
-      } else Set[ModelFinder]()
+    val modelFinders: ModelFinder = {
+      selectedModelFinders match {
+        case "mace4" =>
+          if (!mace4Path.isDefined) throw new IllegalArgumentException("mace4 path unknown")
+          Mace4(vampirePath.get)
+        case p => throw new IllegalArgumentException(s"Unknown model-finder '$p' requested")
+      }
+    }
 
     assert(provers.size > 0)
     // check if parallelisazion mode requires mutliple provers and if multiple provers were chosen

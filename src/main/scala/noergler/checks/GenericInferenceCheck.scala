@@ -1,7 +1,7 @@
 package noergler.checks
 
 import leo.datastructures.TPTP
-import noergler.ProofCheckController.Prover
+import noergler.ProofCheckController.{ModelFinder, Prover}
 import noergler.checks.GenericInferenceCheck.logger
 import noergler.{CTH, ProofCheckController, THM, proofStepParents}
 
@@ -9,16 +9,26 @@ import java.io.ByteArrayInputStream
 import java.nio.file.Path
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.logging.Logger
+import scala.collection.concurrent.TrieMap
 import scala.concurrent.duration.DurationInt
 import scala.concurrent.{Await, ExecutionContext, Future, Promise}
 import scala.sys.process
 import scala.sys.process.{ProcessLogger, Process => RunningProcess}
+import java.util.concurrent.{Executors, TimeUnit}
 
 final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
                                   conjecture: TPTP.AnnotatedFormula,
-                                  prover: Prover,
+                                  system: Either[Prover, ModelFinder],
                                   timeout: Int)
                                  (implicit ec: ExecutionContext) {
+
+  // todo: we probably do not want to spend as much time on model finding, but what is a sensible output?
+  val modelFinderTimeout = timeout / 3
+
+  val systemName = system match {
+    case Left(atp) => atp.name
+    case Right(mf) => mf.name
+  }
 
   private final case class RunningProver( process: RunningProcess,
                                           stdout: StringBuffer,
@@ -27,17 +37,25 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
 
   private def startProcess():RunningProver = {
     val uniquePremises = premises.distinct
-    logger.finer(s"${prover.name} check premises ${uniquePremises.map(_.pretty).mkString(", ")}.")
-    logger.finer(s"${prover.name} check conjecture ${conjecture.pretty}.")
+    logger.finer(s"${systemName} check premises ${uniquePremises.map(_.pretty).mkString(", ")}.")
+    logger.finer(s"${systemName} check conjecture ${conjecture.pretty}.")
     val problem = TPTP.Problem(Seq.empty, uniquePremises :+ conjecture, Map.empty)
 
     val stdout: StringBuffer = new StringBuffer()
     val stderr: StringBuffer = new StringBuffer()
 
-    val proverProcess = prover match {
-      case ProofCheckController.EProver(path) => run_eprover(path, problem)
-      case ProofCheckController.Vampire(path) => run_vampire(path, problem)
+    val proverProcess = system match {
+      case Left(atp) =>
+        atp match {
+          case ProofCheckController.EProver(path) => run_eprover(path, problem)
+          case ProofCheckController.Vampire(path) => run_vampire(path, problem)
+        }
+      case Right(mf) =>
+        mf match {
+          case ProofCheckController.Mace4(path) => run_mace4(path, problem)
+        }
     }
+
 
     val processLogger = ProcessLogger.apply(
       line => stdout.append(line),
@@ -52,10 +70,10 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
   private def collectResult(started: RunningProver): Option[Boolean] = {
     val exitCode = started.process.exitValue() // blocks until process exits
     val errResult = started.stderr.toString
-    logger.finest(s"${prover.name} stderr: $errResult")
+    logger.finest(s"${systemName} stderr: $errResult")
     val result = started.stdout.toString
-    logger.finest(s"${prover.name} exit code: $exitCode")
-    logger.finest(s"${prover.name} response: $result")
+    logger.finest(s"${systemName} exit code: $exitCode")
+    logger.finest(s"${systemName} response: $result")
     parse_TSTP_output(result)
   }
 
@@ -97,17 +115,26 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
       Seq("--input_syntax","tptp","--proof","off","--avatar","off","--time_limit",timeout.toString)).#<(new ByteArrayInputStream(problem.pretty.getBytes))
   }
 
+  private def run_mace4(mace4Path: Path, problem: TPTP.Problem): process.ProcessBuilder = {
+    // TODO: Ugly quick-shot implementation, just for testing. needs to be refactored.
+    scala.sys.process.Process.apply(
+      mace4Path.toString,
+      Seq("-tptp","-t", modelFinderTimeout.toString, "-f")).#<(new ByteArrayInputStream(problem.pretty.getBytes))
+  }
+
 }
 object GenericInferenceCheck {
   final val logger: Logger = Logger.getLogger("Nörgler.Controller")
 
-  final case class SerialInferenceConfig(prover: Prover,
+  final case class SerialInferenceConfig(prover: Either[Prover,ModelFinder],
                                          timeout: Int,
                                          relaxAnnotationFormat: Boolean,
                                          declarations: Seq[TPTP.AnnotatedFormula]
                                   )
 
   final case class ParallelInferenceConfig(provers: Set[Prover],
+                                           modelFinder: Option[ModelFinder],
+                                           offset: Int,
                                          timeout: Int,
                                          relaxAnnotationFormat: Boolean,
                                          declarations: Seq[TPTP.AnnotatedFormula]
@@ -177,24 +204,48 @@ object GenericInferenceCheck {
                          proofFormulas: Map[String, TPTP.AnnotatedFormula],
                          status: Either[THM.type, CTH.type],
                          config: ParallelInferenceConfig)
-                        (implicit ec: ExecutionContext): (Option[Boolean], Prover) = {
+                        (implicit ec: ExecutionContext): (Option[Boolean], Either[Prover, ModelFinder]) = {
+
+    val completed = new AtomicBoolean(false)
+    val winner = Promise[(Option[Boolean], Either[Prover, ModelFinder])]()
+    val running = TrieMap.empty[Either[Prover, ModelFinder], (RunningProcess, Future[Option[Boolean]])]
+
+    def startProcess(system: Either[Prover,ModelFinder], premises: Seq[TPTP.AnnotatedFormula], annotatedToBeProved: TPTP.AnnotatedFormula)={
+      val checker = new GenericInferenceCheck(premises, annotatedToBeProved, system, config.timeout)(ec)
+      val (proc, fut) = checker.apply_parallel()
+
+      running.put(system, (proc, fut))
+
+      fut.onComplete { tr =>
+        val res = tr.toOption.flatten
+        if (res.isDefined && completed.compareAndSet(false, true)) winner.trySuccess((res, system))
+      }(ec)
+    }
+
     val inferenceParentsNames = proofStepParents(proofstep.annotations, config.relaxAnnotationFormat)
     inferenceParentsNames match {
       case Some(names) =>
+        // construct the inference problem
         val (premises, annotatedToBeProved) = constructInferenceProblem(proofstep, names, proofFormulas, config.declarations, status)
-        val completed = new AtomicBoolean(false)
-        val winner = Promise[(Option[Boolean], Prover)]()
 
-        // run all processes and update the result as soon as prover finishes
-        val running = config.provers.toSeq.map { prover =>
-          val checker = new GenericInferenceCheck(premises, annotatedToBeProved, prover, config.timeout)(ec)
-          val (proc, fut) = checker.apply_parallel()
+        // start all provers
+        config.provers.foreach { prover =>
+          startProcess(Left(prover), premises, annotatedToBeProved)
+        }
 
-          fut.onComplete { tr =>
-            val res = tr.toOption.flatten
-            if (res.isDefined && completed.compareAndSet(false, true)) winner.trySuccess((res, prover))
-          }(ec)
-          (prover, proc, fut)
+        val scheduler = Executors.newSingleThreadScheduledExecutor()
+
+        // start model finder after given offset if none of the provers found a result
+        if (config.modelFinder.isDefined){
+          val startModelChecker = new Runnable {
+            override def run(): Unit = {
+              if (!completed.get()) {
+                logger.info(s"No prover finished after ${config.offset} seconds, starting model finder")
+                startProcess(Right(config.modelFinder.get), premises, annotatedToBeProved)
+              }
+            }
+          }
+          scheduler.schedule(startModelChecker, config.offset.toLong, TimeUnit.SECONDS)
         }
 
         try {
@@ -202,12 +253,16 @@ object GenericInferenceCheck {
 
           // kill all other processes
           running.foreach {
-            case (prover, proc, _) if prover != result._2 =>
-              logger.info(s"Destroying losing prover ${prover.name} for step ${proofstep.name}")
+            case (system, (proc, _)) if system != result._2 =>
+              val (systemName, kind) = system match {
+                case Left(atp) => (atp.name, "prover")
+                case Right(mf) => (mf.name, "model finder")
+              }
+              logger.info(s"Destroying losing $kind $systemName for step ${proofstep.name}")
               try proc.destroy()
               catch {
                 case ex: Throwable =>
-                  logger.fine(s"Failed to destroy ${prover.name}: ${ex.getMessage}")
+                  logger.fine(s"Failed to destroy $systemName: ${ex.getMessage}")
               }
 
             case _ => ()
@@ -218,19 +273,21 @@ object GenericInferenceCheck {
           case _: java.util.concurrent.TimeoutException =>
             // nobody produced Some(...) in time -> kill all
             running.foreach {
-              case (_, proc, _) =>
+              case (_, (proc, _)) =>
                 try proc.destroy()
                 catch {
                   case ex: Throwable =>
                     logger.fine(s"Failed to destroy prover process: ${ex.getMessage}")
                 }
             }
-            (None, config.provers.head)
+            (None, Left(config.provers.head))
+        } finally {
+          scheduler.shutdown()
         }
 
       case None =>
         logger.severe(s"Entailment check impossible (${proofstep.name}), inference parents entry malformed.")
-        (Some(false), config.provers.head)
+        (Some(false), Left(config.provers.head))
     }
   }
 }
