@@ -2,8 +2,8 @@ package noergler
 
 import leo.datastructures.TPTP
 import leo.datastructures.TPTP.FOF
-import noergler.ProofCheckController.{Configuration, ModelCheckerParallelisazionModes, ModelFinder, Prover, ProverParallelisazionModes, StepParallelisazionModes, VerificationFailedException, VerificationTimedOutException, defaultRelaxAnnotationFormat}
-import noergler.checks.GenericInferenceCheck.constructInferenceProblem
+import noergler.ProofCheckController.{Configuration, ModelFinder, Prover, ProverParallelisazionModes, StepParallelisazionModes, VerificationFailedException, VerificationTimedOutException, defaultRelaxAnnotationFormat}
+import noergler.checks.GenericInferenceCheck.{constructInferenceProblem, logger}
 import noergler.ProofCheckController.{ModelFinder, ProofSystem, Prover}
 import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsAreNotConjecture, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
 
@@ -531,7 +531,7 @@ object ProofCheckController {
 
   val StepParallelisazionModes = Seq(ParallelSteps, Hybrid)
   val ProverParallelisazionModes = Seq(ParallelProvers, Hybrid)
-  val ModelCheckerParallelisazionModes = Seq(Offset, Always)
+  //val ModelCheckerParallelisazionModes = Seq(Offset(_), Always)
 
   final case class Configuration(problemPath: Option[Path],
                                  proofPath: Path,
@@ -650,7 +650,7 @@ object ProofCheckController {
       }
     }
 
-    val provers: Set[Prover] = selectedProvers.map {
+    var provers: Set[Prover] = selectedProvers.map {
       case "eprover" =>
         if (!eproverPath.isDefined) throw new IllegalArgumentException("eprover path unknown")
         EProver(eproverPath.get)
@@ -674,6 +674,19 @@ object ProofCheckController {
     if (ProverParallelisazionModes.contains(parallel) && provers.size == 1){
       throw new IllegalArgumentException(s"Selected parallelisazion mode $parallel requires multiple provers, but only ${provers.head.name} was chosen. Either provide multiple provers explicitly, or set '--prover all'")
     }
+    if (provers.size > 1 && parallel == Sequential) {
+      parallelCountermodel match {
+        case Offset(t) =>
+          logger.info(s"Sequential use of multiple provers in combination with model-checker parallelization is currently not supported. Only using ${provers.head.name} instead of ${provers.map(_.name).mkString(", ")}")
+          provers = Set(provers.head)
+        case Always =>
+          logger.info(s"Sequential use of multiple provers in combination with model-checker parallelization is currently not supported. Only using ${provers.head.name} instead of ${provers.map(_.name).mkString(", ")}")
+          provers = Set(provers.head)
+        case _ => // nothing to do
+      }
+    }
+
+    logger.info(s"prover size: ${provers.size}, parallel mode: $parallel, parallel countermodel: $parallelCountermodel")
 
     val config = Configuration(problemPath, proofPath, timeout, parallel, parallelCountermodel, provers, modelFinders, ignoreFileAnnotations, relaxAnnotationFormat, relaxProblemCheck, relaxSpecifiedInferenceCheck, allowProverAxioms, upToESA)
     val controller = new ProofCheckController(problem: Option[TPTP.Problem], proof: TPTP.Problem, config)
