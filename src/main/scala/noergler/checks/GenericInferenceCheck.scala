@@ -221,12 +221,17 @@ object GenericInferenceCheck {
     val completed = new AtomicBoolean(false)
     val winner = Promise[(Option[Boolean], ProofSystem)]()
     val running = TrieMap.empty[ProofSystem, (RunningProcess, Future[Option[Boolean]])]
+    // keep track of finished results to not wait for entire timeout if provers give up early
+    val remaining = new java.util.concurrent.atomic.AtomicInteger(0)
 
     def startProcess(system: ProofSystem, premises: Seq[TPTP.AnnotatedFormula], annotatedToBeProved: TPTP.AnnotatedFormula): Unit = {
       if (already_showed_false.get().isDefined) {
         logger.fine(s"Cancelling verification of step '${proofstep.name}' as proof has already shown to be false")
         return
       }
+
+      remaining.incrementAndGet()
+
       val checker = new GenericInferenceCheck(premises, annotatedToBeProved, system, config.timeout)(ec)
       val (proc, fut) = checker.apply_parallel()
 
@@ -234,7 +239,15 @@ object GenericInferenceCheck {
 
       fut.onComplete { tr =>
         val res = tr.toOption.flatten
-        if (res.isDefined && completed.compareAndSet(false, true)) winner.trySuccess((res, system))
+
+        if (res.isDefined && completed.compareAndSet(false, true)) {
+          winner.trySuccess((res, system))
+        } else {
+          val left = remaining.decrementAndGet()
+          if (left == 0 && completed.compareAndSet(false, true)) {
+            winner.trySuccess((None, config.provers.head))
+          }
+        }
       }(ec)
     }
 

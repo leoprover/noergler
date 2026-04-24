@@ -37,7 +37,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
   private val proverEc: ExecutionContextExecutorService =
     ExecutionContext.fromExecutorService(
-      Executors.newCachedThreadPool()
+      Executors.newFixedThreadPool(threadCount * 4)
     )
 
   /** Map of problem file TPTP annotated formula name (hopefully unique) -> the formula */
