@@ -664,7 +664,7 @@ object ProofCheckController {
       selectedModelFinders match {
         case "mace4" =>
           if (!mace4Path.isDefined) throw new IllegalArgumentException("mace4 path unknown")
-          Mace4(vampirePath.get)
+          Mace4(mace4Path.get)
         case p => throw new IllegalArgumentException(s"Unknown model-finder '$p' requested")
       }
     }

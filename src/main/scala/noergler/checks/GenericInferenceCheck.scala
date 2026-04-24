@@ -114,7 +114,7 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
     // TODO: Ugly quick-shot implementation, just for testing. needs to be refactored.
     scala.sys.process.Process.apply(
       mace4Path.toString,
-      Seq("-t", modelFinderTimeout.toString)).#<(new ByteArrayInputStream(problem.pretty.getBytes))
+      Seq("-tptp","-t", modelFinderTimeout.toString)).#<(new ByteArrayInputStream(problem.pretty.getBytes))
   }
 
 }
