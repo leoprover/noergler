@@ -64,7 +64,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     }
 
   private var openFutures: Seq[Future[Any]] = Seq.empty
-  private val already_showed_false: java.util.concurrent.atomic.AtomicReference[Option[Throwable]] = new java.util.concurrent.atomic.AtomicReference(None)
+  val already_showed_false: java.util.concurrent.atomic.AtomicReference[Option[Throwable]] = new java.util.concurrent.atomic.AtomicReference(None)
 
   final def apply(): Result = {
     //////////////////////////////////////////////////////////
@@ -336,19 +336,28 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     //  else None
 
     def runSingleProver(proverToUse: ProofSystem, timeout: Int): (Option[Boolean], ProofSystem) = {
+      if (already_showed_false.get().isDefined) {
+        logger.fine(s"Cancelling verification of step '${proofstep.name}' as proof has already shown to be false")
+        return (None, provers.head)
+      }
       val inferenceConfiguration = GenericInferenceCheck.SerialInferenceConfig(proverToUse, timeout, configuration.relaxAnnotationFormat, declarations)
       val res = GenericInferenceCheck.apply_serial(proofstep, usedProofFormulas, status, inferenceConfiguration)(proverEc)
       (res, proverToUse)
     }
 
     def runParallelProvers(provers: Set[Prover], modelFinder: Option[ModelFinder], timeout: Int, offset: Int): (Option[Boolean], ProofSystem) = {
+      if (already_showed_false.get().isDefined) {
+        logger.fine(s"Cancelling verification of step '${proofstep.name}' as proof has already shown to be false")
+        return (None, provers.head)
+      }
       val inferenceConfiguration = GenericInferenceCheck.ParallelInferenceConfig(provers, modelFinder, offset, timeout, configuration.relaxAnnotationFormat, declarations)
-      val res = GenericInferenceCheck.apply_parallel(proofstep, usedProofFormulas, status, inferenceConfiguration)(proverEc)
+      val res = GenericInferenceCheck.apply_parallel(proofstep, usedProofFormulas, status, already_showed_false, inferenceConfiguration)(proverEc)
       res
     }
 
     def runInSequence(systems: Iterator[ProofSystem], individual_run_timeout: Int):(Option[Boolean], ProofSystem) = {
-      systems.map(system => runSingleProver(system, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
+      systems.map(system =>
+        runSingleProver(system, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
     }
 
     def run(): Unit = {

@@ -7,7 +7,7 @@ import noergler.{CTH, ProofCheckController, THM, proofStepParents}
 
 import java.io.ByteArrayInputStream
 import java.nio.file.Path
-import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.{AtomicBoolean, AtomicReference}
 import java.util.logging.Logger
 import scala.collection.concurrent.TrieMap
 import scala.concurrent.duration.DurationInt
@@ -19,6 +19,7 @@ import java.util.concurrent.{Executors, TimeUnit}
 final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
                                   conjecture: TPTP.AnnotatedFormula,
                                   system: ProofSystem,
+                                  //already_showed_false: AtomicReference[Option[Throwable]],
                                   timeout: Int)
                                  (implicit ec: ExecutionContext) {
 
@@ -213,6 +214,7 @@ object GenericInferenceCheck {
   final def apply_parallel(proofstep: TPTP.AnnotatedFormula,
                          proofFormulas: Map[String, TPTP.AnnotatedFormula],
                          status: Either[THM.type, CTH.type],
+                         already_showed_false: AtomicReference[Option[Throwable]],
                          config: ParallelInferenceConfig)
                         (implicit ec: ExecutionContext): (Option[Boolean], ProofSystem) = {
 
@@ -220,7 +222,11 @@ object GenericInferenceCheck {
     val winner = Promise[(Option[Boolean], ProofSystem)]()
     val running = TrieMap.empty[ProofSystem, (RunningProcess, Future[Option[Boolean]])]
 
-    def startProcess(system: ProofSystem, premises: Seq[TPTP.AnnotatedFormula], annotatedToBeProved: TPTP.AnnotatedFormula)={
+    def startProcess(system: ProofSystem, premises: Seq[TPTP.AnnotatedFormula], annotatedToBeProved: TPTP.AnnotatedFormula): Unit = {
+      if (already_showed_false.get().isDefined) {
+        logger.fine(s"Cancelling verification of step '${proofstep.name}' as proof has already shown to be false")
+        return
+      }
       val checker = new GenericInferenceCheck(premises, annotatedToBeProved, system, config.timeout)(ec)
       val (proc, fut) = checker.apply_parallel()
 
@@ -249,7 +255,7 @@ object GenericInferenceCheck {
         if (config.modelFinder.isDefined){
           val startModelChecker = new Runnable {
             override def run(): Unit = {
-              if (!completed.get()) {
+              if (!completed.get() && !already_showed_false.get().isDefined) {
                 logger.info(s"No prover finished after ${config.offset} seconds, starting model finder")
                 startProcess(config.modelFinder.get, premises, annotatedToBeProved)
               }
