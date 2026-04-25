@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '16':
-%%%%%   Replaced environment(dollar_c1)
-%%%%%   With ~ (environment(dollar_c1))
+%%%%% Mutated formula '3489':
+%%%%%   Replaced (contracts_from(dollar_f2(dollar_c1),first_movers) | greater(dollar_f1(dollar_c1,dollar_f2(dollar_c1)),appear(efficient_producers,dollar_c1)))
+%%%%%   With (contracts_from(dollar_f2(dollar_c1),first_movers) & greater(dollar_f1(dollar_c1,dollar_f2(dollar_c1)),appear(efficient_producers,dollar_c1)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT027+1 : TPTP v8.1.0. Released v2.0.0.
@@ -48,7 +48,7 @@ fof(12, axiom, (! [A]: ((~ (environment(A)) | (~ (stable(A)) | greater(dollar_f2
 fof(13, axiom, (! [A,B]: ((~ (environment(A)) | (~ (stable(A)) | (~ (subpopulations(first_movers,efficient_producers,A,B)) | (~ (greater_or_e_qual(B,dollar_f2(A))) | greater(zero,growth_rate(first_movers,B)))))))), file('MGT027+1.p',unknown), []).
 fof(14, axiom, (! [A]: ((~ (greater(A,appear(efficient_producers,dollar_c1))) | ~ (contracts_from(A,first_movers))))), file('MGT027+1.p',unknown), []).
 fof(15, axiom, (! [A]: ((A = A))), file('MGT027+1.p',unknown), []).
-fof(16, axiom, ~ (environment(dollar_c1)), file('MGT027+1.p',unknown), []).
+fof(16, axiom, environment(dollar_c1), file('MGT027+1.p',unknown), []).
 fof(17, axiom, stable(dollar_c1), file('MGT027+1.p',unknown), []).
 fof(18, plain, (! [A]: (greater_or_e_qual(A,A))), inference(hyper,[status(thm)],[15,10]), [iquote('hyper,15,10')]).
 fof(20, plain, greater(dollar_f2(dollar_c1),appear(efficient_producers,dollar_c1)), inference(hyper,[status(thm)],[17,12,16]), [iquote('hyper,17,12,16')]).
@@ -76,7 +76,7 @@ fof(3420, plain, subpopulations(first_movers,efficient_producers,dollar_c1,dolla
 fof(3421, plain, greater(zero,growth_rate(first_movers,dollar_f2(dollar_c1))), inference(hyper,[status(thm)],[3420,13,16,17,18]), [iquote('hyper,3420,13,16,17,18')]).
 fof(3427, plain, (contracts_from(dollar_f2(dollar_c1),first_movers) | in_environment(dollar_c1,dollar_f1(dollar_c1,dollar_f2(dollar_c1)))), inference(hyper,[status(thm)],[3421,2133]), [iquote('hyper,3421,2133')]).
 fof(3428, plain, (contracts_from(dollar_f2(dollar_c1),first_movers) | greater(dollar_f1(dollar_c1,dollar_f2(dollar_c1)),dollar_f2(dollar_c1))), inference(hyper,[status(thm)],[3421,1835]), [iquote('hyper,3421,1835')]).
-fof(3489, plain, (contracts_from(dollar_f2(dollar_c1),first_movers) | greater(dollar_f1(dollar_c1,dollar_f2(dollar_c1)),appear(efficient_producers,dollar_c1))), inference(hyper,[status(thm)],[3428,7,20]), [iquote('hyper,3428,7,20')]).
+fof(3489, plain, (contracts_from(dollar_f2(dollar_c1),first_movers) & greater(dollar_f1(dollar_c1,dollar_f2(dollar_c1)),appear(efficient_producers,dollar_c1))), inference(hyper,[status(thm)],[3428,7,20]), [iquote('hyper,3428,7,20')]).
 fof(3542, plain, (contracts_from(dollar_f2(dollar_c1),first_movers) | greater_or_e_qual(dollar_f1(dollar_c1,dollar_f2(dollar_c1)),appear(efficient_producers,dollar_c1))), inference(hyper,[status(thm)],[3489,9]), [iquote('hyper,3489,9')]).
 fof(3557, plain, (contracts_from(dollar_f2(dollar_c1),first_movers) | greater(cardinality_at_time(efficient_producers,dollar_f1(dollar_c1,dollar_f2(dollar_c1))),zero)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[3542,11,16,3427])]), [iquote('hyper,3542,11,16,3427,factor_simp')]).
 fof(3569, plain, (contracts_from(dollar_f2(dollar_c1),first_movers) | subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f1(dollar_c1,dollar_f2(dollar_c1)))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[3557,4,16,3427,40])])]), [iquote('hyper,3557,4,16,3427,40,factor_simp,factor_simp')]).

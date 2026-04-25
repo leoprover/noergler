@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '254':
-%%%%%   Replaced (! [A,B,C]: ((disjoint(intersection(A,B),union(difference(B,A),C)) | intersect(intersection(A,B),C))))
-%%%%%   With (! [A,B,C]: ((~ (disjoint(intersection(A,B),union(difference(B,A),C))) | intersect(intersection(A,B),C))))
+%%%%% Mutated formula '2667':
+%%%%%   Replaced (! [A,B]: (disjoint(intersection(A,B),symmetric_difference(B,A))))
+%%%%%   With (! [A,B]: (~ (disjoint(intersection(A,B),symmetric_difference(B,A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET630+3 : TPTP v8.1.0. Released v2.2.0.
@@ -45,6 +45,6 @@ fof(28, axiom, (! [A,B]: ((symmetric_difference(A,B) = symmetric_difference(B,A)
 fof(36, plain, (! [A,B,C]: ((disjoint(A,union(B,C)) | (intersect(A,B) | intersect(A,C))))), inference(hyper,[status(thm)],[25,1]), [iquote('hyper,25,1')]).
 fof(55, plain, (! [A,B]: (disjoint(intersection(A,B),difference(B,A)))), inference(para_from,[status(thm),theory(equality)],[27,24]), [iquote('para_from,27.1.1,24.1.1')]).
 fof(58, plain, ~ (disjoint(intersection(dollar_c2,dollar_c1),symmetric_difference(dollar_c1,dollar_c2))), inference(para_from,[status(thm),theory(equality)],[28,15]), [iquote('para_from,28.1.1,15.1.2')]).
-fof(254, plain, (! [A,B,C]: ((~ (disjoint(intersection(A,B),union(difference(B,A),C))) | intersect(intersection(A,B),C)))), inference(hyper,[status(thm)],[36,10,55]), [iquote('hyper,36,10,55')]).
-fof(2667, plain, (! [A,B]: (disjoint(intersection(A,B),symmetric_difference(B,A)))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[254,10,24]),23]), [iquote('hyper,254,10,24,demod,23')]).
+fof(254, plain, (! [A,B,C]: ((disjoint(intersection(A,B),union(difference(B,A),C)) | intersect(intersection(A,B),C)))), inference(hyper,[status(thm)],[36,10,55]), [iquote('hyper,36,10,55')]).
+fof(2667, plain, (! [A,B]: (~ (disjoint(intersection(A,B),symmetric_difference(B,A))))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[254,10,24]),23]), [iquote('hyper,254,10,24,demod,23')]).
 fof(2668, plain, $false, inference(binary,[status(thm)],[2667,58]), [iquote('binary,2667.1,58.1')]).

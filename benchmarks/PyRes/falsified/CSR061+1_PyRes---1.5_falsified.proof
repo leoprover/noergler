@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c646':
-%%%%%   Replaced genls(c_tptpcol_14_118118,c_tptpcol_12_118116)
-%%%%%   With ~ (genls(c_tptpcol_14_118118,c_tptpcol_12_118116))
+%%%%% Mutated formula 'just17':
+%%%%%   Replaced genls(c_tptpcol_5_114690,c_tptpcol_4_114689)
+%%%%%   With genls(c_tptpcol_14_118118,c_tptpcol_4_114689)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR061+1 : TPTP v8.1.2. Released v3.4.0.
@@ -53,7 +53,7 @@ fof(c59, plain, (! [ARG1,OLD,NEW]: ((~ (genls(ARG1,OLD)) | (~ (genls(OLD,NEW)) |
 fof(c60, plain, (! [X30,X31,X32]: ((~ (genls(X30,X31)) | (~ (genls(X31,X32)) | genls(X30,X32))))), inference(variable_rename,[status(thm)],[c59])).
 fof(c61, plain, (! [X193,X192,X194]: ((~ (genls(X193,X192)) | (~ (genls(X192,X194)) | genls(X193,X194))))), inference(split_conjunct,[status(thm)],[c60])).
 fof(c413, plain, (! [X314]: ((~ (genls(X314,c_tptpcol_13_118117)) | genls(X314,c_tptpcol_12_118116)))), inference(resolution,[status(thm)],[c61,c271])).
-fof(c646, plain, ~ (genls(c_tptpcol_14_118118,c_tptpcol_12_118116)), inference(resolution,[status(thm)],[c413,c267])).
+fof(c646, plain, genls(c_tptpcol_14_118118,c_tptpcol_12_118116), inference(resolution,[status(thm)],[c413,c267])).
 fof(just31, axiom, genls(c_tptpcol_12_118116,c_tptpcol_11_118084), file('CSR061+1.p',just31)).
 fof(c275, plain, genls(c_tptpcol_12_118116,c_tptpcol_11_118084), inference(split_conjunct,[status(thm)],[just31])).
 fof(c419, plain, (! [X320]: ((~ (genls(X320,c_tptpcol_12_118116)) | genls(X320,c_tptpcol_11_118084)))), inference(resolution,[status(thm)],[c61,c275])).
@@ -93,7 +93,7 @@ fof(c206, plain, (! [X262,X261]: ((~ (disjointwith(X262,X261)) | disjointwith(X2
 fof(just19, axiom, genls(c_tptpcol_6_116738,c_tptpcol_5_114690), file('CSR061+1.p',just19)).
 fof(c299, plain, genls(c_tptpcol_6_116738,c_tptpcol_5_114690), inference(split_conjunct,[status(thm)],[just19])).
 fof(c536, plain, (! [X366]: ((~ (disjointwith(c_tptpcol_5_114690,X366)) | disjointwith(c_tptpcol_6_116738,X366)))), inference(resolution,[status(thm)],[c200,c299])).
-fof(just17, axiom, genls(c_tptpcol_5_114690,c_tptpcol_4_114689), file('CSR061+1.p',just17)).
+fof(just17, axiom, genls(c_tptpcol_14_118118,c_tptpcol_4_114689), file('CSR061+1.p',just17)).
 fof(c303, plain, genls(c_tptpcol_5_114690,c_tptpcol_4_114689), inference(split_conjunct,[status(thm)],[just17])).
 fof(c544, plain, (! [X374]: ((~ (disjointwith(c_tptpcol_4_114689,X374)) | disjointwith(c_tptpcol_5_114690,X374)))), inference(resolution,[status(thm)],[c200,c303])).
 fof(just37, axiom, disjointwith(c_tptpcol_3_98305,c_tptpcol_3_114688), file('CSR061+1.p',just37)).

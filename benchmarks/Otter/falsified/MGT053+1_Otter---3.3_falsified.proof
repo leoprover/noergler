@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '272':
-%%%%%   Replaced (is_aligned(dollar_c3,dollar_c2) | dissimilar(dollar_c3,dollar_c2,dollar_c1))
-%%%%%   With (is_aligned(dollar_c2,dollar_c2) | dissimilar(dollar_c3,dollar_c2,dollar_c1))
+%%%%% Mutated formula '421':
+%%%%%   Replaced greater(dollar_c1,dollar_c1)
+%%%%%   With ~ (greater(dollar_c1,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT053+1 : TPTP v8.1.0. Released v2.4.0.
@@ -57,10 +57,10 @@ fof(185, plain, (is_aligned(dollar_c3,dollar_c1) | is_aligned(dollar_c3,dollar_c
 fof(186, plain, organization(dollar_c3), inference(hyper,[status(thm)],[184,11]), [iquote('hyper,184,11')]).
 fof(268, plain, (! [A]: ((is_aligned(dollar_c3,dollar_c2) | (dissimilar(dollar_c3,A,dollar_c1) | is_aligned(dollar_c3,A))))), inference(hyper,[status(thm)],[185,15,186]), [iquote('hyper,185,15,186')]).
 fof(271, plain, (! [A]: ((is_aligned(dollar_c3,dollar_c1) | (dissimilar(dollar_c3,dollar_c2,A) | is_aligned(dollar_c3,A))))), inference(hyper,[status(thm)],[185,14,186]), [iquote('hyper,185,14,186')]).
-fof(272, plain, (is_aligned(dollar_c2,dollar_c2) | dissimilar(dollar_c3,dollar_c2,dollar_c1)), inference(factor,[status(thm)],[268]), [iquote('factor,268.1.3')]).
+fof(272, plain, (is_aligned(dollar_c3,dollar_c2) | dissimilar(dollar_c3,dollar_c2,dollar_c1)), inference(factor,[status(thm)],[268]), [iquote('factor,268.1.3')]).
 fof(273, plain, (is_aligned(dollar_c3,dollar_c1) | dissimilar(dollar_c3,dollar_c2,dollar_c1)), inference(factor,[status(thm)],[271]), [iquote('factor,271.1.3')]).
 fof(370, plain, dissimilar(dollar_c3,dollar_c2,dollar_c1), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[273,13,184,272])]), [iquote('hyper,273,13,184,272,factor_simp')]).
 fof(389, plain, (! [A,B]: ((~ (dissimilar(dollar_c3,dollar_c2,A)) | (~ (dissimilar(dollar_c3,B,dollar_c2)) | (smaller(dollar_c1,A) | (greater(dollar_c1,A) | (greater(B,dollar_c1) | smaller(B,dollar_c1)))))))), inference(para_into,[status(thm),theory(equality)],[55,82]), [iquote('para_into,55.2.2,82.1.1')]).
 fof(415, plain, smaller(dollar_c1,dollar_c1), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[389]),370,184,17,17]), [iquote('factor,389.3.6,unit_del,370,184,17,17')]).
-fof(421, plain, greater(dollar_c1,dollar_c1), inference(hyper,[status(thm)],[415,7]), [iquote('hyper,415,7')]).
+fof(421, plain, ~ (greater(dollar_c1,dollar_c1)), inference(hyper,[status(thm)],[415,7]), [iquote('hyper,415,7')]).
 fof(422, plain, $false, inference(binary,[status(thm)],[421,17]), [iquote('binary,421.1,17.1')]).

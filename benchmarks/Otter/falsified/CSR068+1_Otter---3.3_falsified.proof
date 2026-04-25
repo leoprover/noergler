@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '69':
-%%%%%   Replaced mtvisible(c_tptp_spindleheadmt)
-%%%%%   With mtvisible(c_tptp_member2356_mt)
+%%%%% Mutated formula '74':
+%%%%%   Replaced tptpofobject(c_theprototypicalfurpelt,f_tptpquantityfn_1(n_328))
+%%%%%   With ~ (tptpofobject(c_theprototypicalfurpelt,f_tptpquantityfn_1(n_328)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR068+1 : TPTP v8.1.0. Released v3.4.0.
@@ -39,6 +39,6 @@ fof(35, axiom, ~ (tptpofobject(c_theprototypicalfurpelt,f_tptpquantityfn_1(n_328
 fof(42, axiom, genlmt(c_tptp_member2356_mt,c_tptp_spindleheadmt), file('CSR068+1.p',unknown), []).
 fof(43, axiom, furpelt(c_theprototypicalfurpelt), file('CSR068+1.p',unknown), []).
 fof(49, axiom, mtvisible(c_tptp_member2356_mt), file('CSR068+1.p',unknown), []).
-fof(69, plain, mtvisible(c_tptp_member2356_mt), inference(hyper,[status(thm)],[42,30,49]), [iquote('hyper,42,30,49')]).
-fof(74, plain, tptpofobject(c_theprototypicalfurpelt,f_tptpquantityfn_1(n_328)), inference(hyper,[status(thm)],[69,1,43]), [iquote('hyper,69,1,43')]).
+fof(69, plain, mtvisible(c_tptp_spindleheadmt), inference(hyper,[status(thm)],[42,30,49]), [iquote('hyper,42,30,49')]).
+fof(74, plain, ~ (tptpofobject(c_theprototypicalfurpelt,f_tptpquantityfn_1(n_328))), inference(hyper,[status(thm)],[69,1,43]), [iquote('hyper,69,1,43')]).
 fof(75, plain, $false, inference(binary,[status(thm)],[74,35]), [iquote('binary,74.1,35.1')]).

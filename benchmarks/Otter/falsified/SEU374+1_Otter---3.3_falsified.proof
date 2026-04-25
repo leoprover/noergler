@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '93':
-%%%%%   Replaced net_str(dollar_c16,dollar_c17)
-%%%%%   With ~ (net_str(dollar_c16,dollar_c17))
+%%%%% Mutated formula '205':
+%%%%%   Replaced net_str(dollar_c15,dollar_c17)
+%%%%%   With net_str(dollar_c12,dollar_c17)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU374+1 : TPTP v8.1.0. Released v3.3.0.
@@ -40,7 +40,7 @@ fof(32, axiom, ~ (related(dollar_c16,dollar_c14,dollar_c13)), file('SEU374+1.p',
 fof(38, axiom, (! [E,F,A,B,C,D]: ((~ (rel_str(A)) | (~ (subrelstr(B,A)) | (~ (element(C,the_carrier(A))) | (~ (element(D,the_carrier(A))) | (~ (element(E,the_carrier(B))) | (~ (element(F,the_carrier(B))) | ((E != C) | ((F != D) | (~ (related(B,E,F)) | related(A,C,D)))))))))))), file('SEU374+1.p',unknown), []).
 fof(60, axiom, (! [A]: ((A = A))), file('SEU374+1.p',unknown), []).
 fof(92, axiom, one_sorted_str(dollar_c17), file('SEU374+1.p',unknown), []).
-fof(93, axiom, ~ (net_str(dollar_c16,dollar_c17)), file('SEU374+1.p',unknown), []).
+fof(93, axiom, net_str(dollar_c16,dollar_c17), file('SEU374+1.p',unknown), []).
 fof(94, axiom, subnetstr(dollar_c15,dollar_c17,dollar_c16), file('SEU374+1.p',unknown), []).
 fof(95, axiom, element(dollar_c14,the_carrier(dollar_c16)), file('SEU374+1.p',unknown), []).
 fof(96, axiom, element(dollar_c13,the_carrier(dollar_c16)), file('SEU374+1.p',unknown), []).
@@ -53,7 +53,7 @@ fof(104, plain, element(dollar_c12,the_carrier(dollar_c16)), inference(demod,[st
 fof(105, plain, ~ (related(dollar_c16,dollar_c12,dollar_c11)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[32]),100,102]), [iquote('back_demod,32,demod,100,102')]).
 fof(106, plain, element(dollar_c11,the_carrier(dollar_c16)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[96]),102]), [iquote('back_demod,96,demod,102')]).
 fof(197, plain, rel_str(dollar_c16), inference(hyper,[status(thm)],[93,12,92]), [iquote('hyper,93,12,92')]).
-fof(205, plain, net_str(dollar_c15,dollar_c17), inference(hyper,[status(thm)],[94,14,92,93]), [iquote('hyper,94,14,92,93')]).
+fof(205, plain, net_str(dollar_c12,dollar_c17), inference(hyper,[status(thm)],[94,14,92,93]), [iquote('hyper,94,14,92,93')]).
 fof(221, plain, subrelstr(dollar_c15,dollar_c16), inference(hyper,[status(thm)],[205,6,92,93,94]), [iquote('hyper,205,6,92,93,94')]).
 fof(245, plain, related(dollar_c16,dollar_c12,dollar_c11), inference(hyper,[status(thm)],[106,38,197,221,104,97,98,60,60,103]), [iquote('hyper,106,38,197,221,104,97,98,60,60,103')]).
 fof(246, plain, $false, inference(binary,[status(thm)],[245,105]), [iquote('binary,245.1,105.1')]).

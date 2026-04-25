@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '11':
-%%%%%   Replaced (~ (p1) | (~ (p2) | ~ (p3)))
-%%%%%   With (p1 | (~ (p2) | ~ (p3)))
+%%%%% Mutated formula '14':
+%%%%%   Replaced (p1 | p3)
+%%%%%   With (~ (p1) | p3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN393+1.003 : TPTP v8.1.0. Released v2.0.0.
@@ -43,10 +43,10 @@ fof(7, axiom, (p1 | (~ (p2) | p3)), file('SYN393+1.003.p',unknown), []).
 fof(8, plain, (~ (p2) | (p1 | p3)), inference(propositional,[status(thm)],[inference(copy,[status(thm)],[7])]), [iquote('copy,7,propositional')]).
 fof(9, axiom, (p1 | (p2 | ~ (p3))), file('SYN393+1.003.p',unknown), []).
 fof(10, plain, (~ (p3) | (p1 | p2)), inference(propositional,[status(thm)],[inference(copy,[status(thm)],[9])]), [iquote('copy,9,propositional')]).
-fof(11, axiom, (p1 | (~ (p2) | ~ (p3))), file('SYN393+1.003.p',unknown), []).
+fof(11, axiom, (~ (p1) | (~ (p2) | ~ (p3))), file('SYN393+1.003.p',unknown), []).
 fof(12, axiom, (p1 | (p2 | p3)), file('SYN393+1.003.p',unknown), []).
 fof(13, plain, (p1 | p2), inference(hyper,[status(thm)],[12,10]), [iquote('hyper,12,10')]).
-fof(14, plain, (p1 | p3), inference(hyper,[status(thm)],[13,8]), [iquote('hyper,13,8')]).
+fof(14, plain, (~ (p1) | p3), inference(hyper,[status(thm)],[13,8]), [iquote('hyper,13,8')]).
 fof(15, plain, p1, inference(hyper,[status(thm)],[14,5,13]), [iquote('hyper,14,5,13')]).
 fof(16, plain, (p2 | p3), inference(hyper,[status(thm)],[15,6]), [iquote('hyper,15,6')]).
 fof(17, plain, p2, inference(hyper,[status(thm)],[16,3,15]), [iquote('hyper,16,3,15')]).

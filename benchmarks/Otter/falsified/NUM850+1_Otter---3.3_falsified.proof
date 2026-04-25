@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '36':
-%%%%%   Replaced (! [A,B]: ((~ (greater(A,B)) | (vplus(B,dollar_f2(B,A)) = A))))
-%%%%%   With (! [A,B]: ((~ (greater(A,B)) & (vplus(B,dollar_f2(B,A)) = A))))
+%%%%% Mutated formula '91':
+%%%%%   Replaced (vplus(vd471,dollar_f2(vd471,vd470)) = vd470)
+%%%%%   With ~ ((vplus(vd471,dollar_f2(vd471,vd470)) = vd470))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM850+1 : TPTP v8.1.0. Released v4.1.0.
@@ -36,7 +36,7 @@
 fof(1, axiom, (! [A]: ((vd470 != vplus(vd471,A)))), file('NUM850+1.p',unknown), []).
 fof(2, plain, (! [A]: ((vplus(vd471,A) != vd470))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1])]), [iquote('copy,1,flip.1')]).
 fof(35, axiom, (! [A,B]: ((~ (greater(A,B)) | (A = vplus(B,dollar_f2(B,A)))))), file('NUM850+1.p',unknown), []).
-fof(36, plain, (! [A,B]: ((~ (greater(A,B)) & (vplus(B,dollar_f2(B,A)) = A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[35])]), [iquote('copy,35,flip.2')]).
+fof(36, plain, (! [A,B]: ((~ (greater(A,B)) | (vplus(B,dollar_f2(B,A)) = A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[35])]), [iquote('copy,35,flip.2')]).
 fof(51, axiom, greater(vd470,vd471), file('NUM850+1.p',unknown), []).
-fof(91, plain, (vplus(vd471,dollar_f2(vd471,vd470)) = vd470), inference(hyper,[status(thm)],[51,36]), [iquote('hyper,51,36')]).
+fof(91, plain, ~ ((vplus(vd471,dollar_f2(vd471,vd470)) = vd470)), inference(hyper,[status(thm)],[51,36]), [iquote('hyper,51,36')]).
 fof(93, plain, $false, inference(binary,[status(thm)],[91,2]), [iquote('binary,91.1,2.1')]).

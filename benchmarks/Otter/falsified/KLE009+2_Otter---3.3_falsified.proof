@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '103':
-%%%%%   Replaced (multiplication(dollar_f1(dollar_c1),dollar_c1) = zero)
-%%%%%   With (multiplication(dollar_f1(dollar_c2),dollar_c1) = zero)
+%%%%% Mutated formula '484':
+%%%%%   Replaced (addition(dollar_f1(dollar_c1),dollar_c1) = one)
+%%%%%   With ~ ((addition(dollar_f1(dollar_c1),dollar_c1) = one))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE009+2 : TPTP v8.1.0. Released v4.0.0.
@@ -67,7 +67,7 @@ fof(86, plain, (c(addition(dollar_c2,c(dollar_c1))) = multiplication(c(dollar_c2
 fof(96, plain, (! [A,B]: (((addition(A,B) = one) | ~ (complement(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[19,7])]), [iquote('para_into,19.1.1,7.2.1,flip.1')]).
 fof(99, plain, (! [A,B]: ((~ (test(A)) | (~ (test(B)) | (c(addition(B,A)) = multiplication(c(A),c(B))))))), inference(para_from,[status(thm),theory(equality)],[19,11]), [iquote('para_from,19.1.1,11.3.1.1')]).
 fof(101, plain, (addition(dollar_c1,dollar_f1(dollar_c1)) = one), inference(hyper,[status(thm)],[54,7]), [iquote('hyper,54,7')]).
-fof(103, plain, (multiplication(dollar_f1(dollar_c2),dollar_c1) = zero), inference(hyper,[status(thm)],[54,6]), [iquote('hyper,54,6')]).
+fof(103, plain, (multiplication(dollar_f1(dollar_c1),dollar_c1) = zero), inference(hyper,[status(thm)],[54,6]), [iquote('hyper,54,6')]).
 fof(106, plain, (multiplication(dollar_c1,dollar_f1(dollar_c1)) = zero), inference(hyper,[status(thm)],[54,5]), [iquote('hyper,54,5')]).
 fof(107, plain, (addition(c(dollar_c2),dollar_c2) = one), inference(hyper,[status(thm)],[67,7]), [iquote('hyper,67,7')]).
 fof(109, plain, (multiplication(dollar_c2,c(dollar_c2)) = zero), inference(hyper,[status(thm)],[67,6]), [iquote('hyper,67,6')]).
@@ -83,7 +83,7 @@ fof(395, plain, (c(c(dollar_c1)) = dollar_c1), inference(hyper,[status(thm)],[39
 fof(406, plain, (c(addition(c(dollar_c1),c(dollar_c2))) = multiplication(dollar_c1,c(c(dollar_c2)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[128]),395]), [iquote('back_demod,128,demod,395')]).
 fof(414, plain, (c(addition(dollar_c2,c(dollar_c1))) = multiplication(c(dollar_c2),dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[86]),395]), [iquote('back_demod,86,demod,395')]).
 fof(442, plain, (addition(multiplication(dollar_c2,dollar_c1),addition(multiplication(c(dollar_c2),dollar_c1),addition(multiplication(c(dollar_c2),c(dollar_c1)),multiplication(dollar_c2,c(dollar_c1))))) != one), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[45,19]),22]), [iquote('para_into,45.1.1.2,19.1.1,demod,22')]).
-fof(484, plain, (addition(dollar_f1(dollar_c1),dollar_c1) = one), inference(para_into,[status(thm),theory(equality)],[101,19]), [iquote('para_into,101.1.1,19.1.1')]).
+fof(484, plain, ~ ((addition(dollar_f1(dollar_c1),dollar_c1) = one)), inference(para_into,[status(thm),theory(equality)],[101,19]), [iquote('para_into,101.1.1,19.1.1')]).
 fof(497, plain, complement(dollar_c1,dollar_f1(dollar_c1)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[103,8]),106,484]),18,18,18]), [iquote('para_from,103.1.1,8.2.1,demod,106,484,unit_del,18,18,18')]).
 fof(510, plain, (c(dollar_c1) = dollar_f1(dollar_c1)), inference(hyper,[status(thm)],[497,10,43]), [iquote('hyper,497,10,43')]).
 fof(511, plain, test(dollar_f1(dollar_c1)), inference(hyper,[status(thm)],[497,4]), [iquote('hyper,497,4')]).

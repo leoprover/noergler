@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '71':
-%%%%%   Replaced (! [A]: (in(A,singleton(A))))
-%%%%%   With (! [A]: (~ (in(A,singleton(A)))))
+%%%%% Mutated formula '34':
+%%%%%   Replaced (! [A]: ((succ(A) = set_union2(A,singleton(A)))))
+%%%%%   With (! [A]: (~ ((succ(A) = set_union2(A,singleton(A))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU230+3 : TPTP v8.1.0. Released v3.2.0.
@@ -37,9 +37,9 @@ fof(6, axiom, (! [A,B,C]: (((A != singleton(B)) | (in(C,A) | (C != B))))), file(
 fof(10, axiom, (! [A,B,C,D]: (((A != set_union2(B,C)) | (in(D,A) | ~ (in(D,C)))))), file('SEU230+3.p',unknown), []).
 fof(19, axiom, ~ (in(dollar_c11,succ(dollar_c11))), file('SEU230+3.p',unknown), []).
 fof(31, axiom, (! [A]: ((A = A))), file('SEU230+3.p',unknown), []).
-fof(34, axiom, (! [A]: ((succ(A) = set_union2(A,singleton(A))))), file('SEU230+3.p',unknown), []).
+fof(34, axiom, (! [A]: (~ ((succ(A) = set_union2(A,singleton(A)))))), file('SEU230+3.p',unknown), []).
 fof(42, axiom, (! [A]: ((set_union2(A,A) = A))), file('SEU230+3.p',unknown), []).
 fof(65, plain, ~ (in(dollar_c11,set_union2(dollar_c11,singleton(dollar_c11)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[19]),34]), [iquote('back_demod,19,demod,34')]).
-fof(71, plain, (! [A]: (~ (in(A,singleton(A))))), inference(hyper,[status(thm)],[31,6,31]), [iquote('hyper,31,6,31')]).
+fof(71, plain, (! [A]: (in(A,singleton(A)))), inference(hyper,[status(thm)],[31,6,31]), [iquote('hyper,31,6,31')]).
 fof(773, plain, (! [A,B]: (in(A,set_union2(B,singleton(A))))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[71,10,42]),42]), [iquote('hyper,71,10,41,demod,42')]).
 fof(774, plain, $false, inference(binary,[status(thm)],[773,65]), [iquote('binary,773.1,65.1')]).

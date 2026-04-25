@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1813':
-%%%%%   Replaced (sdtpldt0(xp,xr) = xn)
-%%%%%   With (sdtpldt0(xn,xr) = xn)
+%%%%% Mutated formula '168':
+%%%%%   Replaced aNaturalNumber0(xn)
+%%%%%   With aNaturalNumber0(xr)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM489+1 : TPTP v8.1.0. Released v4.0.0.
@@ -37,10 +37,10 @@ fof(32, axiom, (! [A,B,C]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | 
 fof(72, axiom, (xn != sdtpldt0(xp,xr)), file('NUM489+1.p',unknown), []).
 fof(73, plain, (sdtpldt0(xp,xr) != xn), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[72])]), [iquote('copy,72,flip.1')]).
 fof(165, axiom, (! [A]: ((A = A))), file('NUM489+1.p',unknown), []).
-fof(168, axiom, aNaturalNumber0(xn), file('NUM489+1.p',unknown), []).
+fof(168, axiom, aNaturalNumber0(xr), file('NUM489+1.p',unknown), []).
 fof(170, axiom, aNaturalNumber0(xp), file('NUM489+1.p',unknown), []).
 fof(173, axiom, sdtlse_qdt0(xp,xn), file('NUM489+1.p',unknown), []).
 fof(174, axiom, (xr = sdtmndt0(xn,xp)), file('NUM489+1.p',unknown), []).
 fof(176, plain, (sdtmndt0(xn,xp) = xr), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[174])]), [iquote('copy,174,flip.1')]).
-fof(1813, plain, (sdtpldt0(xn,xr) = xn), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[173,32,170,168,165]),176]), [iquote('hyper,173,32,170,168,165,demod,176')]).
+fof(1813, plain, (sdtpldt0(xp,xr) = xn), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[173,32,170,168,165]),176]), [iquote('hyper,173,32,170,168,165,demod,176')]).
 fof(1815, plain, $false, inference(binary,[status(thm)],[1813,73]), [iquote('binary,1813.1,73.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1852':
-%%%%%   Replaced pred_attacker(name_objective)
-%%%%%   With ~ (pred_attacker(name_objective))
+%%%%% Mutated formula '1848':
+%%%%%   Replaced pred_attacker(tuple_client_B_out_6(name_objective))
+%%%%%   With pred_attacker(tuple_client_B_out_6(name_skB))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWW961+1 : TPTP v8.1.0. Released v7.4.0.
@@ -44,6 +44,6 @@ fof(262, axiom, pred_attacker(tuple_true), file('SWW961+1.p',unknown), []).
 fof(303, plain, pred_attacker(tuple_client_B_in_2(tuple_true)), inference(hyper,[status(thm)],[262,189]), [iquote('hyper,262,189')]).
 fof(304, plain, pred_attacker(tuple_client_B_in_3(tuple_true)), inference(hyper,[status(thm)],[262,187]), [iquote('hyper,262,187')]).
 fof(305, plain, pred_attacker(tuple_client_B_in_5(tuple_true)), inference(hyper,[status(thm)],[262,185]), [iquote('hyper,262,185')]).
-fof(1848, plain, pred_attacker(tuple_client_B_out_6(name_objective)), inference(hyper,[status(thm)],[305,220,261,261,304,261,303]), [iquote('hyper,305,220,261,261,304,261,303')]).
-fof(1852, plain, ~ (pred_attacker(name_objective)), inference(hyper,[status(thm)],[1848,179]), [iquote('hyper,1848,179')]).
+fof(1848, plain, pred_attacker(tuple_client_B_out_6(name_skB)), inference(hyper,[status(thm)],[305,220,261,261,304,261,303]), [iquote('hyper,305,220,261,261,304,261,303')]).
+fof(1852, plain, pred_attacker(name_objective), inference(hyper,[status(thm)],[1848,179]), [iquote('hyper,1848,179')]).
 fof(1853, plain, $false, inference(binary,[status(thm)],[1852,223]), [iquote('binary,1852.1,223.1')]).

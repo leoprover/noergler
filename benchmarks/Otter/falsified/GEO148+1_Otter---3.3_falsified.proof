@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '131':
-%%%%%   Replaced connect(dollar_c4,dollar_c3,dollar_c5)
-%%%%%   With ~ (connect(dollar_c4,dollar_c3,dollar_c5))
+%%%%% Mutated formula '133':
+%%%%%   Replaced ordered_by(dollar_f25(dollar_c3),dollar_c1,dollar_c5)
+%%%%%   With ~ (ordered_by(dollar_f25(dollar_c3),dollar_c1,dollar_c5))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO148+1 : TPTP v8.1.0. Released v2.4.0.
@@ -36,9 +36,9 @@
 fof(82, axiom, (! [A,B,C]: ((~ (connect(A,B,C)) | once(at_the_same_time(at(A,C),at(B,C)))))), file('GEO148+1.p',unknown), []).
 fof(92, axiom, (! [E,F,A,B,C,D]: ((~ (once(at_the_same_time(at(A,B),at(C,D)))) | (~ (once(at_the_same_time(at(A,E),at(C,F)))) | (~ (ordered_by(trajectory_of(A),B,E)) | ~ (ordered_by(trajectory_of(C),F,D))))))), file('GEO148+1.p',unknown), []).
 fof(130, axiom, (! [A]: ((trajectory_of(A) = dollar_f25(A)))), file('GEO148+1.p',unknown), []).
-fof(131, axiom, ~ (connect(dollar_c4,dollar_c3,dollar_c5)), file('GEO148+1.p',unknown), []).
+fof(131, axiom, connect(dollar_c4,dollar_c3,dollar_c5), file('GEO148+1.p',unknown), []).
 fof(132, axiom, ordered_by(trajectory_of(dollar_c3),dollar_c1,dollar_c5), file('GEO148+1.p',unknown), []).
-fof(133, plain, ordered_by(dollar_f25(dollar_c3),dollar_c1,dollar_c5), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[132]),130]), [iquote('copy,132,demod,130')]).
+fof(133, plain, ~ (ordered_by(dollar_f25(dollar_c3),dollar_c1,dollar_c5)), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[132]),130]), [iquote('copy,132,demod,130')]).
 fof(134, axiom, ordered_by(trajectory_of(dollar_c4),dollar_c5,dollar_c2), file('GEO148+1.p',unknown), []).
 fof(135, plain, ordered_by(dollar_f25(dollar_c4),dollar_c5,dollar_c2), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[134]),130]), [iquote('copy,134,demod,130')]).
 fof(136, axiom, once(at_the_same_time(at(dollar_c4,dollar_c2),at(dollar_c3,dollar_c1))), file('GEO148+1.p',unknown), []).

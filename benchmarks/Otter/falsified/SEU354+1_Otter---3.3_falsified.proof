@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '86':
-%%%%%   Replaced element(dollar_c2,powerset(dollar_c3))
-%%%%%   With element(dollar_c3,powerset(dollar_c3))
+%%%%% Mutated formula '95':
+%%%%%   Replaced (~ (proper_element(dollar_c2,k1_pcomps_1(dollar_c3))) | (dollar_c3 = dollar_c2))
+%%%%%   With (~ (proper_element(dollar_c2,k1_pcomps_1(dollar_c3))) & (dollar_c3 = dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU354+1 : TPTP v8.1.0. Released v3.3.0.
@@ -43,12 +43,12 @@ fof(64, axiom, (! [A]: ((A = A))), file('SEU354+1.p',unknown), []).
 fof(81, axiom, (! [A]: (element(dollar_f4(A),powerset(A)))), file('SEU354+1.p',unknown), []).
 fof(82, axiom, (! [A]: ((k1_pcomps_1(A) = powerset(A)))), file('SEU354+1.p',unknown), []).
 fof(84, plain, (! [A]: ((powerset(A) = k1_pcomps_1(A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[82])]), [iquote('copy,82,flip.1')]).
-fof(86, axiom, element(dollar_c3,powerset(dollar_c3)), file('SEU354+1.p',unknown), []).
+fof(86, axiom, element(dollar_c2,powerset(dollar_c3)), file('SEU354+1.p',unknown), []).
 fof(87, plain, element(dollar_c2,k1_pcomps_1(dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[86]),84]), [iquote('copy,86,demod,84')]).
 fof(88, axiom, (! [A]: ((union(powerset(A)) = A))), file('SEU354+1.p',unknown), []).
 fof(90, plain, (! [A]: ((union(k1_pcomps_1(A)) = A))), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[88]),84]), [iquote('copy,88,demod,84')]).
 fof(91, plain, (! [A]: (element(dollar_f4(A),k1_pcomps_1(A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[81]),84]), [iquote('back_demod,81,demod,84')]).
-fof(95, plain, (~ (proper_element(dollar_c2,k1_pcomps_1(dollar_c3))) | (dollar_c3 = dollar_c2)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[58]),84]), [iquote('back_demod,58,demod,84')]).
+fof(95, plain, (~ (proper_element(dollar_c2,k1_pcomps_1(dollar_c3))) & (dollar_c3 = dollar_c2)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[58]),84]), [iquote('back_demod,58,demod,84')]).
 fof(96, plain, (proper_element(dollar_c2,k1_pcomps_1(dollar_c3)) | (dollar_c3 != dollar_c2)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[56]),84]), [iquote('back_demod,56,demod,84')]).
 fof(102, plain, (! [A]: (~ (proper_element(dollar_f4(A),k1_pcomps_1(A))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[47]),84]), [iquote('back_demod,47,demod,84')]).
 fof(168, plain, (proper_element(dollar_c2,k1_pcomps_1(dollar_c3)) | (dollar_c3 = dollar_c2)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[87,42]),90])]), [iquote('hyper,87,42,demod,90,flip.2')]).

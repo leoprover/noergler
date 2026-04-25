@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '28':
-%%%%%   Replaced ~ (member(dollar_c1,power_set(dollar_c1)))
-%%%%%   With member(dollar_c1,power_set(dollar_c1))
+%%%%% Mutated formula '827':
+%%%%%   Replaced (! [A]: ((e_qual_set(A,A) | subset(A,A))))
+%%%%%   With (! [A]: ((~ (e_qual_set(A,A)) | subset(A,A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET705+4 : TPTP v8.1.0. Released v2.2.0.
@@ -37,11 +37,11 @@ fof(2, axiom, (! [A,B]: ((subset(A,B) | ~ (member(dollar_f1(A,B),B))))), file('S
 fof(4, axiom, (! [A,B]: ((~ (e_qual_set(A,B)) | subset(B,A)))), file('SET705+4.p',unknown), []).
 fof(5, axiom, (! [A,B]: ((e_qual_set(A,B) | (~ (subset(A,B)) | ~ (subset(B,A)))))), file('SET705+4.p',unknown), []).
 fof(7, axiom, (! [A,B]: ((member(A,power_set(B)) | ~ (subset(A,B))))), file('SET705+4.p',unknown), []).
-fof(28, axiom, member(dollar_c1,power_set(dollar_c1)), file('SET705+4.p',unknown), []).
+fof(28, axiom, ~ (member(dollar_c1,power_set(dollar_c1))), file('SET705+4.p',unknown), []).
 fof(29, plain, (! [A]: ((e_qual_set(A,A) | ~ (subset(A,A))))), inference(factor,[status(thm)],[5]), [iquote('factor,5.2.3')]).
 fof(35, axiom, (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A)))), file('SET705+4.p',unknown), []).
 fof(112, plain, (! [A]: ((member(dollar_f1(A,A),A) | e_qual_set(A,A)))), inference(hyper,[status(thm)],[35,29]), [iquote('hyper,35,29')]).
-fof(827, plain, (! [A]: ((e_qual_set(A,A) | subset(A,A)))), inference(hyper,[status(thm)],[112,2]), [iquote('hyper,112,2')]).
+fof(827, plain, (! [A]: ((~ (e_qual_set(A,A)) | subset(A,A)))), inference(hyper,[status(thm)],[112,2]), [iquote('hyper,112,2')]).
 fof(847, plain, (! [A]: (e_qual_set(A,A))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[827,29])]), [iquote('hyper,827,29,factor_simp')]).
 fof(848, plain, (! [A]: (subset(A,A))), inference(hyper,[status(thm)],[847,4]), [iquote('hyper,847,4')]).
 fof(849, plain, (! [A]: (member(A,power_set(A)))), inference(hyper,[status(thm)],[848,7]), [iquote('hyper,848,7')]).

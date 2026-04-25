@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3039':
-%%%%%   Replaced ((op2(e21,h(e11)) = e20) | ((h(e12) = e21) | ((j(e21) = e13) | (j(e21) = e14))))
-%%%%%   With (~ ((op2(e21,h(e11)) = e20)) | ((h(e12) = e21) | ((j(e21) = e13) | (j(e21) = e14))))
+%%%%% Mutated formula '192':
+%%%%%   Replaced ((h(e10) = e20) | ((h(e10) = e21) | ((h(e10) = e22) | ((h(e10) = e23) | (h(e10) = e24)))))
+%%%%%   With (~ ((h(e10) = e20)) | ((h(e10) = e21) | ((h(e10) = e22) | ((h(e10) = e23) | (h(e10) = e24)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG089+1 : TPTP v8.1.0. Released v2.7.0.
@@ -55,7 +55,7 @@ fof(161, axiom, (op2(e21,e24) = e23), file('ALG089+1.p',unknown), []).
 fof(167, axiom, (op2(e22,e22) = e23), file('ALG089+1.p',unknown), []).
 fof(179, axiom, (op2(e23,e23) = e21), file('ALG089+1.p',unknown), []).
 fof(191, axiom, (op2(e24,e24) = e20), file('ALG089+1.p',unknown), []).
-fof(192, axiom, ((h(e10) = e20) | ((h(e10) = e21) | ((h(e10) = e22) | ((h(e10) = e23) | (h(e10) = e24))))), file('ALG089+1.p',unknown), []).
+fof(192, axiom, (~ ((h(e10) = e20)) | ((h(e10) = e21) | ((h(e10) = e22) | ((h(e10) = e23) | (h(e10) = e24))))), file('ALG089+1.p',unknown), []).
 fof(198, axiom, ((j(e21) = e10) | ((j(e21) = e11) | ((j(e21) = e12) | ((j(e21) = e13) | (j(e21) = e14))))), file('ALG089+1.p',unknown), []).
 fof(202, axiom, (h(op1(e10,e10)) = op2(h(e10),h(e10))), file('ALG089+1.p',unknown), []).
 fof(203, plain, (op2(h(e10),h(e10)) = h(e10)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[202]),93])]), [iquote('copy,202,demod,93,flip.1')]).
@@ -88,7 +88,7 @@ fof(2941, plain, ((op2(h(e10),e23) = h(e10)) | (h(e10) = e20)), inference(para_f
 fof(3003, plain, ((h(e10) = e21) | (h(e10) = e20)), inference(factor_simp,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[2941,2926]),179])]), [iquote('para_into,2941.1.1.1,2926.1.1,demod,179,factor_simp')]).
 fof(3012, plain, (h(e10) = e20), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[3003,2926]),32])]), [iquote('para_into,3003.1.1,2926.1.1,unit_del,32,factor_simp')]).
 fof(3023, plain, ((h(e12) = e21) | ((h(e11) = e21) | ((j(e21) = e13) | (j(e21) = e14)))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[3003,2336]),3012]),22,22]), [iquote('para_into,3003.2.1,2336.3.1,demod,3012,unit_del,22,22')]).
-fof(3039, plain, (~ ((op2(e21,h(e11)) = e20)) | ((h(e12) = e21) | ((j(e21) = e13) | (j(e21) = e14)))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[2429]),3012,3012]),22]), [iquote('back_demod,2429,demod,3012,3012,unit_del,22')]).
+fof(3039, plain, ((op2(e21,h(e11)) = e20) | ((h(e12) = e21) | ((j(e21) = e13) | (j(e21) = e14)))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[2429]),3012,3012]),22]), [iquote('back_demod,2429,demod,3012,3012,unit_del,22')]).
 fof(3081, plain, (op2(h(e12),h(e12)) = e20), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[239]),3012]), [iquote('back_demod,239,demod,3012')]).
 fof(3090, plain, ((h(e12) = e21) | ((j(e21) = e13) | (j(e21) = e14))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[3039,3023]),155]),24])])])]), [iquote('para_into,3039.1.1.2,3023.2.1,demod,155,unit_del,24,factor_simp,factor_simp,factor_simp')]).
 fof(3091, plain, ((op2(h(e12),e21) = e20) | ((j(e21) = e13) | (j(e21) = e14))), inference(para_from,[status(thm),theory(equality)],[3090,3081]), [iquote('para_from,3090.1.1,3081.1.1.2')]).

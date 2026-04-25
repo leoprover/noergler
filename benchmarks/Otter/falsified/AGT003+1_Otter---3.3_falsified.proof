@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '4':
-%%%%%   Replaced (! [A,B,C,D]: ((accept_team(A,B,C,D) | (~ (accept_city(A,C)) | (~ (accept_leader(A,B)) | ~ (accept_number(A,D)))))))
-%%%%%   With (! [A,B,C,D]: ((~ (accept_team(A,B,C,D)) | (~ (accept_city(A,C)) | (~ (accept_leader(A,B)) | ~ (accept_number(A,D)))))))
+%%%%% Mutated formula '3':
+%%%%%   Replaced (! [A,B,C,D]: ((~ (accept_team(A,B,C,D)) | accept_number(A,D))))
+%%%%%   With (! [A,B,C,D]: ((accept_team(A,B,C,D) | accept_number(A,D))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : AGT003+1 : TPTP v8.1.0. Bugfixed v3.1.0.
@@ -35,8 +35,8 @@
 %%% Generated on Tue Apr 14 19:10:10 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B,C,D]: ((~ (accept_team(A,B,C,D)) | accept_city(A,C)))), file('AGT003+1.p',unknown), []).
 fof(2, axiom, (! [A,B,C,D]: ((~ (accept_team(A,B,C,D)) | accept_leader(A,B)))), file('AGT003+1.p',unknown), []).
-fof(3, axiom, (! [A,B,C,D]: ((~ (accept_team(A,B,C,D)) | accept_number(A,D)))), file('AGT003+1.p',unknown), []).
-fof(4, axiom, (! [A,B,C,D]: ((~ (accept_team(A,B,C,D)) | (~ (accept_city(A,C)) | (~ (accept_leader(A,B)) | ~ (accept_number(A,D))))))), file('AGT003+1.p',unknown), []).
+fof(3, axiom, (! [A,B,C,D]: ((accept_team(A,B,C,D) | accept_number(A,D)))), file('AGT003+1.p',unknown), []).
+fof(4, axiom, (! [A,B,C,D]: ((accept_team(A,B,C,D) | (~ (accept_city(A,C)) | (~ (accept_leader(A,B)) | ~ (accept_number(A,D))))))), file('AGT003+1.p',unknown), []).
 fof(145, axiom, ~ (accept_team(christiansufferterrahumanitarianorganization,countryafirstaidorganization,towna,n5)), file('AGT003+1.p',unknown), []).
 fof(173, axiom, accept_team(christiansufferterrahumanitarianorganization,countryacivilorganization,towna,n6), file('AGT003+1.p',unknown), []).
 fof(226, axiom, accept_team(christiansufferterrahumanitarianorganization,countryahumanitarianorganization,coastvillage,n5), file('AGT003+1.p',unknown), []).

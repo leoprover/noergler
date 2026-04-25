@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '4362':
-%%%%%   Replaced member(dollar_f2(intersection(dollar_c2,dollar_c1),dollar_c3),intersection(dollar_c2,dollar_c1))
-%%%%%   With member(dollar_f2(intersection(dollar_c1,dollar_c1),dollar_c3),intersection(dollar_c2,dollar_c1))
+%%%%% Mutated formula '52':
+%%%%%   Replaced (! [A]: (((intersection(A,dollar_c1) != dollar_c3) | (~ (subset(dollar_c2,A)) | ~ (subset(A,dollar_c2))))))
+%%%%%   With (! [A]: ((~ ((intersection(A,dollar_c1) != dollar_c3)) | (~ (subset(dollar_c2,A)) | ~ (subset(A,dollar_c2))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET578+3 : TPTP v8.1.0. Released v2.2.0.
@@ -48,7 +48,7 @@ fof(23, axiom, (! [A]: (subset(A,A))), file('SET578+3.p',unknown), []).
 fof(24, axiom, (! [A,B]: (((A = B) | (member(dollar_f2(A,B),A) | member(dollar_f2(A,B),B))))), file('SET578+3.p',unknown), []).
 fof(28, plain, (intersection(dollar_c1,dollar_c2) != dollar_c3), inference(para_from,[status(thm),theory(equality)],[21,16]), [iquote('para_from,21.1.1,16.1.1')]).
 fof(32, plain, (! [A]: (((intersection(dollar_c1,A) != dollar_c3) | (~ (subset(dollar_c2,A)) | ~ (subset(A,dollar_c2)))))), inference(para_into,[status(thm),theory(equality)],[28,6]), [iquote('para_into,28.1.1.2,6.1.1')]).
-fof(52, plain, (! [A]: (((intersection(A,dollar_c1) != dollar_c3) | (~ (subset(dollar_c2,A)) | ~ (subset(A,dollar_c2)))))), inference(para_into,[status(thm),theory(equality)],[32,21]), [iquote('para_into,32.1.1,21.1.1')]).
+fof(52, plain, (! [A]: ((~ ((intersection(A,dollar_c1) != dollar_c3)) | (~ (subset(dollar_c2,A)) | ~ (subset(A,dollar_c2)))))), inference(para_into,[status(thm),theory(equality)],[32,21]), [iquote('para_into,32.1.1,21.1.1')]).
 fof(53, plain, (! [A,B]: (((A != dollar_c3) | (~ (subset(dollar_c2,B)) | (~ (subset(B,dollar_c2)) | (~ (member(dollar_f2(intersection(dollar_c1,B),A),intersection(dollar_c1,B))) | ~ (member(dollar_f2(intersection(dollar_c1,B),A),A)))))))), inference(para_into,[status(thm),theory(equality)],[32,11]), [iquote('para_into,32.1.1,11.1.1')]).
 fof(71, plain, (! [A,B]: (((A != dollar_c3) | (~ (subset(dollar_c2,B)) | (~ (subset(B,dollar_c2)) | (~ (member(dollar_f2(intersection(B,dollar_c1),A),intersection(B,dollar_c1))) | ~ (member(dollar_f2(intersection(B,dollar_c1),A),A)))))))), inference(para_into,[status(thm),theory(equality)],[52,11]), [iquote('para_into,52.1.1,11.1.1')]).
 fof(84, plain, (! [A,B,C]: (((intersection(A,B) = C) | (member(dollar_f2(intersection(A,B),C),C) | member(dollar_f2(intersection(A,B),C),B))))), inference(hyper,[status(thm)],[24,2]), [iquote('hyper,24,2')]).
@@ -56,7 +56,7 @@ fof(87, plain, (! [A]: (((A = dollar_c3) | (member(dollar_f2(A,dollar_c3),A) | m
 fof(88, plain, (! [A]: (((A = dollar_c3) | (member(dollar_f2(A,dollar_c3),A) | member(dollar_f2(A,dollar_c3),dollar_c2))))), inference(hyper,[status(thm)],[24,12]), [iquote('hyper,24,12')]).
 fof(4357, plain, member(dollar_f2(intersection(dollar_c2,dollar_c1),dollar_c3),dollar_c1), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[84,71,20,23,23,87]),16,16])]), [iquote('hyper,84,71,20,23,23,87,unit_del,16,16,factor_simp')]).
 fof(4358, plain, member(dollar_f2(intersection(dollar_c1,dollar_c2),dollar_c3),dollar_c2), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[84,53,20,23,23,88]),28,28])]), [iquote('hyper,84,53,20,23,23,88,unit_del,28,28,factor_simp')]).
-fof(4362, plain, member(dollar_f2(intersection(dollar_c1,dollar_c1),dollar_c3),intersection(dollar_c2,dollar_c1)), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[4357,3,88]),16])]), [iquote('hyper,4357,3,88,unit_del,16,factor_simp')]).
+fof(4362, plain, member(dollar_f2(intersection(dollar_c2,dollar_c1),dollar_c3),intersection(dollar_c2,dollar_c1)), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[4357,3,88]),16])]), [iquote('hyper,4357,3,88,unit_del,16,factor_simp')]).
 fof(4383, plain, member(dollar_f2(intersection(dollar_c2,dollar_c1),dollar_c3),dollar_c2), inference(para_into,[status(thm),theory(equality)],[4358,21]), [iquote('para_into,4358.1.1.1,21.1.1')]).
 fof(4395, plain, member(dollar_f2(intersection(dollar_c2,dollar_c1),dollar_c3),dollar_c3), inference(hyper,[status(thm)],[4383,14,4357]), [iquote('hyper,4383,14,4357')]).
 fof(4442, plain, $false, inference(hyper,[status(thm)],[4362,71,20,23,23,4395]), [iquote('hyper,4362,71,20,23,23,4395')]).

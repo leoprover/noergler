@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '93':
-%%%%%   Replaced (! [A]: (empty(dollar_f6(A))))
-%%%%%   With (! [A]: (~ (empty(dollar_f6(A)))))
+%%%%% Mutated formula '406':
+%%%%%   Replaced (! [A]: ((dollar_f6(A) = dollar_c4)))
+%%%%%   With (! [A]: (~ ((dollar_f6(A) = dollar_c4))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU325+1 : TPTP v8.1.0. Released v3.3.0.
@@ -50,7 +50,7 @@ fof(71, axiom, (! [A,B]: ((~ (empty(A)) | ((A = B) | ~ (empty(B)))))), file('SEU
 fof(79, axiom, (! [A]: (element(dollar_f4(A),A))), file('SEU325+1.p',unknown), []).
 fof(80, axiom, empty(empty_set), file('SEU325+1.p',unknown), []).
 fof(92, axiom, (! [A]: (element(dollar_f6(A),powerset(A)))), file('SEU325+1.p',unknown), []).
-fof(93, axiom, (! [A]: (~ (empty(dollar_f6(A))))), file('SEU325+1.p',unknown), []).
+fof(93, axiom, (! [A]: (empty(dollar_f6(A)))), file('SEU325+1.p',unknown), []).
 fof(96, axiom, one_sorted_str(dollar_c5), file('SEU325+1.p',unknown), []).
 fof(98, axiom, is_a_cover_of_carrier(dollar_c5,dollar_c4), file('SEU325+1.p',unknown), []).
 fof(99, axiom, (dollar_c4 = empty_set), file('SEU325+1.p',unknown), []).
@@ -60,7 +60,7 @@ fof(226, plain, element(dollar_f7(dollar_c5),powerset(the_carrier(dollar_c5))), 
 fof(229, plain, (the_carrier(dollar_c5) = cast_as_carrier_subset(dollar_c5)), inference(hyper,[status(thm)],[96,42]), [iquote('hyper,96,42')]).
 fof(231, plain, element(dollar_f7(dollar_c5),powerset(cast_as_carrier_subset(dollar_c5))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[226]),229]), [iquote('back_demod,226,demod,229')]).
 fof(362, plain, (! [A]: ((empty(A) | in(dollar_f4(A),A)))), inference(hyper,[status(thm)],[79,63]), [iquote('hyper,79,63')]).
-fof(406, plain, (! [A]: ((dollar_f6(A) = dollar_c4))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[93,71,107])]), [iquote('hyper,93,71,107,flip.1')]).
+fof(406, plain, (! [A]: (~ ((dollar_f6(A) = dollar_c4)))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[93,71,107])]), [iquote('hyper,93,71,107,flip.1')]).
 fof(407, plain, (! [A]: (element(dollar_c4,powerset(A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[92]),406]), [iquote('back_demod,92,demod,406')]).
 fof(812, plain, (! [A]: ((union_of_subsets(A,dollar_c4) = union(dollar_c4)))), inference(hyper,[status(thm)],[407,61]), [iquote('hyper,407,61')]).
 fof(814, plain, (union_of_subsets(cast_as_carrier_subset(dollar_c5),dollar_c4) = cast_as_carrier_subset(dollar_c5)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[407,48,96,98]),229]), [iquote('hyper,407,48,96,98,demod,229')]).

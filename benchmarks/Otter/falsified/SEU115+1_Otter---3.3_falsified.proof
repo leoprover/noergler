@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '69':
-%%%%%   Replaced (powerset(empty_set) != finite_subsets(empty_set))
-%%%%%   With ~ ((powerset(empty_set) != finite_subsets(empty_set)))
+%%%%% Mutated formula '29':
+%%%%%   Replaced (! [A]: ((~ (finite(A)) | (powerset(A) = finite_subsets(A)))))
+%%%%%   With (! [A]: ((finite(A) | (powerset(A) = finite_subsets(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU115+1 : TPTP v8.1.0. Released v3.2.0.
@@ -38,11 +38,11 @@ fof(25, axiom, (! [A]: ((~ (empty(A)) | (A = empty_set)))), file('SEU115+1.p',un
 fof(26, axiom, (finite_subsets(empty_set) != singleton(empty_set)), file('SEU115+1.p',unknown), []).
 fof(27, plain, (singleton(empty_set) != finite_subsets(empty_set)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[26])]), [iquote('copy,26,flip.1')]).
 fof(28, axiom, (! [A]: ((~ (finite(A)) | (finite_subsets(A) = powerset(A))))), file('SEU115+1.p',unknown), []).
-fof(29, plain, (! [A]: ((~ (finite(A)) | (powerset(A) = finite_subsets(A))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[28])]), [iquote('copy,28,flip.2')]).
+fof(29, plain, (! [A]: ((finite(A) | (powerset(A) = finite_subsets(A))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[28])]), [iquote('copy,28,flip.2')]).
 fof(65, axiom, empty(dollar_c3), file('SEU115+1.p',unknown), []).
 fof(66, axiom, (powerset(empty_set) = singleton(empty_set)), file('SEU115+1.p',unknown), []).
 fof(68, plain, (singleton(empty_set) = powerset(empty_set)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[66])]), [iquote('copy,66,flip.1')]).
-fof(69, plain, ~ ((powerset(empty_set) != finite_subsets(empty_set))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[27]),68]), [iquote('back_demod,27,demod,68')]).
+fof(69, plain, (powerset(empty_set) != finite_subsets(empty_set)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[27]),68]), [iquote('back_demod,27,demod,68')]).
 fof(75, plain, (empty_set = dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[65,25])]), [iquote('hyper,65,25,flip.1')]).
 fof(76, plain, finite(dollar_c3), inference(hyper,[status(thm)],[65,9]), [iquote('hyper,65,9')]).
 fof(77, plain, (powerset(dollar_c3) != finite_subsets(dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[69]),75,75]), [iquote('back_demod,69,demod,75,75')]).

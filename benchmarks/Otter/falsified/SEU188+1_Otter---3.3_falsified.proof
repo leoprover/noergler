@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '242':
-%%%%%   Replaced ~ (empty(dollar_c5))
-%%%%%   With empty(dollar_c5)
+%%%%% Mutated formula '29':
+%%%%%   Replaced (! [A,B]: ((~ (empty(A)) | ((A = B) | ~ (empty(B))))))
+%%%%%   With (! [A,B]: ((empty(A) | ((A = B) | ~ (empty(B))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU188+1 : TPTP v8.1.0. Released v3.3.0.
@@ -38,7 +38,7 @@ fof(15, axiom, (! [A]: ((empty(A) | (~ (relation(A)) | ~ (empty(relation_rng(A))
 fof(25, axiom, (dollar_c5 != empty_set), file('SEU188+1.p',unknown), []).
 fof(26, plain, (empty_set != dollar_c5), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[25])]), [iquote('copy,25,flip.1')]).
 fof(27, axiom, (! [A]: ((~ (empty(A)) | (A = empty_set)))), file('SEU188+1.p',unknown), []).
-fof(29, axiom, (! [A,B]: ((~ (empty(A)) | ((A = B) | ~ (empty(B)))))), file('SEU188+1.p',unknown), []).
+fof(29, axiom, (! [A,B]: ((empty(A) | ((A = B) | ~ (empty(B)))))), file('SEU188+1.p',unknown), []).
 fof(32, axiom, (! [A]: ((A = A))), file('SEU188+1.p',unknown), []).
 fof(38, axiom, empty(empty_set), file('SEU188+1.p',unknown), []).
 fof(40, axiom, empty(dollar_c1), file('SEU188+1.p',unknown), []).
@@ -48,6 +48,6 @@ fof(61, plain, (empty_set = dollar_c1), inference(hyper,[status(thm)],[40,29,38]
 fof(76, plain, ((relation_dom(dollar_c5) = dollar_c1) | (relation_rng(dollar_c5) = dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[45]),61,61]), [iquote('back_demod,45,demod,61,61')]).
 fof(77, plain, (! [A]: ((~ (empty(A)) | (A = dollar_c1)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[27]),61]), [iquote('back_demod,27,demod,61')]).
 fof(78, plain, (dollar_c5 != dollar_c1), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[26]),61])]), [iquote('back_demod,26,demod,61,flip.1')]).
-fof(242, plain, empty(dollar_c5), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[77,78]),32]), [iquote('para_from,77.2.1,78.1.1,unit_del,32')]).
+fof(242, plain, ~ (empty(dollar_c5)), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[77,78]),32]), [iquote('para_from,77.2.1,78.1.1,unit_del,32')]).
 fof(778, plain, (relation_rng(dollar_c5) = dollar_c1), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[76,14]),242,44,40]), [iquote('para_from,76.1.1,14.3.1,unit_del,242,44,40')]).
 fof(791, plain, $false, inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[778,15]),242,44,40]), [iquote('para_from,778.1.1,15.3.1,unit_del,242,44,40')]).

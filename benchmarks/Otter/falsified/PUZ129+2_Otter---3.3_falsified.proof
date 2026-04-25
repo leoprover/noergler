@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '33':
-%%%%%   Replaced property1(dollar_c1,industrious,pos)
-%%%%%   With property1(healthy,industrious,pos)
+%%%%% Mutated formula '19':
+%%%%%   Replaced (! [A]: ((~ (cyclist(A)) | person(dollar_f6(A)))))
+%%%%%   With (! [A]: ((cyclist(A) | person(dollar_f6(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PUZ129+2 : TPTP v8.1.0. Released v4.0.0.
@@ -43,7 +43,7 @@ fof(7, plain, (! [A]: ((~ (grocer(A)) | (~ (property1(A,industrious,pos)) | (dol
 fof(8, axiom, (! [A]: ((~ (cyclist(A)) | property1(dollar_f3(A),industrious,pos)))), file('PUZ129+2.p',unknown), []).
 fof(9, axiom, (! [A]: ((~ (cyclist(A)) | (A = dollar_f3(A))))), file('PUZ129+2.p',unknown), []).
 fof(10, plain, (! [A]: ((~ (cyclist(A)) | (dollar_f3(A) = A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[9])]), [iquote('copy,9,flip.2')]).
-fof(19, axiom, (! [A]: ((~ (cyclist(A)) | person(dollar_f6(A))))), file('PUZ129+2.p',unknown), []).
+fof(19, axiom, (! [A]: ((cyclist(A) | person(dollar_f6(A))))), file('PUZ129+2.p',unknown), []).
 fof(20, axiom, (! [A]: ((~ (cyclist(A)) | (A = dollar_f6(A))))), file('PUZ129+2.p',unknown), []).
 fof(21, plain, (! [A]: ((~ (cyclist(A)) | (dollar_f6(A) = A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[20])]), [iquote('copy,20,flip.2')]).
 fof(22, axiom, (! [A]: ((A = A))), file('PUZ129+2.p',unknown), []).
@@ -54,7 +54,7 @@ fof(27, plain, grocer(dollar_c1), inference(demod,[status(thm),theory(equality)]
 fof(29, plain, (dollar_f6(dollar_c1) = dollar_c1), inference(hyper,[status(thm)],[24,21]), [iquote('hyper,24,21')]).
 fof(30, plain, person(dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[24,19]),29]), [iquote('hyper,24,19,demod,29')]).
 fof(32, plain, (dollar_f3(dollar_c1) = dollar_c1), inference(hyper,[status(thm)],[24,10]), [iquote('hyper,24,10')]).
-fof(33, plain, property1(healthy,industrious,pos), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[24,8]),32]), [iquote('hyper,24,8,demod,32')]).
+fof(33, plain, property1(dollar_c1,industrious,pos), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[24,8]),32]), [iquote('hyper,24,8,demod,32')]).
 fof(37, plain, (dollar_f2(dollar_c1) = dollar_c1), inference(hyper,[status(thm)],[33,7,27]), [iquote('hyper,33,7,27')]).
 fof(38, plain, property1(dollar_c1,honest,pos), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[33,5,27]),37]), [iquote('hyper,33,5,27,demod,37')]).
 fof(40, plain, (dollar_f1(dollar_c1) = dollar_c1), inference(hyper,[status(thm)],[38,3,30,33]), [iquote('hyper,38,3,30,33')]).

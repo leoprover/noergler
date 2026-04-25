@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c21':
-%%%%%   Replaced (! [W0]: (~ (aSupremumOfIn0(W0,xT,xS))))
-%%%%%   With (! [W0]: (~ (aSupremumOfIn0(W0,xf,xS))))
+%%%%% Mutated formula 'c23':
+%%%%%   Replaced (! [X81]: (~ (aSupremumOfIn0(X81,xT,xS))))
+%%%%%   With (! [X81]: (~ (aSupremumOfIn0(X81,xp,xS))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : LAT388+1 : TPTP v8.1.2. Released v4.0.0.
@@ -38,9 +38,9 @@
 %%% Generated on Tue Apr 14 15:05:45 CEST 2026 using command 'transform(fof)'.
 fof(m__, conjecture, (? [W0]: (aSupremumOfIn0(W0,xT,xS))), file('LAT388+1.p',m__)).
 fof(c20, negated_conjecture, ~ ((? [W0]: (aSupremumOfIn0(W0,xT,xS)))), inference(assume_negation,[status(cth)],[m__])).
-fof(c21, negated_conjecture, (! [W0]: (~ (aSupremumOfIn0(W0,xf,xS)))), inference(fof_nnf,[status(thm)],[c20])).
+fof(c21, negated_conjecture, (! [W0]: (~ (aSupremumOfIn0(W0,xT,xS)))), inference(fof_nnf,[status(thm)],[c20])).
 fof(c22, negated_conjecture, (! [X2]: (~ (aSupremumOfIn0(X2,xT,xS)))), inference(variable_rename,[status(thm)],[c21])).
-fof(c23, negated_conjecture, (! [X81]: (~ (aSupremumOfIn0(X81,xT,xS)))), inference(split_conjunct,[status(thm)],[c22])).
+fof(c23, negated_conjecture, (! [X81]: (~ (aSupremumOfIn0(X81,xp,xS)))), inference(split_conjunct,[status(thm)],[c22])).
 fof(m__1330, plain, (aFixedPointOf0(xp,xf) & aSupremumOfIn0(xp,xT,xS)), file('LAT388+1.p',m__1330)).
 fof(c25, plain, aSupremumOfIn0(xp,xT,xS), inference(split_conjunct,[status(thm)],[m__1330])).
 fof(c174, plain, $false, inference(resolution,[status(thm)],[c25,c23])).

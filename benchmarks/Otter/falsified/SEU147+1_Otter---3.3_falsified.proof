@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '37':
-%%%%%   Replaced (! [A,B]: (((powerset(A) = singleton(B)) | ((dollar_f1(B,powerset(A)) = B) | subset(dollar_f1(B,powerset(A)),A)))))
-%%%%%   With (! [A,B]: (((powerset(A) = singleton(B)) & ((dollar_f1(B,powerset(A)) = B) | subset(dollar_f1(B,powerset(A)),A)))))
+%%%%% Mutated formula '2091':
+%%%%%   Replaced (dollar_f1(empty_set,powerset(empty_set)) = empty_set)
+%%%%%   With ~ ((dollar_f1(empty_set,powerset(empty_set)) = empty_set))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU147+1 : TPTP v8.1.0. Released v3.3.0.
@@ -43,7 +43,7 @@ fof(15, axiom, (! [A]: ((A = A))), file('SEU147+1.p',unknown), []).
 fof(16, axiom, (! [A,B]: (((A = singleton(B)) | (in(dollar_f1(B,A),A) | (dollar_f1(B,A) = B))))), file('SEU147+1.p',unknown), []).
 fof(20, axiom, (! [A]: (subset(A,A))), file('SEU147+1.p',unknown), []).
 fof(31, plain, (! [A]: (in(A,powerset(A)))), inference(hyper,[status(thm)],[20,6,15]), [iquote('hyper,20,6,15')]).
-fof(37, plain, (! [A,B]: (((powerset(A) = singleton(B)) & ((dollar_f1(B,powerset(A)) = B) | subset(dollar_f1(B,powerset(A)),A))))), inference(hyper,[status(thm)],[16,5,15]), [iquote('hyper,16,5,15')]).
+fof(37, plain, (! [A,B]: (((powerset(A) = singleton(B)) | ((dollar_f1(B,powerset(A)) = B) | subset(dollar_f1(B,powerset(A)),A))))), inference(hyper,[status(thm)],[16,5,15]), [iquote('hyper,16,5,15')]).
 fof(2089, plain, (! [A]: (((singleton(A) = powerset(empty_set)) | ((dollar_f1(A,powerset(empty_set)) = A) | (dollar_f1(A,powerset(empty_set)) = empty_set))))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[37,12])]), [iquote('hyper,37,12,flip.1')]).
-fof(2091, plain, (dollar_f1(empty_set,powerset(empty_set)) = empty_set), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[2089]),10]), [iquote('factor,2089.2.3,unit_del,10')]).
+fof(2091, plain, ~ ((dollar_f1(empty_set,powerset(empty_set)) = empty_set)), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[2089]),10]), [iquote('factor,2089.2.3,unit_del,10')]).
 fof(2174, plain, $false, inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[2091,4]),2091]),10,31,15]), [iquote('para_from,2090.1.1,4.3.1,demod,2091,unit_del,10,31,15')]).

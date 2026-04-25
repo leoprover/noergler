@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '364':
-%%%%%   Replaced subset(dollar_c3,cast_as_carrier_subset(dollar_c4))
-%%%%%   With ~ (subset(dollar_c3,cast_as_carrier_subset(dollar_c4)))
+%%%%% Mutated formula '91':
+%%%%%   Replaced (subset_intersection2(the_carrier(dollar_c4),dollar_c3,cast_as_carrier_subset(dollar_c4)) != dollar_c3)
+%%%%%   With (subset_intersection2(the_carrier(dollar_c3),dollar_c3,cast_as_carrier_subset(dollar_c4)) != dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU307+1 : TPTP v8.1.0. Released v3.3.0.
@@ -38,7 +38,7 @@ fof(87, axiom, (! [A,B]: ((~ (element(A,powerset(B))) | subset(A,B)))), file('SE
 fof(88, axiom, (! [A,B]: ((element(A,powerset(B)) | ~ (subset(A,B))))), file('SEU307+1.p',unknown), []).
 fof(89, axiom, (! [A]: ((~ (one_sorted_str(A)) | (cast_as_carrier_subset(A) = the_carrier(A))))), file('SEU307+1.p',unknown), []).
 fof(90, plain, (! [A]: ((~ (one_sorted_str(A)) | (the_carrier(A) = cast_as_carrier_subset(A))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[89])]), [iquote('copy,89,flip.2')]).
-fof(91, axiom, (subset_intersection2(the_carrier(dollar_c4),dollar_c3,cast_as_carrier_subset(dollar_c4)) != dollar_c3), file('SEU307+1.p',unknown), []).
+fof(91, axiom, (subset_intersection2(the_carrier(dollar_c3),dollar_c3,cast_as_carrier_subset(dollar_c4)) != dollar_c3), file('SEU307+1.p',unknown), []).
 fof(92, axiom, (! [A,B]: ((~ (subset(A,B)) | (set_intersection2(A,B) = A)))), file('SEU307+1.p',unknown), []).
 fof(118, axiom, (! [A]: (subset(A,A))), file('SEU307+1.p',unknown), []).
 fof(121, axiom, one_sorted_str(dollar_c4), file('SEU307+1.p',unknown), []).
@@ -47,7 +47,7 @@ fof(144, plain, (the_carrier(dollar_c4) = cast_as_carrier_subset(dollar_c4)), in
 fof(146, plain, element(dollar_c3,powerset(cast_as_carrier_subset(dollar_c4))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[122]),144]), [iquote('back_demod,122,demod,144')]).
 fof(147, plain, (subset_intersection2(cast_as_carrier_subset(dollar_c4),dollar_c3,cast_as_carrier_subset(dollar_c4)) != dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[91]),144]), [iquote('back_demod,91,demod,144')]).
 fof(157, plain, (! [A]: (element(A,powerset(A)))), inference(hyper,[status(thm)],[118,88]), [iquote('hyper,118,88')]).
-fof(364, plain, ~ (subset(dollar_c3,cast_as_carrier_subset(dollar_c4))), inference(hyper,[status(thm)],[146,87]), [iquote('hyper,146,87')]).
+fof(364, plain, subset(dollar_c3,cast_as_carrier_subset(dollar_c4)), inference(hyper,[status(thm)],[146,87]), [iquote('hyper,146,87')]).
 fof(380, plain, (set_intersection2(dollar_c3,cast_as_carrier_subset(dollar_c4)) = subset_intersection2(cast_as_carrier_subset(dollar_c4),dollar_c3,cast_as_carrier_subset(dollar_c4))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[146,83,157])]), [iquote('hyper,146,83,157,flip.1')]).
 fof(412, plain, (subset_intersection2(cast_as_carrier_subset(dollar_c4),dollar_c3,cast_as_carrier_subset(dollar_c4)) = dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[364,92]),380]), [iquote('hyper,364,92,demod,380')]).
 fof(414, plain, $false, inference(binary,[status(thm)],[412,147]), [iquote('binary,412.1,147.1')]).

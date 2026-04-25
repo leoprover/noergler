@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '5':
-%%%%%   Replaced (p | r)
-%%%%%   With (p & r)
+%%%%% Mutated formula '4':
+%%%%%   Replaced q
+%%%%%   With ~ (q)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LCL230+1 : TPTP v8.1.0. Released v2.0.0.
@@ -36,7 +36,7 @@
 fof(1, axiom, (~ (q) | (p | r)), file('LCL230+1.p',unknown), []).
 fof(2, axiom, ~ (p), file('LCL230+1.p',unknown), []).
 fof(3, axiom, ~ (r), file('LCL230+1.p',unknown), []).
-fof(4, axiom, q, file('LCL230+1.p',unknown), []).
-fof(5, plain, (p & r), inference(hyper,[status(thm)],[4,1]), [iquote('hyper,4,1')]).
+fof(4, axiom, ~ (q), file('LCL230+1.p',unknown), []).
+fof(5, plain, (p | r), inference(hyper,[status(thm)],[4,1]), [iquote('hyper,4,1')]).
 fof(6, plain, p, inference(hyper,[status(thm)],[5,3]), [iquote('hyper,5,3')]).
 fof(7, plain, $false, inference(binary,[status(thm)],[6,2]), [iquote('binary,6.1,2.1')]).

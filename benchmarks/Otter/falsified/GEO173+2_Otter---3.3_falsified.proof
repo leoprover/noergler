@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '25':
 %%%%%   Replaced (apart_point_and_line(dollar_c4,line_connecting(dollar_c4,dollar_c3)) | apart_point_and_line(dollar_c3,line_connecting(dollar_c4,dollar_c3)))
-%%%%%   With (apart_point_and_line(dollar_c4,line_connecting(dollar_c4,dollar_c3)) & apart_point_and_line(dollar_c3,line_connecting(dollar_c4,dollar_c3)))
+%%%%%   With (apart_point_and_line(dollar_c3,line_connecting(dollar_c4,dollar_c3)) | apart_point_and_line(dollar_c3,line_connecting(dollar_c4,dollar_c3)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO173+2 : TPTP v8.1.0. Released v3.3.0.
@@ -43,6 +43,6 @@ fof(16, axiom, ~ (apart_point_and_line(dollar_c3,dollar_c2)), file('GEO173+2.p',
 fof(17, axiom, distinct_points(dollar_c4,dollar_c3), file('GEO173+2.p',unknown), []).
 fof(19, axiom, distinct_lines(dollar_c2,line_connecting(dollar_c4,dollar_c3)), file('GEO173+2.p',unknown), []).
 fof(20, plain, (! [A]: ((distinct_points(dollar_c4,A) | distinct_points(dollar_c3,A)))), inference(hyper,[status(thm)],[17,4]), [iquote('hyper,17,4')]).
-fof(25, plain, (apart_point_and_line(dollar_c4,line_connecting(dollar_c4,dollar_c3)) & apart_point_and_line(dollar_c3,line_connecting(dollar_c4,dollar_c3))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[19,11,17]),15,16]), [iquote('hyper,19,11,17,unit_del,15,16')]).
+fof(25, plain, (apart_point_and_line(dollar_c3,line_connecting(dollar_c4,dollar_c3)) | apart_point_and_line(dollar_c3,line_connecting(dollar_c4,dollar_c3))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[19,11,17]),15,16]), [iquote('hyper,19,11,17,unit_del,15,16')]).
 fof(72, plain, apart_point_and_line(dollar_c3,line_connecting(dollar_c4,dollar_c3)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[25,7,20]),1,1]), [iquote('hyper,25,7,20,unit_del,1,1')]).
 fof(82, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[72,8,20]),1,1]), [iquote('hyper,72,8,20,unit_del,1,1')]).

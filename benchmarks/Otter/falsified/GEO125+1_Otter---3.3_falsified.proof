@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '179':
-%%%%%   Replaced incident_o(dollar_c1,dollar_c3)
-%%%%%   With ~ (incident_o(dollar_c1,dollar_c3))
+%%%%% Mutated formula '282':
+%%%%%   Replaced ordered_by(dollar_c3,dollar_c1,dollar_c2)
+%%%%%   With ordered_by(dollar_c1,dollar_c1,dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO125+1 : TPTP v8.1.0. Released v2.4.0.
@@ -43,9 +43,9 @@ fof(105, axiom, (! [A]: ((A = A))), file('GEO125+1.p',unknown), []).
 fof(115, axiom, finish_point(dollar_c2,dollar_c3), file('GEO125+1.p',unknown), []).
 fof(116, axiom, finish_point(dollar_c1,dollar_c3), file('GEO125+1.p',unknown), []).
 fof(140, plain, incident_o(dollar_c2,dollar_c3), inference(hyper,[status(thm)],[115,60]), [iquote('hyper,115,60')]).
-fof(179, plain, ~ (incident_o(dollar_c1,dollar_c3)), inference(hyper,[status(thm)],[116,60]), [iquote('hyper,116,60')]).
+fof(179, plain, incident_o(dollar_c1,dollar_c3), inference(hyper,[status(thm)],[116,60]), [iquote('hyper,116,60')]).
 fof(220, plain, ordered_by(dollar_c3,dollar_c2,dollar_c1), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[140,61,116]),82]), [iquote('hyper,140,61,116,unit_del,82')]).
-fof(282, plain, ordered_by(dollar_c3,dollar_c1,dollar_c2), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[179,61,115]),82]), [iquote('hyper,179,61,115,unit_del,82')]).
+fof(282, plain, ordered_by(dollar_c1,dollar_c1,dollar_c2), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[179,61,115]),82]), [iquote('hyper,179,61,115,unit_del,82')]).
 fof(1506, plain, between_o(dollar_c3,dollar_c2,dollar_c1,dollar_c2), inference(hyper,[status(thm)],[282,53,220]), [iquote('hyper,282,53,220')]).
 fof(1532, plain, between_c(dollar_f18(dollar_c2,dollar_c1,dollar_c2,dollar_c3),dollar_c2,dollar_c1,dollar_c2), inference(hyper,[status(thm)],[1506,72]), [iquote('hyper,1506,72')]).
 fof(1691, plain, $false, inference(hyper,[status(thm)],[1532,42,105]), [iquote('hyper,1532,42,105')]).

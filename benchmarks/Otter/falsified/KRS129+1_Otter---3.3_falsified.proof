@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '55':
-%%%%%   Replaced risEuroMPFrom(iKinnock,iUK)
-%%%%%   With risEuroMPFrom(iUK,iUK)
+%%%%% Mutated formula '62':
+%%%%%   Replaced cEuroMP(iKinnock)
+%%%%%   With cEuroMP(iUK)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS129+1 : TPTP v8.1.0. Released v3.1.0.
@@ -44,8 +44,8 @@ fof(31, plain, (~ (cowlThing(dollar_c1)) | (~ (xsd_string(dollar_c2)) | (xsd_int
 fof(33, axiom, (! [A]: (cowlThing(A))), file('KRS129+1.p',unknown), []).
 fof(34, axiom, (! [A]: ((xsd_string(A) | xsd_integer(A)))), file('KRS129+1.p',unknown), []).
 fof(42, axiom, rhasEuroMP(iUK,iKinnock), file('KRS129+1.p',unknown), []).
-fof(55, plain, risEuroMPFrom(iUK,iUK), inference(hyper,[status(thm)],[42,27]), [iquote('hyper,42,27')]).
-fof(62, plain, cEuroMP(iKinnock), inference(hyper,[status(thm)],[55,24,33]), [iquote('hyper,55,24,33')]).
+fof(55, plain, risEuroMPFrom(iKinnock,iUK), inference(hyper,[status(thm)],[42,27]), [iquote('hyper,42,27')]).
+fof(62, plain, cEuroMP(iUK), inference(hyper,[status(thm)],[55,24,33]), [iquote('hyper,55,24,33')]).
 fof(69, plain, xsd_integer(dollar_c2), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[62,31,33,34])]), [iquote('hyper,62,31,33,34,factor_simp')]).
 fof(77, plain, xsd_string(dollar_c2), inference(hyper,[status(thm)],[69,29,33,62]), [iquote('hyper,69,29,33,62')]).
 fof(100, plain, $false, inference(hyper,[status(thm)],[77,14,69]), [iquote('hyper,77,14,69')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '102':
-%%%%%   Replaced mtvisible(c_tptp_spindleheadmt)
-%%%%%   With ~ (mtvisible(c_tptp_spindleheadmt))
+%%%%% Mutated formula '35':
+%%%%%   Replaced (! [A,B,C]: ((~ (genlmt(A,B)) | (~ (genlmt(B,C)) | genlmt(A,C)))))
+%%%%%   With (! [A,B,C]: ((genlmt(A,B) | (~ (genlmt(B,C)) | genlmt(A,C)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR034+1 : TPTP v8.1.0. Released v3.4.0.
@@ -36,7 +36,7 @@
 fof(3, axiom, (~ (mtvisible(c_worldgeographymt)) | state_geopolitical(c_wanica_districtsuriname)), file('CSR034+1.p',unknown), []).
 fof(27, axiom, (! [A]: ((~ (state_geopolitical(A)) | isa(A,c_state_geopolitical)))), file('CSR034+1.p',unknown), []).
 fof(32, axiom, (! [A,B]: ((~ (mtvisible(A)) | (~ (genlmt(A,B)) | mtvisible(B))))), file('CSR034+1.p',unknown), []).
-fof(35, axiom, (! [A,B,C]: ((~ (genlmt(A,B)) | (~ (genlmt(B,C)) | genlmt(A,C))))), file('CSR034+1.p',unknown), []).
+fof(35, axiom, (! [A,B,C]: ((genlmt(A,B) | (~ (genlmt(B,C)) | genlmt(A,C))))), file('CSR034+1.p',unknown), []).
 fof(37, axiom, (! [A]: (~ (isa(c_wanica_districtsuriname,A)))), file('CSR034+1.p',unknown), []).
 fof(38, axiom, genlmt(c_worldgeographydualistmt,c_worldgeographymt), file('CSR034+1.p',unknown), []).
 fof(39, axiom, genlmt(c_ethnicgroupsvocabularymt,c_worldcompletedualistgeographymt), file('CSR034+1.p',unknown), []).
@@ -56,7 +56,7 @@ fof(59, axiom, mtvisible(c_tptp_member3515_mt), file('CSR034+1.p',unknown), []).
 fof(80, plain, genlmt(c_unitedstatesgeographydualistmt,c_worldgeographymt), inference(hyper,[status(thm)],[43,35,38]), [iquote('hyper,43,35,38')]).
 fof(87, plain, genlmt(c_ethnicgroupsvocabularymt,c_unitedstatesgeographydualistmt), inference(hyper,[status(thm)],[46,35,39]), [iquote('hyper,46,35,39')]).
 fof(91, plain, genlmt(c_massmediadatamt,c_ethnicgroupsvocabularymt), inference(hyper,[status(thm)],[49,35,47]), [iquote('hyper,49,35,47')]).
-fof(102, plain, ~ (mtvisible(c_tptp_spindleheadmt)), inference(hyper,[status(thm)],[53,32,59]), [iquote('hyper,53,32,59')]).
+fof(102, plain, mtvisible(c_tptp_spindleheadmt), inference(hyper,[status(thm)],[53,32,59]), [iquote('hyper,53,32,59')]).
 fof(104, plain, mtvisible(c_cyclistsmt), inference(hyper,[status(thm)],[102,32,52]), [iquote('hyper,102,32,52')]).
 fof(105, plain, mtvisible(c_keinteractionresourcetestmt), inference(hyper,[status(thm)],[104,32,44]), [iquote('hyper,104,32,44')]).
 fof(107, plain, genlmt(c_organizationdatamt,c_massmediadatamt), inference(hyper,[status(thm)],[51,35,50]), [iquote('hyper,51,35,50')]).

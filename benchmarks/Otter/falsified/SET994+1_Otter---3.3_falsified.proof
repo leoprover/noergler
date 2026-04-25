@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '99':
-%%%%%   Replaced (n0 = dollar_c2)
-%%%%%   With ~ ((n0 = dollar_c2))
+%%%%% Mutated formula '46':
+%%%%%   Replaced (! [A]: (relation(dollar_f4(A))))
+%%%%%   With (! [A]: (~ (relation(dollar_f4(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET994+1 : TPTP v8.1.0. Released v3.2.0.
@@ -48,7 +48,7 @@ fof(29, axiom, (! [A]: ((A = A))), file('SET994+1.p',unknown), []).
 fof(30, axiom, (! [A]: (element(dollar_f1(A),A))), file('SET994+1.p',unknown), []).
 fof(31, axiom, empty(empty_set), file('SET994+1.p',unknown), []).
 fof(36, axiom, empty(dollar_c2), file('SET994+1.p',unknown), []).
-fof(46, axiom, (! [A]: (relation(dollar_f4(A)))), file('SET994+1.p',unknown), []).
+fof(46, axiom, (! [A]: (~ (relation(dollar_f4(A))))), file('SET994+1.p',unknown), []).
 fof(47, axiom, (! [A]: (function(dollar_f4(A)))), file('SET994+1.p',unknown), []).
 fof(48, axiom, (! [A]: ((relation_dom(dollar_f4(A)) = A))), file('SET994+1.p',unknown), []).
 fof(50, axiom, (! [A]: (relation(dollar_f5(A)))), file('SET994+1.p',unknown), []).
@@ -60,7 +60,7 @@ fof(67, plain, (empty_set = dollar_c2), inference(hyper,[status(thm)],[36,25,31]
 fof(69, plain, empty(relation_dom(dollar_c2)), inference(hyper,[status(thm)],[36,6]), [iquote('hyper,36,6')]).
 fof(75, plain, (! [A]: ((~ (empty(A)) | (A = dollar_c2)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[23]),67]), [iquote('back_demod,23,demod,67')]).
 fof(76, plain, (dollar_c7 != dollar_c2), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[16]),67])]), [iquote('back_demod,16,demod,67,flip.1')]).
-fof(99, plain, ~ ((n0 = dollar_c2)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[54,25,36])]), [iquote('hyper,54,25,36,flip.1')]).
+fof(99, plain, (n0 = dollar_c2), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[54,25,36])]), [iquote('hyper,54,25,36,flip.1')]).
 fof(100, plain, (! [A,B]: ((~ (in(A,B)) | (apply(dollar_f4(B),A) = dollar_c2)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[11]),99]), [iquote('back_demod,11,demod,99')]).
 fof(125, plain, (! [A]: ((empty(dollar_f4(A)) | ~ (empty(A))))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[48,5]),46]), [iquote('para_from,48.1.1,5.3.1,unit_del,46')]).
 fof(129, plain, (relation_dom(dollar_c2) = dollar_c2), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[69,25,36])]), [iquote('hyper,69,25,36,flip.1')]).

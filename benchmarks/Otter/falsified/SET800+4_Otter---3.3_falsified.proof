@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '150':
 %%%%%   Replaced greatest_lower_bound(dollar_c2,dollar_c4,dollar_c6,dollar_c5)
-%%%%%   With ~ (greatest_lower_bound(dollar_c2,dollar_c4,dollar_c6,dollar_c5))
+%%%%%   With greatest_lower_bound(dollar_c6,dollar_c4,dollar_c6,dollar_c5)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET800+4 : TPTP v8.1.0. Released v3.2.0.
@@ -39,7 +39,7 @@ fof(107, axiom, (! [A,B,C,D]: ((~ (greatest_lower_bound(A,B,C,D)) | member(A,B))
 fof(108, axiom, (! [A,B,C,D]: ((~ (greatest_lower_bound(A,B,C,D)) | lower_bound(A,C,B)))), file('SET800+4.p',unknown), []).
 fof(113, axiom, ~ (apply(dollar_c6,dollar_c1,dollar_c2)), file('SET800+4.p',unknown), []).
 fof(149, axiom, subset(dollar_c4,dollar_c3), file('SET800+4.p',unknown), []).
-fof(150, axiom, ~ (greatest_lower_bound(dollar_c2,dollar_c4,dollar_c6,dollar_c5)), file('SET800+4.p',unknown), []).
+fof(150, axiom, greatest_lower_bound(dollar_c6,dollar_c4,dollar_c6,dollar_c5), file('SET800+4.p',unknown), []).
 fof(151, axiom, greatest_lower_bound(dollar_c1,dollar_c3,dollar_c6,dollar_c5), file('SET800+4.p',unknown), []).
 fof(508, plain, member(dollar_c2,dollar_c4), inference(hyper,[status(thm)],[150,107]), [iquote('hyper,150,107')]).
 fof(560, plain, member(dollar_c2,dollar_c3), inference(hyper,[status(thm)],[508,1,149]), [iquote('hyper,508,1,149')]).

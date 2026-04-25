@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '453':
-%%%%%   Replaced (dollar_c3 = dollar_c4)
-%%%%%   With (nil = dollar_c4)
+%%%%% Mutated formula '448':
+%%%%%   Replaced (nil = dollar_c5)
+%%%%%   With ~ ((nil = dollar_c5))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC035+1 : TPTP v8.1.0. Released v2.4.0.
@@ -35,10 +35,10 @@
 %%% Generated on Tue Apr 14 19:21:26 CEST 2026 using command 'transform(fof)'.
 fof(182, axiom, (nil != dollar_c6), file('SWC035+1.p',unknown), []).
 fof(432, axiom, (! [A]: ((A = A))), file('SWC035+1.p',unknown), []).
-fof(448, axiom, (nil = dollar_c5), file('SWC035+1.p',unknown), []).
+fof(448, axiom, ~ ((nil = dollar_c5)), file('SWC035+1.p',unknown), []).
 fof(450, axiom, (dollar_c5 = dollar_c3), file('SWC035+1.p',unknown), []).
 fof(452, axiom, (dollar_c6 = dollar_c4), file('SWC035+1.p',unknown), []).
-fof(453, axiom, (nil = dollar_c4), file('SWC035+1.p',unknown), []).
+fof(453, axiom, (dollar_c3 = dollar_c4), file('SWC035+1.p',unknown), []).
 fof(455, plain, (dollar_c4 = dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[453])]), [iquote('copy,453,flip.1')]).
 fof(467, plain, (dollar_c3 != dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),448,450,452,455]), [iquote('back_demod,182,demod,448,450,452,455')]).
 fof(468, plain, $false, inference(binary,[status(thm)],[467,432]), [iquote('binary,467.1,432.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '832':
-%%%%%   Replaced (dollar_f9(dollar_f13(dollar_c1),dollar_c1) = tptp0)
-%%%%%   With (dollar_f9(dollar_f13(tptp0),dollar_c1) = tptp0)
+%%%%% Mutated formula '833':
+%%%%%   Replaced leaf(dollar_f13(dollar_c1),tptp0)
+%%%%%   With ~ (leaf(dollar_f13(dollar_c1),tptp0))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PRO010+4 : TPTP v8.1.0. Released v4.0.0.
@@ -44,7 +44,7 @@ fof(132, plain, leaf_occ(dollar_f13(dollar_c1),dollar_c1), inference(hyper,[stat
 fof(171, plain, (! [A]: ((min_precedes(A,dollar_f16(A,dollar_f13(dollar_c1)),tptp0) | min_precedes(A,dollar_f17(A,dollar_f13(dollar_c1)),tptp0)))), inference(hyper,[status(thm)],[132,84]), [iquote('hyper,132,84')]).
 fof(179, plain, leaf(dollar_f13(dollar_c1),dollar_f9(dollar_f13(dollar_c1),dollar_c1)), inference(hyper,[status(thm)],[132,36]), [iquote('hyper,132,36')]).
 fof(181, plain, occurrence_of(dollar_c1,dollar_f9(dollar_f13(dollar_c1),dollar_c1)), inference(hyper,[status(thm)],[132,34]), [iquote('hyper,132,34')]).
-fof(832, plain, (dollar_f9(dollar_f13(tptp0),dollar_c1) = tptp0), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[181,15,98])]), [iquote('hyper,181,15,98,flip.1')]).
-fof(833, plain, leaf(dollar_f13(dollar_c1),tptp0), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[179]),832]), [iquote('back_demod,179,demod,832')]).
+fof(832, plain, (dollar_f9(dollar_f13(dollar_c1),dollar_c1) = tptp0), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[181,15,98])]), [iquote('hyper,181,15,98,flip.1')]).
+fof(833, plain, ~ (leaf(dollar_f13(dollar_c1),tptp0)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[179]),832]), [iquote('back_demod,179,demod,832')]).
 fof(1837, plain, min_precedes(dollar_f13(dollar_c1),dollar_f17(dollar_f13(dollar_c1),dollar_f13(dollar_c1)),tptp0), inference(hyper,[status(thm)],[171,28,833]), [iquote('hyper,171,28,833')]).
 fof(1840, plain, $false, inference(hyper,[status(thm)],[1837,28,833]), [iquote('hyper,1837,28,833')]).

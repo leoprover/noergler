@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c9':
-%%%%%   Replaced (! [X7]: ((~ (big_g(X7)) | big_h(skolem0002(X7)))))
-%%%%%   With (! [X7]: ((big_g(X7) | big_h(skolem0002(X7)))))
+%%%%% Mutated formula 'c16':
+%%%%%   Replaced (! [X19]: (big_f(skolem0002(skolem0001(skolem0002(X19))),skolem0002(skolem0001(skolem0002(X19))))))
+%%%%%   With (! [X19]: (~ (big_f(skolem0002(skolem0001(skolem0002(X19))),skolem0002(skolem0001(skolem0002(X19)))))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN326+1 : TPTP v8.1.2. Released v2.0.0.
@@ -44,9 +44,9 @@ fof(c3, negated_conjecture, (! [X2]: ((((big_f(skolem0001(X2),skolem0002(X2)) & 
 fof(c4, negated_conjecture, (! [X2]: (((big_f(skolem0001(X2),skolem0002(X2)) | big_f(X2,X2)) & ((big_g(skolem0001(X2)) | big_f(X2,X2)) & ((~ (big_h(X2)) | big_f(X2,X2)) & ((big_f(skolem0002(X2),X2) | big_h(skolem0002(X2))) & ((~ (big_g(X2)) | big_h(skolem0002(X2))) & (big_f(X2,skolem0001(X2)) & ~ (big_f(skolem0002(X2),skolem0002(X2))))))))))), inference(distribute,[status(thm)],[c3])).
 fof(c11, negated_conjecture, (! [X8]: (~ (big_f(skolem0002(X8),skolem0002(X8))))), inference(split_conjunct,[status(thm)],[c4])).
 fof(c7, negated_conjecture, (! [X6]: ((~ (big_h(X6)) | big_f(X6,X6)))), inference(split_conjunct,[status(thm)],[c4])).
-fof(c9, negated_conjecture, (! [X7]: ((big_g(X7) | big_h(skolem0002(X7))))), inference(split_conjunct,[status(thm)],[c4])).
+fof(c9, negated_conjecture, (! [X7]: ((~ (big_g(X7)) | big_h(skolem0002(X7))))), inference(split_conjunct,[status(thm)],[c4])).
 fof(c6, negated_conjecture, (! [X9]: ((big_g(skolem0001(X9)) | big_f(X9,X9)))), inference(split_conjunct,[status(thm)],[c4])).
 fof(c13, plain, (! [X11]: (big_g(skolem0001(skolem0002(X11))))), inference(resolution,[status(thm)],[c6,c11])).
 fof(c15, plain, (! [X12]: (big_h(skolem0002(skolem0001(skolem0002(X12)))))), inference(resolution,[status(thm)],[c13,c9])).
-fof(c16, plain, (! [X19]: (big_f(skolem0002(skolem0001(skolem0002(X19))),skolem0002(skolem0001(skolem0002(X19)))))), inference(resolution,[status(thm)],[c15,c7])).
+fof(c16, plain, (! [X19]: (~ (big_f(skolem0002(skolem0001(skolem0002(X19))),skolem0002(skolem0001(skolem0002(X19))))))), inference(resolution,[status(thm)],[c15,c7])).
 fof(c21, plain, $false, inference(resolution,[status(thm)],[c16,c11])).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '8':
-%%%%%   Replaced ~ (intersect(dollar_c3,dollar_c2))
-%%%%%   With ~ (intersect(dollar_c2,dollar_c2))
+%%%%% Mutated formula '26':
+%%%%%   Replaced intersect(dollar_c3,dollar_c2)
+%%%%%   With ~ (intersect(dollar_c3,dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET631+3 : TPTP v8.1.0. Released v2.2.0.
@@ -37,10 +37,10 @@ fof(1, axiom, (! [A,B,C]: ((~ (member(A,difference(B,C))) | member(A,B)))), file
 fof(4, axiom, (! [A,B]: ((~ (intersect(A,B)) | member(dollar_f1(A,B),A)))), file('SET631+3.p',unknown), []).
 fof(5, axiom, (! [A,B]: ((~ (intersect(A,B)) | member(dollar_f1(A,B),B)))), file('SET631+3.p',unknown), []).
 fof(6, axiom, (! [A,B,C]: ((intersect(A,B) | (~ (member(C,A)) | ~ (member(C,B)))))), file('SET631+3.p',unknown), []).
-fof(8, axiom, ~ (intersect(dollar_c2,dollar_c2)), file('SET631+3.p',unknown), []).
+fof(8, axiom, ~ (intersect(dollar_c3,dollar_c2)), file('SET631+3.p',unknown), []).
 fof(10, axiom, intersect(dollar_c3,difference(dollar_c2,dollar_c1)), file('SET631+3.p',unknown), []).
 fof(12, plain, member(dollar_f1(dollar_c3,difference(dollar_c2,dollar_c1)),difference(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[10,5]), [iquote('hyper,10,5')]).
 fof(13, plain, member(dollar_f1(dollar_c3,difference(dollar_c2,dollar_c1)),dollar_c3), inference(hyper,[status(thm)],[10,4]), [iquote('hyper,10,4')]).
 fof(22, plain, member(dollar_f1(dollar_c3,difference(dollar_c2,dollar_c1)),dollar_c2), inference(hyper,[status(thm)],[12,1]), [iquote('hyper,12,1')]).
-fof(26, plain, intersect(dollar_c3,dollar_c2), inference(hyper,[status(thm)],[22,6,13]), [iquote('hyper,22,6,13')]).
+fof(26, plain, ~ (intersect(dollar_c3,dollar_c2)), inference(hyper,[status(thm)],[22,6,13]), [iquote('hyper,22,6,13')]).
 fof(27, plain, $false, inference(binary,[status(thm)],[26,8]), [iquote('binary,26.1,8.1')]).

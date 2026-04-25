@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '84':
-%%%%%   Replaced (! [A]: ((mult(op_c,A) = mult(A,op_c))))
-%%%%%   With (! [A]: (~ ((mult(op_c,A) = mult(A,op_c)))))
+%%%%% Mutated formula '22':
+%%%%%   Replaced (! [A,B]: ((mult(A,mult(B,op_c)) = mult(mult(A,B),op_c))))
+%%%%%   With (! [A,B]: ((mult(A,mult(B,dollar_c1)) = mult(mult(A,B),op_c))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GRP704+1 : TPTP v8.1.0. Released v4.0.0.
@@ -46,7 +46,7 @@ fof(16, axiom, (! [A,B,C]: ((mult(A,mult(B,mult(B,C))) = mult(mult(mult(A,B),B),
 fof(17, plain, (! [A,B,C]: ((mult(mult(mult(A,B),B),C) = mult(A,mult(B,mult(B,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[16])]), [iquote('copy,16,flip.1')]).
 fof(19, axiom, (! [A,B]: ((mult(op_c,mult(A,B)) = mult(mult(op_c,A),B)))), file('GRP704+1.p',unknown), []).
 fof(21, plain, (! [A,B]: ((mult(mult(op_c,A),B) = mult(op_c,mult(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[19])]), [iquote('copy,19,flip.1')]).
-fof(22, axiom, (! [A,B]: ((mult(A,mult(B,op_c)) = mult(mult(A,B),op_c)))), file('GRP704+1.p',unknown), []).
+fof(22, axiom, (! [A,B]: ((mult(A,mult(B,dollar_c1)) = mult(mult(A,B),op_c)))), file('GRP704+1.p',unknown), []).
 fof(24, plain, (! [A,B]: ((mult(mult(A,B),op_c) = mult(A,mult(B,op_c))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[22])]), [iquote('copy,22,flip.1')]).
 fof(25, axiom, (! [A,B]: ((mult(A,mult(op_c,B)) = mult(mult(A,op_c),B)))), file('GRP704+1.p',unknown), []).
 fof(27, plain, (! [A,B]: ((mult(mult(A,op_c),B) = mult(A,mult(op_c,B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[25])]), [iquote('copy,25,flip.1')]).
@@ -69,7 +69,7 @@ fof(75, plain, (! [A,B]: ((rd(mult(op_c,mult(A,B)),B) = mult(op_c,A)))), inferen
 fof(80, plain, (! [A]: ((rd(A,op_c) = ld(op_c,A)))), inference(para_from,[status(thm),theory(equality)],[67,47]), [iquote('para_from,67.1.1,47.1.1.2')]).
 fof(81, plain, (! [A]: ((mult(ld(op_c,A),op_c) = A))), inference(para_from,[status(thm),theory(equality)],[67,5]), [iquote('para_from,67.1.1,4.1.1.2')]).
 fof(83, plain, (! [A]: ((mult(A,op_c) = mult(op_c,A)))), inference(para_from,[status(thm),theory(equality)],[69,5]), [iquote('para_from,69.1.1,4.1.1.2')]).
-fof(84, plain, (! [A]: (~ ((mult(op_c,A) = mult(A,op_c))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[83])]), [iquote('copy,83,flip.1')]).
+fof(84, plain, (! [A]: ((mult(op_c,A) = mult(A,op_c)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[83])]), [iquote('copy,83,flip.1')]).
 fof(93, plain, (! [A,B]: ((ld(op_c,mult(A,mult(B,op_c))) = mult(A,B)))), inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[24,10]),80]), [iquote('para_from,23.1.1,10.1.1.1,demod,80')]).
 fof(99, plain, (! [A,B]: ((mult(A,mult(B,op_c)) = mult(op_c,mult(A,B))))), inference(para_into,[status(thm),theory(equality)],[83,24]), [iquote('para_into,83.1.1,23.1.1')]).
 fof(100, plain, (! [A,B]: ((mult(op_c,mult(A,B)) = mult(A,mult(B,op_c))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[99])]), [iquote('copy,99,flip.1')]).

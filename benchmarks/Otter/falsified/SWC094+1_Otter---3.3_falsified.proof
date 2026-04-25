@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '452':
-%%%%%   Replaced (dollar_c5 = dollar_c3)
-%%%%%   With ~ ((dollar_c5 = dollar_c3))
+%%%%% Mutated formula '304':
+%%%%%   Replaced (! [A,B]: ((~ (ssList(A)) | (~ (ssList(B)) | ((app(app(A,B),B) != dollar_c6) | (app(A,B) != dollar_c5))))))
+%%%%%   With (! [A,B]: ((ssList(A) | (~ (ssList(B)) | ((app(app(A,B),B) != dollar_c6) | (app(A,B) != dollar_c5))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC094+1 : TPTP v8.1.0. Released v2.4.0.
@@ -35,11 +35,11 @@
 %%% Generated on Tue Apr 14 19:21:32 CEST 2026 using command 'transform(fof)'.
 fof(169, axiom, (! [A]: ((~ (ssList(A)) | (app(A,nil) = A)))), file('SWC094+1.p',unknown), []).
 fof(182, axiom, (! [A,B,C]: ((~ (ssList(A)) | (~ (ssList(B)) | (~ (ssList(C)) | ((app(app(A,B),C) != dollar_c6) | (app(A,C) != dollar_c5))))))), file('SWC094+1.p',unknown), []).
-fof(304, plain, (! [A,B]: ((~ (ssList(A)) | (~ (ssList(B)) | ((app(app(A,B),B) != dollar_c6) | (app(A,B) != dollar_c5)))))), inference(factor,[status(thm)],[182]), [iquote('factor,182.2.3')]).
+fof(304, plain, (! [A,B]: ((ssList(A) | (~ (ssList(B)) | ((app(app(A,B),B) != dollar_c6) | (app(A,B) != dollar_c5)))))), inference(factor,[status(thm)],[182]), [iquote('factor,182.2.3')]).
 fof(436, axiom, (! [A]: ((A = A))), file('SWC094+1.p',unknown), []).
 fof(439, axiom, ssList(nil), file('SWC094+1.p',unknown), []).
 fof(450, axiom, ssList(dollar_c3), file('SWC094+1.p',unknown), []).
-fof(452, axiom, ~ ((dollar_c5 = dollar_c3)), file('SWC094+1.p',unknown), []).
+fof(452, axiom, (dollar_c5 = dollar_c3), file('SWC094+1.p',unknown), []).
 fof(454, axiom, (dollar_c6 = dollar_c4), file('SWC094+1.p',unknown), []).
 fof(455, axiom, (dollar_c3 = dollar_c4), file('SWC094+1.p',unknown), []).
 fof(457, plain, (dollar_c4 = dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[455])]), [iquote('copy,455,flip.1')]).

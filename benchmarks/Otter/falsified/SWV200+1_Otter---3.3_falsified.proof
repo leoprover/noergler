@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1799':
-%%%%%   Replaced (! [A,B]: ((~ (le_q(n0,A)) | (~ (le_q(n0,B)) | (~ (le_q(A,n2)) | (~ (le_q(B,minus(pv5,n1))) | (a_select3(u_defuse,A,B) = use)))))))
-%%%%%   With (! [A,B]: ((le_q(n0,A) | (~ (le_q(n0,B)) | (~ (le_q(A,n2)) | (~ (le_q(B,minus(pv5,n1))) | (a_select3(u_defuse,A,B) = use)))))))
+%%%%% Mutated formula '1733':
+%%%%%   Replaced le_q(dollar_c1,pred(pv5))
+%%%%%   With ~ (le_q(dollar_c1,pred(pv5)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV200+1 : TPTP v8.1.0. Bugfixed v3.3.0.
@@ -41,7 +41,7 @@ fof(1661, plain, (! [A]: ((pred(A) = minus(A,n1)))), inference(flip,[status(thm)
 fof(1730, axiom, le_q(n0,dollar_c2), file('SWV200+1.p',unknown), []).
 fof(1731, axiom, le_q(n0,dollar_c1), file('SWV200+1.p',unknown), []).
 fof(1732, axiom, le_q(dollar_c2,n2), file('SWV200+1.p',unknown), []).
-fof(1733, axiom, le_q(dollar_c1,pred(pv5)), file('SWV200+1.p',unknown), []).
+fof(1733, axiom, ~ (le_q(dollar_c1,pred(pv5))), file('SWV200+1.p',unknown), []).
 fof(1734, plain, le_q(dollar_c1,minus(pv5,n1)), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1733]),1661]), [iquote('copy,1733,demod,1661')]).
-fof(1799, plain, (! [A,B]: ((le_q(n0,A) | (~ (le_q(n0,B)) | (~ (le_q(A,n2)) | (~ (le_q(B,minus(pv5,n1))) | (a_select3(u_defuse,A,B) = use))))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[240]),1661]), [iquote('back_demod,240,demod,1661')]).
+fof(1799, plain, (! [A,B]: ((~ (le_q(n0,A)) | (~ (le_q(n0,B)) | (~ (le_q(A,n2)) | (~ (le_q(B,minus(pv5,n1))) | (a_select3(u_defuse,A,B) = use))))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[240]),1661]), [iquote('back_demod,240,demod,1661')]).
 fof(1931, plain, $false, inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[1799,245]),1623,1730,1731,1732,1734]), [iquote('para_from,1799.5.1,245.1.1,unit_del,1623,1730,1731,1732,1734')]).

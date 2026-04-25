@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '18':
 %%%%%   Replaced survival_chance(dollar_c7,dollar_c1,dollar_c5)
-%%%%%   With survival_chance(dollar_c4,dollar_c1,dollar_c5)
+%%%%%   With survival_chance(dollar_c8,dollar_c1,dollar_c5)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT001+1 : TPTP v8.1.0. Released v2.0.0.
@@ -48,7 +48,7 @@ fof(14, axiom, reorganization_free(dollar_c7,dollar_c5,dollar_c5), file('MGT001+
 fof(15, axiom, inertia(dollar_c8,dollar_c4,dollar_c6), file('MGT001+1.p',unknown), []).
 fof(16, axiom, inertia(dollar_c7,dollar_c3,dollar_c5), file('MGT001+1.p',unknown), []).
 fof(17, axiom, survival_chance(dollar_c8,dollar_c2,dollar_c6), file('MGT001+1.p',unknown), []).
-fof(18, axiom, survival_chance(dollar_c4,dollar_c1,dollar_c5), file('MGT001+1.p',unknown), []).
+fof(18, axiom, survival_chance(dollar_c8,dollar_c1,dollar_c5), file('MGT001+1.p',unknown), []).
 fof(19, axiom, greater(dollar_c3,dollar_c4), file('MGT001+1.p',unknown), []).
 fof(20, plain, reproducibility(dollar_c8,dollar_f3(dollar_c8,dollar_c6),dollar_c6), inference(hyper,[status(thm)],[11,3]), [iquote('hyper,11,3')]).
 fof(21, plain, accountability(dollar_c8,dollar_f2(dollar_c8,dollar_c6),dollar_c6), inference(hyper,[status(thm)],[11,2]), [iquote('hyper,11,2')]).

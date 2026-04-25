@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '341':
-%%%%%   Replaced status(dollar_f6(dollar_c21,dollar_c19),dollar_f5(dollar_c21,dollar_c19),dollar_c19)
-%%%%%   With ~ (status(dollar_f6(dollar_c21,dollar_c19),dollar_f5(dollar_c21,dollar_c19),dollar_c19))
+%%%%% Mutated formula '42':
+%%%%%   Replaced status(dollar_f6(dollar_c21,dollar_c19),dollar_f5(dollar_c21,dollar_c19),dollar_c21)
+%%%%%   With ~ (status(dollar_f6(dollar_c21,dollar_c19),dollar_f5(dollar_c21,dollar_c19),dollar_c21))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS181+1 : TPTP v8.1.0. Bugfixed v5.4.0.
@@ -40,8 +40,8 @@ fof(8, axiom, (! [A,B]: ((~ (status(dollar_f6(A,B),dollar_f5(A,B),B)) | ~ (nota(
 fof(22, axiom, ~ (nota(dollar_c20,dollar_c19)), file('KRS181+1.p',unknown), []).
 fof(39, axiom, isa(dollar_c21,dollar_c20), file('KRS181+1.p',unknown), []).
 fof(40, axiom, nota(dollar_c21,dollar_c19), file('KRS181+1.p',unknown), []).
-fof(42, plain, status(dollar_f6(dollar_c21,dollar_c19),dollar_f5(dollar_c21,dollar_c19),dollar_c21), inference(hyper,[status(thm)],[40,7]), [iquote('hyper,40,7')]).
+fof(42, plain, ~ (status(dollar_f6(dollar_c21,dollar_c19),dollar_f5(dollar_c21,dollar_c19),dollar_c21)), inference(hyper,[status(thm)],[40,7]), [iquote('hyper,40,7')]).
 fof(63, plain, status(dollar_f6(dollar_c21,dollar_c19),dollar_f5(dollar_c21,dollar_c19),dollar_c20), inference(hyper,[status(thm)],[42,5,39]), [iquote('hyper,42,5,39')]).
 fof(131, plain, (! [A]: ((status(dollar_f6(dollar_c21,dollar_c19),dollar_f5(dollar_c21,dollar_c19),A) | nota(dollar_c20,A)))), inference(hyper,[status(thm)],[63,6]), [iquote('hyper,63,6')]).
-fof(341, plain, ~ (status(dollar_f6(dollar_c21,dollar_c19),dollar_f5(dollar_c21,dollar_c19),dollar_c19)), inference(hyper,[status(thm)],[131,22]), [iquote('hyper,131,22')]).
+fof(341, plain, status(dollar_f6(dollar_c21,dollar_c19),dollar_f5(dollar_c21,dollar_c19),dollar_c19), inference(hyper,[status(thm)],[131,22]), [iquote('hyper,131,22')]).
 fof(400, plain, $false, inference(hyper,[status(thm)],[341,8,40]), [iquote('hyper,341,8,40')]).

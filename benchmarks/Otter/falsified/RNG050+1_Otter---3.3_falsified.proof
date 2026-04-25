@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '180':
-%%%%%   Replaced sdtlse_qdt0(sz0z00,sz0z00)
-%%%%%   With ~ (sdtlse_qdt0(sz0z00,sz0z00))
+%%%%% Mutated formula '147':
+%%%%%   Replaced aVector0(xs)
+%%%%%   With aVector0(sz0z00)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : RNG050+1 : TPTP v8.1.0. Released v4.0.0.
@@ -39,10 +39,10 @@ fof(59, axiom, ~ (sdtlse_qdt0(sz0z00,sdtasasdt0(xs,xs))), file('RNG050+1.p',unkn
 fof(109, plain, (! [A]: ((~ (aVector0(A)) | ((aDimensionOf0(A) != aDimensionOf0(A)) | ((aDimensionOf0(A) != sz00) | (sdtasasdt0(A,A) = sz0z00)))))), inference(factor,[status(thm)],[55]), [iquote('factor,55.1.2')]).
 fof(144, axiom, (! [A]: ((A = A))), file('RNG050+1.p',unknown), []).
 fof(146, axiom, aScalar0(sz0z00), file('RNG050+1.p',unknown), []).
-fof(147, axiom, aVector0(xs), file('RNG050+1.p',unknown), []).
+fof(147, axiom, aVector0(sz0z00), file('RNG050+1.p',unknown), []).
 fof(148, axiom, ((aDimensionOf0(xs) = sz00) | sdtlse_qdt0(sz0z00,sdtasasdt0(xs,xs))), file('RNG050+1.p',unknown), []).
 fof(149, plain, (aDimensionOf0(xs) = sz00), inference(unit_del,[status(thm)],[inference(copy,[status(thm)],[148]),59]), [iquote('copy,148,unit_del,59')]).
-fof(180, plain, ~ (sdtlse_qdt0(sz0z00,sz0z00)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[146,41,146])]), [iquote('hyper,146,41,146,factor_simp')]).
+fof(180, plain, sdtlse_qdt0(sz0z00,sz0z00), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[146,41,146])]), [iquote('hyper,146,41,146,factor_simp')]).
 fof(221, plain, (sdtasasdt0(xs,xs) = sz0z00), inference(hyper,[status(thm)],[149,109,147,144]), [iquote('hyper,149,109,147,144')]).
 fof(222, plain, ~ (sdtlse_qdt0(sz0z00,sz0z00)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[59]),221]), [iquote('back_demod,59,demod,221')]).
 fof(223, plain, $false, inference(binary,[status(thm)],[222,180]), [iquote('binary,222.1,180.1')]).

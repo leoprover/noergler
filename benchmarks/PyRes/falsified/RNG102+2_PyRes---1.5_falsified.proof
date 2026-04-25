@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula 'c19':
 %%%%%   Replaced (! [W0]: ((~ (aElement0(W0)) | (sdtasdt0(xc,W0) != xy))))
-%%%%%   With (! [W0]: ((aElement0(W0) | (sdtasdt0(xc,W0) != xy))))
+%%%%%   With (! [W0]: ((~ (aElement0(W0)) | (sdtasdt0(skolem0002,W0) != xy))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : RNG102+2 : TPTP v8.1.2. Released v4.0.0.
@@ -43,7 +43,7 @@ fof(c29, plain, aElement0(skolem0002), inference(split_conjunct,[status(thm)],[c
 fof(c30, plain, (sdtasdt0(xc,skolem0002) = xy), inference(split_conjunct,[status(thm)],[c25])).
 fof(m__, conjecture, (? [W0]: ((aElement0(W0) & (sdtasdt0(xc,W0) = xy)))), file('RNG102+2.p',m__)).
 fof(c18, negated_conjecture, ~ ((? [W0]: ((aElement0(W0) & (sdtasdt0(xc,W0) = xy))))), inference(assume_negation,[status(cth)],[m__])).
-fof(c19, negated_conjecture, (! [W0]: ((aElement0(W0) | (sdtasdt0(xc,W0) != xy)))), inference(fof_nnf,[status(thm)],[c18])).
+fof(c19, negated_conjecture, (! [W0]: ((~ (aElement0(W0)) | (sdtasdt0(skolem0002,W0) != xy)))), inference(fof_nnf,[status(thm)],[c18])).
 fof(c20, negated_conjecture, (! [X2]: ((~ (aElement0(X2)) | (sdtasdt0(xc,X2) != xy)))), inference(variable_rename,[status(thm)],[c19])).
 fof(c21, negated_conjecture, (! [X197]: ((~ (aElement0(X197)) | (sdtasdt0(xc,X197) != xy)))), inference(split_conjunct,[status(thm)],[c20])).
 fof(c570, plain, ~ (aElement0(skolem0002)), inference(resolution,[status(thm)],[c21,c30])).

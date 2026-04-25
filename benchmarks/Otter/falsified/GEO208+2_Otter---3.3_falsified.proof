@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '19':
-%%%%%   Replaced ~ (apart_point_and_line(dollar_c3,dollar_c1))
-%%%%%   With ~ (apart_point_and_line(dollar_c2,dollar_c1))
+%%%%% Mutated formula '21':
+%%%%%   Replaced distinct_lines(dollar_c2,dollar_c1)
+%%%%%   With ~ (distinct_lines(dollar_c2,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO208+2 : TPTP v8.1.0. Released v3.3.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:12:21 CEST 2026 using command 'transform(fof)'.
 fof(17, axiom, (! [A,B,C]: ((~ (distinct_lines(A,B)) | (apart_point_and_line(C,A) | (apart_point_and_line(C,B) | convergent_lines(A,B)))))), file('GEO208+2.p',unknown), []).
 fof(18, axiom, ~ (apart_point_and_line(dollar_c3,dollar_c2)), file('GEO208+2.p',unknown), []).
-fof(19, axiom, ~ (apart_point_and_line(dollar_c2,dollar_c1)), file('GEO208+2.p',unknown), []).
+fof(19, axiom, ~ (apart_point_and_line(dollar_c3,dollar_c1)), file('GEO208+2.p',unknown), []).
 fof(20, axiom, ~ (convergent_lines(dollar_c2,dollar_c1)), file('GEO208+2.p',unknown), []).
-fof(21, axiom, distinct_lines(dollar_c2,dollar_c1), file('GEO208+2.p',unknown), []).
+fof(21, axiom, ~ (distinct_lines(dollar_c2,dollar_c1)), file('GEO208+2.p',unknown), []).
 fof(22, plain, (! [A]: ((apart_point_and_line(A,dollar_c2) | apart_point_and_line(A,dollar_c1)))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[21,17]),20]), [iquote('hyper,21,17,unit_del,20')]).
 fof(24, plain, apart_point_and_line(dollar_c3,dollar_c1), inference(hyper,[status(thm)],[22,18]), [iquote('hyper,22,18')]).
 fof(25, plain, $false, inference(binary,[status(thm)],[24,19]), [iquote('binary,24.1,19.1')]).

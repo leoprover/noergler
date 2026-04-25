@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '221':
 %%%%%   Replaced (sdtpldt0(sdtpldt0(sdtasdt0(xR,xR),smndt0(xN)),sdtpldt0(smndt0(xN),sdtasdt0(xS,xS))) != sdtpldt0(sdtpldt0(sdtasdt0(xR,xR),smndt0(xN)),sdtpldt0(sdtasdt0(xS,xS),smndt0(xN))))
-%%%%%   With (sdtpldt0(sdtpldt0(sdtasdt0(xN,xR),smndt0(xN)),sdtpldt0(smndt0(xN),sdtasdt0(xS,xS))) != sdtpldt0(sdtpldt0(sdtasdt0(xR,xR),smndt0(xN)),sdtpldt0(sdtasdt0(xS,xS),smndt0(xN))))
+%%%%%   With (sdtpldt0(sdtpldt0(sdtasdt0(xS,xR),smndt0(xN)),sdtpldt0(smndt0(xN),sdtasdt0(xS,xS))) != sdtpldt0(sdtpldt0(sdtasdt0(xR,xR),smndt0(xN)),sdtpldt0(sdtasdt0(xS,xS),smndt0(xN))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : RNG061+1 : TPTP v8.1.0. Released v4.0.0.
@@ -43,7 +43,7 @@ fof(147, axiom, (! [A]: ((A = A))), file('RNG061+1.p',unknown), []).
 fof(203, axiom, aScalar0(xS), file('RNG061+1.p',unknown), []).
 fof(207, axiom, aScalar0(xN), file('RNG061+1.p',unknown), []).
 fof(220, axiom, (sdtasdt0(sdtpldt0(xR,smndt0(xS)),sdtpldt0(xR,smndt0(xS))) = sdtpldt0(sdtpldt0(sdtasdt0(xR,xR),smndt0(xN)),sdtpldt0(smndt0(xN),sdtasdt0(xS,xS)))), file('RNG061+1.p',unknown), []).
-fof(221, plain, (sdtpldt0(sdtpldt0(sdtasdt0(xN,xR),smndt0(xN)),sdtpldt0(smndt0(xN),sdtasdt0(xS,xS))) != sdtpldt0(sdtpldt0(sdtasdt0(xR,xR),smndt0(xN)),sdtpldt0(sdtasdt0(xS,xS),smndt0(xN)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[61]),220]), [iquote('back_demod,61,demod,220')]).
+fof(221, plain, (sdtpldt0(sdtpldt0(sdtasdt0(xS,xR),smndt0(xN)),sdtpldt0(smndt0(xN),sdtasdt0(xS,xS))) != sdtpldt0(sdtpldt0(sdtasdt0(xR,xR),smndt0(xN)),sdtpldt0(sdtasdt0(xS,xS),smndt0(xN)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[61]),220]), [iquote('back_demod,61,demod,220')]).
 fof(2564, plain, aScalar0(sdtasdt0(xS,xS)), inference(hyper,[status(thm)],[203,64]), [iquote('hyper,203,64')]).
 fof(2614, plain, aScalar0(smndt0(xN)), inference(hyper,[status(thm)],[207,10]), [iquote('hyper,207,10')]).
 fof(2674, plain, $false, inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[221,21]),147,2614,2564]), [iquote('para_into,221.1.1.2,21.3.1,unit_del,147,2614,2564')]).

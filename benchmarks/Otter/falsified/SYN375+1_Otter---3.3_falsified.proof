@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '17':
-%%%%%   Replaced (! [A]: (big_p(A)))
-%%%%%   With (! [A]: (~ (big_p(A))))
+%%%%% Mutated formula '11':
+%%%%%   Replaced (big_p(dollar_c4) | (big_p(dollar_c3) | big_p(dollar_c5)))
+%%%%%   With (big_p(dollar_c4) & (big_p(dollar_c3) | big_p(dollar_c5)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN375+1 : TPTP v8.1.0. Released v2.0.0.
@@ -38,8 +38,8 @@ fof(7, plain, (! [A,B]: ((big_p(A) | ~ (big_p(B))))), inference(factor_simp,[sta
 fof(8, axiom, (! [A,B]: ((~ (big_p(dollar_c4)) | (~ (big_p(A)) | (~ (big_p(dollar_c6)) | ~ (big_p(B))))))), file('SYN375+1.p',unknown), []).
 fof(9, plain, (~ (big_p(dollar_c4)) | ~ (big_p(dollar_c6))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(copy,[status(thm)],[8])])]), [iquote('copy,8,factor_simp,factor_simp')]).
 fof(10, axiom, (! [A]: ((big_p(dollar_c4) | (big_p(dollar_c3) | (big_p(A) | big_p(dollar_c5)))))), file('SYN375+1.p',unknown), []).
-fof(11, plain, (big_p(dollar_c4) | (big_p(dollar_c3) | big_p(dollar_c5))), inference(factor_simp,[status(thm)],[inference(copy,[status(thm)],[10])]), [iquote('copy,10,factor_simp')]).
+fof(11, plain, (big_p(dollar_c4) & (big_p(dollar_c3) | big_p(dollar_c5))), inference(factor_simp,[status(thm)],[inference(copy,[status(thm)],[10])]), [iquote('copy,10,factor_simp')]).
 fof(12, plain, (big_p(dollar_c3) | big_p(dollar_c5)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[11,7])]), [iquote('hyper,11,7,factor_simp')]).
 fof(15, plain, big_p(dollar_c5), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[12,7])]), [iquote('hyper,12,7,factor_simp')]).
-fof(17, plain, (! [A]: (~ (big_p(A)))), inference(hyper,[status(thm)],[15,7]), [iquote('hyper,15,7')]).
+fof(17, plain, (! [A]: (big_p(A))), inference(hyper,[status(thm)],[15,7]), [iquote('hyper,15,7')]).
 fof(18, plain, $false, inference(hyper,[status(thm)],[17,9,17]), [iquote('hyper,17,9,17')]).

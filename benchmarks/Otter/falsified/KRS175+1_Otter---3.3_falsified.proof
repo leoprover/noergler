@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '49':
-%%%%%   Replaced (cA_and_B(dollar_c3) | xsd_integer(dollar_c2))
-%%%%%   With (cA_and_B(ia) | xsd_integer(dollar_c2))
+%%%%% Mutated formula '44':
+%%%%%   Replaced (cA_and_B(dollar_c3) | (xsd_integer(dollar_c2) | (ia = dollar_c3)))
+%%%%%   With (cA_and_B(ib) | (xsd_integer(dollar_c2) | (ia = dollar_c3)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS175+1 : TPTP v8.1.0. Released v3.1.0.
@@ -64,8 +64,8 @@ fof(34, plain, cA_and_B(ib), inference(hyper,[status(thm)],[32,14]), [iquote('hy
 fof(38, plain, cA_and_B(ia), inference(hyper,[status(thm)],[33,13]), [iquote('hyper,33,13')]).
 fof(42, plain, (cA_and_B(dollar_c3) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (ia = dollar_c3)))), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[34,24]),30,30,30])]), [iquote('para_into,34.1.1,24.5.1,unit_del,30,30,30,factor_simp')]).
 fof(43, plain, (cA_and_B(dollar_c3) | (xsd_string(dollar_c2) | (~ (xsd_integer(dollar_c2)) | (ia = dollar_c3)))), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[34,18]),30,30,30])]), [iquote('para_into,34.1.1,18.5.1,unit_del,30,30,30,factor_simp')]).
-fof(44, plain, (cA_and_B(dollar_c3) | (xsd_integer(dollar_c2) | (ia = dollar_c3))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[42,31])]), [iquote('hyper,42,31,factor_simp')]).
-fof(49, plain, (cA_and_B(ia) | xsd_integer(dollar_c2)), inference(factor_simp,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[44,38])]), [iquote('para_from,44.3.1,38.1.1,factor_simp')]).
+fof(44, plain, (cA_and_B(ib) | (xsd_integer(dollar_c2) | (ia = dollar_c3))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[42,31])]), [iquote('hyper,42,31,factor_simp')]).
+fof(49, plain, (cA_and_B(dollar_c3) | xsd_integer(dollar_c2)), inference(factor_simp,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[44,38])]), [iquote('para_from,44.3.1,38.1.1,factor_simp')]).
 fof(55, plain, (cA_and_B(dollar_c3) | (xsd_string(dollar_c2) | (ia = dollar_c3))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[43,49])]), [iquote('hyper,43,49,factor_simp')]).
 fof(56, plain, (cA_and_B(dollar_c3) | (ia = dollar_c3)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[55,9,49])]), [iquote('hyper,55,9,49,factor_simp')]).
 fof(62, plain, cA_and_B(dollar_c3), inference(factor_simp,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[56,38])]), [iquote('para_from,56.2.1,38.1.1,factor_simp')]).

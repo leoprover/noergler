@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1266':
-%%%%%   Replaced coll(dollar_c3,dollar_c4,dollar_c7)
-%%%%%   With ~ (coll(dollar_c3,dollar_c4,dollar_c7))
+%%%%% Mutated formula '123':
+%%%%%   Replaced (! [E,A,B,C,D]: ((~ (cyclic(A,B,C,D)) | (~ (cyclic(A,B,C,E)) | (~ (e_qangle(C,A,C,B,E,D,E,E)) | cong(A,B,D,E))))))
+%%%%%   With (! [E,A,B,C,D]: ((cyclic(A,B,C,D) | (~ (cyclic(A,B,C,E)) | (~ (e_qangle(C,A,C,B,E,D,E,E)) | cong(A,B,D,E))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO589+1 : TPTP v8.1.0. Released v7.5.0.
@@ -55,7 +55,7 @@ fof(68, axiom, (! [A,B,C]: ((~ (cong(A,B,A,C)) | (~ (coll(A,B,C)) | midp(A,B,C))
 fof(113, axiom, ~ (para(dollar_c7,dollar_c3,dollar_c8,dollar_c6)), file('GEO589+1.p',unknown), []).
 fof(114, plain, (! [A,B,C]: ((~ (coll(A,B,C)) | coll(C,C,A)))), inference(factor,[status(thm)],[3]), [iquote('factor,3.1.2')]).
 fof(120, plain, (! [A,B,C,D]: ((~ (cyclic(A,B,C,D)) | cyclic(B,C,D,D)))), inference(factor,[status(thm)],[17]), [iquote('factor,17.1.2')]).
-fof(123, plain, (! [E,A,B,C,D]: ((~ (cyclic(A,B,C,D)) | (~ (cyclic(A,B,C,E)) | (~ (e_qangle(C,A,C,B,E,D,E,E)) | cong(A,B,D,E)))))), inference(factor,[status(thm)],[44]), [iquote('factor,44.2.3')]).
+fof(123, plain, (! [E,A,B,C,D]: ((cyclic(A,B,C,D) | (~ (cyclic(A,B,C,E)) | (~ (e_qangle(C,A,C,B,E,D,E,E)) | cong(A,B,D,E)))))), inference(factor,[status(thm)],[44]), [iquote('factor,44.2.3')]).
 fof(125, plain, (! [A,B,C]: ((~ (cong(A,B,C,B)) | perp(A,C,B,B)))), inference(factor,[status(thm)],[57]), [iquote('factor,57.1.2')]).
 fof(126, plain, (! [A,B,C]: ((~ (cong(A,B,C,B)) | (~ (cyclic(A,C,B,B)) | perp(B,A,A,B))))), inference(factor,[status(thm)],[58]), [iquote('factor,58.1.2')]).
 fof(161, axiom, perp(dollar_c8,dollar_c6,dollar_c7,dollar_c4), file('GEO589+1.p',unknown), []).
@@ -78,7 +78,7 @@ fof(1221, plain, coll(dollar_c4,dollar_c4,dollar_c7), inference(hyper,[status(th
 fof(1235, plain, coll(dollar_c7,dollar_c7,dollar_c4), inference(hyper,[status(thm)],[1221,114]), [iquote('hyper,1221,114')]).
 fof(1237, plain, coll(dollar_c3,dollar_c7,dollar_c4), inference(hyper,[status(thm)],[1221,3,208]), [iquote('hyper,1221,3,208')]).
 fof(1252, plain, coll(dollar_c7,dollar_c4,dollar_c7), inference(hyper,[status(thm)],[1235,1]), [iquote('hyper,1235,1')]).
-fof(1266, plain, ~ (coll(dollar_c3,dollar_c4,dollar_c7)), inference(hyper,[status(thm)],[1237,1]), [iquote('hyper,1237,1')]).
+fof(1266, plain, coll(dollar_c3,dollar_c4,dollar_c7), inference(hyper,[status(thm)],[1237,1]), [iquote('hyper,1237,1')]).
 fof(1287, plain, coll(dollar_c7,dollar_c7,dollar_c7), inference(hyper,[status(thm)],[1252,114]), [iquote('hyper,1252,114')]).
 fof(1288, plain, coll(dollar_c4,dollar_c7,dollar_c7), inference(hyper,[status(thm)],[1252,3,1203]), [iquote('hyper,1252,3,1203')]).
 fof(1308, plain, coll(dollar_c7,dollar_c7,dollar_c3), inference(hyper,[status(thm)],[1266,114]), [iquote('hyper,1266,114')]).

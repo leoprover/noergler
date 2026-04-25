@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '257':
-%%%%%   Replaced aElementOf0(dollar_f12(xP),xU)
-%%%%%   With aElementOf0(dollar_f12(xU),xU)
+%%%%% Mutated formula '153':
+%%%%%   Replaced aSet0(xP)
+%%%%%   With aSet0(xU)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LAT385+4 : TPTP v8.1.0. Released v4.0.0.
@@ -37,8 +37,8 @@ fof(58, axiom, (! [A]: ((~ (aSet0(A)) | (aElementOf0(dollar_f12(A),A) | aInfimum
 fof(72, axiom, (! [A]: ((~ (aSet0(A)) | (~ (aElementOf0(dollar_f12(A),xU)) | aInfimumOfIn0(dollar_f16(A),A,xU))))), file('LAT385+4.p',unknown), []).
 fof(101, axiom, (! [A]: ((~ (aElementOf0(A,xP)) | aElementOf0(A,xU)))), file('LAT385+4.p',unknown), []).
 fof(120, axiom, (! [A]: (~ (aInfimumOfIn0(A,xP,xU)))), file('LAT385+4.p',unknown), []).
-fof(153, axiom, aSet0(xP), file('LAT385+4.p',unknown), []).
+fof(153, axiom, aSet0(xU), file('LAT385+4.p',unknown), []).
 fof(222, plain, aElementOf0(dollar_f12(xP),xP), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[153,58]),120]), [iquote('hyper,153,58,unit_del,120')]).
-fof(257, plain, aElementOf0(dollar_f12(xU),xU), inference(hyper,[status(thm)],[222,101]), [iquote('hyper,222,101')]).
+fof(257, plain, aElementOf0(dollar_f12(xP),xU), inference(hyper,[status(thm)],[222,101]), [iquote('hyper,222,101')]).
 fof(292, plain, aInfimumOfIn0(dollar_f16(xP),xP,xU), inference(hyper,[status(thm)],[257,72,153]), [iquote('hyper,257,72,153')]).
 fof(293, plain, $false, inference(binary,[status(thm)],[292,120]), [iquote('binary,292.1,120.1')]).

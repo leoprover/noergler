@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '223':
-%%%%%   Replaced subset(intersection(dollar_c3,dollar_c1),empty_set)
-%%%%%   With ~ (subset(intersection(dollar_c3,dollar_c1),empty_set))
+%%%%% Mutated formula '174':
+%%%%%   Replaced ~ (subset(intersection(dollar_c1,dollar_c3),empty_set))
+%%%%%   With ~ (subset(intersection(dollar_c2,dollar_c3),empty_set))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET596+3 : TPTP v8.1.0. Released v2.2.0.
@@ -42,7 +42,7 @@ fof(26, axiom, subset(dollar_c3,dollar_c2), file('SET596+3.p',unknown), []).
 fof(27, axiom, (intersection(dollar_c2,dollar_c1) = empty_set), file('SET596+3.p',unknown), []).
 fof(29, plain, (! [A]: (subset(intersection(dollar_c3,A),intersection(dollar_c2,A)))), inference(hyper,[status(thm)],[26,2]), [iquote('hyper,26,2')]).
 fof(81, plain, (intersection(dollar_c1,dollar_c3) != empty_set), inference(para_from,[status(thm),theory(equality)],[22,16]), [iquote('para_from,22.1.1,16.1.1')]).
-fof(174, plain, ~ (subset(intersection(dollar_c1,dollar_c3),empty_set)), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[81,1]),20]), [iquote('para_into,81.1.1,1.2.1,unit_del,20')]).
+fof(174, plain, ~ (subset(intersection(dollar_c2,dollar_c3),empty_set)), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[81,1]),20]), [iquote('para_into,81.1.1,1.2.1,unit_del,20')]).
 fof(185, plain, ~ (subset(intersection(dollar_c3,dollar_c1),empty_set)), inference(para_into,[status(thm),theory(equality)],[174,22]), [iquote('para_into,174.1.1,22.1.1')]).
-fof(223, plain, ~ (subset(intersection(dollar_c3,dollar_c1),empty_set)), inference(para_into,[status(thm),theory(equality)],[29,27]), [iquote('para_into,29.1.2,27.1.1')]).
+fof(223, plain, subset(intersection(dollar_c3,dollar_c1),empty_set), inference(para_into,[status(thm),theory(equality)],[29,27]), [iquote('para_into,29.1.2,27.1.1')]).
 fof(224, plain, $false, inference(binary,[status(thm)],[223,185]), [iquote('binary,223.1,185.1')]).

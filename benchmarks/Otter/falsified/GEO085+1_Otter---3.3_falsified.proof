@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '193':
-%%%%%   Replaced end_point(dollar_f11(dollar_c1,dollar_f6(dollar_c1)),dollar_c1)
-%%%%%   With ~ (end_point(dollar_f11(dollar_c1,dollar_f6(dollar_c1)),dollar_c1))
+%%%%% Mutated formula '59':
+%%%%%   Replaced open(dollar_c1)
+%%%%%   With ~ (open(dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO085+1 : TPTP v8.1.0. Released v2.4.0.
@@ -40,9 +40,9 @@ fof(36, axiom, (! [A,B]: ((~ (end_point(A,B)) | (A != dollar_f11(B,A))))), file(
 fof(37, plain, (! [A,B]: ((~ (end_point(A,B)) | (dollar_f11(B,A) != A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[36])]), [iquote('copy,36,flip.2')]).
 fof(42, axiom, (! [A,B]: (((A = B) | (~ (end_point(A,dollar_c1)) | ~ (end_point(B,dollar_c1)))))), file('GEO085+1.p',unknown), []).
 fof(56, axiom, (! [A]: ((closed(A) | end_point(dollar_f6(A),A)))), file('GEO085+1.p',unknown), []).
-fof(59, axiom, open(dollar_c1), file('GEO085+1.p',unknown), []).
+fof(59, axiom, ~ (open(dollar_c1)), file('GEO085+1.p',unknown), []).
 fof(64, plain, end_point(dollar_f7(dollar_c1),dollar_c1), inference(hyper,[status(thm)],[59,27]), [iquote('hyper,59,27')]).
 fof(180, plain, end_point(dollar_f6(dollar_c1),dollar_c1), inference(hyper,[status(thm)],[56,26,64]), [iquote('hyper,56,26,64')]).
-fof(193, plain, ~ (end_point(dollar_f11(dollar_c1,dollar_f6(dollar_c1)),dollar_c1)), inference(hyper,[status(thm)],[180,35]), [iquote('hyper,180,35')]).
+fof(193, plain, end_point(dollar_f11(dollar_c1,dollar_f6(dollar_c1)),dollar_c1), inference(hyper,[status(thm)],[180,35]), [iquote('hyper,180,35')]).
 fof(1028, plain, (dollar_f11(dollar_c1,dollar_f6(dollar_c1)) = dollar_f6(dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[193,42,180])]), [iquote('hyper,193,42,180,flip.1')]).
 fof(1136, plain, $false, inference(hyper,[status(thm)],[1028,37,180]), [iquote('hyper,1028,37,180')]).

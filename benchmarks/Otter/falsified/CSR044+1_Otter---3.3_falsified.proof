@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '62':
-%%%%%   Replaced isa(c_tptpexecutionbyfiringsquad_90,c_executionbyfiringsquad)
-%%%%%   With ~ (isa(c_tptpexecutionbyfiringsquad_90,c_executionbyfiringsquad))
+%%%%% Mutated formula '3':
+%%%%%   Replaced (~ (mtvisible(c_cyclistsmt)) | relationallexists(c_tptp_9_720,c_executionbyfiringsquad,c_tptpcol_16_29490))
+%%%%%   With (~ (mtvisible(c_tptp_spindleheadmt)) | relationallexists(c_tptp_9_720,c_executionbyfiringsquad,c_tptpcol_16_29490))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR044+1 : TPTP v8.1.0. Released v3.4.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:11:04 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B,C,D]: ((~ (isa(A,B)) | (~ (relationallexists(C,B,D)) | isa(f_relationallexistsfn(A,C,B,D),D))))), file('CSR044+1.p',unknown), []).
 fof(2, axiom, (! [A]: ((~ (mtvisible(c_cyclistsmt)) | (~ (executionbyfiringsquad(A)) | tptp_9_720(A,f_relationallexistsfn(A,c_tptp_9_720,c_executionbyfiringsquad,c_tptpcol_16_29490)))))), file('CSR044+1.p',unknown), []).
-fof(3, axiom, (~ (mtvisible(c_cyclistsmt)) | relationallexists(c_tptp_9_720,c_executionbyfiringsquad,c_tptpcol_16_29490)), file('CSR044+1.p',unknown), []).
+fof(3, axiom, (~ (mtvisible(c_tptp_spindleheadmt)) | relationallexists(c_tptp_9_720,c_executionbyfiringsquad,c_tptpcol_16_29490)), file('CSR044+1.p',unknown), []).
 fof(19, axiom, (! [A]: ((~ (isa(A,c_tptpcol_16_29490)) | tptpcol_16_29490(A)))), file('CSR044+1.p',unknown), []).
 fof(22, axiom, (! [A]: ((~ (executionbyfiringsquad(A)) | isa(A,c_executionbyfiringsquad)))), file('CSR044+1.p',unknown), []).
 fof(33, axiom, (! [A,B]: ((~ (mtvisible(A)) | (~ (genlmt(A,B)) | mtvisible(B))))), file('CSR044+1.p',unknown), []).
@@ -44,7 +44,7 @@ fof(47, axiom, genlmt(c_tptp_spindleheadmt,c_cyclistsmt), file('CSR044+1.p',unkn
 fof(48, axiom, genlmt(c_tptp_member3633_mt,c_tptp_spindleheadmt), file('CSR044+1.p',unknown), []).
 fof(49, axiom, executionbyfiringsquad(c_tptpexecutionbyfiringsquad_90), file('CSR044+1.p',unknown), []).
 fof(58, axiom, mtvisible(c_tptp_member3633_mt), file('CSR044+1.p',unknown), []).
-fof(62, plain, ~ (isa(c_tptpexecutionbyfiringsquad_90,c_executionbyfiringsquad)), inference(hyper,[status(thm)],[49,22]), [iquote('hyper,49,22')]).
+fof(62, plain, isa(c_tptpexecutionbyfiringsquad_90,c_executionbyfiringsquad), inference(hyper,[status(thm)],[49,22]), [iquote('hyper,49,22')]).
 fof(81, plain, mtvisible(c_tptp_spindleheadmt), inference(hyper,[status(thm)],[48,33,58]), [iquote('hyper,48,33,58')]).
 fof(83, plain, mtvisible(c_cyclistsmt), inference(hyper,[status(thm)],[81,33,47]), [iquote('hyper,81,33,47')]).
 fof(85, plain, relationallexists(c_tptp_9_720,c_executionbyfiringsquad,c_tptpcol_16_29490), inference(hyper,[status(thm)],[83,3]), [iquote('hyper,83,3')]).

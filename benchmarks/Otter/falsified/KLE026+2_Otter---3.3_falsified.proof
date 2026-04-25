@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '196':
-%%%%%   Replaced test(one)
-%%%%%   With ~ (test(one))
+%%%%% Mutated formula '72':
+%%%%%   Replaced (multiplication(dollar_c2,c(dollar_c2)) = zero)
+%%%%%   With (multiplication(one,c(dollar_c2)) = zero)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE026+2 : TPTP v8.1.0. Released v4.0.0.
@@ -57,11 +57,11 @@ fof(44, axiom, (multiplication(dollar_c2,dollar_c3) = multiplication(multiplicat
 fof(45, plain, (multiplication(dollar_c2,multiplication(dollar_c3,dollar_c1)) = multiplication(dollar_c2,dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[44]),28])]), [iquote('copy,44,demod,28,flip.1')]).
 fof(54, plain, complement(dollar_c2,c(dollar_c2)), inference(hyper,[status(thm)],[42,9,17]), [iquote('hyper,42,9,17')]).
 fof(70, plain, (addition(c(dollar_c2),dollar_c2) = one), inference(hyper,[status(thm)],[54,7]), [iquote('hyper,54,7')]).
-fof(72, plain, (multiplication(dollar_c2,c(dollar_c2)) = zero), inference(hyper,[status(thm)],[54,6]), [iquote('hyper,54,6')]).
+fof(72, plain, (multiplication(one,c(dollar_c2)) = zero), inference(hyper,[status(thm)],[54,6]), [iquote('hyper,54,6')]).
 fof(75, plain, (multiplication(c(dollar_c2),dollar_c2) = zero), inference(hyper,[status(thm)],[54,5]), [iquote('hyper,54,5')]).
 fof(76, plain, test(c(dollar_c2)), inference(hyper,[status(thm)],[54,4]), [iquote('hyper,54,4')]).
 fof(194, plain, complement(zero,one), inference(hyper,[status(thm)],[32,8,29,22]), [iquote('hyper,31,8,29,22')]).
-fof(196, plain, ~ (test(one)), inference(hyper,[status(thm)],[194,4]), [iquote('hyper,194,4')]).
+fof(196, plain, test(one), inference(hyper,[status(thm)],[194,4]), [iquote('hyper,194,4')]).
 fof(231, plain, complement(one,c(one)), inference(hyper,[status(thm)],[196,9,17]), [iquote('hyper,196,9,17')]).
 fof(243, plain, (c(one) = zero), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[231,6]),32]), [iquote('hyper,231,6,demod,32')]).
 fof(244, plain, test(zero), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[231,4]),243]), [iquote('hyper,231,4,demod,243')]).

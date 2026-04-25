@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '35':
-%%%%%   Replaced (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A))))
-%%%%%   With (! [A,B]: ((~ (subset(A,B)) | member(dollar_f1(A,B),A))))
+%%%%% Mutated formula '113':
+%%%%%   Replaced member(dollar_f1(dollar_c1,dollar_c1),dollar_c1)
+%%%%%   With ~ (member(dollar_f1(dollar_c1,dollar_c1),dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET687+4 : TPTP v8.1.0. Released v2.2.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:19:00 CEST 2026 using command 'transform(fof)'.
 fof(2, axiom, (! [A,B]: ((subset(A,B) | ~ (member(dollar_f1(A,B),B))))), file('SET687+4.p',unknown), []).
 fof(28, axiom, ~ (subset(dollar_c1,dollar_c1)), file('SET687+4.p',unknown), []).
-fof(35, axiom, (! [A,B]: ((~ (subset(A,B)) | member(dollar_f1(A,B),A)))), file('SET687+4.p',unknown), []).
-fof(113, plain, member(dollar_f1(dollar_c1,dollar_c1),dollar_c1), inference(hyper,[status(thm)],[35,28]), [iquote('hyper,35,28')]).
+fof(35, axiom, (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A)))), file('SET687+4.p',unknown), []).
+fof(113, plain, ~ (member(dollar_f1(dollar_c1,dollar_c1),dollar_c1)), inference(hyper,[status(thm)],[35,28]), [iquote('hyper,35,28')]).
 fof(140, plain, subset(dollar_c1,dollar_c1), inference(hyper,[status(thm)],[113,2]), [iquote('hyper,113,2')]).
 fof(141, plain, $false, inference(binary,[status(thm)],[140,28]), [iquote('binary,140.1,28.1')]).

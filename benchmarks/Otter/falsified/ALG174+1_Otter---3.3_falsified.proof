@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3475':
-%%%%%   Replaced (e1 = op(e3,op(e3,op(e3,e3))))
-%%%%%   With (e4 = op(e3,op(e3,op(e3,e3))))
+%%%%% Mutated formula '3535':
+%%%%%   Replaced (op(e3,e4) = e1)
+%%%%%   With (op(e4,e4) = e1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG174+1 : TPTP v8.1.0. Released v2.7.0.
@@ -36,7 +36,7 @@
 fof(211, axiom, (e1 != e3), file('ALG174+1.p',unknown), []).
 fof(212, plain, (e3 != e1), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[211])]), [iquote('copy,211,flip.1')]).
 fof(3456, axiom, (op(op(e2,e3),op(e3,e2)) = e3), file('ALG174+1.p',unknown), []).
-fof(3475, axiom, (e4 = op(e3,op(e3,op(e3,e3)))), file('ALG174+1.p',unknown), []).
+fof(3475, axiom, (e1 = op(e3,op(e3,op(e3,e3)))), file('ALG174+1.p',unknown), []).
 fof(3476, plain, (op(e3,op(e3,op(e3,e3))) = e1), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[3475])]), [iquote('copy,3475,flip.1')]).
 fof(3478, axiom, (e2 = op(e3,e3)), file('ALG174+1.p',unknown), []).
 fof(3480, plain, (op(e3,e3) = e2), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[3478])]), [iquote('copy,3478,flip.1')]).
@@ -44,6 +44,6 @@ fof(3481, axiom, (e4 = op(e3,op(e3,e3))), file('ALG174+1.p',unknown), []).
 fof(3483, plain, (op(e3,e2) = e4), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[3481]),3480])]), [iquote('copy,3481,demod,3480,flip.1')]).
 fof(3521, axiom, (op(op(e3,e3),e3) = e3), file('ALG174+1.p',unknown), []).
 fof(3523, plain, (op(e2,e3) = e3), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[3521]),3480]), [iquote('copy,3521,demod,3480')]).
-fof(3535, plain, (op(e3,e4) = e1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[3476]),3480,3483]), [iquote('back_demod,3476,demod,3480,3483')]).
+fof(3535, plain, (op(e4,e4) = e1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[3476]),3480,3483]), [iquote('back_demod,3476,demod,3480,3483')]).
 fof(3550, plain, (e3 = e1), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[3456]),3523,3483,3535])]), [iquote('back_demod,3456,demod,3523,3483,3535,flip.1')]).
 fof(3552, plain, $false, inference(binary,[status(thm)],[3550,212]), [iquote('binary,3550.1,212.1')]).

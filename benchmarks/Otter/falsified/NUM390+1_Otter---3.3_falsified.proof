@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '64':
-%%%%%   Replaced ordinal(dollar_c12)
-%%%%%   With ~ (ordinal(dollar_c12))
+%%%%% Mutated formula '87':
+%%%%%   Replaced (! [A]: ((empty(A) | in(dollar_f2(A),A))))
+%%%%%   With (! [A]: ((empty(A) & in(dollar_f2(A),A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM390+1 : TPTP v8.1.0. Released v3.2.0.
@@ -45,10 +45,10 @@ fof(27, axiom, (! [A,B]: ((~ (in(A,B)) | ~ (empty(B))))), file('NUM390+1.p',unkn
 fof(34, axiom, (! [A]: (element(dollar_f2(A),A))), file('NUM390+1.p',unknown), []).
 fof(62, axiom, epsilon_transitive(dollar_c14), file('NUM390+1.p',unknown), []).
 fof(63, axiom, ordinal(dollar_c13), file('NUM390+1.p',unknown), []).
-fof(64, axiom, ~ (ordinal(dollar_c12)), file('NUM390+1.p',unknown), []).
+fof(64, axiom, ordinal(dollar_c12), file('NUM390+1.p',unknown), []).
 fof(65, axiom, subset(dollar_c14,dollar_c13), file('NUM390+1.p',unknown), []).
 fof(66, axiom, in(dollar_c13,dollar_c12), file('NUM390+1.p',unknown), []).
-fof(87, plain, (! [A]: ((empty(A) | in(dollar_f2(A),A)))), inference(hyper,[status(thm)],[34,21]), [iquote('hyper,34,21')]).
+fof(87, plain, (! [A]: ((empty(A) & in(dollar_f2(A),A)))), inference(hyper,[status(thm)],[34,21]), [iquote('hyper,34,21')]).
 fof(131, plain, epsilon_transitive(dollar_c12), inference(hyper,[status(thm)],[64,4]), [iquote('hyper,64,4')]).
 fof(139, plain, (proper_subset(dollar_c14,dollar_c13) | (dollar_c14 = dollar_c13)), inference(hyper,[status(thm)],[65,13]), [iquote('hyper,65,13')]).
 fof(153, plain, subset(dollar_c13,dollar_c12), inference(hyper,[status(thm)],[66,9,131]), [iquote('hyper,66,9,131')]).

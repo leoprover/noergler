@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'just7':
-%%%%%   Replaced genlmt(c_tptp_member2356_mt,c_tptp_spindleheadmt)
-%%%%%   With ~ (genlmt(c_tptp_member2356_mt,c_tptp_spindleheadmt))
+%%%%% Mutated formula 'c159':
+%%%%%   Replaced furpelt(c_theprototypicalfurpelt)
+%%%%%   With ~ (furpelt(c_theprototypicalfurpelt))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR068+1 : TPTP v8.1.2. Released v3.4.0.
@@ -41,7 +41,7 @@ fof(c0, negated_conjecture, ~ ((mtvisible(c_tptp_member2356_mt) => tptpofobject(
 fof(c1, negated_conjecture, (mtvisible(c_tptp_member2356_mt) & ~ (tptpofobject(c_theprototypicalfurpelt,f_tptpquantityfn_1(n_328)))), inference(fof_nnf,[status(thm)],[c0])).
 fof(c3, negated_conjecture, ~ (tptpofobject(c_theprototypicalfurpelt,f_tptpquantityfn_1(n_328))), inference(split_conjunct,[status(thm)],[c1])).
 fof(c2, negated_conjecture, mtvisible(c_tptp_member2356_mt), inference(split_conjunct,[status(thm)],[c1])).
-fof(just7, axiom, ~ (genlmt(c_tptp_member2356_mt,c_tptp_spindleheadmt)), file('CSR068+1.p',just7)).
+fof(just7, axiom, genlmt(c_tptp_member2356_mt,c_tptp_spindleheadmt), file('CSR068+1.p',just7)).
 fof(c160, plain, genlmt(c_tptp_member2356_mt,c_tptp_spindleheadmt), inference(split_conjunct,[status(thm)],[just7])).
 fof(just47, axiom, (! [SPECMT,GENLMT]: (((mtvisible(SPECMT) & genlmt(SPECMT,GENLMT)) => mtvisible(GENLMT)))), file('CSR068+1.p',just47)).
 fof(c30, plain, (! [SPECMT,GENLMT]: ((~ (mtvisible(SPECMT)) | (~ (genlmt(SPECMT,GENLMT)) | mtvisible(GENLMT))))), inference(fof_nnf,[status(thm)],[just47])).
@@ -50,7 +50,7 @@ fof(c32, plain, (! [X104,X105]: ((~ (mtvisible(X104)) | (~ (genlmt(X104,X105)) |
 fof(c202, plain, (~ (mtvisible(c_tptp_member2356_mt)) | mtvisible(c_tptp_spindleheadmt)), inference(resolution,[status(thm)],[c32,c160])).
 fof(c235, plain, mtvisible(c_tptp_spindleheadmt), inference(resolution,[status(thm)],[c202,c2])).
 fof(just8, axiom, furpelt(c_theprototypicalfurpelt), file('CSR068+1.p',just8)).
-fof(c159, plain, furpelt(c_theprototypicalfurpelt), inference(split_conjunct,[status(thm)],[just8])).
+fof(c159, plain, ~ (furpelt(c_theprototypicalfurpelt)), inference(split_conjunct,[status(thm)],[just8])).
 fof(just9, axiom, (! [INS]: (((mtvisible(c_tptp_spindleheadmt) & furpelt(INS)) => tptpofobject(INS,f_tptpquantityfn_1(n_328))))), file('CSR068+1.p',just9)).
 fof(c156, plain, (! [INS]: ((~ (mtvisible(c_tptp_spindleheadmt)) | (~ (furpelt(INS)) | tptpofobject(INS,f_tptpquantityfn_1(n_328)))))), inference(fof_nnf,[status(thm)],[just9])).
 fof(c157, plain, (! [X89]: ((~ (mtvisible(c_tptp_spindleheadmt)) | (~ (furpelt(X89)) | tptpofobject(X89,f_tptpquantityfn_1(n_328)))))), inference(variable_rename,[status(thm)],[c156])).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '147':
-%%%%%   Replaced member(dollar_c2,dollar_c4)
-%%%%%   With member(dollar_c5,dollar_c4)
+%%%%% Mutated formula '62':
+%%%%%   Replaced (! [A,B,C]: ((~ (max(A,B,C)) | member(A,C))))
+%%%%%   With (! [A,B,C]: ((max(A,B,C) | member(A,C))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET803+4 : TPTP v8.1.0. Released v3.2.0.
@@ -35,14 +35,14 @@
 %%% Generated on Tue Apr 14 19:19:08 CEST 2026 using command 'transform(fof)'.
 fof(54, axiom, (! [A,B,C]: ((~ (greatest(A,B,C)) | member(A,C)))), file('SET803+4.p',unknown), []).
 fof(55, axiom, (! [A,B,C,D]: ((~ (greatest(A,B,C)) | (~ (member(D,C)) | apply(B,D,A))))), file('SET803+4.p',unknown), []).
-fof(62, axiom, (! [A,B,C]: ((~ (max(A,B,C)) | member(A,C)))), file('SET803+4.p',unknown), []).
+fof(62, axiom, (! [A,B,C]: ((max(A,B,C) | member(A,C)))), file('SET803+4.p',unknown), []).
 fof(63, axiom, (! [A,B,C,D]: ((~ (max(A,B,C)) | (~ (member(D,C)) | (~ (apply(B,A,D)) | (A = D)))))), file('SET803+4.p',unknown), []).
 fof(86, axiom, (dollar_c3 != dollar_c2), file('SET803+4.p',unknown), []).
 fof(113, axiom, max(dollar_c3,dollar_c5,dollar_c4), file('SET803+4.p',unknown), []).
 fof(114, axiom, max(dollar_c2,dollar_c5,dollar_c4), file('SET803+4.p',unknown), []).
 fof(115, axiom, greatest(dollar_c1,dollar_c5,dollar_c4), file('SET803+4.p',unknown), []).
 fof(124, plain, member(dollar_c3,dollar_c4), inference(hyper,[status(thm)],[113,62]), [iquote('hyper,113,62')]).
-fof(147, plain, member(dollar_c5,dollar_c4), inference(hyper,[status(thm)],[114,62]), [iquote('hyper,114,62')]).
+fof(147, plain, member(dollar_c2,dollar_c4), inference(hyper,[status(thm)],[114,62]), [iquote('hyper,114,62')]).
 fof(201, plain, apply(dollar_c5,dollar_c2,dollar_c1), inference(hyper,[status(thm)],[115,55,147]), [iquote('hyper,115,55,147')]).
 fof(202, plain, apply(dollar_c5,dollar_c3,dollar_c1), inference(hyper,[status(thm)],[115,55,124]), [iquote('hyper,115,55,124')]).
 fof(203, plain, member(dollar_c1,dollar_c4), inference(hyper,[status(thm)],[115,54]), [iquote('hyper,115,54')]).

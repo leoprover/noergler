@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '13':
 %%%%%   Replaced sorti2(dollar_c1)
-%%%%%   With sorti2(dollar_c2)
+%%%%%   With ~ (sorti2(dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG029+1 : TPTP v8.1.0. Released v2.7.0.
@@ -39,7 +39,7 @@ fof(6, axiom, (! [A]: ((~ (sorti2(A)) | sorti1(j(A))))), file('ALG029+1.p',unkno
 fof(7, axiom, (! [A,B]: ((~ (sorti1(A)) | (~ (sorti1(B)) | (h(op1(A,B)) = op2(h(A),h(B))))))), file('ALG029+1.p',unknown), []).
 fof(9, axiom, (! [A]: ((~ (sorti2(A)) | (h(j(A)) = A)))), file('ALG029+1.p',unknown), []).
 fof(12, axiom, sorti2(dollar_c2), file('ALG029+1.p',unknown), []).
-fof(13, axiom, sorti2(dollar_c2), file('ALG029+1.p',unknown), []).
+fof(13, axiom, ~ (sorti2(dollar_c1)), file('ALG029+1.p',unknown), []).
 fof(15, plain, (h(j(dollar_c2)) = dollar_c2), inference(hyper,[status(thm)],[12,9]), [iquote('hyper,12,9')]).
 fof(18, plain, sorti1(j(dollar_c2)), inference(hyper,[status(thm)],[12,6]), [iquote('hyper,12,6')]).
 fof(21, plain, (h(j(dollar_c1)) = dollar_c1), inference(hyper,[status(thm)],[13,9]), [iquote('hyper,13,9')]).

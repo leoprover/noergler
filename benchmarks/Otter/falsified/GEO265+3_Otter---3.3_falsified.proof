@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '69':
-%%%%%   Replaced e_qually_directed_lines(dollar_c2,reverse_line(dollar_c1))
-%%%%%   With e_qually_directed_lines(dollar_c1,reverse_line(dollar_c1))
+%%%%% Mutated formula '55':
+%%%%%   Replaced ~ (e_qually_directed_opposite_lines(dollar_c2,dollar_c1))
+%%%%%   With ~ (e_qually_directed_opposite_lines(dollar_c1,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO265+3 : TPTP v8.1.0. Released v4.0.0.
@@ -39,10 +39,10 @@ fof(13, axiom, (! [A,B]: ((~ (convergent_lines(A,B)) | une_qually_directed_oppos
 fof(14, axiom, (! [A,B]: ((convergent_lines(A,B) | (~ (une_qually_directed_lines(A,B)) | ~ (une_qually_directed_opposite_lines(A,B)))))), file('GEO265+3.p',unknown), []).
 fof(39, axiom, (! [A,B]: ((~ (une_qually_directed_lines(A,B)) | (~ (une_qually_directed_lines(A,reverse_line(B))) | (left_convergent_lines(A,B) | left_convergent_lines(A,reverse_line(B))))))), file('GEO265+3.p',unknown), []).
 fof(41, axiom, (! [A,B]: (~ (left_convergent_lines(A,B)))), file('GEO265+3.p',unknown), []).
-fof(55, axiom, ~ (e_qually_directed_opposite_lines(dollar_c2,dollar_c1)), file('GEO265+3.p',unknown), []).
+fof(55, axiom, ~ (e_qually_directed_opposite_lines(dollar_c1,dollar_c1)), file('GEO265+3.p',unknown), []).
 fof(65, axiom, (! [A,B]: ((e_qually_directed_opposite_lines(A,B) | une_qually_directed_opposite_lines(A,B)))), file('GEO265+3.p',unknown), []).
 fof(67, axiom, (! [A,B]: ((une_qually_directed_lines(A,B) | une_qually_directed_lines(A,reverse_line(B))))), file('GEO265+3.p',unknown), []).
-fof(69, axiom, e_qually_directed_lines(dollar_c1,reverse_line(dollar_c1)), file('GEO265+3.p',unknown), []).
+fof(69, axiom, e_qually_directed_lines(dollar_c2,reverse_line(dollar_c1)), file('GEO265+3.p',unknown), []).
 fof(86, plain, une_qually_directed_lines(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[67,7,69]), [iquote('hyper,67,7,69')]).
 fof(90, plain, convergent_lines(dollar_c2,dollar_c1), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[86,14,65]),55]), [iquote('hyper,86,14,65,unit_del,55')]).
 fof(91, plain, une_qually_directed_opposite_lines(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[90,13]), [iquote('hyper,90,13')]).

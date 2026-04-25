@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '21':
-%%%%%   Replaced convergent_lines(dollar_c2,dollar_c1)
-%%%%%   With convergent_lines(dollar_c1,dollar_c1)
+%%%%% Mutated formula '34':
+%%%%%   Replaced apart_point_and_line(intersection_point(dollar_c2,dollar_c1),dollar_c1)
+%%%%%   With ~ (apart_point_and_line(intersection_point(dollar_c2,dollar_c1),dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO226+1 : TPTP v8.1.0. Released v3.3.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:12:43 CEST 2026 using command 'transform(fof)'.
 fof(9, axiom, (! [A,B]: ((~ (convergent_lines(A,B)) | ~ (apart_point_and_line(intersection_point(A,B),A))))), file('GEO226+1.p',unknown), []).
 fof(10, axiom, (! [A,B]: ((~ (convergent_lines(A,B)) | ~ (apart_point_and_line(intersection_point(A,B),B))))), file('GEO226+1.p',unknown), []).
-fof(21, axiom, convergent_lines(dollar_c1,dollar_c1), file('GEO226+1.p',unknown), []).
+fof(21, axiom, convergent_lines(dollar_c2,dollar_c1), file('GEO226+1.p',unknown), []).
 fof(23, axiom, (! [A]: ((apart_point_and_line(A,dollar_c2) | apart_point_and_line(A,dollar_c1)))), file('GEO226+1.p',unknown), []).
-fof(34, plain, apart_point_and_line(intersection_point(dollar_c2,dollar_c1),dollar_c1), inference(hyper,[status(thm)],[23,9,21]), [iquote('hyper,23,9,21')]).
+fof(34, plain, ~ (apart_point_and_line(intersection_point(dollar_c2,dollar_c1),dollar_c1)), inference(hyper,[status(thm)],[23,9,21]), [iquote('hyper,23,9,21')]).
 fof(48, plain, $false, inference(hyper,[status(thm)],[34,10,21]), [iquote('hyper,34,10,21')]).

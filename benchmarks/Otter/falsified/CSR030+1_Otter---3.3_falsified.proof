@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '77':
-%%%%%   Replaced mtvisible(c_tptp_spindleheadmt)
-%%%%%   With mtvisible(c_tptp_member3393_mt)
+%%%%% Mutated formula '48':
+%%%%%   Replaced genlmt(c_tptp_member3393_mt,c_tptp_spindleheadmt)
+%%%%%   With genlmt(c_pushingwithopenhand,c_tptp_spindleheadmt)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR030+1 : TPTP v8.1.0. Released v3.4.0.
@@ -38,9 +38,9 @@ fof(2, axiom, (! [A,B]: ((~ (tptptypes_7_389(A,B)) | tptptypes_6_388(B,A)))), fi
 fof(3, axiom, (~ (mtvisible(c_tptp_spindleheadmt)) | tptptypes_7_389(c_pushingwithopenhand,c_tptpcol_16_4451)), file('CSR030+1.p',unknown), []).
 fof(34, axiom, (! [A,B]: ((~ (mtvisible(A)) | (~ (genlmt(A,B)) | mtvisible(B))))), file('CSR030+1.p',unknown), []).
 fof(39, axiom, (! [A]: (~ (tptptypes_5_387(A,c_pushingwithopenhand)))), file('CSR030+1.p',unknown), []).
-fof(48, axiom, genlmt(c_tptp_member3393_mt,c_tptp_spindleheadmt), file('CSR030+1.p',unknown), []).
+fof(48, axiom, genlmt(c_pushingwithopenhand,c_tptp_spindleheadmt), file('CSR030+1.p',unknown), []).
 fof(51, axiom, mtvisible(c_tptp_member3393_mt), file('CSR030+1.p',unknown), []).
-fof(77, plain, mtvisible(c_tptp_member3393_mt), inference(hyper,[status(thm)],[48,34,51]), [iquote('hyper,48,34,51')]).
+fof(77, plain, mtvisible(c_tptp_spindleheadmt), inference(hyper,[status(thm)],[48,34,51]), [iquote('hyper,48,34,51')]).
 fof(81, plain, tptptypes_7_389(c_pushingwithopenhand,c_tptpcol_16_4451), inference(hyper,[status(thm)],[77,3]), [iquote('hyper,77,3')]).
 fof(96, plain, tptptypes_6_388(c_tptpcol_16_4451,c_pushingwithopenhand), inference(hyper,[status(thm)],[81,2]), [iquote('hyper,81,2')]).
 fof(100, plain, tptptypes_5_387(c_tptpcol_16_4451,c_pushingwithopenhand), inference(hyper,[status(thm)],[96,1]), [iquote('hyper,96,1')]).

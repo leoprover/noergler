@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '14':
-%%%%%   Replaced member(dollar_f1(dollar_c3,dollar_c2),dollar_c2)
-%%%%%   With member(dollar_f1(dollar_c1,dollar_c2),dollar_c2)
+%%%%% Mutated formula '12':
+%%%%%   Replaced subset(dollar_c2,dollar_c1)
+%%%%%   With subset(dollar_c3,dollar_c1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET625+3 : TPTP v8.1.0. Released v2.2.0.
@@ -39,8 +39,8 @@ fof(3, axiom, (! [A,B,C]: ((intersect(A,B) | (~ (member(C,A)) | ~ (member(C,B)))
 fof(4, axiom, (! [A,B,C]: ((~ (subset(A,B)) | (~ (member(C,A)) | member(C,B))))), file('SET625+3.p',unknown), []).
 fof(7, axiom, ~ (intersect(dollar_c3,dollar_c1)), file('SET625+3.p',unknown), []).
 fof(11, axiom, intersect(dollar_c3,dollar_c2), file('SET625+3.p',unknown), []).
-fof(12, axiom, subset(dollar_c2,dollar_c1), file('SET625+3.p',unknown), []).
-fof(14, plain, member(dollar_f1(dollar_c1,dollar_c2),dollar_c2), inference(hyper,[status(thm)],[11,2]), [iquote('hyper,11,2')]).
+fof(12, axiom, subset(dollar_c3,dollar_c1), file('SET625+3.p',unknown), []).
+fof(14, plain, member(dollar_f1(dollar_c3,dollar_c2),dollar_c2), inference(hyper,[status(thm)],[11,2]), [iquote('hyper,11,2')]).
 fof(15, plain, member(dollar_f1(dollar_c3,dollar_c2),dollar_c3), inference(hyper,[status(thm)],[11,1]), [iquote('hyper,11,1')]).
 fof(19, plain, member(dollar_f1(dollar_c3,dollar_c2),dollar_c1), inference(hyper,[status(thm)],[14,4,12]), [iquote('hyper,14,4,12')]).
 fof(30, plain, intersect(dollar_c3,dollar_c1), inference(hyper,[status(thm)],[19,3,15]), [iquote('hyper,19,3,15')]).

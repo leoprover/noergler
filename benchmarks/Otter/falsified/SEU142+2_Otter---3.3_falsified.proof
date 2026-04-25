@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '430':
-%%%%%   Replaced (! [A,B]: (((unordered_pair(A,A) = singleton(B)) | ((dollar_f1(B,unordered_pair(A,A)) = B) | (dollar_f1(B,unordered_pair(A,A)) = A)))))
-%%%%%   With (! [A,B]: (((unordered_pair(A,A) = singleton(B)) & ((dollar_f1(B,unordered_pair(A,A)) = B) | (dollar_f1(B,unordered_pair(A,A)) = A)))))
+%%%%% Mutated formula '154':
+%%%%%   Replaced (! [A,B]: (in(A,unordered_pair(A,B))))
+%%%%%   With (! [A,B]: (~ (in(A,unordered_pair(A,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU142+2 : TPTP v8.1.0. Released v3.3.0.
@@ -42,9 +42,9 @@ fof(67, plain, (! [A,B,C]: (((A != unordered_pair(B,B)) | (~ (in(C,A)) | (C = B)
 fof(84, axiom, (! [A]: ((A = A))), file('SEU142+2.p',unknown), []).
 fof(88, axiom, (! [A,B]: (((A = singleton(B)) | (in(dollar_f1(B,A),A) | (dollar_f1(B,A) = B))))), file('SEU142+2.p',unknown), []).
 fof(98, axiom, (! [A]: ((set_union2(A,A) = A))), file('SEU142+2.p',unknown), []).
-fof(154, plain, (! [A,B]: (in(A,unordered_pair(A,B)))), inference(hyper,[status(thm)],[84,11,84]), [iquote('hyper,84,11,84')]).
+fof(154, plain, (! [A,B]: (~ (in(A,unordered_pair(A,B))))), inference(hyper,[status(thm)],[84,11,84]), [iquote('hyper,84,11,84')]).
 fof(295, plain, (! [A,B]: (((singleton(A) = B) | (~ (in(dollar_f1(A,B),B)) | (dollar_f1(A,B) != A))))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[98,8]),98,98,98]), [iquote('para_into,97.1.1,8.1.1,demod,98,98,98')]).
-fof(430, plain, (! [A,B]: (((unordered_pair(A,A) = singleton(B)) & ((dollar_f1(B,unordered_pair(A,A)) = B) | (dollar_f1(B,unordered_pair(A,A)) = A))))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[88,67,98]),98,98,98]), [iquote('hyper,88,67,97,demod,98,98,98')]).
+fof(430, plain, (! [A,B]: (((unordered_pair(A,A) = singleton(B)) | ((dollar_f1(B,unordered_pair(A,A)) = B) | (dollar_f1(B,unordered_pair(A,A)) = A))))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[88,67,98]),98,98,98]), [iquote('hyper,88,67,97,demod,98,98,98')]).
 fof(439, plain, (! [A]: (((singleton(A) = unordered_pair(A,A)) | (dollar_f1(A,unordered_pair(A,A)) = A)))), inference(flip,[status(thm),theory(equality)],[inference(factor,[status(thm)],[430])]), [iquote('factor,430.2.3,flip.1')]).
 fof(1783, plain, (dollar_f1(dollar_c3,unordered_pair(dollar_c3,dollar_c3)) = dollar_c3), inference(hyper,[status(thm)],[439,58]), [iquote('hyper,439,58')]).
 fof(1784, plain, $false, inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[1783,295]),1783]),58,154,84]), [iquote('para_from,1782.1.1,295.3.1,demod,1783,unit_del,58,154,84')]).

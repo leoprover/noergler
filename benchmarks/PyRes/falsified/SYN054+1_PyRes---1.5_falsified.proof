@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c25':
-%%%%%   Replaced (big_r(skolem0001) | big_s(skolem0001))
-%%%%%   With (big_r(skolem0002) | big_s(skolem0001))
+%%%%% Mutated formula 'c5':
+%%%%%   Replaced (! [X3]: (((~ (big_q(X3)) & ~ (big_r(X3))) | big_s(X3))))
+%%%%%   With (! [X3]: (((~ (big_q(X3)) & ~ (big_r(X3))) & big_s(X3))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN054+1 : TPTP v8.1.2. Released v2.0.0.
@@ -38,7 +38,7 @@
 %%% Generated on Tue Apr 14 15:06:35 CEST 2026 using command 'transform(fof)'.
 fof(pel24_4, axiom, (! [X]: (((big_q(X) | big_r(X)) => big_s(X)))), file('SYN054+1.p',pel24_4)).
 fof(c4, plain, (! [X]: (((~ (big_q(X)) & ~ (big_r(X))) | big_s(X)))), inference(fof_nnf,[status(thm)],[pel24_4])).
-fof(c5, plain, (! [X3]: (((~ (big_q(X3)) & ~ (big_r(X3))) | big_s(X3)))), inference(variable_rename,[status(thm)],[c4])).
+fof(c5, plain, (! [X3]: (((~ (big_q(X3)) & ~ (big_r(X3))) & big_s(X3)))), inference(variable_rename,[status(thm)],[c4])).
 fof(c6, plain, (! [X3]: (((~ (big_q(X3)) | big_s(X3)) & (~ (big_r(X3)) | big_s(X3))))), inference(distribute,[status(thm)],[c5])).
 fof(c7, plain, (! [X9]: ((~ (big_q(X9)) | big_s(X9)))), inference(split_conjunct,[status(thm)],[c6])).
 fof(pel24_3, axiom, (~ ((? [X]: (big_p(X)))) => (? [Y]: (big_q(Y)))), file('SYN054+1.p',pel24_3)).
@@ -64,7 +64,7 @@ fof(c13, plain, (! [X]: ((~ (big_p(X)) | (big_q(X) | big_r(X))))), inference(fof
 fof(c14, plain, (! [X6]: ((~ (big_p(X6)) | (big_q(X6) | big_r(X6))))), inference(variable_rename,[status(thm)],[c13])).
 fof(c15, plain, (! [X12]: ((~ (big_p(X12)) | (big_q(X12) | big_r(X12))))), inference(split_conjunct,[status(thm)],[c14])).
 fof(c24, plain, (big_q(skolem0001) | big_r(skolem0001)), inference(resolution,[status(thm)],[c23,c15])).
-fof(c25, plain, (big_r(skolem0002) | big_s(skolem0001)), inference(resolution,[status(thm)],[c24,c7])).
+fof(c25, plain, (big_r(skolem0001) | big_s(skolem0001)), inference(resolution,[status(thm)],[c24,c7])).
 fof(c30, plain, big_s(skolem0001), inference(resolution,[status(thm)],[c25,c8])).
 fof(c26, plain, (big_r(skolem0001) | ~ (big_s(skolem0001))), inference(resolution,[status(thm)],[c24,c18])).
 fof(c31, plain, big_r(skolem0001), inference(resolution,[status(thm)],[c26,c30])).

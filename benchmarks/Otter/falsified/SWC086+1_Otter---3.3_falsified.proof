@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '903':
-%%%%%   Replaced segmentP(dollar_c3,nil)
-%%%%%   With segmentP(dollar_c6,nil)
+%%%%% Mutated formula '929':
+%%%%%   Replaced segmentP(dollar_c3,dollar_c4)
+%%%%%   With ~ (segmentP(dollar_c3,dollar_c4))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC086+1 : TPTP v8.1.0. Released v2.4.0.
@@ -50,8 +50,8 @@ fof(455, axiom, ((nil = dollar_c4) | ne_q(dollar_c4,nil)), file('SWC086+1.p',unk
 fof(456, axiom, ((nil = dollar_c4) | segmentP(dollar_c3,dollar_c4)), file('SWC086+1.p',unknown), []).
 fof(457, plain, (! [A]: ((~ (ssList(A)) | (~ (ne_q(A,nil)) | (~ (segmentP(dollar_c3,A)) | ~ (segmentP(dollar_c4,A))))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),448,450]), [iquote('back_demod,182,demod,448,450')]).
 fof(893, plain, segmentP(dollar_c4,dollar_c4), inference(hyper,[status(thm)],[445,133]), [iquote('hyper,445,133')]).
-fof(903, plain, segmentP(dollar_c6,nil), inference(hyper,[status(thm)],[446,135]), [iquote('hyper,446,135')]).
-fof(929, plain, segmentP(dollar_c3,dollar_c4), inference(factor_simp,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[456,903])]), [iquote('para_from,456.1.1,903.1.2,factor_simp')]).
+fof(903, plain, segmentP(dollar_c3,nil), inference(hyper,[status(thm)],[446,135]), [iquote('hyper,446,135')]).
+fof(929, plain, ~ (segmentP(dollar_c3,dollar_c4)), inference(factor_simp,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[456,903])]), [iquote('para_from,456.1.1,903.1.2,factor_simp')]).
 fof(937, plain, (nil = dollar_c4), inference(hyper,[status(thm)],[929,457,445,455,893]), [iquote('hyper,929,457,445,455,893')]).
 fof(939, plain, (dollar_c4 = dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[929,457,445,453,893]),937]), [iquote('hyper,929,457,445,453,893,demod,937')]).
 fof(954, plain, ne_q(dollar_c3,dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[452]),937,939]), [iquote('back_demod,452,demod,937,939')]).

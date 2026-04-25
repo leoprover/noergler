@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '18':
-%%%%%   Replaced (empty_set != dollar_c5)
-%%%%%   With ~ ((empty_set != dollar_c5))
+%%%%% Mutated formula '57':
+%%%%%   Replaced (! [A]: ((~ (empty(A)) | (A = dollar_c1))))
+%%%%%   With (! [A]: ((empty(A) | (A = dollar_c1))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU171+1 : TPTP v8.1.0. Released v3.3.0.
@@ -37,7 +37,7 @@ fof(2, axiom, (! [A,B]: ((empty(A) | (~ (element(B,A)) | in(B,A))))), file('SEU1
 fof(8, axiom, (! [A,B,C,D]: (((A != set_difference(B,C)) | (in(D,A) | (~ (in(D,B)) | in(D,C)))))), file('SEU171+1.p',unknown), []).
 fof(11, axiom, (! [A,B]: ((~ (element(A,powerset(B))) | (subset_complement(B,A) = set_difference(B,A))))), file('SEU171+1.p',unknown), []).
 fof(17, axiom, (dollar_c5 != empty_set), file('SEU171+1.p',unknown), []).
-fof(18, plain, ~ ((empty_set != dollar_c5)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[17])]), [iquote('copy,17,flip.1')]).
+fof(18, plain, (empty_set != dollar_c5), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[17])]), [iquote('copy,17,flip.1')]).
 fof(19, axiom, ~ (in(dollar_c3,dollar_c4)), file('SEU171+1.p',unknown), []).
 fof(20, axiom, ~ (in(dollar_c3,subset_complement(dollar_c5,dollar_c4))), file('SEU171+1.p',unknown), []).
 fof(21, axiom, (! [A]: ((~ (empty(A)) | (A = empty_set)))), file('SEU171+1.p',unknown), []).
@@ -48,7 +48,7 @@ fof(35, axiom, empty(dollar_c1), file('SEU171+1.p',unknown), []).
 fof(42, axiom, element(dollar_c4,powerset(dollar_c5)), file('SEU171+1.p',unknown), []).
 fof(43, axiom, element(dollar_c3,dollar_c5), file('SEU171+1.p',unknown), []).
 fof(50, plain, (empty_set = dollar_c1), inference(hyper,[status(thm)],[35,23,33]), [iquote('hyper,35,23,33')]).
-fof(57, plain, (! [A]: ((~ (empty(A)) | (A = dollar_c1)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[21]),50]), [iquote('back_demod,21,demod,50')]).
+fof(57, plain, (! [A]: ((empty(A) | (A = dollar_c1)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[21]),50]), [iquote('back_demod,21,demod,50')]).
 fof(58, plain, (dollar_c5 != dollar_c1), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[18]),50])]), [iquote('back_demod,18,demod,50,flip.1')]).
 fof(64, plain, (empty(dollar_c5) | in(dollar_c3,dollar_c5)), inference(hyper,[status(thm)],[43,2]), [iquote('hyper,43,2')]).
 fof(225, plain, (subset_complement(dollar_c5,dollar_c4) = set_difference(dollar_c5,dollar_c4)), inference(hyper,[status(thm)],[42,11]), [iquote('hyper,42,11')]).

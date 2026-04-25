@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '864':
-%%%%%   Replaced ssItem(dollar_c3)
-%%%%%   With ~ (ssItem(dollar_c3))
+%%%%% Mutated formula '450':
+%%%%%   Replaced (dollar_c6 = dollar_c4)
+%%%%%   With (dollar_c3 = dollar_c4)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC097+1 : TPTP v8.1.0. Released v2.4.0.
@@ -37,10 +37,10 @@ fof(182, axiom, (! [A]: ((~ (ssItem(A)) | ((app(dollar_c7,cons(A,nil)) != dollar
 fof(183, axiom, (ssItem(dollar_c3) | ~ (ne_q(dollar_c4,nil))), file('SWC097+1.p',unknown), []).
 fof(184, axiom, ((app(dollar_c5,cons(dollar_c3,nil)) = dollar_c4) | ~ (ne_q(dollar_c4,nil))), file('SWC097+1.p',unknown), []).
 fof(434, axiom, (! [A]: ((A = A))), file('SWC097+1.p',unknown), []).
-fof(450, axiom, (dollar_c6 = dollar_c4), file('SWC097+1.p',unknown), []).
+fof(450, axiom, (dollar_c3 = dollar_c4), file('SWC097+1.p',unknown), []).
 fof(452, axiom, (dollar_c7 = dollar_c5), file('SWC097+1.p',unknown), []).
 fof(453, axiom, ne_q(dollar_c6,nil), file('SWC097+1.p',unknown), []).
 fof(454, plain, ne_q(dollar_c4,nil), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[453]),450]), [iquote('copy,453,demod,450')]).
 fof(455, plain, (! [A]: ((~ (ssItem(A)) | (app(dollar_c5,cons(A,nil)) != dollar_c4)))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),452,450]),454]), [iquote('back_demod,182,demod,452,450,unit_del,454')]).
-fof(864, plain, ~ (ssItem(dollar_c3)), inference(hyper,[status(thm)],[454,183]), [iquote('hyper,454,183')]).
+fof(864, plain, ssItem(dollar_c3), inference(hyper,[status(thm)],[454,183]), [iquote('hyper,454,183')]).
 fof(877, plain, $false, inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[455,184]),864,434,454]), [iquote('para_into,455.2.1,184.1.1,unit_del,864,434,454')]).

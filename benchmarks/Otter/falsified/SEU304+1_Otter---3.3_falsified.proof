@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '40':
-%%%%%   Replaced ~ (below(dollar_c8,meet_commut(dollar_c8,dollar_c7,dollar_c6),dollar_c7))
-%%%%%   With below(dollar_c8,meet_commut(dollar_c8,dollar_c7,dollar_c6),dollar_c7)
+%%%%% Mutated formula '278':
+%%%%%   Replaced element(meet(dollar_c8,dollar_c6,dollar_c7),the_carrier(dollar_c8))
+%%%%%   With ~ (element(meet(dollar_c8,dollar_c6,dollar_c7),the_carrier(dollar_c8)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU304+1 : TPTP v8.1.0. Released v3.3.0.
@@ -41,7 +41,7 @@ fof(20, axiom, (! [A]: ((~ (latt_str(A)) | meet_semilatt_str(A)))), file('SEU304
 fof(21, axiom, (! [A]: ((~ (latt_str(A)) | join_semilatt_str(A)))), file('SEU304+1.p',unknown), []).
 fof(35, axiom, (! [A,B,C]: ((empty_carrier(A) | (~ (meet_commutative(A)) | (~ (meet_semilatt_str(A)) | (~ (element(B,the_carrier(A))) | (~ (element(C,the_carrier(A))) | (meet_commut(A,B,C) = meet(A,B,C))))))))), file('SEU304+1.p',unknown), []).
 fof(39, axiom, ~ (empty_carrier(dollar_c8)), file('SEU304+1.p',unknown), []).
-fof(40, axiom, below(dollar_c8,meet_commut(dollar_c8,dollar_c7,dollar_c6),dollar_c7), file('SEU304+1.p',unknown), []).
+fof(40, axiom, ~ (below(dollar_c8,meet_commut(dollar_c8,dollar_c7,dollar_c6),dollar_c7)), file('SEU304+1.p',unknown), []).
 fof(78, axiom, meet_commutative(dollar_c8), file('SEU304+1.p',unknown), []).
 fof(79, axiom, meet_absorbing(dollar_c8), file('SEU304+1.p',unknown), []).
 fof(80, axiom, latt_str(dollar_c8), file('SEU304+1.p',unknown), []).
@@ -51,7 +51,7 @@ fof(114, plain, join_semilatt_str(dollar_c8), inference(hyper,[status(thm)],[80,
 fof(115, plain, meet_semilatt_str(dollar_c8), inference(hyper,[status(thm)],[80,20]), [iquote('hyper,80,20')]).
 fof(269, plain, (meet_commut(dollar_c8,dollar_c7,dollar_c6) = meet(dollar_c8,dollar_c7,dollar_c6)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[82,35,78,115,81]),39]), [iquote('hyper,82,35,78,115,81,unit_del,39')]).
 fof(273, plain, (meet_commut(dollar_c8,dollar_c6,dollar_c7) = meet(dollar_c8,dollar_c6,dollar_c7)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[82,35,78,115,81]),39]), [iquote('hyper,82,35,78,115,81,unit_del,39')]).
-fof(278, plain, element(meet(dollar_c8,dollar_c6,dollar_c7),the_carrier(dollar_c8)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[82,17,78,115,81]),273]),39]), [iquote('hyper,82,17,78,115,81,demod,273,unit_del,39')]).
+fof(278, plain, ~ (element(meet(dollar_c8,dollar_c6,dollar_c7),the_carrier(dollar_c8))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[82,17,78,115,81]),273]),39]), [iquote('hyper,82,17,78,115,81,demod,273,unit_del,39')]).
 fof(288, plain, (join(dollar_c8,meet(dollar_c8,dollar_c6,dollar_c7),dollar_c7) = dollar_c7), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[82,10,80,79,81]),39]), [iquote('hyper,82,10,80,79,81,unit_del,39')]).
 fof(309, plain, (meet(dollar_c8,dollar_c7,dollar_c6) = meet(dollar_c8,dollar_c6,dollar_c7)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[82,5,78,115,81]),269,273]),39]), [iquote('hyper,82,5,78,115,81,demod,269,273,unit_del,39')]).
 fof(312, plain, ~ (below(dollar_c8,meet(dollar_c8,dollar_c6,dollar_c7),dollar_c7)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[40]),269,309]), [iquote('back_demod,40,demod,269,309')]).

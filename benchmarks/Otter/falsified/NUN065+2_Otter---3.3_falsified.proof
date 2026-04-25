@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '9':
-%%%%%   Replaced (! [A,B,C,D]: ((~ (r2(A,B)) | ((B != C) | (~ (r2(D,C)) | (A = D))))))
-%%%%%   With (! [A,B,C,D]: ((r2(A,B) | ((B != C) | (~ (r2(D,C)) | (A = D))))))
+%%%%% Mutated formula '37':
+%%%%%   Replaced (! [A]: ((r1(dollar_f17(A)) | (A = dollar_f18(A)))))
+%%%%%   With (! [A]: ((~ (r1(dollar_f17(A))) | (A = dollar_f18(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUN065+2 : TPTP v8.1.0. Released v7.3.0.
@@ -37,14 +37,14 @@ fof(1, axiom, (! [A]: ((~ (r1(A)) | (A = dollar_c1)))), file('NUN065+2.p',unknow
 fof(2, axiom, (! [A]: (((A != dollar_c1) | r1(A)))), file('NUN065+2.p',unknown), []).
 fof(3, axiom, (! [A,B]: ((~ (r2(A,B)) | (B = dollar_f1(A))))), file('NUN065+2.p',unknown), []).
 fof(4, axiom, (! [A,B]: (((A != dollar_f1(B)) | r2(B,A)))), file('NUN065+2.p',unknown), []).
-fof(9, axiom, (! [A,B,C,D]: ((r2(A,B) | ((B != C) | (~ (r2(D,C)) | (A = D)))))), file('NUN065+2.p',unknown), []).
+fof(9, axiom, (! [A,B,C,D]: ((~ (r2(A,B)) | ((B != C) | (~ (r2(D,C)) | (A = D)))))), file('NUN065+2.p',unknown), []).
 fof(10, axiom, (! [A,B,C]: ((~ (r1(A)) | ((A != B) | ~ (r2(C,B)))))), file('NUN065+2.p',unknown), []).
 fof(12, axiom, (! [A]: ((A = A))), file('NUN065+2.p',unknown), []).
 fof(13, axiom, (! [A,B]: (r2(A,dollar_f4(B,A)))), file('NUN065+2.p',unknown), []).
 fof(21, axiom, (! [A,B]: (r2(A,dollar_f8(B,A)))), file('NUN065+2.p',unknown), []).
 fof(30, axiom, (! [A]: ((dollar_f13(A) = A))), file('NUN065+2.p',unknown), []).
 fof(36, axiom, (! [A]: ((r1(dollar_f17(A)) | r2(dollar_f19(A),dollar_f18(A))))), file('NUN065+2.p',unknown), []).
-fof(37, axiom, (! [A]: ((r1(dollar_f17(A)) | (A = dollar_f18(A))))), file('NUN065+2.p',unknown), []).
+fof(37, axiom, (! [A]: ((~ (r1(dollar_f17(A))) | (A = dollar_f18(A))))), file('NUN065+2.p',unknown), []).
 fof(38, plain, (! [A]: ((r1(dollar_f17(A)) | (dollar_f18(A) = A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[37])]), [iquote('copy,37,flip.2')]).
 fof(39, axiom, (! [A]: (((A = dollar_f17(A)) | r2(dollar_f19(A),dollar_f18(A))))), file('NUN065+2.p',unknown), []).
 fof(40, plain, (! [A]: (((dollar_f17(A) = A) | r2(dollar_f19(A),dollar_f18(A))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[39])]), [iquote('copy,39,flip.1')]).

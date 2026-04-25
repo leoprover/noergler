@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '15':
-%%%%%   Replaced reproducibility(dollar_c5,dollar_f1(dollar_c5,dollar_c1),dollar_c1)
-%%%%%   With ~ (reproducibility(dollar_c5,dollar_f1(dollar_c5,dollar_c1),dollar_c1))
+%%%%% Mutated formula '13':
+%%%%%   Replaced greater(dollar_c1,dollar_c2)
+%%%%%   With ~ (greater(dollar_c1,dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT002+1 : TPTP v8.1.0. Released v2.0.0.
@@ -44,9 +44,9 @@ fof(9, axiom, organization(dollar_c5,dollar_c1), file('MGT002+1.p',unknown), [])
 fof(10, axiom, reorganization_free(dollar_c5,dollar_c2,dollar_c1), file('MGT002+1.p',unknown), []).
 fof(11, axiom, inertia(dollar_c5,dollar_c4,dollar_c2), file('MGT002+1.p',unknown), []).
 fof(12, axiom, inertia(dollar_c5,dollar_c3,dollar_c1), file('MGT002+1.p',unknown), []).
-fof(13, axiom, greater(dollar_c1,dollar_c2), file('MGT002+1.p',unknown), []).
+fof(13, axiom, ~ (greater(dollar_c1,dollar_c2)), file('MGT002+1.p',unknown), []).
 fof(14, plain, reproducibility(dollar_c5,dollar_f1(dollar_c5,dollar_c2),dollar_c2), inference(hyper,[status(thm)],[8,1]), [iquote('hyper,8,1')]).
-fof(15, plain, ~ (reproducibility(dollar_c5,dollar_f1(dollar_c5,dollar_c1),dollar_c1)), inference(hyper,[status(thm)],[9,1]), [iquote('hyper,9,1')]).
+fof(15, plain, reproducibility(dollar_c5,dollar_f1(dollar_c5,dollar_c1),dollar_c1), inference(hyper,[status(thm)],[9,1]), [iquote('hyper,9,1')]).
 fof(16, plain, reorganization_free(dollar_c5,dollar_c1,dollar_c1), inference(hyper,[status(thm)],[10,3]), [iquote('hyper,10,3')]).
 fof(17, plain, reorganization_free(dollar_c5,dollar_c2,dollar_c2), inference(hyper,[status(thm)],[10,2]), [iquote('hyper,10,2')]).
 fof(18, plain, greater(dollar_f1(dollar_c5,dollar_c1),dollar_f1(dollar_c5,dollar_c2)), inference(hyper,[status(thm)],[15,6,8,9,10,14,13]), [iquote('hyper,15,6,8,9,10,14,13')]).

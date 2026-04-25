@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1176':
-%%%%%   Replaced (vmul(vd488,vd487) != vmul(vd486,vd487))
-%%%%%   With ~ ((vmul(vd488,vd487) != vmul(vd486,vd487)))
+%%%%% Mutated formula '2263':
+%%%%%   Replaced (vplus(vskolem2(vd486),v1) = vd486)
+%%%%%   With (vplus(vskolem2(vd487),v1) = vd486)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM853+1 : TPTP v8.1.0. Released v4.1.0.
@@ -94,7 +94,7 @@ fof(451, plain, (! [A,B]: (((A = B) | (greater(A,B) | ge_q(B,A))))), inference(h
 fof(465, plain, (! [A,B,C]: (((A = B) | (greater(A,B) | less(vmul(A,C),vmul(B,C)))))), inference(hyper,[status(thm)],[68,2]), [iquote('hyper,68,2')]).
 fof(1099, plain, (greater(vd488,v1) | (vd486 = v1)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[329,313])]), [iquote('hyper,329,313,flip.2')]).
 fof(1147, plain, less(vmul(vd488,vd487),vmul(vd487,vd486)), inference(para_into,[status(thm),theory(equality)],[110,59]), [iquote('para_into,110.1.2,59.1.1')]).
-fof(1176, plain, ~ ((vmul(vd488,vd487) != vmul(vd486,vd487))), inference(flip,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[108,51])]), [iquote('para_from,108.1.1,51.1.1,flip.1')]).
+fof(1176, plain, (vmul(vd488,vd487) != vmul(vd486,vd487)), inference(flip,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[108,51])]), [iquote('para_from,108.1.1,51.1.1,flip.1')]).
 fof(1243, plain, (vmul(vd487,vd488) != vmul(vd486,vd487)), inference(para_into,[status(thm),theory(equality)],[1176,59]), [iquote('para_into,1176.1.1,59.1.1')]).
 fof(1591, plain, (! [A,B]: ((dollar_f1(vplus(A,B),A) = B))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[179,148])]), [iquote('hyper,179,148,flip.1')]).
 fof(1737, plain, (! [A,B]: ((vplus(A,B) != v1))), inference(para_from,[status(thm),theory(equality)],[218,51]), [iquote('para_from,218.1.1,51.1.1')]).
@@ -107,7 +107,7 @@ fof(1900, plain, less(vd487,vmul(vd487,vd486)), inference(hyper,[status(thm)],[1
 fof(1958, plain, (less(vd487,vd487) | less(v1,vd486)), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[1900,301]),65]), [iquote('para_into,1900.1.2.2,301.1.1,demod,65')]).
 fof(2114, plain, less(v1,vd486), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[1958,35]),51]), [iquote('hyper,1958,35,unit_del,51')]).
 fof(2115, plain, (vplus(v1,vskolem2(vd486)) = vd486), inference(hyper,[status(thm)],[2114,1743,83]), [iquote('hyper,2114,1743,83')]).
-fof(2263, plain, (vplus(vskolem2(vd486),v1) = vd486), inference(para_into,[status(thm),theory(equality)],[2115,71]), [iquote('para_into,2115.1.1,71.1.1')]).
+fof(2263, plain, (vplus(vskolem2(vd487),v1) = vd486), inference(para_into,[status(thm),theory(equality)],[2115,71]), [iquote('para_into,2115.1.1,71.1.1')]).
 fof(2297, plain, (vskolem2(vd486) = dollar_f1(vd486,v1)), inference(flip,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[2115,1591])]), [iquote('para_from,2115.1.1,1591.1.1.1,flip.1')]).
 fof(2348, plain, (vplus(dollar_f1(vd486,v1),v1) = vd486), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[2263]),2297]), [iquote('back_demod,2263,demod,2297')]).
 fof(2784, plain, ((vd488 = vd486) | ge_q(vd488,vd486)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[451,448,2348]),2348,2348])]), [iquote('hyper,451,448,2347,demod,2348,2348,flip.1')]).

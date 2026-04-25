@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '6':
 %%%%%   Replaced subset(dollar_c2,union(dollar_c1))
-%%%%%   With subset(dollar_c1,union(dollar_c1))
+%%%%%   With ~ (subset(dollar_c2,union(dollar_c1)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU163+1 : TPTP v8.1.0. Released v3.3.0.
@@ -36,5 +36,5 @@
 fof(2, axiom, ~ (subset(dollar_c2,union(dollar_c1))), file('SEU163+1.p',unknown), []).
 fof(3, axiom, (! [A,B]: ((~ (in(A,B)) | subset(A,union(B))))), file('SEU163+1.p',unknown), []).
 fof(5, axiom, in(dollar_c2,dollar_c1), file('SEU163+1.p',unknown), []).
-fof(6, plain, subset(dollar_c1,union(dollar_c1)), inference(hyper,[status(thm)],[5,3]), [iquote('hyper,5,3')]).
+fof(6, plain, ~ (subset(dollar_c2,union(dollar_c1))), inference(hyper,[status(thm)],[5,3]), [iquote('hyper,5,3')]).
 fof(7, plain, $false, inference(binary,[status(thm)],[6,2]), [iquote('binary,6.1,2.1')]).

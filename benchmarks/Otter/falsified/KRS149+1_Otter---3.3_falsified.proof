@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '213':
-%%%%%   Replaced (! [A]: ((~ (cC46(A)) | cC44(A))))
-%%%%%   With (! [A]: ((cC46(A) | cC44(A))))
+%%%%% Mutated formula '190':
+%%%%%   Replaced (! [A]: ((~ (cC30(A)) | cC14(A))))
+%%%%%   With (! [A]: ((cC30(A) | cC14(A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS149+1 : TPTP v8.1.0. Released v3.1.0.
@@ -35,10 +35,10 @@
 %%% Generated on Tue Apr 14 19:14:38 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A]: (~ (cowlNothing(A)))), file('KRS149+1.p',unknown), []).
 fof(2, axiom, (! [A]: ((~ (xsd_string(A)) | ~ (xsd_integer(A))))), file('KRS149+1.p',unknown), []).
-fof(190, axiom, (! [A]: ((~ (cC30(A)) | cC14(A)))), file('KRS149+1.p',unknown), []).
+fof(190, axiom, (! [A]: ((cC30(A) | cC14(A)))), file('KRS149+1.p',unknown), []).
 fof(191, axiom, (! [A]: ((~ (cC30(A)) | cC28(A)))), file('KRS149+1.p',unknown), []).
 fof(212, axiom, (! [A]: ((~ (cC46(A)) | cC30(A)))), file('KRS149+1.p',unknown), []).
-fof(213, axiom, (! [A]: ((cC46(A) | cC44(A)))), file('KRS149+1.p',unknown), []).
+fof(213, axiom, (! [A]: ((~ (cC46(A)) | cC44(A)))), file('KRS149+1.p',unknown), []).
 fof(243, axiom, (! [A]: ((cC64(A) | (cC62(A) | ~ (cTOP(A)))))), file('KRS149+1.p',unknown), []).
 fof(294, axiom, (! [A]: ((~ (cTEST(A)) | cC216(A)))), file('KRS149+1.p',unknown), []).
 fof(295, axiom, (! [A]: ((~ (cTEST(A)) | cC46(A)))), file('KRS149+1.p',unknown), []).

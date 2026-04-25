@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '54':
-%%%%%   Replaced (! [A,B]: (r3(A,dollar_f4(A,B),dollar_f5(A,B))))
-%%%%%   With (! [A,B]: (~ (r3(A,dollar_f4(A,B),dollar_f5(A,B)))))
+%%%%% Mutated formula '51':
+%%%%%   Replaced (! [A]: (id(A,A)))
+%%%%%   With (! [A]: (~ (id(A,A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUN060+1 : TPTP v8.1.0. Released v7.3.0.
@@ -36,10 +36,10 @@
 fof(4, axiom, (! [A,B]: ((r2(A,B) | ~ (id(B,dollar_f1(A)))))), file('NUN060+1.p',unknown), []).
 fof(12, axiom, (! [A,B]: ((~ (id(A,B)) | (~ (r1(B)) | r1(A))))), file('NUN060+1.p',unknown), []).
 fof(21, axiom, (! [E,F,A,G,B,C,H,D]: ((~ (id(A,B)) | (~ (r3(C,D,A)) | (~ (r2(E,D)) | (~ (r2(F,E)) | (~ (r2(G,F)) | (~ (r1(H)) | ~ (r2(H,G)))))))))), file('NUN060+1.p',unknown), []).
-fof(51, axiom, (! [A]: (id(A,A))), file('NUN060+1.p',unknown), []).
+fof(51, axiom, (! [A]: (~ (id(A,A)))), file('NUN060+1.p',unknown), []).
 fof(52, axiom, (! [A,B]: (id(dollar_f5(A,B),dollar_f7(A,B)))), file('NUN060+1.p',unknown), []).
 fof(53, axiom, (! [A,B]: (r2(A,dollar_f4(B,A)))), file('NUN060+1.p',unknown), []).
-fof(54, axiom, (! [A,B]: (~ (r3(A,dollar_f4(A,B),dollar_f5(A,B))))), file('NUN060+1.p',unknown), []).
+fof(54, axiom, (! [A,B]: (r3(A,dollar_f4(A,B),dollar_f5(A,B)))), file('NUN060+1.p',unknown), []).
 fof(62, axiom, (! [A]: (id(dollar_f13(A),A))), file('NUN060+1.p',unknown), []).
 fof(65, axiom, (! [A]: (r1(dollar_f14(A)))), file('NUN060+1.p',unknown), []).
 fof(75, plain, (! [A]: (r2(A,dollar_f1(A)))), inference(hyper,[status(thm)],[51,4]), [iquote('hyper,51,4')]).

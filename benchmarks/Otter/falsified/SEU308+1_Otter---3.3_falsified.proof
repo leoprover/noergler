@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '118':
-%%%%%   Replaced element(dollar_c3,powerset(cast_as_carrier_subset(dollar_c4)))
-%%%%%   With element(dollar_c4,powerset(cast_as_carrier_subset(dollar_c4)))
+%%%%% Mutated formula '73':
+%%%%%   Replaced (! [A]: ((~ (one_sorted_str(A)) | (cast_as_carrier_subset(A) = the_carrier(A)))))
+%%%%%   With (! [A]: ((one_sorted_str(A) | (cast_as_carrier_subset(A) = the_carrier(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU308+1 : TPTP v8.1.0. Released v3.3.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:20:56 CEST 2026 using command 'transform(fof)'.
 fof(66, axiom, (! [A,B,C]: ((~ (element(A,powerset(B))) | (~ (element(C,powerset(B))) | (subset_difference(B,A,C) = set_difference(A,C)))))), file('SEU308+1.p',unknown), []).
 fof(72, axiom, (! [A,B]: ((element(A,powerset(B)) | ~ (subset(A,B))))), file('SEU308+1.p',unknown), []).
-fof(73, axiom, (! [A]: ((~ (one_sorted_str(A)) | (cast_as_carrier_subset(A) = the_carrier(A))))), file('SEU308+1.p',unknown), []).
+fof(73, axiom, (! [A]: ((one_sorted_str(A) | (cast_as_carrier_subset(A) = the_carrier(A))))), file('SEU308+1.p',unknown), []).
 fof(74, plain, (! [A]: ((~ (one_sorted_str(A)) | (the_carrier(A) = cast_as_carrier_subset(A))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[73])]), [iquote('copy,73,flip.2')]).
 fof(75, axiom, (subset_complement(the_carrier(dollar_c4),dollar_c3) != subset_difference(the_carrier(dollar_c4),cast_as_carrier_subset(dollar_c4),dollar_c3)), file('SEU308+1.p',unknown), []).
 fof(76, axiom, (! [A,B]: ((~ (element(A,powerset(B))) | (subset_complement(B,A) = set_difference(B,A))))), file('SEU308+1.p',unknown), []).
@@ -44,7 +44,7 @@ fof(97, axiom, (! [A]: (subset(A,A))), file('SEU308+1.p',unknown), []).
 fof(103, axiom, one_sorted_str(dollar_c4), file('SEU308+1.p',unknown), []).
 fof(104, axiom, element(dollar_c3,powerset(the_carrier(dollar_c4))), file('SEU308+1.p',unknown), []).
 fof(116, plain, (the_carrier(dollar_c4) = cast_as_carrier_subset(dollar_c4)), inference(hyper,[status(thm)],[103,74]), [iquote('hyper,103,74')]).
-fof(118, plain, element(dollar_c4,powerset(cast_as_carrier_subset(dollar_c4))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[104]),116]), [iquote('back_demod,104,demod,116')]).
+fof(118, plain, element(dollar_c3,powerset(cast_as_carrier_subset(dollar_c4))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[104]),116]), [iquote('back_demod,104,demod,116')]).
 fof(119, plain, (subset_complement(cast_as_carrier_subset(dollar_c4),dollar_c3) != subset_difference(cast_as_carrier_subset(dollar_c4),cast_as_carrier_subset(dollar_c4),dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[75]),116,116]), [iquote('back_demod,75,demod,116,116')]).
 fof(122, plain, (! [A]: (element(A,powerset(A)))), inference(hyper,[status(thm)],[97,72]), [iquote('hyper,97,72')]).
 fof(280, plain, (subset_complement(cast_as_carrier_subset(dollar_c4),dollar_c3) = set_difference(cast_as_carrier_subset(dollar_c4),dollar_c3)), inference(hyper,[status(thm)],[118,76]), [iquote('hyper,118,76')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c556':
-%%%%%   Replaced genls(c_tptpcol_15_40430,c_tptpcol_11_40388)
-%%%%%   With ~ (genls(c_tptpcol_15_40430,c_tptpcol_11_40388))
+%%%%% Mutated formula 'just20':
+%%%%%   Replaced genls(c_tptpcol_14_40429,c_tptpcol_13_40421)
+%%%%%   With ~ (genls(c_tptpcol_14_40429,c_tptpcol_13_40421))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR052+1 : TPTP v8.1.2. Released v3.4.0.
@@ -64,12 +64,12 @@ fof(c237, plain, genls(c_tptpcol_13_40421,c_tptpcol_12_40420), inference(split_c
 fof(c280, plain, (! [X276]: ((~ (genls(X276,c_tptpcol_13_40421)) | genls(X276,c_tptpcol_12_40420)))), inference(resolution,[status(thm)],[c26,c237])).
 fof(just22, axiom, genls(c_tptpcol_15_40430,c_tptpcol_14_40429), file('CSR052+1.p',just22)).
 fof(c229, plain, genls(c_tptpcol_15_40430,c_tptpcol_14_40429), inference(split_conjunct,[status(thm)],[just22])).
-fof(just20, axiom, genls(c_tptpcol_14_40429,c_tptpcol_13_40421), file('CSR052+1.p',just20)).
+fof(just20, axiom, ~ (genls(c_tptpcol_14_40429,c_tptpcol_13_40421)), file('CSR052+1.p',just20)).
 fof(c233, plain, genls(c_tptpcol_14_40429,c_tptpcol_13_40421), inference(split_conjunct,[status(thm)],[just20])).
 fof(c278, plain, (! [X274]: ((~ (genls(X274,c_tptpcol_14_40429)) | genls(X274,c_tptpcol_13_40421)))), inference(resolution,[status(thm)],[c26,c233])).
 fof(c477, plain, genls(c_tptpcol_15_40430,c_tptpcol_13_40421), inference(resolution,[status(thm)],[c278,c229])).
 fof(c506, plain, genls(c_tptpcol_15_40430,c_tptpcol_12_40420), inference(resolution,[status(thm)],[c477,c280])).
-fof(c556, plain, ~ (genls(c_tptpcol_15_40430,c_tptpcol_11_40388)), inference(resolution,[status(thm)],[c506,c275])).
+fof(c556, plain, genls(c_tptpcol_15_40430,c_tptpcol_11_40388), inference(resolution,[status(thm)],[c506,c275])).
 fof(c586, plain, genls(c_tptpcol_15_40430,c_tptpcol_10_40324), inference(resolution,[status(thm)],[c556,c276])).
 fof(c600, plain, genls(c_tptpcol_15_40430,c_tptpcol_9_40196), inference(resolution,[status(thm)],[c586,c277])).
 fof(c617, plain, genls(c_tptpcol_15_40430,c_tptpcol_8_39940), inference(resolution,[status(thm)],[c600,c274])).

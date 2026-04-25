@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '2367':
-%%%%%   Replaced subset(dollar_c11,dollar_c10)
-%%%%%   With subset(dollar_c10,dollar_c10)
+%%%%% Mutated formula '52':
+%%%%%   Replaced relation(dollar_c9)
+%%%%%   With ~ (relation(dollar_c9))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU080+1 : TPTP v8.1.0. Released v3.2.0.
@@ -37,7 +37,7 @@ fof(7, axiom, (! [A,B]: (((A = B) | (~ (subset(A,B)) | ~ (subset(B,A)))))), file
 fof(15, axiom, (! [A,B,C]: ((~ (relation(A)) | (~ (function(A)) | (~ (subset(relation_inverse_image(A,B),relation_inverse_image(A,C))) | (~ (subset(B,relation_rng(A))) | subset(B,C))))))), file('SEU080+1.p',unknown), []).
 fof(16, axiom, (dollar_c11 != dollar_c10), file('SEU080+1.p',unknown), []).
 fof(51, axiom, (! [A]: (subset(A,A))), file('SEU080+1.p',unknown), []).
-fof(52, axiom, relation(dollar_c9), file('SEU080+1.p',unknown), []).
+fof(52, axiom, ~ (relation(dollar_c9)), file('SEU080+1.p',unknown), []).
 fof(53, axiom, function(dollar_c9), file('SEU080+1.p',unknown), []).
 fof(54, axiom, (relation_inverse_image(dollar_c9,dollar_c11) = relation_inverse_image(dollar_c9,dollar_c10)), file('SEU080+1.p',unknown), []).
 fof(56, axiom, subset(dollar_c11,relation_rng(dollar_c9)), file('SEU080+1.p',unknown), []).
@@ -45,6 +45,6 @@ fof(57, axiom, subset(dollar_c10,relation_rng(dollar_c9)), file('SEU080+1.p',unk
 fof(150, plain, (! [A]: ((~ (subset(relation_inverse_image(dollar_c9,A),relation_inverse_image(dollar_c9,dollar_c10))) | (~ (subset(A,relation_rng(dollar_c9))) | subset(A,dollar_c11))))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[54,15]),52,53]), [iquote('para_from,54.1.1,15.3.2,unit_del,52,53')]).
 fof(151, plain, (! [A]: ((~ (subset(relation_inverse_image(dollar_c9,dollar_c10),relation_inverse_image(dollar_c9,A))) | subset(dollar_c11,A)))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[54,15]),52,53,56]), [iquote('para_from,54.1.1,15.3.1,unit_del,52,53,56')]).
 fof(2254, plain, subset(dollar_c10,dollar_c11), inference(hyper,[status(thm)],[150,51,57]), [iquote('hyper,150,51,57')]).
-fof(2367, plain, subset(dollar_c10,dollar_c10), inference(hyper,[status(thm)],[151,51]), [iquote('hyper,151,51')]).
+fof(2367, plain, subset(dollar_c11,dollar_c10), inference(hyper,[status(thm)],[151,51]), [iquote('hyper,151,51')]).
 fof(2414, plain, (dollar_c11 = dollar_c10), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[2367,7,2254])]), [iquote('hyper,2367,7,2254,flip.1')]).
 fof(2416, plain, $false, inference(binary,[status(thm)],[2414,16]), [iquote('binary,2414.1,16.1')]).

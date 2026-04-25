@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '32':
-%%%%%   Replaced snail(dollar_c5)
-%%%%%   With ~ (snail(dollar_c5))
+%%%%% Mutated formula '38':
+%%%%%   Replaced animal(dollar_c3)
+%%%%%   With animal(dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PUZ031+2 : TPTP v8.1.0. Released v4.1.0.
@@ -51,13 +51,13 @@ fof(22, plain, (! [A,B,C]: ((~ (animal(A)) | (~ (plant(B)) | (eats(A,B) | (~ (an
 fof(28, axiom, wolf(dollar_c1), file('PUZ031+2.p',unknown), []).
 fof(29, axiom, fox(dollar_c2), file('PUZ031+2.p',unknown), []).
 fof(30, axiom, bird(dollar_c3), file('PUZ031+2.p',unknown), []).
-fof(32, axiom, ~ (snail(dollar_c5)), file('PUZ031+2.p',unknown), []).
+fof(32, axiom, snail(dollar_c5), file('PUZ031+2.p',unknown), []).
 fof(33, axiom, grain(dollar_c6), file('PUZ031+2.p',unknown), []).
 fof(34, plain, animal(dollar_c1), inference(hyper,[status(thm)],[28,1]), [iquote('hyper,28,1')]).
 fof(35, plain, much_smaller(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[29,11,28]), [iquote('hyper,29,11,28')]).
 fof(36, plain, animal(dollar_c2), inference(hyper,[status(thm)],[29,2]), [iquote('hyper,29,2')]).
 fof(37, plain, much_smaller(dollar_c3,dollar_c2), inference(hyper,[status(thm)],[30,10,29]), [iquote('hyper,30,10,29')]).
-fof(38, plain, animal(dollar_c3), inference(hyper,[status(thm)],[30,3]), [iquote('hyper,30,3')]).
+fof(38, plain, animal(dollar_c2), inference(hyper,[status(thm)],[30,3]), [iquote('hyper,30,3')]).
 fof(44, plain, eats(dollar_c5,dollar_f2(dollar_c5)), inference(hyper,[status(thm)],[32,19]), [iquote('hyper,32,19')]).
 fof(45, plain, plant(dollar_f2(dollar_c5)), inference(hyper,[status(thm)],[32,18]), [iquote('hyper,32,18')]).
 fof(46, plain, much_smaller(dollar_c5,dollar_c3), inference(hyper,[status(thm)],[32,8,30]), [iquote('hyper,32,8,30')]).

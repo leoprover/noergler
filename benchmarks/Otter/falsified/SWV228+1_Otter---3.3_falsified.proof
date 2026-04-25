@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1719':
-%%%%%   Replaced gt(dollar_c1,dollar_c1)
-%%%%%   With gt(dollar_c2,dollar_c1)
+%%%%% Mutated formula '1699':
+%%%%%   Replaced (n3 = dollar_c2)
+%%%%%   With (dollar_c2 = dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV228+1 : TPTP v8.1.0. Bugfixed v3.3.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:22:56 CEST 2026 using command 'transform(fof)'.
 fof(2, axiom, (! [A]: (~ (gt(A,A)))), file('SWV228+1.p',unknown), []).
 fof(1697, axiom, (n0 = dollar_c1), file('SWV228+1.p',unknown), []).
-fof(1699, axiom, (n3 = dollar_c2), file('SWV228+1.p',unknown), []).
+fof(1699, axiom, (dollar_c2 = dollar_c2), file('SWV228+1.p',unknown), []).
 fof(1700, axiom, (n3 = dollar_c1), file('SWV228+1.p',unknown), []).
 fof(1702, plain, (dollar_c2 = dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1700]),1699]), [iquote('copy,1700,demod,1699')]).
 fof(1718, axiom, gt(n3,n0), file('SWV228+1.p',unknown), []).
-fof(1719, plain, gt(dollar_c2,dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1718]),1699,1702,1697]), [iquote('copy,1718,demod,1699,1702,1697')]).
+fof(1719, plain, gt(dollar_c1,dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1718]),1699,1702,1697]), [iquote('copy,1718,demod,1699,1702,1697')]).
 fof(1720, plain, $false, inference(binary,[status(thm)],[1719,2]), [iquote('binary,1719.1,2.1')]).

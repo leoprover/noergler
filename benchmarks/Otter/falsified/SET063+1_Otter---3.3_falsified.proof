@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '69':
-%%%%%   Replaced (null_class != dollar_c3)
-%%%%%   With (dollar_c3 != dollar_c3)
+%%%%% Mutated formula '122':
+%%%%%   Replaced subclass(dollar_c3,null_class)
+%%%%%   With subclass(null_class,null_class)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET063+1 : TPTP v8.1.0. Bugfixed v5.4.0.
@@ -36,7 +36,7 @@
 fof(5, axiom, (! [A,B]: (((A = B) | (~ (subclass(A,B)) | ~ (subclass(B,A)))))), file('SET063+1.p',unknown), []).
 fof(26, axiom, (! [A]: (~ (member(A,null_class)))), file('SET063+1.p',unknown), []).
 fof(68, axiom, (dollar_c3 != null_class), file('SET063+1.p',unknown), []).
-fof(69, plain, (dollar_c3 != dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[68])]), [iquote('copy,68,flip.1')]).
+fof(69, plain, (null_class != dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[68])]), [iquote('copy,68,flip.1')]).
 fof(84, axiom, (! [A,B]: ((subclass(A,B) | member(dollar_f1(A,B),A)))), file('SET063+1.p',unknown), []).
-fof(122, axiom, subclass(dollar_c3,null_class), file('SET063+1.p',unknown), []).
+fof(122, axiom, subclass(null_class,null_class), file('SET063+1.p',unknown), []).
 fof(188, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[122,5,84]),69,26]), [iquote('hyper,122,5,84,unit_del,69,26')]).

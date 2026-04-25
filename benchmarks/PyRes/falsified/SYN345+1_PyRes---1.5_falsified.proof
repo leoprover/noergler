@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c9':
-%%%%%   Replaced (! [X8,X7]: (big_f(X8,X7,skolem0003(X8,X7))))
-%%%%%   With (! [X8,X7]: (~ (big_f(X8,X7,skolem0003(X8,X7)))))
+%%%%% Mutated formula 'c14':
+%%%%%   Replaced (! [X18]: ((big_f(skolem0001,skolem0002,skolem0002) | big_f(skolem0001,skolem0002,X18))))
+%%%%%   With (! [X18]: ((big_f(skolem0002,skolem0002,skolem0002) | big_f(skolem0001,skolem0002,X18))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN345+1 : TPTP v8.1.2. Released v2.0.0.
@@ -42,14 +42,14 @@ fof(c1, negated_conjecture, (? [X1,X2]: ((! [Y1,Y2]: ((? [Z]: ((((big_f(X1,X2,Y1
 fof(c2, negated_conjecture, (? [X2,X3]: ((! [X4,X5]: ((? [X6]: ((((big_f(X2,X3,X4) & ~ (big_f(X5,X4,X6))) | (~ (big_f(X2,X2,X3)) | big_f(X2,X3,X3))) & (((big_f(X3,X4,X5) & ~ (big_f(X4,X6,X6))) | (~ (big_f(X2,X3,X3)) | big_f(X2,X2,X3))) & (big_f(X4,X5,X6) & (~ (big_f(X3,X3,X4)) | ((~ (big_f(X2,X2,X3)) | ~ (big_f(X2,X3,X3))) & (big_f(X2,X2,X3) | big_f(X2,X3,X3))))))))))))), inference(variable_rename,[status(thm)],[c1])).
 fof(c3, negated_conjecture, (! [X4,X5]: ((((big_f(skolem0001,skolem0002,X4) & ~ (big_f(X5,X4,skolem0003(X4,X5)))) | (~ (big_f(skolem0001,skolem0001,skolem0002)) | big_f(skolem0001,skolem0002,skolem0002))) & (((big_f(skolem0002,X4,X5) & ~ (big_f(X4,skolem0003(X4,X5),skolem0003(X4,X5)))) | (~ (big_f(skolem0001,skolem0002,skolem0002)) | big_f(skolem0001,skolem0001,skolem0002))) & (big_f(X4,X5,skolem0003(X4,X5)) & (~ (big_f(skolem0002,skolem0002,X4)) | ((~ (big_f(skolem0001,skolem0001,skolem0002)) | ~ (big_f(skolem0001,skolem0002,skolem0002))) & (big_f(skolem0001,skolem0001,skolem0002) | big_f(skolem0001,skolem0002,skolem0002))))))))), inference(skolemize,[status(esa)],[c2])).
 fof(c4, negated_conjecture, (! [X4,X5]: (((big_f(skolem0001,skolem0002,X4) | (~ (big_f(skolem0001,skolem0001,skolem0002)) | big_f(skolem0001,skolem0002,skolem0002))) & ((~ (big_f(X5,X4,skolem0003(X4,X5))) | (~ (big_f(skolem0001,skolem0001,skolem0002)) | big_f(skolem0001,skolem0002,skolem0002))) & ((big_f(skolem0002,X4,X5) | (~ (big_f(skolem0001,skolem0002,skolem0002)) | big_f(skolem0001,skolem0001,skolem0002))) & ((~ (big_f(X4,skolem0003(X4,X5),skolem0003(X4,X5))) | (~ (big_f(skolem0001,skolem0002,skolem0002)) | big_f(skolem0001,skolem0001,skolem0002))) & (big_f(X4,X5,skolem0003(X4,X5)) & ((~ (big_f(skolem0002,skolem0002,X4)) | (~ (big_f(skolem0001,skolem0001,skolem0002)) | ~ (big_f(skolem0001,skolem0002,skolem0002)))) & (~ (big_f(skolem0002,skolem0002,X4)) | (big_f(skolem0001,skolem0001,skolem0002) | big_f(skolem0001,skolem0002,skolem0002))))))))))), inference(distribute,[status(thm)],[c3])).
-fof(c9, negated_conjecture, (! [X8,X7]: (~ (big_f(X8,X7,skolem0003(X8,X7))))), inference(split_conjunct,[status(thm)],[c4])).
+fof(c9, negated_conjecture, (! [X8,X7]: (big_f(X8,X7,skolem0003(X8,X7)))), inference(split_conjunct,[status(thm)],[c4])).
 fof(c7, negated_conjecture, (! [X10,X9]: ((big_f(skolem0002,X10,X9) | (~ (big_f(skolem0001,skolem0002,skolem0002)) | big_f(skolem0001,skolem0001,skolem0002))))), inference(split_conjunct,[status(thm)],[c4])).
 fof(c11, negated_conjecture, (! [X13]: ((~ (big_f(skolem0002,skolem0002,X13)) | (big_f(skolem0001,skolem0001,skolem0002) | big_f(skolem0001,skolem0002,skolem0002))))), inference(split_conjunct,[status(thm)],[c4])).
 fof(c12, plain, (big_f(skolem0001,skolem0001,skolem0002) | big_f(skolem0001,skolem0002,skolem0002)), inference(resolution,[status(thm)],[c11,c9])).
 fof(c16, plain, (! [X17,X16]: ((big_f(skolem0001,skolem0001,skolem0002) | big_f(skolem0002,X17,X16)))), inference(resolution,[status(thm)],[c12,c7])).
 fof(c10, negated_conjecture, (! [X12]: ((~ (big_f(skolem0002,skolem0002,X12)) | (~ (big_f(skolem0001,skolem0001,skolem0002)) | ~ (big_f(skolem0001,skolem0002,skolem0002)))))), inference(split_conjunct,[status(thm)],[c4])).
 fof(c5, negated_conjecture, (! [X11]: ((big_f(skolem0001,skolem0002,X11) | (~ (big_f(skolem0001,skolem0001,skolem0002)) | big_f(skolem0001,skolem0002,skolem0002))))), inference(split_conjunct,[status(thm)],[c4])).
-fof(c14, plain, (! [X18]: ((big_f(skolem0001,skolem0002,skolem0002) | big_f(skolem0001,skolem0002,X18)))), inference(resolution,[status(thm)],[c12,c5])).
+fof(c14, plain, (! [X18]: ((big_f(skolem0002,skolem0002,skolem0002) | big_f(skolem0001,skolem0002,X18)))), inference(resolution,[status(thm)],[c12,c5])).
 fof(c19, plain, big_f(skolem0001,skolem0002,skolem0002), inference(factor,[status(thm)],[c14])).
 fof(c23, plain, (! [X19]: ((~ (big_f(skolem0002,skolem0002,X19)) | ~ (big_f(skolem0001,skolem0001,skolem0002))))), inference(resolution,[status(thm)],[c19,c10])).
 fof(c24, plain, (! [X24,X22,X23]: ((~ (big_f(skolem0002,skolem0002,X24)) | big_f(skolem0002,X22,X23)))), inference(resolution,[status(thm)],[c23,c16])).

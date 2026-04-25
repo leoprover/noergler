@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '692':
 %%%%%   Replaced subset(dollar_c3,intersection(dollar_c2,dollar_c1))
-%%%%%   With ~ (subset(dollar_c3,intersection(dollar_c2,dollar_c1)))
+%%%%%   With subset(dollar_c1,intersection(dollar_c2,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET199+3 : TPTP v8.1.0. Released v2.2.0.
@@ -44,5 +44,5 @@ fof(25, plain, member(dollar_f1(dollar_c3,intersection(dollar_c2,dollar_c1)),dol
 fof(33, plain, member(dollar_f1(dollar_c3,intersection(dollar_c2,dollar_c1)),dollar_c1), inference(hyper,[status(thm)],[25,4,18]), [iquote('hyper,25,4,18')]).
 fof(34, plain, member(dollar_f1(dollar_c3,intersection(dollar_c2,dollar_c1)),dollar_c2), inference(hyper,[status(thm)],[25,4,17]), [iquote('hyper,25,4,17')]).
 fof(135, plain, member(dollar_f1(dollar_c3,intersection(dollar_c2,dollar_c1)),intersection(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[34,3,33]), [iquote('hyper,34,3,33')]).
-fof(692, plain, ~ (subset(dollar_c3,intersection(dollar_c2,dollar_c1))), inference(hyper,[status(thm)],[135,5]), [iquote('hyper,135,5')]).
+fof(692, plain, subset(dollar_c1,intersection(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[135,5]), [iquote('hyper,135,5')]).
 fof(693, plain, $false, inference(binary,[status(thm)],[692,9]), [iquote('binary,692.1,9.1')]).

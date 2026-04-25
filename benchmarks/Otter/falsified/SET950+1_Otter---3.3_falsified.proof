@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '13':
-%%%%%   Replaced (! [A,B]: ((~ (in(A,dollar_c5)) | (~ (in(B,dollar_c4)) | (ordered_pair(A,B) != dollar_c3)))))
-%%%%%   With (! [A,B]: ((in(A,dollar_c5) | (~ (in(B,dollar_c4)) | (ordered_pair(A,B) != dollar_c3)))))
+%%%%% Mutated formula '50':
+%%%%%   Replaced in(dollar_c3,cartesian_product2(dollar_c5,dollar_c4))
+%%%%%   With in(dollar_c6,cartesian_product2(dollar_c5,dollar_c4))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET950+1 : TPTP v8.1.0. Released v3.2.0.
@@ -39,11 +39,11 @@ fof(4, axiom, (! [A,B,C,D]: (((A != cartesian_product2(B,C)) | (~ (in(D,A)) | (D
 fof(5, plain, (! [A,B,C,D]: (((A != cartesian_product2(B,C)) | (~ (in(D,A)) | (ordered_pair(dollar_f2(B,C,A,D),dollar_f1(B,C,A,D)) = D))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[4])]), [iquote('copy,4,flip.3')]).
 fof(8, axiom, (! [A,B,C]: ((~ (subset(A,B)) | (~ (in(C,A)) | in(C,B))))), file('SET950+1.p',unknown), []).
 fof(12, axiom, (! [A,B]: ((~ (in(A,dollar_c5)) | (~ (in(B,dollar_c4)) | (dollar_c3 != ordered_pair(A,B)))))), file('SET950+1.p',unknown), []).
-fof(13, plain, (! [A,B]: ((in(A,dollar_c5) | (~ (in(B,dollar_c4)) | (ordered_pair(A,B) != dollar_c3))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[12])]), [iquote('copy,12,flip.3')]).
+fof(13, plain, (! [A,B]: ((~ (in(A,dollar_c5)) | (~ (in(B,dollar_c4)) | (ordered_pair(A,B) != dollar_c3))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[12])]), [iquote('copy,12,flip.3')]).
 fof(20, axiom, (! [A]: ((A = A))), file('SET950+1.p',unknown), []).
 fof(32, axiom, subset(dollar_c6,cartesian_product2(dollar_c5,dollar_c4)), file('SET950+1.p',unknown), []).
 fof(33, axiom, in(dollar_c3,dollar_c6), file('SET950+1.p',unknown), []).
-fof(50, plain, in(dollar_c3,cartesian_product2(dollar_c5,dollar_c4)), inference(hyper,[status(thm)],[32,8,33]), [iquote('hyper,32,8,33')]).
+fof(50, plain, in(dollar_c6,cartesian_product2(dollar_c5,dollar_c4)), inference(hyper,[status(thm)],[32,8,33]), [iquote('hyper,32,8,33')]).
 fof(81, plain, (ordered_pair(dollar_f2(dollar_c5,dollar_c4,cartesian_product2(dollar_c5,dollar_c4),dollar_c3),dollar_f1(dollar_c5,dollar_c4,cartesian_product2(dollar_c5,dollar_c4),dollar_c3)) = dollar_c3), inference(hyper,[status(thm)],[50,5,20]), [iquote('hyper,50,5,20')]).
 fof(83, plain, in(dollar_f1(dollar_c5,dollar_c4,cartesian_product2(dollar_c5,dollar_c4),dollar_c3),dollar_c4), inference(hyper,[status(thm)],[50,3,20]), [iquote('hyper,50,3,20')]).
 fof(84, plain, in(dollar_f2(dollar_c5,dollar_c4,cartesian_product2(dollar_c5,dollar_c4),dollar_c3),dollar_c5), inference(hyper,[status(thm)],[50,2,20]), [iquote('hyper,50,2,20')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '19':
-%%%%%   Replaced (subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f1(dollar_c1,dollar_f3(dollar_c1))) | subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f4(dollar_f2(dollar_c1))))
-%%%%%   With (subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f1(dollar_c1,dollar_f3(dollar_c1))) & subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f4(dollar_f2(dollar_c1))))
+%%%%% Mutated formula '5':
+%%%%%   Replaced (! [A,B]: ((~ (environment(A)) | (~ (stable(A)) | (~ (in_environment(A,B)) | (~ (greater(zero,growth_rate(first_movers,dollar_f1(A,B)))) | greater(dollar_f2(A),appear(efficient_producers,A))))))))
+%%%%%   With (! [A,B]: ((~ (environment(A)) | (~ (stable(A)) | (~ (in_environment(A,B)) | (~ (greater(efficient_producers,growth_rate(first_movers,dollar_f1(A,B)))) | greater(dollar_f2(A),appear(efficient_producers,A))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT028+1 : TPTP v8.1.0. Released v2.0.0.
@@ -37,7 +37,7 @@ fof(1, axiom, (! [A,B]: ((~ (environment(A)) | (~ (stable(A)) | (~ (in_environme
 fof(2, axiom, (! [A,B,C]: ((~ (environment(A)) | (~ (stable(A)) | (~ (in_environment(A,B)) | (subpopulations(first_movers,efficient_producers,A,dollar_f1(A,B)) | (~ (subpopulations(first_movers,efficient_producers,A,C)) | (~ (greater_or_e_qual(C,dollar_f2(A))) | greater(zero,growth_rate(first_movers,C)))))))))), file('MGT028+1.p',unknown), []).
 fof(3, axiom, (! [A,B]: ((~ (environment(A)) | (~ (stable(A)) | (~ (in_environment(A,B)) | (greater_or_e_qual(dollar_f1(A,B),B) | greater(dollar_f2(A),appear(efficient_producers,A)))))))), file('MGT028+1.p',unknown), []).
 fof(4, axiom, (! [A,B,C]: ((~ (environment(A)) | (~ (stable(A)) | (~ (in_environment(A,B)) | (greater_or_e_qual(dollar_f1(A,B),B) | (~ (subpopulations(first_movers,efficient_producers,A,C)) | (~ (greater_or_e_qual(C,dollar_f2(A))) | greater(zero,growth_rate(first_movers,C)))))))))), file('MGT028+1.p',unknown), []).
-fof(5, axiom, (! [A,B]: ((~ (environment(A)) | (~ (stable(A)) | (~ (in_environment(A,B)) | (~ (greater(zero,growth_rate(first_movers,dollar_f1(A,B)))) | greater(dollar_f2(A),appear(efficient_producers,A)))))))), file('MGT028+1.p',unknown), []).
+fof(5, axiom, (! [A,B]: ((~ (environment(A)) | (~ (stable(A)) | (~ (in_environment(A,B)) | (~ (greater(efficient_producers,growth_rate(first_movers,dollar_f1(A,B)))) | greater(dollar_f2(A),appear(efficient_producers,A)))))))), file('MGT028+1.p',unknown), []).
 fof(6, axiom, (! [A,B,C]: ((~ (environment(A)) | (~ (stable(A)) | (~ (in_environment(A,B)) | (~ (greater(zero,growth_rate(first_movers,dollar_f1(A,B)))) | (~ (subpopulations(first_movers,efficient_producers,A,C)) | (~ (greater_or_e_qual(C,dollar_f2(A))) | greater(zero,growth_rate(first_movers,C)))))))))), file('MGT028+1.p',unknown), []).
 fof(7, axiom, (! [A]: ((~ (environment(A)) | (~ (stable(A)) | in_environment(A,dollar_f3(A)))))), file('MGT028+1.p',unknown), []).
 fof(9, axiom, (! [A,B]: ((~ (environment(A)) | (~ (stable(A)) | (~ (subpopulations(first_movers,efficient_producers,A,B)) | (~ (greater_or_e_qual(B,dollar_f3(A))) | greater(zero,growth_rate(first_movers,B)))))))), file('MGT028+1.p',unknown), []).
@@ -50,7 +50,7 @@ fof(15, plain, in_environment(dollar_c1,dollar_f3(dollar_c1)), inference(hyper,[
 fof(16, plain, (greater_or_e_qual(dollar_f1(dollar_c1,dollar_f3(dollar_c1)),dollar_f3(dollar_c1)) | greater(dollar_f2(dollar_c1),appear(efficient_producers,dollar_c1))), inference(hyper,[status(thm)],[15,3,13,14]), [iquote('hyper,15,3,13,14')]).
 fof(17, plain, (subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f1(dollar_c1,dollar_f3(dollar_c1))) | greater(dollar_f2(dollar_c1),appear(efficient_producers,dollar_c1))), inference(hyper,[status(thm)],[15,1,13,14]), [iquote('hyper,15,1,13,14')]).
 fof(18, plain, (subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f1(dollar_c1,dollar_f3(dollar_c1))) | greater_or_e_qual(dollar_f4(dollar_f2(dollar_c1)),dollar_f2(dollar_c1))), inference(hyper,[status(thm)],[17,11]), [iquote('hyper,17,11')]).
-fof(19, plain, (subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f1(dollar_c1,dollar_f3(dollar_c1))) & subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f4(dollar_f2(dollar_c1)))), inference(hyper,[status(thm)],[17,10]), [iquote('hyper,17,10')]).
+fof(19, plain, (subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f1(dollar_c1,dollar_f3(dollar_c1))) | subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f4(dollar_f2(dollar_c1)))), inference(hyper,[status(thm)],[17,10]), [iquote('hyper,17,10')]).
 fof(23, plain, (subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f1(dollar_c1,dollar_f3(dollar_c1))) | greater(zero,growth_rate(first_movers,dollar_f4(dollar_f2(dollar_c1))))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[19,2,13,14,15,18])])]), [iquote('hyper,19,2,13,14,15,18,factor_simp,factor_simp')]).
 fof(24, plain, subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f1(dollar_c1,dollar_f3(dollar_c1))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[23,12,17])]), [iquote('hyper,23,12,17,factor_simp')]).
 fof(25, plain, (greater(zero,growth_rate(first_movers,dollar_f1(dollar_c1,dollar_f3(dollar_c1)))) | greater(dollar_f2(dollar_c1),appear(efficient_producers,dollar_c1))), inference(hyper,[status(thm)],[24,9,13,14,16]), [iquote('hyper,24,9,13,14,16')]).

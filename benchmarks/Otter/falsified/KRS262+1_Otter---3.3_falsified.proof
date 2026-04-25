@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '4882':
-%%%%%   Replaced mighta(tau,thm)
-%%%%%   With ~ (mighta(tau,thm))
+%%%%% Mutated formula '160':
+%%%%%   Replaced (! [A]: (status(A,dollar_c1,thm)))
+%%%%%   With (! [A]: (~ (status(A,dollar_c1,thm))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS262+1 : TPTP v8.1.0. Bugfixed v5.4.0.
@@ -40,6 +40,6 @@ fof(93, axiom, ~ (mighta(tau,thm)), file('KRS262+1.p',unknown), []).
 fof(102, plain, (! [A]: ((~ (model(dollar_f21(A,A),A)) | status(A,A,tau)))), inference(factor,[status(thm)],[36]), [iquote('factor,36.1.2')]).
 fof(120, axiom, (! [A]: (model(A,dollar_c1))), file('KRS262+1.p',unknown), []).
 fof(146, plain, status(dollar_c1,dollar_c1,tau), inference(hyper,[status(thm)],[120,102]), [iquote('hyper,120,102')]).
-fof(160, plain, (! [A]: (status(A,dollar_c1,thm))), inference(hyper,[status(thm)],[120,11]), [iquote('hyper,120,11')]).
-fof(4882, plain, ~ (mighta(tau,thm)), inference(hyper,[status(thm)],[160,72,146]), [iquote('hyper,160,72,146')]).
+fof(160, plain, (! [A]: (~ (status(A,dollar_c1,thm)))), inference(hyper,[status(thm)],[120,11]), [iquote('hyper,120,11')]).
+fof(4882, plain, mighta(tau,thm), inference(hyper,[status(thm)],[160,72,146]), [iquote('hyper,160,72,146')]).
 fof(4883, plain, $false, inference(binary,[status(thm)],[4882,93]), [iquote('binary,4882.1,93.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c3':
-%%%%%   Replaced ~ (genls(c_tptpcol_16_50958,c_tptpcol_15_50957))
-%%%%%   With genls(c_tptpcol_16_50958,c_tptpcol_15_50957)
+%%%%% Mutated formula 'c187':
+%%%%%   Replaced genls(c_tptpcol_16_50958,c_tptpcol_15_50957)
+%%%%%   With ~ (genls(c_tptpcol_16_50958,c_tptpcol_15_50957))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR046+1 : TPTP v8.1.2. Released v3.4.0.
@@ -39,7 +39,7 @@
 fof(query46, conjecture, (mtvisible(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_wwwfuntriviacomplayquizcfmqid60926origin)),c_translation_0_885)) => genls(c_tptpcol_16_50958,c_tptpcol_15_50957)), file('CSR046+1.p',query46)).
 fof(c0, negated_conjecture, ~ ((mtvisible(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_wwwfuntriviacomplayquizcfmqid60926origin)),c_translation_0_885)) => genls(c_tptpcol_16_50958,c_tptpcol_15_50957))), inference(assume_negation,[status(cth)],[query46])).
 fof(c1, negated_conjecture, (mtvisible(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_wwwfuntriviacomplayquizcfmqid60926origin)),c_translation_0_885)) & ~ (genls(c_tptpcol_16_50958,c_tptpcol_15_50957))), inference(fof_nnf,[status(thm)],[c0])).
-fof(c3, negated_conjecture, genls(c_tptpcol_16_50958,c_tptpcol_15_50957), inference(split_conjunct,[status(thm)],[c1])).
+fof(c3, negated_conjecture, ~ (genls(c_tptpcol_16_50958,c_tptpcol_15_50957)), inference(split_conjunct,[status(thm)],[c1])).
 fof(just7, axiom, genls(c_tptpcol_16_50958,c_tptpcol_15_50957), file('CSR046+1.p',just7)).
-fof(c187, plain, genls(c_tptpcol_16_50958,c_tptpcol_15_50957), inference(split_conjunct,[status(thm)],[just7])).
+fof(c187, plain, ~ (genls(c_tptpcol_16_50958,c_tptpcol_15_50957)), inference(split_conjunct,[status(thm)],[just7])).
 fof(c194, plain, $false, inference(resolution,[status(thm)],[c187,c3])).

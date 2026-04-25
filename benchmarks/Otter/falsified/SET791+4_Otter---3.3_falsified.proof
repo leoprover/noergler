@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '706':
-%%%%%   Replaced max(dollar_c1,dollar_c3,dollar_c2)
-%%%%%   With ~ (max(dollar_c1,dollar_c3,dollar_c2))
+%%%%% Mutated formula '134':
+%%%%%   Replaced (! [A]: ((max(dollar_c1,A,dollar_c2) | apply(A,dollar_c1,dollar_f13(A,dollar_c2,dollar_c1)))))
+%%%%%   With (! [A]: ((max(dollar_c1,A,dollar_c2) & apply(A,dollar_c1,dollar_f13(A,dollar_c2,dollar_c1)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET791+4 : TPTP v8.1.0. Released v3.2.0.
@@ -44,11 +44,11 @@ fof(86, axiom, ~ (max(dollar_c1,dollar_c3,dollar_c2)), file('SET791+4.p',unknown
 fof(112, axiom, order(dollar_c3,dollar_c2), file('SET791+4.p',unknown), []).
 fof(113, axiom, greatest(dollar_c1,dollar_c3,dollar_c2), file('SET791+4.p',unknown), []).
 fof(122, plain, member(dollar_c1,dollar_c2), inference(hyper,[status(thm)],[113,54]), [iquote('hyper,113,54')]).
-fof(134, plain, (! [A]: ((max(dollar_c1,A,dollar_c2) | apply(A,dollar_c1,dollar_f13(A,dollar_c2,dollar_c1))))), inference(hyper,[status(thm)],[122,65]), [iquote('hyper,122,65')]).
+fof(134, plain, (! [A]: ((max(dollar_c1,A,dollar_c2) & apply(A,dollar_c1,dollar_f13(A,dollar_c2,dollar_c1))))), inference(hyper,[status(thm)],[122,65]), [iquote('hyper,122,65')]).
 fof(135, plain, (! [A]: ((max(dollar_c1,A,dollar_c2) | member(dollar_f13(A,dollar_c2,dollar_c1),dollar_c2)))), inference(hyper,[status(thm)],[122,64]), [iquote('hyper,122,64')]).
 fof(330, plain, (! [A]: ((max(dollar_c1,A,dollar_c2) | apply(dollar_c3,dollar_f13(A,dollar_c2,dollar_c1),dollar_c1)))), inference(hyper,[status(thm)],[135,55,113]), [iquote('hyper,135,55,113')]).
 fof(496, plain, apply(dollar_c3,dollar_c1,dollar_f13(dollar_c3,dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[134,86]), [iquote('hyper,134,86')]).
 fof(653, plain, apply(dollar_c3,dollar_f13(dollar_c3,dollar_c2,dollar_c1),dollar_c1), inference(hyper,[status(thm)],[330,86]), [iquote('hyper,330,86')]).
 fof(677, plain, (dollar_f13(dollar_c3,dollar_c2,dollar_c1) = dollar_c1), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[653,2,112,122,135,496]),86])]), [iquote('hyper,653,2,112,122,135,496,unit_del,86,flip.1')]).
-fof(706, plain, ~ (max(dollar_c1,dollar_c3,dollar_c2)), inference(hyper,[status(thm)],[677,67,122]), [iquote('hyper,677,67,122')]).
+fof(706, plain, max(dollar_c1,dollar_c3,dollar_c2), inference(hyper,[status(thm)],[677,67,122]), [iquote('hyper,677,67,122')]).
 fof(707, plain, $false, inference(binary,[status(thm)],[706,86]), [iquote('binary,706.1,86.1')]).

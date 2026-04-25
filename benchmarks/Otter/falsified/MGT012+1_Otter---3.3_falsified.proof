@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '17':
-%%%%%   Replaced inertia(dollar_c5,dollar_f1(dollar_c5,dollar_c2),dollar_c2)
-%%%%%   With inertia(dollar_c3,dollar_f1(dollar_c5,dollar_c2),dollar_c2)
+%%%%% Mutated formula '13':
+%%%%%   Replaced complexity(dollar_c5,dollar_c3,dollar_c1)
+%%%%%   With ~ (complexity(dollar_c5,dollar_c3,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT012+1 : TPTP v8.1.0. Released v2.0.0.
@@ -43,11 +43,11 @@ fof(9, axiom, organization(dollar_c5,dollar_c2), file('MGT012+1.p',unknown), [])
 fof(10, axiom, organization(dollar_c5,dollar_c1), file('MGT012+1.p',unknown), []).
 fof(11, axiom, reorganization_free(dollar_c5,dollar_c2,dollar_c1), file('MGT012+1.p',unknown), []).
 fof(12, axiom, complexity(dollar_c5,dollar_c4,dollar_c2), file('MGT012+1.p',unknown), []).
-fof(13, axiom, complexity(dollar_c5,dollar_c3,dollar_c1), file('MGT012+1.p',unknown), []).
+fof(13, axiom, ~ (complexity(dollar_c5,dollar_c3,dollar_c1)), file('MGT012+1.p',unknown), []).
 fof(14, axiom, greater(dollar_c1,dollar_c2), file('MGT012+1.p',unknown), []).
 fof(15, axiom, greater(dollar_c4,dollar_c3), file('MGT012+1.p',unknown), []).
 fof(16, plain, class(dollar_c5,dollar_f2(dollar_c5,dollar_c2),dollar_c2), inference(hyper,[status(thm)],[9,4]), [iquote('hyper,9,4')]).
-fof(17, plain, inertia(dollar_c3,dollar_f1(dollar_c5,dollar_c2),dollar_c2), inference(hyper,[status(thm)],[9,1]), [iquote('hyper,9,1')]).
+fof(17, plain, inertia(dollar_c5,dollar_f1(dollar_c5,dollar_c2),dollar_c2), inference(hyper,[status(thm)],[9,1]), [iquote('hyper,9,1')]).
 fof(20, plain, class(dollar_c5,dollar_f2(dollar_c5,dollar_c1),dollar_c1), inference(hyper,[status(thm)],[10,4]), [iquote('hyper,10,4')]).
 fof(21, plain, inertia(dollar_c5,dollar_f1(dollar_c5,dollar_c1),dollar_c1), inference(hyper,[status(thm)],[10,1]), [iquote('hyper,10,1')]).
 fof(50, plain, (dollar_f2(dollar_c5,dollar_c2) = dollar_f2(dollar_c5,dollar_c1)), inference(hyper,[status(thm)],[20,5,9,10,11,16]), [iquote('hyper,20,5,9,10,11,16')]).

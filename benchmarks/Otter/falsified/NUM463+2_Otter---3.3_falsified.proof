@@ -1,6 +1,6 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '109':
-%%%%%   Replaced aNaturalNumber0(sz00)
+%%%%% Mutated formula '111':
+%%%%%   Replaced aNaturalNumber0(xm)
 %%%%%   With aNaturalNumber0(xn)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
@@ -43,9 +43,9 @@ fof(43, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | ((A = sz00) | ((A = sz10) | (s
 fof(44, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | ((A = sz00) | ((A = sz10) | sdtlse_qdt0(sz10,A)))))), file('NUM463+2.p',unknown), []).
 fof(45, axiom, (xm != sz00), file('NUM463+2.p',unknown), []).
 fof(47, axiom, ~ (sdtlse_qdt0(xn,sdtasdt0(xn,xm))), file('NUM463+2.p',unknown), []).
-fof(109, axiom, aNaturalNumber0(xn), file('NUM463+2.p',unknown), []).
+fof(109, axiom, aNaturalNumber0(sz00), file('NUM463+2.p',unknown), []).
 fof(110, axiom, aNaturalNumber0(sz10), file('NUM463+2.p',unknown), []).
-fof(111, axiom, aNaturalNumber0(xm), file('NUM463+2.p',unknown), []).
+fof(111, axiom, aNaturalNumber0(xn), file('NUM463+2.p',unknown), []).
 fof(112, axiom, aNaturalNumber0(xn), file('NUM463+2.p',unknown), []).
 fof(123, plain, sdtlse_qdt0(sz00,sz00), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[109,38,109])]), [iquote('hyper,109,38,109,factor_simp')]).
 fof(305, plain, sdtlse_qdt0(xm,xm), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[111,38,111])]), [iquote('hyper,111,38,111,factor_simp')]).

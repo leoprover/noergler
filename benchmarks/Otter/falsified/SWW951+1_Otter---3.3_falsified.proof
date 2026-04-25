@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '87':
-%%%%%   Replaced ~ (pred_attacker(name_objective))
-%%%%%   With pred_attacker(name_objective)
+%%%%% Mutated formula '81':
+%%%%%   Replaced (! [A]: ((~ (pred_attacker(A)) | pred_attacker(tuple_T_in_1(A)))))
+%%%%%   With (! [A]: ((pred_attacker(A) | pred_attacker(tuple_T_in_1(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWW951+1 : TPTP v8.1.0. Released v7.4.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:23:04 CEST 2026 using command 'transform(fof)'.
 fof(76, axiom, (! [A]: ((~ (pred_attacker(tuple_T_out_4(A))) | pred_attacker(A)))), file('SWW951+1.p',unknown), []).
 fof(79, axiom, (! [A]: ((~ (pred_attacker(A)) | pred_attacker(tuple_T_in_3(A))))), file('SWW951+1.p',unknown), []).
-fof(81, axiom, (! [A]: ((~ (pred_attacker(A)) | pred_attacker(tuple_T_in_1(A))))), file('SWW951+1.p',unknown), []).
+fof(81, axiom, (! [A]: ((pred_attacker(A) | pred_attacker(tuple_T_in_1(A))))), file('SWW951+1.p',unknown), []).
 fof(86, axiom, (! [A,B]: ((~ (pred_attacker(tuple_T_in_3(A))) | (~ (pred_attacker(tuple_T_in_1(B))) | pred_attacker(tuple_T_out_4(name_objective)))))), file('SWW951+1.p',unknown), []).
-fof(87, axiom, pred_attacker(name_objective), file('SWW951+1.p',unknown), []).
+fof(87, axiom, ~ (pred_attacker(name_objective)), file('SWW951+1.p',unknown), []).
 fof(97, axiom, pred_attacker(tuple_true), file('SWW951+1.p',unknown), []).
 fof(109, plain, pred_attacker(tuple_T_in_1(tuple_true)), inference(hyper,[status(thm)],[97,81]), [iquote('hyper,97,81')]).
 fof(110, plain, pred_attacker(tuple_T_in_3(tuple_true)), inference(hyper,[status(thm)],[97,79]), [iquote('hyper,97,79')]).

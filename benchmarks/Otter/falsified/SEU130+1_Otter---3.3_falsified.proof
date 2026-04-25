@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '467':
-%%%%%   Replaced in(dollar_f2(dollar_c4,dollar_c3,dollar_c4),dollar_c4)
-%%%%%   With in(dollar_f2(dollar_c3,dollar_c3,dollar_c4),dollar_c4)
+%%%%% Mutated formula '827':
+%%%%%   Replaced in(dollar_f2(dollar_c4,dollar_c3,dollar_c4),dollar_c3)
+%%%%%   With ~ (in(dollar_f2(dollar_c4,dollar_c3,dollar_c4),dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU130+1 : TPTP v8.1.0. Released v3.3.0.
@@ -41,7 +41,7 @@ fof(24, axiom, (! [A]: ((A = A))), file('SEU130+1.p',unknown), []).
 fof(27, axiom, (! [A,B,C]: (((A = set_intersection2(B,C)) | (in(dollar_f2(B,C,A),A) | in(dollar_f2(B,C,A),B))))), file('SEU130+1.p',unknown), []).
 fof(35, axiom, subset(dollar_c4,dollar_c3), file('SEU130+1.p',unknown), []).
 fof(38, plain, (! [A,B]: (((set_intersection2(A,B) = A) | in(dollar_f2(A,B,A),A)))), inference(flip,[status(thm),theory(equality)],[inference(factor,[status(thm)],[27])]), [iquote('factor,27.2.3,flip.1')]).
-fof(467, plain, in(dollar_f2(dollar_c3,dollar_c3,dollar_c4),dollar_c4), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[38,12]),24]), [iquote('para_from,38.1.1,12.1.1,unit_del,24')]).
-fof(827, plain, in(dollar_f2(dollar_c4,dollar_c3,dollar_c4),dollar_c3), inference(hyper,[status(thm)],[467,5,35]), [iquote('hyper,467,5,35')]).
+fof(467, plain, in(dollar_f2(dollar_c4,dollar_c3,dollar_c4),dollar_c4), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[38,12]),24]), [iquote('para_from,38.1.1,12.1.1,unit_del,24')]).
+fof(827, plain, ~ (in(dollar_f2(dollar_c4,dollar_c3,dollar_c4),dollar_c3)), inference(hyper,[status(thm)],[467,5,35]), [iquote('hyper,467,5,35')]).
 fof(1133, plain, (set_intersection2(dollar_c4,dollar_c3) = dollar_c4), inference(hyper,[status(thm)],[827,19,467]), [iquote('hyper,827,19,467')]).
 fof(1135, plain, $false, inference(binary,[status(thm)],[1133,12]), [iquote('binary,1133.1,12.1')]).

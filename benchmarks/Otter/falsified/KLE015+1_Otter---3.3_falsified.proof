@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '103':
-%%%%%   Replaced (! [A,B]: ((addition(A,addition(A,B)) = addition(A,B))))
-%%%%%   With (! [A,B]: (~ ((addition(A,addition(A,B)) = addition(A,B)))))
+%%%%% Mutated formula '67':
+%%%%%   Replaced (multiplication(dollar_c2,c(dollar_c2)) = zero)
+%%%%%   With ~ ((multiplication(dollar_c2,c(dollar_c2)) = zero))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE015+1 : TPTP v8.1.0. Released v4.0.0.
@@ -65,12 +65,12 @@ fof(57, plain, (! [A,B]: ((complement(A,B) | ((multiplication(B,A) != zero) | ((
 fof(59, plain, (addition(dollar_c1,dollar_f1(dollar_c1)) = one), inference(hyper,[status(thm)],[43,7]), [iquote('hyper,43,7')]).
 fof(61, plain, (multiplication(dollar_f1(dollar_c1),dollar_c1) = zero), inference(hyper,[status(thm)],[43,6]), [iquote('hyper,43,6')]).
 fof(64, plain, (multiplication(dollar_c1,dollar_f1(dollar_c1)) = zero), inference(hyper,[status(thm)],[43,5]), [iquote('hyper,43,5')]).
-fof(67, plain, (multiplication(dollar_c2,c(dollar_c2)) = zero), inference(hyper,[status(thm)],[44,6]), [iquote('hyper,44,6')]).
+fof(67, plain, ~ ((multiplication(dollar_c2,c(dollar_c2)) = zero)), inference(hyper,[status(thm)],[44,6]), [iquote('hyper,44,6')]).
 fof(74, plain, (addition(dollar_c2,dollar_f1(dollar_c2)) = one), inference(hyper,[status(thm)],[45,7]), [iquote('hyper,45,7')]).
 fof(77, plain, (multiplication(dollar_f1(dollar_c2),dollar_c2) = zero), inference(hyper,[status(thm)],[45,6]), [iquote('hyper,45,6')]).
 fof(79, plain, (multiplication(dollar_c2,dollar_f1(dollar_c2)) = zero), inference(hyper,[status(thm)],[45,5]), [iquote('hyper,45,5')]).
 fof(91, plain, (! [A]: ((addition(zero,A) = A))), inference(para_into,[status(thm),theory(equality)],[19,14]), [iquote('para_into,18.1.1,14.1.1')]).
-fof(103, plain, (! [A,B]: (~ ((addition(A,addition(A,B)) = addition(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[20,16])]), [iquote('para_from,20.1.1,16.1.1.1,flip.1')]).
+fof(103, plain, (! [A,B]: ((addition(A,addition(A,B)) = addition(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[20,16])]), [iquote('para_from,20.1.1,16.1.1.1,flip.1')]).
 fof(124, plain, (! [A,B,C]: (((addition(multiplication(A,B),multiplication(A,C)) = multiplication(A,C)) | ~ (le_q(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[29,1])]), [iquote('para_into,29.1.1.2,1.2.1,flip.1')]).
 fof(194, plain, (addition(dollar_f1(dollar_c1),dollar_c1) = one), inference(para_into,[status(thm),theory(equality)],[59,14]), [iquote('para_into,59.1.1,14.1.1')]).
 fof(205, plain, complement(dollar_c1,dollar_f1(dollar_c1)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[61,8]),64,194]),13,13,13]), [iquote('para_from,61.1.1,8.2.1,demod,64,194,unit_del,13,13,13')]).

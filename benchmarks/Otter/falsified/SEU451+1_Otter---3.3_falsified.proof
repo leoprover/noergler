@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1631':
-%%%%%   Replaced (k9_relset_2(dollar_c3,dollar_c3,dollar_c2,k6_partfun1(dollar_c3),dollar_c1) = dollar_c1)
-%%%%%   With ~ ((k9_relset_2(dollar_c3,dollar_c3,dollar_c2,k6_partfun1(dollar_c3),dollar_c1) = dollar_c1))
+%%%%% Mutated formula '24':
+%%%%%   Replaced (! [A,B,C]: ((~ (m2_relset_1(A,B,C)) | (k7_relset_1(B,C,C,C,A,k6_partfun1(C)) = A))))
+%%%%%   With (! [A,B,C]: ((m2_relset_1(A,B,C) | (k7_relset_1(B,C,C,C,A,k6_partfun1(C)) = A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU451+1 : TPTP v8.1.0. Released v3.4.0.
@@ -39,7 +39,7 @@ fof(18, axiom, (! [E,F,A,B,C,D]: ((~ (m1_relset_1(A,B,C)) | (~ (m1_relset_1(D,E,
 fof(19, axiom, (! [E,A,B,C,D]: ((~ (m1_subset_1(A,k1_zfmisc_1(k2_zfmisc_1(B,C)))) | (~ (m1_subset_1(D,k1_zfmisc_1(k2_zfmisc_1(C,E)))) | (k9_relset_2(B,C,E,A,D) = k5_relat_1(A,D)))))), file('SEU451+1.p',unknown), []).
 fof(20, axiom, (! [A,B,C]: ((~ (m2_relset_1(A,B,C)) | m1_relset_1(A,B,C)))), file('SEU451+1.p',unknown), []).
 fof(23, axiom, (! [A,B,C]: ((~ (m2_relset_1(A,B,C)) | (k7_relset_1(B,B,B,C,k6_partfun1(B),A) = A)))), file('SEU451+1.p',unknown), []).
-fof(24, axiom, (! [A,B,C]: ((~ (m2_relset_1(A,B,C)) | (k7_relset_1(B,C,C,C,A,k6_partfun1(C)) = A)))), file('SEU451+1.p',unknown), []).
+fof(24, axiom, (! [A,B,C]: ((m2_relset_1(A,B,C) | (k7_relset_1(B,C,C,C,A,k6_partfun1(C)) = A)))), file('SEU451+1.p',unknown), []).
 fof(41, axiom, (! [A]: ((A = A))), file('SEU451+1.p',unknown), []).
 fof(42, axiom, m2_relset_1(dollar_c1,dollar_c3,dollar_c2), file('SEU451+1.p',unknown), []).
 fof(44, axiom, (! [A]: (m2_relset_1(k6_partfun1(A),A,A))), file('SEU451+1.p',unknown), []).
@@ -52,6 +52,6 @@ fof(135, plain, (! [A]: (m1_subset_1(k6_partfun1(A),k1_zfmisc_1(k2_zfmisc_1(A,A)
 fof(906, plain, (! [A]: ((k5_relat_1(dollar_c1,k6_partfun1(A)) = k7_relset_1(dollar_c3,dollar_c2,A,A,dollar_c1,k6_partfun1(A))))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[134,18,99])]), [iquote('hyper,134,18,99,flip.1')]).
 fof(915, plain, (! [A]: ((k5_relat_1(k6_partfun1(A),dollar_c1) = k7_relset_1(A,A,dollar_c3,dollar_c2,k6_partfun1(A),dollar_c1)))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[134,18,99])]), [iquote('hyper,134,18,99,flip.1')]).
 fof(1623, plain, (k9_relset_2(dollar_c3,dollar_c2,dollar_c2,dollar_c1,k6_partfun1(dollar_c2)) = dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[135,19,100]),906,96]), [iquote('hyper,135,19,100,demod,906,96')]).
-fof(1631, plain, ~ ((k9_relset_2(dollar_c3,dollar_c3,dollar_c2,k6_partfun1(dollar_c3),dollar_c1) = dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[135,19,100]),915,98]), [iquote('hyper,135,19,100,demod,915,98')]).
+fof(1631, plain, (k9_relset_2(dollar_c3,dollar_c3,dollar_c2,k6_partfun1(dollar_c3),dollar_c1) = dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[135,19,100]),915,98]), [iquote('hyper,135,19,100,demod,915,98')]).
 fof(1644, plain, (dollar_c1 != dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1]),1631,1623]), [iquote('back_demod,1,demod,1631,1623')]).
 fof(1645, plain, $false, inference(binary,[status(thm)],[1644,41]), [iquote('binary,1644.1,41.1')]).

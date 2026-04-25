@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c12':
-%%%%%   Replaced (~ (p1) | (p2 | (p3 | (~ (p1) | (p2 | p3)))))
-%%%%%   With (p1 | (p2 | (p3 | (~ (p1) | (p2 | p3)))))
+%%%%% Mutated formula 'c19':
+%%%%%   Replaced (~ (p1) | (~ (p2) | (p3 | (~ (p1) | (~ (p2) | p3)))))
+%%%%%   With (p1 | (~ (p2) | (p3 | (~ (p1) | (~ (p2) | p3)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN393+1.003 : TPTP v8.1.2. Released v2.0.0.
@@ -47,9 +47,9 @@ fof(c38, plain, (~ (p2) | (p1 | p3)), inference(factor,[status(thm)],[c17])).
 fof(c26, negated_conjecture, (p1 | (p2 | (p3 | (p2 | (p3 | p1))))), inference(split_conjunct,[status(thm)],[c2])).
 fof(c40, plain, (p1 | (p2 | p3)), inference(factor,[status(thm)],[c26])).
 fof(c54, plain, (p1 | p3), inference(resolution,[status(thm)],[c40,c38])).
-fof(c19, negated_conjecture, (~ (p1) | (~ (p2) | (p3 | (~ (p1) | (~ (p2) | p3))))), inference(split_conjunct,[status(thm)],[c2])).
+fof(c19, negated_conjecture, (p1 | (~ (p2) | (p3 | (~ (p1) | (~ (p2) | p3))))), inference(split_conjunct,[status(thm)],[c2])).
 fof(c39, plain, (~ (p1) | (~ (p2) | p3)), inference(factor,[status(thm)],[c19])).
-fof(c12, negated_conjecture, (p1 | (p2 | (p3 | (~ (p1) | (p2 | p3))))), inference(split_conjunct,[status(thm)],[c2])).
+fof(c12, negated_conjecture, (~ (p1) | (p2 | (p3 | (~ (p1) | (p2 | p3))))), inference(split_conjunct,[status(thm)],[c2])).
 fof(c37, plain, (~ (p1) | (p2 | p3)), inference(factor,[status(thm)],[c12])).
 fof(c53, plain, (p2 | p3), inference(resolution,[status(thm)],[c40,c37])).
 fof(c59, plain, (p3 | ~ (p1)), inference(resolution,[status(thm)],[c53,c39])).

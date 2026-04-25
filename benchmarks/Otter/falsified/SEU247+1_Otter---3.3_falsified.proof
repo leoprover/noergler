@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '16':
-%%%%%   Replaced relation(dollar_c1)
-%%%%%   With relation(dollar_c2)
+%%%%% Mutated formula '11':
+%%%%%   Replaced (relation_rng_restriction(dollar_c2,relation_dom_restriction(dollar_c1,dollar_c2)) != relation_restriction(dollar_c1,dollar_c2))
+%%%%%   With (relation_rng_restriction(dollar_c1,relation_dom_restriction(dollar_c1,dollar_c2)) != relation_restriction(dollar_c1,dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU247+1 : TPTP v8.1.0. Released v3.3.0.
@@ -38,9 +38,9 @@ fof(7, plain, (! [A,B,C]: ((~ (relation(A)) | (relation_rng_restriction(B,relati
 fof(8, axiom, (! [A,B]: ((~ (relation(A)) | (relation_restriction(A,B) = relation_dom_restriction(relation_rng_restriction(B,A),B))))), file('SEU247+1.p',unknown), []).
 fof(9, plain, (! [A,B]: ((~ (relation(A)) | (relation_dom_restriction(relation_rng_restriction(B,A),B) = relation_restriction(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[8])]), [iquote('copy,8,flip.2')]).
 fof(10, axiom, (relation_restriction(dollar_c1,dollar_c2) != relation_rng_restriction(dollar_c2,relation_dom_restriction(dollar_c1,dollar_c2))), file('SEU247+1.p',unknown), []).
-fof(11, plain, (relation_rng_restriction(dollar_c2,relation_dom_restriction(dollar_c1,dollar_c2)) != relation_restriction(dollar_c1,dollar_c2)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[10])]), [iquote('copy,10,flip.1')]).
+fof(11, plain, (relation_rng_restriction(dollar_c1,relation_dom_restriction(dollar_c1,dollar_c2)) != relation_restriction(dollar_c1,dollar_c2)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[10])]), [iquote('copy,10,flip.1')]).
 fof(12, axiom, (! [A]: ((A = A))), file('SEU247+1.p',unknown), []).
-fof(16, axiom, relation(dollar_c2), file('SEU247+1.p',unknown), []).
+fof(16, axiom, relation(dollar_c1), file('SEU247+1.p',unknown), []).
 fof(18, plain, (! [A]: ((relation_dom_restriction(relation_rng_restriction(A,dollar_c1),A) = relation_restriction(dollar_c1,A)))), inference(hyper,[status(thm)],[16,9]), [iquote('hyper,16,9')]).
 fof(20, plain, (! [A,B]: ((relation_rng_restriction(A,relation_dom_restriction(dollar_c1,B)) = relation_dom_restriction(relation_rng_restriction(A,dollar_c1),B)))), inference(hyper,[status(thm)],[16,7]), [iquote('hyper,16,7')]).
 fof(26, plain, (relation_restriction(dollar_c1,dollar_c2) != relation_restriction(dollar_c1,dollar_c2)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[11]),20,18]), [iquote('back_demod,11,demod,20,18')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '306':
-%%%%%   Replaced ~ (sdtlse_qdt0(sz10,sz10))
-%%%%%   With ~ (sdtlse_qdt0(sz00,sz10))
+%%%%% Mutated formula '180':
+%%%%%   Replaced sdtlse_qdt0(sz10,sz10)
+%%%%%   With ~ (sdtlse_qdt0(sz10,sz10))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM464+2 : TPTP v8.1.0. Released v4.0.0.
@@ -39,7 +39,7 @@ fof(45, axiom, (xm != sz00), file('NUM464+2.p',unknown), []).
 fof(47, axiom, ~ (sdtlse_qdt0(sz10,xm)), file('NUM464+2.p',unknown), []).
 fof(110, axiom, aNaturalNumber0(sz10), file('NUM464+2.p',unknown), []).
 fof(111, axiom, aNaturalNumber0(xm), file('NUM464+2.p',unknown), []).
-fof(180, plain, sdtlse_qdt0(sz10,sz10), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[110,38,110])]), [iquote('hyper,110,38,110,factor_simp')]).
+fof(180, plain, ~ (sdtlse_qdt0(sz10,sz10)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[110,38,110])]), [iquote('hyper,110,38,110,factor_simp')]).
 fof(305, plain, (xm = sz10), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[111,44]),45,47]), [iquote('hyper,111,44,unit_del,45,47')]).
-fof(306, plain, ~ (sdtlse_qdt0(sz00,sz10)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[47]),305]), [iquote('back_demod,47,demod,305')]).
+fof(306, plain, ~ (sdtlse_qdt0(sz10,sz10)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[47]),305]), [iquote('back_demod,47,demod,305')]).
 fof(307, plain, $false, inference(binary,[status(thm)],[306,180]), [iquote('binary,306.1,180.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c13':
-%%%%%   Replaced (~ (parent_of(iokaste,polyneikes)) | (~ (patricide(polyneikes)) | patricide(thersandros)))
-%%%%%   With (parent_of(iokaste,polyneikes) | (~ (patricide(polyneikes)) | patricide(thersandros)))
+%%%%% Mutated formula 'c10':
+%%%%%   Replaced parent_of(iokaste,polyneikes)
+%%%%%   With ~ (parent_of(iokaste,polyneikes))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : PUZ128+1 : TPTP v8.1.2. Released v4.0.0.
@@ -40,7 +40,7 @@ fof(thersandros_not_patricidal, axiom, ~ (patricide(thersandros)), file('PUZ128+
 fof(c5, plain, ~ (patricide(thersandros)), inference(fof_simplification,[status(thm)],[thersandros_not_patricidal])).
 fof(c6, plain, ~ (patricide(thersandros)), inference(split_conjunct,[status(thm)],[c5])).
 fof(iokaste_polyneikes, axiom, parent_of(iokaste,polyneikes), file('PUZ128+1.p',iokaste_polyneikes)).
-fof(c10, plain, parent_of(iokaste,polyneikes), inference(split_conjunct,[status(thm)],[iokaste_polyneikes])).
+fof(c10, plain, ~ (parent_of(iokaste,polyneikes)), inference(split_conjunct,[status(thm)],[iokaste_polyneikes])).
 fof(polyneikes_thersandros, axiom, parent_of(polyneikes,thersandros), file('PUZ128+1.p',polyneikes_thersandros)).
 fof(c8, plain, parent_of(polyneikes,thersandros), inference(split_conjunct,[status(thm)],[polyneikes_thersandros])).
 fof(iokaste_parent_particide_parent_not_patricide, conjecture, (? [P,NP]: ((parent_of(iokaste,P) & (patricide(P) & (parent_of(P,NP) & ~ (patricide(NP))))))), file('PUZ128+1.p',iokaste_parent_particide_parent_not_patricide)).
@@ -49,7 +49,7 @@ fof(c1, negated_conjecture, ~ ((? [P,NP]: ((parent_of(iokaste,P) & (patricide(P)
 fof(c2, negated_conjecture, (! [P,NP]: ((~ (parent_of(iokaste,P)) | (~ (patricide(P)) | (~ (parent_of(P,NP)) | patricide(NP)))))), inference(fof_nnf,[status(thm)],[c1])).
 fof(c3, negated_conjecture, (! [X2,X3]: ((~ (parent_of(iokaste,X2)) | (~ (patricide(X2)) | (~ (parent_of(X2,X3)) | patricide(X3)))))), inference(variable_rename,[status(thm)],[c2])).
 fof(c4, negated_conjecture, (! [X4,X5]: ((~ (parent_of(iokaste,X4)) | (~ (patricide(X4)) | (~ (parent_of(X4,X5)) | patricide(X5)))))), inference(split_conjunct,[status(thm)],[c3])).
-fof(c13, plain, (parent_of(iokaste,polyneikes) | (~ (patricide(polyneikes)) | patricide(thersandros))), inference(resolution,[status(thm)],[c4,c8])).
+fof(c13, plain, (~ (parent_of(iokaste,polyneikes)) | (~ (patricide(polyneikes)) | patricide(thersandros))), inference(resolution,[status(thm)],[c4,c8])).
 fof(c17, plain, (~ (patricide(polyneikes)) | patricide(thersandros)), inference(resolution,[status(thm)],[c13,c10])).
 fof(oedipus_patricidal, axiom, patricide(oedipus), file('PUZ128+1.p',oedipus_patricidal)).
 fof(c7, plain, patricide(oedipus), inference(split_conjunct,[status(thm)],[oedipus_patricidal])).

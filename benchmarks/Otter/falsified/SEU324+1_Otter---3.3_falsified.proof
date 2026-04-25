@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '34':
-%%%%%   Replaced top_str(dollar_c6)
-%%%%%   With top_str(dollar_c4)
+%%%%% Mutated formula '159':
+%%%%%   Replaced open_subset(dollar_c3,dollar_c5)
+%%%%%   With open_subset(dollar_c6,dollar_c5)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU324+1 : TPTP v8.1.0. Released v3.3.0.
@@ -45,7 +45,7 @@ fof(26, axiom, ((interior(dollar_c5,dollar_c3) != dollar_c3) | (interior(dollar_
 fof(27, axiom, ((interior(dollar_c5,dollar_c3) != dollar_c3) | ~ (open_subset(dollar_c4,dollar_c6))), file('SEU324+1.p',unknown), []).
 fof(28, axiom, (! [A]: ((A = A))), file('SEU324+1.p',unknown), []).
 fof(33, axiom, topological_space(dollar_c6), file('SEU324+1.p',unknown), []).
-fof(34, axiom, top_str(dollar_c4), file('SEU324+1.p',unknown), []).
+fof(34, axiom, top_str(dollar_c6), file('SEU324+1.p',unknown), []).
 fof(35, axiom, top_str(dollar_c5), file('SEU324+1.p',unknown), []).
 fof(36, axiom, element(dollar_c4,powerset(the_carrier(dollar_c6))), file('SEU324+1.p',unknown), []).
 fof(37, axiom, element(dollar_c3,powerset(the_carrier(dollar_c5))), file('SEU324+1.p',unknown), []).
@@ -56,7 +56,7 @@ fof(99, plain, element(subset_complement(the_carrier(dollar_c5),dollar_c3),power
 fof(101, plain, (subset_complement(the_carrier(dollar_c5),topstr_closure(dollar_c5,subset_complement(the_carrier(dollar_c5),dollar_c3))) = interior(dollar_c5,dollar_c3)), inference(hyper,[status(thm)],[37,2,35]), [iquote('hyper,37,2,35')]).
 fof(104, plain, (open_subset(dollar_c4,dollar_c6) | open_subset(dollar_c3,dollar_c5)), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[38,10]),33,34,36]), [iquote('para_from,38.2.1,10.4.1,unit_del,33,34,36')]).
 fof(105, plain, (open_subset(dollar_c4,dollar_c6) | (interior(dollar_c5,dollar_c3) != dollar_c3)), inference(para_into,[status(thm),theory(equality)],[71,26]), [iquote('para_into,71.1.1,26.2.1')]).
-fof(159, plain, open_subset(dollar_c3,dollar_c5), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[104,25])]), [iquote('hyper,104,25,factor_simp')]).
+fof(159, plain, open_subset(dollar_c6,dollar_c5), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[104,25])]), [iquote('hyper,104,25,factor_simp')]).
 fof(161, plain, closed_subset(subset_complement(the_carrier(dollar_c5),dollar_c3),dollar_c5), inference(hyper,[status(thm)],[159,19,35,37]), [iquote('hyper,159,19,35,37')]).
 fof(402, plain, (topstr_closure(dollar_c5,subset_complement(the_carrier(dollar_c5),dollar_c3)) = subset_complement(the_carrier(dollar_c5),dollar_c3)), inference(hyper,[status(thm)],[99,23,35,161]), [iquote('hyper,99,23,35,161')]).
 fof(408, plain, (interior(dollar_c5,dollar_c3) = dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[101]),402,97])]), [iquote('back_demod,101,demod,402,97,flip.1')]).

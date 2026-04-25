@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '79':
-%%%%%   Replaced ((complements_of_subsets(dollar_c3,dollar_c2) = empty_set) | (empty_set = dollar_c2))
-%%%%%   With (~ ((complements_of_subsets(dollar_c3,dollar_c2) = empty_set)) | (empty_set = dollar_c2))
+%%%%% Mutated formula '267':
+%%%%%   Replaced (! [A]: (element(complements_of_subsets(A,dollar_c2),powerset(powerset(A)))))
+%%%%%   With (! [A]: (~ (element(complements_of_subsets(A,dollar_c2),powerset(powerset(A))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU326+1 : TPTP v8.1.0. Released v3.3.0.
@@ -45,7 +45,7 @@ fof(74, axiom, (! [A]: (element(dollar_f3(A),powerset(A)))), file('SEU326+1.p',u
 fof(75, axiom, (! [A]: (empty(dollar_f3(A)))), file('SEU326+1.p',unknown), []).
 fof(77, axiom, element(dollar_c2,powerset(powerset(dollar_c3))), file('SEU326+1.p',unknown), []).
 fof(78, axiom, ((complements_of_subsets(dollar_c3,dollar_c2) = empty_set) | (dollar_c2 = empty_set)), file('SEU326+1.p',unknown), []).
-fof(79, plain, (~ ((complements_of_subsets(dollar_c3,dollar_c2) = empty_set)) | (empty_set = dollar_c2)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[78])]), [iquote('copy,78,flip.2')]).
+fof(79, plain, ((complements_of_subsets(dollar_c3,dollar_c2) = empty_set) | (empty_set = dollar_c2)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[78])]), [iquote('copy,78,flip.2')]).
 fof(110, plain, (! [A]: ((dollar_f3(A) = empty_set))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[75,57,62])]), [iquote('hyper,75,57,62,flip.1')]).
 fof(111, plain, (! [A]: (element(empty_set,powerset(A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[74]),110]), [iquote('back_demod,74,demod,110')]).
 fof(166, plain, (empty_set = dollar_c2), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[79,52,77])]), [iquote('hyper,79,52,77,factor_simp')]).
@@ -53,6 +53,6 @@ fof(194, plain, (! [A]: (element(dollar_c2,powerset(A)))), inference(demod,[stat
 fof(216, plain, (! [A,B]: ((~ (element(A,powerset(powerset(B)))) | ((A = dollar_c2) | (complements_of_subsets(B,A) != dollar_c2))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[52]),166,166]), [iquote('back_demod,52,demod,166,166')]).
 fof(217, plain, (complements_of_subsets(dollar_c3,dollar_c2) != dollar_c2), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[47]),166,166]),60]), [iquote('back_demod,47,demod,166,166,unit_del,60')]).
 fof(265, plain, (! [A]: ((complements_of_subsets(A,complements_of_subsets(A,dollar_c2)) = dollar_c2))), inference(hyper,[status(thm)],[194,43]), [iquote('hyper,194,43')]).
-fof(267, plain, (! [A]: (element(complements_of_subsets(A,dollar_c2),powerset(powerset(A))))), inference(hyper,[status(thm)],[194,41]), [iquote('hyper,194,41')]).
+fof(267, plain, (! [A]: (~ (element(complements_of_subsets(A,dollar_c2),powerset(powerset(A)))))), inference(hyper,[status(thm)],[194,41]), [iquote('hyper,194,41')]).
 fof(1356, plain, (! [A]: ((complements_of_subsets(A,dollar_c2) = dollar_c2))), inference(hyper,[status(thm)],[216,267,265]), [iquote('hyper,216,267,265')]).
 fof(1358, plain, $false, inference(binary,[status(thm)],[1356,217]), [iquote('binary,1356.1,217.1')]).

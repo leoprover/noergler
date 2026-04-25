@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1029':
-%%%%%   Replaced (sdtpldt0(smndt0(xa),sz00) = smndt0(xa))
-%%%%%   With (sdtpldt0(smndt0(sz10),sz00) = smndt0(xa))
+%%%%% Mutated formula '4':
+%%%%%   Replaced (! [A,B,C]: ((~ (aInteger0(A)) | (~ (aInteger0(B)) | (~ (aInteger0(C)) | (sdtpldt0(A,sdtpldt0(B,C)) = sdtpldt0(sdtpldt0(A,B),C)))))))
+%%%%%   With (! [A,B,C]: ((aInteger0(A) | (~ (aInteger0(B)) | (~ (aInteger0(C)) | (sdtpldt0(A,sdtpldt0(B,C)) = sdtpldt0(sdtpldt0(A,B),C)))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM422+1 : TPTP v8.1.0. Released v4.0.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:16:09 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A]: ((~ (aInteger0(A)) | aInteger0(smndt0(A))))), file('NUM422+1.p',unknown), []).
 fof(3, axiom, (! [A,B]: ((~ (aInteger0(A)) | (~ (aInteger0(B)) | aInteger0(sdtasdt0(A,B)))))), file('NUM422+1.p',unknown), []).
-fof(4, axiom, (! [A,B,C]: ((~ (aInteger0(A)) | (~ (aInteger0(B)) | (~ (aInteger0(C)) | (sdtpldt0(A,sdtpldt0(B,C)) = sdtpldt0(sdtpldt0(A,B),C))))))), file('NUM422+1.p',unknown), []).
+fof(4, axiom, (! [A,B,C]: ((aInteger0(A) | (~ (aInteger0(B)) | (~ (aInteger0(C)) | (sdtpldt0(A,sdtpldt0(B,C)) = sdtpldt0(sdtpldt0(A,B),C))))))), file('NUM422+1.p',unknown), []).
 fof(5, plain, (! [A,B,C]: ((~ (aInteger0(A)) | (~ (aInteger0(B)) | (~ (aInteger0(C)) | (sdtpldt0(sdtpldt0(A,B),C) = sdtpldt0(A,sdtpldt0(B,C)))))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[4])]), [iquote('copy,4,flip.4')]).
 fof(7, axiom, (! [A]: ((~ (aInteger0(A)) | (sdtpldt0(A,sz00) = A)))), file('NUM422+1.p',unknown), []).
 fof(8, axiom, (! [A]: ((~ (aInteger0(A)) | (A = sdtpldt0(sz00,A))))), file('NUM422+1.p',unknown), []).
@@ -70,6 +70,6 @@ fof(494, plain, (sdtpldt0(xa,sdtasdt0(xa,smndt0(sz10))) = sz00), inference(demod
 fof(554, plain, (sdtasdt0(smndt0(sz10),xa) = sdtasdt0(xa,smndt0(sz10))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[90,15,31])]), [iquote('hyper,90,15,31,flip.1')]).
 fof(634, plain, aInteger0(sdtasdt0(xa,smndt0(sz10))), inference(hyper,[status(thm)],[90,3,31]), [iquote('hyper,90,3,31')]).
 fof(668, plain, (smndt0(xa) != sdtasdt0(xa,smndt0(sz10))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[27]),554]), [iquote('back_demod,27,demod,554')]).
-fof(1029, plain, (sdtpldt0(smndt0(sz10),sz00) = smndt0(xa)), inference(hyper,[status(thm)],[220,7]), [iquote('hyper,220,7')]).
+fof(1029, plain, (sdtpldt0(smndt0(xa),sz00) = smndt0(xa)), inference(hyper,[status(thm)],[220,7]), [iquote('hyper,220,7')]).
 fof(4825, plain, (smndt0(xa) = sdtasdt0(xa,smndt0(sz10))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[634,5,220,31]),186,440,494,1029])]), [iquote('hyper,634,5,220,31,demod,186,440,494,1029,flip.1')]).
 fof(4827, plain, $false, inference(binary,[status(thm)],[4825,668]), [iquote('binary,4825.1,668.1')]).

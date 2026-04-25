@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '186':
-%%%%%   Replaced (set_difference(dollar_c7,dollar_c6) = prebool_difference(dollar_c5,dollar_c7,dollar_c6))
-%%%%%   With (set_difference(dollar_c6,dollar_c6) = prebool_difference(dollar_c5,dollar_c7,dollar_c6))
+%%%%% Mutated formula '73':
+%%%%%   Replaced (! [A,B]: ((set_intersection2(A,B) = set_difference(A,set_difference(A,B)))))
+%%%%%   With (! [A,B]: (~ ((set_intersection2(A,B) = set_difference(A,set_difference(A,B))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU102+1 : TPTP v8.1.0. Released v3.2.0.
@@ -41,9 +41,9 @@ fof(64, axiom, preboolean(dollar_c5), file('SEU102+1.p',unknown), []).
 fof(65, axiom, element(dollar_c7,dollar_c5), file('SEU102+1.p',unknown), []).
 fof(66, axiom, element(dollar_c6,dollar_c5), file('SEU102+1.p',unknown), []).
 fof(71, axiom, (! [A,B]: ((set_difference(A,set_difference(A,B)) = set_intersection2(A,B)))), file('SEU102+1.p',unknown), []).
-fof(73, plain, (! [A,B]: ((set_intersection2(A,B) = set_difference(A,set_difference(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[71])]), [iquote('copy,71,flip.1')]).
+fof(73, plain, (! [A,B]: (~ ((set_intersection2(A,B) = set_difference(A,set_difference(A,B)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[71])]), [iquote('copy,71,flip.1')]).
 fof(79, plain, ~ (element(set_difference(dollar_c7,set_difference(dollar_c7,dollar_c6)),dollar_c5)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[20]),73]), [iquote('back_demod,20,demod,73')]).
-fof(186, plain, (set_difference(dollar_c6,dollar_c6) = prebool_difference(dollar_c5,dollar_c7,dollar_c6)), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[66,18,64,65]),19])]), [iquote('hyper,66,18,64,65,unit_del,19,flip.1')]).
+fof(186, plain, (set_difference(dollar_c7,dollar_c6) = prebool_difference(dollar_c5,dollar_c7,dollar_c6)), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[66,18,64,65]),19])]), [iquote('hyper,66,18,64,65,unit_del,19,flip.1')]).
 fof(193, plain, element(prebool_difference(dollar_c5,dollar_c7,dollar_c6),dollar_c5), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[66,7,64,65]),19]), [iquote('hyper,66,7,64,65,unit_del,19')]).
 fof(197, plain, ~ (element(set_difference(dollar_c7,prebool_difference(dollar_c5,dollar_c7,dollar_c6)),dollar_c5)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[79]),186]), [iquote('back_demod,79,demod,186')]).
 fof(763, plain, (set_difference(dollar_c7,prebool_difference(dollar_c5,dollar_c7,dollar_c6)) = prebool_difference(dollar_c5,dollar_c7,prebool_difference(dollar_c5,dollar_c7,dollar_c6))), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[193,18,64,65]),19])]), [iquote('hyper,193,18,64,65,unit_del,19,flip.1')]).

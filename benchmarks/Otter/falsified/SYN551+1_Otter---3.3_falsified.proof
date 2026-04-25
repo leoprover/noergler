@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '2717':
-%%%%%   Replaced ((dollar_c4 = dollar_c3) | ((dollar_c6 != dollar_c5) | (f(g(dollar_c1)) = dollar_c1)))
-%%%%%   With ((dollar_c2 = dollar_c3) | ((dollar_c6 != dollar_c5) | (f(g(dollar_c1)) = dollar_c1)))
+%%%%% Mutated formula '3990':
+%%%%%   Replaced (! [A]: (((f(g(dollar_c1)) = dollar_c1) | ((g(f(A)) != A) | (g(dollar_c3) = A)))))
+%%%%%   With (! [A]: (((f(g(dollar_c1)) = dollar_c1) & ((g(f(A)) != A) | (g(dollar_c3) = A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN551+1 : TPTP v8.1.0. Bugfixed v3.1.0.
@@ -120,7 +120,7 @@ fof(2648, plain, ((f(g(dollar_c4)) = dollar_c4) | (dollar_c6 != dollar_c5)), inf
 fof(2674, plain, ((f(g(dollar_c1)) = dollar_c1) | ((g(dollar_c4) = dollar_c2) | (dollar_c6 != dollar_c5))), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[2648,102]),34])]), [iquote('para_from,2648.1.1,102.2.1.1,unit_del,34,flip.2')]).
 fof(2678, plain, ((f(g(dollar_c3)) = dollar_c3) | ((g(f(dollar_c5)) = dollar_c5) | (f(g(dollar_c1)) = dollar_c1))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[85,36])]), [iquote('hyper,85,36,factor_simp')]).
 fof(2713, plain, ((f(dollar_c2) = dollar_c4) | ((dollar_c6 != dollar_c5) | (f(g(dollar_c1)) = dollar_c1))), inference(factor_simp,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[2674,2648])]), [iquote('para_from,2674.2.1,2648.1.1.1,factor_simp')]).
-fof(2717, plain, ((dollar_c2 = dollar_c3) | ((dollar_c6 != dollar_c5) | (f(g(dollar_c1)) = dollar_c1))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[2713,2424])])]), [iquote('para_into,2713.1.1,2424.1.1,factor_simp,factor_simp')]).
+fof(2717, plain, ((dollar_c4 = dollar_c3) | ((dollar_c6 != dollar_c5) | (f(g(dollar_c1)) = dollar_c1))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[2713,2424])])]), [iquote('para_into,2713.1.1,2424.1.1,factor_simp,factor_simp')]).
 fof(2789, plain, ((f(g(dollar_c1)) = dollar_c1) | (dollar_c6 != dollar_c5)), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[2717,2033]),34])]), [iquote('para_from,2717.1.1,2033.1.1,unit_del,34,factor_simp')]).
 fof(2811, plain, ((f(g(dollar_c1)) = dollar_c1) | ((dollar_c5 != dollar_c2) | (g(f(dollar_c6)) != dollar_c6))), inference(factor_simp,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[2789,100])]), [iquote('para_into,2789.2.1,100.3.1,factor_simp')]).
 fof(2829, plain, ((f(g(dollar_c3)) = dollar_c3) | ((g(f(dollar_c6)) = dollar_c6) | (f(g(dollar_c1)) = dollar_c1))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[86,36])]), [iquote('hyper,86,36,factor_simp')]).
@@ -159,7 +159,7 @@ fof(3937, plain, (! [A,B]: (((f(g(A)) != A) | ((A = dollar_c1) | ((g(f(B)) != B)
 fof(3942, plain, ((f(g(dollar_c3)) = dollar_c3) | ((f(g(dollar_c1)) = dollar_c1) | (dollar_c5 = dollar_c2))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[2678,102])]), [iquote('hyper,2678,102,factor_simp')]).
 fof(3982, plain, ((f(g(dollar_c3)) = dollar_c3) | (f(g(dollar_c1)) = dollar_c1)), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[2829,2811,3942])])])]), [iquote('hyper,2829,2811,3942,factor_simp,factor_simp,factor_simp')]).
 fof(3988, plain, ((f(g(dollar_c1)) = dollar_c1) | (g(dollar_c3) = dollar_c2)), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[3982,102]),34])]), [iquote('para_from,3982.1.1,102.2.1.1,unit_del,34,factor_simp')]).
-fof(3990, plain, (! [A]: (((f(g(dollar_c1)) = dollar_c1) | ((g(f(A)) != A) | (g(dollar_c3) = A))))), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[3982,2]),34])]), [iquote('para_from,3982.1.1,2.2.1.1,unit_del,34,factor_simp')]).
+fof(3990, plain, (! [A]: (((f(g(dollar_c1)) = dollar_c1) & ((g(f(A)) != A) | (g(dollar_c3) = A))))), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[3982,2]),34])]), [iquote('para_from,3982.1.1,2.2.1.1,unit_del,34,factor_simp')]).
 fof(3993, plain, ((f(dollar_c2) = dollar_c3) | (f(g(dollar_c1)) = dollar_c1)), inference(factor_simp,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[3988,3982])]), [iquote('para_from,3988.2.1,3982.1.1.1,factor_simp')]).
 fof(3995, plain, (! [A]: (((f(A) = dollar_c3) | ((f(g(dollar_c1)) = dollar_c1) | (g(f(A)) != A))))), inference(factor_simp,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[3993,102])]), [iquote('para_into,3993.1.1.1,102.3.1,factor_simp')]).
 fof(4012, plain, ((f(g(dollar_c3)) = dollar_c3) | (g(f(dollar_c5)) = dollar_c5)), inference(hyper,[status(thm)],[2979,3928]), [iquote('hyper,2979,3927')]).

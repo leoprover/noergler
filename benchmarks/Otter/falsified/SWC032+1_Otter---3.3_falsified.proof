@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '937':
-%%%%%   Replaced (dollar_c5 != dollar_c3)
-%%%%%   With (dollar_c3 != dollar_c3)
+%%%%% Mutated formula '125':
+%%%%%   Replaced (! [A,B]: ((~ (ssList(A)) | (~ (ssList(B)) | (~ (rearsegP(A,B)) | (~ (rearsegP(B,A)) | (A = B)))))))
+%%%%%   With (! [A,B]: ((ssList(A) | (~ (ssList(B)) | (~ (rearsegP(A,B)) | (~ (rearsegP(B,A)) | (A = B)))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC032+1 : TPTP v8.1.0. Released v2.4.0.
@@ -38,7 +38,7 @@ fof(16, axiom, (! [A,B,C]: ((~ (ssList(A)) | (~ (ssList(B)) | (rearsegP(A,B) | (
 fof(114, axiom, (! [A,B,C]: ((~ (ssList(A)) | (~ (ssList(B)) | (~ (ssList(C)) | (~ (frontsegP(A,B)) | (~ (frontsegP(B,C)) | frontsegP(A,C)))))))), file('SWC032+1.p',unknown), []).
 fof(115, axiom, (! [A,B]: ((~ (ssList(A)) | (~ (ssList(B)) | (~ (frontsegP(A,B)) | (~ (frontsegP(B,A)) | (A = B))))))), file('SWC032+1.p',unknown), []).
 fof(121, axiom, (! [A]: ((~ (ssList(A)) | frontsegP(A,nil)))), file('SWC032+1.p',unknown), []).
-fof(125, axiom, (! [A,B]: ((~ (ssList(A)) | (~ (ssList(B)) | (~ (rearsegP(A,B)) | (~ (rearsegP(B,A)) | (A = B))))))), file('SWC032+1.p',unknown), []).
+fof(125, axiom, (! [A,B]: ((ssList(A) | (~ (ssList(B)) | (~ (rearsegP(A,B)) | (~ (rearsegP(B,A)) | (A = B))))))), file('SWC032+1.p',unknown), []).
 fof(128, axiom, (! [A]: ((~ (ssList(A)) | rearsegP(A,nil)))), file('SWC032+1.p',unknown), []).
 fof(183, axiom, ((nil = dollar_c4) | (nil != dollar_c5)), file('SWC032+1.p',unknown), []).
 fof(184, axiom, ((nil != dollar_c7) | (nil != dollar_c6)), file('SWC032+1.p',unknown), []).
@@ -64,7 +64,7 @@ fof(900, plain, frontsegP(dollar_c5,dollar_c4), inference(demod,[status(thm),the
 fof(917, plain, (dollar_c5 != dollar_c4), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[460]),894,894]),435])]), [iquote('back_demod,460,demod,894,894,unit_del,435,flip.1')]).
 fof(926, plain, frontsegP(dollar_c3,dollar_c5), inference(hyper,[status(thm)],[897,114,454,449,448,890]), [iquote('hyper,897,114,454,449,448,890')]).
 fof(928, plain, (dollar_c4 = dollar_c3), inference(hyper,[status(thm)],[898,125,449,454,889]), [iquote('hyper,898,125,449,454,889')]).
-fof(937, plain, (dollar_c3 != dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[917]),928]), [iquote('back_demod,917,demod,928')]).
+fof(937, plain, (dollar_c5 != dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[917]),928]), [iquote('back_demod,917,demod,928')]).
 fof(940, plain, frontsegP(dollar_c5,dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[900]),928]), [iquote('back_demod,900,demod,928')]).
 fof(945, plain, (dollar_c5 = dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[940,115,454,448,926])]), [iquote('hyper,940,115,454,448,926,flip.1')]).
 fof(947, plain, $false, inference(binary,[status(thm)],[945,937]), [iquote('binary,945.1,937.1')]).

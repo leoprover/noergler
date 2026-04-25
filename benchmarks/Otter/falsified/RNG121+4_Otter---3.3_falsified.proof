@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1490':
-%%%%%   Replaced aElementOf0(xb,xI)
-%%%%%   With aElementOf0(sz00,xI)
+%%%%% Mutated formula '1207':
+%%%%%   Replaced (sdtpldt0(sz00,xb) = xb)
+%%%%%   With ~ ((sdtpldt0(sz00,xb) = xb))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : RNG121+4 : TPTP v8.1.0. Released v4.0.0.
@@ -41,6 +41,6 @@ fof(291, axiom, (! [A]: ((A = A))), file('RNG121+4.p',unknown), []).
 fof(295, axiom, aElement0(xb), file('RNG121+4.p',unknown), []).
 fof(316, axiom, aElementOf0(sz00,slsdtgt0(xa)), file('RNG121+4.p',unknown), []).
 fof(328, axiom, aElementOf0(xb,slsdtgt0(xb)), file('RNG121+4.p',unknown), []).
-fof(1207, plain, (sdtpldt0(sz00,xb) = xb), inference(hyper,[status(thm)],[295,8]), [iquote('hyper,295,8')]).
-fof(1490, plain, aElementOf0(sz00,xI), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[328,134,316,291]),1207]), [iquote('hyper,328,134,316,291,demod,1207')]).
+fof(1207, plain, ~ ((sdtpldt0(sz00,xb) = xb)), inference(hyper,[status(thm)],[295,8]), [iquote('hyper,295,8')]).
+fof(1490, plain, aElementOf0(xb,xI), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[328,134,316,291]),1207]), [iquote('hyper,328,134,316,291,demod,1207')]).
 fof(1491, plain, $false, inference(binary,[status(thm)],[1490,157]), [iquote('binary,1490.1,157.1')]).

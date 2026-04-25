@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '204':
-%%%%%   Replaced aScalar0(xR)
-%%%%%   With ~ (aScalar0(xR))
+%%%%% Mutated formula '65':
+%%%%%   Replaced (sdtasdt0(sdtpldt0(xR,smndt0(xS)),sdtpldt0(xR,smndt0(xS))) != sdtpldt0(sdtpldt0(sdtasdt0(xR,xR),smndt0(xN)),sdtpldt0(smndt0(xN),sdtasdt0(xS,xS))))
+%%%%%   With ~ ((sdtasdt0(sdtpldt0(xR,smndt0(xS)),sdtpldt0(xR,smndt0(xS))) != sdtpldt0(sdtpldt0(sdtasdt0(xR,xR),smndt0(xN)),sdtpldt0(smndt0(xN),sdtasdt0(xS,xS)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : RNG060+2 : TPTP v8.1.0. Released v4.0.0.
@@ -36,10 +36,10 @@
 fof(10, axiom, (! [A]: ((~ (aScalar0(A)) | aScalar0(smndt0(A))))), file('RNG060+2.p',unknown), []).
 fof(29, axiom, (! [A,B,C,D]: ((~ (aScalar0(A)) | (~ (aScalar0(B)) | (~ (aScalar0(C)) | (~ (aScalar0(D)) | (sdtasdt0(sdtpldt0(A,B),sdtpldt0(C,D)) = sdtpldt0(sdtpldt0(sdtasdt0(A,C),sdtasdt0(A,D)),sdtpldt0(sdtasdt0(B,C),sdtasdt0(B,D)))))))))), file('RNG060+2.p',unknown), []).
 fof(30, plain, (! [A,B,C,D]: ((~ (aScalar0(A)) | (~ (aScalar0(B)) | (~ (aScalar0(C)) | (~ (aScalar0(D)) | (sdtpldt0(sdtpldt0(sdtasdt0(A,C),sdtasdt0(A,D)),sdtpldt0(sdtasdt0(B,C),sdtasdt0(B,D))) = sdtasdt0(sdtpldt0(A,B),sdtpldt0(C,D))))))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[29])]), [iquote('copy,29,flip.5')]).
-fof(65, axiom, (sdtasdt0(sdtpldt0(xR,smndt0(xS)),sdtpldt0(xR,smndt0(xS))) != sdtpldt0(sdtpldt0(sdtasdt0(xR,xR),smndt0(xN)),sdtpldt0(smndt0(xN),sdtasdt0(xS,xS)))), file('RNG060+2.p',unknown), []).
+fof(65, axiom, ~ ((sdtasdt0(sdtpldt0(xR,smndt0(xS)),sdtpldt0(xR,smndt0(xS))) != sdtpldt0(sdtpldt0(sdtasdt0(xR,xR),smndt0(xN)),sdtpldt0(smndt0(xN),sdtasdt0(xS,xS))))), file('RNG060+2.p',unknown), []).
 fof(84, plain, (! [A,B,C]: ((~ (aScalar0(A)) | (~ (aScalar0(B)) | (~ (aScalar0(C)) | (sdtpldt0(sdtpldt0(sdtasdt0(A,A),sdtasdt0(A,C)),sdtpldt0(sdtasdt0(B,A),sdtasdt0(B,C))) = sdtasdt0(sdtpldt0(A,B),sdtpldt0(A,C)))))))), inference(factor,[status(thm)],[30]), [iquote('factor,30.1.3')]).
 fof(126, plain, (! [A,B]: ((~ (aScalar0(A)) | (~ (aScalar0(B)) | (sdtpldt0(sdtpldt0(sdtasdt0(A,A),sdtasdt0(A,B)),sdtpldt0(sdtasdt0(B,A),sdtasdt0(B,B))) = sdtasdt0(sdtpldt0(A,B),sdtpldt0(A,B))))))), inference(factor,[status(thm)],[84]), [iquote('factor,84.2.3')]).
-fof(204, axiom, ~ (aScalar0(xR)), file('RNG060+2.p',unknown), []).
+fof(204, axiom, aScalar0(xR), file('RNG060+2.p',unknown), []).
 fof(212, axiom, aScalar0(xS), file('RNG060+2.p',unknown), []).
 fof(222, axiom, (sdtasdt0(xR,smndt0(xS)) = smndt0(xN)), file('RNG060+2.p',unknown), []).
 fof(225, axiom, (sdtasdt0(smndt0(xS),xR) = smndt0(xN)), file('RNG060+2.p',unknown), []).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '208':
-%%%%%   Replaced isPrime0(xk)
-%%%%%   With ~ (isPrime0(xk))
+%%%%% Mutated formula '207':
+%%%%%   Replaced aNaturalNumber0(xk)
+%%%%%   With ~ (aNaturalNumber0(xk))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM482+3 : TPTP v8.1.0. Released v4.0.0.
@@ -37,7 +37,7 @@ fof(11, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | (sdtasdt0(A,sz10) = A)))), fil
 fof(94, axiom, (! [A,B]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | ((xk != sdtasdt0(A,B)) | ~ (isPrime0(A))))))), file('NUM482+3.p',unknown), []).
 fof(95, plain, (! [A,B]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | ((sdtasdt0(A,B) != xk) | ~ (isPrime0(A))))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[94])]), [iquote('copy,94,flip.3')]).
 fof(206, axiom, aNaturalNumber0(sz10), file('NUM482+3.p',unknown), []).
-fof(207, axiom, aNaturalNumber0(xk), file('NUM482+3.p',unknown), []).
-fof(208, axiom, ~ (isPrime0(xk)), file('NUM482+3.p',unknown), []).
+fof(207, axiom, ~ (aNaturalNumber0(xk)), file('NUM482+3.p',unknown), []).
+fof(208, axiom, isPrime0(xk), file('NUM482+3.p',unknown), []).
 fof(444, plain, (sdtasdt0(xk,sz10) = xk), inference(hyper,[status(thm)],[207,11]), [iquote('hyper,207,11')]).
 fof(3635, plain, $false, inference(hyper,[status(thm)],[444,95,207,206,208]), [iquote('hyper,444,95,207,206,208')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '12':
-%%%%%   Replaced sorti1(dollar_c1)
-%%%%%   With sorti1(dollar_c2)
+%%%%% Mutated formula '10':
+%%%%%   Replaced (! [A]: ((~ (sorti1(A)) | (j(h(A)) = A))))
+%%%%%   With (! [A]: ((sorti1(A) | (j(h(A)) = A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG203+1 : TPTP v8.1.0. Released v2.7.0.
@@ -38,8 +38,8 @@ fof(4, axiom, (! [A,B]: ((~ (sorti2(A)) | ((op2(A,A) != A) | (~ (sorti2(B)) | (o
 fof(5, axiom, (! [A]: ((~ (sorti1(A)) | sorti2(h(A))))), file('ALG203+1.p',unknown), []).
 fof(7, axiom, (! [A,B]: ((~ (sorti1(A)) | (~ (sorti1(B)) | (h(op1(A,B)) = op2(h(A),h(B))))))), file('ALG203+1.p',unknown), []).
 fof(8, axiom, (! [A,B]: ((~ (sorti2(A)) | (~ (sorti2(B)) | (j(op2(A,B)) = op1(j(A),j(B))))))), file('ALG203+1.p',unknown), []).
-fof(10, axiom, (! [A]: ((~ (sorti1(A)) | (j(h(A)) = A)))), file('ALG203+1.p',unknown), []).
-fof(12, axiom, sorti1(dollar_c2), file('ALG203+1.p',unknown), []).
+fof(10, axiom, (! [A]: ((sorti1(A) | (j(h(A)) = A)))), file('ALG203+1.p',unknown), []).
+fof(12, axiom, sorti1(dollar_c1), file('ALG203+1.p',unknown), []).
 fof(14, axiom, (op1(dollar_c1,dollar_c1) = dollar_c1), file('ALG203+1.p',unknown), []).
 fof(15, axiom, sorti1(dollar_c2), file('ALG203+1.p',unknown), []).
 fof(18, plain, (op2(h(dollar_c1),h(dollar_c1)) = h(dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[12,7,12]),14])]), [iquote('hyper,12,7,12,demod,14,flip.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '62':
 %%%%%   Replaced (! [A]: ((convergent_lines(dollar_c2,A) | convergent_lines(dollar_c1,A))))
-%%%%%   With (! [A]: ((convergent_lines(dollar_c1,A) | convergent_lines(dollar_c1,A))))
+%%%%%   With (! [A]: ((~ (convergent_lines(dollar_c2,A)) | convergent_lines(dollar_c1,A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO209+3 : TPTP v8.1.0. Released v4.0.0.
@@ -42,6 +42,6 @@ fof(48, axiom, parallel_lines(dollar_c2,dollar_c3), file('GEO209+3.p',unknown), 
 fof(49, axiom, parallel_lines(dollar_c1,dollar_c3), file('GEO209+3.p',unknown), []).
 fof(56, plain, distinct_lines(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[41,38]), [iquote('hyper,41,38')]).
 fof(58, plain, convergent_lines(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[56,15]), [iquote('hyper,56,15')]).
-fof(62, plain, (! [A]: ((convergent_lines(dollar_c1,A) | convergent_lines(dollar_c1,A)))), inference(hyper,[status(thm)],[58,6]), [iquote('hyper,58,6')]).
+fof(62, plain, (! [A]: ((~ (convergent_lines(dollar_c2,A)) | convergent_lines(dollar_c1,A)))), inference(hyper,[status(thm)],[58,6]), [iquote('hyper,58,6')]).
 fof(133, plain, convergent_lines(dollar_c1,dollar_c3), inference(hyper,[status(thm)],[62,35,48]), [iquote('hyper,62,35,48')]).
 fof(189, plain, $false, inference(hyper,[status(thm)],[133,35,49]), [iquote('hyper,133,35,49')]).

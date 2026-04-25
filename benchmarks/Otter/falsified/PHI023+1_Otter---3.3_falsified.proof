@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '61':
-%%%%%   Replaced god(dollar_c1)
-%%%%%   With ~ (god(dollar_c1))
+%%%%% Mutated formula '66':
+%%%%%   Replaced substance(dollar_c1)
+%%%%%   With ~ (substance(dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PHI023+1 : TPTP v8.1.0. Released v7.4.0.
@@ -42,10 +42,10 @@ fof(54, axiom, (! [A]: ((~ (inItself(A)) | selfCaused(A)))), file('PHI023+1.p',u
 fof(55, axiom, (! [A]: ((~ (being(A)) | hasEssence(A)))), file('PHI023+1.p',unknown), []).
 fof(56, axiom, (! [A]: ((~ (essenceInvExistence(A)) | (~ (hasEssence(A)) | exists(A))))), file('PHI023+1.p',unknown), []).
 fof(57, axiom, ~ (exists(dollar_c1)), file('PHI023+1.p',unknown), []).
-fof(61, axiom, ~ (god(dollar_c1)), file('PHI023+1.p',unknown), []).
+fof(61, axiom, god(dollar_c1), file('PHI023+1.p',unknown), []).
 fof(62, plain, absolutelyInfinite(dollar_c1), inference(hyper,[status(thm)],[61,19]), [iquote('hyper,61,19')]).
 fof(63, plain, being(dollar_c1), inference(hyper,[status(thm)],[61,18]), [iquote('hyper,61,18')]).
-fof(66, plain, substance(dollar_c1), inference(hyper,[status(thm)],[62,21]), [iquote('hyper,62,21')]).
+fof(66, plain, ~ (substance(dollar_c1)), inference(hyper,[status(thm)],[62,21]), [iquote('hyper,62,21')]).
 fof(68, plain, hasEssence(dollar_c1), inference(hyper,[status(thm)],[63,55]), [iquote('hyper,63,55')]).
 fof(72, plain, inItself(dollar_c1), inference(hyper,[status(thm)],[66,7]), [iquote('hyper,66,7')]).
 fof(76, plain, selfCaused(dollar_c1), inference(hyper,[status(thm)],[72,54]), [iquote('hyper,72,54')]).

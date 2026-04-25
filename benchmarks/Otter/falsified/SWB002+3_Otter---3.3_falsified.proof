@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '743':
 %%%%%   Replaced iext(uri_ex_q,dollar_c2,uri_ex_s)
-%%%%%   With iext(dollar_c2,dollar_c2,uri_ex_s)
+%%%%%   With ~ (iext(uri_ex_q,dollar_c2,uri_ex_s))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWB002+3 : TPTP v8.1.0. Released v5.2.0.
@@ -35,5 +35,5 @@
 %%% Generated on Tue Apr 14 19:21:09 CEST 2026 using command 'transform(fof)'.
 fof(162, axiom, (! [A,B]: ((~ (iext(uri_ex_p,A,B)) | ~ (iext(uri_ex_q,B,A))))), file('SWB002+3.p',unknown), []).
 fof(742, axiom, iext(uri_ex_p,uri_ex_s,dollar_c2), file('SWB002+3.p',unknown), []).
-fof(743, axiom, iext(dollar_c2,dollar_c2,uri_ex_s), file('SWB002+3.p',unknown), []).
+fof(743, axiom, ~ (iext(uri_ex_q,dollar_c2,uri_ex_s)), file('SWB002+3.p',unknown), []).
 fof(3007, plain, $false, inference(hyper,[status(thm)],[743,162,742]), [iquote('hyper,743,162,742')]).

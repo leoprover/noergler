@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '9':
-%%%%%   Replaced (! [A]: ((big_f(dollar_f1(A),dollar_f3(A)) | (dollar_f3(A) = A))))
-%%%%%   With (! [A]: ((~ (big_f(dollar_f1(A),dollar_f3(A))) | (dollar_f3(A) = A))))
+%%%%% Mutated formula '3':
+%%%%%   Replaced (! [A,B]: ((big_f(A,B) | ((A != dollar_c2) | (B != dollar_c1)))))
+%%%%%   With (! [A,B]: ((~ (big_f(A,B)) | ((A != dollar_c2) | (B != dollar_c1)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN075+1 : TPTP v8.1.0. Released v2.0.0.
@@ -35,12 +35,12 @@
 %%% Generated on Tue Apr 14 19:23:20 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B]: ((~ (big_f(A,B)) | (A = dollar_c2)))), file('SYN075+1.p',unknown), []).
 fof(2, axiom, (! [A,B]: ((~ (big_f(A,B)) | (B = dollar_c1)))), file('SYN075+1.p',unknown), []).
-fof(3, axiom, (! [A,B]: ((big_f(A,B) | ((A != dollar_c2) | (B != dollar_c1))))), file('SYN075+1.p',unknown), []).
+fof(3, axiom, (! [A,B]: ((~ (big_f(A,B)) | ((A != dollar_c2) | (B != dollar_c1))))), file('SYN075+1.p',unknown), []).
 fof(5, axiom, (! [A,B]: ((big_f(A,dollar_f3(B)) | ((A != dollar_f1(B)) | (dollar_f3(B) = B))))), file('SYN075+1.p',unknown), []).
 fof(6, axiom, (! [A,B]: ((big_f(dollar_f2(A,B),dollar_f3(A)) | ((dollar_f2(A,B) = B) | (dollar_f3(A) != A))))), file('SYN075+1.p',unknown), []).
 fof(7, axiom, (! [A,B]: ((~ (big_f(dollar_f2(A,B),dollar_f3(A))) | ((dollar_f2(A,B) != B) | (dollar_f3(A) != A))))), file('SYN075+1.p',unknown), []).
 fof(8, axiom, (! [A]: ((A = A))), file('SYN075+1.p',unknown), []).
-fof(9, plain, (! [A]: ((~ (big_f(dollar_f1(A),dollar_f3(A))) | (dollar_f3(A) = A)))), inference(hyper,[status(thm)],[8,5]), [iquote('hyper,8,5')]).
+fof(9, plain, (! [A]: ((big_f(dollar_f1(A),dollar_f3(A)) | (dollar_f3(A) = A)))), inference(hyper,[status(thm)],[8,5]), [iquote('hyper,8,5')]).
 fof(10, plain, big_f(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[8,3,8]), [iquote('hyper,8,3,8')]).
 fof(21, plain, (! [A]: (((dollar_f3(A) = A) | (dollar_f3(A) = dollar_c1)))), inference(hyper,[status(thm)],[9,2]), [iquote('hyper,9,2')]).
 fof(24, plain, (dollar_f3(dollar_c1) = dollar_c1), inference(factor,[status(thm)],[21]), [iquote('factor,21.1.2')]).

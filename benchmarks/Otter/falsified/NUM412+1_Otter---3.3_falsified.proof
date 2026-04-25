@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '167':
-%%%%%   Replaced relation(dollar_c16)
-%%%%%   With relation(dollar_c15)
+%%%%% Mutated formula '187':
+%%%%%   Replaced ~ (transfinite_se_quence_of(relation_dom_restriction(dollar_c16,dollar_c15),dollar_c17))
+%%%%%   With transfinite_se_quence_of(relation_dom_restriction(dollar_c16,dollar_c15),dollar_c17)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM412+1 : TPTP v8.1.0. Released v3.2.0.
@@ -45,10 +45,10 @@ fof(89, axiom, transfinite_se_quence_of(dollar_c16,dollar_c17), file('NUM412+1.p
 fof(90, axiom, ordinal(dollar_c15), file('NUM412+1.p',unknown), []).
 fof(165, plain, transfinite_se_quence(dollar_c16), inference(hyper,[status(thm)],[89,17]), [iquote('hyper,89,17')]).
 fof(166, plain, function(dollar_c16), inference(hyper,[status(thm)],[89,16]), [iquote('hyper,89,16')]).
-fof(167, plain, relation(dollar_c15), inference(hyper,[status(thm)],[89,15]), [iquote('hyper,89,15')]).
+fof(167, plain, relation(dollar_c16), inference(hyper,[status(thm)],[89,15]), [iquote('hyper,89,15')]).
 fof(174, plain, (tse_q_dom_restriction(dollar_c16,dollar_c15) = relation_dom_restriction(dollar_c16,dollar_c15)), inference(hyper,[status(thm)],[167,27,166,165,90]), [iquote('hyper,167,27,166,165,90')]).
 fof(182, plain, transfinite_se_quence_of(relation_dom_restriction(dollar_c16,dollar_c15),relation_rng(dollar_c16)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[167,13,166,165,90]),174]), [iquote('hyper,167,13,166,165,90,demod,174')]).
 fof(186, plain, subset(relation_rng(dollar_c16),dollar_c17), inference(hyper,[status(thm)],[167,11,166,165,89]), [iquote('hyper,167,11,166,165,89')]).
-fof(187, plain, ~ (transfinite_se_quence_of(relation_dom_restriction(dollar_c16,dollar_c15),dollar_c17)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[33]),174]), [iquote('back_demod,33,demod,174')]).
+fof(187, plain, transfinite_se_quence_of(relation_dom_restriction(dollar_c16,dollar_c15),dollar_c17), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[33]),174]), [iquote('back_demod,33,demod,174')]).
 fof(588, plain, transfinite_se_quence_of(relation_dom_restriction(dollar_c16,dollar_c15),dollar_c17), inference(hyper,[status(thm)],[182,32,186]), [iquote('hyper,182,32,186')]).
 fof(589, plain, $false, inference(binary,[status(thm)],[588,187]), [iquote('binary,588.1,187.1')]).

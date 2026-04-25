@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '19':
-%%%%%   Replaced (! [A,B]: ((~ (rq(A,B)) | cd(A))))
-%%%%%   With (! [A,B]: ((rq(A,B) | cd(A))))
+%%%%% Mutated formula '293':
+%%%%%   Replaced xsd_string(dollar_c2)
+%%%%%   With ~ (xsd_string(dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS172+1 : TPTP v8.1.0. Released v3.1.0.
@@ -40,7 +40,7 @@ fof(14, axiom, (! [A]: ((~ (cd(A)) | rp(A,iv)))), file('KRS172+1.p',unknown), []
 fof(16, axiom, (! [A,B,C]: ((~ (rp(A,B)) | (~ (rp(A,C)) | (B = C))))), file('KRS172+1.p',unknown), []).
 fof(17, axiom, (! [A,B]: ((~ (rp(A,B)) | cd(A)))), file('KRS172+1.p',unknown), []).
 fof(18, axiom, (! [A,B,C]: ((~ (rq(A,B)) | (~ (rq(A,C)) | (B = C))))), file('KRS172+1.p',unknown), []).
-fof(19, axiom, (! [A,B]: ((rq(A,B) | cd(A)))), file('KRS172+1.p',unknown), []).
+fof(19, axiom, (! [A,B]: ((~ (rq(A,B)) | cd(A)))), file('KRS172+1.p',unknown), []).
 fof(20, axiom, (~ (cowlThing(dollar_c1)) | (cowlNothing(dollar_c1) | (xsd_string(dollar_c2) | (~ (xsd_integer(dollar_c2)) | (rq(dollar_c4,dollar_c3) | rp(dollar_c4,dollar_c3)))))), file('KRS172+1.p',unknown), []).
 fof(21, plain, (~ (cowlThing(dollar_c1)) | (xsd_string(dollar_c2) | (~ (xsd_integer(dollar_c2)) | (rq(dollar_c4,dollar_c3) | rp(dollar_c4,dollar_c3))))), inference(unit_del,[status(thm)],[inference(copy,[status(thm)],[20]),10]), [iquote('copy,20,unit_del,10')]).
 fof(22, axiom, (~ (cowlThing(dollar_c1)) | (cowlNothing(dollar_c1) | (xsd_string(dollar_c2) | (~ (xsd_integer(dollar_c2)) | (~ (rq(dollar_c4,dollar_c3)) | ~ (rp(dollar_c4,dollar_c3))))))), file('KRS172+1.p',unknown), []).
@@ -65,5 +65,5 @@ fof(277, plain, (iv = dollar_c3), inference(factor_simp,[status(thm)],[inference
 fof(282, plain, rq(dollar_c4,dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[268]),277]), [iquote('back_demod,268,demod,277')]).
 fof(287, plain, rp(dollar_c4,dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[100]),277]), [iquote('back_demod,100,demod,277')]).
 fof(292, plain, xsd_integer(dollar_c2), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[287,27,31,32,282])]), [iquote('hyper,287,27,31,32,282,factor_simp')]).
-fof(293, plain, xsd_string(dollar_c2), inference(hyper,[status(thm)],[292,23,31,282,287]), [iquote('hyper,292,23,31,282,287')]).
+fof(293, plain, ~ (xsd_string(dollar_c2)), inference(hyper,[status(thm)],[292,23,31,282,287]), [iquote('hyper,292,23,31,282,287')]).
 fof(298, plain, $false, inference(hyper,[status(thm)],[293,11,292]), [iquote('hyper,293,11,292')]).

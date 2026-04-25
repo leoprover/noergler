@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '14':
-%%%%%   Replaced (disjoint(singleton(dollar_c3),dollar_c4) | (set_difference(dollar_c4,singleton(dollar_c3)) = dollar_c4))
-%%%%%   With (disjoint(singleton(dollar_c4),dollar_c4) | (set_difference(dollar_c4,singleton(dollar_c3)) = dollar_c4))
+%%%%% Mutated formula '6':
+%%%%%   Replaced ((set_difference(dollar_c4,singleton(dollar_c3)) != dollar_c4) | in(dollar_c3,dollar_c4))
+%%%%%   With ((set_difference(dollar_c3,singleton(dollar_c3)) != dollar_c4) | in(dollar_c3,dollar_c4))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU162+3 : TPTP v8.1.0. Released v3.2.0.
@@ -36,12 +36,12 @@
 fof(2, axiom, (! [A,B]: ((~ (disjoint(singleton(A),B)) | ~ (in(A,B))))), file('SEU162+3.p',unknown), []).
 fof(4, axiom, (! [A,B]: ((~ (disjoint(A,B)) | disjoint(B,A)))), file('SEU162+3.p',unknown), []).
 fof(5, axiom, ((set_difference(dollar_c4,singleton(dollar_c3)) = dollar_c4) | ~ (in(dollar_c3,dollar_c4))), file('SEU162+3.p',unknown), []).
-fof(6, axiom, ((set_difference(dollar_c4,singleton(dollar_c3)) != dollar_c4) | in(dollar_c3,dollar_c4)), file('SEU162+3.p',unknown), []).
+fof(6, axiom, ((set_difference(dollar_c3,singleton(dollar_c3)) != dollar_c4) | in(dollar_c3,dollar_c4)), file('SEU162+3.p',unknown), []).
 fof(7, axiom, (! [A,B]: ((~ (disjoint(A,B)) | (set_difference(A,B) = A)))), file('SEU162+3.p',unknown), []).
 fof(8, axiom, (! [A,B]: ((disjoint(A,B) | (set_difference(A,B) != A)))), file('SEU162+3.p',unknown), []).
 fof(10, axiom, (! [A]: ((A = A))), file('SEU162+3.p',unknown), []).
 fof(11, axiom, (! [A,B]: ((in(A,B) | disjoint(singleton(A),B)))), file('SEU162+3.p',unknown), []).
-fof(14, plain, (disjoint(singleton(dollar_c4),dollar_c4) | (set_difference(dollar_c4,singleton(dollar_c3)) = dollar_c4)), inference(hyper,[status(thm)],[11,5]), [iquote('hyper,11,5')]).
+fof(14, plain, (disjoint(singleton(dollar_c3),dollar_c4) | (set_difference(dollar_c4,singleton(dollar_c3)) = dollar_c4)), inference(hyper,[status(thm)],[11,5]), [iquote('hyper,11,5')]).
 fof(23, plain, (disjoint(dollar_c4,singleton(dollar_c3)) | disjoint(singleton(dollar_c3),dollar_c4)), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[14,8]),10]), [iquote('para_from,14.2.1,8.2.1,unit_del,10')]).
 fof(26, plain, disjoint(singleton(dollar_c3),dollar_c4), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[23,4])]), [iquote('hyper,23,4,factor_simp')]).
 fof(28, plain, disjoint(dollar_c4,singleton(dollar_c3)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[23,4])]), [iquote('hyper,23,4,factor_simp')]).

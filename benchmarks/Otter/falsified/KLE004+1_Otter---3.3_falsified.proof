@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '18':
-%%%%%   Replaced (! [A]: ((addition(A,zero) = A)))
-%%%%%   With (! [A]: ((addition(A,one) = A)))
+%%%%% Mutated formula '61':
+%%%%%   Replaced complement(zero,one)
+%%%%%   With complement(one,one)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE004+1 : TPTP v8.1.0. Released v4.0.0.
@@ -40,10 +40,10 @@ fof(9, axiom, (! [A,B]: ((~ (test(A)) | ((c(A) != B) | complement(A,B))))), file
 fof(10, axiom, (! [A,B]: ((~ (test(A)) | ((c(A) = B) | ~ (complement(A,B)))))), file('KLE004+1.p',unknown), []).
 fof(11, axiom, (c(zero) != one), file('KLE004+1.p',unknown), []).
 fof(13, axiom, (! [A]: ((A = A))), file('KLE004+1.p',unknown), []).
-fof(18, axiom, (! [A]: ((addition(A,one) = A))), file('KLE004+1.p',unknown), []).
+fof(18, axiom, (! [A]: ((addition(A,zero) = A))), file('KLE004+1.p',unknown), []).
 fof(25, axiom, (! [A]: ((multiplication(A,one) = A))), file('KLE004+1.p',unknown), []).
 fof(28, axiom, (! [A]: ((multiplication(one,A) = A))), file('KLE004+1.p',unknown), []).
-fof(61, plain, complement(zero,one), inference(hyper,[status(thm)],[28,8,25,18]), [iquote('hyper,27,8,25,18')]).
+fof(61, plain, complement(one,one), inference(hyper,[status(thm)],[28,8,25,18]), [iquote('hyper,27,8,25,18')]).
 fof(62, plain, test(one), inference(hyper,[status(thm)],[61,4]), [iquote('hyper,61,4')]).
 fof(63, plain, complement(one,c(one)), inference(hyper,[status(thm)],[62,9,13]), [iquote('hyper,62,9,13')]).
 fof(81, plain, (c(one) = zero), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[63,6]),28]), [iquote('hyper,63,6,demod,28')]).

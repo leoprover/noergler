@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '62':
-%%%%%   Replaced (! [A,B]: ((~ (une_qually_directed_lines(A,A)) | une_qually_directed_lines(A,B))))
-%%%%%   With (! [A,B]: ((~ (une_qually_directed_lines(A,A)) & une_qually_directed_lines(A,B))))
+%%%%% Mutated formula '80':
+%%%%%   Replaced (! [A]: (une_qually_directed_lines(reverse_line(A),A)))
+%%%%%   With (! [A]: (~ (une_qually_directed_lines(reverse_line(A),A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO233+3 : TPTP v8.1.0. Released v4.0.0.
@@ -37,9 +37,9 @@ fof(36, axiom, (! [A,B,C]: ((~ (une_qually_directed_lines(A,B)) | (une_qually_di
 fof(39, axiom, (! [A,B]: ((~ (une_qually_directed_lines(A,B)) | (~ (une_qually_directed_lines(A,reverse_line(B))) | (left_convergent_lines(A,B) | left_convergent_lines(A,reverse_line(B))))))), file('GEO233+3.p',unknown), []).
 fof(41, axiom, (! [A,B]: (~ (left_convergent_lines(A,B)))), file('GEO233+3.p',unknown), []).
 fof(55, axiom, ~ (e_qually_directed_lines(reverse_line(reverse_line(dollar_c1)),dollar_c1)), file('GEO233+3.p',unknown), []).
-fof(62, plain, (! [A,B]: ((~ (une_qually_directed_lines(A,A)) & une_qually_directed_lines(A,B)))), inference(factor,[status(thm)],[36]), [iquote('factor,36.2.3')]).
+fof(62, plain, (! [A,B]: ((~ (une_qually_directed_lines(A,A)) | une_qually_directed_lines(A,B)))), inference(factor,[status(thm)],[36]), [iquote('factor,36.2.3')]).
 fof(64, axiom, (! [A,B]: ((e_qually_directed_lines(A,B) | une_qually_directed_lines(A,B)))), file('GEO233+3.p',unknown), []).
 fof(67, axiom, (! [A,B]: ((une_qually_directed_lines(A,B) | une_qually_directed_lines(A,reverse_line(B))))), file('GEO233+3.p',unknown), []).
-fof(80, plain, (! [A]: (une_qually_directed_lines(reverse_line(A),A))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[67,62])]), [iquote('hyper,67,62,factor_simp')]).
+fof(80, plain, (! [A]: (~ (une_qually_directed_lines(reverse_line(A),A)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[67,62])]), [iquote('hyper,67,62,factor_simp')]).
 fof(93, plain, (! [A]: (e_qually_directed_lines(reverse_line(reverse_line(A)),A))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[80,39,64]),41,41]), [iquote('hyper,80,39,64,unit_del,41,41')]).
 fof(94, plain, $false, inference(binary,[status(thm)],[93,55]), [iquote('binary,93.1,55.1')]).

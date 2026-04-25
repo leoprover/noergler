@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '122':
-%%%%%   Replaced member(dollar_c4,universal_class)
-%%%%%   With ~ (member(dollar_c4,universal_class))
+%%%%% Mutated formula '254':
+%%%%%   Replaced (first(dollar_c3) = dollar_c5)
+%%%%%   With ~ ((first(dollar_c3) = dollar_c5))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET020+1 : TPTP v8.1.0. Bugfixed v5.4.0.
@@ -38,9 +38,9 @@ fof(14, axiom, (! [A,B]: ((~ (member(A,universal_class)) | (~ (member(B,universa
 fof(68, axiom, ((first(dollar_c3) != dollar_c5) | (second(dollar_c3) != dollar_c4)), file('SET020+1.p',unknown), []).
 fof(82, axiom, (! [A]: ((A = A))), file('SET020+1.p',unknown), []).
 fof(121, axiom, member(dollar_c5,universal_class), file('SET020+1.p',unknown), []).
-fof(122, axiom, ~ (member(dollar_c4,universal_class)), file('SET020+1.p',unknown), []).
+fof(122, axiom, member(dollar_c4,universal_class), file('SET020+1.p',unknown), []).
 fof(123, axiom, (dollar_c3 = ordered_pair(dollar_c5,dollar_c4)), file('SET020+1.p',unknown), []).
 fof(125, plain, (ordered_pair(dollar_c5,dollar_c4) = dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[123])]), [iquote('copy,123,flip.1')]).
 fof(246, plain, (second(dollar_c3) = dollar_c4), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[122,14,121]),125]), [iquote('hyper,122,14,121,demod,125')]).
-fof(254, plain, (first(dollar_c3) = dollar_c5), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[122,13,121]),125]), [iquote('hyper,122,13,121,demod,125')]).
+fof(254, plain, ~ ((first(dollar_c3) = dollar_c5)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[122,13,121]),125]), [iquote('hyper,122,13,121,demod,125')]).
 fof(268, plain, $false, inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[68]),254,246]),82,82]), [iquote('back_demod,68,demod,254,246,unit_del,82,82')]).

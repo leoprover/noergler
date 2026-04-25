@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '6':
-%%%%%   Replaced (multiplication(strong_iteration(dollar_c1),strong_iteration(dollar_c1)) != strong_iteration(dollar_c1))
-%%%%%   With (multiplication(strong_iteration(one),strong_iteration(dollar_c1)) != strong_iteration(dollar_c1))
+%%%%% Mutated formula '315':
+%%%%%   Replaced (! [A,B]: ((addition(multiplication(star(A),B),multiplication(strong_iteration(A),zero)) = multiplication(strong_iteration(A),B))))
+%%%%%   With (! [A,B]: (~ ((addition(multiplication(star(A),B),multiplication(strong_iteration(A),zero)) = multiplication(strong_iteration(A),B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE143+1 : TPTP v8.1.0. Released v4.0.0.
@@ -36,7 +36,7 @@
 fof(1, axiom, (! [A,B,C]: ((~ (le_q(addition(multiplication(A,B),C),B)) | le_q(multiplication(star(A),C),B)))), file('KLE143+1.p',unknown), []).
 fof(4, axiom, (! [A,B]: ((~ (le_q(A,B)) | (addition(A,B) = B)))), file('KLE143+1.p',unknown), []).
 fof(5, axiom, (! [A,B]: ((le_q(A,B) | (addition(A,B) != B)))), file('KLE143+1.p',unknown), []).
-fof(6, axiom, (multiplication(strong_iteration(one),strong_iteration(dollar_c1)) != strong_iteration(dollar_c1)), file('KLE143+1.p',unknown), []).
+fof(6, axiom, (multiplication(strong_iteration(dollar_c1),strong_iteration(dollar_c1)) != strong_iteration(dollar_c1)), file('KLE143+1.p',unknown), []).
 fof(8, axiom, (! [A,B]: ((addition(A,B) = addition(B,A)))), file('KLE143+1.p',unknown), []).
 fof(9, axiom, (! [A,B,C]: ((addition(A,addition(B,C)) = addition(addition(A,B),C)))), file('KLE143+1.p',unknown), []).
 fof(10, plain, (! [A,B,C]: ((addition(addition(A,B),C) = addition(A,addition(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[9])]), [iquote('copy,9,flip.1')]).
@@ -61,7 +61,7 @@ fof(70, plain, (! [A,B]: ((addition(A,addition(A,B)) = addition(A,B)))), inferen
 fof(120, plain, (! [A,B]: ((addition(multiplication(A,zero),multiplication(A,B)) = multiplication(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[23,50])]), [iquote('para_into,23.1.1.2,50.1.1,flip.1')]).
 fof(239, plain, (! [A,B]: ((addition(A,multiplication(star(B),multiplication(B,A))) = multiplication(star(B),A)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[31,25]),22,18])]), [iquote('para_from,31.1.1,25.1.1.1,demod,22,18,flip.1')]).
 fof(311, plain, (! [A,B]: ((multiplication(strong_iteration(A),B) = addition(multiplication(star(A),B),multiplication(strong_iteration(A),zero))))), inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[37,25]),18,28]), [iquote('para_from,37.1.1,25.1.1.1,demod,18,28')]).
-fof(315, plain, (! [A,B]: ((addition(multiplication(star(A),B),multiplication(strong_iteration(A),zero)) = multiplication(strong_iteration(A),B)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[311])]), [iquote('copy,311,flip.1')]).
+fof(315, plain, (! [A,B]: (~ ((addition(multiplication(star(A),B),multiplication(strong_iteration(A),zero)) = multiplication(strong_iteration(A),B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[311])]), [iquote('copy,311,flip.1')]).
 fof(581, plain, (! [A,B]: (le_q(A,addition(A,B)))), inference(hyper,[status(thm)],[70,5]), [iquote('hyper,70,5')]).
 fof(605, plain, (! [A]: (le_q(multiplication(A,strong_iteration(A)),strong_iteration(A)))), inference(para_into,[status(thm),theory(equality)],[581,34]), [iquote('para_into,581.1.2,34.1.1')]).
 fof(682, plain, (! [A]: (le_q(multiplication(star(A),multiplication(A,strong_iteration(A))),strong_iteration(A)))), inference(hyper,[status(thm)],[605,49]), [iquote('hyper,605,49')]).

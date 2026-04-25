@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '62':
-%%%%%   Replaced apart_point_and_line(intersection_point(dollar_c3,dollar_c1),dollar_c2)
-%%%%%   With apart_point_and_line(intersection_point(dollar_c1,dollar_c1),dollar_c2)
+%%%%% Mutated formula '49':
+%%%%%   Replaced (! [A,B]: (convergent_lines(orthogonal_through_point(A,B),A)))
+%%%%%   With (! [A,B]: (~ (convergent_lines(orthogonal_through_point(A,B),A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO198+3 : TPTP v8.1.0. Released v4.0.0.
@@ -47,10 +47,10 @@ fof(38, axiom, ~ (incident_point_and_line(intersection_point(dollar_c3,dollar_c1
 fof(39, axiom, (! [A,B]: ((convergent_lines(A,B) | unorthogonal_lines(A,B)))), file('GEO198+3.p',unknown), []).
 fof(43, axiom, (! [A,B]: ((incident_point_and_line(A,B) | apart_point_and_line(A,B)))), file('GEO198+3.p',unknown), []).
 fof(44, axiom, (! [A,B]: ((orthogonal_lines(A,B) | unorthogonal_lines(A,B)))), file('GEO198+3.p',unknown), []).
-fof(49, plain, (! [A,B]: (convergent_lines(orthogonal_through_point(A,B),A))), inference(hyper,[status(thm)],[39,21]), [iquote('hyper,39,21')]).
+fof(49, plain, (! [A,B]: (~ (convergent_lines(orthogonal_through_point(A,B),A)))), inference(hyper,[status(thm)],[39,21]), [iquote('hyper,39,21')]).
 fof(59, plain, (! [A,B,C]: ((unorthogonal_lines(A,orthogonal_through_point(B,C)) | unorthogonal_lines(A,B)))), inference(hyper,[status(thm)],[49,28]), [iquote('hyper,49,28')]).
 fof(61, plain, (! [A,B,C]: ((convergent_lines(orthogonal_through_point(A,B),C) | convergent_lines(A,C)))), inference(hyper,[status(thm)],[49,6]), [iquote('hyper,49,6')]).
-fof(62, plain, apart_point_and_line(intersection_point(dollar_c1,dollar_c1),dollar_c2), inference(hyper,[status(thm)],[43,38]), [iquote('hyper,43,38')]).
+fof(62, plain, apart_point_and_line(intersection_point(dollar_c3,dollar_c1),dollar_c2), inference(hyper,[status(thm)],[43,38]), [iquote('hyper,43,38')]).
 fof(75, plain, (! [A,B]: (orthogonal_lines(orthogonal_through_point(A,B),A))), inference(hyper,[status(thm)],[44,21]), [iquote('hyper,44,21')]).
 fof(85, plain, (! [A]: ((distinct_lines(dollar_c2,A) | apart_point_and_line(intersection_point(dollar_c3,dollar_c1),A)))), inference(hyper,[status(thm)],[62,13]), [iquote('hyper,62,13')]).
 fof(518, plain, (! [A,B]: (convergent_lines(A,orthogonal_through_point(A,B)))), inference(hyper,[status(thm)],[61,3]), [iquote('hyper,61,3')]).

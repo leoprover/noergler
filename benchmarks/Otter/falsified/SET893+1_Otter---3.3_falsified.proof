@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '525':
-%%%%%   Replaced (dollar_c5 = dollar_c3)
-%%%%%   With (dollar_c6 = dollar_c3)
+%%%%% Mutated formula '10':
+%%%%%   Replaced (~ (in(ordered_pair(dollar_c6,dollar_c5),cartesian_product2(singleton(dollar_c4),singleton(dollar_c3)))) | ((dollar_c6 != dollar_c4) | (dollar_c5 != dollar_c3)))
+%%%%%   With (in(ordered_pair(dollar_c6,dollar_c5),cartesian_product2(singleton(dollar_c4),singleton(dollar_c3))) | ((dollar_c6 != dollar_c4) | (dollar_c5 != dollar_c3)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET893+1 : TPTP v8.1.0. Released v3.2.0.
@@ -38,7 +38,7 @@ fof(3, axiom, (! [A,B,C]: (((A != singleton(B)) | (in(C,A) | (C != B))))), file(
 fof(6, axiom, (! [A,B,C,D]: ((~ (in(ordered_pair(A,B),cartesian_product2(C,D))) | in(A,C)))), file('SET893+1.p',unknown), []).
 fof(7, axiom, (! [A,B,C,D]: ((~ (in(ordered_pair(A,B),cartesian_product2(C,D))) | in(B,D)))), file('SET893+1.p',unknown), []).
 fof(8, axiom, (! [A,B,C,D]: ((in(ordered_pair(A,B),cartesian_product2(C,D)) | (~ (in(A,C)) | ~ (in(B,D)))))), file('SET893+1.p',unknown), []).
-fof(10, axiom, (~ (in(ordered_pair(dollar_c6,dollar_c5),cartesian_product2(singleton(dollar_c4),singleton(dollar_c3)))) | ((dollar_c6 != dollar_c4) | (dollar_c5 != dollar_c3))), file('SET893+1.p',unknown), []).
+fof(10, axiom, (in(ordered_pair(dollar_c6,dollar_c5),cartesian_product2(singleton(dollar_c4),singleton(dollar_c3))) | ((dollar_c6 != dollar_c4) | (dollar_c5 != dollar_c3))), file('SET893+1.p',unknown), []).
 fof(13, axiom, (! [A]: ((A = A))), file('SET893+1.p',unknown), []).
 fof(20, axiom, (in(ordered_pair(dollar_c6,dollar_c5),cartesian_product2(singleton(dollar_c4),singleton(dollar_c3))) | (dollar_c6 = dollar_c4)), file('SET893+1.p',unknown), []).
 fof(21, axiom, (in(ordered_pair(dollar_c6,dollar_c5),cartesian_product2(singleton(dollar_c4),singleton(dollar_c3))) | (dollar_c5 = dollar_c3)), file('SET893+1.p',unknown), []).
@@ -49,5 +49,5 @@ fof(223, plain, (dollar_c6 = dollar_c4), inference(factor_simp,[status(thm)],[in
 fof(243, plain, (in(ordered_pair(dollar_c4,dollar_c5),cartesian_product2(singleton(dollar_c4),singleton(dollar_c3))) | (dollar_c5 = dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[21]),223]), [iquote('back_demod,21,demod,223')]).
 fof(244, plain, (~ (in(ordered_pair(dollar_c4,dollar_c5),cartesian_product2(singleton(dollar_c4),singleton(dollar_c3)))) | (dollar_c5 != dollar_c3)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[10]),223,223]),13]), [iquote('back_demod,10,demod,223,223,unit_del,13')]).
 fof(476, plain, ((dollar_c5 = dollar_c3) | in(dollar_c5,singleton(dollar_c3))), inference(hyper,[status(thm)],[243,7]), [iquote('hyper,243,7')]).
-fof(525, plain, (dollar_c6 = dollar_c3), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[476,2,13])]), [iquote('hyper,476,2,13,factor_simp')]).
+fof(525, plain, (dollar_c5 = dollar_c3), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[476,2,13])]), [iquote('hyper,476,2,13,factor_simp')]).
 fof(526, plain, $false, inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[244]),525,525]),26,13]), [iquote('back_demod,244,demod,525,525,unit_del,26,13')]).

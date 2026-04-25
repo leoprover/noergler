@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1026':
-%%%%%   Replaced (! [A]: ((organization(A) | (greater(dollar_c3,A) | greater(A,dollar_c3)))))
-%%%%%   With (! [A]: ((organization(A) | (greater(dollar_c1,A) | greater(A,dollar_c3)))))
+%%%%% Mutated formula '253':
+%%%%%   Replaced smaller(capability(dollar_c3,dollar_c1),capability(dollar_c3,dollar_c2))
+%%%%%   With ~ (smaller(capability(dollar_c3,dollar_c1),capability(dollar_c3,dollar_c2)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT050+1 : TPTP v8.1.0. Released v2.4.0.
@@ -57,10 +57,10 @@ fof(52, plain, (! [A,B]: (((A = B) | (greater(A,B) | greater(B,A))))), inference
 fof(111, plain, (! [A,B]: ((position(dollar_c3,A) = position(dollar_c3,B)))), inference(hyper,[status(thm)],[33,19,29]), [iquote('hyper,33,19,29')]).
 fof(123, plain, (! [A,B]: (smaller_or_e_qual(stock_of_knowledge(dollar_c3,A),stock_of_knowledge(dollar_c3,B)))), inference(hyper,[status(thm)],[34,3]), [iquote('hyper,34,3')]).
 fof(197, plain, (! [A,B]: (greater_or_e_qual(position(dollar_c3,A),position(dollar_c3,B)))), inference(hyper,[status(thm)],[111,6]), [iquote('hyper,111,6')]).
-fof(253, plain, smaller(capability(dollar_c3,dollar_c1),capability(dollar_c3,dollar_c2)), inference(hyper,[status(thm)],[123,16,29,37]), [iquote('hyper,123,16,29,37')]).
+fof(253, plain, ~ (smaller(capability(dollar_c3,dollar_c1),capability(dollar_c3,dollar_c2))), inference(hyper,[status(thm)],[123,16,29,37]), [iquote('hyper,123,16,29,37')]).
 fof(374, plain, greater(capability(dollar_c3,dollar_c2),capability(dollar_c3,dollar_c1)), inference(hyper,[status(thm)],[253,7]), [iquote('hyper,253,7')]).
 fof(437, plain, (has_immunity(dollar_c3,dollar_c1) | (has_immunity(dollar_c3,dollar_c2) | smaller(hazard_of_mortality(dollar_c3,dollar_c2),hazard_of_mortality(dollar_c3,dollar_c1)))), inference(hyper,[status(thm)],[374,12,29,197]), [iquote('hyper,374,12,29,197')]).
-fof(1026, plain, (! [A]: ((organization(A) | (greater(dollar_c1,A) | greater(A,dollar_c3))))), inference(para_from,[status(thm),theory(equality)],[52,29]), [iquote('para_from,52.1.1,29.1.1')]).
+fof(1026, plain, (! [A]: ((organization(A) | (greater(dollar_c3,A) | greater(A,dollar_c3))))), inference(para_from,[status(thm),theory(equality)],[52,29]), [iquote('para_from,52.1.1,29.1.1')]).
 fof(3612, plain, (has_immunity(dollar_c3,dollar_c1) | has_immunity(dollar_c3,dollar_c2)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[437,7]),24]), [iquote('hyper,437,7,unit_del,24')]).
 fof(3614, plain, has_immunity(dollar_c3,dollar_c2), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[3612,11,1026]),23,25,25]), [iquote('hyper,3612,11,1026,unit_del,23,25,25')]).
 fof(3618, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[3614,11,1026]),23,25,25]), [iquote('hyper,3614,11,1026,unit_del,23,25,25')]).

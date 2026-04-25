@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '64':
-%%%%%   Replaced r2_hidden(dollar_c2,k1_funct_1(k1_latsubgr(dollar_c4),dollar_c3))
-%%%%%   With ~ (r2_hidden(dollar_c2,k1_funct_1(k1_latsubgr(dollar_c4),dollar_c3)))
+%%%%% Mutated formula '45':
+%%%%%   Replaced (! [A,B,C,D]: ((v3_struct_0(A) | (~ (v3_group_1(A)) | (~ (v4_group_1(A)) | (~ (l1_group_1(A)) | (~ (m1_subset_1(B,u1_struct_0(A))) | (~ (m1_subset_1(C,u1_struct_0(A))) | (~ (m1_group_2(D,A)) | (~ (r1_rlvect_1(D,B)) | (~ (r1_rlvect_1(D,C)) | r1_rlvect_1(D,k1_group_1(A,B,C)))))))))))))
+%%%%%   With (! [A,B,C,D]: ((~ (v3_struct_0(A)) | (~ (v3_group_1(A)) | (~ (v4_group_1(A)) | (~ (l1_group_1(A)) | (~ (m1_subset_1(B,u1_struct_0(A))) | (~ (m1_subset_1(C,u1_struct_0(A))) | (~ (m1_group_2(D,A)) | (~ (r1_rlvect_1(D,B)) | (~ (r1_rlvect_1(D,C)) | r1_rlvect_1(D,k1_group_1(A,B,C)))))))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GRP643+1 : TPTP v8.1.0. Released v3.4.0.
@@ -38,7 +38,7 @@ fof(2, axiom, ~ (r2_hidden(k1_group_1(dollar_c4,dollar_c2,dollar_c1),k1_funct_1(
 fof(12, axiom, (! [A,B,C]: ((v3_struct_0(A) | (~ (l1_group_1(A)) | (~ (m1_subset_1(B,u1_struct_0(A))) | (~ (m1_subset_1(C,u1_struct_0(A))) | m1_subset_1(k1_group_1(A,B,C),u1_struct_0(A)))))))), file('GRP643+1.p',unknown), []).
 fof(38, axiom, (! [A,B,C]: ((v3_struct_0(A) | (~ (v3_group_1(A)) | (~ (v4_group_1(A)) | (~ (l1_group_1(A)) | (~ (v1_group_1(B)) | (~ (m1_group_2(B,A)) | (~ (m1_subset_1(C,u1_struct_0(A))) | (~ (r2_hidden(C,k1_funct_1(k1_latsubgr(A),B))) | r1_rlvect_1(B,C))))))))))), file('GRP643+1.p',unknown), []).
 fof(39, axiom, (! [A,B,C]: ((v3_struct_0(A) | (~ (v3_group_1(A)) | (~ (v4_group_1(A)) | (~ (l1_group_1(A)) | (~ (v1_group_1(B)) | (~ (m1_group_2(B,A)) | (~ (m1_subset_1(C,u1_struct_0(A))) | (r2_hidden(C,k1_funct_1(k1_latsubgr(A),B)) | ~ (r1_rlvect_1(B,C)))))))))))), file('GRP643+1.p',unknown), []).
-fof(45, axiom, (! [A,B,C,D]: ((v3_struct_0(A) | (~ (v3_group_1(A)) | (~ (v4_group_1(A)) | (~ (l1_group_1(A)) | (~ (m1_subset_1(B,u1_struct_0(A))) | (~ (m1_subset_1(C,u1_struct_0(A))) | (~ (m1_group_2(D,A)) | (~ (r1_rlvect_1(D,B)) | (~ (r1_rlvect_1(D,C)) | r1_rlvect_1(D,k1_group_1(A,B,C))))))))))))), file('GRP643+1.p',unknown), []).
+fof(45, axiom, (! [A,B,C,D]: ((~ (v3_struct_0(A)) | (~ (v3_group_1(A)) | (~ (v4_group_1(A)) | (~ (l1_group_1(A)) | (~ (m1_subset_1(B,u1_struct_0(A))) | (~ (m1_subset_1(C,u1_struct_0(A))) | (~ (m1_group_2(D,A)) | (~ (r1_rlvect_1(D,B)) | (~ (r1_rlvect_1(D,C)) | r1_rlvect_1(D,k1_group_1(A,B,C))))))))))))), file('GRP643+1.p',unknown), []).
 fof(57, axiom, v3_group_1(dollar_c4), file('GRP643+1.p',unknown), []).
 fof(58, axiom, v4_group_1(dollar_c4), file('GRP643+1.p',unknown), []).
 fof(59, axiom, l1_group_1(dollar_c4), file('GRP643+1.p',unknown), []).
@@ -46,7 +46,7 @@ fof(60, axiom, v1_group_1(dollar_c3), file('GRP643+1.p',unknown), []).
 fof(61, axiom, m1_group_2(dollar_c3,dollar_c4), file('GRP643+1.p',unknown), []).
 fof(62, axiom, m1_subset_1(dollar_c2,u1_struct_0(dollar_c4)), file('GRP643+1.p',unknown), []).
 fof(63, axiom, m1_subset_1(dollar_c1,u1_struct_0(dollar_c4)), file('GRP643+1.p',unknown), []).
-fof(64, axiom, ~ (r2_hidden(dollar_c2,k1_funct_1(k1_latsubgr(dollar_c4),dollar_c3))), file('GRP643+1.p',unknown), []).
+fof(64, axiom, r2_hidden(dollar_c2,k1_funct_1(k1_latsubgr(dollar_c4),dollar_c3)), file('GRP643+1.p',unknown), []).
 fof(65, axiom, r2_hidden(dollar_c1,k1_funct_1(k1_latsubgr(dollar_c4),dollar_c3)), file('GRP643+1.p',unknown), []).
 fof(181, plain, m1_subset_1(k1_group_1(dollar_c4,dollar_c2,dollar_c1),u1_struct_0(dollar_c4)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[63,12,59,62]),1]), [iquote('hyper,63,12,59,62,unit_del,1')]).
 fof(206, plain, r1_rlvect_1(dollar_c3,dollar_c2), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[64,38,57,58,59,60,61,62]),1]), [iquote('hyper,64,38,57,58,59,60,61,62,unit_del,1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '23':
-%%%%%   Replaced sorti1(dollar_f1(j(dollar_c1)))
-%%%%%   With ~ (sorti1(dollar_f1(j(dollar_c1))))
+%%%%% Mutated formula '18':
+%%%%%   Replaced sorti1(j(dollar_c1))
+%%%%%   With ~ (sorti1(j(dollar_c1)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG041+1 : TPTP v8.1.0. Released v2.7.0.
@@ -41,8 +41,8 @@ fof(7, axiom, (! [A]: ((~ (sorti2(A)) | sorti1(j(A))))), file('ALG041+1.p',unkno
 fof(9, axiom, (! [A,B]: ((~ (sorti2(A)) | (~ (sorti2(B)) | (j(op2(A,B)) = op1(j(A),j(B))))))), file('ALG041+1.p',unknown), []).
 fof(11, axiom, (! [A]: ((~ (sorti1(A)) | (j(h(A)) = A)))), file('ALG041+1.p',unknown), []).
 fof(13, axiom, sorti2(dollar_c1), file('ALG041+1.p',unknown), []).
-fof(18, plain, sorti1(j(dollar_c1)), inference(hyper,[status(thm)],[13,7]), [iquote('hyper,13,7')]).
-fof(23, plain, ~ (sorti1(dollar_f1(j(dollar_c1)))), inference(hyper,[status(thm)],[18,3]), [iquote('hyper,18,3')]).
+fof(18, plain, ~ (sorti1(j(dollar_c1))), inference(hyper,[status(thm)],[13,7]), [iquote('hyper,13,7')]).
+fof(23, plain, sorti1(dollar_f1(j(dollar_c1))), inference(hyper,[status(thm)],[18,3]), [iquote('hyper,18,3')]).
 fof(25, plain, (j(h(dollar_f1(j(dollar_c1)))) = dollar_f1(j(dollar_c1))), inference(hyper,[status(thm)],[23,11]), [iquote('hyper,23,11')]).
 fof(32, plain, sorti2(h(dollar_f1(j(dollar_c1)))), inference(hyper,[status(thm)],[23,6]), [iquote('hyper,23,6')]).
 fof(37, plain, (j(op2(h(dollar_f1(j(dollar_c1))),h(dollar_f1(j(dollar_c1))))) = op1(dollar_f1(j(dollar_c1)),dollar_f1(j(dollar_c1)))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[32,9,32]),25,25]), [iquote('hyper,32,9,32,demod,25,25')]).

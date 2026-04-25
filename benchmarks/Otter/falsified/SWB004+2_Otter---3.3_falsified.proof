@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '33':
-%%%%%   Replaced (! [A]: (icext(uri_owl_Thing,A)))
-%%%%%   With (! [A]: (~ (icext(uri_owl_Thing,A))))
+%%%%% Mutated formula '30':
+%%%%%   Replaced ic(uri_rdfs_Class)
+%%%%%   With ic(uri_owl_Class)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWB004+2 : TPTP v8.1.0. Released v5.2.0.
@@ -49,10 +49,10 @@ fof(22, axiom, (! [A,B]: ((iext(uri_owl_e_quivalentClass,A,B) | (~ (ic(A)) | (~ 
 fof(23, axiom, (~ (iext(uri_rdf_type,uri_owl_Class,uri_owl_Thing)) | (~ (iext(uri_rdf_type,uri_owl_Class,uri_owl_Class)) | (~ (iext(uri_rdfs_subClassOf,uri_owl_Class,uri_owl_Thing)) | (~ (iext(uri_owl_e_quivalentClass,uri_owl_Class,uri_rdfs_Class)) | ~ (iext(uri_rdfs_subClassOf,uri_rdfs_Datatype,uri_owl_Class)))))), file('SWB004+2.p',unknown), []).
 fof(28, axiom, (! [A]: (ir(A))), file('SWB004+2.p',unknown), []).
 fof(29, axiom, ic(uri_owl_Class), file('SWB004+2.p',unknown), []).
-fof(30, axiom, ic(uri_rdfs_Class), file('SWB004+2.p',unknown), []).
+fof(30, axiom, ic(uri_owl_Class), file('SWB004+2.p',unknown), []).
 fof(31, axiom, ic(uri_rdfs_Datatype), file('SWB004+2.p',unknown), []).
 fof(32, axiom, ic(uri_owl_Thing), file('SWB004+2.p',unknown), []).
-fof(33, plain, (! [A]: (~ (icext(uri_owl_Thing,A)))), inference(hyper,[status(thm)],[28,11]), [iquote('hyper,28,11')]).
+fof(33, plain, (! [A]: (icext(uri_owl_Thing,A))), inference(hyper,[status(thm)],[28,11]), [iquote('hyper,28,11')]).
 fof(37, plain, icext(uri_owl_Class,uri_owl_Class), inference(hyper,[status(thm)],[29,5]), [iquote('hyper,29,5')]).
 fof(40, plain, (iext(uri_owl_e_quivalentClass,uri_owl_Class,uri_rdfs_Class) | (icext(uri_owl_Class,dollar_f2(uri_owl_Class,uri_rdfs_Class)) | icext(uri_rdfs_Class,dollar_f2(uri_owl_Class,uri_rdfs_Class)))), inference(hyper,[status(thm)],[30,21,29]), [iquote('hyper,30,21,29')]).
 fof(42, plain, (iext(uri_rdfs_subClassOf,uri_owl_Class,uri_rdfs_Class) | icext(uri_owl_Class,dollar_f1(uri_owl_Class,uri_rdfs_Class))), inference(hyper,[status(thm)],[30,15,29]), [iquote('hyper,30,15,29')]).

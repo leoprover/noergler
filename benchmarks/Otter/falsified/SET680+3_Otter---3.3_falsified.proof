@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '179':
-%%%%%   Replaced (domain_of(dollar_c4) = domain(dollar_c6,dollar_c5,dollar_c4))
-%%%%%   With (domain_of(dollar_c6) = domain(dollar_c6,dollar_c5,dollar_c4))
+%%%%% Mutated formula '258':
+%%%%%   Replaced ilf_type(dollar_c4,binary_relation_type)
+%%%%%   With ~ (ilf_type(dollar_c4,binary_relation_type))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET680+3 : TPTP v8.1.0. Released v2.2.0.
@@ -46,10 +46,10 @@ fof(58, axiom, (! [A]: ((~ (member(dollar_c3,domain(dollar_c6,dollar_c5,dollar_c
 fof(134, axiom, (! [A]: (ilf_type(A,set_type))), file('SET680+3.p',unknown), []).
 fof(135, axiom, ilf_type(dollar_c4,relation_type(dollar_c6,dollar_c5)), file('SET680+3.p',unknown), []).
 fof(138, axiom, (member(dollar_c3,domain(dollar_c6,dollar_c5,dollar_c4)) | member(ordered_pair(dollar_c3,dollar_c2),dollar_c4)), file('SET680+3.p',unknown), []).
-fof(179, plain, (domain_of(dollar_c6) = domain(dollar_c6,dollar_c5,dollar_c4)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[135,52,134,134])]), [iquote('hyper,135,52,134,134,flip.1')]).
+fof(179, plain, (domain_of(dollar_c4) = domain(dollar_c6,dollar_c5,dollar_c4)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[135,52,134,134])]), [iquote('hyper,135,52,134,134,flip.1')]).
 fof(180, plain, ilf_type(dollar_c4,subset_type(cross_product(dollar_c6,dollar_c5))), inference(hyper,[status(thm)],[135,13,134,134]), [iquote('hyper,135,13,134,134')]).
 fof(250, plain, relation_like(dollar_c4), inference(hyper,[status(thm)],[180,51,134,134]), [iquote('hyper,180,51,134,134')]).
-fof(258, plain, ilf_type(dollar_c4,binary_relation_type), inference(hyper,[status(thm)],[250,28,134]), [iquote('hyper,250,28,134')]).
+fof(258, plain, ~ (ilf_type(dollar_c4,binary_relation_type)), inference(hyper,[status(thm)],[250,28,134]), [iquote('hyper,250,28,134')]).
 fof(261, plain, member(dollar_c3,domain(dollar_c6,dollar_c5,dollar_c4)), inference(factor_simp,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[258,3,134,134,138]),179])]), [iquote('hyper,258,3,134,134,138,demod,179,factor_simp')]).
 fof(414, plain, (! [A]: ((~ (member(A,domain(dollar_c6,dollar_c5,dollar_c4))) | member(ordered_pair(A,dollar_f1(A,dollar_c4)),dollar_c4)))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[179,2]),134,258]), [iquote('para_from,178.1.1,2.3.2,unit_del,134,258')]).
 fof(1776, plain, member(ordered_pair(dollar_c3,dollar_f1(dollar_c3,dollar_c4)),dollar_c4), inference(hyper,[status(thm)],[414,261]), [iquote('hyper,414,261')]).

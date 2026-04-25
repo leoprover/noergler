@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '33':
 %%%%%   Replaced (! [A]: ((addition(domain(A),one) = one)))
-%%%%%   With (! [A]: ((addition(domain(A),dollar_c1) = one)))
+%%%%%   With (! [A]: (~ ((addition(domain(A),one) = one))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE063+1 : TPTP v8.1.0. Released v4.0.0.
@@ -46,7 +46,7 @@ fof(20, axiom, (! [A,B,C]: ((multiplication(A,addition(B,C)) = addition(multipli
 fof(22, axiom, (! [A,B,C]: ((multiplication(addition(A,B),C) = addition(multiplication(A,C),multiplication(B,C))))), file('KLE063+1.p',unknown), []).
 fof(30, axiom, (! [A,B]: ((domain(multiplication(A,B)) = domain(multiplication(A,domain(B)))))), file('KLE063+1.p',unknown), []).
 fof(32, plain, (! [A,B]: ((domain(multiplication(A,domain(B))) = domain(multiplication(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[30])]), [iquote('copy,30,flip.1')]).
-fof(33, axiom, (! [A]: ((addition(domain(A),dollar_c1) = one))), file('KLE063+1.p',unknown), []).
+fof(33, axiom, (! [A]: (~ ((addition(domain(A),one) = one)))), file('KLE063+1.p',unknown), []).
 fof(37, axiom, (! [A,B]: ((domain(addition(A,B)) = addition(domain(A),domain(B))))), file('KLE063+1.p',unknown), []).
 fof(39, axiom, (addition(dollar_c2,multiplication(domain(dollar_c1),dollar_c2)) = multiplication(domain(dollar_c1),dollar_c2)), file('KLE063+1.p',unknown), []).
 fof(51, plain, (! [A,B]: ((addition(A,addition(A,B)) = addition(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[7,11])]), [iquote('para_into,7.1.1.1,11.1.1,flip.1')]).

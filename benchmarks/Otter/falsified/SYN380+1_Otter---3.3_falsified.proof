@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '5':
-%%%%%   Replaced (! [A,B]: (big_r(A,B)))
-%%%%%   With (! [A,B]: (~ (big_r(A,B))))
+%%%%% Mutated formula '3':
+%%%%%   Replaced (! [A,B]: ((big_r(A,B) | big_q(B,A))))
+%%%%%   With (! [A,B]: ((~ (big_r(A,B)) | big_q(B,A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN380+1 : TPTP v8.1.0. Released v2.0.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:23:49 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A]: (~ (big_r(A,A)))), file('SYN380+1.p',unknown), []).
 fof(2, axiom, (! [A,B]: ((big_r(A,B) | ~ (big_q(dollar_f1(A,B),dollar_f1(A,B)))))), file('SYN380+1.p',unknown), []).
-fof(3, axiom, (! [A,B]: ((big_r(A,B) | big_q(B,A)))), file('SYN380+1.p',unknown), []).
+fof(3, axiom, (! [A,B]: ((~ (big_r(A,B)) | big_q(B,A)))), file('SYN380+1.p',unknown), []).
 fof(4, plain, (! [A]: (big_q(A,A))), inference(hyper,[status(thm)],[3,1]), [iquote('hyper,3,1')]).
-fof(5, plain, (! [A,B]: (~ (big_r(A,B)))), inference(hyper,[status(thm)],[4,2]), [iquote('hyper,4,2')]).
+fof(5, plain, (! [A,B]: (big_r(A,B))), inference(hyper,[status(thm)],[4,2]), [iquote('hyper,4,2')]).
 fof(6, plain, $false, inference(binary,[status(thm)],[5,1]), [iquote('binary,5.1,1.1')]).

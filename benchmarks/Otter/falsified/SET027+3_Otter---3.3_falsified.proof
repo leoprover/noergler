@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3':
-%%%%%   Replaced ~ (subset(dollar_c3,dollar_c1))
-%%%%%   With ~ (subset(dollar_c1,dollar_c1))
+%%%%% Mutated formula '4':
+%%%%%   Replaced (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A))))
+%%%%%   With (! [A,B]: ((~ (subset(A,B)) | member(dollar_f1(A,B),A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET027+3 : TPTP v8.1.0. Released v2.2.0.
@@ -35,8 +35,8 @@
 %%% Generated on Tue Apr 14 19:18:07 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B,C]: ((~ (subset(A,B)) | (~ (member(C,A)) | member(C,B))))), file('SET027+3.p',unknown), []).
 fof(2, axiom, (! [A,B]: ((subset(A,B) | ~ (member(dollar_f1(A,B),B))))), file('SET027+3.p',unknown), []).
-fof(3, axiom, ~ (subset(dollar_c1,dollar_c1)), file('SET027+3.p',unknown), []).
-fof(4, axiom, (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A)))), file('SET027+3.p',unknown), []).
+fof(3, axiom, ~ (subset(dollar_c3,dollar_c1)), file('SET027+3.p',unknown), []).
+fof(4, axiom, (! [A,B]: ((~ (subset(A,B)) | member(dollar_f1(A,B),A)))), file('SET027+3.p',unknown), []).
 fof(6, axiom, subset(dollar_c3,dollar_c2), file('SET027+3.p',unknown), []).
 fof(7, axiom, subset(dollar_c2,dollar_c1), file('SET027+3.p',unknown), []).
 fof(8, plain, member(dollar_f1(dollar_c3,dollar_c1),dollar_c3), inference(hyper,[status(thm)],[4,3]), [iquote('hyper,4,3')]).

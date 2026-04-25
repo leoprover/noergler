@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '73':
-%%%%%   Replaced left_apart_point(dollar_c2,reverse_line(parallel_through_point(dollar_c1,dollar_c3)))
-%%%%%   With ~ (left_apart_point(dollar_c2,reverse_line(parallel_through_point(dollar_c1,dollar_c3))))
+%%%%% Mutated formula '68':
+%%%%%   Replaced right_apart_point(dollar_c2,parallel_through_point(dollar_c1,dollar_c3))
+%%%%%   With right_apart_point(dollar_c1,parallel_through_point(dollar_c1,dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO251+3 : TPTP v8.1.0. Released v4.0.0.
@@ -35,6 +35,6 @@
 %%% Generated on Tue Apr 14 19:13:06 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, (! [A,B]: ((~ (right_apart_point(A,B)) | left_apart_point(A,reverse_line(B))))), file('GEO251+3.p',unknown), []).
 fof(40, axiom, (! [A,B]: (~ (left_apart_point(A,B)))), file('GEO251+3.p',unknown), []).
-fof(68, axiom, right_apart_point(dollar_c2,parallel_through_point(dollar_c1,dollar_c3)), file('GEO251+3.p',unknown), []).
-fof(73, plain, ~ (left_apart_point(dollar_c2,reverse_line(parallel_through_point(dollar_c1,dollar_c3)))), inference(hyper,[status(thm)],[68,3]), [iquote('hyper,68,3')]).
+fof(68, axiom, right_apart_point(dollar_c1,parallel_through_point(dollar_c1,dollar_c3)), file('GEO251+3.p',unknown), []).
+fof(73, plain, left_apart_point(dollar_c2,reverse_line(parallel_through_point(dollar_c1,dollar_c3))), inference(hyper,[status(thm)],[68,3]), [iquote('hyper,68,3')]).
 fof(74, plain, $false, inference(binary,[status(thm)],[73,40]), [iquote('binary,73.1,40.1')]).

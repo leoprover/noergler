@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3':
-%%%%%   Replaced p201(dollar_c1)
-%%%%%   With ~ (p201(dollar_c1))
+%%%%% Mutated formula '4':
+%%%%%   Replaced p101(dollar_c1)
+%%%%%   With p101(dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LCL648+1.001 : TPTP v8.1.0. Released v4.0.0.
@@ -35,6 +35,6 @@
 %%% Generated on Tue Apr 14 19:15:10 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A]: ((~ (r1(dollar_c2,A)) | (~ (p201(A)) | ~ (p101(A)))))), file('LCL648+1.001.p',unknown), []).
 fof(2, axiom, r1(dollar_c2,dollar_c1), file('LCL648+1.001.p',unknown), []).
-fof(3, axiom, ~ (p201(dollar_c1)), file('LCL648+1.001.p',unknown), []).
-fof(4, axiom, p101(dollar_c1), file('LCL648+1.001.p',unknown), []).
+fof(3, axiom, p201(dollar_c1), file('LCL648+1.001.p',unknown), []).
+fof(4, axiom, p101(dollar_c2), file('LCL648+1.001.p',unknown), []).
 fof(5, plain, $false, inference(hyper,[status(thm)],[4,1,2,3]), [iquote('hyper,4,1,2,3')]).

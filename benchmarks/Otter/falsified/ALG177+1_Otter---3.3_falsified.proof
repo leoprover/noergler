@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '13':
-%%%%%   Replaced sorti1(dollar_c1)
-%%%%%   With ~ (sorti1(dollar_c1))
+%%%%% Mutated formula '9':
+%%%%%   Replaced (! [A,B]: ((~ (sorti2(A)) | (~ (sorti2(B)) | (j(op2(A,B)) = op1(j(A),j(B)))))))
+%%%%%   With (! [A,B]: ((sorti2(A) | (~ (sorti2(B)) | (j(op2(A,B)) = op1(j(A),j(B)))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG177+1 : TPTP v8.1.0. Released v2.7.0.
@@ -38,9 +38,9 @@ fof(4, axiom, (! [A]: ((~ (sorti2(A)) | sorti2(dollar_f1(A))))), file('ALG177+1.
 fof(5, axiom, (! [A]: ((~ (sorti2(A)) | (op2(A,dollar_f1(A)) = dollar_f1(A))))), file('ALG177+1.p',unknown), []).
 fof(6, axiom, (! [A]: ((~ (sorti1(A)) | sorti2(h(A))))), file('ALG177+1.p',unknown), []).
 fof(7, axiom, (! [A]: ((~ (sorti2(A)) | sorti1(j(A))))), file('ALG177+1.p',unknown), []).
-fof(9, axiom, (! [A,B]: ((~ (sorti2(A)) | (~ (sorti2(B)) | (j(op2(A,B)) = op1(j(A),j(B))))))), file('ALG177+1.p',unknown), []).
+fof(9, axiom, (! [A,B]: ((sorti2(A) | (~ (sorti2(B)) | (j(op2(A,B)) = op1(j(A),j(B))))))), file('ALG177+1.p',unknown), []).
 fof(11, axiom, (! [A]: ((~ (sorti1(A)) | (j(h(A)) = A)))), file('ALG177+1.p',unknown), []).
-fof(13, axiom, ~ (sorti1(dollar_c1)), file('ALG177+1.p',unknown), []).
+fof(13, axiom, sorti1(dollar_c1), file('ALG177+1.p',unknown), []).
 fof(15, plain, (j(h(dollar_c1)) = dollar_c1), inference(hyper,[status(thm)],[13,11]), [iquote('hyper,13,11')]).
 fof(18, plain, sorti2(h(dollar_c1)), inference(hyper,[status(thm)],[13,6]), [iquote('hyper,13,6')]).
 fof(23, plain, (op2(h(dollar_c1),dollar_f1(h(dollar_c1))) = dollar_f1(h(dollar_c1))), inference(hyper,[status(thm)],[18,5]), [iquote('hyper,18,5')]).

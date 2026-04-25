@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '86':
-%%%%%   Replaced (! [A]: (incident_c(dollar_f8(A),A)))
-%%%%%   With (! [A]: (~ (incident_c(dollar_f8(A),A))))
+%%%%% Mutated formula '920':
+%%%%%   Replaced end_point(dollar_f8(dollar_c3),dollar_c3)
+%%%%%   With ~ (end_point(dollar_f8(dollar_c3),dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO087+1 : TPTP v8.1.0. Released v2.4.0.
@@ -40,7 +40,7 @@ fof(21, axiom, (! [A,B,C,D]: ((~ (meet(A,B,C)) | (~ (incident_c(D,B)) | (~ (inci
 fof(56, axiom, (! [A]: (inner_point(dollar_f8(A),A))), file('GEO087+1.p',unknown), []).
 fof(58, axiom, part_of(dollar_c3,dollar_c2), file('GEO087+1.p',unknown), []).
 fof(59, axiom, meet(dollar_c1,dollar_c3,dollar_c2), file('GEO087+1.p',unknown), []).
-fof(86, plain, (! [A]: (~ (incident_c(dollar_f8(A),A)))), inference(hyper,[status(thm)],[56,16]), [iquote('hyper,56,16')]).
+fof(86, plain, (! [A]: (incident_c(dollar_f8(A),A))), inference(hyper,[status(thm)],[56,16]), [iquote('hyper,56,16')]).
 fof(797, plain, incident_c(dollar_f8(dollar_c3),dollar_c2), inference(hyper,[status(thm)],[86,1,58]), [iquote('hyper,86,1,58')]).
-fof(920, plain, end_point(dollar_f8(dollar_c3),dollar_c3), inference(hyper,[status(thm)],[797,21,59,86]), [iquote('hyper,797,21,59,86')]).
+fof(920, plain, ~ (end_point(dollar_f8(dollar_c3),dollar_c3)), inference(hyper,[status(thm)],[797,21,59,86]), [iquote('hyper,797,21,59,86')]).
 fof(1337, plain, $false, inference(hyper,[status(thm)],[920,17,56]), [iquote('hyper,920,17,56')]).

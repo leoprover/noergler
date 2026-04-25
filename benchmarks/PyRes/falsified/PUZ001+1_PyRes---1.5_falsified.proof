@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c14':
-%%%%%   Replaced (! [X32]: ((~ (hates(agatha,X32)) | hates(butler,X32))))
-%%%%%   With (! [X32]: ((~ (hates(agatha,X32)) & hates(butler,X32))))
+%%%%% Mutated formula 'c8':
+%%%%%   Replaced (! [X]: ((? [Y]: (~ (hates(X,Y))))))
+%%%%%   With (! [X]: ((? [Y]: (hates(X,Y)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : PUZ001+1 : TPTP v8.1.2. Released v2.0.0.
@@ -67,14 +67,14 @@ fof(c27, plain, (! [X,Y]: ((~ (killed(X,Y)) | ~ (richer(X,Y))))), inference(fof_
 fof(c28, plain, (! [X8,X9]: ((~ (killed(X8,X9)) | ~ (richer(X8,X9))))), inference(variable_rename,[status(thm)],[c27])).
 fof(c29, plain, (! [X22,X23]: ((~ (killed(X22,X23)) | ~ (richer(X22,X23))))), inference(split_conjunct,[status(thm)],[c28])).
 fof(pel55_10, axiom, (! [X]: ((? [Y]: (~ (hates(X,Y)))))), file('PUZ001+1.p',pel55_10)).
-fof(c8, plain, (! [X]: ((? [Y]: (~ (hates(X,Y)))))), inference(fof_simplification,[status(thm)],[pel55_10])).
+fof(c8, plain, (! [X]: ((? [Y]: (hates(X,Y))))), inference(fof_simplification,[status(thm)],[pel55_10])).
 fof(c9, plain, (! [X2]: ((? [X3]: (~ (hates(X2,X3)))))), inference(variable_rename,[status(thm)],[c8])).
 fof(c10, plain, (! [X2]: (~ (hates(X2,skolem0001(X2))))), inference(skolemize,[status(esa)],[c9])).
 fof(c11, plain, (! [X18]: (~ (hates(X18,skolem0001(X18))))), inference(split_conjunct,[status(thm)],[c10])).
 fof(pel55_9, axiom, (! [X]: ((hates(agatha,X) => hates(butler,X)))), file('PUZ001+1.p',pel55_9)).
 fof(c12, plain, (! [X]: ((~ (hates(agatha,X)) | hates(butler,X)))), inference(fof_nnf,[status(thm)],[pel55_9])).
 fof(c13, plain, (! [X4]: ((~ (hates(agatha,X4)) | hates(butler,X4)))), inference(variable_rename,[status(thm)],[c12])).
-fof(c14, plain, (! [X32]: ((~ (hates(agatha,X32)) & hates(butler,X32)))), inference(split_conjunct,[status(thm)],[c13])).
+fof(c14, plain, (! [X32]: ((~ (hates(agatha,X32)) | hates(butler,X32)))), inference(split_conjunct,[status(thm)],[c13])).
 fof(c56, plain, (! [X50]: (((X50 = butler) | hates(butler,X50)))), inference(resolution,[status(thm)],[c21,c14])).
 fof(c85, plain, (skolem0001(butler) = butler), inference(resolution,[status(thm)],[c56,c11])).
 fof(pel55_8, axiom, (! [X]: ((~ (richer(X,agatha)) => hates(butler,X)))), file('PUZ001+1.p',pel55_8)).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '19':
-%%%%%   Replaced subset(dollar_c1,dollar_c2)
-%%%%%   With ~ (subset(dollar_c1,dollar_c2))
+%%%%% Mutated formula '8':
+%%%%%   Replaced (! [A]: (~ (proper_subset(A,A))))
+%%%%%   With (! [A]: (proper_subset(A,A)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU139+1 : TPTP v8.1.0. Released v3.3.0.
@@ -35,10 +35,10 @@
 %%% Generated on Tue Apr 14 19:20:09 CEST 2026 using command 'transform(fof)'.
 fof(4, axiom, (! [A,B]: (((A = B) | (~ (subset(A,B)) | ~ (subset(B,A)))))), file('SEU139+1.p',unknown), []).
 fof(5, axiom, (! [A,B]: ((~ (proper_subset(A,B)) | subset(A,B)))), file('SEU139+1.p',unknown), []).
-fof(8, axiom, (! [A]: (~ (proper_subset(A,A)))), file('SEU139+1.p',unknown), []).
+fof(8, axiom, (! [A]: (proper_subset(A,A))), file('SEU139+1.p',unknown), []).
 fof(12, axiom, subset(dollar_c2,dollar_c1), file('SEU139+1.p',unknown), []).
 fof(13, axiom, proper_subset(dollar_c1,dollar_c2), file('SEU139+1.p',unknown), []).
-fof(19, plain, ~ (subset(dollar_c1,dollar_c2)), inference(hyper,[status(thm)],[13,5]), [iquote('hyper,13,5')]).
+fof(19, plain, subset(dollar_c1,dollar_c2), inference(hyper,[status(thm)],[13,5]), [iquote('hyper,13,5')]).
 fof(25, plain, (dollar_c2 = dollar_c1), inference(hyper,[status(thm)],[19,4,12]), [iquote('hyper,19,4,12')]).
 fof(29, plain, proper_subset(dollar_c1,dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[13]),25]), [iquote('back_demod,13,demod,25')]).
 fof(30, plain, $false, inference(binary,[status(thm)],[29,8]), [iquote('binary,29.1,8.1')]).

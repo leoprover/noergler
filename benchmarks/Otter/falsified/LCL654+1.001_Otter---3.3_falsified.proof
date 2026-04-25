@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '10':
-%%%%%   Replaced ~ (p1(dollar_c1))
-%%%%%   With ~ (p1(dollar_c2))
+%%%%% Mutated formula '6':
+%%%%%   Replaced (! [A,B,C]: ((~ (r1(dollar_c4,A)) | (~ (r1(A,B)) | (r1(B,dollar_f3(A,B)) | (~ (r1(A,C)) | ~ (p1(dollar_f4(A,C)))))))))
+%%%%%   With (! [A,B,C]: ((~ (r1(dollar_c1,A)) | (~ (r1(A,B)) | (r1(B,dollar_f3(A,B)) | (~ (r1(A,C)) | ~ (p1(dollar_f4(A,C)))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LCL654+1.001 : TPTP v8.1.0. Released v4.0.0.
@@ -36,10 +36,10 @@
 fof(3, axiom, (! [A,B,C,D]: ((~ (r1(dollar_c4,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (r1(C,dollar_f2(A,B,C)) | (~ (r1(B,D)) | p1(D)))))))), file('LCL654+1.001.p',unknown), []).
 fof(4, axiom, (! [A,B,C,D]: ((~ (r1(dollar_c4,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (p1(dollar_f2(A,B,C))) | (~ (r1(B,D)) | p1(D)))))))), file('LCL654+1.001.p',unknown), []).
 fof(5, axiom, (! [A,B,C]: ((~ (r1(dollar_c4,A)) | (~ (r1(A,B)) | (r1(B,dollar_f3(A,B)) | (~ (r1(A,C)) | r1(C,dollar_f4(A,C)))))))), file('LCL654+1.001.p',unknown), []).
-fof(6, axiom, (! [A,B,C]: ((~ (r1(dollar_c4,A)) | (~ (r1(A,B)) | (r1(B,dollar_f3(A,B)) | (~ (r1(A,C)) | ~ (p1(dollar_f4(A,C))))))))), file('LCL654+1.001.p',unknown), []).
+fof(6, axiom, (! [A,B,C]: ((~ (r1(dollar_c1,A)) | (~ (r1(A,B)) | (r1(B,dollar_f3(A,B)) | (~ (r1(A,C)) | ~ (p1(dollar_f4(A,C))))))))), file('LCL654+1.001.p',unknown), []).
 fof(7, axiom, (! [A,B,C,D]: ((~ (r1(dollar_c4,A)) | (~ (r1(A,B)) | (~ (r1(dollar_f3(A,B),C)) | (p1(C) | (~ (r1(A,D)) | r1(D,dollar_f4(A,D))))))))), file('LCL654+1.001.p',unknown), []).
 fof(8, axiom, (! [A,B,C,D]: ((~ (r1(dollar_c4,A)) | (~ (r1(A,B)) | (~ (r1(dollar_f3(A,B),C)) | (p1(C) | (~ (r1(A,D)) | ~ (p1(dollar_f4(A,D)))))))))), file('LCL654+1.001.p',unknown), []).
-fof(10, axiom, ~ (p1(dollar_c2)), file('LCL654+1.001.p',unknown), []).
+fof(10, axiom, ~ (p1(dollar_c1)), file('LCL654+1.001.p',unknown), []).
 fof(11, axiom, (! [A]: ((~ (r1(dollar_c3,A)) | p1(A)))), file('LCL654+1.001.p',unknown), []).
 fof(54, axiom, (! [A]: (r1(A,A))), file('LCL654+1.001.p',unknown), []).
 fof(55, axiom, r1(dollar_c4,dollar_c3), file('LCL654+1.001.p',unknown), []).

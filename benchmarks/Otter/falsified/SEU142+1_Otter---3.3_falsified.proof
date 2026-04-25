@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '12':
-%%%%%   Replaced (singleton(dollar_c1) != unordered_pair(dollar_c1,dollar_c1))
-%%%%%   With ~ ((singleton(dollar_c1) != unordered_pair(dollar_c1,dollar_c1)))
+%%%%% Mutated formula '11':
+%%%%%   Replaced (unordered_pair(dollar_c1,dollar_c1) != singleton(dollar_c1))
+%%%%%   With ~ ((unordered_pair(dollar_c1,dollar_c1) != singleton(dollar_c1)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU142+1 : TPTP v8.1.0. Released v3.3.0.
@@ -36,8 +36,8 @@
 fof(4, axiom, (! [A,B]: (((A = singleton(B)) | (~ (in(dollar_f1(B,A),A)) | (dollar_f1(B,A) != B))))), file('SEU142+1.p',unknown), []).
 fof(5, axiom, (! [A,B,C,D]: (((A != unordered_pair(B,C)) | (~ (in(D,A)) | ((D = B) | (D = C)))))), file('SEU142+1.p',unknown), []).
 fof(6, axiom, (! [A,B,C,D]: (((A != unordered_pair(B,C)) | (in(D,A) | (D != B))))), file('SEU142+1.p',unknown), []).
-fof(11, axiom, (unordered_pair(dollar_c1,dollar_c1) != singleton(dollar_c1)), file('SEU142+1.p',unknown), []).
-fof(12, plain, ~ ((singleton(dollar_c1) != unordered_pair(dollar_c1,dollar_c1))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[11])]), [iquote('copy,11,flip.1')]).
+fof(11, axiom, ~ ((unordered_pair(dollar_c1,dollar_c1) != singleton(dollar_c1))), file('SEU142+1.p',unknown), []).
+fof(12, plain, (singleton(dollar_c1) != unordered_pair(dollar_c1,dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[11])]), [iquote('copy,11,flip.1')]).
 fof(14, plain, (! [A,B,C]: (((A != unordered_pair(B,B)) | (~ (in(C,A)) | (C = B))))), inference(factor,[status(thm)],[5]), [iquote('factor,5.3.4')]).
 fof(16, axiom, (! [A]: ((A = A))), file('SEU142+1.p',unknown), []).
 fof(17, axiom, (! [A,B]: ((unordered_pair(A,B) = unordered_pair(B,A)))), file('SEU142+1.p',unknown), []).

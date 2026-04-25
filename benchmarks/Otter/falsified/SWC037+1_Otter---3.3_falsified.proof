@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '456':
-%%%%%   Replaced (ne_q(dollar_c3,dollar_c4) | (dollar_c5 = dollar_c4))
-%%%%%   With (~ (ne_q(dollar_c3,dollar_c4)) | (dollar_c5 = dollar_c4))
+%%%%% Mutated formula '452':
+%%%%%   Replaced (dollar_c7 = dollar_c5)
+%%%%%   With ~ ((dollar_c7 = dollar_c5))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC037+1 : TPTP v8.1.0. Released v2.4.0.
@@ -42,11 +42,11 @@ fof(432, axiom, (! [A]: ((A = A))), file('SWC037+1.p',unknown), []).
 fof(446, axiom, ssList(dollar_c4), file('SWC037+1.p',unknown), []).
 fof(448, axiom, (nil = dollar_c6), file('SWC037+1.p',unknown), []).
 fof(450, axiom, (dollar_c6 = dollar_c4), file('SWC037+1.p',unknown), []).
-fof(452, axiom, (dollar_c7 = dollar_c5), file('SWC037+1.p',unknown), []).
+fof(452, axiom, ~ ((dollar_c7 = dollar_c5)), file('SWC037+1.p',unknown), []).
 fof(453, axiom, (ssList(dollar_c3) | (nil = dollar_c5)), file('SWC037+1.p',unknown), []).
 fof(454, plain, (ssList(dollar_c3) | (dollar_c5 = dollar_c4)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[453]),448,450])]), [iquote('copy,453,demod,448,450,flip.2')]).
 fof(455, axiom, (ne_q(dollar_c3,nil) | (nil = dollar_c5)), file('SWC037+1.p',unknown), []).
-fof(456, plain, (~ (ne_q(dollar_c3,dollar_c4)) | (dollar_c5 = dollar_c4)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[455]),448,450,448,450])]), [iquote('copy,455,demod,448,450,448,450,flip.2')]).
+fof(456, plain, (ne_q(dollar_c3,dollar_c4) | (dollar_c5 = dollar_c4)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[455]),448,450,448,450])]), [iquote('copy,455,demod,448,450,448,450,flip.2')]).
 fof(457, axiom, (segmentP(dollar_c4,dollar_c3) | (nil = dollar_c5)), file('SWC037+1.p',unknown), []).
 fof(458, plain, (segmentP(dollar_c4,dollar_c3) | (dollar_c5 = dollar_c4)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[457]),448,450])]), [iquote('copy,457,demod,448,450,flip.2')]).
 fof(472, plain, (dollar_c5 != dollar_c4), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),448,450,452])]), [iquote('back_demod,182,demod,448,450,452,flip.1')]).

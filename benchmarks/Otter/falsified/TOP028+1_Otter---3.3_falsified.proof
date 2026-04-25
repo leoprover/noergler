@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '130':
-%%%%%   Replaced l1_pre_topc(dollar_c1)
-%%%%%   With l1_pre_topc(k1_xboole_0)
+%%%%% Mutated formula '146':
+%%%%%   Replaced (! [A]: (m1_subset_1(dollar_f4(A),k1_zfmisc_1(A))))
+%%%%%   With (! [A]: (~ (m1_subset_1(dollar_f4(A),k1_zfmisc_1(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : TOP028+1 : TPTP v8.1.0. Released v3.4.0.
@@ -41,9 +41,9 @@ fof(122, axiom, (! [A,B]: ((~ (v1_xboole_0(A)) | ((A = B) | ~ (v1_xboole_0(B))))
 fof(123, axiom, (! [A,B]: ((v3_struct_0(A) | (~ (v2_pre_topc(A)) | (~ (l1_pre_topc(A)) | (~ (m1_subset_1(B,k1_zfmisc_1(u1_struct_0(A)))) | (~ (v1_tsp_1(B,A)) | m1_subset_1(dollar_f12(A,B),k1_zfmisc_1(u1_struct_0(A)))))))))), file('TOP028+1.p',unknown), []).
 fof(125, axiom, (! [A,B]: ((v3_struct_0(A) | (~ (v2_pre_topc(A)) | (~ (l1_pre_topc(A)) | (~ (m1_subset_1(B,k1_zfmisc_1(u1_struct_0(A)))) | (~ (v1_tsp_1(B,A)) | v1_tsp_2(dollar_f12(A,B),A)))))))), file('TOP028+1.p',unknown), []).
 fof(129, axiom, v2_pre_topc(dollar_c1), file('TOP028+1.p',unknown), []).
-fof(130, axiom, l1_pre_topc(k1_xboole_0), file('TOP028+1.p',unknown), []).
+fof(130, axiom, l1_pre_topc(dollar_c1), file('TOP028+1.p',unknown), []).
 fof(134, axiom, v1_xboole_0(k1_xboole_0), file('TOP028+1.p',unknown), []).
-fof(146, axiom, (! [A]: (m1_subset_1(dollar_f4(A),k1_zfmisc_1(A)))), file('TOP028+1.p',unknown), []).
+fof(146, axiom, (! [A]: (~ (m1_subset_1(dollar_f4(A),k1_zfmisc_1(A))))), file('TOP028+1.p',unknown), []).
 fof(147, axiom, (! [A]: (v1_xboole_0(dollar_f4(A)))), file('TOP028+1.p',unknown), []).
 fof(293, plain, (! [A]: ((dollar_f4(A) = k1_xboole_0))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[147,122,134])]), [iquote('hyper,147,122,134,flip.1')]).
 fof(294, plain, (! [A]: (m1_subset_1(k1_xboole_0,k1_zfmisc_1(A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[146]),293]), [iquote('back_demod,146,demod,293')]).

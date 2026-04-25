@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '39':
-%%%%%   Replaced (! [A,B]: ((convergent_lines(A,B) | unorthogonal_lines(A,B))))
-%%%%%   With (! [A,B]: ((~ (convergent_lines(A,B)) | unorthogonal_lines(A,B))))
+%%%%% Mutated formula '51':
+%%%%%   Replaced (! [A]: ((convergent_lines(dollar_c3,A) | convergent_lines(dollar_c1,A))))
+%%%%%   With (! [A]: ((~ (convergent_lines(dollar_c3,A)) | convergent_lines(dollar_c1,A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO218+3 : TPTP v8.1.0. Released v4.0.0.
@@ -42,13 +42,13 @@ fof(28, axiom, (! [A,B,C]: ((unorthogonal_lines(A,B) | (unorthogonal_lines(A,C) 
 fof(35, axiom, (! [A,B]: ((~ (parallel_lines(A,B)) | ~ (convergent_lines(A,B))))), file('GEO218+3.p',unknown), []).
 fof(37, axiom, (! [A,B]: ((~ (orthogonal_lines(A,B)) | ~ (unorthogonal_lines(A,B))))), file('GEO218+3.p',unknown), []).
 fof(38, axiom, ~ (orthogonal_lines(dollar_c2,dollar_c1)), file('GEO218+3.p',unknown), []).
-fof(39, axiom, (! [A,B]: ((~ (convergent_lines(A,B)) | unorthogonal_lines(A,B)))), file('GEO218+3.p',unknown), []).
+fof(39, axiom, (! [A,B]: ((convergent_lines(A,B) | unorthogonal_lines(A,B)))), file('GEO218+3.p',unknown), []).
 fof(44, axiom, (! [A,B]: ((orthogonal_lines(A,B) | unorthogonal_lines(A,B)))), file('GEO218+3.p',unknown), []).
 fof(45, axiom, parallel_lines(dollar_c3,dollar_c2), file('GEO218+3.p',unknown), []).
 fof(46, axiom, orthogonal_lines(dollar_c3,dollar_c1), file('GEO218+3.p',unknown), []).
 fof(48, plain, convergent_lines(dollar_c3,dollar_c1), inference(hyper,[status(thm)],[46,37,39]), [iquote('hyper,46,37,39')]).
 fof(49, plain, (! [A]: ((unorthogonal_lines(A,dollar_c3) | unorthogonal_lines(A,dollar_c1)))), inference(hyper,[status(thm)],[48,28]), [iquote('hyper,48,28')]).
-fof(51, plain, (! [A]: ((convergent_lines(dollar_c3,A) | convergent_lines(dollar_c1,A)))), inference(hyper,[status(thm)],[48,6]), [iquote('hyper,48,6')]).
+fof(51, plain, (! [A]: ((~ (convergent_lines(dollar_c3,A)) | convergent_lines(dollar_c1,A)))), inference(hyper,[status(thm)],[48,6]), [iquote('hyper,48,6')]).
 fof(70, plain, convergent_lines(dollar_c1,dollar_c2), inference(hyper,[status(thm)],[51,35,45]), [iquote('hyper,51,35,45')]).
 fof(88, plain, (! [A]: ((unorthogonal_lines(dollar_c1,A) | (unorthogonal_lines(dollar_c3,A) | unorthogonal_lines(dollar_c1,dollar_c1))))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[51,20,49]),3]), [iquote('hyper,51,20,49,unit_del,3')]).
 fof(97, plain, (unorthogonal_lines(dollar_c1,dollar_c1) | unorthogonal_lines(dollar_c3,dollar_c1)), inference(factor,[status(thm)],[88]), [iquote('factor,88.1.3')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '184':
-%%%%%   Replaced (! [A]: ((convergent_lines(dollar_c2,A) | convergent_lines(dollar_c3,A))))
-%%%%%   With (! [A]: ((convergent_lines(dollar_c2,A) & convergent_lines(dollar_c3,A))))
+%%%%% Mutated formula '173':
+%%%%%   Replaced convergent_lines(dollar_c2,dollar_c3)
+%%%%%   With convergent_lines(dollar_c3,dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO212+1 : TPTP v8.1.0. Released v3.3.0.
@@ -45,8 +45,8 @@ fof(31, plain, (! [A]: ((convergent_lines(dollar_c2,A) | convergent_lines(dollar
 fof(37, plain, (! [A,B]: ((convergent_lines(dollar_c1,A) | (convergent_lines(dollar_c2,B) | convergent_lines(A,B))))), inference(hyper,[status(thm)],[31,6]), [iquote('hyper,31,6')]).
 fof(144, plain, (! [A,B,C]: ((convergent_lines(dollar_c1,A) | (convergent_lines(dollar_c2,B) | (convergent_lines(A,C) | convergent_lines(B,C)))))), inference(hyper,[status(thm)],[37,6]), [iquote('hyper,37,6')]).
 fof(149, plain, (! [A]: ((convergent_lines(dollar_c2,A) | convergent_lines(A,dollar_c1)))), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[144]),3]), [iquote('factor,144.1.3,unit_del,3')]).
-fof(173, plain, convergent_lines(dollar_c2,dollar_c3), inference(hyper,[status(thm)],[149,24]), [iquote('hyper,149,24')]).
-fof(184, plain, (! [A]: ((convergent_lines(dollar_c2,A) & convergent_lines(dollar_c3,A)))), inference(hyper,[status(thm)],[173,6]), [iquote('hyper,173,6')]).
+fof(173, plain, convergent_lines(dollar_c3,dollar_c3), inference(hyper,[status(thm)],[149,24]), [iquote('hyper,149,24')]).
+fof(184, plain, (! [A]: ((convergent_lines(dollar_c2,A) | convergent_lines(dollar_c3,A)))), inference(hyper,[status(thm)],[173,6]), [iquote('hyper,173,6')]).
 fof(294, plain, (! [A]: ((convergent_lines(dollar_c3,A) | unorthogonal_lines(dollar_c2,A)))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[184,18,27]),3]), [iquote('hyper,184,18,27,unit_del,3')]).
 fof(335, plain, convergent_lines(dollar_c3,dollar_c1), inference(hyper,[status(thm)],[294,25]), [iquote('hyper,294,25')]).
 fof(336, plain, $false, inference(binary,[status(thm)],[335,24]), [iquote('binary,335.1,24.1')]).

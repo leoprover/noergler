@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '43':
-%%%%%   Replaced sorti1(j(dollar_f1(h(dollar_c1))))
-%%%%%   With ~ (sorti1(j(dollar_f1(h(dollar_c1)))))
+%%%%% Mutated formula '5':
+%%%%%   Replaced (! [A]: ((~ (sorti2(A)) | (op2(dollar_f1(A),A) = dollar_f1(A)))))
+%%%%%   With (! [A]: ((sorti2(A) | (op2(dollar_f1(A),A) = dollar_f1(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG176+1 : TPTP v8.1.0. Released v2.7.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:10:36 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, (! [A]: ((~ (sorti1(A)) | (op1(A,dollar_c1) != A)))), file('ALG176+1.p',unknown), []).
 fof(4, axiom, (! [A]: ((~ (sorti2(A)) | sorti2(dollar_f1(A))))), file('ALG176+1.p',unknown), []).
-fof(5, axiom, (! [A]: ((~ (sorti2(A)) | (op2(dollar_f1(A),A) = dollar_f1(A))))), file('ALG176+1.p',unknown), []).
+fof(5, axiom, (! [A]: ((sorti2(A) | (op2(dollar_f1(A),A) = dollar_f1(A))))), file('ALG176+1.p',unknown), []).
 fof(6, axiom, (! [A]: ((~ (sorti1(A)) | sorti2(h(A))))), file('ALG176+1.p',unknown), []).
 fof(7, axiom, (! [A]: ((~ (sorti2(A)) | sorti1(j(A))))), file('ALG176+1.p',unknown), []).
 fof(9, axiom, (! [A,B]: ((~ (sorti2(A)) | (~ (sorti2(B)) | (j(op2(A,B)) = op1(j(A),j(B))))))), file('ALG176+1.p',unknown), []).
@@ -46,5 +46,5 @@ fof(18, plain, sorti2(h(dollar_c1)), inference(hyper,[status(thm)],[13,6]), [iqu
 fof(23, plain, (op2(dollar_f1(h(dollar_c1)),h(dollar_c1)) = dollar_f1(h(dollar_c1))), inference(hyper,[status(thm)],[18,5]), [iquote('hyper,18,5')]).
 fof(24, plain, sorti2(dollar_f1(h(dollar_c1))), inference(hyper,[status(thm)],[18,4]), [iquote('hyper,18,4')]).
 fof(41, plain, (op1(j(dollar_f1(h(dollar_c1))),dollar_c1) = j(dollar_f1(h(dollar_c1)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[24,9,18]),23,15])]), [iquote('hyper,24,9,18,demod,23,15,flip.1')]).
-fof(43, plain, ~ (sorti1(j(dollar_f1(h(dollar_c1))))), inference(hyper,[status(thm)],[24,7]), [iquote('hyper,24,7')]).
+fof(43, plain, sorti1(j(dollar_f1(h(dollar_c1)))), inference(hyper,[status(thm)],[24,7]), [iquote('hyper,24,7')]).
 fof(1532, plain, $false, inference(hyper,[status(thm)],[41,3,43]), [iquote('hyper,41,3,43')]).

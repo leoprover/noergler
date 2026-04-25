@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '16':
-%%%%%   Replaced convergent_lines(dollar_c3,dollar_c2)
-%%%%%   With convergent_lines(dollar_c1,dollar_c2)
+%%%%% Mutated formula '9':
+%%%%%   Replaced (! [A,B]: ((~ (convergent_lines(A,B)) | ~ (apart_point_and_line(intersection_point(A,B),A)))))
+%%%%%   With (! [A,B]: ((convergent_lines(A,B) | ~ (apart_point_and_line(intersection_point(A,B),A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO192+1 : TPTP v8.1.0. Released v3.3.0.
@@ -37,11 +37,11 @@ fof(2, axiom, (! [A]: (~ (distinct_lines(A,A)))), file('GEO192+1.p',unknown), []
 fof(3, axiom, (! [A]: (~ (convergent_lines(A,A)))), file('GEO192+1.p',unknown), []).
 fof(5, axiom, (! [A,B,C]: ((~ (distinct_lines(A,B)) | (distinct_lines(A,C) | distinct_lines(B,C))))), file('GEO192+1.p',unknown), []).
 fof(6, axiom, (! [A,B,C]: ((~ (convergent_lines(A,B)) | (convergent_lines(A,C) | convergent_lines(B,C))))), file('GEO192+1.p',unknown), []).
-fof(9, axiom, (! [A,B]: ((~ (convergent_lines(A,B)) | ~ (apart_point_and_line(intersection_point(A,B),A))))), file('GEO192+1.p',unknown), []).
+fof(9, axiom, (! [A,B]: ((convergent_lines(A,B) | ~ (apart_point_and_line(intersection_point(A,B),A))))), file('GEO192+1.p',unknown), []).
 fof(10, axiom, (! [A,B]: ((~ (convergent_lines(A,B)) | ~ (apart_point_and_line(intersection_point(A,B),B))))), file('GEO192+1.p',unknown), []).
 fof(13, axiom, (! [A,B,C]: ((~ (apart_point_and_line(A,B)) | (distinct_lines(B,C) | apart_point_and_line(A,C))))), file('GEO192+1.p',unknown), []).
 fof(15, axiom, (~ (distinct_lines(dollar_c3,dollar_c1)) | ~ (distinct_lines(dollar_c2,dollar_c1))), file('GEO192+1.p',unknown), []).
-fof(16, axiom, convergent_lines(dollar_c1,dollar_c2), file('GEO192+1.p',unknown), []).
+fof(16, axiom, convergent_lines(dollar_c3,dollar_c2), file('GEO192+1.p',unknown), []).
 fof(17, axiom, apart_point_and_line(intersection_point(dollar_c3,dollar_c2),dollar_c1), file('GEO192+1.p',unknown), []).
 fof(19, plain, (! [A]: ((convergent_lines(dollar_c3,A) | convergent_lines(dollar_c2,A)))), inference(hyper,[status(thm)],[16,6]), [iquote('hyper,16,6')]).
 fof(20, plain, (! [A]: ((distinct_lines(dollar_c1,A) | apart_point_and_line(intersection_point(dollar_c3,dollar_c2),A)))), inference(hyper,[status(thm)],[17,13]), [iquote('hyper,17,13')]).

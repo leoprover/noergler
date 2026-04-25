@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '22':
-%%%%%   Replaced (! [A,B]: ((dollar_f5(A,B) = dollar_f7(A,B))))
-%%%%%   With (! [A,B]: (~ ((dollar_f5(A,B) = dollar_f7(A,B)))))
+%%%%% Mutated formula '20':
+%%%%%   Replaced (! [A,B]: (r2(A,dollar_f4(B,A))))
+%%%%%   With (! [A,B]: (~ (r2(A,dollar_f4(B,A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUN054+2 : TPTP v8.1.0. Released v7.3.0.
@@ -40,9 +40,9 @@ fof(6, axiom, (! [A,B,C]: (((A != dollar_f2(B,C)) | r3(B,C,A)))), file('NUN054+2
 fof(10, axiom, (! [A,B,C]: ((~ (r1(A)) | ((A != B) | ~ (r2(C,B)))))), file('NUN054+2.p',unknown), []).
 fof(11, axiom, (! [E,F,A,B,C,D]: ((~ (r1(A)) | (~ (r3(A,B,C)) | (~ (r1(D)) | (~ (r2(D,B)) | ((C != E) | (~ (r1(F)) | ~ (r2(F,E)))))))))), file('NUN054+2.p',unknown), []).
 fof(19, axiom, (! [A]: ((A = A))), file('NUN054+2.p',unknown), []).
-fof(20, axiom, (! [A,B]: (r2(A,dollar_f4(B,A)))), file('NUN054+2.p',unknown), []).
+fof(20, axiom, (! [A,B]: (~ (r2(A,dollar_f4(B,A))))), file('NUN054+2.p',unknown), []).
 fof(21, axiom, (! [A,B]: (r3(A,dollar_f4(A,B),dollar_f5(A,B)))), file('NUN054+2.p',unknown), []).
-fof(22, axiom, (! [A,B]: (~ ((dollar_f5(A,B) = dollar_f7(A,B))))), file('NUN054+2.p',unknown), []).
+fof(22, axiom, (! [A,B]: ((dollar_f5(A,B) = dollar_f7(A,B)))), file('NUN054+2.p',unknown), []).
 fof(24, plain, (! [A,B]: ((dollar_f7(A,B) = dollar_f5(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[22])]), [iquote('copy,22,flip.1')]).
 fof(25, axiom, (! [A,B]: (r2(dollar_f6(A,B),dollar_f7(A,B)))), file('NUN054+2.p',unknown), []).
 fof(26, plain, (! [A,B]: (r2(dollar_f6(A,B),dollar_f5(A,B)))), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[25]),24]), [iquote('copy,25,demod,24')]).

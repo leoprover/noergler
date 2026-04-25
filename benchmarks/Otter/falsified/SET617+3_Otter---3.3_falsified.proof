@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '21':
-%%%%%   Replaced (! [A]: ((difference(A,empty_set) = A)))
-%%%%%   With (! [A]: ((difference(A,dollar_c1) = A)))
+%%%%% Mutated formula '35':
+%%%%%   Replaced (! [A]: ((union(empty_set,A) = symmetric_difference(empty_set,A))))
+%%%%%   With (! [A]: (~ ((union(empty_set,A) = symmetric_difference(empty_set,A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET617+3 : TPTP v8.1.0. Released v2.2.0.
@@ -38,10 +38,10 @@ fof(14, axiom, (! [A]: ((A = A))), file('SET617+3.p',unknown), []).
 fof(15, axiom, (! [A,B]: ((symmetric_difference(A,B) = union(difference(A,B),difference(B,A))))), file('SET617+3.p',unknown), []).
 fof(16, plain, (! [A,B]: ((union(difference(A,B),difference(B,A)) = symmetric_difference(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[15])]), [iquote('copy,15,flip.1')]).
 fof(19, axiom, (! [A]: ((union(A,empty_set) = A))), file('SET617+3.p',unknown), []).
-fof(21, axiom, (! [A]: ((difference(A,dollar_c1) = A))), file('SET617+3.p',unknown), []).
+fof(21, axiom, (! [A]: ((difference(A,empty_set) = A))), file('SET617+3.p',unknown), []).
 fof(23, axiom, (! [A]: ((difference(empty_set,A) = empty_set))), file('SET617+3.p',unknown), []).
 fof(24, axiom, (! [A,B]: ((union(A,B) = union(B,A)))), file('SET617+3.p',unknown), []).
-fof(35, plain, (! [A]: ((union(empty_set,A) = symmetric_difference(empty_set,A)))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[16,23]),21]), [iquote('para_into,16.1.1.1,22.1.1,demod,21')]).
+fof(35, plain, (! [A]: (~ ((union(empty_set,A) = symmetric_difference(empty_set,A))))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[16,23]),21]), [iquote('para_into,16.1.1.1,22.1.1,demod,21')]).
 fof(37, plain, (! [A]: ((symmetric_difference(A,empty_set) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[16,21]),23,19])]), [iquote('para_into,16.1.1.1,20.1.1,demod,23,19,flip.1')]).
 fof(42, plain, (symmetric_difference(empty_set,dollar_c1) != dollar_c1), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[11]),37]),14]), [iquote('back_demod,11,demod,37,unit_del,14')]).
 fof(52, plain, (! [A]: ((symmetric_difference(empty_set,A) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[24,19]),35])]), [iquote('para_into,24.1.1,18.1.1,demod,35,flip.1')]).

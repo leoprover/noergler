@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '10':
-%%%%%   Replaced (dollar_c3 != empty_set)
-%%%%%   With (dollar_c5 != empty_set)
+%%%%% Mutated formula '7':
+%%%%%   Replaced (dollar_c4 != dollar_c3)
+%%%%%   With (empty_set != dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET903+1 : TPTP v8.1.0. Released v3.2.0.
@@ -35,10 +35,10 @@
 %%% Generated on Tue Apr 14 19:19:22 CEST 2026 using command 'transform(fof)'.
 fof(4, axiom, (! [A,B,C]: (((singleton(A) != set_union2(B,C)) | ((B = singleton(A)) | (B = empty_set))))), file('SET903+1.p',unknown), []).
 fof(6, axiom, (! [A,B,C]: (((singleton(A) != set_union2(B,C)) | ((C = singleton(A)) | (C = empty_set))))), file('SET903+1.p',unknown), []).
-fof(7, axiom, (dollar_c4 != dollar_c3), file('SET903+1.p',unknown), []).
+fof(7, axiom, (empty_set != dollar_c3), file('SET903+1.p',unknown), []).
 fof(8, axiom, (dollar_c4 != empty_set), file('SET903+1.p',unknown), []).
 fof(9, plain, (empty_set != dollar_c4), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[8])]), [iquote('copy,8,flip.1')]).
-fof(10, axiom, (dollar_c5 != empty_set), file('SET903+1.p',unknown), []).
+fof(10, axiom, (dollar_c3 != empty_set), file('SET903+1.p',unknown), []).
 fof(11, plain, (empty_set != dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[10])]), [iquote('copy,10,flip.1')]).
 fof(20, axiom, (singleton(dollar_c5) = set_union2(dollar_c4,dollar_c3)), file('SET903+1.p',unknown), []).
 fof(35, plain, (set_union2(dollar_c4,dollar_c3) = dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[20,6]),20]),11])]), [iquote('hyper,19,6,demod,20,unit_del,11,flip.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '46':
-%%%%%   Replaced (! [A]: ((ld(A,mult(A,ld(ld(A,A),ld(A,A)))) = ld(A,A))))
-%%%%%   With (! [A]: (~ ((ld(A,mult(A,ld(ld(A,A),ld(A,A)))) = ld(A,A)))))
+%%%%% Mutated formula '16':
+%%%%%   Replaced (! [A,B]: ((ld(A,mult(A,ld(B,B))) = rd(mult(rd(A,A),B),B))))
+%%%%%   With (! [A,B]: (~ ((ld(A,mult(A,ld(B,B))) = rd(mult(rd(A,A),B),B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GRP682+1 : TPTP v8.1.0. Released v4.0.0.
@@ -43,7 +43,7 @@ fof(11, plain, (! [A,B]: ((rd(mult(A,B),B) = mult(rd(A,B),B)))), inference(flip,
 fof(12, axiom, (! [A,B,C,D]: ((ld(ld(A,B),mult(ld(A,B),mult(C,D))) = mult(ld(A,mult(A,C)),D)))), file('GRP682+1.p',unknown), []).
 fof(13, axiom, (! [A,B,C,D]: ((rd(mult(mult(A,B),rd(C,D)),rd(C,D)) = mult(A,rd(mult(B,D),D))))), file('GRP682+1.p',unknown), []).
 fof(14, plain, (! [A,B,C,D]: ((mult(rd(mult(A,B),rd(C,D)),rd(C,D)) = mult(A,mult(rd(B,D),D))))), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[13]),11,11]), [iquote('copy,13,demod,11,11')]).
-fof(16, axiom, (! [A,B]: ((ld(A,mult(A,ld(B,B))) = rd(mult(rd(A,A),B),B)))), file('GRP682+1.p',unknown), []).
+fof(16, axiom, (! [A,B]: (~ ((ld(A,mult(A,ld(B,B))) = rd(mult(rd(A,A),B),B))))), file('GRP682+1.p',unknown), []).
 fof(18, plain, (! [A,B]: ((mult(rd(rd(A,A),B),B) = ld(A,mult(A,ld(B,B)))))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[16]),11])]), [iquote('copy,16,demod,11,flip.1')]).
 fof(19, plain, (! [A]: ((mult(rd(A,A),A) = A))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[5]),11]), [iquote('back_demod,5,demod,11')]).
 fof(21, plain, (! [A,B,C,D]: ((mult(ld(A,mult(A,B)),C) = ld(ld(A,D),mult(ld(A,D),mult(B,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[12])]), [iquote('copy,12,flip.1')]).
@@ -53,7 +53,7 @@ fof(29, plain, (! [A]: ((mult(ld(A,A),A) = A))), inference(demod,[status(thm),th
 fof(30, plain, (! [A,B]: ((mult(rd(ld(A,A),B),B) = ld(A,mult(A,ld(B,B)))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[18]),25]), [iquote('back_demod,17,demod,25')]).
 fof(34, plain, (! [A,B,C]: ((mult(ld(A,mult(A,B)),C) = ld(A,mult(A,mult(B,C)))))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[12,4]),4])]), [iquote('para_into,12.1.1.1,3.1.1,demod,4,flip.1')]).
 fof(40, plain, (! [A,B,C,D]: ((ld(ld(A,B),mult(ld(A,B),mult(C,D))) = ld(A,mult(A,mult(C,D)))))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[21]),34])]), [iquote('back_demod,21,demod,34,flip.1')]).
-fof(46, plain, (! [A]: (~ ((ld(A,mult(A,ld(ld(A,A),ld(A,A)))) = ld(A,A))))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[30,25]),29])]), [iquote('para_into,30.1.1.1,24.1.1,demod,29,flip.1')]).
+fof(46, plain, (! [A]: ((ld(A,mult(A,ld(ld(A,A),ld(A,A)))) = ld(A,A)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[30,25]),29])]), [iquote('para_into,30.1.1.1,24.1.1,demod,29,flip.1')]).
 fof(53, plain, (! [A,B,C]: ((mult(rd(A,rd(B,C)),rd(B,C)) = mult(ld(A,A),mult(rd(A,C),C))))), inference(para_into,[status(thm),theory(equality)],[14,29]), [iquote('para_into,14.1.1.1.1,28.1.1')]).
 fof(61, plain, (! [A,B,C]: ((mult(mult(ld(A,A),mult(rd(A,B),B)),rd(C,B)) = mult(A,mult(rd(rd(C,B),B),B))))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[14,11]),53]), [iquote('para_into,14.1.1.1,10.1.1,demod,53')]).
 fof(80, plain, (! [A,B]: ((ld(A,mult(A,mult(A,B))) = mult(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[34,4])]), [iquote('para_into,33.1.1.1,3.1.1,flip.1')]).

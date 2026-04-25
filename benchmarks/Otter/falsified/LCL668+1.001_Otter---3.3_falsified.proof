@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '748':
-%%%%%   Replaced (! [E,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(C,D)) | (~ (r1(D,E)) | (~ (p5(E)) | ~ (p4(E)))))))))))
-%%%%%   With (! [E,A,B,C,D]: ((r1(dollar_c14,A) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(C,D)) | (~ (r1(D,E)) | (~ (p5(E)) | ~ (p4(E)))))))))))
+%%%%% Mutated formula '234':
+%%%%%   Replaced (! [E,F,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(B,D)) | (~ (r1(D,E)) | (~ (r1(E,F)) | (~ (p3(F)) | ~ (p2(F))))))))))))
+%%%%%   With (! [E,F,A,B,C,D]: ((~ (r1(dollar_c14,A)) & (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(B,D)) | (~ (r1(D,E)) | (~ (r1(E,F)) | (~ (p3(F)) | ~ (p2(F))))))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LCL668+1.001 : TPTP v8.1.0. Released v4.0.0.
@@ -50,13 +50,13 @@ fof(114, plain, (! [E,F,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1
 fof(144, plain, (! [E,F,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(B,D)) | (~ (r1(D,E)) | (~ (r1(E,F)) | (p3(F) | p4(F))))))))))), inference(factor,[status(thm)],[10]), [iquote('factor,10.2.5')]).
 fof(172, plain, (! [E,F,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(B,D)) | (~ (r1(D,E)) | (~ (r1(E,F)) | (~ (p4(F)) | ~ (p3(F)))))))))))), inference(factor,[status(thm)],[11]), [iquote('factor,11.2.5')]).
 fof(206, plain, (! [E,F,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(B,D)) | (~ (r1(D,E)) | (~ (r1(E,F)) | (p2(F) | p3(F))))))))))), inference(factor,[status(thm)],[14]), [iquote('factor,14.2.5')]).
-fof(234, plain, (! [E,F,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(B,D)) | (~ (r1(D,E)) | (~ (r1(E,F)) | (~ (p3(F)) | ~ (p2(F)))))))))))), inference(factor,[status(thm)],[15]), [iquote('factor,15.2.5')]).
+fof(234, plain, (! [E,F,A,B,C,D]: ((~ (r1(dollar_c14,A)) & (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(B,D)) | (~ (r1(D,E)) | (~ (r1(E,F)) | (~ (p3(F)) | ~ (p2(F)))))))))))), inference(factor,[status(thm)],[15]), [iquote('factor,15.2.5')]).
 fof(274, plain, (! [E,F,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(B,D)) | (~ (r1(D,E)) | (~ (r1(E,F)) | (p1(F) | p2(F))))))))))), inference(factor,[status(thm)],[18]), [iquote('factor,18.2.5')]).
 fof(302, plain, (! [E,F,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(B,D)) | (~ (r1(D,E)) | (~ (r1(E,F)) | (~ (p2(F)) | ~ (p1(F)))))))))))), inference(factor,[status(thm)],[19]), [iquote('factor,19.2.5')]).
 fof(394, plain, (! [E,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(C,D)) | (~ (r1(D,E)) | (p5(E) | p1(E)))))))))), inference(factor,[status(thm)],[30]), [iquote('factor,30.3.5')]).
 fof(512, plain, (! [E,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(C,D)) | (~ (r1(D,E)) | (~ (p1(E)) | ~ (p5(E))))))))))), inference(factor,[status(thm)],[58]), [iquote('factor,58.3.5')]).
 fof(630, plain, (! [E,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(C,D)) | (~ (r1(D,E)) | (p4(E) | p5(E)))))))))), inference(factor,[status(thm)],[86]), [iquote('factor,86.3.5')]).
-fof(748, plain, (! [E,A,B,C,D]: ((r1(dollar_c14,A) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(C,D)) | (~ (r1(D,E)) | (~ (p5(E)) | ~ (p4(E))))))))))), inference(factor,[status(thm)],[114]), [iquote('factor,114.3.5')]).
+fof(748, plain, (! [E,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(C,D)) | (~ (r1(D,E)) | (~ (p5(E)) | ~ (p4(E))))))))))), inference(factor,[status(thm)],[114]), [iquote('factor,114.3.5')]).
 fof(866, plain, (! [E,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(C,D)) | (~ (r1(D,E)) | (p3(E) | p4(E)))))))))), inference(factor,[status(thm)],[144]), [iquote('factor,144.3.5')]).
 fof(984, plain, (! [E,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(C,D)) | (~ (r1(D,E)) | (~ (p4(E)) | ~ (p3(E))))))))))), inference(factor,[status(thm)],[172]), [iquote('factor,172.3.5')]).
 fof(1104, plain, (! [E,A,B,C,D]: ((~ (r1(dollar_c14,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,A)) | (~ (r1(C,D)) | (~ (r1(D,E)) | (p2(E) | p3(E)))))))))), inference(factor,[status(thm)],[206]), [iquote('factor,206.3.5')]).

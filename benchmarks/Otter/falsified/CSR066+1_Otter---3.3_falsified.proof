@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '93':
 %%%%%   Replaced isa(f_relationexistsallfn(c_theprototypicalshavingrazor_manual,c_tptp_8_271,c_tptpcol_16_25972,c_shavingrazor_manual),c_tptpcol_16_25972)
-%%%%%   With isa(f_relationexistsallfn(c_tptp_8_271,c_tptp_8_271,c_tptpcol_16_25972,c_shavingrazor_manual),c_tptpcol_16_25972)
+%%%%%   With ~ (isa(f_relationexistsallfn(c_theprototypicalshavingrazor_manual,c_tptp_8_271,c_tptpcol_16_25972,c_shavingrazor_manual),c_tptpcol_16_25972))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR066+1 : TPTP v8.1.0. Released v3.4.0.
@@ -42,6 +42,6 @@ fof(47, axiom, relationexistsall(c_tptp_8_271,c_tptpcol_16_25972,c_shavingrazor_
 fof(48, axiom, shavingrazor_manual(c_theprototypicalshavingrazor_manual), file('CSR066+1.p',unknown), []).
 fof(71, plain, isa(c_theprototypicalshavingrazor_manual,c_shavingrazor_manual), inference(hyper,[status(thm)],[48,19]), [iquote('hyper,48,19')]).
 fof(72, plain, tptp_8_271(f_relationexistsallfn(c_theprototypicalshavingrazor_manual,c_tptp_8_271,c_tptpcol_16_25972,c_shavingrazor_manual),c_theprototypicalshavingrazor_manual), inference(hyper,[status(thm)],[48,2]), [iquote('hyper,48,2')]).
-fof(93, plain, isa(f_relationexistsallfn(c_tptp_8_271,c_tptp_8_271,c_tptpcol_16_25972,c_shavingrazor_manual),c_tptpcol_16_25972), inference(hyper,[status(thm)],[71,1,47]), [iquote('hyper,71,1,47')]).
+fof(93, plain, ~ (isa(f_relationexistsallfn(c_theprototypicalshavingrazor_manual,c_tptp_8_271,c_tptpcol_16_25972,c_shavingrazor_manual),c_tptpcol_16_25972)), inference(hyper,[status(thm)],[71,1,47]), [iquote('hyper,71,1,47')]).
 fof(106, plain, tptpcol_16_25972(f_relationexistsallfn(c_theprototypicalshavingrazor_manual,c_tptp_8_271,c_tptpcol_16_25972,c_shavingrazor_manual)), inference(hyper,[status(thm)],[93,20]), [iquote('hyper,93,20')]).
 fof(107, plain, $false, inference(hyper,[status(thm)],[106,39,72]), [iquote('hyper,106,39,72')]).

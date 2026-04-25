@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c5':
-%%%%%   Replaced (~ (p) | (q | r))
-%%%%%   With (~ (p) & (q | r))
+%%%%% Mutated formula 'c8':
+%%%%%   Replaced (~ (r) | p)
+%%%%%   With (~ (r) & p)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN044+1 : TPTP v8.1.2. Released v2.0.0.
@@ -39,7 +39,7 @@
 fof(pel10_2, axiom, (r => (p & q)), file('SYN044+1.p',pel10_2)).
 fof(c6, plain, (~ (r) | (p & q)), inference(fof_nnf,[status(thm)],[pel10_2])).
 fof(c7, plain, ((~ (r) | p) & (~ (r) | q)), inference(distribute,[status(thm)],[c6])).
-fof(c8, plain, (~ (r) | p), inference(split_conjunct,[status(thm)],[c7])).
+fof(c8, plain, (~ (r) & p), inference(split_conjunct,[status(thm)],[c7])).
 fof(pel10, conjecture, (p <=> q), file('SYN044+1.p',pel10)).
 fof(c0, negated_conjecture, ~ ((p <=> q)), inference(assume_negation,[status(cth)],[pel10])).
 fof(c1, negated_conjecture, ((~ (p) | ~ (q)) & (p | q)), inference(fof_nnf,[status(thm)],[c0])).
@@ -53,7 +53,7 @@ fof(c2, negated_conjecture, (~ (p) | ~ (q)), inference(split_conjunct,[status(th
 fof(c9, plain, (~ (r) | q), inference(split_conjunct,[status(thm)],[c7])).
 fof(pel10_3, axiom, (p => (q | r)), file('SYN044+1.p',pel10_3)).
 fof(c4, plain, (~ (p) | (q | r)), inference(fof_nnf,[status(thm)],[pel10_3])).
-fof(c5, plain, (~ (p) & (q | r)), inference(split_conjunct,[status(thm)],[c4])).
+fof(c5, plain, (~ (p) | (q | r)), inference(split_conjunct,[status(thm)],[c4])).
 fof(c14, plain, (q | r), inference(resolution,[status(thm)],[c5,c3])).
 fof(c21, plain, q, inference(resolution,[status(thm)],[c14,c9])).
 fof(c23, plain, ~ (p), inference(resolution,[status(thm)],[c21,c2])).

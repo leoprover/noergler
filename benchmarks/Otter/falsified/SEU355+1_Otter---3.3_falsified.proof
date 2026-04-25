@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '28':
-%%%%%   Replaced empty(empty_set)
-%%%%%   With empty(dollar_c4)
+%%%%% Mutated formula '18':
+%%%%%   Replaced (! [A,B]: ((~ (in(A,B)) | ~ (empty(B)))))
+%%%%%   With (! [A,B]: ((in(A,B) | ~ (empty(B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU355+1 : TPTP v8.1.0. Released v3.3.0.
@@ -36,9 +36,9 @@
 fof(5, axiom, (! [A,B,C]: ((~ (rel_str(A)) | (~ (element(B,the_carrier(A))) | (relstr_element_smaller(A,C,B) | in(dollar_f1(A,C,B),C)))))), file('SEU355+1.p',unknown), []).
 fof(9, axiom, (! [A,B,C]: ((~ (rel_str(A)) | (~ (element(B,the_carrier(A))) | (relstr_set_smaller(A,C,B) | in(dollar_f2(A,C,B),C)))))), file('SEU355+1.p',unknown), []).
 fof(17, axiom, (~ (relstr_set_smaller(dollar_c7,empty_set,dollar_c6)) | ~ (relstr_element_smaller(dollar_c7,empty_set,dollar_c6))), file('SEU355+1.p',unknown), []).
-fof(18, axiom, (! [A,B]: ((~ (in(A,B)) | ~ (empty(B))))), file('SEU355+1.p',unknown), []).
+fof(18, axiom, (! [A,B]: ((in(A,B) | ~ (empty(B))))), file('SEU355+1.p',unknown), []).
 fof(19, axiom, (! [A,B]: ((~ (empty(A)) | ((A = B) | ~ (empty(B)))))), file('SEU355+1.p',unknown), []).
-fof(28, axiom, empty(dollar_c4), file('SEU355+1.p',unknown), []).
+fof(28, axiom, empty(empty_set), file('SEU355+1.p',unknown), []).
 fof(30, axiom, empty(dollar_c4), file('SEU355+1.p',unknown), []).
 fof(31, axiom, rel_str(dollar_c7), file('SEU355+1.p',unknown), []).
 fof(32, axiom, element(dollar_c6,the_carrier(dollar_c7)), file('SEU355+1.p',unknown), []).

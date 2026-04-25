@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '418':
-%%%%%   Replaced finite(relation_image(dollar_c22,relation_dom(dollar_c22)))
-%%%%%   With ~ (finite(relation_image(dollar_c22,relation_dom(dollar_c22))))
+%%%%% Mutated formula '399':
+%%%%%   Replaced (relation_rng(dollar_c22) = relation_image(dollar_c22,relation_dom(dollar_c22)))
+%%%%%   With ~ ((relation_rng(dollar_c22) = relation_image(dollar_c22,relation_dom(dollar_c22))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU303+3 : TPTP v8.1.0. Released v3.2.0.
@@ -40,7 +40,7 @@ fof(42, axiom, ~ (finite(relation_rng(dollar_c22))), file('SEU303+3.p',unknown),
 fof(141, axiom, relation(dollar_c22), file('SEU303+3.p',unknown), []).
 fof(142, axiom, function(dollar_c22), file('SEU303+3.p',unknown), []).
 fof(143, axiom, finite(relation_dom(dollar_c22)), file('SEU303+3.p',unknown), []).
-fof(399, plain, (relation_rng(dollar_c22) = relation_image(dollar_c22,relation_dom(dollar_c22))), inference(hyper,[status(thm)],[141,40]), [iquote('hyper,141,40')]).
+fof(399, plain, ~ ((relation_rng(dollar_c22) = relation_image(dollar_c22,relation_dom(dollar_c22)))), inference(hyper,[status(thm)],[141,40]), [iquote('hyper,141,40')]).
 fof(404, plain, ~ (finite(relation_image(dollar_c22,relation_dom(dollar_c22)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[42]),399]), [iquote('back_demod,42,demod,399')]).
-fof(418, plain, ~ (finite(relation_image(dollar_c22,relation_dom(dollar_c22)))), inference(hyper,[status(thm)],[143,18,141,142]), [iquote('hyper,143,18,141,142')]).
+fof(418, plain, finite(relation_image(dollar_c22,relation_dom(dollar_c22))), inference(hyper,[status(thm)],[143,18,141,142]), [iquote('hyper,143,18,141,142')]).
 fof(419, plain, $false, inference(binary,[status(thm)],[418,404]), [iquote('binary,418.1,404.1')]).

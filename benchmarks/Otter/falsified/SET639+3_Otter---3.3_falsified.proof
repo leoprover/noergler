@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '16':
 %%%%%   Replaced (empty_set != dollar_c2)
-%%%%%   With (dollar_c2 != dollar_c2)
+%%%%%   With ~ ((empty_set != dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET639+3 : TPTP v8.1.0. Released v2.2.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:18:50 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B]: ((~ (subset(A,B)) | (intersection(A,B) = A)))), file('SET639+3.p',unknown), []).
 fof(15, axiom, (dollar_c2 != empty_set), file('SET639+3.p',unknown), []).
-fof(16, plain, (dollar_c2 != dollar_c2), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[15])]), [iquote('copy,15,flip.1')]).
+fof(16, plain, ~ ((empty_set != dollar_c2)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[15])]), [iquote('copy,15,flip.1')]).
 fof(22, axiom, (! [A,B]: ((intersection(A,B) = intersection(B,A)))), file('SET639+3.p',unknown), []).
 fof(26, axiom, subset(dollar_c2,dollar_c1), file('SET639+3.p',unknown), []).
 fof(28, axiom, (intersection(dollar_c1,dollar_c2) = empty_set), file('SET639+3.p',unknown), []).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '163':
 %%%%%   Replaced aNaturalNumber0(xk)
-%%%%%   With ~ (aNaturalNumber0(xk))
+%%%%%   With aNaturalNumber0(sz10)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM482+1 : TPTP v8.1.0. Released v4.0.0.
@@ -38,7 +38,7 @@ fof(50, axiom, (! [A,B,C]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | 
 fof(72, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | (~ (doDivides0(A,xk)) | ~ (isPrime0(A)))))), file('NUM482+1.p',unknown), []).
 fof(128, plain, (! [A,B]: ((~ (aNaturalNumber0(A)) | (doDivides0(A,A) | (~ (aNaturalNumber0(B)) | (sdtasdt0(A,B) != A)))))), inference(flip,[status(thm),theory(equality)],[inference(factor,[status(thm)],[50])]), [iquote('factor,50.1.2,flip.4')]).
 fof(162, axiom, aNaturalNumber0(sz10), file('NUM482+1.p',unknown), []).
-fof(163, axiom, ~ (aNaturalNumber0(xk)), file('NUM482+1.p',unknown), []).
+fof(163, axiom, aNaturalNumber0(sz10), file('NUM482+1.p',unknown), []).
 fof(164, axiom, isPrime0(xk), file('NUM482+1.p',unknown), []).
 fof(400, plain, (sdtasdt0(xk,sz10) = xk), inference(hyper,[status(thm)],[163,11]), [iquote('hyper,163,11')]).
 fof(3956, plain, doDivides0(xk,xk), inference(hyper,[status(thm)],[400,128,163,162]), [iquote('hyper,400,128,163,162')]).

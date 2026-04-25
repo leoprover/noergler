@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '8':
-%%%%%   Replaced (~ (cowlThing(dollar_c1)) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | cNothing(dollar_c3))))
-%%%%%   With (~ (cowlThing(dollar_c2)) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | cNothing(dollar_c3))))
+%%%%% Mutated formula '7':
+%%%%%   Replaced (~ (cowlThing(dollar_c1)) | (cowlNothing(dollar_c1) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (cNothing(dollar_c3) | cowlNothing(dollar_c3))))))
+%%%%%   With (~ (cowlThing(dollar_c2)) | (cowlNothing(dollar_c1) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (cNothing(dollar_c3) | cowlNothing(dollar_c3))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS130+1 : TPTP v8.1.0. Released v3.1.0.
@@ -39,8 +39,8 @@ fof(3, axiom, (! [A,B]: ((~ (cNothing(A)) | ~ (rp(A,B))))), file('KRS130+1.p',un
 fof(4, axiom, (! [A]: ((~ (cNothing(A)) | rp(A,dollar_f1(A))))), file('KRS130+1.p',unknown), []).
 fof(5, axiom, (~ (cowlThing(dollar_c1)) | (cowlNothing(dollar_c1) | (xsd_string(dollar_c2) | (~ (xsd_integer(dollar_c2)) | (cNothing(dollar_c3) | cowlNothing(dollar_c3)))))), file('KRS130+1.p',unknown), []).
 fof(6, plain, (~ (cowlThing(dollar_c1)) | (xsd_string(dollar_c2) | (~ (xsd_integer(dollar_c2)) | cNothing(dollar_c3)))), inference(unit_del,[status(thm)],[inference(copy,[status(thm)],[5]),1,1]), [iquote('copy,5,unit_del,1,1')]).
-fof(7, axiom, (~ (cowlThing(dollar_c1)) | (cowlNothing(dollar_c1) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (cNothing(dollar_c3) | cowlNothing(dollar_c3)))))), file('KRS130+1.p',unknown), []).
-fof(8, plain, (~ (cowlThing(dollar_c2)) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | cNothing(dollar_c3)))), inference(unit_del,[status(thm)],[inference(copy,[status(thm)],[7]),1,1]), [iquote('copy,7,unit_del,1,1')]).
+fof(7, axiom, (~ (cowlThing(dollar_c2)) | (cowlNothing(dollar_c1) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (cNothing(dollar_c3) | cowlNothing(dollar_c3)))))), file('KRS130+1.p',unknown), []).
+fof(8, plain, (~ (cowlThing(dollar_c1)) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | cNothing(dollar_c3)))), inference(unit_del,[status(thm)],[inference(copy,[status(thm)],[7]),1,1]), [iquote('copy,7,unit_del,1,1')]).
 fof(9, axiom, (! [A]: (cowlThing(A))), file('KRS130+1.p',unknown), []).
 fof(10, axiom, (! [A]: ((xsd_string(A) | xsd_integer(A)))), file('KRS130+1.p',unknown), []).
 fof(11, plain, (xsd_integer(dollar_c2) | cNothing(dollar_c3)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[10,8,9])]), [iquote('hyper,10,8,9,factor_simp')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '1399':
 %%%%%   Replaced (sdtasdt0(xp,xm) = sdtasdt0(xm,xp))
-%%%%%   With (sdtasdt0(xn,xm) = sdtasdt0(xm,xp))
+%%%%%   With ~ ((sdtasdt0(xp,xm) = sdtasdt0(xm,xp)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM525+1 : TPTP v8.1.0. Released v4.0.0.
@@ -53,7 +53,7 @@ fof(185, plain, (sdtsldt0(xn,xp) = xq), inference(flip,[status(thm),theory(equal
 fof(186, plain, (sdtasdt0(xp,sdtasdt0(xp,sdtasdt0(xq,xq))) != sdtasdt0(xn,xn)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[76]),179]), [iquote('back_demod,76,demod,179')]).
 fof(1092, plain, (sdtasdt0(sdtasdt0(xp,xm),xm) = sdtasdt0(xn,xn)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[177,86,176]),179]), [iquote('hyper,177,86,176,demod,179')]).
 fof(1100, plain, (sdtasdt0(sdtasdt0(xm,xp),xm) = sdtasdt0(xm,sdtasdt0(xp,xm))), inference(hyper,[status(thm)],[177,85,176]), [iquote('hyper,177,85,176')]).
-fof(1399, plain, (sdtasdt0(xn,xm) = sdtasdt0(xm,xp)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[177,9,176])]), [iquote('hyper,177,9,176,flip.1')]).
+fof(1399, plain, ~ ((sdtasdt0(xp,xm) = sdtasdt0(xm,xp))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[177,9,176])]), [iquote('hyper,177,9,176,flip.1')]).
 fof(1401, plain, (sdtasdt0(xp,xn) = sdtasdt0(xn,xp)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[177,9,175])]), [iquote('hyper,177,9,175,flip.1')]).
 fof(1548, plain, (sdtasdt0(sdtasdt0(xm,xp),xm) = sdtasdt0(xm,sdtasdt0(xm,xp))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1100]),1399]), [iquote('back_demod,1100,demod,1399')]).
 fof(1550, plain, (sdtasdt0(xn,xn) = sdtasdt0(xm,sdtasdt0(xm,xp))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1092]),1399,1548])]), [iquote('back_demod,1092,demod,1399,1548,flip.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '2849':
 %%%%%   Replaced (dollar_f6(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty)) = dollar_f5(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty)))
-%%%%%   With ~ ((dollar_f6(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty)) = dollar_f5(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty))))
+%%%%%   With (dollar_f6(dollar_f7(uri_owl_inverseOf,uri_owl_InverseFunctionalProperty)) = dollar_f5(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWB028+2 : TPTP v8.1.0. Released v5.2.0.
@@ -62,7 +62,7 @@ fof(2845, plain, iext(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_In
 fof(2846, plain, iext(dollar_f9(dollar_c1,uri_owl_inverseOf,uri_owl_FunctionalProperty,dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty)),dollar_f4(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty)),dollar_f5(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty))), inference(hyper,[status(thm)],[2845,27,109]), [iquote('hyper,2845,27,109')]).
 fof(2847, plain, iext(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty),dollar_f6(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty)),dollar_f4(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[537,19,55,45]),31]), [iquote('hyper,537,19,55,45,unit_del,31')]).
 fof(2848, plain, iext(dollar_f9(dollar_c1,uri_owl_inverseOf,uri_owl_FunctionalProperty,dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty)),dollar_f4(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty)),dollar_f6(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty))), inference(hyper,[status(thm)],[2847,27,109]), [iquote('hyper,2847,27,109')]).
-fof(2849, plain, ~ ((dollar_f6(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty)) = dollar_f5(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty)))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[2848,6,108,2846])]), [iquote('hyper,2848,6,108,2846,flip.1')]).
+fof(2849, plain, (dollar_f6(dollar_f7(uri_owl_inverseOf,uri_owl_InverseFunctionalProperty)) = dollar_f5(dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[2848,6,108,2846])]), [iquote('hyper,2848,6,108,2846,flip.1')]).
 fof(2851, plain, icext(uri_owl_InverseFunctionalProperty,dollar_f7(uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty)), inference(hyper,[status(thm)],[2849,14,507]), [iquote('hyper,2849,14,507')]).
 fof(2852, plain, iext(uri_rdfs_subClassOf,uri_ex_InversesOfFunctionalProperties,uri_owl_InverseFunctionalProperty), inference(hyper,[status(thm)],[2851,19,55,45]), [iquote('hyper,2851,19,55,45')]).
 fof(2853, plain, $false, inference(binary,[status(thm)],[2852,31]), [iquote('binary,2852.1,31.1')]).

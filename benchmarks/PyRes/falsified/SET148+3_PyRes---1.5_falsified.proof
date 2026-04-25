@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c19':
-%%%%%   Replaced (! [X32]: (subset(X32,X32)))
-%%%%%   With (! [X32]: (~ (subset(X32,X32))))
+%%%%% Mutated formula 'reflexivity_of_subset':
+%%%%%   Replaced (! [B]: (subset(B,B)))
+%%%%%   With (! [B]: (~ (subset(B,B))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SET148+3 : TPTP v8.1.2. Released v2.2.0.
@@ -42,9 +42,9 @@ fof(c4, negated_conjecture, (? [B]: ((intersection(B,B) != B))), inference(fof_n
 fof(c5, negated_conjecture, (? [X2]: ((intersection(X2,X2) != X2))), inference(variable_rename,[status(thm)],[c4])).
 fof(c6, negated_conjecture, (intersection(skolem0001,skolem0001) != skolem0001), inference(skolemize,[status(esa)],[c5])).
 fof(c7, negated_conjecture, (intersection(skolem0001,skolem0001) != skolem0001), inference(split_conjunct,[status(thm)],[c6])).
-fof(reflexivity_of_subset, axiom, (! [B]: (subset(B,B))), file('SET148+3.p',reflexivity_of_subset)).
+fof(reflexivity_of_subset, axiom, (! [B]: (~ (subset(B,B)))), file('SET148+3.p',reflexivity_of_subset)).
 fof(c18, plain, (! [X10]: (subset(X10,X10))), inference(variable_rename,[status(thm)],[reflexivity_of_subset])).
-fof(c19, plain, (! [X32]: (~ (subset(X32,X32)))), inference(split_conjunct,[status(thm)],[c18])).
+fof(c19, plain, (! [X32]: (subset(X32,X32))), inference(split_conjunct,[status(thm)],[c18])).
 fof(subset_intersection, axiom, (! [B,C]: ((subset(B,C) => (intersection(B,C) = B)))), file('SET148+3.p',subset_intersection)).
 fof(c47, plain, (! [B,C]: ((~ (subset(B,C)) | (intersection(B,C) = B)))), inference(fof_nnf,[status(thm)],[subset_intersection])).
 fof(c48, plain, (! [X29,X30]: ((~ (subset(X29,X30)) | (intersection(X29,X30) = X29)))), inference(variable_rename,[status(thm)],[c47])).

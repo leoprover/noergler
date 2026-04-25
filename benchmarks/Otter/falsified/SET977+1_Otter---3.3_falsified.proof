@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '772':
-%%%%%   Replaced (cartesian_product2(singleton(dollar_c3),dollar_c4) = empty_set)
-%%%%%   With (cartesian_product2(singleton(dollar_c4),dollar_c4) = empty_set)
+%%%%% Mutated formula '32':
+%%%%%   Replaced (! [A,B]: (((A = empty_set) | in(ordered_pair(B,dollar_f1(A)),cartesian_product2(singleton(B),A)))))
+%%%%%   With (! [A,B]: ((~ ((A = empty_set)) | in(ordered_pair(B,dollar_f1(A)),cartesian_product2(singleton(B),A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET977+1 : TPTP v8.1.0. Released v3.2.0.
@@ -42,7 +42,7 @@ fof(14, axiom, (! [A]: ((A = A))), file('SET977+1.p',unknown), []).
 fof(16, axiom, (! [A]: (((A = empty_set) | in(dollar_f1(A),A)))), file('SET977+1.p',unknown), []).
 fof(22, axiom, ((cartesian_product2(singleton(dollar_c3),dollar_c4) = empty_set) | (cartesian_product2(dollar_c4,singleton(dollar_c3)) = empty_set)), file('SET977+1.p',unknown), []).
 fof(30, plain, (! [A,B]: (((A = empty_set) | in(ordered_pair(dollar_f1(A),B),cartesian_product2(A,singleton(B)))))), inference(hyper,[status(thm)],[16,10,14]), [iquote('hyper,16,10,14')]).
-fof(32, plain, (! [A,B]: (((A = empty_set) | in(ordered_pair(B,dollar_f1(A)),cartesian_product2(singleton(B),A))))), inference(hyper,[status(thm)],[16,7,14]), [iquote('hyper,16,7,14')]).
-fof(772, plain, (cartesian_product2(singleton(dollar_c4),dollar_c4) = empty_set), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[30,2,22]),12]), [iquote('hyper,30,2,22,unit_del,12')]).
+fof(32, plain, (! [A,B]: ((~ ((A = empty_set)) | in(ordered_pair(B,dollar_f1(A)),cartesian_product2(singleton(B),A))))), inference(hyper,[status(thm)],[16,7,14]), [iquote('hyper,16,7,14')]).
+fof(772, plain, (cartesian_product2(singleton(dollar_c3),dollar_c4) = empty_set), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[30,2,22]),12]), [iquote('hyper,30,2,22,unit_del,12')]).
 fof(1465, plain, (empty_set = dollar_c4), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[32,2,772])]), [iquote('hyper,32,2,772,flip.1')]).
 fof(1467, plain, $false, inference(binary,[status(thm)],[1465,12]), [iquote('binary,1465.1,12.1')]).

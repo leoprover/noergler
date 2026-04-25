@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '57':
-%%%%%   Replaced (! [A,B]: ((member(A,suc(B)) | ~ (member(A,union(B,singleton(B)))))))
-%%%%%   With (! [A,B]: ((~ (member(A,suc(B))) | ~ (member(A,union(B,singleton(B)))))))
+%%%%% Mutated formula '814':
+%%%%%   Replaced (! [A]: (member(A,suc(A))))
+%%%%%   With (! [A]: (~ (member(A,suc(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET813+4 : TPTP v8.1.0. Released v3.2.0.
@@ -35,10 +35,10 @@
 %%% Generated on Tue Apr 14 19:19:10 CEST 2026 using command 'transform(fof)'.
 fof(13, axiom, (! [A,B,C]: ((member(A,union(B,C)) | ~ (member(A,C))))), file('SET813+4.p',unknown), []).
 fof(19, axiom, (! [A,B]: ((member(A,singleton(B)) | (A != B)))), file('SET813+4.p',unknown), []).
-fof(57, axiom, (! [A,B]: ((~ (member(A,suc(B))) | ~ (member(A,union(B,singleton(B))))))), file('SET813+4.p',unknown), []).
+fof(57, axiom, (! [A,B]: ((member(A,suc(B)) | ~ (member(A,union(B,singleton(B))))))), file('SET813+4.p',unknown), []).
 fof(58, axiom, ~ (member(dollar_c1,suc(dollar_c1))), file('SET813+4.p',unknown), []).
 fof(66, axiom, (! [A]: ((A = A))), file('SET813+4.p',unknown), []).
 fof(92, plain, (! [A]: (member(A,singleton(A)))), inference(hyper,[status(thm)],[66,19]), [iquote('hyper,66,19')]).
 fof(154, plain, (! [A,B]: (member(A,union(B,singleton(A))))), inference(hyper,[status(thm)],[92,13]), [iquote('hyper,92,13')]).
-fof(814, plain, (! [A]: (member(A,suc(A)))), inference(hyper,[status(thm)],[154,57]), [iquote('hyper,154,57')]).
+fof(814, plain, (! [A]: (~ (member(A,suc(A))))), inference(hyper,[status(thm)],[154,57]), [iquote('hyper,154,57')]).
 fof(815, plain, $false, inference(binary,[status(thm)],[814,58]), [iquote('binary,814.1,58.1')]).

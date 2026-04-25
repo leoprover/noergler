@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '8':
-%%%%%   Replaced (! [A,B]: ((complement(A,B) | ((multiplication(B,A) != zero) | ((multiplication(A,B) != zero) | (addition(B,A) != one))))))
-%%%%%   With (! [A,B]: ((~ (complement(A,B)) | ((multiplication(B,A) != zero) | ((multiplication(A,B) != zero) | (addition(B,A) != one))))))
+%%%%% Mutated formula '80':
+%%%%%   Replaced (c(one) = zero)
+%%%%%   With ~ ((c(one) = zero))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE005+1 : TPTP v8.1.0. Released v4.0.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:13:47 CEST 2026 using command 'transform(fof)'.
 fof(4, axiom, (! [A,B]: ((test(A) | ~ (complement(B,A))))), file('KLE005+1.p',unknown), []).
 fof(6, axiom, (! [A,B]: ((~ (complement(A,B)) | (multiplication(A,B) = zero)))), file('KLE005+1.p',unknown), []).
-fof(8, axiom, (! [A,B]: ((~ (complement(A,B)) | ((multiplication(B,A) != zero) | ((multiplication(A,B) != zero) | (addition(B,A) != one)))))), file('KLE005+1.p',unknown), []).
+fof(8, axiom, (! [A,B]: ((complement(A,B) | ((multiplication(B,A) != zero) | ((multiplication(A,B) != zero) | (addition(B,A) != one)))))), file('KLE005+1.p',unknown), []).
 fof(9, axiom, (! [A,B]: ((~ (test(A)) | ((c(A) != B) | complement(A,B))))), file('KLE005+1.p',unknown), []).
 fof(11, axiom, (c(one) != zero), file('KLE005+1.p',unknown), []).
 fof(13, axiom, (! [A]: ((A = A))), file('KLE005+1.p',unknown), []).
@@ -45,5 +45,5 @@ fof(28, axiom, (! [A]: ((multiplication(one,A) = A))), file('KLE005+1.p',unknown
 fof(61, plain, complement(zero,one), inference(hyper,[status(thm)],[28,8,25,18]), [iquote('hyper,27,8,25,18')]).
 fof(62, plain, test(one), inference(hyper,[status(thm)],[61,4]), [iquote('hyper,61,4')]).
 fof(63, plain, complement(one,c(one)), inference(hyper,[status(thm)],[62,9,13]), [iquote('hyper,62,9,13')]).
-fof(80, plain, (c(one) = zero), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[63,6]),28]), [iquote('hyper,63,6,demod,28')]).
+fof(80, plain, ~ ((c(one) = zero)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[63,6]),28]), [iquote('hyper,63,6,demod,28')]).
 fof(82, plain, $false, inference(binary,[status(thm)],[80,11]), [iquote('binary,80.1,11.1')]).

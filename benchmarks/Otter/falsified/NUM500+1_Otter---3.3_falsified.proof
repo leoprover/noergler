@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '789':
-%%%%%   Replaced (sdtpldt0(sz00,xm) = xm)
-%%%%%   With ~ ((sdtpldt0(sz00,xm) = xm))
+%%%%% Mutated formula '182':
+%%%%%   Replaced (sdtsldt0(sdtasdt0(xn,xm),xp) = xk)
+%%%%%   With ~ ((sdtsldt0(sdtasdt0(xn,xm),xp) = xk))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM500+1 : TPTP v8.1.0. Released v4.0.0.
@@ -54,9 +54,9 @@ fof(175, axiom, aNaturalNumber0(xm), file('NUM500+1.p',unknown), []).
 fof(176, axiom, aNaturalNumber0(xp), file('NUM500+1.p',unknown), []).
 fof(178, axiom, doDivides0(xp,sdtasdt0(xn,xm)), file('NUM500+1.p',unknown), []).
 fof(181, axiom, (xk = sdtsldt0(sdtasdt0(xn,xm),xp)), file('NUM500+1.p',unknown), []).
-fof(182, plain, (sdtsldt0(sdtasdt0(xn,xm),xp) = xk), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[181])]), [iquote('copy,181,flip.1')]).
+fof(182, plain, ~ ((sdtsldt0(sdtasdt0(xn,xm),xp) = xk)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[181])]), [iquote('copy,181,flip.1')]).
 fof(788, plain, (sdtasdt0(xn,xm) = sdtasdt0(xm,xn)), inference(hyper,[status(thm)],[175,9,174]), [iquote('hyper,175,9,174')]).
-fof(789, plain, ~ ((sdtpldt0(sz00,xm) = xm)), inference(hyper,[status(thm)],[175,8]), [iquote('hyper,175,8')]).
+fof(789, plain, (sdtpldt0(sz00,xm) = xm), inference(hyper,[status(thm)],[175,8]), [iquote('hyper,175,8')]).
 fof(827, plain, aNaturalNumber0(sdtasdt0(xm,xn)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[175,3,174]),788]), [iquote('hyper,175,3,174,demod,788')]).
 fof(889, plain, (sdtsldt0(sdtasdt0(xm,xn),xp) = xk), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),788]), [iquote('back_demod,182,demod,788')]).
 fof(890, plain, doDivides0(xp,sdtasdt0(xm,xn)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[178]),788]), [iquote('back_demod,178,demod,788')]).

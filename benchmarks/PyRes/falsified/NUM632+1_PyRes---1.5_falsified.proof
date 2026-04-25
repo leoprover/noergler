@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula 'c26':
 %%%%%   Replaced (sdtlpdtrp0(xc,xQ) = sdtlpdtrp0(xd,xn))
-%%%%%   With (sdtlpdtrp0(xQ,xQ) = sdtlpdtrp0(xd,xn))
+%%%%%   With (sdtlpdtrp0(xd,xQ) = sdtlpdtrp0(xd,xn))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM632+1 : TPTP v8.1.2. Released v4.0.0.
@@ -41,7 +41,7 @@ fof(c23, negated_conjecture, (sdtlpdtrp0(xc,xQ) != szDzizrdt0(xd)), inference(as
 fof(c24, negated_conjecture, (sdtlpdtrp0(xc,xQ) != szDzizrdt0(xd)), inference(fof_simplification,[status(thm)],[c23])).
 fof(c25, negated_conjecture, (sdtlpdtrp0(xc,xQ) != szDzizrdt0(xd)), inference(split_conjunct,[status(thm)],[c24])).
 fof(m__5568, plain, (sdtlpdtrp0(xc,xQ) = sdtlpdtrp0(xd,xn)), file('NUM632+1.p',m__5568)).
-fof(c26, plain, (sdtlpdtrp0(xQ,xQ) = sdtlpdtrp0(xd,xn)), inference(split_conjunct,[status(thm)],[m__5568])).
+fof(c26, plain, (sdtlpdtrp0(xd,xQ) = sdtlpdtrp0(xd,xn)), inference(split_conjunct,[status(thm)],[m__5568])).
 fof(transitivity, axiom, (! [X198,X199,X200]: (((X198 != X199) | ((X199 != X200) | (X198 = X200))))), theory(equality)).
 fof(m__5321, plain, (sdtlpdtrp0(xd,xn) = szDzizrdt0(xd)), file('NUM632+1.p',m__5321)).
 fof(c28, plain, (sdtlpdtrp0(xd,xn) = szDzizrdt0(xd)), inference(split_conjunct,[status(thm)],[m__5321])).

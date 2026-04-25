@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '23':
-%%%%%   Replaced ~ (has_endowment(dollar_c4))
-%%%%%   With has_endowment(dollar_c4)
+%%%%% Mutated formula '4764':
+%%%%%   Replaced is_aligned(dollar_c4,dollar_c2)
+%%%%%   With is_aligned(dollar_c3,dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT054+1 : TPTP v8.1.0. Released v2.4.0.
@@ -47,7 +47,7 @@ fof(19, axiom, (! [A,B,C]: ((~ (organization(A)) | (~ (is_aligned(A,B)) | (is_al
 fof(20, axiom, (! [A,B,C]: ((~ (organization(A)) | ((age(A,B) != zero) | (~ (greater(age(A,C),sigma)) | dissimilar(A,B,C)))))), file('MGT054+1.p',unknown), []).
 fof(21, axiom, (! [A,B,C]: ((~ (organization(A)) | ((age(A,B) != zero) | (greater(age(A,C),sigma) | ~ (dissimilar(A,B,C))))))), file('MGT054+1.p',unknown), []).
 fof(22, axiom, (! [A,B,C]: ((~ (organization(A)) | (has_immunity(A,B) | (has_immunity(A,C) | (~ (greater(capability(A,C),capability(A,B))) | greater(hazard_of_mortality(A,B),hazard_of_mortality(A,C)))))))), file('MGT054+1.p',unknown), []).
-fof(23, axiom, has_endowment(dollar_c4), file('MGT054+1.p',unknown), []).
+fof(23, axiom, ~ (has_endowment(dollar_c4)), file('MGT054+1.p',unknown), []).
 fof(24, axiom, ~ (greater(hazard_of_mortality(dollar_c4,dollar_c1),hazard_of_mortality(dollar_c4,dollar_c2))), file('MGT054+1.p',unknown), []).
 fof(25, plain, (! [A]: (~ (greater(A,A)))), inference(factor,[status(thm)],[9]), [iquote('factor,9.1.2')]).
 fof(28, axiom, (! [A]: ((A = A))), file('MGT054+1.p',unknown), []).
@@ -74,7 +74,7 @@ fof(4719, plain, (dissimilar(dollar_c4,dollar_c1,dollar_c2) | greater(sigma,age(
 fof(4721, plain, (! [A]: ((dissimilar(dollar_c4,dollar_c1,A) | greater(age(dollar_c4,A),sigma)))), inference(hyper,[status(thm)],[4716,105]), [iquote('hyper,4716,105')]).
 fof(4723, plain, dissimilar(dollar_c4,dollar_c1,dollar_c2), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[4721,10,4719]),25])]), [iquote('hyper,4721,10,4719,unit_del,25,factor_simp')]).
 fof(4727, plain, (is_aligned(dollar_c4,dollar_c1) | is_aligned(dollar_c4,dollar_c2)), inference(hyper,[status(thm)],[4723,14]), [iquote('hyper,4723,14')]).
-fof(4764, plain, is_aligned(dollar_c4,dollar_c2), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[4727,15,129,431]),25,25]), [iquote('hyper,4727,15,129,431,unit_del,25,25')]).
+fof(4764, plain, is_aligned(dollar_c3,dollar_c2), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[4727,15,129,431]),25,25]), [iquote('hyper,4727,15,129,431,unit_del,25,25')]).
 fof(4768, plain, (! [A]: ((is_aligned(dollar_c4,A) | greater(capability(dollar_c4,dollar_c2),capability(dollar_c4,A))))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[4764,19,450]),25,25]), [iquote('hyper,4764,19,450,unit_del,25,25')]).
 fof(4772, plain, (! [A]: ((dissimilar(dollar_c4,dollar_c2,A) | is_aligned(dollar_c4,A)))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[4764,16,450]),25,25]), [iquote('hyper,4764,16,450,unit_del,25,25')]).
 fof(4791, plain, (! [A]: ((is_aligned(dollar_c4,A) | (greater(dollar_c2,A) | greater(A,dollar_c2))))), inference(para_into,[status(thm),theory(equality)],[4764,46]), [iquote('para_into,4764.1.2,46.1.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '241':
 %%%%%   Replaced ~ (le_q(n0,pv1325))
-%%%%%   With ~ (le_q(n2,pv1325))
+%%%%%   With le_q(n0,pv1325)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV133+1 : TPTP v8.1.0. Bugfixed v3.3.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:22:29 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, (! [A,B,C]: ((~ (le_q(A,B)) | (~ (le_q(B,C)) | le_q(A,C))))), file('SWV133+1.p',unknown), []).
 fof(8, axiom, (! [A,B]: ((~ (gt(A,B)) | le_q(B,A)))), file('SWV133+1.p',unknown), []).
-fof(241, axiom, ~ (le_q(n2,pv1325)), file('SWV133+1.p',unknown), []).
+fof(241, axiom, le_q(n0,pv1325), file('SWV133+1.p',unknown), []).
 fof(1666, axiom, le_q(n2,pv1325), file('SWV133+1.p',unknown), []).
 fof(1682, axiom, gt(n2,n0), file('SWV133+1.p',unknown), []).
 fof(1759, plain, le_q(n0,n2), inference(hyper,[status(thm)],[1682,8]), [iquote('hyper,1682,8')]).

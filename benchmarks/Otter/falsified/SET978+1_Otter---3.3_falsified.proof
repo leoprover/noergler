@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '5':
-%%%%%   Replaced (dollar_c6 != dollar_c5)
-%%%%%   With ~ ((dollar_c6 != dollar_c5))
+%%%%% Mutated formula '11':
+%%%%%   Replaced (! [A,B,C,D]: (((A = B) | disjoint(cartesian_product2(singleton(A),C),cartesian_product2(singleton(B),D)))))
+%%%%%   With (! [A,B,C,D]: (((A = B) & disjoint(cartesian_product2(singleton(A),C),cartesian_product2(singleton(B),D)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET978+1 : TPTP v8.1.0. Released v3.2.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:19:43 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, (! [A,B,C,D]: ((~ (disjoint(A,B)) | disjoint(cartesian_product2(A,C),cartesian_product2(B,D))))), file('SET978+1.p',unknown), []).
 fof(4, axiom, (! [A,B,C,D]: ((~ (disjoint(A,B)) | disjoint(cartesian_product2(C,A),cartesian_product2(D,B))))), file('SET978+1.p',unknown), []).
-fof(5, axiom, ~ ((dollar_c6 != dollar_c5)), file('SET978+1.p',unknown), []).
+fof(5, axiom, (dollar_c6 != dollar_c5), file('SET978+1.p',unknown), []).
 fof(6, axiom, (~ (disjoint(cartesian_product2(singleton(dollar_c6),dollar_c4),cartesian_product2(singleton(dollar_c5),dollar_c3))) | ~ (disjoint(cartesian_product2(dollar_c4,singleton(dollar_c6)),cartesian_product2(dollar_c3,singleton(dollar_c5))))), file('SET978+1.p',unknown), []).
 fof(9, axiom, (! [A,B]: (((A = B) | disjoint(singleton(A),singleton(B))))), file('SET978+1.p',unknown), []).
 fof(10, plain, (! [A,B,C,D]: (((A = B) | disjoint(cartesian_product2(C,singleton(A)),cartesian_product2(D,singleton(B)))))), inference(hyper,[status(thm)],[9,4]), [iquote('hyper,9,4')]).
-fof(11, plain, (! [A,B,C,D]: (((A = B) | disjoint(cartesian_product2(singleton(A),C),cartesian_product2(singleton(B),D))))), inference(hyper,[status(thm)],[9,3]), [iquote('hyper,9,3')]).
+fof(11, plain, (! [A,B,C,D]: (((A = B) & disjoint(cartesian_product2(singleton(A),C),cartesian_product2(singleton(B),D))))), inference(hyper,[status(thm)],[9,3]), [iquote('hyper,9,3')]).
 fof(172, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[11,6,10]),5,5]), [iquote('hyper,11,6,10,unit_del,5,5')]).

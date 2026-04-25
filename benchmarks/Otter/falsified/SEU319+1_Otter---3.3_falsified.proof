@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '212':
-%%%%%   Replaced (closed_subset(dollar_c3,dollar_c4) | open_subset(set_difference(cast_as_carrier_subset(dollar_c4),dollar_c3),dollar_c4))
-%%%%%   With (closed_subset(dollar_c4,dollar_c4) | open_subset(set_difference(cast_as_carrier_subset(dollar_c4),dollar_c3),dollar_c4))
+%%%%% Mutated formula '25':
+%%%%%   Replaced one_sorted_str(dollar_c4)
+%%%%%   With one_sorted_str(dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU319+1 : TPTP v8.1.0. Released v3.3.0.
@@ -43,14 +43,14 @@ fof(10, axiom, (~ (closed_subset(dollar_c3,dollar_c4)) | ~ (open_subset(subset_c
 fof(20, axiom, top_str(dollar_c4), file('SEU319+1.p',unknown), []).
 fof(21, axiom, element(dollar_c3,powerset(the_carrier(dollar_c4))), file('SEU319+1.p',unknown), []).
 fof(22, axiom, (closed_subset(dollar_c3,dollar_c4) | open_subset(subset_complement(the_carrier(dollar_c4),dollar_c3),dollar_c4)), file('SEU319+1.p',unknown), []).
-fof(25, plain, one_sorted_str(dollar_c4), inference(hyper,[status(thm)],[20,6]), [iquote('hyper,20,6')]).
+fof(25, plain, one_sorted_str(dollar_c3), inference(hyper,[status(thm)],[20,6]), [iquote('hyper,20,6')]).
 fof(40, plain, element(cast_as_carrier_subset(dollar_c4),powerset(the_carrier(dollar_c4))), inference(hyper,[status(thm)],[25,3]), [iquote('hyper,25,3')]).
 fof(66, plain, (subset_complement(the_carrier(dollar_c4),dollar_c3) = subset_difference(the_carrier(dollar_c4),cast_as_carrier_subset(dollar_c4),dollar_c3)), inference(hyper,[status(thm)],[21,9,25]), [iquote('hyper,21,9,25')]).
 fof(85, plain, (closed_subset(dollar_c3,dollar_c4) | open_subset(subset_difference(the_carrier(dollar_c4),cast_as_carrier_subset(dollar_c4),dollar_c3),dollar_c4)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[22]),66]), [iquote('back_demod,22,demod,66')]).
 fof(86, plain, (~ (closed_subset(dollar_c3,dollar_c4)) | ~ (open_subset(subset_difference(the_carrier(dollar_c4),cast_as_carrier_subset(dollar_c4),dollar_c3),dollar_c4))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[10]),66]), [iquote('back_demod,10,demod,66')]).
 fof(195, plain, (subset_difference(the_carrier(dollar_c4),cast_as_carrier_subset(dollar_c4),dollar_c3) = set_difference(cast_as_carrier_subset(dollar_c4),dollar_c3)), inference(hyper,[status(thm)],[40,8,21]), [iquote('hyper,40,8,21')]).
 fof(211, plain, (~ (closed_subset(dollar_c3,dollar_c4)) | ~ (open_subset(set_difference(cast_as_carrier_subset(dollar_c4),dollar_c3),dollar_c4))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[86]),195]), [iquote('back_demod,86,demod,195')]).
-fof(212, plain, (closed_subset(dollar_c4,dollar_c4) | open_subset(set_difference(cast_as_carrier_subset(dollar_c4),dollar_c3),dollar_c4)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[85]),195]), [iquote('back_demod,85,demod,195')]).
+fof(212, plain, (closed_subset(dollar_c3,dollar_c4) | open_subset(set_difference(cast_as_carrier_subset(dollar_c4),dollar_c3),dollar_c4)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[85]),195]), [iquote('back_demod,85,demod,195')]).
 fof(1043, plain, (closed_subset(dollar_c3,dollar_c4) | ~ (open_subset(set_difference(cast_as_carrier_subset(dollar_c4),dollar_c3),dollar_c4))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[195,2]),20,21]), [iquote('para_from,194.1.1,2.4.1,unit_del,20,21')]).
 fof(1045, plain, closed_subset(dollar_c3,dollar_c4), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[1043,212])]), [iquote('hyper,1043,212,factor_simp')]).
 fof(1046, plain, open_subset(set_difference(cast_as_carrier_subset(dollar_c4),dollar_c3),dollar_c4), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[1045,1,20,21]),195]), [iquote('hyper,1045,1,20,21,demod,195')]).

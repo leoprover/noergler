@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '16':
-%%%%%   Replaced (! [A]: ((v3_struct_0(A) | (~ (v3_group_1(A)) | (~ (v4_group_1(A)) | (~ (l1_group_1(A)) | v1_funct_1(k1_latsubgr(A))))))))
-%%%%%   With (! [A]: ((~ (v3_struct_0(A)) | (~ (v3_group_1(A)) | (~ (v4_group_1(A)) | (~ (l1_group_1(A)) | v1_funct_1(k1_latsubgr(A))))))))
+%%%%% Mutated formula '55':
+%%%%%   Replaced v3_group_1(dollar_c2)
+%%%%%   With ~ (v3_group_1(dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GRP642+1 : TPTP v8.1.0. Released v3.4.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:13:32 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, ~ (v3_struct_0(dollar_c2)), file('GRP642+1.p',unknown), []).
 fof(9, axiom, (! [A,B,C]: ((v3_struct_0(A) | (~ (v3_group_1(A)) | (~ (v4_group_1(A)) | (~ (l1_group_1(A)) | (~ (v1_funct_1(B)) | (~ (v1_funct_2(B,k1_group_3(A),k1_zfmisc_1(u1_struct_0(A)))) | (~ (m2_relset_1(B,k1_group_3(A),k1_zfmisc_1(u1_struct_0(A)))) | ((B != k1_latsubgr(A)) | (~ (v1_group_1(C)) | (~ (m1_group_2(C,A)) | (k1_funct_1(B,C) = u1_struct_0(C)))))))))))))), file('GRP642+1.p',unknown), []).
-fof(16, axiom, (! [A]: ((~ (v3_struct_0(A)) | (~ (v3_group_1(A)) | (~ (v4_group_1(A)) | (~ (l1_group_1(A)) | v1_funct_1(k1_latsubgr(A)))))))), file('GRP642+1.p',unknown), []).
+fof(16, axiom, (! [A]: ((v3_struct_0(A) | (~ (v3_group_1(A)) | (~ (v4_group_1(A)) | (~ (l1_group_1(A)) | v1_funct_1(k1_latsubgr(A)))))))), file('GRP642+1.p',unknown), []).
 fof(17, axiom, (! [A]: ((v3_struct_0(A) | (~ (v3_group_1(A)) | (~ (v4_group_1(A)) | (~ (l1_group_1(A)) | v1_funct_2(k1_latsubgr(A),k1_group_3(A),k1_zfmisc_1(u1_struct_0(A))))))))), file('GRP642+1.p',unknown), []).
 fof(18, axiom, (! [A]: ((v3_struct_0(A) | (~ (v3_group_1(A)) | (~ (v4_group_1(A)) | (~ (l1_group_1(A)) | m2_relset_1(k1_latsubgr(A),k1_group_3(A),k1_zfmisc_1(u1_struct_0(A))))))))), file('GRP642+1.p',unknown), []).
 fof(19, axiom, (! [A]: ((~ (l1_group_1(A)) | l1_struct_0(A)))), file('GRP642+1.p',unknown), []).
@@ -44,7 +44,7 @@ fof(22, axiom, (! [A,B]: ((v3_struct_0(A) | (~ (v3_group_1(A)) | (~ (l1_group_1(
 fof(29, axiom, (! [A]: ((v3_struct_0(A) | (~ (l1_struct_0(A)) | ~ (v1_xboole_0(u1_struct_0(A))))))), file('GRP642+1.p',unknown), []).
 fof(49, axiom, (! [A,B]: ((~ (v1_xboole_0(A)) | ((A = B) | ~ (v1_xboole_0(B)))))), file('GRP642+1.p',unknown), []).
 fof(54, axiom, (! [A]: ((A = A))), file('GRP642+1.p',unknown), []).
-fof(55, axiom, v3_group_1(dollar_c2), file('GRP642+1.p',unknown), []).
+fof(55, axiom, ~ (v3_group_1(dollar_c2)), file('GRP642+1.p',unknown), []).
 fof(56, axiom, v4_group_1(dollar_c2), file('GRP642+1.p',unknown), []).
 fof(57, axiom, l1_group_1(dollar_c2), file('GRP642+1.p',unknown), []).
 fof(58, axiom, v1_group_1(dollar_c1), file('GRP642+1.p',unknown), []).

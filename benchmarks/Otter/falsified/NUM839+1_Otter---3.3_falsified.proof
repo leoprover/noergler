@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '20':
-%%%%%   Replaced (! [A,B]: ((~ (greater(A,B)) | ~ (less(A,B)))))
-%%%%%   With (! [A,B]: ((greater(A,B) | ~ (less(A,B)))))
+%%%%% Mutated formula '52':
+%%%%%   Replaced (! [A,B,C]: ((vplus(vplus(A,B),C) = vplus(A,vplus(B,C)))))
+%%%%%   With (! [A,B,C]: (~ ((vplus(vplus(A,B),C) = vplus(A,vplus(B,C))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM839+1 : TPTP v8.1.0. Released v4.1.0.
@@ -40,7 +40,7 @@ fof(4, axiom, (! [A,B,C]: ((~ (greater(A,B)) | greater(vplus(A,C),vplus(B,C)))))
 fof(14, axiom, (! [A,B]: ((~ (ge_q(A,B)) | (greater(A,B) | (A = B))))), file('NUM839+1.p',unknown), []).
 fof(15, axiom, (! [A,B]: ((ge_q(A,B) | ~ (greater(A,B))))), file('NUM839+1.p',unknown), []).
 fof(18, axiom, (! [A,B]: ((~ (greater(A,B)) | less(B,A)))), file('NUM839+1.p',unknown), []).
-fof(20, axiom, (! [A,B]: ((greater(A,B) | ~ (less(A,B))))), file('NUM839+1.p',unknown), []).
+fof(20, axiom, (! [A,B]: ((~ (greater(A,B)) | ~ (less(A,B))))), file('NUM839+1.p',unknown), []).
 fof(22, axiom, (! [A,B]: ((~ (less(A,B)) | (B = vplus(A,dollar_f1(B,A)))))), file('NUM839+1.p',unknown), []).
 fof(23, plain, (! [A,B]: ((~ (less(A,B)) | (vplus(A,dollar_f1(B,A)) = B)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[22])]), [iquote('copy,22,flip.2')]).
 fof(24, axiom, (! [A,B,C]: ((less(A,B) | (B != vplus(A,C))))), file('NUM839+1.p',unknown), []).
@@ -56,7 +56,7 @@ fof(41, axiom, (! [A,B]: (((A = B) | (greater(A,B) | less(A,B))))), file('NUM839
 fof(44, axiom, (! [A,B]: ((vplus(A,B) = vplus(B,A)))), file('NUM839+1.p',unknown), []).
 fof(48, axiom, (! [A]: ((vplus(v1,A) = vsucc(A)))), file('NUM839+1.p',unknown), []).
 fof(50, plain, (! [A]: ((vsucc(A) = vplus(v1,A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[48])]), [iquote('copy,48,flip.1')]).
-fof(52, axiom, (! [A,B,C]: ((vplus(vplus(A,B),C) = vplus(A,vplus(B,C))))), file('NUM839+1.p',unknown), []).
+fof(52, axiom, (! [A,B,C]: (~ ((vplus(vplus(A,B),C) = vplus(A,vplus(B,C)))))), file('NUM839+1.p',unknown), []).
 fof(55, axiom, (! [A]: (((A = v1) | (A = vsucc(vskolem2(A)))))), file('NUM839+1.p',unknown), []).
 fof(56, plain, (! [A]: (((A = v1) | (vplus(v1,vskolem2(A)) = A)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[55]),50])]), [iquote('copy,55,demod,50,flip.2')]).
 fof(58, plain, (! [A,B]: (less(A,vplus(A,B)))), inference(hyper,[status(thm)],[38,24]), [iquote('hyper,38,24')]).

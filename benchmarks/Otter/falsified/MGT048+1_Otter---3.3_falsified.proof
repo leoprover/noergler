@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '21':
-%%%%%   Replaced greater(age(dollar_c3,dollar_c1),age(dollar_c3,dollar_c2))
-%%%%%   With ~ (greater(age(dollar_c3,dollar_c1),age(dollar_c3,dollar_c2)))
+%%%%% Mutated formula '24':
+%%%%%   Replaced (! [A,B]: ((stock_of_knowledge(dollar_c3,A) = stock_of_knowledge(dollar_c3,B))))
+%%%%%   With (! [A,B]: ((stock_of_knowledge(dollar_c2,A) = stock_of_knowledge(dollar_c3,B))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT048+1 : TPTP v8.1.0. Released v2.4.0.
@@ -39,8 +39,8 @@ fof(14, axiom, (! [A,B,C]: ((~ (organization(A)) | (stock_of_knowledge(A,B) = st
 fof(15, axiom, (! [A,B,C]: ((~ (organization(A)) | (~ (greater(age(A,B),age(A,C))) | greater(internal_friction(A,B),internal_friction(A,C)))))), file('MGT048+1.p',unknown), []).
 fof(16, axiom, ~ (smaller(capability(dollar_c3,dollar_c1),capability(dollar_c3,dollar_c2))), file('MGT048+1.p',unknown), []).
 fof(20, axiom, organization(dollar_c3), file('MGT048+1.p',unknown), []).
-fof(21, axiom, ~ (greater(age(dollar_c3,dollar_c1),age(dollar_c3,dollar_c2))), file('MGT048+1.p',unknown), []).
-fof(24, plain, (! [A,B]: ((stock_of_knowledge(dollar_c3,A) = stock_of_knowledge(dollar_c3,B)))), inference(hyper,[status(thm)],[20,14]), [iquote('hyper,20,14')]).
+fof(21, axiom, greater(age(dollar_c3,dollar_c1),age(dollar_c3,dollar_c2)), file('MGT048+1.p',unknown), []).
+fof(24, plain, (! [A,B]: ((stock_of_knowledge(dollar_c2,A) = stock_of_knowledge(dollar_c3,B)))), inference(hyper,[status(thm)],[20,14]), [iquote('hyper,20,14')]).
 fof(27, plain, greater(internal_friction(dollar_c3,dollar_c1),internal_friction(dollar_c3,dollar_c2)), inference(hyper,[status(thm)],[21,15,20]), [iquote('hyper,21,15,20')]).
 fof(79, plain, (! [A,B]: (smaller_or_e_qual(stock_of_knowledge(dollar_c3,A),stock_of_knowledge(dollar_c3,B)))), inference(hyper,[status(thm)],[24,3]), [iquote('hyper,24,3')]).
 fof(165, plain, smaller(capability(dollar_c3,dollar_c1),capability(dollar_c3,dollar_c2)), inference(hyper,[status(thm)],[79,12,20,27]), [iquote('hyper,79,12,20,27')]).

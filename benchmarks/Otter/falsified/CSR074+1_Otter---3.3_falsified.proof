@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '75':
-%%%%%   Replaced mtvisible(c_worldgeographymt)
-%%%%%   With mtvisible(c_tptpgeo_spindleheadmt)
+%%%%% Mutated formula '30':
+%%%%%   Replaced (! [A,B,C]: ((~ (inregion(A,B)) | (~ (inregion(B,C)) | inregion(A,C)))))
+%%%%%   With (! [A,B,C]: ((inregion(A,B) | (~ (inregion(B,C)) | inregion(A,C)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR074+1 : TPTP v8.1.0. Released v3.4.0.
@@ -37,7 +37,7 @@ fof(1, axiom, (! [A,B]: ((~ (geographicalsubregions(A,B)) | inregion(B,A)))), fi
 fof(2, axiom, (~ (mtvisible(c_worldgeographymt)) | geolevel_3(c_georegion_l3_x17_y24)), file('CSR074+1.p',unknown), []).
 fof(3, axiom, (~ (mtvisible(c_tptpgeo_member7_mt)) | geographicalsubregions(c_georegion_l3_x17_y24,c_georegion_l4_x53_y74)), file('CSR074+1.p',unknown), []).
 fof(4, axiom, (~ (mtvisible(c_tptpgeo_member7_mt)) | inregion(c_geolocation_x53_y74,c_georegion_l4_x53_y74)), file('CSR074+1.p',unknown), []).
-fof(30, axiom, (! [A,B,C]: ((~ (inregion(A,B)) | (~ (inregion(B,C)) | inregion(A,C))))), file('CSR074+1.p',unknown), []).
+fof(30, axiom, (! [A,B,C]: ((inregion(A,B) | (~ (inregion(B,C)) | inregion(A,C))))), file('CSR074+1.p',unknown), []).
 fof(35, axiom, (! [A,B]: ((~ (mtvisible(A)) | (~ (genlmt(A,B)) | mtvisible(B))))), file('CSR074+1.p',unknown), []).
 fof(40, axiom, (~ (inregion(c_geolocation_x53_y74,c_georegion_l3_x17_y24)) | ~ (geolevel_3(c_georegion_l3_x17_y24))), file('CSR074+1.p',unknown), []).
 fof(47, axiom, genlmt(c_tptpgeo_spindleheadmt,c_worldgeographymt), file('CSR074+1.p',unknown), []).
@@ -46,7 +46,7 @@ fof(51, axiom, mtvisible(c_tptpgeo_member7_mt), file('CSR074+1.p',unknown), []).
 fof(58, plain, inregion(c_geolocation_x53_y74,c_georegion_l4_x53_y74), inference(hyper,[status(thm)],[51,4]), [iquote('hyper,51,4')]).
 fof(59, plain, geographicalsubregions(c_georegion_l3_x17_y24,c_georegion_l4_x53_y74), inference(hyper,[status(thm)],[51,3]), [iquote('hyper,51,3')]).
 fof(73, plain, mtvisible(c_tptpgeo_spindleheadmt), inference(hyper,[status(thm)],[48,35,51]), [iquote('hyper,48,35,51')]).
-fof(75, plain, mtvisible(c_tptpgeo_spindleheadmt), inference(hyper,[status(thm)],[73,35,47]), [iquote('hyper,73,35,47')]).
+fof(75, plain, mtvisible(c_worldgeographymt), inference(hyper,[status(thm)],[73,35,47]), [iquote('hyper,73,35,47')]).
 fof(79, plain, geolevel_3(c_georegion_l3_x17_y24), inference(hyper,[status(thm)],[75,2]), [iquote('hyper,75,2')]).
 fof(88, plain, inregion(c_georegion_l4_x53_y74,c_georegion_l3_x17_y24), inference(hyper,[status(thm)],[59,1]), [iquote('hyper,59,1')]).
 fof(99, plain, inregion(c_geolocation_x53_y74,c_georegion_l3_x17_y24), inference(hyper,[status(thm)],[88,30,58]), [iquote('hyper,88,30,58')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '58':
-%%%%%   Replaced in(dollar_c10,relation_dom(relation_dom_restriction(dollar_c9,dollar_c11)))
-%%%%%   With ~ (in(dollar_c10,relation_dom(relation_dom_restriction(dollar_c9,dollar_c11))))
+%%%%% Mutated formula '56':
+%%%%%   Replaced relation(dollar_c9)
+%%%%%   With ~ (relation(dollar_c9))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU223+1 : TPTP v8.1.0. Released v3.3.0.
@@ -38,9 +38,9 @@ fof(16, axiom, (! [A,B]: ((~ (relation(A)) | (~ (function(A)) | function(relatio
 fof(20, axiom, (apply(relation_dom_restriction(dollar_c9,dollar_c11),dollar_c10) != apply(dollar_c9,dollar_c10)), file('SEU223+1.p',unknown), []).
 fof(22, axiom, (! [A,B,C,D]: ((~ (relation(A)) | (~ (function(A)) | (~ (relation(B)) | (~ (function(B)) | ((A != relation_dom_restriction(B,C)) | (~ (in(D,relation_dom(A))) | (apply(A,D) = apply(B,D)))))))))), file('SEU223+1.p',unknown), []).
 fof(32, axiom, (! [A]: ((A = A))), file('SEU223+1.p',unknown), []).
-fof(56, axiom, relation(dollar_c9), file('SEU223+1.p',unknown), []).
+fof(56, axiom, ~ (relation(dollar_c9)), file('SEU223+1.p',unknown), []).
 fof(57, axiom, function(dollar_c9), file('SEU223+1.p',unknown), []).
-fof(58, axiom, ~ (in(dollar_c10,relation_dom(relation_dom_restriction(dollar_c9,dollar_c11)))), file('SEU223+1.p',unknown), []).
+fof(58, axiom, in(dollar_c10,relation_dom(relation_dom_restriction(dollar_c9,dollar_c11))), file('SEU223+1.p',unknown), []).
 fof(154, plain, (! [A]: (relation(relation_dom_restriction(dollar_c9,A)))), inference(hyper,[status(thm)],[56,15]), [iquote('hyper,56,15')]).
 fof(161, plain, (! [A]: (function(relation_dom_restriction(dollar_c9,A)))), inference(hyper,[status(thm)],[57,16,56]), [iquote('hyper,57,16,56')]).
 fof(1991, plain, (apply(relation_dom_restriction(dollar_c9,dollar_c11),dollar_c10) = apply(dollar_c9,dollar_c10)), inference(hyper,[status(thm)],[161,22,154,56,57,32,58]), [iquote('hyper,161,22,154,56,57,32,58')]).

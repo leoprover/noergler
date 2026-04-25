@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '87':
-%%%%%   Replaced rdn_translate(n1,rdn_pos(rdnn(n1)))
-%%%%%   With ~ (rdn_translate(n1,rdn_pos(rdnn(n1))))
+%%%%% Mutated formula '751':
+%%%%%   Replaced (! [A]: (rdn_translate(A,rdn_pos(rdnn(n1)))))
+%%%%%   With (! [A]: (~ (rdn_translate(A,rdn_pos(rdnn(n1))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM295+1 : TPTP v8.1.0. Released v3.1.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:15:55 CEST 2026 using command 'transform(fof)'.
 fof(8, axiom, (! [A,B,C,D]: ((~ (rdn_translate(A,rdn_neg(B))) | (~ (rdn_translate(C,rdn_pos(D))) | less(A,C))))), file('NUM295+1.p',unknown), []).
 fof(32, axiom, (! [A,B]: (~ (less(A,B)))), file('NUM295+1.p',unknown), []).
-fof(87, axiom, ~ (rdn_translate(n1,rdn_pos(rdnn(n1)))), file('NUM295+1.p',unknown), []).
+fof(87, axiom, rdn_translate(n1,rdn_pos(rdnn(n1))), file('NUM295+1.p',unknown), []).
 fof(360, axiom, (! [A,B]: ((less(A,B) | (less(B,A) | (B = A))))), file('NUM295+1.p',unknown), []).
 fof(361, plain, (! [A,B]: ((A = B))), inference(unit_del,[status(thm)],[inference(copy,[status(thm)],[360]),32,32]), [iquote('copy,360,unit_del,32,32')]).
-fof(751, plain, (! [A]: (rdn_translate(A,rdn_pos(rdnn(n1))))), inference(para_from,[status(thm),theory(equality)],[361,87]), [iquote('para_from,361.1.1,87.1.1')]).
+fof(751, plain, (! [A]: (~ (rdn_translate(A,rdn_pos(rdnn(n1)))))), inference(para_from,[status(thm),theory(equality)],[361,87]), [iquote('para_from,361.1.1,87.1.1')]).
 fof(769, plain, (! [A,B]: (~ (rdn_translate(A,rdn_pos(B))))), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[361,8]),32])]), [iquote('para_from,361.1.1,8.1.2,unit_del,32,factor_simp')]).
 fof(770, plain, $false, inference(binary,[status(thm)],[769,751]), [iquote('binary,769.1,751.1')]).

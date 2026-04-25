@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '829':
-%%%%%   Replaced ne_q(dollar_c5,dollar_c5)
-%%%%%   With ~ (ne_q(dollar_c5,dollar_c5))
+%%%%% Mutated formula '826':
+%%%%%   Replaced (dollar_c6 = dollar_c5)
+%%%%%   With (dollar_c7 = dollar_c5)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC213+1 : TPTP v8.1.0. Released v2.4.0.
@@ -47,7 +47,7 @@ fof(463, plain, ~ (ne_q(dollar_c6,nil)), inference(demod,[status(thm),theory(equ
 fof(811, plain, (nil = dollar_c6), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[450,80,440]),463])]), [iquote('hyper,450,80,440,unit_del,463,flip.1')]).
 fof(817, plain, ~ (ne_q(dollar_c6,dollar_c6)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[463]),811]), [iquote('back_demod,463,demod,811')]).
 fof(818, plain, ne_q(dollar_c5,dollar_c6), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[457]),811]), [iquote('back_demod,457,demod,811')]).
-fof(826, plain, (dollar_c6 = dollar_c5), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[185]),811,811]),437]), [iquote('back_demod,185,demod,811,811,unit_del,437')]).
-fof(829, plain, ~ (ne_q(dollar_c5,dollar_c5)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[818]),826]), [iquote('back_demod,818,demod,826')]).
+fof(826, plain, (dollar_c7 = dollar_c5), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[185]),811,811]),437]), [iquote('back_demod,185,demod,811,811,unit_del,437')]).
+fof(829, plain, ne_q(dollar_c5,dollar_c5), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[818]),826]), [iquote('back_demod,818,demod,826')]).
 fof(830, plain, ~ (ne_q(dollar_c5,dollar_c5)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[817]),826,826]), [iquote('back_demod,817,demod,826,826')]).
 fof(831, plain, $false, inference(binary,[status(thm)],[830,829]), [iquote('binary,830.1,829.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '114':
-%%%%%   Replaced (dollar_c2 = dollar_c1)
-%%%%%   With (dollar_c6 = dollar_c1)
+%%%%% Mutated formula '22':
+%%%%%   Replaced size(dollar_c7,dollar_c3,dollar_c1)
+%%%%%   With size(dollar_c3,dollar_c3,dollar_c1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT013+1 : TPTP v8.1.0. Released v2.0.0.
@@ -49,7 +49,7 @@ fof(18, axiom, reorganization_free(dollar_c7,dollar_c2,dollar_c1), file('MGT013+
 fof(19, axiom, complexity(dollar_c7,dollar_c6,dollar_c2), file('MGT013+1.p',unknown), []).
 fof(20, axiom, complexity(dollar_c7,dollar_c5,dollar_c1), file('MGT013+1.p',unknown), []).
 fof(21, axiom, size(dollar_c7,dollar_c4,dollar_c2), file('MGT013+1.p',unknown), []).
-fof(22, axiom, size(dollar_c7,dollar_c3,dollar_c1), file('MGT013+1.p',unknown), []).
+fof(22, axiom, size(dollar_c3,dollar_c3,dollar_c1), file('MGT013+1.p',unknown), []).
 fof(23, axiom, greater(dollar_c5,dollar_c6), file('MGT013+1.p',unknown), []).
 fof(24, axiom, greater(dollar_c4,dollar_c3), file('MGT013+1.p',unknown), []).
 fof(25, plain, time(dollar_c2), inference(hyper,[status(thm)],[16,3]), [iquote('hyper,16,3')]).
@@ -57,7 +57,7 @@ fof(34, plain, time(dollar_c1), inference(hyper,[status(thm)],[17,3]), [iquote('
 fof(41, plain, (greater(dollar_c2,dollar_c1) | ((dollar_c2 = dollar_c1) | greater(dollar_c1,dollar_c2))), inference(hyper,[status(thm)],[34,4,25]), [iquote('hyper,34,4,25')]).
 fof(44, plain, reorganization_free(dollar_c7,dollar_c1,dollar_c2), inference(hyper,[status(thm)],[18,5]), [iquote('hyper,18,5')]).
 fof(111, plain, ((dollar_c2 = dollar_c1) | greater(dollar_c1,dollar_c2)), inference(hyper,[status(thm)],[41,8,17,16,44,20,19,23]), [iquote('hyper,41,8,17,16,44,20,19,23')]).
-fof(114, plain, (dollar_c6 = dollar_c1), inference(hyper,[status(thm)],[111,7,16,17,18,21,22,24]), [iquote('hyper,111,7,16,17,18,21,22,24')]).
+fof(114, plain, (dollar_c2 = dollar_c1), inference(hyper,[status(thm)],[111,7,16,17,18,21,22,24]), [iquote('hyper,111,7,16,17,18,21,22,24')]).
 fof(144, plain, complexity(dollar_c7,dollar_c6,dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[19]),114]), [iquote('back_demod,19,demod,114')]).
 fof(165, plain, (dollar_c6 = dollar_c5), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[144,11,17,20,15])]), [iquote('hyper,144,11,17,20,15,flip.1')]).
 fof(171, plain, greater(dollar_c5,dollar_c5), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[23]),165]), [iquote('back_demod,23,demod,165')]).

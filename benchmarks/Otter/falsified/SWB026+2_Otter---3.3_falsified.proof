@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '310':
-%%%%%   Replaced (icext(uri_owl_InverseFunctionalProperty,uri_ex_p) | iext(uri_ex_p,dollar_f3(uri_ex_p),dollar_f2(uri_ex_p)))
-%%%%%   With (icext(uri_owl_InverseFunctionalProperty,uri_ex_p) & iext(uri_ex_p,dollar_f3(uri_ex_p),dollar_f2(uri_ex_p)))
+%%%%% Mutated formula '311':
+%%%%%   Replaced (icext(uri_owl_InverseFunctionalProperty,uri_ex_p) | iext(uri_ex_p,dollar_f4(uri_ex_p),dollar_f2(uri_ex_p)))
+%%%%%   With (icext(uri_rdfs_domain,uri_ex_p) | iext(uri_ex_p,dollar_f4(uri_ex_p),dollar_f2(uri_ex_p)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWB026+2 : TPTP v8.1.0. Released v5.2.0.
@@ -50,8 +50,8 @@ fof(24, axiom, iext(uri_rdf_rest,dollar_c2,uri_rdf_nil), file('SWB026+2.p',unkno
 fof(41, plain, icext(uri_rdf_Property,uri_ex_p), inference(hyper,[status(thm)],[21,5,20]), [iquote('hyper,21,5,20')]).
 fof(48, plain, iext(uri_rdf_type,uri_ex_p,uri_rdf_Property), inference(hyper,[status(thm)],[41,4]), [iquote('hyper,41,4')]).
 fof(171, plain, ip(uri_ex_p), inference(hyper,[status(thm)],[48,1]), [iquote('hyper,48,1')]).
-fof(310, plain, (icext(uri_owl_InverseFunctionalProperty,uri_ex_p) & iext(uri_ex_p,dollar_f3(uri_ex_p),dollar_f2(uri_ex_p))), inference(hyper,[status(thm)],[171,14]), [iquote('hyper,171,14')]).
-fof(311, plain, (icext(uri_owl_InverseFunctionalProperty,uri_ex_p) | iext(uri_ex_p,dollar_f4(uri_ex_p),dollar_f2(uri_ex_p))), inference(hyper,[status(thm)],[171,13]), [iquote('hyper,171,13')]).
+fof(310, plain, (icext(uri_owl_InverseFunctionalProperty,uri_ex_p) | iext(uri_ex_p,dollar_f3(uri_ex_p),dollar_f2(uri_ex_p))), inference(hyper,[status(thm)],[171,14]), [iquote('hyper,171,14')]).
+fof(311, plain, (icext(uri_rdfs_domain,uri_ex_p) | iext(uri_ex_p,dollar_f4(uri_ex_p),dollar_f2(uri_ex_p))), inference(hyper,[status(thm)],[171,13]), [iquote('hyper,171,13')]).
 fof(389, plain, iext(uri_ex_p,dollar_f3(uri_ex_p),dollar_f2(uri_ex_p)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[310,4]),16]), [iquote('hyper,310,4,unit_del,16')]).
 fof(390, plain, icext(dollar_c4,dollar_f3(uri_ex_p)), inference(hyper,[status(thm)],[389,5,21]), [iquote('hyper,389,5,21')]).
 fof(402, plain, (dollar_f3(uri_ex_p) = uri_ex_w), inference(hyper,[status(thm)],[390,7,23,24,22]), [iquote('hyper,390,7,23,24,22')]).

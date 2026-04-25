@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c138':
-%%%%%   Replaced (! [X100,X101,X102]: ((~ (greater(X101,X102)) | greater(vplus(X101,X100),vplus(X102,X100)))))
-%%%%%   With (! [X100,X101,X102]: ((greater(X101,X102) | greater(vplus(X101,X100),vplus(X102,X100)))))
+%%%%% Mutated formula 'c156':
+%%%%%   Replaced ~ (greater(vplus(vd301,vd303),vplus(vd302,vd303)))
+%%%%%   With ~ (greater(vplus(vd302,vd303),vplus(vd302,vd303)))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM838+1 : TPTP v8.1.2. Released v4.1.0.
@@ -39,12 +39,12 @@
 fof('holds(conseq(195), 305, 0)', conjecture, greater(vplus(vd301,vd303),vplus(vd302,vd303)), file('NUM838+1.p','holds(conseq(195), 305, 0)')).
 fof(c154, negated_conjecture, ~ (greater(vplus(vd301,vd303),vplus(vd302,vd303))), inference(assume_negation,[status(cth)],['holds(conseq(195), 305, 0)'])).
 fof(c155, negated_conjecture, ~ (greater(vplus(vd301,vd303),vplus(vd302,vd303))), inference(fof_simplification,[status(thm)],[c154])).
-fof(c156, negated_conjecture, ~ (greater(vplus(vd301,vd303),vplus(vd302,vd303))), inference(split_conjunct,[status(thm)],[c155])).
+fof(c156, negated_conjecture, ~ (greater(vplus(vd302,vd303),vplus(vd302,vd303))), inference(split_conjunct,[status(thm)],[c155])).
 fof('holds(antec(195), 304, 0)', axiom, greater(vd301,vd302), file('NUM838+1.p','holds(antec(195), 304, 0)')).
 fof(c153, plain, greater(vd301,vd302), inference(split_conjunct,[status(thm)],['holds(antec(195), 304, 0)'])).
 fof('ass(cond(proof(196), 0), 4)', axiom, (! [Vd310,Vd311,Vd312]: ((greater(Vd311,Vd312) => greater(vplus(Vd311,Vd310),vplus(Vd312,Vd310))))), file('NUM838+1.p','ass(cond(proof(196), 0), 4)')).
 fof(c137, plain, (! [Vd310,Vd311,Vd312]: ((~ (greater(Vd311,Vd312)) | greater(vplus(Vd311,Vd310),vplus(Vd312,Vd310))))), inference(fof_nnf,[status(thm)],['ass(cond(proof(196), 0), 4)'])).
-fof(c138, plain, (! [X100,X101,X102]: ((greater(X101,X102) | greater(vplus(X101,X100),vplus(X102,X100))))), inference(variable_rename,[status(thm)],[c137])).
+fof(c138, plain, (! [X100,X101,X102]: ((~ (greater(X101,X102)) | greater(vplus(X101,X100),vplus(X102,X100))))), inference(variable_rename,[status(thm)],[c137])).
 fof(c139, plain, (! [X438,X439,X440]: ((~ (greater(X438,X439)) | greater(vplus(X438,X440),vplus(X439,X440))))), inference(split_conjunct,[status(thm)],[c138])).
 fof(c706, plain, (! [X3881]: (greater(vplus(vd301,X3881),vplus(vd302,X3881)))), inference(resolution,[status(thm)],[c139,c153])).
 fof(c44292, plain, $false, inference(resolution,[status(thm)],[c706,c156])).

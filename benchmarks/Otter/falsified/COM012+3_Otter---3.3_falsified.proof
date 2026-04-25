@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '29':
 %%%%%   Replaced aElement0(xy)
-%%%%%   With aElement0(xx)
+%%%%%   With ~ (aElement0(xy))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : COM012+3 : TPTP v8.1.0. Released v4.0.0.
@@ -38,7 +38,7 @@ fof(15, axiom, ~ (sdtmndtplgtdt0(xx,xR,xz)), file('COM012+3.p',unknown), []).
 fof(16, axiom, ~ (sdtmndtasgtdt0(xx,xR,xz)), file('COM012+3.p',unknown), []).
 fof(27, axiom, aElement0(xx), file('COM012+3.p',unknown), []).
 fof(28, axiom, aRewritingSystem0(xR), file('COM012+3.p',unknown), []).
-fof(29, axiom, aElement0(xx), file('COM012+3.p',unknown), []).
+fof(29, axiom, ~ (aElement0(xy)), file('COM012+3.p',unknown), []).
 fof(30, axiom, aElement0(xz), file('COM012+3.p',unknown), []).
 fof(37, axiom, ((xx = xy) | sdtmndtplgtdt0(xx,xR,xy)), file('COM012+3.p',unknown), []).
 fof(38, plain, ((xy = xx) | sdtmndtplgtdt0(xx,xR,xy)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[37])]), [iquote('copy,37,flip.1')]).

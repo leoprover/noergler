@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '460':
-%%%%%   Replaced (app(dollar_c5,dollar_c3) = dollar_c6)
-%%%%%   With (app(dollar_c9,dollar_c3) = dollar_c6)
+%%%%% Mutated formula '466':
+%%%%%   Replaced (! [A,B,C]: ((~ (ssList(A)) | (~ (ssList(B)) | (~ (ssList(C)) | ((app(app(A,B),C) != dollar_c7) | (app(A,C) != dollar_c6)))))))
+%%%%%   With (! [A,B,C]: ((~ (ssList(A)) | (~ (ssList(B)) | (~ (ssList(C)) | ((app(app(A,B),C) != dollar_c9) | (app(A,C) != dollar_c6)))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC095+1 : TPTP v8.1.0. Released v2.4.0.
@@ -40,6 +40,6 @@ fof(455, axiom, ssList(dollar_c5), file('SWC095+1.p',unknown), []).
 fof(456, axiom, ssList(dollar_c4), file('SWC095+1.p',unknown), []).
 fof(457, axiom, ssList(dollar_c3), file('SWC095+1.p',unknown), []).
 fof(458, axiom, (app(app(dollar_c5,dollar_c4),dollar_c3) = dollar_c7), file('SWC095+1.p',unknown), []).
-fof(460, axiom, (app(dollar_c9,dollar_c3) = dollar_c6), file('SWC095+1.p',unknown), []).
-fof(466, plain, (! [A,B,C]: ((~ (ssList(A)) | (~ (ssList(B)) | (~ (ssList(C)) | ((app(app(A,B),C) != dollar_c7) | (app(A,C) != dollar_c6))))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),454,452]), [iquote('back_demod,182,demod,454,452')]).
+fof(460, axiom, (app(dollar_c5,dollar_c3) = dollar_c6), file('SWC095+1.p',unknown), []).
+fof(466, plain, (! [A,B,C]: ((~ (ssList(A)) | (~ (ssList(B)) | (~ (ssList(C)) | ((app(app(A,B),C) != dollar_c9) | (app(A,C) != dollar_c6))))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),454,452]), [iquote('back_demod,182,demod,454,452')]).
 fof(984, plain, $false, inference(hyper,[status(thm)],[466,455,456,457,458,460]), [iquote('hyper,466,455,456,457,458,460')]).

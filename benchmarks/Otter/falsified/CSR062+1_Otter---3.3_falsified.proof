@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '55':
-%%%%%   Replaced mtvisible(c_tptp_member3205_mt)
-%%%%%   With ~ (mtvisible(c_tptp_member3205_mt))
+%%%%% Mutated formula '51':
+%%%%%   Replaced genlmt(c_tptp_spindleheadmt,c_cyclistsmt)
+%%%%%   With genlmt(c_cyclistsmt,c_cyclistsmt)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR062+1 : TPTP v8.1.0. Released v3.4.0.
@@ -39,9 +39,9 @@ fof(3, axiom, (! [A,B]: ((~ (tptptypes_8_390(A,B)) | tptptypes_7_389(A,B)))), fi
 fof(4, axiom, (~ (mtvisible(c_cyclistsmt)) | tptptypes_8_390(c_pushingwithfingers,c_tptpcol_15_4027)), file('CSR062+1.p',unknown), []).
 fof(37, axiom, (! [A,B]: ((~ (mtvisible(A)) | (~ (genlmt(A,B)) | mtvisible(B))))), file('CSR062+1.p',unknown), []).
 fof(42, axiom, (! [A]: (~ (tptptypes_5_387(A,c_pushingwithfingers)))), file('CSR062+1.p',unknown), []).
-fof(51, axiom, genlmt(c_tptp_spindleheadmt,c_cyclistsmt), file('CSR062+1.p',unknown), []).
+fof(51, axiom, genlmt(c_cyclistsmt,c_cyclistsmt), file('CSR062+1.p',unknown), []).
 fof(52, axiom, genlmt(c_tptp_member3205_mt,c_tptp_spindleheadmt), file('CSR062+1.p',unknown), []).
-fof(55, axiom, ~ (mtvisible(c_tptp_member3205_mt)), file('CSR062+1.p',unknown), []).
+fof(55, axiom, mtvisible(c_tptp_member3205_mt), file('CSR062+1.p',unknown), []).
 fof(87, plain, mtvisible(c_tptp_spindleheadmt), inference(hyper,[status(thm)],[52,37,55]), [iquote('hyper,52,37,55')]).
 fof(91, plain, mtvisible(c_cyclistsmt), inference(hyper,[status(thm)],[87,37,51]), [iquote('hyper,87,37,51')]).
 fof(93, plain, tptptypes_8_390(c_pushingwithfingers,c_tptpcol_15_4027), inference(hyper,[status(thm)],[91,4]), [iquote('hyper,91,4')]).

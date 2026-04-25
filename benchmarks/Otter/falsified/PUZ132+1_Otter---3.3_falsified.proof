@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '21':
-%%%%%   Replaced has_crime(washington)
-%%%%%   With ~ (has_crime(washington))
+%%%%% Mutated formula '13':
+%%%%%   Replaced (capital_city(usa) = washington)
+%%%%%   With ~ ((capital_city(usa) = washington))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PUZ132+1 : TPTP v8.1.0. Released v4.1.0.
@@ -39,8 +39,8 @@ fof(4, axiom, (! [A]: ((~ (country(A)) | beautiful(capital_city(A))))), file('PU
 fof(5, axiom, (~ (beautiful(washington)) | ~ (has_crime(washington))), file('PUZ132+1.p',unknown), []).
 fof(10, axiom, capital(washington), file('PUZ132+1.p',unknown), []).
 fof(11, axiom, country(usa), file('PUZ132+1.p',unknown), []).
-fof(13, axiom, (capital_city(usa) = washington), file('PUZ132+1.p',unknown), []).
+fof(13, axiom, ~ ((capital_city(usa) = washington)), file('PUZ132+1.p',unknown), []).
 fof(18, plain, city(washington), inference(hyper,[status(thm)],[10,1]), [iquote('hyper,10,1')]).
 fof(19, plain, beautiful(washington), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[11,4]),13]), [iquote('hyper,11,4,demod,13')]).
-fof(21, plain, ~ (has_crime(washington)), inference(hyper,[status(thm)],[18,3]), [iquote('hyper,18,3')]).
+fof(21, plain, has_crime(washington), inference(hyper,[status(thm)],[18,3]), [iquote('hyper,18,3')]).
 fof(22, plain, $false, inference(hyper,[status(thm)],[21,5,19]), [iquote('hyper,21,5,19')]).

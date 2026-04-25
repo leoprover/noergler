@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c82':
-%%%%%   Replaced (! [X159,X158]: ((~ (greater(X159,X158)) | less(X158,X159))))
-%%%%%   With (! [X159,X158]: ((greater(X159,X158) | less(X158,X159))))
+%%%%% Mutated formula 'c1276':
+%%%%%   Replaced (! [X651]: ((vd471 != vplus(vd470,X651))))
+%%%%%   With (! [X651]: ((vd470 != vplus(vd470,X651))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM850+1 : TPTP v8.1.2. Released v4.1.0.
@@ -53,7 +53,7 @@ fof(c120, plain, (! [X146,X145]: (greater(vplus(X146,X145),X146))), inference(sp
 fof('ass(cond(140, 0), 0)', axiom, (! [Vd208,Vd209]: ((greater(Vd208,Vd209) => less(Vd209,Vd208)))), file('NUM850+1.p','ass(cond(140, 0), 0)')).
 fof(c80, plain, (! [Vd208,Vd209]: ((~ (greater(Vd208,Vd209)) | less(Vd209,Vd208)))), inference(fof_nnf,[status(thm)],['ass(cond(140, 0), 0)'])).
 fof(c81, plain, (! [X59,X60]: ((~ (greater(X59,X60)) | less(X60,X59)))), inference(variable_rename,[status(thm)],[c80])).
-fof(c82, plain, (! [X159,X158]: ((greater(X159,X158) | less(X158,X159)))), inference(split_conjunct,[status(thm)],[c81])).
+fof(c82, plain, (! [X159,X158]: ((~ (greater(X159,X158)) | less(X158,X159)))), inference(split_conjunct,[status(thm)],[c81])).
 fof(c195, plain, (! [X165,X164]: (less(X165,vplus(X165,X164)))), inference(resolution,[status(thm)],[c82,c120])).
 fof(c196, plain, less(vd471,vd470), inference(resolution,[status(thm)],[c82,c185])).
 fof('ass(cond(168, 0), 0)', axiom, (! [Vd262,Vd263,Vd265]: (((less(Vd263,Vd265) & less(Vd262,Vd263)) => less(Vd262,Vd265)))), file('NUM850+1.p','ass(cond(168, 0), 0)')).
@@ -62,7 +62,7 @@ fof(c109, plain, (! [X75,X76,X77]: ((~ (less(X76,X77)) | (~ (less(X75,X76)) | le
 fof(c110, plain, (! [X402,X401,X400]: ((~ (less(X402,X401)) | (~ (less(X400,X402)) | less(X400,X401))))), inference(split_conjunct,[status(thm)],[c109])).
 fof(c627, plain, (! [X624]: ((~ (less(vd470,X624)) | less(vd471,X624)))), inference(resolution,[status(thm)],[c110,c196])).
 fof(c1154, plain, (! [X635]: (less(vd471,vplus(vd470,X635)))), inference(resolution,[status(thm)],[c627,c195])).
-fof(c1276, plain, (! [X651]: ((vd471 != vplus(vd470,X651)))), inference(resolution,[status(thm)],[c1154,c77])).
+fof(c1276, plain, (! [X651]: ((vd470 != vplus(vd470,X651)))), inference(resolution,[status(thm)],[c1154,c77])).
 fof('qe(conseq_conjunct1(conseq(302)))', conjecture, (? [Vd473]: ((vd470 = vplus(vd471,Vd473)))), file('NUM850+1.p','qe(conseq_conjunct1(conseq(302)))')).
 fof(c186, negated_conjecture, ~ ((? [Vd473]: ((vd470 = vplus(vd471,Vd473))))), inference(assume_negation,[status(cth)],['qe(conseq_conjunct1(conseq(302)))'])).
 fof(c187, negated_conjecture, (! [Vd473]: ((vd470 != vplus(vd471,Vd473)))), inference(fof_nnf,[status(thm)],[c186])).

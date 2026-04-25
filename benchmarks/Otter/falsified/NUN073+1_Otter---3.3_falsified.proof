@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '87':
-%%%%%   Replaced id(dollar_c2,dollar_c5)
-%%%%%   With ~ (id(dollar_c2,dollar_c5))
+%%%%% Mutated formula '63':
+%%%%%   Replaced r2(dollar_c2,dollar_c3)
+%%%%%   With r2(dollar_c5,dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUN073+1 : TPTP v8.1.0. Released v7.3.0.
@@ -36,9 +36,9 @@
 fof(19, axiom, (! [A,B,C,D]: ((~ (id(A,B)) | (~ (r2(C,A)) | (~ (r2(D,B)) | id(C,D)))))), file('NUN073+1.p',unknown), []).
 fof(20, axiom, (! [A,B,C]: ((~ (id(A,B)) | (~ (r1(A)) | ~ (r2(C,B)))))), file('NUN073+1.p',unknown), []).
 fof(62, axiom, r1(dollar_c2), file('NUN073+1.p',unknown), []).
-fof(63, axiom, r2(dollar_c2,dollar_c3), file('NUN073+1.p',unknown), []).
+fof(63, axiom, r2(dollar_c5,dollar_c3), file('NUN073+1.p',unknown), []).
 fof(64, axiom, id(dollar_c3,dollar_c6), file('NUN073+1.p',unknown), []).
 fof(66, axiom, r2(dollar_c4,dollar_c5), file('NUN073+1.p',unknown), []).
 fof(67, axiom, r2(dollar_c5,dollar_c6), file('NUN073+1.p',unknown), []).
-fof(87, plain, ~ (id(dollar_c2,dollar_c5)), inference(hyper,[status(thm)],[67,19,64,63]), [iquote('hyper,67,19,64,63')]).
+fof(87, plain, id(dollar_c2,dollar_c5), inference(hyper,[status(thm)],[67,19,64,63]), [iquote('hyper,67,19,64,63')]).
 fof(116, plain, $false, inference(hyper,[status(thm)],[87,20,62,66]), [iquote('hyper,87,20,62,66')]).

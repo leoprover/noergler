@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '152':
-%%%%%   Replaced aSet0(xI)
-%%%%%   With aSet0(sz10)
+%%%%% Mutated formula '2078':
+%%%%%   Replaced (sdtpldt0(sdtasdt0(xa,xy),sdtasdt0(xx,xb)) = xw)
+%%%%%   With (sdtpldt0(sdtasdt0(xx,xy),sdtasdt0(xx,xb)) = xw)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : RNG099+2 : TPTP v8.1.0. Released v4.0.0.
@@ -39,7 +39,7 @@ fof(12, axiom, (! [A,B]: ((~ (aElement0(A)) | (~ (aElement0(B)) | (sdtasdt0(A,B)
 fof(22, axiom, (! [A]: ((~ (aElement0(A)) | (smndt0(A) = sdtasdt0(A,smndt0(sz10)))))), file('RNG099+2.p',unknown), []).
 fof(28, axiom, (! [A,B]: ((~ (aSet0(A)) | (~ (aElementOf0(B,A)) | aElement0(B))))), file('RNG099+2.p',unknown), []).
 fof(69, axiom, (! [A]: ((~ (aElement0(A)) | (~ (aElementOf0(sdtpldt0(A,smndt0(xx)),xI)) | ~ (aElementOf0(sdtpldt0(A,smndt0(xy)),xJ)))))), file('RNG099+2.p',unknown), []).
-fof(152, axiom, aSet0(sz10), file('RNG099+2.p',unknown), []).
+fof(152, axiom, aSet0(xI), file('RNG099+2.p',unknown), []).
 fof(154, axiom, aSet0(xJ), file('RNG099+2.p',unknown), []).
 fof(156, axiom, aElement0(xx), file('RNG099+2.p',unknown), []).
 fof(157, axiom, aElement0(xy), file('RNG099+2.p',unknown), []).
@@ -59,7 +59,7 @@ fof(1312, plain, aElement0(xa), inference(hyper,[status(thm)],[158,28,152]), [iq
 fof(1397, plain, aElement0(xb), inference(hyper,[status(thm)],[159,28,154]), [iquote('hyper,159,28,154')]).
 fof(1904, plain, (sdtasdt0(xy,xa) = sdtasdt0(xa,xy)), inference(hyper,[status(thm)],[1312,12,157]), [iquote('hyper,1312,12,157')]).
 fof(1983, plain, aElement0(sdtasdt0(xa,xy)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[1312,3,157]),1904]), [iquote('hyper,1312,3,157,demod,1904')]).
-fof(2078, plain, (sdtpldt0(sdtasdt0(xa,xy),sdtasdt0(xx,xb)) = xw), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[163]),1904]), [iquote('back_demod,163,demod,1904')]).
+fof(2078, plain, (sdtpldt0(sdtasdt0(xx,xy),sdtasdt0(xx,xb)) = xw), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[163]),1904]), [iquote('back_demod,163,demod,1904')]).
 fof(2295, plain, aElement0(sdtasdt0(xx,xb)), inference(hyper,[status(thm)],[1397,3,156]), [iquote('hyper,1397,3,156')]).
 fof(2496, plain, aElement0(xw), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[2295,2,1983]),2078]), [iquote('hyper,2295,2,1983,demod,2078')]).
 fof(2545, plain, $false, inference(hyper,[status(thm)],[1144,2496,710,1145]), [iquote('hyper,1144,2496,710,1145')]).

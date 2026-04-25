@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '132':
-%%%%%   Replaced (! [A]: ((v3_struct_0(A) | (~ (v10_lattices(A)) | (~ (v17_lattices(A)) | (~ (l3_lattices(A)) | (k7_lattices(A,k5_lattices(A)) = k6_lattices(A))))))))
-%%%%%   With (! [A]: ((~ (v3_struct_0(A)) | (~ (v10_lattices(A)) | (~ (v17_lattices(A)) | (~ (l3_lattices(A)) | (k7_lattices(A,k5_lattices(A)) = k6_lattices(A))))))))
+%%%%% Mutated formula '128':
+%%%%%   Replaced (! [A,B]: ((v3_struct_0(A) | (~ (v10_lattices(A)) | (~ (v17_lattices(A)) | (v3_realset2(A) | (~ (l3_lattices(A)) | (~ (m1_subset_1(B,u1_struct_0(A))) | (k4_xboole_0(k7_lopclset(A),k8_funct_2(u1_struct_0(A),k1_zfmisc_1(k7_lopclset(A)),k9_lopclset(A),B)) = k8_funct_2(u1_struct_0(A),k1_zfmisc_1(k7_lopclset(A)),k9_lopclset(A),k7_lattices(A,B)))))))))))
+%%%%%   With (! [A,B]: ((~ (v3_struct_0(A)) | (~ (v10_lattices(A)) | (~ (v17_lattices(A)) | (v3_realset2(A) | (~ (l3_lattices(A)) | (~ (m1_subset_1(B,u1_struct_0(A))) | (k4_xboole_0(k7_lopclset(A),k8_funct_2(u1_struct_0(A),k1_zfmisc_1(k7_lopclset(A)),k9_lopclset(A),B)) = k8_funct_2(u1_struct_0(A),k1_zfmisc_1(k7_lopclset(A)),k9_lopclset(A),k7_lattices(A,B)))))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LAT291+1 : TPTP v8.1.0. Released v3.4.0.
@@ -40,9 +40,9 @@ fof(70, axiom, (! [A]: ((v3_struct_0(A) | (~ (v10_lattices(A)) | (~ (v17_lattice
 fof(71, axiom, (! [A]: ((v3_struct_0(A) | (~ (l1_lattices(A)) | m1_subset_1(k5_lattices(A),u1_struct_0(A)))))), file('LAT291+1.p',unknown), []).
 fof(83, axiom, (! [A]: ((~ (l3_lattices(A)) | l1_lattices(A)))), file('LAT291+1.p',unknown), []).
 fof(124, axiom, (! [A]: ((v3_struct_0(A) | (~ (v10_lattices(A)) | (~ (v17_lattices(A)) | (v3_realset2(A) | (~ (l3_lattices(A)) | (k9_lopclset(A) = k8_lopclset(A))))))))), file('LAT291+1.p',unknown), []).
-fof(128, axiom, (! [A,B]: ((v3_struct_0(A) | (~ (v10_lattices(A)) | (~ (v17_lattices(A)) | (v3_realset2(A) | (~ (l3_lattices(A)) | (~ (m1_subset_1(B,u1_struct_0(A))) | (k4_xboole_0(k7_lopclset(A),k8_funct_2(u1_struct_0(A),k1_zfmisc_1(k7_lopclset(A)),k9_lopclset(A),B)) = k8_funct_2(u1_struct_0(A),k1_zfmisc_1(k7_lopclset(A)),k9_lopclset(A),k7_lattices(A,B))))))))))), file('LAT291+1.p',unknown), []).
+fof(128, axiom, (! [A,B]: ((~ (v3_struct_0(A)) | (~ (v10_lattices(A)) | (~ (v17_lattices(A)) | (v3_realset2(A) | (~ (l3_lattices(A)) | (~ (m1_subset_1(B,u1_struct_0(A))) | (k4_xboole_0(k7_lopclset(A),k8_funct_2(u1_struct_0(A),k1_zfmisc_1(k7_lopclset(A)),k9_lopclset(A),B)) = k8_funct_2(u1_struct_0(A),k1_zfmisc_1(k7_lopclset(A)),k9_lopclset(A),k7_lattices(A,B))))))))))), file('LAT291+1.p',unknown), []).
 fof(131, axiom, (! [A]: ((v3_struct_0(A) | (~ (v10_lattices(A)) | (~ (v17_lattices(A)) | (v3_realset2(A) | (~ (l3_lattices(A)) | (k8_funct_2(u1_struct_0(A),k1_zfmisc_1(k7_lopclset(A)),k9_lopclset(A),k5_lattices(A)) = k1_xboole_0)))))))), file('LAT291+1.p',unknown), []).
-fof(132, axiom, (! [A]: ((~ (v3_struct_0(A)) | (~ (v10_lattices(A)) | (~ (v17_lattices(A)) | (~ (l3_lattices(A)) | (k7_lattices(A,k5_lattices(A)) = k6_lattices(A)))))))), file('LAT291+1.p',unknown), []).
+fof(132, axiom, (! [A]: ((v3_struct_0(A) | (~ (v10_lattices(A)) | (~ (v17_lattices(A)) | (~ (l3_lattices(A)) | (k7_lattices(A,k5_lattices(A)) = k6_lattices(A)))))))), file('LAT291+1.p',unknown), []).
 fof(133, plain, (! [A]: ((v3_struct_0(A) | (~ (v10_lattices(A)) | (~ (v17_lattices(A)) | (~ (l3_lattices(A)) | (k6_lattices(A) = k7_lattices(A,k5_lattices(A))))))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[132])]), [iquote('copy,132,flip.5')]).
 fof(147, axiom, v10_lattices(dollar_c1), file('LAT291+1.p',unknown), []).
 fof(148, axiom, v17_lattices(dollar_c1), file('LAT291+1.p',unknown), []).

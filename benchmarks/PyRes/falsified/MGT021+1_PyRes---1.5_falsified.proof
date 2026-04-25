@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c105':
-%%%%%   Replaced increases(difference(disbanding_rate(first_movers,skolem0002),disbanding_rate(efficient_producers,skolem0002)))
-%%%%%   With ~ (increases(difference(disbanding_rate(first_movers,skolem0002),disbanding_rate(efficient_producers,skolem0002))))
+%%%%% Mutated formula 'c79':
+%%%%%   Replaced greater(number_of_organizations(skolem0001,skolem0002),zero)
+%%%%%   With ~ (greater(number_of_organizations(skolem0001,skolem0002),zero))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : MGT021+1 : TPTP v8.1.2. Released v2.0.0.
@@ -69,7 +69,7 @@ fof(c40, plain, (! [E,T]: ((~ (environment(E)) | (~ (subpopulations(first_movers
 fof(c41, plain, (! [X11,X12]: ((~ (environment(X11)) | (~ (subpopulations(first_movers,efficient_producers,X11,X12)) | greater(number_of_organizations(X11,X12),zero))))), inference(variable_rename,[status(thm)],[c40])).
 fof(c42, plain, (! [X116,X117]: ((~ (environment(X116)) | (~ (subpopulations(first_movers,efficient_producers,X116,X117)) | greater(number_of_organizations(X116,X117),zero))))), inference(split_conjunct,[status(thm)],[c41])).
 fof(c77, plain, (~ (environment(skolem0001)) | greater(number_of_organizations(skolem0001,skolem0002),zero)), inference(resolution,[status(thm)],[c42,c19])).
-fof(c79, plain, greater(number_of_organizations(skolem0001,skolem0002),zero), inference(resolution,[status(thm)],[c77,c18])).
+fof(c79, plain, ~ (greater(number_of_organizations(skolem0001,skolem0002),zero)), inference(resolution,[status(thm)],[c77,c18])).
 fof(a3, plain, (! [E,T]: (((environment(E) & (in_environment(E,T) & greater(number_of_organizations(E,T),zero))) => ((greater(equilibrium(E),T) => decreases(resources(E,T))) & (~ (greater(equilibrium(E),T)) => constant(resources(E,T))))))), file('MGT021+1.p',a3)).
 fof(c27, plain, (! [E,T]: (((environment(E) & (in_environment(E,T) & greater(number_of_organizations(E,T),zero))) => ((greater(equilibrium(E),T) => decreases(resources(E,T))) & (~ (greater(equilibrium(E),T)) => constant(resources(E,T))))))), inference(fof_simplification,[status(thm)],[a3])).
 fof(c28, plain, (! [E,T]: ((~ (environment(E)) | (~ (in_environment(E,T)) | (~ (greater(number_of_organizations(E,T),zero)) | ((~ (greater(equilibrium(E),T)) | decreases(resources(E,T))) & (greater(equilibrium(E),T) | constant(resources(E,T))))))))), inference(fof_nnf,[status(thm)],[c27])).
@@ -90,5 +90,5 @@ fof(c98, plain, (~ (environment(skolem0001)) | (~ (in_environment(skolem0001,sko
 fof(c101, plain, (~ (environment(skolem0001)) | decreases(resources(skolem0001,skolem0002))), inference(resolution,[status(thm)],[c98,c71])).
 fof(c102, plain, decreases(resources(skolem0001,skolem0002)), inference(resolution,[status(thm)],[c101,c18])).
 fof(c103, plain, (~ (environment(skolem0001)) | increases(difference(disbanding_rate(first_movers,skolem0002),disbanding_rate(efficient_producers,skolem0002)))), inference(resolution,[status(thm)],[c102,c78])).
-fof(c105, plain, ~ (increases(difference(disbanding_rate(first_movers,skolem0002),disbanding_rate(efficient_producers,skolem0002)))), inference(resolution,[status(thm)],[c103,c18])).
+fof(c105, plain, increases(difference(disbanding_rate(first_movers,skolem0002),disbanding_rate(efficient_producers,skolem0002))), inference(resolution,[status(thm)],[c103,c18])).
 fof(c106, plain, $false, inference(resolution,[status(thm)],[c105,c76])).

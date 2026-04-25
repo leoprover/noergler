@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '56':
-%%%%%   Replaced ~ (une_qually_directed_lines(dollar_c2,dollar_c1))
-%%%%%   With une_qually_directed_lines(dollar_c2,dollar_c1)
+%%%%% Mutated formula '107':
+%%%%%   Replaced une_qually_directed_opposite_lines(dollar_c2,dollar_c1)
+%%%%%   With une_qually_directed_opposite_lines(dollar_c1,dollar_c1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO267+3 : TPTP v8.1.0. Released v4.0.0.
@@ -35,8 +35,8 @@
 %%% Generated on Tue Apr 14 19:13:19 CEST 2026 using command 'transform(fof)'.
 fof(2, axiom, (! [A,B]: ((une_qually_directed_opposite_lines(A,B) | ~ (une_qually_directed_lines(A,reverse_line(B)))))), file('GEO267+3.p',unknown), []).
 fof(55, axiom, ~ (une_qually_directed_opposite_lines(dollar_c2,dollar_c1)), file('GEO267+3.p',unknown), []).
-fof(56, axiom, une_qually_directed_lines(dollar_c2,dollar_c1), file('GEO267+3.p',unknown), []).
+fof(56, axiom, ~ (une_qually_directed_lines(dollar_c2,dollar_c1)), file('GEO267+3.p',unknown), []).
 fof(68, axiom, (! [A,B]: ((une_qually_directed_lines(A,B) | une_qually_directed_lines(A,reverse_line(B))))), file('GEO267+3.p',unknown), []).
 fof(85, plain, une_qually_directed_lines(dollar_c2,reverse_line(dollar_c1)), inference(hyper,[status(thm)],[68,56]), [iquote('hyper,68,56')]).
-fof(107, plain, une_qually_directed_opposite_lines(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[85,2]), [iquote('hyper,85,2')]).
+fof(107, plain, une_qually_directed_opposite_lines(dollar_c1,dollar_c1), inference(hyper,[status(thm)],[85,2]), [iquote('hyper,85,2')]).
 fof(108, plain, $false, inference(binary,[status(thm)],[107,55]), [iquote('binary,107.1,55.1')]).

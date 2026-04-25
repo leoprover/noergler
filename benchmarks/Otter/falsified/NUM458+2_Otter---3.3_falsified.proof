@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '70':
-%%%%%   Replaced (! [A,B]: ((~ (aNaturalNumber0(A)) | (sdtlse_qdt0(A,A) | (~ (aNaturalNumber0(B)) | (sdtpldt0(A,B) != A))))))
-%%%%%   With (! [A,B]: ((~ (aNaturalNumber0(A)) & (sdtlse_qdt0(A,A) | (~ (aNaturalNumber0(B)) | (sdtpldt0(A,B) != A))))))
+%%%%% Mutated formula '88':
+%%%%%   Replaced aNaturalNumber0(sz00)
+%%%%%   With aNaturalNumber0(xm)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM458+2 : TPTP v8.1.0. Released v4.0.0.
@@ -36,8 +36,8 @@
 fof(6, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | (sdtpldt0(A,sz00) = A)))), file('NUM458+2.p',unknown), []).
 fof(30, axiom, (! [A,B,C]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (sdtlse_qdt0(A,B) | (~ (aNaturalNumber0(C)) | (sdtpldt0(A,C) != B))))))), file('NUM458+2.p',unknown), []).
 fof(35, axiom, ~ (sdtlse_qdt0(xm,xm)), file('NUM458+2.p',unknown), []).
-fof(70, plain, (! [A,B]: ((~ (aNaturalNumber0(A)) & (sdtlse_qdt0(A,A) | (~ (aNaturalNumber0(B)) | (sdtpldt0(A,B) != A)))))), inference(factor,[status(thm)],[30]), [iquote('factor,30.1.2')]).
-fof(88, axiom, aNaturalNumber0(sz00), file('NUM458+2.p',unknown), []).
+fof(70, plain, (! [A,B]: ((~ (aNaturalNumber0(A)) | (sdtlse_qdt0(A,A) | (~ (aNaturalNumber0(B)) | (sdtpldt0(A,B) != A)))))), inference(factor,[status(thm)],[30]), [iquote('factor,30.1.2')]).
+fof(88, axiom, aNaturalNumber0(xm), file('NUM458+2.p',unknown), []).
 fof(90, axiom, aNaturalNumber0(xm), file('NUM458+2.p',unknown), []).
 fof(317, plain, (sdtpldt0(xm,sz00) = xm), inference(hyper,[status(thm)],[90,6]), [iquote('hyper,90,6')]).
 fof(3834, plain, sdtlse_qdt0(xm,xm), inference(hyper,[status(thm)],[317,70,90,88]), [iquote('hyper,317,70,90,88')]).

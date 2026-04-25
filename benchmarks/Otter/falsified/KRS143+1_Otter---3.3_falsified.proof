@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '46':
-%%%%%   Replaced (xsd_integer(dollar_c2) | rp(dollar_c5,dollar_c3))
-%%%%%   With (xsd_integer(dollar_c1) | rp(dollar_c5,dollar_c3))
+%%%%% Mutated formula '74':
+%%%%%   Replaced rp(dollar_c5,dollar_c3)
+%%%%%   With ~ (rp(dollar_c5,dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS143+1 : TPTP v8.1.0. Released v3.1.0.
@@ -60,11 +60,11 @@ fof(32, plain, (xsd_integer(dollar_c2) | cc(dollar_c5)), inference(factor_simp,[
 fof(33, plain, (cc(dollar_c5) | xsd_string(dollar_c2)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[32,13,30])]), [iquote('hyper,32,13,30,factor_simp')]).
 fof(36, plain, cc(dollar_c5), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[33,9,32])]), [iquote('hyper,33,9,32,factor_simp')]).
 fof(44, plain, rp(dollar_c5,dollar_f1(dollar_c5)), inference(hyper,[status(thm)],[36,10]), [iquote('hyper,36,10')]).
-fof(46, plain, (xsd_integer(dollar_c1) | rp(dollar_c5,dollar_c3)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[44,25,30,31])]), [iquote('hyper,44,25,30,31,factor_simp')]).
+fof(46, plain, (xsd_integer(dollar_c2) | rp(dollar_c5,dollar_c3)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[44,25,30,31])]), [iquote('hyper,44,25,30,31,factor_simp')]).
 fof(47, plain, (xsd_integer(dollar_c2) | rp(dollar_c5,dollar_c4)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[44,23,30,31])]), [iquote('hyper,44,23,30,31,factor_simp')]).
 fof(51, plain, (rp(dollar_c5,dollar_c3) | xsd_string(dollar_c2)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[46,17,30,44])]), [iquote('hyper,46,17,30,44,factor_simp')]).
 fof(55, plain, (rp(dollar_c5,dollar_c4) | xsd_string(dollar_c2)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[47,15,30,44])]), [iquote('hyper,47,15,30,44,factor_simp')]).
-fof(74, plain, rp(dollar_c5,dollar_c3), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[51,9,46])]), [iquote('hyper,51,9,46,factor_simp')]).
+fof(74, plain, ~ (rp(dollar_c5,dollar_c3)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[51,9,46])]), [iquote('hyper,51,9,46,factor_simp')]).
 fof(80, plain, rp(dollar_c5,dollar_c4), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[55,9,47])]), [iquote('hyper,55,9,47,factor_simp')]).
 fof(83, plain, (dollar_c4 = dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[80,11,36,74])]), [iquote('hyper,80,11,36,74,flip.1')]).
 fof(84, plain, (! [A]: ((~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | ~ (rp(dollar_c5,A)))))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[27]),83]),30,29]), [iquote('back_demod,27,demod,83,unit_del,30,29')]).

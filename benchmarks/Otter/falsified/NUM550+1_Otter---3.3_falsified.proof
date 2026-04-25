@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '146':
-%%%%%   Replaced (sbrdtbr0(xQ) = xk)
-%%%%%   With (sbrdtbr0(szNzAzT0) = xk)
+%%%%% Mutated formula '305':
+%%%%%   Replaced (xk = sz00)
+%%%%%   With (xQ = sz00)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM550+1 : TPTP v8.1.0. Released v4.0.0.
@@ -37,8 +37,8 @@ fof(91, axiom, (! [A]: ((~ (aElementOf0(A,szNzAzT0)) | (sbrdtbr0(slbdtrb0(A)) = 
 fof(102, axiom, (xk != sz00), file('NUM550+1.p',unknown), []).
 fof(135, axiom, aElementOf0(sz00,szNzAzT0), file('NUM550+1.p',unknown), []).
 fof(137, axiom, (slbdtrb0(sz00) = slcrc0), file('NUM550+1.p',unknown), []).
-fof(146, axiom, (sbrdtbr0(szNzAzT0) = xk), file('NUM550+1.p',unknown), []).
+fof(146, axiom, (sbrdtbr0(xQ) = xk), file('NUM550+1.p',unknown), []).
 fof(149, axiom, (xQ = slcrc0), file('NUM550+1.p',unknown), []).
 fof(151, plain, (sbrdtbr0(slcrc0) = xk), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[146]),149]), [iquote('back_demod,146,demod,149')]).
-fof(305, plain, (xk = sz00), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[135,91]),137,151]), [iquote('hyper,135,91,demod,137,151')]).
+fof(305, plain, (xQ = sz00), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[135,91]),137,151]), [iquote('hyper,135,91,demod,137,151')]).
 fof(307, plain, $false, inference(binary,[status(thm)],[305,102]), [iquote('binary,305.1,102.1')]).

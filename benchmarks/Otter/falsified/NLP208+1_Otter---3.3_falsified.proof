@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '47':
-%%%%%   Replaced (! [A,B]: ((~ (device(A,B)) | instrumentality(A,B))))
-%%%%%   With (! [A,B]: ((device(A,B) | instrumentality(A,B))))
+%%%%% Mutated formula '907':
+%%%%%   Replaced instrumentality(dollar_c11,dollar_c1)
+%%%%%   With instrumentality(dollar_c1,dollar_c1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NLP208+1 : TPTP v8.1.0. Released v2.4.0.
@@ -39,7 +39,7 @@ fof(31, axiom, (! [A,B]: ((~ (man(A,B)) | human_person(A,B)))), file('NLP208+1.p
 fof(40, axiom, (! [A,B]: ((~ (object(A,B)) | nonliving(A,B)))), file('NLP208+1.p',unknown), []).
 fof(45, axiom, (! [A,B]: ((~ (artifact(A,B)) | object(A,B)))), file('NLP208+1.p',unknown), []).
 fof(46, axiom, (! [A,B]: ((~ (instrumentality(A,B)) | artifact(A,B)))), file('NLP208+1.p',unknown), []).
-fof(47, axiom, (! [A,B]: ((device(A,B) | instrumentality(A,B)))), file('NLP208+1.p',unknown), []).
+fof(47, axiom, (! [A,B]: ((~ (device(A,B)) | instrumentality(A,B)))), file('NLP208+1.p',unknown), []).
 fof(48, axiom, (! [A,B]: ((~ (wheel(A,B)) | device(A,B)))), file('NLP208+1.p',unknown), []).
 fof(60, axiom, (! [A,B]: ((~ (nonliving(A,B)) | ~ (living(A,B))))), file('NLP208+1.p',unknown), []).
 fof(78, axiom, (! [A,B,C,D]: ((~ (be(A,B,C,D)) | (C = D)))), file('NLP208+1.p',unknown), []).
@@ -51,7 +51,7 @@ fof(527, plain, device(dollar_c11,dollar_c1), inference(hyper,[status(thm)],[123
 fof(586, plain, organism(dollar_c11,dollar_c10), inference(hyper,[status(thm)],[135,30]), [iquote('hyper,135,30')]).
 fof(731, plain, (dollar_c10 = dollar_c1), inference(hyper,[status(thm)],[125,78]), [iquote('hyper,125,78')]).
 fof(766, plain, organism(dollar_c11,dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[586]),731]), [iquote('back_demod,586,demod,731')]).
-fof(907, plain, instrumentality(dollar_c11,dollar_c1), inference(hyper,[status(thm)],[527,47]), [iquote('hyper,527,47')]).
+fof(907, plain, instrumentality(dollar_c1,dollar_c1), inference(hyper,[status(thm)],[527,47]), [iquote('hyper,527,47')]).
 fof(1131, plain, living(dollar_c11,dollar_c1), inference(hyper,[status(thm)],[766,27]), [iquote('hyper,766,27')]).
 fof(1149, plain, artifact(dollar_c11,dollar_c1), inference(hyper,[status(thm)],[907,46]), [iquote('hyper,907,46')]).
 fof(1200, plain, object(dollar_c11,dollar_c1), inference(hyper,[status(thm)],[1149,45]), [iquote('hyper,1149,45')]).

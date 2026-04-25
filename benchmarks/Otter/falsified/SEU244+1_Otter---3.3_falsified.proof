@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '54':
-%%%%%   Replaced transitive(dollar_c1)
-%%%%%   With ~ (transitive(dollar_c1))
+%%%%% Mutated formula '41':
+%%%%%   Replaced (well_orders(dollar_c1,relation_field(dollar_c1)) | is_connected_in(dollar_c1,relation_field(dollar_c1)))
+%%%%%   With (~ (well_orders(dollar_c1,relation_field(dollar_c1))) | is_connected_in(dollar_c1,relation_field(dollar_c1)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU244+1 : TPTP v8.1.0. Released v3.3.0.
@@ -64,7 +64,7 @@ fof(36, plain, (well_orders(dollar_c1,relation_field(dollar_c1)) | antisymmetric
 fof(37, plain, (well_orders(dollar_c1,relation_field(dollar_c1)) | transitive(dollar_c1)), inference(hyper,[status(thm)],[31,8,30]), [iquote('hyper,31,8,30')]).
 fof(38, plain, (well_orders(dollar_c1,relation_field(dollar_c1)) | reflexive(dollar_c1)), inference(hyper,[status(thm)],[31,7,30]), [iquote('hyper,31,7,30')]).
 fof(39, plain, (well_orders(dollar_c1,relation_field(dollar_c1)) | is_well_founded_in(dollar_c1,relation_field(dollar_c1))), inference(hyper,[status(thm)],[34,23,30]), [iquote('hyper,34,23,30')]).
-fof(41, plain, (well_orders(dollar_c1,relation_field(dollar_c1)) | is_connected_in(dollar_c1,relation_field(dollar_c1))), inference(hyper,[status(thm)],[35,3,30]), [iquote('hyper,35,3,30')]).
+fof(41, plain, (~ (well_orders(dollar_c1,relation_field(dollar_c1))) | is_connected_in(dollar_c1,relation_field(dollar_c1))), inference(hyper,[status(thm)],[35,3,30]), [iquote('hyper,35,3,30')]).
 fof(42, plain, (well_orders(dollar_c1,relation_field(dollar_c1)) | is_antisymmetric_in(dollar_c1,relation_field(dollar_c1))), inference(hyper,[status(thm)],[36,1,30]), [iquote('hyper,36,1,30')]).
 fof(43, plain, (well_orders(dollar_c1,relation_field(dollar_c1)) | is_transitive_in(dollar_c1,relation_field(dollar_c1))), inference(hyper,[status(thm)],[37,5,30]), [iquote('hyper,37,5,30')]).
 fof(44, plain, (well_orders(dollar_c1,relation_field(dollar_c1)) | is_reflexive_in(dollar_c1,relation_field(dollar_c1))), inference(hyper,[status(thm)],[38,21,30]), [iquote('hyper,38,21,30')]).
@@ -75,7 +75,7 @@ fof(50, plain, connected(dollar_c1), inference(hyper,[status(thm)],[49,4,30]), [
 fof(51, plain, is_antisymmetric_in(dollar_c1,relation_field(dollar_c1)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[42,15,30])]), [iquote('hyper,42,15,30,factor_simp')]).
 fof(52, plain, antisymmetric(dollar_c1), inference(hyper,[status(thm)],[51,2,30]), [iquote('hyper,51,2,30')]).
 fof(53, plain, is_transitive_in(dollar_c1,relation_field(dollar_c1)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[43,14,30])]), [iquote('hyper,43,14,30,factor_simp')]).
-fof(54, plain, ~ (transitive(dollar_c1)), inference(hyper,[status(thm)],[53,6,30]), [iquote('hyper,53,6,30')]).
+fof(54, plain, transitive(dollar_c1), inference(hyper,[status(thm)],[53,6,30]), [iquote('hyper,53,6,30')]).
 fof(55, plain, is_reflexive_in(dollar_c1,relation_field(dollar_c1)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[44,13,30])]), [iquote('hyper,44,13,30,factor_simp')]).
 fof(56, plain, reflexive(dollar_c1), inference(hyper,[status(thm)],[55,22,30]), [iquote('hyper,55,22,30')]).
 fof(57, plain, well_orders(dollar_c1,relation_field(dollar_c1)), inference(hyper,[status(thm)],[55,18,30,53,51,49,47]), [iquote('hyper,55,18,30,53,51,49,47')]).

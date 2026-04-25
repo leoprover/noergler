@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '93':
-%%%%%   Replaced geolevel_4(c_georegion_l4_x75_y75)
-%%%%%   With ~ (geolevel_4(c_georegion_l4_x75_y75))
+%%%%% Mutated formula '104':
+%%%%%   Replaced enduringthing_localized(c_georegion_l4_x75_y75)
+%%%%%   With enduringthing_localized(c_tptpgeo_spindleheadmt)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR057+1 : TPTP v8.1.0. Released v3.4.0.
@@ -46,10 +46,10 @@ fof(58, axiom, genlmt(c_tptpgeo_member8_mt,c_tptpgeo_spindleheadmt), file('CSR05
 fof(65, axiom, mtvisible(c_tptpgeo_member8_mt), file('CSR057+1.p',unknown), []).
 fof(83, plain, mtvisible(c_tptpgeo_spindleheadmt), inference(hyper,[status(thm)],[58,46,65]), [iquote('hyper,58,46,65')]).
 fof(87, plain, mtvisible(c_worldgeographymt), inference(hyper,[status(thm)],[83,46,57]), [iquote('hyper,83,46,57')]).
-fof(93, plain, ~ (geolevel_4(c_georegion_l4_x75_y75)), inference(hyper,[status(thm)],[87,3]), [iquote('hyper,87,3')]).
+fof(93, plain, geolevel_4(c_georegion_l4_x75_y75), inference(hyper,[status(thm)],[87,3]), [iquote('hyper,87,3')]).
 fof(99, plain, geographicalregion(c_georegion_l4_x75_y75), inference(hyper,[status(thm)],[93,4]), [iquote('hyper,93,4')]).
 fof(102, plain, partiallytangible(c_georegion_l4_x75_y75), inference(hyper,[status(thm)],[99,7]), [iquote('hyper,99,7')]).
-fof(104, plain, enduringthing_localized(c_georegion_l4_x75_y75), inference(hyper,[status(thm)],[102,6]), [iquote('hyper,102,6')]).
+fof(104, plain, enduringthing_localized(c_tptpgeo_spindleheadmt), inference(hyper,[status(thm)],[102,6]), [iquote('hyper,102,6')]).
 fof(108, plain, spatialthing_nonsituational(c_georegion_l4_x75_y75), inference(hyper,[status(thm)],[104,5]), [iquote('hyper,104,5')]).
 fof(109, plain, inregion(c_georegion_l4_x75_y75,c_georegion_l4_x75_y75), inference(hyper,[status(thm)],[108,40]), [iquote('hyper,108,40')]).
 fof(110, plain, $false, inference(binary,[status(thm)],[109,51]), [iquote('binary,109.1,51.1')]).

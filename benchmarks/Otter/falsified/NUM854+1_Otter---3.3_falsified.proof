@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '123':
 %%%%%   Replaced (! [A]: (greater(vmul(vd508,A),vmul(vd509,A))))
-%%%%%   With (! [A]: (greater(vmul(vd511,A),vmul(vd509,A))))
+%%%%%   With (! [A]: (~ (greater(vmul(vd508,A),vmul(vd509,A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM854+1 : TPTP v8.1.0. Released v4.1.0.
@@ -36,5 +36,5 @@
 fof(1, axiom, ~ (greater(vmul(vd508,vd511),vmul(vd509,vd511))), file('NUM854+1.p',unknown), []).
 fof(7, axiom, (! [A,B,C]: ((~ (greater(A,B)) | greater(vmul(A,C),vmul(B,C))))), file('NUM854+1.p',unknown), []).
 fof(57, axiom, greater(vd508,vd509), file('NUM854+1.p',unknown), []).
-fof(123, plain, (! [A]: (greater(vmul(vd511,A),vmul(vd509,A)))), inference(hyper,[status(thm)],[57,7]), [iquote('hyper,57,7')]).
+fof(123, plain, (! [A]: (~ (greater(vmul(vd508,A),vmul(vd509,A))))), inference(hyper,[status(thm)],[57,7]), [iquote('hyper,57,7')]).
 fof(124, plain, $false, inference(binary,[status(thm)],[123,1]), [iquote('binary,123.1,1.1')]).

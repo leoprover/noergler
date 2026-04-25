@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '5':
-%%%%%   Replaced (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | subpopulation(first_movers,A,B)))))
-%%%%%   With (! [A,B]: ((environment(A) | (~ (in_environment(A,B)) | subpopulation(first_movers,A,B)))))
+%%%%% Mutated formula '15':
+%%%%%   Replaced ~ (selection_favors(efficient_producers,first_movers,dollar_c1))
+%%%%%   With selection_favors(efficient_producers,first_movers,dollar_c1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT026+1 : TPTP v8.1.0. Released v2.0.0.
@@ -37,7 +37,7 @@ fof(1, axiom, (! [A,B,C,D]: ((~ (environment(A)) | (~ (subpopulations(B,C,A,D)) 
 fof(2, axiom, (! [A,B,C,D]: ((~ (environment(A)) | (~ (subpopulation(B,A,C)) | (~ (subpopulation(D,A,C)) | (~ (greater(cardinality_at_time(B,C),zero)) | ((cardinality_at_time(D,C) != zero) | selection_favors(B,D,C)))))))), file('MGT026+1.p',unknown), []).
 fof(3, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | (~ (greater(cardinality_at_time(first_movers,B),zero)) | (~ (greater(cardinality_at_time(efficient_producers,B),zero)) | subpopulations(first_movers,efficient_producers,A,B))))))), file('MGT026+1.p',unknown), []).
 fof(4, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | greater_or_e_qual(cardinality_at_time(first_movers,B),zero))))), file('MGT026+1.p',unknown), []).
-fof(5, axiom, (! [A,B]: ((environment(A) | (~ (in_environment(A,B)) | subpopulation(first_movers,A,B))))), file('MGT026+1.p',unknown), []).
+fof(5, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | subpopulation(first_movers,A,B))))), file('MGT026+1.p',unknown), []).
 fof(6, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | subpopulation(efficient_producers,A,B))))), file('MGT026+1.p',unknown), []).
 fof(7, axiom, (! [A]: ((~ (environment(A)) | greater_or_e_qual(critical_point(A),appear(efficient_producers,A))))), file('MGT026+1.p',unknown), []).
 fof(8, axiom, (! [A,B,C]: ((~ (greater(A,B)) | (~ (greater(B,C)) | greater(A,C))))), file('MGT026+1.p',unknown), []).
@@ -45,7 +45,7 @@ fof(9, axiom, (! [A,B]: ((~ (greater_or_e_qual(A,B)) | (greater(A,B) | (A = B)))
 fof(10, axiom, (! [A,B]: ((greater_or_e_qual(A,B) | ~ (greater(A,B))))), file('MGT026+1.p',unknown), []).
 fof(13, axiom, (! [A,B,C]: ((~ (environment(A)) | ((B != critical_point(A)) | (~ (subpopulations(first_movers,efficient_producers,A,C)) | (~ (greater(C,B)) | greater(growth_rate(efficient_producers,C),growth_rate(first_movers,C)))))))), file('MGT026+1.p',unknown), []).
 fof(14, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | (~ (greater_or_e_qual(B,appear(efficient_producers,A))) | greater(cardinality_at_time(efficient_producers,B),zero)))))), file('MGT026+1.p',unknown), []).
-fof(15, axiom, ~ (selection_favors(efficient_producers,first_movers,dollar_c1)), file('MGT026+1.p',unknown), []).
+fof(15, axiom, selection_favors(efficient_producers,first_movers,dollar_c1), file('MGT026+1.p',unknown), []).
 fof(17, axiom, (! [A]: ((A = A))), file('MGT026+1.p',unknown), []).
 fof(18, axiom, environment(dollar_c2), file('MGT026+1.p',unknown), []).
 fof(19, axiom, in_environment(dollar_c2,dollar_c1), file('MGT026+1.p',unknown), []).

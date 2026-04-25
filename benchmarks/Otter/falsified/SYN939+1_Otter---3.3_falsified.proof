@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '7':
 %%%%%   Replaced (p(f(dollar_c2)) | p(f(dollar_c1)))
-%%%%%   With (p(f(dollar_c1)) | p(f(dollar_c1)))
+%%%%%   With (p(f(dollar_c2)) & p(f(dollar_c1)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN939+1 : TPTP v8.1.0. Released v3.1.0.
@@ -39,7 +39,7 @@ fof(3, axiom, (! [A,B]: ((~ (p(A)) | (r(B) | ~ (q(A)))))), file('SYN939+1.p',unk
 fof(4, axiom, (! [A]: ((~ (p(A)) | (~ (r(dollar_c1)) | (~ (r(dollar_c2)) | ~ (q(A))))))), file('SYN939+1.p',unknown), []).
 fof(5, axiom, (! [A]: (q(f(A)))), file('SYN939+1.p',unknown), []).
 fof(6, plain, (! [A]: ((p(f(A)) | r(A)))), inference(hyper,[status(thm)],[5,1]), [iquote('hyper,5,1')]).
-fof(7, plain, (p(f(dollar_c1)) | p(f(dollar_c1))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[6,2,6,5])]), [iquote('hyper,6,2,6,5,factor_simp')]).
+fof(7, plain, (p(f(dollar_c2)) & p(f(dollar_c1))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[6,2,6,5])]), [iquote('hyper,6,2,6,5,factor_simp')]).
 fof(8, plain, (! [A]: ((p(f(dollar_c1)) | r(A)))), inference(hyper,[status(thm)],[7,3,5]), [iquote('hyper,7,3,5')]).
 fof(10, plain, p(f(dollar_c1)), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[8,4,7,8,5])])]), [iquote('hyper,8,4,7,8,5,factor_simp,factor_simp')]).
 fof(11, plain, (! [A]: (r(A))), inference(hyper,[status(thm)],[10,3,5]), [iquote('hyper,10,3,5')]).

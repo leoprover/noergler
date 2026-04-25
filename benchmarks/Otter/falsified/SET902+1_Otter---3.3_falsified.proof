@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '9':
-%%%%%   Replaced ((singleton(dollar_c5) != dollar_c4) | (singleton(dollar_c5) != dollar_c3))
-%%%%%   With ((singleton(dollar_c3) != dollar_c4) | (singleton(dollar_c5) != dollar_c3))
+%%%%% Mutated formula '25':
+%%%%%   Replaced ((empty_set != dollar_c4) | (set_union2(dollar_c4,dollar_c3) != dollar_c3))
+%%%%%   With ((dollar_c3 != dollar_c4) | (set_union2(dollar_c4,dollar_c3) != dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET902+1 : TPTP v8.1.0. Released v3.2.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:19:21 CEST 2026 using command 'transform(fof)'.
 fof(4, axiom, (! [A,B]: ((~ (subset(A,singleton(B))) | ((A = empty_set) | (A = singleton(B)))))), file('SET902+1.p',unknown), []).
 fof(8, axiom, ((dollar_c4 != singleton(dollar_c5)) | (dollar_c3 != singleton(dollar_c5))), file('SET902+1.p',unknown), []).
-fof(9, plain, ((singleton(dollar_c3) != dollar_c4) | (singleton(dollar_c5) != dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[8])])]), [iquote('copy,8,flip.1,flip.2')]).
+fof(9, plain, ((singleton(dollar_c5) != dollar_c4) | (singleton(dollar_c5) != dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[8])])]), [iquote('copy,8,flip.1,flip.2')]).
 fof(10, axiom, ((dollar_c4 != empty_set) | (dollar_c3 != singleton(dollar_c5))), file('SET902+1.p',unknown), []).
 fof(11, plain, ((empty_set != dollar_c4) | (singleton(dollar_c5) != dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[10])])]), [iquote('copy,10,flip.1,flip.2')]).
 fof(12, axiom, ((dollar_c4 != singleton(dollar_c5)) | (dollar_c3 != empty_set)), file('SET902+1.p',unknown), []).
@@ -46,7 +46,7 @@ fof(18, axiom, (! [A]: ((set_union2(A,A) = A))), file('SET902+1.p',unknown), [])
 fof(22, axiom, (singleton(dollar_c5) = set_union2(dollar_c4,dollar_c3)), file('SET902+1.p',unknown), []).
 fof(23, axiom, (! [A,B]: (subset(A,set_union2(A,B)))), file('SET902+1.p',unknown), []).
 fof(24, plain, ((set_union2(dollar_c4,dollar_c3) != dollar_c4) | (empty_set != dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[13]),22]), [iquote('back_demod,13,demod,22')]).
-fof(25, plain, ((empty_set != dollar_c4) | (set_union2(dollar_c4,dollar_c3) != dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[11]),22]), [iquote('back_demod,11,demod,22')]).
+fof(25, plain, ((dollar_c3 != dollar_c4) | (set_union2(dollar_c4,dollar_c3) != dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[11]),22]), [iquote('back_demod,11,demod,22')]).
 fof(26, plain, ((set_union2(dollar_c4,dollar_c3) != dollar_c4) | (set_union2(dollar_c4,dollar_c3) != dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[9]),22,22]), [iquote('back_demod,9,demod,22,22')]).
 fof(33, plain, (! [A,B]: (subset(A,set_union2(B,A)))), inference(para_into,[status(thm),theory(equality)],[23,15]), [iquote('para_into,23.1.2,15.1.1')]).
 fof(42, plain, (! [A]: ((~ (subset(A,set_union2(dollar_c4,dollar_c3))) | ((A = empty_set) | (A = set_union2(dollar_c4,dollar_c3)))))), inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[22,4]),22]), [iquote('para_from,21.1.1,4.1.2,demod,22')]).

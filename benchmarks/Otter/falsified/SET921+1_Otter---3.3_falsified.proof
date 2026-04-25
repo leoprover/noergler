@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '23':
-%%%%%   Replaced (! [A]: (in(A,singleton(A))))
-%%%%%   With (! [A]: (~ (in(A,singleton(A)))))
+%%%%% Mutated formula '177':
+%%%%%   Replaced (dollar_c5 = dollar_c3)
+%%%%%   With ~ ((dollar_c5 = dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET921+1 : TPTP v8.1.0. Released v3.2.0.
@@ -42,10 +42,10 @@ fof(11, axiom, (in(dollar_c5,set_difference(dollar_c4,singleton(dollar_c3))) | (
 fof(12, axiom, (~ (in(dollar_c5,set_difference(dollar_c4,singleton(dollar_c3)))) | (~ (in(dollar_c5,dollar_c4)) | (dollar_c5 = dollar_c3))), file('SET921+1.p',unknown), []).
 fof(17, axiom, (! [A]: ((A = A))), file('SET921+1.p',unknown), []).
 fof(21, axiom, (in(dollar_c5,set_difference(dollar_c4,singleton(dollar_c3))) | in(dollar_c5,dollar_c4)), file('SET921+1.p',unknown), []).
-fof(23, plain, (! [A]: (~ (in(A,singleton(A))))), inference(hyper,[status(thm)],[17,3,17]), [iquote('hyper,17,3,17')]).
+fof(23, plain, (! [A]: (in(A,singleton(A)))), inference(hyper,[status(thm)],[17,3,17]), [iquote('hyper,17,3,17')]).
 fof(36, plain, in(dollar_c5,dollar_c4), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[21,5,17])]), [iquote('hyper,21,5,17,factor_simp')]).
 fof(40, plain, (! [A]: ((in(dollar_c5,set_difference(dollar_c4,A)) | in(dollar_c5,A)))), inference(hyper,[status(thm)],[36,7,17]), [iquote('hyper,36,7,17')]).
 fof(100, plain, (in(dollar_c5,singleton(dollar_c3)) | (dollar_c5 = dollar_c3)), inference(hyper,[status(thm)],[40,12,36]), [iquote('hyper,40,12,36')]).
-fof(177, plain, (dollar_c5 = dollar_c3), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[100,2,17])]), [iquote('hyper,100,2,17,factor_simp')]).
+fof(177, plain, ~ ((dollar_c5 = dollar_c3)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[100,2,17])]), [iquote('hyper,100,2,17,factor_simp')]).
 fof(269, plain, in(dollar_c3,set_difference(dollar_c4,singleton(dollar_c3))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[11]),177,177]),17]), [iquote('back_demod,11,demod,177,177,unit_del,17')]).
 fof(355, plain, $false, inference(hyper,[status(thm)],[269,6,17,23]), [iquote('hyper,269,6,17,23')]).

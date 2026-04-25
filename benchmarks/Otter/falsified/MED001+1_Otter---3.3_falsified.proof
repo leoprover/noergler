@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '83':
-%%%%%   Replaced (! [A]: ((gt(n0,dollar_f2(A)) | (bcapacityex(A) | (gt(A,dollar_f4(n0)) | gt(n0,dollar_f5(n0)))))))
-%%%%%   With (! [A]: ((gt(dollar_c1,dollar_f2(A)) | (bcapacityex(A) | (gt(A,dollar_f4(n0)) | gt(n0,dollar_f5(n0)))))))
+%%%%% Mutated formula '123':
+%%%%%   Replaced (gt(n0,dollar_f4(n0)) | (gt(n0,dollar_f5(n0)) | bcapacityex(n0)))
+%%%%%   With (gt(n0,dollar_f4(n0)) & (gt(n0,dollar_f5(n0)) | bcapacityex(n0)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MED001+1 : TPTP v8.1.0. Released v3.2.0.
@@ -48,7 +48,7 @@ fof(72, axiom, bcapacitysn(n0), file('MED001+1.p',unknown), []).
 fof(73, axiom, qilt27(n0), file('MED001+1.p',unknown), []).
 fof(76, plain, (! [A,B]: ((gt(n0,dollar_f2(A)) | (bcapacityex(A) | (gt(A,B) | bsecretioni(B)))))), inference(hyper,[status(thm)],[71,15]), [iquote('hyper,71,15')]).
 fof(80, plain, (! [A,B]: ((gt(n0,dollar_f2(A)) | (bcapacityex(A) | (gt(A,dollar_f4(n0)) | (gt(n0,dollar_f5(n0)) | (gt(n0,B) | conditionnormo(B)))))))), inference(hyper,[status(thm)],[76,20,72,73]), [iquote('hyper,76,20,72,73')]).
-fof(83, plain, (! [A]: ((gt(dollar_c1,dollar_f2(A)) | (bcapacityex(A) | (gt(A,dollar_f4(n0)) | gt(n0,dollar_f5(n0))))))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[80,52]),51]), [iquote('hyper,80,52,unit_del,51')]).
+fof(83, plain, (! [A]: ((gt(n0,dollar_f2(A)) | (bcapacityex(A) | (gt(A,dollar_f4(n0)) | gt(n0,dollar_f5(n0))))))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[80,52]),51]), [iquote('hyper,80,52,unit_del,51')]).
 fof(84, plain, (gt(n0,dollar_f2(n0)) | (gt(n0,dollar_f4(n0)) | gt(n0,dollar_f5(n0)))), inference(hyper,[status(thm)],[83,5,72]), [iquote('hyper,83,5,72')]).
 fof(86, plain, (! [A]: ((gt(n0,dollar_f4(n0)) | (gt(n0,dollar_f5(n0)) | (bcapacityex(n0) | (gt(n0,A) | bsecretioni(A))))))), inference(hyper,[status(thm)],[84,14]), [iquote('hyper,84,14')]).
 fof(89, plain, (! [A]: ((gt(n0,dollar_f2(n0)) | (gt(n0,dollar_f5(n0)) | (gt(n0,A) | conditionnormo(A)))))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[84,18,72,73])]), [iquote('hyper,84,18,72,73,factor_simp')]).
@@ -62,7 +62,7 @@ fof(111, plain, (gt(n0,dollar_f2(n0)) | (gt(n0,dollar_f4(n0)) | bcapacityex(n0))
 fof(115, plain, (gt(n0,dollar_f2(n0)) | gt(n0,dollar_f4(n0))), inference(hyper,[status(thm)],[111,5,72]), [iquote('hyper,111,5,72')]).
 fof(119, plain, (! [A]: ((gt(n0,dollar_f2(n0)) | (gt(n0,A) | conditionnormo(A))))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[115,19,72,73,108])]), [iquote('hyper,115,19,72,73,108,factor_simp')]).
 fof(122, plain, gt(n0,dollar_f2(n0)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[119,52]),51]), [iquote('hyper,119,52,unit_del,51')]).
-fof(123, plain, (gt(n0,dollar_f4(n0)) | (gt(n0,dollar_f5(n0)) | bcapacityex(n0))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[103,52]),51]), [iquote('hyper,103,52,unit_del,51')]).
+fof(123, plain, (gt(n0,dollar_f4(n0)) & (gt(n0,dollar_f5(n0)) | bcapacityex(n0))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[103,52]),51]), [iquote('hyper,103,52,unit_del,51')]).
 fof(125, plain, (! [A]: ((bcapacityex(n0) | (gt(n0,A) | bsecretioni(A))))), inference(hyper,[status(thm)],[122,14]), [iquote('hyper,122,14')]).
 fof(126, plain, (gt(n0,dollar_f4(n0)) | gt(n0,dollar_f5(n0))), inference(hyper,[status(thm)],[123,5,72]), [iquote('hyper,123,5,72')]).
 fof(129, plain, (! [A]: ((gt(n0,dollar_f5(n0)) | (gt(n0,A) | conditionnormo(A))))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[126,18,72,73])]), [iquote('hyper,126,18,72,73,factor_simp')]).

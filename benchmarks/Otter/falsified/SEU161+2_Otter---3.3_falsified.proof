@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '312':
-%%%%%   Replaced subset(unordered_pair(dollar_c4,dollar_c4),dollar_c3)
-%%%%%   With subset(unordered_pair(dollar_c3,dollar_c4),dollar_c3)
+%%%%% Mutated formula '121':
+%%%%%   Replaced (! [A,B]: ((subset(unordered_pair(A,A),B) | ~ (in(A,B)))))
+%%%%%   With (! [A,B]: ((subset(unordered_pair(A,A),B) & ~ (in(A,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU161+2 : TPTP v8.1.0. Released v3.3.0.
@@ -36,11 +36,11 @@
 fof(70, axiom, (! [A,B]: ((~ (subset(A,B)) | (set_union2(A,B) = B)))), file('SEU161+2.p',unknown), []).
 fof(81, axiom, (! [A,B,C]: ((subset(unordered_pair(A,B),C) | (~ (in(A,C)) | ~ (in(B,C)))))), file('SEU161+2.p',unknown), []).
 fof(86, axiom, (set_union2(singleton(dollar_c4),dollar_c3) != dollar_c3), file('SEU161+2.p',unknown), []).
-fof(121, plain, (! [A,B]: ((subset(unordered_pair(A,A),B) | ~ (in(A,B))))), inference(factor,[status(thm)],[81]), [iquote('factor,81.2.3')]).
+fof(121, plain, (! [A,B]: ((subset(unordered_pair(A,A),B) & ~ (in(A,B))))), inference(factor,[status(thm)],[81]), [iquote('factor,81.2.3')]).
 fof(127, axiom, (! [A]: ((A = A))), file('SEU161+2.p',unknown), []).
 fof(176, axiom, in(dollar_c4,dollar_c3), file('SEU161+2.p',unknown), []).
 fof(184, axiom, (! [A]: ((unordered_pair(A,A) = singleton(A)))), file('SEU161+2.p',unknown), []).
 fof(186, plain, (! [A]: ((singleton(A) = unordered_pair(A,A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[184])]), [iquote('copy,184,flip.1')]).
 fof(223, plain, (set_union2(unordered_pair(dollar_c4,dollar_c4),dollar_c3) != dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[86]),186]), [iquote('back_demod,86,demod,186')]).
-fof(312, plain, subset(unordered_pair(dollar_c3,dollar_c4),dollar_c3), inference(hyper,[status(thm)],[176,121]), [iquote('hyper,176,121')]).
+fof(312, plain, subset(unordered_pair(dollar_c4,dollar_c4),dollar_c3), inference(hyper,[status(thm)],[176,121]), [iquote('hyper,176,121')]).
 fof(952, plain, $false, inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[223,70]),127,312]), [iquote('para_into,223.1.1,70.2.1,unit_del,127,312')]).

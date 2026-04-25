@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '28':
-%%%%%   Replaced (! [A,B]: ((difference(A,intersection(A,B)) = difference(A,B))))
-%%%%%   With (! [A,B]: (~ ((difference(A,intersection(A,B)) = difference(A,B)))))
+%%%%% Mutated formula '27':
+%%%%%   Replaced (! [A,B]: ((union(difference(A,B),difference(B,A)) = symmetric_difference(A,B))))
+%%%%%   With (! [A,B]: (~ ((union(difference(A,B),difference(B,A)) = symmetric_difference(A,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET620+3 : TPTP v8.1.0. Released v2.2.0.
@@ -36,8 +36,8 @@
 fof(18, axiom, (symmetric_difference(dollar_c2,dollar_c1) != difference(union(dollar_c2,dollar_c1),intersection(dollar_c2,dollar_c1))), file('SET620+3.p',unknown), []).
 fof(19, plain, (difference(union(dollar_c2,dollar_c1),intersection(dollar_c2,dollar_c1)) != symmetric_difference(dollar_c2,dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[18])]), [iquote('copy,18,flip.1')]).
 fof(25, axiom, (! [A,B]: ((symmetric_difference(A,B) = union(difference(A,B),difference(B,A))))), file('SET620+3.p',unknown), []).
-fof(27, plain, (! [A,B]: ((union(difference(A,B),difference(B,A)) = symmetric_difference(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[25])]), [iquote('copy,25,flip.1')]).
-fof(28, axiom, (! [A,B]: (~ ((difference(A,intersection(A,B)) = difference(A,B))))), file('SET620+3.p',unknown), []).
+fof(27, plain, (! [A,B]: (~ ((union(difference(A,B),difference(B,A)) = symmetric_difference(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[25])]), [iquote('copy,25,flip.1')]).
+fof(28, axiom, (! [A,B]: ((difference(A,intersection(A,B)) = difference(A,B)))), file('SET620+3.p',unknown), []).
 fof(30, axiom, (! [A,B,C]: ((difference(union(A,B),C) = union(difference(A,C),difference(B,C))))), file('SET620+3.p',unknown), []).
 fof(31, plain, (! [A,B,C]: ((union(difference(A,B),difference(C,B)) = difference(union(A,C),B)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[30])]), [iquote('copy,30,flip.1')]).
 fof(34, axiom, (! [A,B]: ((intersection(A,B) = intersection(B,A)))), file('SET620+3.p',unknown), []).

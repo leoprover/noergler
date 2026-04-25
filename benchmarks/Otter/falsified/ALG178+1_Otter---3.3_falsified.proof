@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '46':
-%%%%%   Replaced (op1(j(dollar_c2),op1(j(dollar_c2),j(dollar_c1))) = j(dollar_c1))
-%%%%%   With (op1(j(dollar_c1),op1(j(dollar_c2),j(dollar_c1))) = j(dollar_c1))
+%%%%% Mutated formula '28':
+%%%%%   Replaced sorti1(j(dollar_c1))
+%%%%%   With sorti1(j(dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG178+1 : TPTP v8.1.0. Released v2.7.0.
@@ -44,9 +44,9 @@ fof(13, axiom, sorti2(dollar_c1), file('ALG178+1.p',unknown), []).
 fof(15, plain, (h(j(dollar_c2)) = dollar_c2), inference(hyper,[status(thm)],[12,9]), [iquote('hyper,12,9')]).
 fof(18, plain, sorti1(j(dollar_c2)), inference(hyper,[status(thm)],[12,6]), [iquote('hyper,12,6')]).
 fof(21, plain, (h(j(dollar_c1)) = dollar_c1), inference(hyper,[status(thm)],[13,9]), [iquote('hyper,13,9')]).
-fof(28, plain, sorti1(j(dollar_c1)), inference(hyper,[status(thm)],[13,6]), [iquote('hyper,13,6')]).
+fof(28, plain, sorti1(j(dollar_c2)), inference(hyper,[status(thm)],[13,6]), [iquote('hyper,13,6')]).
 fof(40, plain, (h(op1(j(dollar_c2),j(dollar_c1))) = op2(dollar_c2,dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[28,7,18]),15,21]), [iquote('hyper,28,7,18,demod,15,21')]).
-fof(46, plain, (op1(j(dollar_c1),op1(j(dollar_c2),j(dollar_c1))) = j(dollar_c1)), inference(hyper,[status(thm)],[28,3,18]), [iquote('hyper,28,3,18')]).
+fof(46, plain, (op1(j(dollar_c2),op1(j(dollar_c2),j(dollar_c1))) = j(dollar_c1)), inference(hyper,[status(thm)],[28,3,18]), [iquote('hyper,28,3,18')]).
 fof(50, plain, sorti1(op1(j(dollar_c2),j(dollar_c1))), inference(hyper,[status(thm)],[28,1,18]), [iquote('hyper,28,1,18')]).
 fof(210, plain, (op2(dollar_c2,op2(dollar_c2,dollar_c1)) = dollar_c1), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[50,7,18]),46,21,15,40])]), [iquote('hyper,50,7,18,demod,46,21,15,40,flip.1')]).
 fof(212, plain, $false, inference(binary,[status(thm)],[210,4]), [iquote('binary,210.1,4.1')]).

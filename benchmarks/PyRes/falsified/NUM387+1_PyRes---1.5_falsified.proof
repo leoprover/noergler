@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c33':
-%%%%%   Replaced (! [X13]: (in(X13,succ(X13))))
-%%%%%   With (! [X13]: (~ (in(X13,succ(X13)))))
+%%%%% Mutated formula 'c126':
+%%%%%   Replaced (! [A,B]: ((~ (in(A,B)) | ~ (in(B,A)))))
+%%%%%   With (! [A,B]: ((in(A,B) | ~ (in(B,A)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM387+1 : TPTP v8.1.2. Released v3.2.0.
@@ -38,7 +38,7 @@
 %%% Generated on Tue Apr 14 15:05:52 CEST 2026 using command 'transform(fof)'.
 fof(antisymmetry_r2_hidden, axiom, (! [A,B]: ((in(A,B) => ~ (in(B,A))))), file('NUM387+1.p',antisymmetry_r2_hidden)).
 fof(c125, plain, (! [A,B]: ((in(A,B) => ~ (in(B,A))))), inference(fof_simplification,[status(thm)],[antisymmetry_r2_hidden])).
-fof(c126, plain, (! [A,B]: ((~ (in(A,B)) | ~ (in(B,A))))), inference(fof_nnf,[status(thm)],[c125])).
+fof(c126, plain, (! [A,B]: ((in(A,B) | ~ (in(B,A))))), inference(fof_nnf,[status(thm)],[c125])).
 fof(c127, plain, (! [X40,X41]: ((~ (in(X40,X41)) | ~ (in(X41,X40))))), inference(variable_rename,[status(thm)],[c126])).
 fof(c128, plain, (! [X99,X100]: ((~ (in(X99,X100)) | ~ (in(X100,X99))))), inference(split_conjunct,[status(thm)],[c127])).
 fof(c269, plain, (! [X103]: (~ (in(X103,X103)))), inference(factor,[status(thm)],[c128])).
@@ -53,7 +53,7 @@ fof(c32, negated_conjecture, (skolem0001 = succ(skolem0001)), inference(split_co
 fof(c268, plain, (succ(skolem0001) = skolem0001), inference(resolution,[status(thm)],[c32,symmetry])).
 fof(c3, axiom, (! [X58,X60,X59,X57]: (((X58 != X60) | ((X59 != X57) | (~ (in(X58,X59)) | in(X60,X57)))))), theory(equality)).
 fof(t10_ordinal1, axiom, (! [A]: (in(A,succ(A)))), file('NUM387+1.p',t10_ordinal1)).
-fof(c33, plain, (! [X13]: (~ (in(X13,succ(X13))))), inference(variable_rename,[status(thm)],[t10_ordinal1])).
+fof(c33, plain, (! [X13]: (in(X13,succ(X13)))), inference(variable_rename,[status(thm)],[t10_ordinal1])).
 fof(c34, plain, (! [X62]: (in(X62,succ(X62)))), inference(split_conjunct,[status(thm)],[c33])).
 fof(c136, plain, (! [X136,X135,X134]: (((X136 != X135) | ((succ(X136) != X134) | in(X135,X134))))), inference(resolution,[status(thm)],[c34,c3])).
 fof(c435, plain, (! [X315]: (((skolem0001 != X315) | in(X315,skolem0001)))), inference(resolution,[status(thm)],[c136,c268])).

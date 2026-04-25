@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '174':
 %%%%%   Replaced (! [A]: ((composition(one,A) = A)))
-%%%%%   With (! [A]: (~ ((composition(one,A) = A))))
+%%%%%   With (! [A]: ((composition(dollar_c1,A) = A)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : REL013+1 : TPTP v8.1.0. Released v4.0.0.
@@ -78,7 +78,7 @@ fof(124, plain, (! [A,B,C,D]: ((join(composition(A,B),composition(C,composition(
 fof(129, plain, (! [A]: ((join(zero,join(A,top)) = join(top,A)))), inference(para_into,[status(thm),theory(equality)],[65,3]), [iquote('para_into,65.1.1.2,3.1.1')]).
 fof(165, plain, (! [A]: ((composition(converse(one),converse(A)) = converse(A)))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[25,16])]), [iquote('para_into,25.1.1.1,16.1.1,flip.1')]).
 fof(172, plain, (! [A]: ((composition(converse(one),A) = A))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[165,22]),22]), [iquote('para_into,165.1.1.2,21.1.1,demod,22')]).
-fof(174, plain, (! [A]: (~ ((composition(one,A) = A)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[172,82]),172])]), [iquote('para_into,171.1.1,82.1.1,demod,172,flip.1')]).
+fof(174, plain, (! [A]: ((composition(dollar_c1,A) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[172,82]),172])]), [iquote('para_into,171.1.1,82.1.1,demod,172,flip.1')]).
 fof(175, plain, (converse(one) = one), inference(para_into,[status(thm),theory(equality)],[172,16]), [iquote('para_into,171.1.1,16.1.1')]).
 fof(182, plain, (! [A]: ((join(complement(A),complement(A)) = complement(A)))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[27,175]),174,174]), [iquote('para_into,27.1.1.1.1,175.1.1,demod,174,174')]).
 fof(197, plain, (! [A]: ((join(composition(converse(A),complement(composition(A,top))),zero) = zero))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[27,45]),45]), [iquote('para_into,27.1.1.2,44.1.1,demod,45')]).

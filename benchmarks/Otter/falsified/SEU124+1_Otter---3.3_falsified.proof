@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '14':
-%%%%%   Replaced ~ (subset(dollar_c4,set_union2(dollar_c4,dollar_c3)))
-%%%%%   With ~ (subset(empty_set,set_union2(dollar_c4,dollar_c3)))
+%%%%% Mutated formula '374':
+%%%%%   Replaced in(dollar_f2(dollar_c4,set_union2(dollar_c3,dollar_c4)),dollar_c4)
+%%%%%   With in(dollar_f2(dollar_c1,set_union2(dollar_c3,dollar_c4)),dollar_c4)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU124+1 : TPTP v8.1.0. Released v3.3.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:20:02 CEST 2026 using command 'transform(fof)'.
 fof(4, axiom, (! [A,B,C,D]: (((A != set_union2(B,C)) | (in(D,A) | ~ (in(D,C)))))), file('SEU124+1.p',unknown), []).
 fof(8, axiom, (! [A,B]: ((subset(A,B) | ~ (in(dollar_f2(A,B),B))))), file('SEU124+1.p',unknown), []).
-fof(14, axiom, ~ (subset(empty_set,set_union2(dollar_c4,dollar_c3))), file('SEU124+1.p',unknown), []).
+fof(14, axiom, ~ (subset(dollar_c4,set_union2(dollar_c4,dollar_c3))), file('SEU124+1.p',unknown), []).
 fof(15, axiom, (! [A,B]: ((~ (empty(A)) | ((A = B) | ~ (empty(B)))))), file('SEU124+1.p',unknown), []).
 fof(22, axiom, (! [A,B]: ((set_union2(A,B) = set_union2(B,A)))), file('SEU124+1.p',unknown), []).
 fof(24, axiom, (! [A,B]: ((subset(A,B) | in(dollar_f2(A,B),A)))), file('SEU124+1.p',unknown), []).
@@ -46,7 +46,7 @@ fof(41, plain, (empty_set = dollar_c1), inference(hyper,[status(thm)],[28,15,25]
 fof(46, plain, (! [A]: ((set_union2(A,dollar_c1) = A))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[30]),41]), [iquote('back_demod,30,demod,41')]).
 fof(59, plain, ~ (subset(dollar_c4,set_union2(dollar_c3,dollar_c4))), inference(para_from,[status(thm),theory(equality)],[22,14]), [iquote('para_from,22.1.1,14.1.2')]).
 fof(66, plain, (! [A]: ((set_union2(dollar_c1,A) = A))), inference(para_into,[status(thm),theory(equality)],[46,22]), [iquote('para_into,46.1.1,22.1.1')]).
-fof(374, plain, in(dollar_f2(dollar_c4,set_union2(dollar_c3,dollar_c4)),dollar_c4), inference(hyper,[status(thm)],[24,59]), [iquote('hyper,24,59')]).
+fof(374, plain, in(dollar_f2(dollar_c1,set_union2(dollar_c3,dollar_c4)),dollar_c4), inference(hyper,[status(thm)],[24,59]), [iquote('hyper,24,59')]).
 fof(745, plain, (! [A]: (in(dollar_f2(dollar_c4,set_union2(dollar_c3,dollar_c4)),set_union2(A,dollar_c4)))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[374,4,66]),66]), [iquote('hyper,374,4,65,demod,66')]).
 fof(3807, plain, subset(dollar_c4,set_union2(dollar_c3,dollar_c4)), inference(hyper,[status(thm)],[745,8]), [iquote('hyper,745,8')]).
 fof(3808, plain, $false, inference(binary,[status(thm)],[3807,59]), [iquote('binary,3807.1,59.1')]).

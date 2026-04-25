@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '907':
-%%%%%   Replaced frontsegP(dollar_c3,nil)
-%%%%%   With frontsegP(dollar_c4,nil)
+%%%%% Mutated formula '449':
+%%%%%   Replaced (dollar_c5 = dollar_c3)
+%%%%%   With (dollar_c3 = dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC020+1 : TPTP v8.1.0. Released v2.4.0.
@@ -40,7 +40,7 @@ fof(183, axiom, ((nil != dollar_c5) | (nil != dollar_c6)), file('SWC020+1.p',unk
 fof(433, axiom, (! [A]: ((A = A))), file('SWC020+1.p',unknown), []).
 fof(446, axiom, ssList(dollar_c4), file('SWC020+1.p',unknown), []).
 fof(447, axiom, ssList(dollar_c3), file('SWC020+1.p',unknown), []).
-fof(449, axiom, (dollar_c5 = dollar_c3), file('SWC020+1.p',unknown), []).
+fof(449, axiom, (dollar_c3 = dollar_c3), file('SWC020+1.p',unknown), []).
 fof(451, axiom, (dollar_c6 = dollar_c4), file('SWC020+1.p',unknown), []).
 fof(452, axiom, ((nil = dollar_c3) | ne_q(dollar_c4,nil)), file('SWC020+1.p',unknown), []).
 fof(454, axiom, ((nil = dollar_c4) | ne_q(dollar_c4,nil)), file('SWC020+1.p',unknown), []).
@@ -48,7 +48,7 @@ fof(455, axiom, ((nil = dollar_c4) | frontsegP(dollar_c3,dollar_c4)), file('SWC0
 fof(456, plain, ((nil != dollar_c3) | (nil != dollar_c4)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[183]),449,451]), [iquote('back_demod,183,demod,449,451')]).
 fof(457, plain, (! [A]: ((~ (ssList(A)) | (~ (ne_q(A,nil)) | (~ (frontsegP(dollar_c3,A)) | ~ (frontsegP(dollar_c4,A))))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),449,451]), [iquote('back_demod,182,demod,449,451')]).
 fof(897, plain, frontsegP(dollar_c4,dollar_c4), inference(hyper,[status(thm)],[446,116]), [iquote('hyper,446,116')]).
-fof(907, plain, frontsegP(dollar_c4,nil), inference(hyper,[status(thm)],[447,121]), [iquote('hyper,447,121')]).
+fof(907, plain, frontsegP(dollar_c3,nil), inference(hyper,[status(thm)],[447,121]), [iquote('hyper,447,121')]).
 fof(934, plain, frontsegP(dollar_c3,dollar_c4), inference(factor_simp,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[907,455])]), [iquote('para_into,907.1.2,455.1.1,factor_simp')]).
 fof(937, plain, (nil = dollar_c4), inference(hyper,[status(thm)],[934,457,446,454,897]), [iquote('hyper,934,457,446,454,897')]).
 fof(939, plain, (dollar_c4 = dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[934,457,446,452,897]),937]), [iquote('hyper,934,457,446,452,897,demod,937')]).

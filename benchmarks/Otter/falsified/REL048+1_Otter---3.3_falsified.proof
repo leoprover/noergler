@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '462':
-%%%%%   Replaced (! [A]: ((join(top,meet(A,A)) = join(top,A))))
-%%%%%   With (! [A]: (~ ((join(top,meet(A,A)) = join(top,A)))))
+%%%%% Mutated formula '16':
+%%%%%   Replaced (! [A]: ((composition(A,one) = A)))
+%%%%%   With (! [A]: (~ ((composition(A,one) = A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : REL048+1 : TPTP v8.1.0. Released v4.0.0.
@@ -44,7 +44,7 @@ fof(10, axiom, (! [A,B]: ((meet(A,B) = complement(join(complement(A),complement(
 fof(12, plain, (! [A,B]: ((complement(join(complement(A),complement(B))) = meet(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[10])]), [iquote('copy,10,flip.1')]).
 fof(13, axiom, (! [A,B,C]: ((composition(A,composition(B,C)) = composition(composition(A,B),C)))), file('REL048+1.p',unknown), []).
 fof(14, plain, (! [A,B,C]: ((composition(composition(A,B),C) = composition(A,composition(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[13])]), [iquote('copy,13,flip.1')]).
-fof(16, axiom, (! [A]: ((composition(A,one) = A))), file('REL048+1.p',unknown), []).
+fof(16, axiom, (! [A]: (~ ((composition(A,one) = A)))), file('REL048+1.p',unknown), []).
 fof(22, axiom, (! [A]: ((converse(converse(A)) = A))), file('REL048+1.p',unknown), []).
 fof(25, axiom, (! [A,B]: ((converse(composition(A,B)) = composition(converse(B),converse(A))))), file('REL048+1.p',unknown), []).
 fof(27, axiom, (! [A,B]: ((join(composition(converse(A),complement(composition(A,B))),complement(B)) = complement(B)))), file('REL048+1.p',unknown), []).
@@ -88,7 +88,7 @@ fof(306, plain, (! [A]: ((meet(meet(A,A),top) = meet(A,A)))), inference(demod,[s
 fof(314, plain, (meet(top,top) = top), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[274]),306,249])]), [iquote('back_demod,274,demod,306,249,flip.1')]).
 fof(318, plain, (complement(zero) = top), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[226]),314]), [iquote('back_demod,226,demod,314')]).
 fof(321, plain, (! [A]: ((join(complement(A),complement(join(meet(A,A),top))) = complement(A)))), inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[284,38]),229]), [iquote('para_from,284.1.1,38.1.1.1,demod,229')]).
-fof(462, plain, (! [A]: (~ ((join(top,meet(A,A)) = join(top,A))))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[58,249]),318])]), [iquote('para_into,58.1.1.2,248.1.1,demod,318,flip.1')]).
+fof(462, plain, (! [A]: ((join(top,meet(A,A)) = join(top,A)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[58,249]),318])]), [iquote('para_into,58.1.1.2,248.1.1,demod,318,flip.1')]).
 fof(465, plain, (! [A]: ((join(top,complement(A)) = top))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[58,185]),229,289])]), [iquote('para_into,58.1.1.2,184.1.1,demod,229,289,flip.1')]).
 fof(486, plain, (! [A]: ((join(meet(A,A),top) = join(top,A)))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[58,40]),229]), [iquote('para_into,58.1.1.2,40.1.1,demod,229')]).
 fof(512, plain, (! [A]: ((join(complement(A),complement(join(top,A))) = complement(A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[321]),486]), [iquote('back_demod,321,demod,486')]).

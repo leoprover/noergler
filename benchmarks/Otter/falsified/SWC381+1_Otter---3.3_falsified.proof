@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '454':
-%%%%%   Replaced ne_q(dollar_c6,nil)
-%%%%%   With ne_q(dollar_c3,nil)
+%%%%% Mutated formula '455':
+%%%%%   Replaced ne_q(dollar_c4,nil)
+%%%%%   With ~ (ne_q(dollar_c4,nil))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC381+1 : TPTP v8.1.0. Released v2.4.0.
@@ -40,8 +40,8 @@ fof(185, axiom, (memberP(dollar_c4,dollar_c3) | ~ (ne_q(dollar_c4,nil))), file('
 fof(435, axiom, (! [A]: ((A = A))), file('SWC381+1.p',unknown), []).
 fof(451, axiom, (dollar_c6 = dollar_c4), file('SWC381+1.p',unknown), []).
 fof(453, axiom, (dollar_c7 = dollar_c5), file('SWC381+1.p',unknown), []).
-fof(454, axiom, ne_q(dollar_c3,nil), file('SWC381+1.p',unknown), []).
-fof(455, plain, ne_q(dollar_c4,nil), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[454]),451]), [iquote('copy,454,demod,451')]).
+fof(454, axiom, ne_q(dollar_c6,nil), file('SWC381+1.p',unknown), []).
+fof(455, plain, ~ (ne_q(dollar_c4,nil)), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[454]),451]), [iquote('copy,454,demod,451')]).
 fof(456, plain, (! [A]: ((~ (ssItem(A)) | ((cons(A,nil) != dollar_c5) | ~ (memberP(dollar_c4,A)))))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),453,451]),455]), [iquote('back_demod,182,demod,453,451,unit_del,455')]).
 fof(865, plain, memberP(dollar_c4,dollar_c3), inference(hyper,[status(thm)],[455,185]), [iquote('hyper,455,185')]).
 fof(866, plain, ssItem(dollar_c3), inference(hyper,[status(thm)],[455,183]), [iquote('hyper,455,183')]).

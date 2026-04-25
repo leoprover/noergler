@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '5':
-%%%%%   Replaced (! [A,B]: ((~ (subset(A,B)) | (set_union2(A,B) = B))))
-%%%%%   With (! [A,B]: ((subset(A,B) | (set_union2(A,B) = B))))
+%%%%% Mutated formula '10':
+%%%%%   Replaced in(dollar_c2,dollar_c1)
+%%%%%   With ~ (in(dollar_c2,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU152+1 : TPTP v8.1.0. Released v3.3.0.
@@ -35,8 +35,8 @@
 %%% Generated on Tue Apr 14 19:20:22 CEST 2026 using command 'transform(fof)'.
 fof(2, axiom, (set_union2(singleton(dollar_c2),dollar_c1) != dollar_c1), file('SEU152+1.p',unknown), []).
 fof(4, axiom, (! [A,B]: ((subset(singleton(A),B) | ~ (in(A,B))))), file('SEU152+1.p',unknown), []).
-fof(5, axiom, (! [A,B]: ((subset(A,B) | (set_union2(A,B) = B)))), file('SEU152+1.p',unknown), []).
-fof(10, axiom, in(dollar_c2,dollar_c1), file('SEU152+1.p',unknown), []).
+fof(5, axiom, (! [A,B]: ((~ (subset(A,B)) | (set_union2(A,B) = B)))), file('SEU152+1.p',unknown), []).
+fof(10, axiom, ~ (in(dollar_c2,dollar_c1)), file('SEU152+1.p',unknown), []).
 fof(12, plain, subset(singleton(dollar_c2),dollar_c1), inference(hyper,[status(thm)],[10,4]), [iquote('hyper,10,4')]).
 fof(14, plain, (set_union2(singleton(dollar_c2),dollar_c1) = dollar_c1), inference(hyper,[status(thm)],[12,5]), [iquote('hyper,12,5')]).
 fof(16, plain, $false, inference(binary,[status(thm)],[14,2]), [iquote('binary,14.1,2.1')]).

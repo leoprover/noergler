@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '996':
-%%%%%   Replaced (! [A]: ((dollar_f2(unordered_pair(A,A)) = A)))
-%%%%%   With (! [A]: (~ ((dollar_f2(unordered_pair(A,A)) = A))))
+%%%%% Mutated formula '309':
+%%%%%   Replaced (! [A,B]: (((A != dollar_c1) | ~ (in(B,A)))))
+%%%%%   With (! [A,B]: ((~ ((A != dollar_c1)) | ~ (in(B,A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU158+2 : TPTP v8.1.0. Released v3.3.0.
@@ -61,10 +61,10 @@ fof(260, plain, (empty_set = dollar_c1), inference(hyper,[status(thm)],[151,92,1
 fof(288, plain, (! [A]: ((unordered_pair(A,A) != dollar_c1))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[228]),260]), [iquote('back_demod,228,demod,260')]).
 fof(301, plain, (! [A]: (subset(dollar_c1,A))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[162]),260]), [iquote('back_demod,162,demod,260')]).
 fof(304, plain, (! [A]: (((A = dollar_c1) | in(dollar_f2(A),A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[128]),260]), [iquote('back_demod,128,demod,260')]).
-fof(309, plain, (! [A,B]: (((A != dollar_c1) | ~ (in(B,A))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[9]),260]), [iquote('back_demod,9,demod,260')]).
+fof(309, plain, (! [A,B]: ((~ ((A != dollar_c1)) | ~ (in(B,A))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[9]),260]), [iquote('back_demod,9,demod,260')]).
 fof(368, plain, (! [A]: ((set_union2(dollar_c1,A) = A))), inference(hyper,[status(thm)],[301,70]), [iquote('hyper,301,70')]).
 fof(987, plain, (! [A]: ((dollar_f4(A,A,dollar_c1) = A))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[185,309,368]),147,147]),288]), [iquote('hyper,185,309,368,demod,147,147,unit_del,288')]).
-fof(996, plain, (! [A]: (~ ((dollar_f2(unordered_pair(A,A)) = A)))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[304,98,987]),987,987]),288]), [iquote('hyper,304,98,986,demod,987,987,unit_del,288')]).
+fof(996, plain, (! [A]: ((dollar_f2(unordered_pair(A,A)) = A))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[304,98,987]),987,987]),288]), [iquote('hyper,304,98,986,demod,987,987,unit_del,288')]).
 fof(1013, plain, in(dollar_c4,dollar_c3), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[210,29,304]),996]),288])]), [iquote('hyper,210,29,304,demod,996,unit_del,288,factor_simp')]).
 fof(1081, plain, ~ (subset(unordered_pair(dollar_c4,dollar_c4),dollar_c3)), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[220,124]),1013]), [iquote('para_into,220.1.1,124.1.1,unit_del,1013')]).
 fof(1086, plain, subset(unordered_pair(dollar_c4,dollar_c4),dollar_c3), inference(hyper,[status(thm)],[224,1013]), [iquote('hyper,224,1013')]).

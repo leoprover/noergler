@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1518':
-%%%%%   Replaced tptpcol_0_0(c_tptpcol_16_62187)
-%%%%%   With ~ (tptpcol_0_0(c_tptpcol_16_62187))
+%%%%% Mutated formula '1410':
+%%%%%   Replaced tptpcol_3_98305(c_tptpcol_16_62187)
+%%%%%   With ~ (tptpcol_3_98305(c_tptpcol_16_62187))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR040+2 : TPTP v8.1.0. Released v3.4.0.
@@ -67,9 +67,9 @@ fof(1271, plain, tptpcol_7_108547(c_tptpcol_16_62187), inference(hyper,[status(t
 fof(1301, plain, tptpcol_6_108546(c_tptpcol_16_62187), inference(hyper,[status(thm)],[1271,153]), [iquote('hyper,1271,153')]).
 fof(1336, plain, tptpcol_5_106498(c_tptpcol_16_62187), inference(hyper,[status(thm)],[1301,205]), [iquote('hyper,1301,205')]).
 fof(1375, plain, tptpcol_4_106497(c_tptpcol_16_62187), inference(hyper,[status(thm)],[1336,53]), [iquote('hyper,1336,53')]).
-fof(1410, plain, tptpcol_3_98305(c_tptpcol_16_62187), inference(hyper,[status(thm)],[1375,30]), [iquote('hyper,1375,30')]).
+fof(1410, plain, ~ (tptpcol_3_98305(c_tptpcol_16_62187)), inference(hyper,[status(thm)],[1375,30]), [iquote('hyper,1375,30')]).
 fof(1449, plain, tptpcol_2_98304(c_tptpcol_16_62187), inference(hyper,[status(thm)],[1410,107]), [iquote('hyper,1410,107')]).
 fof(1488, plain, tptpcol_1_65536(c_tptpcol_16_62187), inference(hyper,[status(thm)],[1449,24]), [iquote('hyper,1449,24')]).
-fof(1518, plain, ~ (tptpcol_0_0(c_tptpcol_16_62187)), inference(hyper,[status(thm)],[1488,57]), [iquote('hyper,1488,57')]).
+fof(1518, plain, tptpcol_0_0(c_tptpcol_16_62187), inference(hyper,[status(thm)],[1488,57]), [iquote('hyper,1488,57')]).
 fof(1552, plain, individual(c_tptpcol_16_62187), inference(hyper,[status(thm)],[1518,200]), [iquote('hyper,1518,200')]).
 fof(1580, plain, $false, inference(hyper,[status(thm)],[1552,130,1137]), [iquote('hyper,1552,130,1137')]).

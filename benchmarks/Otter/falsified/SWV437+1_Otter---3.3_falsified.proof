@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '32':
-%%%%%   Replaced (! [A]: (loca_level_direct_below(A,sbu,confidential)))
-%%%%%   With (! [A]: (loca_level_direct_below(A,unclassified,confidential)))
+%%%%% Mutated formula '125':
+%%%%%   Replaced (! [A]: (loca_level_below(A,sbu,topsecret)))
+%%%%%   With (! [A]: (~ (loca_level_below(A,sbu,topsecret))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV437+1 : TPTP v8.1.0. Released v4.0.0.
@@ -59,7 +59,7 @@ fof(25, axiom, (! [A,B,C]: ((~ (state_file_has_owner(A,B)) | (~ (owner_indi_has_
 fof(27, axiom, (! [A,B]: ((~ (admin_indi_has_citizenship(admin,A,usa)) | admin_indi_has_citizenship_for_file(admin,A,B)))), file('SWV437+1.p',unknown), []).
 fof(28, axiom, (! [A,B]: ((~ (state_file_is_not_working_paper(A)) | (~ (admin_indi_has_citizenship_for_file(admin,B,A)) | (~ (admin_indi_has_need_to_know_for_file(admin,B,A)) | (~ (admin_indi_has_level_for_file(admin,B,A)) | (~ (admin_indi_has_compartments_for_file(admin,B,A)) | admin_indi_may_file(admin,B,A,read)))))))), file('SWV437+1.p',unknown), []).
 fof(30, axiom, ~ (admin_indi_may_file(admin,alice,secretfile,read)), file('SWV437+1.p',unknown), []).
-fof(32, axiom, (! [A]: (loca_level_direct_below(A,unclassified,confidential))), file('SWV437+1.p',unknown), []).
+fof(32, axiom, (! [A]: (loca_level_direct_below(A,sbu,confidential))), file('SWV437+1.p',unknown), []).
 fof(33, axiom, (! [A]: (loca_level_direct_below(A,confidential,secret))), file('SWV437+1.p',unknown), []).
 fof(34, axiom, (! [A]: (loca_level_direct_below(A,secret,topsecret))), file('SWV437+1.p',unknown), []).
 fof(35, axiom, (! [A,B]: (loca_level_below(A,B,B))), file('SWV437+1.p',unknown), []).
@@ -127,7 +127,7 @@ fof(121, plain, (! [A]: (admin_indi_has_citizenship_for_file(admin,alice,A))), i
 fof(122, plain, admin_indi_has_background_for_compartment(admin,alice,compartmentb), inference(hyper,[status(thm)],[102,17,43,44]), [iquote('hyper,102,17,43,44')]).
 fof(123, plain, admin_indi_has_level(admin,alice,secret), inference(hyper,[status(thm)],[110,15,78,99,89,91,90,35,72,79,92]), [iquote('hyper,110,15,78,99,89,91,90,35,72,79,92')]).
 fof(124, plain, admin_indi_has_background(admin,alice,confidential), inference(hyper,[status(thm)],[111,12,70,76]), [iquote('hyper,111,12,70,76')]).
-fof(125, plain, (! [A]: (loca_level_below(A,sbu,topsecret))), inference(hyper,[status(thm)],[112,1,34]), [iquote('hyper,112,1,34')]).
+fof(125, plain, (! [A]: (~ (loca_level_below(A,sbu,topsecret)))), inference(hyper,[status(thm)],[112,1,34]), [iquote('hyper,112,1,34')]).
 fof(130, plain, admin_file_has_level_h(admin,secretfile,secret,cons(compartmenta,nil)), inference(hyper,[status(thm)],[117,7,97,58,37]), [iquote('hyper,117,7,97,58,37')]).
 fof(135, plain, admin_indi_has_level(admin,alice,confidential), inference(hyper,[status(thm)],[124,15,78,99,89,91,90,93,72,79,111]), [iquote('hyper,124,15,78,99,89,91,90,93,72,79,111')]).
 fof(136, plain, admin_indi_has_background(admin,alice,sbu), inference(hyper,[status(thm)],[125,12,70,76]), [iquote('hyper,125,12,70,76')]).

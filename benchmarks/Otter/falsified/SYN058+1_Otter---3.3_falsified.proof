@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '11':
 %%%%%   Replaced big_s(dollar_c2)
-%%%%%   With ~ (big_s(dollar_c2))
+%%%%%   With big_s(dollar_c1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN058+1 : TPTP v8.1.0. Released v2.0.0.
@@ -40,6 +40,6 @@ fof(7, axiom, ~ (big_g(dollar_c3)), file('SYN058+1.p',unknown), []).
 fof(8, axiom, big_p(dollar_c3), file('SYN058+1.p',unknown), []).
 fof(9, axiom, big_f(dollar_c3), file('SYN058+1.p',unknown), []).
 fof(10, plain, (! [A]: (big_q(A))), inference(hyper,[status(thm)],[8,1]), [iquote('hyper,8,1')]).
-fof(11, plain, ~ (big_s(dollar_c2)), inference(hyper,[status(thm)],[10,3]), [iquote('hyper,10,3')]).
+fof(11, plain, big_s(dollar_c1), inference(hyper,[status(thm)],[10,3]), [iquote('hyper,10,3')]).
 fof(12, plain, big_g(dollar_c3), inference(hyper,[status(thm)],[11,6,9]), [iquote('hyper,11,6,9')]).
 fof(13, plain, $false, inference(binary,[status(thm)],[12,7]), [iquote('binary,12.1,7.1')]).

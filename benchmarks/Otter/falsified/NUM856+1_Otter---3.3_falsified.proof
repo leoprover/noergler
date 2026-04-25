@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '59':
-%%%%%   Replaced (greater(vd519,vd520) | greater(vd517,vd518))
-%%%%%   With (greater(vd518,vd520) | greater(vd517,vd518))
+%%%%% Mutated formula '4824':
+%%%%%   Replaced ~ (greater(vmul(vd519,vd517),vmul(vd520,vd517)))
+%%%%%   With greater(vmul(vd519,vd517),vmul(vd520,vd517))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM856+1 : TPTP v8.1.0. Released v4.1.0.
@@ -39,7 +39,7 @@ fof(8, axiom, (! [A,B,C]: ((~ (greater(A,B)) | greater(vmul(A,C),vmul(B,C))))), 
 fof(30, axiom, (! [A,B]: ((~ (ge_q(A,B)) | (greater(A,B) | (A = B))))), file('NUM856+1.p',unknown), []).
 fof(31, axiom, (! [A,B]: ((ge_q(A,B) | ~ (greater(A,B))))), file('NUM856+1.p',unknown), []).
 fof(58, axiom, (greater(vd519,vd520) | ge_q(vd519,vd520)), file('NUM856+1.p',unknown), []).
-fof(59, axiom, (greater(vd518,vd520) | greater(vd517,vd518)), file('NUM856+1.p',unknown), []).
+fof(59, axiom, (greater(vd519,vd520) | greater(vd517,vd518)), file('NUM856+1.p',unknown), []).
 fof(61, axiom, (ge_q(vd517,vd518) | greater(vd517,vd518)), file('NUM856+1.p',unknown), []).
 fof(67, axiom, (! [A,B]: ((vmul(A,B) = vmul(B,A)))), file('NUM856+1.p',unknown), []).
 fof(121, plain, ge_q(vd519,vd520), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[58,31])]), [iquote('hyper,58,31,factor_simp')]).
@@ -55,5 +55,5 @@ fof(1590, plain, ~ (greater(vmul(vd519,vd517),vmul(vd520,vd518))), inference(par
 fof(4744, plain, greater(vd519,vd520), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[1012,204])]), [iquote('hyper,1012,204,factor_simp')]).
 fof(4748, plain, (vd518 = vd517), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[4744,721,294]),723]), [iquote('hyper,4744,721,294,unit_del,723')]).
 fof(4766, plain, (! [A]: (greater(vmul(vd519,A),vmul(vd520,A)))), inference(hyper,[status(thm)],[4744,8]), [iquote('hyper,4744,8')]).
-fof(4824, plain, ~ (greater(vmul(vd519,vd517),vmul(vd520,vd517))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1590]),4748]), [iquote('back_demod,1590,demod,4748')]).
+fof(4824, plain, greater(vmul(vd519,vd517),vmul(vd520,vd517)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1590]),4748]), [iquote('back_demod,1590,demod,4748')]).
 fof(4825, plain, $false, inference(binary,[status(thm)],[4824,4766]), [iquote('binary,4824.1,4766.1')]).

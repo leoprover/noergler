@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1730':
-%%%%%   Replaced gt(pv5,n0)
-%%%%%   With ~ (gt(pv5,n0))
+%%%%% Mutated formula '1807':
+%%%%%   Replaced gt(n0,n0)
+%%%%%   With ~ (gt(n0,n0))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV193+1 : TPTP v8.1.0. Bugfixed v3.3.0.
@@ -37,7 +37,7 @@ fof(2, axiom, (! [A]: (~ (gt(A,A)))), file('SWV193+1.p',unknown), []).
 fof(248, axiom, (! [A]: ((~ (le_q(n0,A)) | (~ (le_q(A,n0)) | (A = n0))))), file('SWV193+1.p',unknown), []).
 fof(1727, axiom, le_q(n0,pv5), file('SWV193+1.p',unknown), []).
 fof(1728, axiom, le_q(pv5,n0), file('SWV193+1.p',unknown), []).
-fof(1730, axiom, ~ (gt(pv5,n0)), file('SWV193+1.p',unknown), []).
+fof(1730, axiom, gt(pv5,n0), file('SWV193+1.p',unknown), []).
 fof(1806, plain, (pv5 = n0), inference(hyper,[status(thm)],[1728,248,1727]), [iquote('hyper,1728,248,1727')]).
-fof(1807, plain, gt(n0,n0), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1730]),1806]), [iquote('back_demod,1730,demod,1806')]).
+fof(1807, plain, ~ (gt(n0,n0)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1730]),1806]), [iquote('back_demod,1730,demod,1806')]).
 fof(1808, plain, $false, inference(binary,[status(thm)],[1807,2]), [iquote('binary,1807.1,2.1')]).

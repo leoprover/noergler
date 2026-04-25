@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c2163':
-%%%%%   Replaced (singleton(skolem0001) = set_intersection2(singleton(skolem0001),skolem0002))
-%%%%%   With ~ ((singleton(skolem0001) = set_intersection2(singleton(skolem0001),skolem0002)))
+%%%%% Mutated formula 'c10':
+%%%%%   Replaced (set_intersection2(singleton(skolem0001),skolem0002) != singleton(skolem0001))
+%%%%%   With (set_intersection2(singleton(skolem0002),skolem0002) != singleton(skolem0001))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SET917+1 : TPTP v8.1.2. Released v3.2.0.
@@ -41,7 +41,7 @@ fof(c5, negated_conjecture, ~ ((! [A,B]: ((disjoint(singleton(A),B) | (set_inter
 fof(c6, negated_conjecture, (? [A,B]: ((~ (disjoint(singleton(A),B)) & (set_intersection2(singleton(A),B) != singleton(A))))), inference(fof_nnf,[status(thm)],[c5])).
 fof(c7, negated_conjecture, (? [X2,X3]: ((~ (disjoint(singleton(X2),X3)) & (set_intersection2(singleton(X2),X3) != singleton(X2))))), inference(variable_rename,[status(thm)],[c6])).
 fof(c8, negated_conjecture, (~ (disjoint(singleton(skolem0001),skolem0002)) & (set_intersection2(singleton(skolem0001),skolem0002) != singleton(skolem0001))), inference(skolemize,[status(esa)],[c7])).
-fof(c10, negated_conjecture, (set_intersection2(singleton(skolem0001),skolem0002) != singleton(skolem0001)), inference(split_conjunct,[status(thm)],[c8])).
+fof(c10, negated_conjecture, (set_intersection2(singleton(skolem0002),skolem0002) != singleton(skolem0001)), inference(split_conjunct,[status(thm)],[c8])).
 fof(symmetry, axiom, (! [X20,X19]: (((X20 != X19) | (X19 = X20)))), theory(equality)).
 fof(transitivity, axiom, (! [X23,X22,X21]: (((X23 != X22) | ((X22 != X21) | (X23 = X21))))), theory(equality)).
 fof(commutativity_k3_xboole_0, axiom, (! [A,B]: ((set_intersection2(A,B) = set_intersection2(B,A)))), file('SET917+1.p',commutativity_k3_xboole_0)).
@@ -61,6 +61,6 @@ fof(c22, plain, (! [X8,X9]: ((~ (in(X8,X9)) | (set_intersection2(X9,singleton(X8
 fof(c23, plain, (! [X68,X67]: ((~ (in(X68,X67)) | (set_intersection2(X67,singleton(X68)) = singleton(X68))))), inference(split_conjunct,[status(thm)],[c22])).
 fof(c89, plain, (set_intersection2(skolem0002,singleton(skolem0001)) = singleton(skolem0001)), inference(resolution,[status(thm)],[c23,c62])).
 fof(c451, plain, (singleton(skolem0001) = set_intersection2(skolem0002,singleton(skolem0001))), inference(resolution,[status(thm)],[c89,symmetry])).
-fof(c2163, plain, ~ ((singleton(skolem0001) = set_intersection2(singleton(skolem0001),skolem0002))), inference(resolution,[status(thm)],[c451,c78])).
+fof(c2163, plain, (singleton(skolem0001) = set_intersection2(singleton(skolem0001),skolem0002)), inference(resolution,[status(thm)],[c451,c78])).
 fof(c2376, plain, (set_intersection2(singleton(skolem0001),skolem0002) = singleton(skolem0001)), inference(resolution,[status(thm)],[c2163,symmetry])).
 fof(c2453, plain, $false, inference(resolution,[status(thm)],[c2376,c10])).

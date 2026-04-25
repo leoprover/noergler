@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c47':
-%%%%%   Replaced (! [B,C]: ((~ (subset(B,C)) | (union(B,C) = C))))
-%%%%%   With (! [B,C]: ((subset(B,C) | (union(B,C) = C))))
+%%%%% Mutated formula 'c5':
+%%%%%   Replaced (? [X2]: ((union(X2,X2) != X2)))
+%%%%%   With (? [X2]: (~ ((union(X2,X2) != X2))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SET002+3 : TPTP v8.1.2. Released v2.2.0.
@@ -39,14 +39,14 @@
 fof(prove_idempotency_of_union, conjecture, (! [B]: ((union(B,B) = B))), file('SET002+3.p',prove_idempotency_of_union)).
 fof(c3, negated_conjecture, ~ ((! [B]: ((union(B,B) = B)))), inference(assume_negation,[status(cth)],[prove_idempotency_of_union])).
 fof(c4, negated_conjecture, (? [B]: ((union(B,B) != B))), inference(fof_nnf,[status(thm)],[c3])).
-fof(c5, negated_conjecture, (? [X2]: ((union(X2,X2) != X2))), inference(variable_rename,[status(thm)],[c4])).
+fof(c5, negated_conjecture, (? [X2]: (~ ((union(X2,X2) != X2)))), inference(variable_rename,[status(thm)],[c4])).
 fof(c6, negated_conjecture, (union(skolem0001,skolem0001) != skolem0001), inference(skolemize,[status(esa)],[c5])).
 fof(c7, negated_conjecture, (union(skolem0001,skolem0001) != skolem0001), inference(split_conjunct,[status(thm)],[c6])).
 fof(reflexivity_of_subset, axiom, (! [B]: (subset(B,B))), file('SET002+3.p',reflexivity_of_subset)).
 fof(c18, plain, (! [X10]: (subset(X10,X10))), inference(variable_rename,[status(thm)],[reflexivity_of_subset])).
 fof(c19, plain, (! [X32]: (subset(X32,X32))), inference(split_conjunct,[status(thm)],[c18])).
 fof(subset_union, axiom, (! [B,C]: ((subset(B,C) => (union(B,C) = C)))), file('SET002+3.p',subset_union)).
-fof(c47, plain, (! [B,C]: ((subset(B,C) | (union(B,C) = C)))), inference(fof_nnf,[status(thm)],[subset_union])).
+fof(c47, plain, (! [B,C]: ((~ (subset(B,C)) | (union(B,C) = C)))), inference(fof_nnf,[status(thm)],[subset_union])).
 fof(c48, plain, (! [X29,X30]: ((~ (subset(X29,X30)) | (union(X29,X30) = X30)))), inference(variable_rename,[status(thm)],[c47])).
 fof(c49, plain, (! [X80,X79]: ((~ (subset(X80,X79)) | (union(X80,X79) = X79)))), inference(split_conjunct,[status(thm)],[c48])).
 fof(c71, plain, (! [X81]: ((union(X81,X81) = X81))), inference(resolution,[status(thm)],[c49,c19])).

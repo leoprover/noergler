@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '56':
-%%%%%   Replaced (! [A]: (id(dollar_f13(A),A)))
-%%%%%   With (! [A]: (~ (id(dollar_f13(A),A))))
+%%%%% Mutated formula '12':
+%%%%%   Replaced (! [A,B]: ((~ (id(A,B)) | (~ (r1(B)) | r1(A)))))
+%%%%%   With (! [A,B]: ((id(A,B) | (~ (r1(B)) | r1(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUN081+1 : TPTP v8.1.0. Released v7.3.0.
@@ -35,11 +35,11 @@
 %%% Generated on Tue Apr 14 19:17:19 CEST 2026 using command 'transform(fof)'.
 fof(4, axiom, (! [A,B]: ((r2(A,B) | ~ (id(B,dollar_f1(A)))))), file('NUN081+1.p',unknown), []).
 fof(10, axiom, (! [A,B,C]: ((~ (id(A,B)) | (id(A,C) | ~ (id(B,C)))))), file('NUN081+1.p',unknown), []).
-fof(12, axiom, (! [A,B]: ((~ (id(A,B)) | (~ (r1(B)) | r1(A))))), file('NUN081+1.p',unknown), []).
+fof(12, axiom, (! [A,B]: ((id(A,B) | (~ (r1(B)) | r1(A))))), file('NUN081+1.p',unknown), []).
 fof(13, axiom, (! [A,B,C,D]: ((~ (id(A,B)) | (~ (id(C,D)) | (~ (r2(A,C)) | r2(B,D)))))), file('NUN081+1.p',unknown), []).
 fof(21, axiom, (! [E,F,A,G,B,C,D]: ((~ (r3(A,B,C)) | (~ (id(C,D)) | (~ (r2(E,D)) | (~ (r2(F,E)) | (~ (r1(G)) | ~ (r2(G,F))))))))), file('NUN081+1.p',unknown), []).
 fof(45, axiom, (! [A]: (id(A,A))), file('NUN081+1.p',unknown), []).
-fof(56, axiom, (! [A]: (~ (id(dollar_f13(A),A)))), file('NUN081+1.p',unknown), []).
+fof(56, axiom, (! [A]: (id(dollar_f13(A),A))), file('NUN081+1.p',unknown), []).
 fof(58, axiom, (! [A]: (r3(A,dollar_f12(A),dollar_f13(A)))), file('NUN081+1.p',unknown), []).
 fof(61, axiom, (! [A]: (id(dollar_f16(A),dollar_f15(A)))), file('NUN081+1.p',unknown), []).
 fof(62, axiom, (! [A]: (r1(dollar_f15(A)))), file('NUN081+1.p',unknown), []).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '131':
-%%%%%   Replaced aIdeal0(xI)
-%%%%%   With ~ (aIdeal0(xI))
+%%%%% Mutated formula '945':
+%%%%%   Replaced aElementOf0(sdtasdt0(xz,xk),xI)
+%%%%%   With aElementOf0(sdtasdt0(xl,xk),xI)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : RNG089+1 : TPTP v8.1.0. Released v4.0.0.
@@ -35,11 +35,11 @@
 %%% Generated on Tue Apr 14 19:17:57 CEST 2026 using command 'transform(fof)'.
 fof(51, axiom, (! [A,B,C]: ((~ (aIdeal0(A)) | (~ (aElementOf0(B,A)) | (~ (aElement0(C)) | aElementOf0(sdtasdt0(C,B),A)))))), file('RNG089+1.p',unknown), []).
 fof(57, axiom, (~ (aElementOf0(sdtasdt0(xz,xk),xI)) | ~ (aElementOf0(sdtasdt0(xz,xl),xJ))), file('RNG089+1.p',unknown), []).
-fof(131, axiom, ~ (aIdeal0(xI)), file('RNG089+1.p',unknown), []).
+fof(131, axiom, aIdeal0(xI), file('RNG089+1.p',unknown), []).
 fof(132, axiom, aIdeal0(xJ), file('RNG089+1.p',unknown), []).
 fof(135, axiom, aElement0(xz), file('RNG089+1.p',unknown), []).
 fof(136, axiom, aElementOf0(xk,xI), file('RNG089+1.p',unknown), []).
 fof(137, axiom, aElementOf0(xl,xJ), file('RNG089+1.p',unknown), []).
-fof(945, plain, aElementOf0(sdtasdt0(xz,xk),xI), inference(hyper,[status(thm)],[136,51,131,135]), [iquote('hyper,136,51,131,135')]).
+fof(945, plain, aElementOf0(sdtasdt0(xl,xk),xI), inference(hyper,[status(thm)],[136,51,131,135]), [iquote('hyper,136,51,131,135')]).
 fof(1207, plain, aElementOf0(sdtasdt0(xz,xl),xJ), inference(hyper,[status(thm)],[137,51,132,135]), [iquote('hyper,137,51,132,135')]).
 fof(1582, plain, $false, inference(hyper,[status(thm)],[1207,57,945]), [iquote('hyper,1207,57,945')]).

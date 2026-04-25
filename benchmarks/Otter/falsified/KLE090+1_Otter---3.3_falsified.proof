@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '78':
-%%%%%   Replaced (! [A,B]: ((multiplication(antidomain(A),multiplication(A,B)) = zero)))
-%%%%%   With (! [A,B]: (~ ((multiplication(antidomain(A),multiplication(A,B)) = zero))))
+%%%%% Mutated formula '3':
+%%%%%   Replaced (addition(antidomain(dollar_c1),antidomain(dollar_c2)) != antidomain(dollar_c2))
+%%%%%   With (addition(antidomain(one),antidomain(dollar_c2)) != antidomain(dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE090+1 : TPTP v8.1.0. Released v4.0.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:14:19 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B]: ((~ (le_q(A,B)) | (addition(A,B) = B)))), file('KLE090+1.p',unknown), []).
 fof(2, axiom, (! [A,B]: ((le_q(A,B) | (addition(A,B) != B)))), file('KLE090+1.p',unknown), []).
-fof(3, axiom, (addition(antidomain(dollar_c1),antidomain(dollar_c2)) != antidomain(dollar_c2)), file('KLE090+1.p',unknown), []).
+fof(3, axiom, (addition(antidomain(one),antidomain(dollar_c2)) != antidomain(dollar_c2)), file('KLE090+1.p',unknown), []).
 fof(5, axiom, (! [A,B]: ((addition(A,B) = addition(B,A)))), file('KLE090+1.p',unknown), []).
 fof(6, axiom, (! [A,B,C]: ((addition(A,addition(B,C)) = addition(addition(A,B),C)))), file('KLE090+1.p',unknown), []).
 fof(7, plain, (! [A,B,C]: ((addition(addition(A,B),C) = addition(A,addition(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[6])]), [iquote('copy,6,flip.1')]).
@@ -61,7 +61,7 @@ fof(54, plain, (addition(antidomain(dollar_c2),antidomain(dollar_c1)) != antidom
 fof(56, plain, (! [A,B]: ((addition(A,addition(A,B)) = addition(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[7,11])]), [iquote('para_into,7.1.1.1,11.1.1,flip.1')]).
 fof(67, plain, (addition(dollar_c1,dollar_c2) = dollar_c1), inference(para_into,[status(thm),theory(equality)],[44,5]), [iquote('para_into,44.1.1,5.1.1')]).
 fof(77, plain, (antidomain(one) = zero), inference(para_into,[status(thm),theory(equality)],[29,17]), [iquote('para_into,28.1.1,16.1.1')]).
-fof(78, plain, (! [A,B]: (~ ((multiplication(antidomain(A),multiplication(A,B)) = zero)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[29,14]),27])]), [iquote('para_from,28.1.1,14.1.1.1,demod,27,flip.1')]).
+fof(78, plain, (! [A,B]: ((multiplication(antidomain(A),multiplication(A,B)) = zero))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[29,14]),27])]), [iquote('para_from,28.1.1,14.1.1.1,demod,27,flip.1')]).
 fof(80, plain, (! [A]: ((addition(multiplication(A,dollar_c1),multiplication(A,dollar_c2)) = multiplication(A,dollar_c1)))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[20,67])]), [iquote('para_into,20.1.1.2,67.1.1,flip.1')]).
 fof(88, plain, (coantidomain(one) = zero), inference(para_into,[status(thm),theory(equality)],[36,19]), [iquote('para_into,36.1.1,18.1.1')]).
 fof(89, plain, (! [A,B]: ((multiplication(A,multiplication(B,coantidomain(multiplication(A,B)))) = zero))), inference(para_into,[status(thm),theory(equality)],[36,14]), [iquote('para_into,36.1.1,14.1.1')]).

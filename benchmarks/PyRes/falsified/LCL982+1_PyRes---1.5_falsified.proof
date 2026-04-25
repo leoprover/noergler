@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c7':
-%%%%%   Replaced (! [X,Y]: ((~ (is_a_theorem(implies(X,Y))) | (~ (is_a_theorem(X)) | is_a_theorem(Y)))))
-%%%%%   With (! [X,Y]: ((~ (is_a_theorem(implies(X,Y))) & (~ (is_a_theorem(X)) | is_a_theorem(Y)))))
+%%%%% Mutated formula 'c19':
+%%%%%   Replaced (! [X59,X60,X57,X62,X58,X61]: ((~ (is_a_theorem(implies(implies(implies(implies(X62,implies(X57,X58)),implies(X60,implies(not(X57),not(X59)))),implies(X59,X57)),X61))) | is_a_theorem(implies(implies(X59,X60),X61)))))
+%%%%%   With (! [X59,X60,X57,X62,X58,X61]: ((is_a_theorem(implies(implies(implies(implies(X62,implies(X57,X58)),implies(X60,implies(not(X57),not(X59)))),implies(X59,X57)),X61)) | is_a_theorem(implies(implies(X59,X60),X61)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : LCL982+1 : TPTP v9.0.0. Released v9.1.0.
@@ -43,7 +43,7 @@ fof(c2, negated_conjecture, (? [X2,X3,X4]: (~ (is_a_theorem(implies(implies(X2,X
 fof(c3, negated_conjecture, ~ (is_a_theorem(implies(implies(skolem0001,skolem0002),implies(implies(skolem0002,skolem0003),implies(skolem0001,skolem0003))))), inference(skolemize,[status(esa)],[c2])).
 fof(c4, negated_conjecture, ~ (is_a_theorem(implies(implies(skolem0001,skolem0002),implies(implies(skolem0002,skolem0003),implies(skolem0001,skolem0003))))), inference(split_conjunct,[status(thm)],[c3])).
 fof(condensed_detachment, axiom, (! [X,Y]: ((~ (is_a_theorem(implies(X,Y))) | (~ (is_a_theorem(X)) | is_a_theorem(Y))))), file('LCL982+1.p',condensed_detachment)).
-fof(c7, plain, (! [X,Y]: ((~ (is_a_theorem(implies(X,Y))) & (~ (is_a_theorem(X)) | is_a_theorem(Y))))), inference(fof_simplification,[status(thm)],[condensed_detachment])).
+fof(c7, plain, (! [X,Y]: ((~ (is_a_theorem(implies(X,Y))) | (~ (is_a_theorem(X)) | is_a_theorem(Y))))), inference(fof_simplification,[status(thm)],[condensed_detachment])).
 fof(c8, plain, (! [X10,X11]: ((~ (is_a_theorem(implies(X10,X11))) | (~ (is_a_theorem(X10)) | is_a_theorem(X11))))), inference(variable_rename,[status(thm)],[c7])).
 fof(c9, plain, (! [X13,X12]: ((~ (is_a_theorem(implies(X13,X12))) | (~ (is_a_theorem(X13)) | is_a_theorem(X12))))), inference(split_conjunct,[status(thm)],[c8])).
 fof(a5, axiom, (! [A,B,C,D,E]: (is_a_theorem(implies(implies(A,B),implies(implies(implies(C,implies(D,E)),implies(B,implies(not(D),not(A)))),implies(A,D)))))), file('LCL982+1.p',a5)).
@@ -54,6 +54,6 @@ fof(c11, plain, (! [X31,X25,X26,X29,X30,X28,X24,X27]: (is_a_theorem(implies(impl
 fof(c12, plain, (! [X42,X38,X37,X41,X40,X33,X35,X32,X36,X39,X34]: (is_a_theorem(implies(implies(implies(X38,implies(X33,X42)),implies(implies(implies(X39,X41),X40),implies(not(X33),not(implies(implies(X34,implies(X40,X37)),implies(implies(implies(implies(X36,implies(X35,X32)),implies(X41,implies(not(X35),not(X39)))),implies(X39,X35)),implies(not(X40),not(implies(X39,X41))))))))),implies(implies(implies(X34,implies(X40,X37)),implies(implies(implies(implies(X36,implies(X35,X32)),implies(X41,implies(not(X35),not(X39)))),implies(X39,X35)),implies(not(X40),not(implies(X39,X41))))),X33))))), inference(resolution,[status(thm)],[c11,c10])).
 fof(c13, plain, (! [X48,X49,X45,X44,X46,X50,X43,X47]: ((~ (is_a_theorem(implies(implies(X44,implies(X48,X47)),implies(implies(implies(implies(X46,implies(X45,X43)),implies(X50,implies(not(X45),not(X49)))),implies(X49,X45)),implies(not(X48),not(implies(X49,X50))))))) | is_a_theorem(implies(implies(X49,X50),X48))))), inference(resolution,[status(thm)],[c11,c9])).
 fof(c17, plain, (! [X53,X52,X56,X55,X51,X54]: (is_a_theorem(implies(implies(implies(implies(implies(X53,implies(X51,X56)),implies(X54,implies(not(X51),not(X55)))),implies(X55,X51)),X52),implies(implies(X55,X54),X52))))), inference(resolution,[status(thm)],[c13,c12])).
-fof(c19, plain, (! [X59,X60,X57,X62,X58,X61]: ((~ (is_a_theorem(implies(implies(implies(implies(X62,implies(X57,X58)),implies(X60,implies(not(X57),not(X59)))),implies(X59,X57)),X61))) | is_a_theorem(implies(implies(X59,X60),X61))))), inference(resolution,[status(thm)],[c17,c9])).
+fof(c19, plain, (! [X59,X60,X57,X62,X58,X61]: ((is_a_theorem(implies(implies(implies(implies(X62,implies(X57,X58)),implies(X60,implies(not(X57),not(X59)))),implies(X59,X57)),X61)) | is_a_theorem(implies(implies(X59,X60),X61))))), inference(resolution,[status(thm)],[c17,c9])).
 fof(c20, plain, (! [X65,X63,X64]: (is_a_theorem(implies(implies(X65,X63),implies(implies(X63,X64),implies(X65,X64)))))), inference(resolution,[status(thm)],[c19,c17])).
 fof(c25, plain, $false, inference(resolution,[status(thm)],[c20,c4])).

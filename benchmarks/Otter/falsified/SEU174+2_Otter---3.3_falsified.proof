@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '206':
-%%%%%   Replaced empty(dollar_c1)
-%%%%%   With ~ (empty(dollar_c1))
+%%%%% Mutated formula '376':
+%%%%%   Replaced (complements_of_subsets(dollar_c4,dollar_c3) = dollar_c1)
+%%%%%   With ~ ((complements_of_subsets(dollar_c4,dollar_c3) = dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU174+2 : TPTP v8.1.0. Released v3.3.0.
@@ -42,14 +42,14 @@ fof(120, axiom, (! [A,B,C]: ((~ (element(A,powerset(B))) | (~ (in(C,subset_compl
 fof(130, axiom, (! [A,B]: ((~ (empty(A)) | ((A = B) | ~ (empty(B)))))), file('SEU174+2.p',unknown), []).
 fof(160, plain, (! [A,B]: ((~ (element(A,powerset(powerset(B)))) | ((complements_of_subsets(B,A) = A) | (in(dollar_f17(B,A,A),A) | in(subset_complement(B,dollar_f17(B,A,A)),A)))))), inference(flip,[status(thm),theory(equality)],[inference(factor,[status(thm)],[54])]), [iquote('factor,54.1.2,flip.2')]).
 fof(198, axiom, empty(empty_set), file('SEU174+2.p',unknown), []).
-fof(206, axiom, ~ (empty(dollar_c1)), file('SEU174+2.p',unknown), []).
+fof(206, axiom, empty(dollar_c1), file('SEU174+2.p',unknown), []).
 fof(207, axiom, (! [A]: (element(dollar_f21(A),powerset(A)))), file('SEU174+2.p',unknown), []).
 fof(208, axiom, (! [A]: (empty(dollar_f21(A)))), file('SEU174+2.p',unknown), []).
 fof(224, axiom, (! [A]: ((set_difference(A,empty_set) = A))), file('SEU174+2.p',unknown), []).
 fof(230, axiom, element(dollar_c3,powerset(powerset(dollar_c4))), file('SEU174+2.p',unknown), []).
 fof(231, axiom, (complements_of_subsets(dollar_c4,dollar_c3) = empty_set), file('SEU174+2.p',unknown), []).
 fof(330, plain, (empty_set = dollar_c1), inference(hyper,[status(thm)],[206,130,198]), [iquote('hyper,206,130,198')]).
-fof(376, plain, (complements_of_subsets(dollar_c4,dollar_c3) = dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[231]),330]), [iquote('back_demod,231,demod,330')]).
+fof(376, plain, ~ ((complements_of_subsets(dollar_c4,dollar_c3) = dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[231]),330]), [iquote('back_demod,231,demod,330')]).
 fof(378, plain, (! [A]: ((set_difference(A,dollar_c1) = A))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[224]),330]), [iquote('back_demod,224,demod,330')]).
 fof(385, plain, (dollar_c3 != dollar_c1), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[116]),330])]), [iquote('back_demod,116,demod,330,flip.1')]).
 fof(393, plain, (! [A]: ((dollar_f21(A) = dollar_c1))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[208,130,206])]), [iquote('hyper,208,130,206,flip.1')]).

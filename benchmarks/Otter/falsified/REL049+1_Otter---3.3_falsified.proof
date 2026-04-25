@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '6':
-%%%%%   Replaced (! [A,B,C]: ((join(join(A,B),C) = join(A,join(B,C)))))
-%%%%%   With (! [A,B,C]: (~ ((join(join(A,B),C) = join(A,join(B,C))))))
+%%%%% Mutated formula '39':
+%%%%%   Replaced (dollar_c2 != dollar_c2)
+%%%%%   With ~ ((dollar_c2 != dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : REL049+1 : TPTP v8.1.0. Released v4.0.0.
@@ -36,8 +36,8 @@
 fof(1, axiom, (join(join(dollar_c3,dollar_c1),dollar_c2) != dollar_c2), file('REL049+1.p',unknown), []).
 fof(2, axiom, (! [A]: ((A = A))), file('REL049+1.p',unknown), []).
 fof(4, axiom, (! [A,B,C]: ((join(A,join(B,C)) = join(join(A,B),C)))), file('REL049+1.p',unknown), []).
-fof(6, plain, (! [A,B,C]: (~ ((join(join(A,B),C) = join(A,join(B,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[4])]), [iquote('copy,4,flip.1')]).
+fof(6, plain, (! [A,B,C]: ((join(join(A,B),C) = join(A,join(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[4])]), [iquote('copy,4,flip.1')]).
 fof(36, axiom, (join(dollar_c3,dollar_c2) = dollar_c2), file('REL049+1.p',unknown), []).
 fof(38, axiom, (join(dollar_c1,dollar_c2) = dollar_c2), file('REL049+1.p',unknown), []).
-fof(39, plain, (dollar_c2 != dollar_c2), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1]),6,38,36]), [iquote('back_demod,1,demod,6,38,36')]).
+fof(39, plain, ~ ((dollar_c2 != dollar_c2)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1]),6,38,36]), [iquote('back_demod,1,demod,6,38,36')]).
 fof(40, plain, $false, inference(binary,[status(thm)],[39,2]), [iquote('binary,39.1,2.1')]).

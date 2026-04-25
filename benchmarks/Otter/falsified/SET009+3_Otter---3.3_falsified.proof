@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '137':
-%%%%%   Replaced member(dollar_f1(difference(dollar_c1,dollar_c2),difference(dollar_c1,dollar_c3)),dollar_c2)
-%%%%%   With ~ (member(dollar_f1(difference(dollar_c1,dollar_c2),difference(dollar_c1,dollar_c3)),dollar_c2))
+%%%%% Mutated formula '11':
+%%%%%   Replaced (! [A]: ((member(dollar_f1(difference(dollar_c1,dollar_c2),difference(dollar_c1,dollar_c3)),A) | member(dollar_f1(difference(dollar_c1,dollar_c2),A),difference(dollar_c1,dollar_c2)))))
+%%%%%   With (! [A]: ((member(dollar_f1(difference(dollar_c1,dollar_c2),difference(dollar_c1,dollar_c3)),A) & member(dollar_f1(difference(dollar_c1,dollar_c2),A),difference(dollar_c1,dollar_c2)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET009+3 : TPTP v8.1.0. Released v2.2.0.
@@ -42,10 +42,10 @@ fof(6, axiom, ~ (subset(difference(dollar_c1,dollar_c2),difference(dollar_c1,dol
 fof(7, axiom, (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A)))), file('SET009+3.p',unknown), []).
 fof(9, axiom, subset(dollar_c3,dollar_c2), file('SET009+3.p',unknown), []).
 fof(10, plain, member(dollar_f1(difference(dollar_c1,dollar_c2),difference(dollar_c1,dollar_c3)),difference(dollar_c1,dollar_c2)), inference(hyper,[status(thm)],[7,6]), [iquote('hyper,7,6')]).
-fof(11, plain, (! [A]: ((member(dollar_f1(difference(dollar_c1,dollar_c2),difference(dollar_c1,dollar_c3)),A) | member(dollar_f1(difference(dollar_c1,dollar_c2),A),difference(dollar_c1,dollar_c2))))), inference(hyper,[status(thm)],[10,4,7]), [iquote('hyper,10,4,7')]).
+fof(11, plain, (! [A]: ((member(dollar_f1(difference(dollar_c1,dollar_c2),difference(dollar_c1,dollar_c3)),A) & member(dollar_f1(difference(dollar_c1,dollar_c2),A),difference(dollar_c1,dollar_c2))))), inference(hyper,[status(thm)],[10,4,7]), [iquote('hyper,10,4,7')]).
 fof(13, plain, member(dollar_f1(difference(dollar_c1,dollar_c2),difference(dollar_c1,dollar_c3)),dollar_c1), inference(hyper,[status(thm)],[10,1]), [iquote('hyper,10,1')]).
 fof(15, plain, (! [A]: ((member(dollar_f1(difference(dollar_c1,dollar_c2),difference(dollar_c1,dollar_c3)),difference(dollar_c1,A)) | member(dollar_f1(difference(dollar_c1,dollar_c2),difference(dollar_c1,dollar_c3)),A)))), inference(hyper,[status(thm)],[13,3]), [iquote('hyper,13,3')]).
 fof(110, plain, member(dollar_f1(difference(dollar_c1,dollar_c2),difference(dollar_c1,dollar_c3)),dollar_c3), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[15,5]),6]), [iquote('hyper,15,5,unit_del,6')]).
-fof(137, plain, ~ (member(dollar_f1(difference(dollar_c1,dollar_c2),difference(dollar_c1,dollar_c3)),dollar_c2)), inference(hyper,[status(thm)],[110,4,9]), [iquote('hyper,110,4,9')]).
+fof(137, plain, member(dollar_f1(difference(dollar_c1,dollar_c2),difference(dollar_c1,dollar_c3)),dollar_c2), inference(hyper,[status(thm)],[110,4,9]), [iquote('hyper,110,4,9')]).
 fof(143, plain, (! [A]: (member(dollar_f1(difference(dollar_c1,dollar_c2),difference(A,dollar_c3)),difference(dollar_c1,dollar_c2)))), inference(hyper,[status(thm)],[110,2,11]), [iquote('hyper,110,2,11')]).
 fof(190, plain, $false, inference(hyper,[status(thm)],[143,2,137]), [iquote('hyper,143,2,137')]).

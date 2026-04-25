@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '158':
-%%%%%   Replaced (slbdtrb0(sz00) = slcrc0)
-%%%%%   With ~ ((slbdtrb0(sz00) = slcrc0))
+%%%%% Mutated formula '169':
+%%%%%   Replaced (sbrdtbr0(xQ) = xk)
+%%%%%   With ~ ((sbrdtbr0(xQ) = xk))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM550+3 : TPTP v8.1.0. Released v4.0.0.
@@ -36,8 +36,8 @@
 fof(91, axiom, (! [A]: ((~ (aElementOf0(A,szNzAzT0)) | (sbrdtbr0(slbdtrb0(A)) = A)))), file('NUM550+3.p',unknown), []).
 fof(102, axiom, (xk != sz00), file('NUM550+3.p',unknown), []).
 fof(156, axiom, aElementOf0(sz00,szNzAzT0), file('NUM550+3.p',unknown), []).
-fof(158, axiom, ~ ((slbdtrb0(sz00) = slcrc0)), file('NUM550+3.p',unknown), []).
-fof(169, axiom, (sbrdtbr0(xQ) = xk), file('NUM550+3.p',unknown), []).
+fof(158, axiom, (slbdtrb0(sz00) = slcrc0), file('NUM550+3.p',unknown), []).
+fof(169, axiom, ~ ((sbrdtbr0(xQ) = xk)), file('NUM550+3.p',unknown), []).
 fof(174, axiom, (xQ = slcrc0), file('NUM550+3.p',unknown), []).
 fof(177, plain, (sbrdtbr0(slcrc0) = xk), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[169]),174]), [iquote('back_demod,169,demod,174')]).
 fof(324, plain, (xk = sz00), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[156,91]),158,177]), [iquote('hyper,156,91,demod,158,177')]).

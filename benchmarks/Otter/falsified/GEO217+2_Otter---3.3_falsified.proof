@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '93':
 %%%%%   Replaced (! [A]: ((convergent_lines(dollar_c1,A) | convergent_lines(dollar_c3,A))))
-%%%%%   With (! [A]: ((convergent_lines(dollar_c2,A) | convergent_lines(dollar_c3,A))))
+%%%%%   With (! [A]: ((convergent_lines(dollar_c1,A) & convergent_lines(dollar_c3,A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO217+2 : TPTP v8.1.0. Released v3.3.0.
@@ -41,6 +41,6 @@ fof(23, axiom, convergent_lines(dollar_c2,dollar_c1), file('GEO217+2.p',unknown)
 fof(26, plain, (! [A]: ((convergent_lines(dollar_c2,A) | convergent_lines(dollar_c1,A)))), inference(hyper,[status(thm)],[23,6]), [iquote('hyper,23,6')]).
 fof(34, plain, (! [A,B]: ((convergent_lines(dollar_c1,A) | (convergent_lines(dollar_c2,B) | convergent_lines(A,B))))), inference(hyper,[status(thm)],[26,6]), [iquote('hyper,26,6')]).
 fof(62, plain, convergent_lines(dollar_c1,dollar_c3), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[34,20]),3]), [iquote('hyper,34,20,unit_del,3')]).
-fof(93, plain, (! [A]: ((convergent_lines(dollar_c2,A) | convergent_lines(dollar_c3,A)))), inference(hyper,[status(thm)],[62,6]), [iquote('hyper,62,6')]).
+fof(93, plain, (! [A]: ((convergent_lines(dollar_c1,A) & convergent_lines(dollar_c3,A)))), inference(hyper,[status(thm)],[62,6]), [iquote('hyper,62,6')]).
 fof(138, plain, convergent_lines(dollar_c3,dollar_c1), inference(hyper,[status(thm)],[93,3]), [iquote('hyper,93,3')]).
 fof(139, plain, $false, inference(binary,[status(thm)],[138,21]), [iquote('binary,138.1,21.1')]).

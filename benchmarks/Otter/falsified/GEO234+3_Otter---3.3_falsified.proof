@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '76':
-%%%%%   Replaced une_qually_directed_lines(dollar_c3,reverse_line(dollar_c2))
-%%%%%   With ~ (une_qually_directed_lines(dollar_c3,reverse_line(dollar_c2)))
+%%%%% Mutated formula '507':
+%%%%%   Replaced une_qually_directed_lines(reverse_line(dollar_c1),dollar_c2)
+%%%%%   With ~ (une_qually_directed_lines(reverse_line(dollar_c1),dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO234+3 : TPTP v8.1.0. Released v4.0.0.
@@ -47,7 +47,7 @@ fof(68, axiom, (! [A,B]: ((une_qually_directed_lines(A,B) | une_qually_directed_
 fof(70, axiom, une_qually_directed_opposite_lines(dollar_c3,dollar_c2), file('GEO234+3.p',unknown), []).
 fof(73, plain, (! [A,B,C]: ((e_qually_directed_lines(A,B) | (une_qually_directed_lines(A,C) | une_qually_directed_lines(B,C))))), inference(hyper,[status(thm)],[65,36]), [iquote('hyper,65,36')]).
 fof(74, plain, (! [A,B]: ((e_qually_directed_lines(A,reverse_line(B)) | une_qually_directed_opposite_lines(A,B)))), inference(hyper,[status(thm)],[65,2]), [iquote('hyper,65,2')]).
-fof(76, plain, ~ (une_qually_directed_lines(dollar_c3,reverse_line(dollar_c2))), inference(hyper,[status(thm)],[70,1]), [iquote('hyper,70,1')]).
+fof(76, plain, une_qually_directed_lines(dollar_c3,reverse_line(dollar_c2)), inference(hyper,[status(thm)],[70,1]), [iquote('hyper,70,1')]).
 fof(79, plain, (! [A]: ((une_qually_directed_lines(dollar_c3,A) | une_qually_directed_lines(reverse_line(dollar_c2),A)))), inference(hyper,[status(thm)],[76,36]), [iquote('hyper,76,36')]).
 fof(84, plain, (! [A]: (une_qually_directed_lines(A,reverse_line(A)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[68,63])]), [iquote('hyper,68,63,factor_simp')]).
 fof(123, plain, (! [A,B]: ((e_qually_directed_lines(A,B) | une_qually_directed_lines(B,A)))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[73,39,84]),41,41]), [iquote('hyper,73,39,84,unit_del,41,41')]).
@@ -56,5 +56,5 @@ fof(160, plain, une_qually_directed_lines(dollar_c2,dollar_c1), inference(hyper,
 fof(171, plain, une_qually_directed_lines(reverse_line(dollar_c2),dollar_c1), inference(hyper,[status(thm)],[79,55]), [iquote('hyper,79,55')]).
 fof(307, plain, e_qually_directed_lines(reverse_line(dollar_c1),reverse_line(dollar_c2)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[123,39,171]),41,41]), [iquote('hyper,123,39,171,unit_del,41,41')]).
 fof(309, plain, e_qually_directed_lines(reverse_line(dollar_c1),dollar_c2), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[123,39,160]),41,41]), [iquote('hyper,123,39,160,unit_del,41,41')]).
-fof(507, plain, une_qually_directed_lines(reverse_line(dollar_c1),dollar_c2), inference(hyper,[status(thm)],[307,7,68]), [iquote('hyper,307,7,68')]).
+fof(507, plain, ~ (une_qually_directed_lines(reverse_line(dollar_c1),dollar_c2)), inference(hyper,[status(thm)],[307,7,68]), [iquote('hyper,307,7,68')]).
 fof(625, plain, $false, inference(hyper,[status(thm)],[507,7,309]), [iquote('hyper,507,7,309')]).

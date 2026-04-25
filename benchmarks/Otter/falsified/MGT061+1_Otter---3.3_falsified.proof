@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '394':
-%%%%%   Replaced (! [A]: ((dissimilar(dollar_c4,dollar_c3,A) | is_aligned(dollar_c4,A))))
-%%%%%   With (! [A]: ((dissimilar(low,dollar_c3,A) | is_aligned(dollar_c4,A))))
+%%%%% Mutated formula '360':
+%%%%%   Replaced (~ (greater(high,hazard_of_mortality(dollar_c4,dollar_c2))) | ((hazard_of_mortality(dollar_c4,dollar_c3) != hazard_of_mortality(dollar_c4,dollar_c2)) | (has_immunity(dollar_c4,dollar_c1) | (is_aligned(dollar_c4,dollar_c1) | positional_advantage(dollar_c4,dollar_c1)))))
+%%%%%   With (~ (greater(dollar_c4,hazard_of_mortality(dollar_c4,dollar_c2))) | ((hazard_of_mortality(dollar_c4,dollar_c3) != hazard_of_mortality(dollar_c4,dollar_c2)) | (has_immunity(dollar_c4,dollar_c1) | (is_aligned(dollar_c4,dollar_c1) | positional_advantage(dollar_c4,dollar_c1)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT061+1 : TPTP v8.1.0. Released v2.4.0.
@@ -79,9 +79,9 @@ fof(258, plain, positional_advantage(dollar_c4,dollar_c2), inference(hyper,[stat
 fof(293, plain, smaller_or_e_qual(zero,sigma), inference(hyper,[status(thm)],[135,2]), [iquote('hyper,135,2')]).
 fof(300, plain, dissimilar(dollar_c4,dollar_c3,dollar_c1), inference(hyper,[status(thm)],[49,18,43,45]), [iquote('hyper,49,18,43,45')]).
 fof(344, plain, (has_immunity(dollar_c4,dollar_c1) | (is_aligned(dollar_c4,dollar_c1) | (hazard_of_mortality(dollar_c4,dollar_c1) = high))), inference(hyper,[status(thm)],[52,21,44,49]), [iquote('hyper,52,21,44,49')]).
-fof(360, plain, (~ (greater(high,hazard_of_mortality(dollar_c4,dollar_c2))) | ((hazard_of_mortality(dollar_c4,dollar_c3) != hazard_of_mortality(dollar_c4,dollar_c2)) | (has_immunity(dollar_c4,dollar_c1) | (is_aligned(dollar_c4,dollar_c1) | positional_advantage(dollar_c4,dollar_c1))))), inference(para_from,[status(thm),theory(equality)],[52,30]), [iquote('para_from,52.4.1,30.1.1')]).
+fof(360, plain, (~ (greater(dollar_c4,hazard_of_mortality(dollar_c4,dollar_c2))) | ((hazard_of_mortality(dollar_c4,dollar_c3) != hazard_of_mortality(dollar_c4,dollar_c2)) | (has_immunity(dollar_c4,dollar_c1) | (is_aligned(dollar_c4,dollar_c1) | positional_advantage(dollar_c4,dollar_c1))))), inference(para_from,[status(thm),theory(equality)],[52,30]), [iquote('para_from,52.4.1,30.1.1')]).
 fof(393, plain, (! [A]: ((dissimilar(dollar_c4,A,dollar_c3) | is_aligned(dollar_c4,A)))), inference(hyper,[status(thm)],[216,16,43]), [iquote('hyper,216,16,43')]).
-fof(394, plain, (! [A]: ((dissimilar(low,dollar_c3,A) | is_aligned(dollar_c4,A)))), inference(hyper,[status(thm)],[216,15,43]), [iquote('hyper,216,15,43')]).
+fof(394, plain, (! [A]: ((dissimilar(dollar_c4,dollar_c3,A) | is_aligned(dollar_c4,A)))), inference(hyper,[status(thm)],[216,15,43]), [iquote('hyper,216,15,43')]).
 fof(629, plain, positional_advantage(dollar_c4,dollar_c3), inference(hyper,[status(thm)],[229,293]), [iquote('hyper,229,293')]).
 fof(637, plain, (has_immunity(dollar_c4,dollar_c3) | (hazard_of_mortality(dollar_c4,dollar_c3) = low)), inference(hyper,[status(thm)],[629,24,43,216]), [iquote('hyper,629,24,43,216')]).
 fof(670, plain, (! [A,B]: ((dissimilar(dollar_c4,A,dollar_c3) | (dissimilar(dollar_c4,B,A) | is_aligned(dollar_c4,B))))), inference(hyper,[status(thm)],[393,16,43]), [iquote('hyper,393,16,43')]).

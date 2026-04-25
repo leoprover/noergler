@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '157':
-%%%%%   Replaced in(dollar_f1(relation_rng(relation_rng_restriction(dollar_c6,dollar_c5)),dollar_c6),dollar_c6)
-%%%%%   With in(dollar_f1(relation_rng(relation_rng_restriction(dollar_c5,dollar_c5)),dollar_c6),dollar_c6)
+%%%%% Mutated formula '42':
+%%%%%   Replaced relation(dollar_c5)
+%%%%%   With relation(dollar_c6)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU198+1 : TPTP v8.1.0. Released v3.3.0.
@@ -37,8 +37,8 @@ fof(4, axiom, (! [A,B]: ((subset(A,B) | ~ (in(dollar_f1(A,B),B))))), file('SEU19
 fof(13, axiom, (! [A,B,C]: ((~ (relation(A)) | (~ (in(B,relation_rng(relation_rng_restriction(C,A)))) | in(B,C))))), file('SEU198+1.p',unknown), []).
 fof(16, axiom, ~ (subset(relation_rng(relation_rng_restriction(dollar_c6,dollar_c5)),dollar_c6)), file('SEU198+1.p',unknown), []).
 fof(30, axiom, (! [A,B]: ((subset(A,B) | in(dollar_f1(A,B),A)))), file('SEU198+1.p',unknown), []).
-fof(42, axiom, relation(dollar_c5), file('SEU198+1.p',unknown), []).
+fof(42, axiom, relation(dollar_c6), file('SEU198+1.p',unknown), []).
 fof(53, plain, in(dollar_f1(relation_rng(relation_rng_restriction(dollar_c6,dollar_c5)),dollar_c6),relation_rng(relation_rng_restriction(dollar_c6,dollar_c5))), inference(hyper,[status(thm)],[30,16]), [iquote('hyper,30,16')]).
-fof(157, plain, in(dollar_f1(relation_rng(relation_rng_restriction(dollar_c5,dollar_c5)),dollar_c6),dollar_c6), inference(hyper,[status(thm)],[53,13,42]), [iquote('hyper,53,13,42')]).
+fof(157, plain, in(dollar_f1(relation_rng(relation_rng_restriction(dollar_c6,dollar_c5)),dollar_c6),dollar_c6), inference(hyper,[status(thm)],[53,13,42]), [iquote('hyper,53,13,42')]).
 fof(1189, plain, subset(relation_rng(relation_rng_restriction(dollar_c6,dollar_c5)),dollar_c6), inference(hyper,[status(thm)],[157,4]), [iquote('hyper,157,4')]).
 fof(1190, plain, $false, inference(binary,[status(thm)],[1189,16]), [iquote('binary,1189.1,16.1')]).

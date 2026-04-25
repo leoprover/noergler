@@ -1,5 +1,5 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c162':
+%%%%% Mutated formula 'just8':
 %%%%%   Replaced genlmt(c_tptpgeo_spindleheadmt,c_worldgeographymt)
 %%%%%   With ~ (genlmt(c_tptpgeo_spindleheadmt,c_worldgeographymt))
 %------------------------------------------------------------------------------
@@ -51,8 +51,8 @@ fof(c31, plain, (! [X15,X16]: ((~ (mtvisible(X15)) | (~ (genlmt(X15,X16)) | mtvi
 fof(c32, plain, (! [X105,X104]: ((~ (mtvisible(X105)) | (~ (genlmt(X105,X104)) | mtvisible(X104))))), inference(split_conjunct,[status(thm)],[c31])).
 fof(c207, plain, (~ (mtvisible(c_tptpgeo_member3_mt)) | mtvisible(c_tptpgeo_spindleheadmt)), inference(resolution,[status(thm)],[c32,c161])).
 fof(c235, plain, mtvisible(c_tptpgeo_spindleheadmt), inference(resolution,[status(thm)],[c207,c2])).
-fof(just8, axiom, genlmt(c_tptpgeo_spindleheadmt,c_worldgeographymt), file('CSR029+1.p',just8)).
-fof(c162, plain, ~ (genlmt(c_tptpgeo_spindleheadmt,c_worldgeographymt)), inference(split_conjunct,[status(thm)],[just8])).
+fof(just8, axiom, ~ (genlmt(c_tptpgeo_spindleheadmt,c_worldgeographymt)), file('CSR029+1.p',just8)).
+fof(c162, plain, genlmt(c_tptpgeo_spindleheadmt,c_worldgeographymt), inference(split_conjunct,[status(thm)],[just8])).
 fof(c213, plain, (~ (mtvisible(c_tptpgeo_spindleheadmt)) | mtvisible(c_worldgeographymt)), inference(resolution,[status(thm)],[c32,c162])).
 fof(c236, plain, mtvisible(c_worldgeographymt), inference(resolution,[status(thm)],[c213,c235])).
 fof(c238, plain, geolevel_3(c_georegion_l3_x4_y13), inference(resolution,[status(thm)],[c236,c160])).

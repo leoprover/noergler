@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '12':
-%%%%%   Replaced ~ (taughtby(michael,victor))
-%%%%%   With taughtby(michael,victor)
+%%%%% Mutated formula '72':
+%%%%%   Replaced taughtby(michael,victor)
+%%%%%   With taughtby(csc410,victor)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PUZ131+1 : TPTP v8.1.0. Released v4.1.0.
@@ -35,12 +35,12 @@
 %%% Generated on Tue Apr 14 19:17:41 CEST 2026 using command 'transform(fof)'.
 fof(10, axiom, (! [A]: ((~ (course(A)) | teaches(coordinatorof(A),A)))), file('PUZ131+1.p',unknown), []).
 fof(11, axiom, (! [A,B,C]: ((~ (student(A)) | (~ (course(B)) | (~ (enrolled(A,B)) | (~ (professor(C)) | (~ (teaches(C,B)) | taughtby(A,C)))))))), file('PUZ131+1.p',unknown), []).
-fof(12, axiom, taughtby(michael,victor), file('PUZ131+1.p',unknown), []).
+fof(12, axiom, ~ (taughtby(michael,victor)), file('PUZ131+1.p',unknown), []).
 fof(17, axiom, student(michael), file('PUZ131+1.p',unknown), []).
 fof(18, axiom, professor(victor), file('PUZ131+1.p',unknown), []).
 fof(19, axiom, course(csc410), file('PUZ131+1.p',unknown), []).
 fof(20, axiom, enrolled(michael,csc410), file('PUZ131+1.p',unknown), []).
 fof(22, axiom, (coordinatorof(csc410) = victor), file('PUZ131+1.p',unknown), []).
 fof(37, plain, teaches(victor,csc410), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[19,10]),22]), [iquote('hyper,19,10,demod,22')]).
-fof(72, plain, taughtby(michael,victor), inference(hyper,[status(thm)],[37,11,17,19,20,18]), [iquote('hyper,37,11,17,19,20,18')]).
+fof(72, plain, taughtby(csc410,victor), inference(hyper,[status(thm)],[37,11,17,19,20,18]), [iquote('hyper,37,11,17,19,20,18')]).
 fof(73, plain, $false, inference(binary,[status(thm)],[72,12]), [iquote('binary,72.1,12.1')]).

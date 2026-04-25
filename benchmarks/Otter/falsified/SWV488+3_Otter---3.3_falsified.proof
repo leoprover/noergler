@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '75':
-%%%%%   Replaced (a(dollar_c2,dollar_c1) = real_zero)
-%%%%%   With ~ ((a(dollar_c2,dollar_c1) = real_zero))
+%%%%% Mutated formula '80':
+%%%%%   Replaced (! [A]: (int_le_q(A,A)))
+%%%%%   With (! [A]: (~ (int_le_q(A,A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV488+3 : TPTP v8.1.0. Released v4.0.0.
@@ -42,9 +42,9 @@ fof(64, axiom, (! [A]: ((A = A))), file('SWV488+3.p',unknown), []).
 fof(70, axiom, int_le_q(int_one,dollar_c1), file('SWV488+3.p',unknown), []).
 fof(72, axiom, int_le_q(dollar_c2,n), file('SWV488+3.p',unknown), []).
 fof(74, axiom, (dollar_c2 = dollar_c1), file('SWV488+3.p',unknown), []).
-fof(75, axiom, ~ ((a(dollar_c2,dollar_c1) = real_zero)), file('SWV488+3.p',unknown), []).
+fof(75, axiom, (a(dollar_c2,dollar_c1) = real_zero), file('SWV488+3.p',unknown), []).
 fof(77, plain, (a(dollar_c1,dollar_c1) = real_zero), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[75]),74]), [iquote('copy,75,demod,74')]).
 fof(78, plain, int_le_q(dollar_c1,n), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[72]),74]), [iquote('back_demod,72,demod,74')]).
-fof(80, plain, (! [A]: (int_le_q(A,A))), inference(hyper,[status(thm)],[64,3]), [iquote('hyper,64,3')]).
+fof(80, plain, (! [A]: (~ (int_le_q(A,A)))), inference(hyper,[status(thm)],[64,3]), [iquote('hyper,64,3')]).
 fof(109, plain, (real_zero = real_one), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[80,29,70,78]),77]), [iquote('hyper,80,29,70,78,demod,77')]).
 fof(111, plain, $false, inference(binary,[status(thm)],[109,12]), [iquote('binary,109.1,12.1')]).

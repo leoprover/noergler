@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '8':
-%%%%%   Replaced (! [A,B]: ((~ (distinct_points(A,B)) | ~ (apart_point_and_line(B,line_connecting(A,B))))))
-%%%%%   With (! [A,B]: ((distinct_points(A,B) | ~ (apart_point_and_line(B,line_connecting(A,B))))))
+%%%%% Mutated formula '7':
+%%%%%   Replaced (! [A,B]: ((~ (distinct_points(A,B)) | ~ (apart_point_and_line(A,line_connecting(A,B))))))
+%%%%%   With (! [A,B]: ((distinct_points(A,B) | ~ (apart_point_and_line(A,line_connecting(A,B))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO170+1 : TPTP v8.1.0. Released v3.3.0.
@@ -35,8 +35,8 @@
 %%% Generated on Tue Apr 14 19:11:29 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A]: (~ (distinct_points(A,A)))), file('GEO170+1.p',unknown), []).
 fof(4, axiom, (! [A,B,C]: ((~ (distinct_points(A,B)) | (distinct_points(A,C) | distinct_points(B,C))))), file('GEO170+1.p',unknown), []).
-fof(7, axiom, (! [A,B]: ((~ (distinct_points(A,B)) | ~ (apart_point_and_line(A,line_connecting(A,B)))))), file('GEO170+1.p',unknown), []).
-fof(8, axiom, (! [A,B]: ((distinct_points(A,B) | ~ (apart_point_and_line(B,line_connecting(A,B)))))), file('GEO170+1.p',unknown), []).
+fof(7, axiom, (! [A,B]: ((distinct_points(A,B) | ~ (apart_point_and_line(A,line_connecting(A,B)))))), file('GEO170+1.p',unknown), []).
+fof(8, axiom, (! [A,B]: ((~ (distinct_points(A,B)) | ~ (apart_point_and_line(B,line_connecting(A,B)))))), file('GEO170+1.p',unknown), []).
 fof(11, axiom, (! [A,B,C,D]: ((~ (distinct_points(A,B)) | (~ (distinct_lines(C,D)) | (apart_point_and_line(A,C) | (apart_point_and_line(A,D) | (apart_point_and_line(B,C) | apart_point_and_line(B,D)))))))), file('GEO170+1.p',unknown), []).
 fof(15, axiom, ~ (apart_point_and_line(dollar_c3,dollar_c1)), file('GEO170+1.p',unknown), []).
 fof(16, axiom, ~ (apart_point_and_line(dollar_c2,dollar_c1)), file('GEO170+1.p',unknown), []).

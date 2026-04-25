@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c45':
-%%%%%   Replaced (q | s)
-%%%%%   With (~ (q) | s)
+%%%%% Mutated formula 'c4':
+%%%%%   Replaced (p | (p | p))
+%%%%%   With (~ (p) | (p | p))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN047+1 : TPTP v8.1.2. Released v2.0.0.
@@ -43,13 +43,13 @@ fof(c2, negated_conjecture, (((p & ((~ (q) | r) & ~ (s))) | ((p & (~ (q) & ~ (s)
 fof(c3, negated_conjecture, ((p | (p | p)) & ((p | (p | r)) & ((p | (p | ~ (s))) & ((p | (~ (q) | p)) & ((p | (~ (q) | r)) & ((p | (~ (q) | ~ (s))) & ((p | (~ (s) | p)) & ((p | (~ (s) | r)) & ((p | (~ (s) | ~ (s))) & ((~ (q) | (r | (p | p))) & ((~ (q) | (r | (p | r))) & ((~ (q) | (r | (p | ~ (s)))) & ((~ (q) | (r | (~ (q) | p))) & ((~ (q) | (r | (~ (q) | r))) & ((~ (q) | (r | (~ (q) | ~ (s)))) & ((~ (q) | (r | (~ (s) | p))) & ((~ (q) | (r | (~ (s) | r))) & ((~ (q) | (r | (~ (s) | ~ (s)))) & ((~ (s) | (p | p)) & ((~ (s) | (p | r)) & ((~ (s) | (p | ~ (s))) & ((~ (s) | (~ (q) | p)) & ((~ (s) | (~ (q) | r)) & ((~ (s) | (~ (q) | ~ (s))) & ((~ (s) | (~ (s) | p)) & ((~ (s) | (~ (s) | r)) & ((~ (s) | (~ (s) | ~ (s))) & ((~ (p) | (q | (s | (~ (p) | (q | s))))) & ((~ (p) | (q | (s | (~ (p) | (~ (r) | s))))) & ((~ (p) | (~ (r) | (s | (~ (p) | (q | s))))) & (~ (p) | (~ (r) | (s | (~ (p) | (~ (r) | s))))))))))))))))))))))))))))))))))), inference(distribute,[status(thm)],[c2])).
 fof(c30, negated_conjecture, (~ (s) | (~ (s) | ~ (s))), inference(split_conjunct,[status(thm)],[c3])).
 fof(c40, plain, ~ (s), inference(factor,[status(thm)],[c30])).
-fof(c4, negated_conjecture, (p | (p | p)), inference(split_conjunct,[status(thm)],[c3])).
+fof(c4, negated_conjecture, (~ (p) | (p | p)), inference(split_conjunct,[status(thm)],[c3])).
 fof(c35, plain, p, inference(factor,[status(thm)],[c4])).
 fof(c17, negated_conjecture, (~ (q) | (r | (~ (q) | r))), inference(split_conjunct,[status(thm)],[c3])).
 fof(c42, plain, (~ (q) | r), inference(factor,[status(thm)],[c17])).
 fof(c31, negated_conjecture, (~ (p) | (q | (s | (~ (p) | (q | s))))), inference(split_conjunct,[status(thm)],[c3])).
 fof(c43, plain, (~ (p) | (q | s)), inference(factor,[status(thm)],[c31])).
-fof(c45, plain, (~ (q) | s), inference(resolution,[status(thm)],[c43,c35])).
+fof(c45, plain, (q | s), inference(resolution,[status(thm)],[c43,c35])).
 fof(c47, plain, q, inference(resolution,[status(thm)],[c45,c40])).
 fof(c48, plain, r, inference(resolution,[status(thm)],[c47,c42])).
 fof(c34, negated_conjecture, (~ (p) | (~ (r) | (s | (~ (p) | (~ (r) | s))))), inference(split_conjunct,[status(thm)],[c3])).

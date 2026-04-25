@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '63':
-%%%%%   Replaced (identity_relation(relation_dom(dollar_c8)) = relation_composition(dollar_c8,dollar_c7))
-%%%%%   With (identity_relation(relation_dom(dollar_c7)) = relation_composition(dollar_c8,dollar_c7))
+%%%%% Mutated formula '4927':
+%%%%%   Replaced one_to_one(dollar_c8)
+%%%%%   With one_to_one(dollar_c7)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU020+1 : TPTP v8.1.0. Released v3.2.0.
@@ -42,10 +42,10 @@ fof(59, axiom, function(dollar_c8), file('SEU020+1.p',unknown), []).
 fof(60, axiom, relation(dollar_c7), file('SEU020+1.p',unknown), []).
 fof(61, axiom, function(dollar_c7), file('SEU020+1.p',unknown), []).
 fof(62, axiom, (relation_composition(dollar_c8,dollar_c7) = identity_relation(relation_dom(dollar_c8))), file('SEU020+1.p',unknown), []).
-fof(63, plain, (identity_relation(relation_dom(dollar_c7)) = relation_composition(dollar_c8,dollar_c7)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[62])]), [iquote('copy,62,flip.1')]).
+fof(63, plain, (identity_relation(relation_dom(dollar_c8)) = relation_composition(dollar_c8,dollar_c7)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[62])]), [iquote('copy,62,flip.1')]).
 fof(65, axiom, (! [A]: ((relation_dom(identity_relation(A)) = A))), file('SEU020+1.p',unknown), []).
 fof(249, plain, one_to_one(relation_composition(dollar_c8,dollar_c7)), inference(para_from,[status(thm),theory(equality)],[63,57]), [iquote('para_from,63.1.1,57.1.1')]).
 fof(295, plain, (relation_dom(relation_composition(dollar_c8,dollar_c7)) = relation_dom(dollar_c8)), inference(para_into,[status(thm),theory(equality)],[65,63]), [iquote('para_into,65.1.1.1,63.1.1')]).
 fof(4921, plain, subset(relation_rng(dollar_c8),relation_dom(dollar_c7)), inference(hyper,[status(thm)],[295,21,60,61,58,59]), [iquote('hyper,295,21,60,61,58,59')]).
-fof(4927, plain, one_to_one(dollar_c8), inference(hyper,[status(thm)],[4921,25,60,61,58,59,249]), [iquote('hyper,4921,25,60,61,58,59,249')]).
+fof(4927, plain, one_to_one(dollar_c7), inference(hyper,[status(thm)],[4921,25,60,61,58,59,249]), [iquote('hyper,4921,25,60,61,58,59,249')]).
 fof(4928, plain, $false, inference(binary,[status(thm)],[4927,27]), [iquote('binary,4927.1,27.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c42':
-%%%%%   Replaced (! [X14,X15,X16]: (((X14 != sum(X15,X16)) | (~ (constant(X14)) | ((constant(X15) & constant(X16)) | ((increases(X15) & decreases(X16)) | (decreases(X15) & increases(X16))))))))
-%%%%%   With (! [X14,X15,X16]: (((X14 != sum(X15,X16)) & (~ (constant(X14)) | ((constant(X15) & constant(X16)) | ((increases(X15) & decreases(X16)) | (decreases(X15) & increases(X16))))))))
+%%%%% Mutated formula 'c140231':
+%%%%%   Replaced (increases(cardinality_at_time(efficient_producers,skolem0002)) | (~ (environment(skolem0001)) | (~ (in_environment(skolem0001,skolem0002)) | greater(zero,growth_rate(efficient_producers,skolem0002)))))
+%%%%%   With (increases(cardinality_at_time(efficient_producers,skolem0002)) & (~ (environment(skolem0001)) | (~ (in_environment(skolem0001,skolem0002)) | greater(zero,growth_rate(efficient_producers,skolem0002)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : MGT025+1 : TPTP v8.1.2. Released v2.0.0.
@@ -82,7 +82,7 @@ fof(c118, plain, (! [X219]: ((~ (environment(X219)) | (~ (in_environment(X219,sk
 fof(reflexivity, axiom, (! [X22]: ((X22 = X22))), theory(equality)).
 fof(mp_abc_sum_increase, axiom, (! [A,B,C]: ((((A = sum(B,C)) & constant(A)) => ((constant(B) & constant(C)) | ((increases(B) & decreases(C)) | (decreases(B) & increases(C))))))), file('MGT025+1.p',mp_abc_sum_increase)).
 fof(c41, plain, (! [A,B,C]: (((A != sum(B,C)) | (~ (constant(A)) | ((constant(B) & constant(C)) | ((increases(B) & decreases(C)) | (decreases(B) & increases(C)))))))), inference(fof_nnf,[status(thm)],[mp_abc_sum_increase])).
-fof(c42, plain, (! [X14,X15,X16]: (((X14 != sum(X15,X16)) & (~ (constant(X14)) | ((constant(X15) & constant(X16)) | ((increases(X15) & decreases(X16)) | (decreases(X15) & increases(X16)))))))), inference(variable_rename,[status(thm)],[c41])).
+fof(c42, plain, (! [X14,X15,X16]: (((X14 != sum(X15,X16)) | (~ (constant(X14)) | ((constant(X15) & constant(X16)) | ((increases(X15) & decreases(X16)) | (decreases(X15) & increases(X16)))))))), inference(variable_rename,[status(thm)],[c41])).
 fof(c43, plain, (! [X14,X15,X16]: ((((X14 != sum(X15,X16)) | (~ (constant(X14)) | (constant(X15) | (increases(X15) | decreases(X15))))) & (((X14 != sum(X15,X16)) | (~ (constant(X14)) | (constant(X15) | (increases(X15) | increases(X16))))) & (((X14 != sum(X15,X16)) | (~ (constant(X14)) | (constant(X15) | (decreases(X16) | decreases(X15))))) & (((X14 != sum(X15,X16)) | (~ (constant(X14)) | (constant(X15) | (decreases(X16) | increases(X16))))) & (((X14 != sum(X15,X16)) | (~ (constant(X14)) | (constant(X16) | (increases(X15) | decreases(X15))))) & (((X14 != sum(X15,X16)) | (~ (constant(X14)) | (constant(X16) | (increases(X15) | increases(X16))))) & (((X14 != sum(X15,X16)) | (~ (constant(X14)) | (constant(X16) | (decreases(X16) | decreases(X15))))) & ((X14 != sum(X15,X16)) | (~ (constant(X14)) | (constant(X16) | (decreases(X16) | increases(X16)))))))))))))), inference(distribute,[status(thm)],[c42])).
 fof(c45, plain, (! [X130,X129,X128]: (((X130 != sum(X129,X128)) | (~ (constant(X130)) | (constant(X129) | (increases(X129) | increases(X128))))))), inference(split_conjunct,[status(thm)],[c43])).
 fof(c99, plain, (! [X132,X131]: ((~ (constant(sum(X132,X131))) | (constant(X132) | (increases(X132) | increases(X131)))))), inference(resolution,[status(thm)],[c45,reflexivity])).
@@ -162,7 +162,7 @@ fof(c140098, plain, (decreases(cardinality_at_time(efficient_producers,skolem000
 fof(c140099, plain, (decreases(cardinality_at_time(efficient_producers,skolem0002)) | (increases(cardinality_at_time(efficient_producers,skolem0002)) | (growth_rate(first_movers,skolem0002) = zero))), inference(resolution,[status(thm)],[c140098,c16])).
 fof(c140138, plain, (decreases(cardinality_at_time(efficient_producers,skolem0002)) | increases(cardinality_at_time(efficient_producers,skolem0002))), inference(resolution,[status(thm)],[c140099,c4654])).
 fof(c140229, plain, (! [X5054]: ((increases(cardinality_at_time(efficient_producers,skolem0002)) | (~ (environment(X5054)) | (~ (in_environment(X5054,skolem0002)) | (~ (subpopulation(efficient_producers,X5054,skolem0002)) | greater(zero,growth_rate(efficient_producers,skolem0002)))))))), inference(resolution,[status(thm)],[c140138,c128])).
-fof(c140231, plain, (increases(cardinality_at_time(efficient_producers,skolem0002)) | (~ (environment(skolem0001)) | (~ (in_environment(skolem0001,skolem0002)) | greater(zero,growth_rate(efficient_producers,skolem0002))))), inference(resolution,[status(thm)],[c140229,c90])).
+fof(c140231, plain, (increases(cardinality_at_time(efficient_producers,skolem0002)) & (~ (environment(skolem0001)) | (~ (in_environment(skolem0001,skolem0002)) | greater(zero,growth_rate(efficient_producers,skolem0002))))), inference(resolution,[status(thm)],[c140229,c90])).
 fof(c140232, plain, (increases(cardinality_at_time(efficient_producers,skolem0002)) | (~ (environment(skolem0001)) | greater(zero,growth_rate(efficient_producers,skolem0002)))), inference(resolution,[status(thm)],[c140231,c87])).
 fof(c140233, plain, (increases(cardinality_at_time(efficient_producers,skolem0002)) | greater(zero,growth_rate(efficient_producers,skolem0002))), inference(resolution,[status(thm)],[c140232,c16])).
 fof(c140236, plain, (increases(cardinality_at_time(efficient_producers,skolem0002)) | ~ (greater(growth_rate(first_movers,skolem0002),zero))), inference(resolution,[status(thm)],[c140233,c20])).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1704':
-%%%%%   Replaced (! [A]: ((disjoint(dollar_c5,A) | in(dollar_f7(dollar_c5,A),dollar_c4))))
-%%%%%   With (! [A]: ((disjoint(dollar_c5,A) & in(dollar_f7(dollar_c5,A),dollar_c4))))
+%%%%% Mutated formula '218':
+%%%%%   Replaced disjoint(dollar_c3,dollar_c4)
+%%%%%   With ~ (disjoint(dollar_c3,dollar_c4))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU140+2 : TPTP v8.1.0. Released v3.3.0.
@@ -41,6 +41,6 @@ fof(99, axiom, (! [A,B]: ((disjoint(A,B) | in(dollar_f7(A,B),A)))), file('SEU140
 fof(100, axiom, (! [A,B]: ((disjoint(A,B) | in(dollar_f7(A,B),B)))), file('SEU140+2.p',unknown), []).
 fof(110, axiom, subset(dollar_c5,dollar_c4), file('SEU140+2.p',unknown), []).
 fof(111, axiom, disjoint(dollar_c4,dollar_c3), file('SEU140+2.p',unknown), []).
-fof(218, plain, disjoint(dollar_c3,dollar_c4), inference(hyper,[status(thm)],[111,34]), [iquote('hyper,111,34')]).
-fof(1704, plain, (! [A]: ((disjoint(dollar_c5,A) & in(dollar_f7(dollar_c5,A),dollar_c4)))), inference(hyper,[status(thm)],[99,12,110]), [iquote('hyper,99,12,110')]).
+fof(218, plain, ~ (disjoint(dollar_c3,dollar_c4)), inference(hyper,[status(thm)],[111,34]), [iquote('hyper,111,34')]).
+fof(1704, plain, (! [A]: ((disjoint(dollar_c5,A) | in(dollar_f7(dollar_c5,A),dollar_c4)))), inference(hyper,[status(thm)],[99,12,110]), [iquote('hyper,99,12,110')]).
 fof(2345, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[1704,42,100,218]),48,48]), [iquote('hyper,1704,42,100,218,unit_del,48,48')]).

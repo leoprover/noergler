@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '541':
-%%%%%   Replaced (j(op2(e20,e20)) = op1(j(e20),j(e20)))
-%%%%%   With (j(op2(e15,e20)) = op1(j(e20),j(e20)))
+%%%%% Mutated formula '265':
+%%%%%   Replaced (op1(e15,e15) = e11)
+%%%%%   With (op1(e14,e15) = e11)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG204+1 : TPTP v8.1.0. Released v2.7.0.
@@ -48,11 +48,11 @@ fof(201, axiom, (op1(e11,e11) = e16), file('ALG204+1.p',unknown), []).
 fof(217, axiom, (op1(e12,e12) = e15), file('ALG204+1.p',unknown), []).
 fof(233, axiom, (op1(e13,e13) = e14), file('ALG204+1.p',unknown), []).
 fof(249, axiom, (op1(e14,e14) = e12), file('ALG204+1.p',unknown), []).
-fof(265, axiom, (op1(e15,e15) = e11), file('ALG204+1.p',unknown), []).
+fof(265, axiom, (op1(e14,e15) = e11), file('ALG204+1.p',unknown), []).
 fof(281, axiom, (op1(e16,e16) = e10), file('ALG204+1.p',unknown), []).
 fof(283, axiom, (op2(e20,e20) = e20), file('ALG204+1.p',unknown), []).
 fof(387, axiom, ((j(e20) = e10) | ((j(e20) = e11) | ((j(e20) = e12) | ((j(e20) = e13) | ((j(e20) = e14) | ((j(e20) = e15) | (j(e20) = e16))))))), file('ALG204+1.p',unknown), []).
-fof(541, axiom, (j(op2(e15,e20)) = op1(j(e20),j(e20))), file('ALG204+1.p',unknown), []).
+fof(541, axiom, (j(op2(e20,e20)) = op1(j(e20),j(e20))), file('ALG204+1.p',unknown), []).
 fof(542, plain, (op1(j(e20),j(e20)) = j(e20)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[541]),283])]), [iquote('copy,541,demod,283,flip.1')]).
 fof(1130, plain, ((op1(j(e20),e10) = j(e20)) | ((j(e20) = e11) | ((j(e20) = e12) | ((j(e20) = e13) | ((j(e20) = e14) | ((j(e20) = e15) | (j(e20) = e16))))))), inference(para_from,[status(thm),theory(equality)],[387,542]), [iquote('para_from,387.1.1,542.1.1.2')]).
 fof(1133, plain, ((op1(j(e20),e11) = j(e20)) | ((j(e20) = e10) | ((j(e20) = e12) | ((j(e20) = e13) | ((j(e20) = e14) | ((j(e20) = e15) | (j(e20) = e16))))))), inference(para_from,[status(thm),theory(equality)],[387,542]), [iquote('para_from,387.2.1,542.1.1.2')]).

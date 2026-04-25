@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '14':
-%%%%%   Replaced greater(n54,n48)
-%%%%%   With greater(n48,n48)
+%%%%% Mutated formula '6':
+%%%%%   Replaced ~ (s__more_experienced(jim,geoff))
+%%%%%   With s__more_experienced(jim,geoff)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR147+1 : TPTP v8.1.0. Released v4.1.0.
@@ -35,11 +35,11 @@
 %%% Generated on Tue Apr 14 19:11:22 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, (! [A,B,C]: ((~ (s__Human(A)) | (~ (s__age(A,B)) | (~ (s__age(s__siblingFn(A),C)) | (~ (greater(B,C)) | (s__more_experienced(A,s__siblingFn(A)) | s__has_seen_more(s__siblingFn(A),A)))))))), file('CSR147+1.p',unknown), []).
 fof(5, axiom, ~ (s__has_seen_more(geoff,jim)), file('CSR147+1.p',unknown), []).
-fof(6, axiom, ~ (s__more_experienced(jim,geoff)), file('CSR147+1.p',unknown), []).
+fof(6, axiom, s__more_experienced(jim,geoff), file('CSR147+1.p',unknown), []).
 fof(11, axiom, s__Human(jim), file('CSR147+1.p',unknown), []).
 fof(12, axiom, s__age(geoff,n48), file('CSR147+1.p',unknown), []).
 fof(13, axiom, s__age(jim,n54), file('CSR147+1.p',unknown), []).
-fof(14, axiom, greater(n48,n48), file('CSR147+1.p',unknown), []).
+fof(14, axiom, greater(n54,n48), file('CSR147+1.p',unknown), []).
 fof(15, axiom, (geoff = s__siblingFn(jim)), file('CSR147+1.p',unknown), []).
 fof(17, plain, (s__siblingFn(jim) = geoff), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[15])]), [iquote('copy,15,flip.1')]).
 fof(51, plain, (! [A,B]: ((~ (s__age(jim,A)) | (~ (s__age(geoff,B)) | ~ (greater(A,B)))))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[17,3]),17,17]),11,6,5]), [iquote('para_from,16.1.1,3.6.1,demod,17,17,unit_del,11,6,5')]).

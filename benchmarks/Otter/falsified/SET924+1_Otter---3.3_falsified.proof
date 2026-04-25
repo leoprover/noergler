@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '9':
-%%%%%   Replaced (! [A,B]: (((set_difference(singleton(A),B) = singleton(A)) | in(A,B))))
-%%%%%   With (! [A,B]: ((~ ((set_difference(singleton(A),B) = singleton(A))) | in(A,B))))
+%%%%% Mutated formula '15':
+%%%%%   Replaced in(dollar_c4,dollar_c3)
+%%%%%   With in(dollar_c3,dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET924+1 : TPTP v8.1.0. Released v3.2.0.
@@ -37,7 +37,7 @@ fof(3, axiom, ((set_difference(singleton(dollar_c4),dollar_c3) = singleton(dolla
 fof(4, axiom, ((set_difference(singleton(dollar_c4),dollar_c3) != singleton(dollar_c4)) | in(dollar_c4,dollar_c3)), file('SET924+1.p',unknown), []).
 fof(5, axiom, (! [A,B]: (((set_difference(singleton(A),B) != singleton(A)) | ~ (in(A,B))))), file('SET924+1.p',unknown), []).
 fof(7, axiom, (! [A]: ((A = A))), file('SET924+1.p',unknown), []).
-fof(9, axiom, (! [A,B]: ((~ ((set_difference(singleton(A),B) = singleton(A))) | in(A,B)))), file('SET924+1.p',unknown), []).
+fof(9, axiom, (! [A,B]: (((set_difference(singleton(A),B) = singleton(A)) | in(A,B)))), file('SET924+1.p',unknown), []).
 fof(13, plain, (set_difference(singleton(dollar_c4),dollar_c3) = singleton(dollar_c4)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[9,3])]), [iquote('hyper,9,3,factor_simp')]).
-fof(15, plain, in(dollar_c4,dollar_c3), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[4]),13]),7]), [iquote('back_demod,4,demod,13,unit_del,7')]).
+fof(15, plain, in(dollar_c3,dollar_c3), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[4]),13]),7]), [iquote('back_demod,4,demod,13,unit_del,7')]).
 fof(18, plain, $false, inference(hyper,[status(thm)],[13,5,15]), [iquote('hyper,12,5,15')]).

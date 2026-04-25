@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '70':
-%%%%%   Replaced (! [A]: (~ (member(A,dollar_c3))))
-%%%%%   With (! [A]: (~ (member(A,null_class))))
+%%%%% Mutated formula '69':
+%%%%%   Replaced (null_class != dollar_c3)
+%%%%%   With (dollar_c3 != dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET064+1 : TPTP v8.1.0. Bugfixed v5.4.0.
@@ -35,8 +35,8 @@
 %%% Generated on Tue Apr 14 19:18:15 CEST 2026 using command 'transform(fof)'.
 fof(66, axiom, (! [A,B,C]: ((~ (disjoint(A,B)) | (~ (member(C,A)) | ~ (member(C,B)))))), file('SET064+1.p',unknown), []).
 fof(68, axiom, (dollar_c3 != null_class), file('SET064+1.p',unknown), []).
-fof(69, plain, (null_class != dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[68])]), [iquote('copy,68,flip.1')]).
-fof(70, axiom, (! [A]: (~ (member(A,null_class)))), file('SET064+1.p',unknown), []).
+fof(69, plain, (dollar_c3 != dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[68])]), [iquote('copy,68,flip.1')]).
+fof(70, axiom, (! [A]: (~ (member(A,dollar_c3)))), file('SET064+1.p',unknown), []).
 fof(83, plain, (! [A,B]: ((~ (disjoint(A,A)) | ~ (member(B,A))))), inference(factor,[status(thm)],[66]), [iquote('factor,66.2.3')]).
 fof(114, axiom, (! [A,B]: ((disjoint(A,B) | member(dollar_f4(A,B),A)))), file('SET064+1.p',unknown), []).
 fof(115, axiom, (! [A,B]: ((disjoint(A,B) | member(dollar_f4(A,B),B)))), file('SET064+1.p',unknown), []).

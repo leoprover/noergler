@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '165':
-%%%%%   Replaced (op2(e22,e21) = e20)
-%%%%%   With (op2(e21,e21) = e20)
+%%%%% Mutated formula '2520':
+%%%%%   Replaced ((h(e11) = e22) | ((h(e11) = e21) | ((j(e21) = e12) | (j(e21) = e13))))
+%%%%%   With ((h(e22) = e22) | ((h(e11) = e21) | ((j(e21) = e12) | (j(e21) = e13))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG081+1 : TPTP v8.1.0. Released v2.7.0.
@@ -56,7 +56,7 @@ fof(119, axiom, (op1(e12,e13) = e10), file('ALG081+1.p',unknown), []).
 fof(129, axiom, (op1(e13,e13) = e11), file('ALG081+1.p',unknown), []).
 fof(141, axiom, (op1(e14,e14) = e11), file('ALG081+1.p',unknown), []).
 fof(155, axiom, (op2(e21,e21) = e22), file('ALG081+1.p',unknown), []).
-fof(165, axiom, (op2(e21,e21) = e20), file('ALG081+1.p',unknown), []).
+fof(165, axiom, (op2(e22,e21) = e20), file('ALG081+1.p',unknown), []).
 fof(167, axiom, (op2(e22,e22) = e23), file('ALG081+1.p',unknown), []).
 fof(169, axiom, (op2(e22,e23) = e24), file('ALG081+1.p',unknown), []).
 fof(179, axiom, (op2(e23,e23) = e21), file('ALG081+1.p',unknown), []).
@@ -106,7 +106,7 @@ fof(2460, plain, ((h(op1(e14,j(e21))) = e22) | ((h(e11) = e21) | ((j(e21) = e12)
 fof(2462, plain, ((h(op1(e13,j(e21))) = e22) | ((h(e11) = e21) | ((j(e21) = e12) | (j(e21) = e14)))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[2050]),2437]),22]), [iquote('back_demod,2050,demod,2437,unit_del,22')]).
 fof(2490, plain, (op2(op2(h(e11),h(e11)),op2(h(e11),op2(h(e11),h(e11)))) = e20), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[242]),2437]), [iquote('back_demod,242,demod,2437')]).
 fof(2518, plain, (op1(op1(j(e21),j(e21)),j(e21)) = e10), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[311]),2443]), [iquote('back_demod,311,demod,2443')]).
-fof(2520, plain, ((h(e11) = e22) | ((h(e11) = e21) | ((j(e21) = e12) | (j(e21) = e13)))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[2460,2444]),141])])])]), [iquote('para_into,2460.1.1.1.2,2444.4.1,demod,141,factor_simp,factor_simp,factor_simp')]).
+fof(2520, plain, ((h(e22) = e22) | ((h(e11) = e21) | ((j(e21) = e12) | (j(e21) = e13)))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[2460,2444]),141])])])]), [iquote('para_into,2460.1.1.1.2,2444.4.1,demod,141,factor_simp,factor_simp,factor_simp')]).
 fof(2542, plain, ((h(e11) = e22) | ((h(e11) = e21) | ((j(e21) = e12) | (j(e21) = e14)))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[2462,2520]),129])])])]), [iquote('para_into,2462.1.1.1.2,2520.4.1,demod,129,factor_simp,factor_simp,factor_simp')]).
 fof(2544, plain, ((h(e11) = e22) | ((h(e11) = e21) | (j(e21) = e12))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[2542,2520]),20])])])]), [iquote('para_into,2542.4.1,2520.4.1,unit_del,20,factor_simp,factor_simp,factor_simp')]).
 fof(2563, plain, ((h(op1(j(e21),e12)) = e22) | ((h(e11) = e22) | (h(e11) = e21))), inference(para_from,[status(thm),theory(equality)],[2544,357]), [iquote('para_from,2544.3.1,357.1.1.1.2')]).

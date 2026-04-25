@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '46':
-%%%%%   Replaced (dollar_c4 = dollar_c5)
-%%%%%   With ~ ((dollar_c4 = dollar_c5))
+%%%%% Mutated formula '57':
+%%%%%   Replaced r1(dollar_c1)
+%%%%%   With r1(dollar_c4)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUN089+2 : TPTP v8.1.0. Released v7.3.0.
@@ -38,11 +38,11 @@ fof(2, axiom, (! [A]: (((A != dollar_c1) | r1(A)))), file('NUN089+2.p',unknown),
 fof(10, axiom, (! [A,B,C]: ((~ (r1(A)) | ((A != B) | ~ (r2(C,B)))))), file('NUN089+2.p',unknown), []).
 fof(12, axiom, (! [A]: ((A = A))), file('NUN089+2.p',unknown), []).
 fof(45, axiom, r2(dollar_c3,dollar_c5), file('NUN089+2.p',unknown), []).
-fof(46, axiom, ~ ((dollar_c4 = dollar_c5)), file('NUN089+2.p',unknown), []).
+fof(46, axiom, (dollar_c4 = dollar_c5), file('NUN089+2.p',unknown), []).
 fof(48, plain, (dollar_c5 = dollar_c4), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[46])]), [iquote('copy,46,flip.1')]).
 fof(49, axiom, r1(dollar_c4), file('NUN089+2.p',unknown), []).
 fof(53, plain, r2(dollar_c3,dollar_c4), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[45]),48]), [iquote('back_demod,45,demod,48')]).
-fof(57, plain, r1(dollar_c1), inference(hyper,[status(thm)],[12,2]), [iquote('hyper,12,2')]).
+fof(57, plain, r1(dollar_c4), inference(hyper,[status(thm)],[12,2]), [iquote('hyper,12,2')]).
 fof(62, plain, (dollar_c4 = dollar_c1), inference(hyper,[status(thm)],[49,1]), [iquote('hyper,49,1')]).
 fof(63, plain, r2(dollar_c3,dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[53]),62]), [iquote('back_demod,53,demod,62')]).
 fof(108, plain, $false, inference(hyper,[status(thm)],[63,10,57,12]), [iquote('hyper,63,10,57,12')]).

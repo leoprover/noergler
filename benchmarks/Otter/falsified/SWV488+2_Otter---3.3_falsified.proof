@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '71':
-%%%%%   Replaced int_le_q(int_one,dollar_c2)
-%%%%%   With ~ (int_le_q(int_one,dollar_c2))
+%%%%% Mutated formula '73':
+%%%%%   Replaced int_le_q(dollar_c1,n)
+%%%%%   With int_le_q(real_one,n)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV488+2 : TPTP v8.1.0. Released v4.0.0.
@@ -39,8 +39,8 @@ fof(15, axiom, (! [A,B,C]: ((~ (int_le_q(int_one,A)) | (~ (int_le_q(A,n)) | (~ (
 fof(16, plain, (! [A,B]: ((~ (int_le_q(int_one,A)) | (~ (int_le_q(A,n)) | (~ (int_le_q(int_one,B)) | (~ (int_le_q(B,A)) | (a(B,B) = real_one))))))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(copy,[status(thm)],[15])])]), [iquote('copy,15,factor_simp,factor_simp')]).
 fof(30, plain, (! [A]: ((~ (int_le_q(int_one,A)) | (~ (int_le_q(A,n)) | (~ (int_le_q(A,A)) | (a(A,A) = real_one)))))), inference(factor,[status(thm)],[16]), [iquote('factor,16.1.3')]).
 fof(65, axiom, (! [A]: ((A = A))), file('SWV488+2.p',unknown), []).
-fof(71, axiom, ~ (int_le_q(int_one,dollar_c2)), file('SWV488+2.p',unknown), []).
-fof(73, axiom, int_le_q(dollar_c1,n), file('SWV488+2.p',unknown), []).
+fof(71, axiom, int_le_q(int_one,dollar_c2), file('SWV488+2.p',unknown), []).
+fof(73, axiom, int_le_q(real_one,n), file('SWV488+2.p',unknown), []).
 fof(75, axiom, (dollar_c2 = dollar_c1), file('SWV488+2.p',unknown), []).
 fof(76, axiom, (a(dollar_c2,dollar_c1) = real_zero), file('SWV488+2.p',unknown), []).
 fof(78, plain, (a(dollar_c1,dollar_c1) = real_zero), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[76]),75]), [iquote('copy,76,demod,75')]).

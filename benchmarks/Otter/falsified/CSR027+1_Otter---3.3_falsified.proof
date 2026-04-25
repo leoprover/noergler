@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '131':
-%%%%%   Replaced tptpcol_16_31868(f_relationallexistsfn(c_tptpnsubcollectionofwithrelationfromtypefnunitvectorintervaldirectionoftranslation_throughoutmovement_translationevent_786,c_tptp_8_875,f_subcollectionofwithrelationfromtypefn(c_unitvectorinterval,c_directionoftranslation_throughout,c_movement_translationevent),c_tptpcol_16_31868))
-%%%%%   With ~ (tptpcol_16_31868(f_relationallexistsfn(c_tptpnsubcollectionofwithrelationfromtypefnunitvectorintervaldirectionoftranslation_throughoutmovement_translationevent_786,c_tptp_8_875,f_subcollectionofwithrelationfromtypefn(c_unitvectorinterval,c_directionoftranslation_throughout,c_movement_translationevent),c_tptpcol_16_31868)))
+%%%%% Mutated formula '55':
+%%%%%   Replaced genlmt(c_tptp_spindlecollectormt,c_tptp_member2610_mt)
+%%%%%   With genlmt(c_tptp_8_875,c_tptp_member2610_mt)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR027+1 : TPTP v8.1.0. Released v3.4.0.
@@ -39,12 +39,12 @@ fof(3, axiom, (~ (mtvisible(c_tptp_member2610_mt)) | relationallexists(c_tptp_8_
 fof(19, axiom, (! [A]: ((~ (isa(A,c_tptpcol_16_31868)) | tptpcol_16_31868(A)))), file('CSR027+1.p',unknown), []).
 fof(40, axiom, (! [A,B]: ((~ (mtvisible(A)) | (~ (genlmt(A,B)) | mtvisible(B))))), file('CSR027+1.p',unknown), []).
 fof(47, axiom, (! [A]: ((~ (tptp_8_875(c_tptpnsubcollectionofwithrelationfromtypefnunitvectorintervaldirectionoftranslation_throughoutmovement_translationevent_786,A)) | ~ (tptpcol_16_31868(A))))), file('CSR027+1.p',unknown), []).
-fof(55, axiom, genlmt(c_tptp_spindlecollectormt,c_tptp_member2610_mt), file('CSR027+1.p',unknown), []).
+fof(55, axiom, genlmt(c_tptp_8_875,c_tptp_member2610_mt), file('CSR027+1.p',unknown), []).
 fof(58, axiom, isa(c_tptpnsubcollectionofwithrelationfromtypefnunitvectorintervaldirectionoftranslation_throughoutmovement_translationevent_786,f_subcollectionofwithrelationfromtypefn(c_unitvectorinterval,c_directionoftranslation_throughout,c_movement_translationevent)), file('CSR027+1.p',unknown), []).
 fof(73, axiom, mtvisible(c_tptp_spindlecollectormt), file('CSR027+1.p',unknown), []).
 fof(95, plain, mtvisible(c_tptp_member2610_mt), inference(hyper,[status(thm)],[55,40,73]), [iquote('hyper,55,40,73')]).
 fof(100, plain, relationallexists(c_tptp_8_875,f_subcollectionofwithrelationfromtypefn(c_unitvectorinterval,c_directionoftranslation_throughout,c_movement_translationevent),c_tptpcol_16_31868), inference(hyper,[status(thm)],[95,3]), [iquote('hyper,95,3')]).
 fof(109, plain, tptp_8_875(c_tptpnsubcollectionofwithrelationfromtypefnunitvectorintervaldirectionoftranslation_throughoutmovement_translationevent_786,f_relationallexistsfn(c_tptpnsubcollectionofwithrelationfromtypefnunitvectorintervaldirectionoftranslation_throughoutmovement_translationevent_786,c_tptp_8_875,f_subcollectionofwithrelationfromtypefn(c_unitvectorinterval,c_directionoftranslation_throughout,c_movement_translationevent),c_tptpcol_16_31868)), inference(hyper,[status(thm)],[58,2,95]), [iquote('hyper,58,2,95')]).
 fof(129, plain, isa(f_relationallexistsfn(c_tptpnsubcollectionofwithrelationfromtypefnunitvectorintervaldirectionoftranslation_throughoutmovement_translationevent_786,c_tptp_8_875,f_subcollectionofwithrelationfromtypefn(c_unitvectorinterval,c_directionoftranslation_throughout,c_movement_translationevent),c_tptpcol_16_31868),c_tptpcol_16_31868), inference(hyper,[status(thm)],[100,1,58]), [iquote('hyper,100,1,58')]).
-fof(131, plain, ~ (tptpcol_16_31868(f_relationallexistsfn(c_tptpnsubcollectionofwithrelationfromtypefnunitvectorintervaldirectionoftranslation_throughoutmovement_translationevent_786,c_tptp_8_875,f_subcollectionofwithrelationfromtypefn(c_unitvectorinterval,c_directionoftranslation_throughout,c_movement_translationevent),c_tptpcol_16_31868))), inference(hyper,[status(thm)],[129,19]), [iquote('hyper,129,19')]).
+fof(131, plain, tptpcol_16_31868(f_relationallexistsfn(c_tptpnsubcollectionofwithrelationfromtypefnunitvectorintervaldirectionoftranslation_throughoutmovement_translationevent_786,c_tptp_8_875,f_subcollectionofwithrelationfromtypefn(c_unitvectorinterval,c_directionoftranslation_throughout,c_movement_translationevent),c_tptpcol_16_31868)), inference(hyper,[status(thm)],[129,19]), [iquote('hyper,129,19')]).
 fof(132, plain, $false, inference(hyper,[status(thm)],[131,47,109]), [iquote('hyper,131,47,109')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1668':
-%%%%%   Replaced between_c(dollar_f18(dollar_c2,dollar_c1,dollar_c2,dollar_c3),dollar_c2,dollar_c1,dollar_c2)
-%%%%%   With ~ (between_c(dollar_f18(dollar_c2,dollar_c1,dollar_c2,dollar_c3),dollar_c2,dollar_c1,dollar_c2))
+%%%%% Mutated formula '114':
+%%%%%   Replaced ordered_by(dollar_c3,dollar_c2,dollar_c1)
+%%%%%   With ~ (ordered_by(dollar_c3,dollar_c2,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO118+1 : TPTP v8.1.0. Released v2.4.0.
@@ -37,8 +37,8 @@ fof(42, axiom, (! [A,B,C,D]: ((~ (between_c(A,B,C,D)) | (B != D)))), file('GEO11
 fof(53, axiom, (! [A,B,C,D]: ((between_o(A,B,C,D) | (~ (ordered_by(A,D,C)) | ~ (ordered_by(A,C,B)))))), file('GEO118+1.p',unknown), []).
 fof(72, axiom, (! [A,B,C,D]: ((~ (between_o(A,B,C,D)) | between_c(dollar_f18(B,C,D,A),B,C,D)))), file('GEO118+1.p',unknown), []).
 fof(104, axiom, (! [A]: ((A = A))), file('GEO118+1.p',unknown), []).
-fof(114, axiom, ordered_by(dollar_c3,dollar_c2,dollar_c1), file('GEO118+1.p',unknown), []).
+fof(114, axiom, ~ (ordered_by(dollar_c3,dollar_c2,dollar_c1)), file('GEO118+1.p',unknown), []).
 fof(115, axiom, ordered_by(dollar_c3,dollar_c1,dollar_c2), file('GEO118+1.p',unknown), []).
 fof(347, plain, between_o(dollar_c3,dollar_c2,dollar_c1,dollar_c2), inference(hyper,[status(thm)],[115,53,114]), [iquote('hyper,115,53,114')]).
-fof(1668, plain, ~ (between_c(dollar_f18(dollar_c2,dollar_c1,dollar_c2,dollar_c3),dollar_c2,dollar_c1,dollar_c2)), inference(hyper,[status(thm)],[347,72]), [iquote('hyper,347,72')]).
+fof(1668, plain, between_c(dollar_f18(dollar_c2,dollar_c1,dollar_c2,dollar_c3),dollar_c2,dollar_c1,dollar_c2), inference(hyper,[status(thm)],[347,72]), [iquote('hyper,347,72')]).
 fof(1908, plain, $false, inference(hyper,[status(thm)],[1668,42,104]), [iquote('hyper,1668,42,104')]).

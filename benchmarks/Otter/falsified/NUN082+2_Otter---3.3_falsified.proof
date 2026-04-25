@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '46':
-%%%%%   Replaced (! [A]: (r3(A,dollar_f12(A),A)))
-%%%%%   With (! [A]: (~ (r3(A,dollar_f12(A),A))))
+%%%%% Mutated formula '498':
+%%%%%   Replaced (dollar_f11(dollar_c1,dollar_c1) = dollar_c1)
+%%%%%   With ~ ((dollar_f11(dollar_c1,dollar_c1) = dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUN082+2 : TPTP v8.1.0. Released v7.3.0.
@@ -55,7 +55,7 @@ fof(34, axiom, (! [A]: (r4(A,dollar_f14(A),dollar_f16(A)))), file('NUN082+2.p',u
 fof(35, axiom, (! [A]: (r1(dollar_f15(A)))), file('NUN082+2.p',unknown), []).
 fof(37, axiom, (! [A]: ((dollar_f16(A) = dollar_f15(A)))), file('NUN082+2.p',unknown), []).
 fof(45, plain, (! [A,B]: (r4(A,dollar_f8(A,B),dollar_f11(A,B)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[24]),26]), [iquote('back_demod,24,demod,26')]).
-fof(46, plain, (! [A]: (~ (r3(A,dollar_f12(A),A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[30]),32]), [iquote('back_demod,30,demod,32')]).
+fof(46, plain, (! [A]: (r3(A,dollar_f12(A),A))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[30]),32]), [iquote('back_demod,30,demod,32')]).
 fof(47, plain, (! [A]: (r4(A,dollar_f14(A),dollar_f15(A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[34]),37]), [iquote('back_demod,34,demod,37')]).
 fof(50, plain, (! [A]: (r2(A,dollar_f1(A)))), inference(hyper,[status(thm)],[14,4]), [iquote('hyper,14,4')]).
 fof(51, plain, r1(dollar_c1), inference(hyper,[status(thm)],[14,2]), [iquote('hyper,14,2')]).
@@ -73,5 +73,5 @@ fof(145, plain, (! [A]: ((dollar_f10(A,dollar_c1) = dollar_c1))), inference(demo
 fof(173, plain, (! [A]: (r3(dollar_c1,A,dollar_f11(A,dollar_c1)))), inference(para_into,[status(thm),theory(equality)],[27,145]), [iquote('para_into,27.1.1,145.1.1')]).
 fof(246, plain, (! [A]: ((dollar_f2(dollar_c1,A) = dollar_f11(A,dollar_c1)))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[173,5])]), [iquote('hyper,173,5,flip.1')]).
 fof(412, plain, (! [A,B]: (r4(A,dollar_f1(B),dollar_f11(A,B)))), inference(para_into,[status(thm),theory(equality)],[45,108]), [iquote('para_into,45.1.2,108.1.1')]).
-fof(498, plain, (dollar_f11(dollar_c1,dollar_c1) = dollar_c1), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[246,84])]), [iquote('para_into,246.1.1,84.1.1,flip.1')]).
+fof(498, plain, ~ ((dollar_f11(dollar_c1,dollar_c1) = dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[246,84])]), [iquote('para_into,246.1.1,84.1.1,flip.1')]).
 fof(833, plain, $false, inference(hyper,[status(thm)],[412,13,51,50,498]), [iquote('hyper,412,13,51,50,498')]).

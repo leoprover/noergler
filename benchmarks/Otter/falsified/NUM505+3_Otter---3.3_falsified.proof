@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '299':
 %%%%%   Replaced ((xp = xk) | ~ (sdtlse_qdt0(xk,xp)))
-%%%%%   With ((xk = xk) | ~ (sdtlse_qdt0(xk,xp)))
+%%%%%   With ((xp = xk) & ~ (sdtlse_qdt0(xk,xp)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM505+3 : TPTP v8.1.0. Released v4.0.0.
@@ -36,7 +36,7 @@
 fof(38, axiom, (! [A,B]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (sdtlse_qdt0(A,B) | sdtlse_qdt0(B,A)))))), file('NUM505+3.p',unknown), []).
 fof(295, axiom, ~ (sdtlse_qdt0(xp,xk)), file('NUM505+3.p',unknown), []).
 fof(298, axiom, ((xk = xp) | ~ (sdtlse_qdt0(xk,xp))), file('NUM505+3.p',unknown), []).
-fof(299, plain, ((xk = xk) | ~ (sdtlse_qdt0(xk,xp))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[298])]), [iquote('copy,298,flip.1')]).
+fof(299, plain, ((xp = xk) & ~ (sdtlse_qdt0(xk,xp))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[298])]), [iquote('copy,298,flip.1')]).
 fof(1388, axiom, aNaturalNumber0(xp), file('NUM505+3.p',unknown), []).
 fof(1403, axiom, aNaturalNumber0(xk), file('NUM505+3.p',unknown), []).
 fof(3044, plain, sdtlse_qdt0(xp,xp), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[1388,38,1388])]), [iquote('hyper,1388,38,1388,factor_simp')]).

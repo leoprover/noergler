@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '93':
-%%%%%   Replaced epsilon_transitive(dollar_c13)
-%%%%%   With epsilon_transitive(dollar_c12)
+%%%%% Mutated formula '133':
+%%%%%   Replaced empty(dollar_c13)
+%%%%%   With ~ (empty(dollar_c13))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM388+1 : TPTP v8.1.0. Released v3.2.0.
@@ -43,9 +43,9 @@ fof(20, axiom, (! [A,B]: ((~ (in(A,B)) | ~ (empty(B))))), file('NUM388+1.p',unkn
 fof(55, axiom, ordinal(dollar_c13), file('NUM388+1.p',unknown), []).
 fof(57, axiom, in(dollar_c12,dollar_c14), file('NUM388+1.p',unknown), []).
 fof(58, axiom, in(dollar_c14,dollar_c13), file('NUM388+1.p',unknown), []).
-fof(93, plain, epsilon_transitive(dollar_c12), inference(hyper,[status(thm)],[55,3]), [iquote('hyper,55,3')]).
+fof(93, plain, epsilon_transitive(dollar_c13), inference(hyper,[status(thm)],[55,3]), [iquote('hyper,55,3')]).
 fof(109, plain, subset(dollar_c14,dollar_c13), inference(hyper,[status(thm)],[58,8,93]), [iquote('hyper,58,8,93')]).
 fof(119, plain, element(dollar_c14,powerset(dollar_c13)), inference(hyper,[status(thm)],[109,16]), [iquote('hyper,109,16')]).
 fof(128, plain, element(dollar_c12,dollar_c13), inference(hyper,[status(thm)],[119,17,57]), [iquote('hyper,119,17,57')]).
-fof(133, plain, empty(dollar_c13), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[128,14]),12]), [iquote('hyper,128,14,unit_del,12')]).
+fof(133, plain, ~ (empty(dollar_c13)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[128,14]),12]), [iquote('hyper,128,14,unit_del,12')]).
 fof(140, plain, $false, inference(hyper,[status(thm)],[133,20,58]), [iquote('hyper,133,20,58')]).

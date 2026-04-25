@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '11':
-%%%%%   Replaced ~ (p2(dollar_c1))
-%%%%%   With p2(dollar_c1)
+%%%%% Mutated formula '510':
+%%%%%   Replaced (! [A]: (r1(A,A)))
+%%%%%   With (! [A]: (~ (r1(A,A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LCL672+1.001 : TPTP v8.1.0. Released v4.0.0.
@@ -36,12 +36,12 @@
 fof(1, axiom, (! [A,B,C]: ((~ (r1(A,B)) | (~ (r1(B,C)) | r1(A,C))))), file('LCL672+1.001.p',unknown), []).
 fof(4, axiom, (! [E,F,A,B,C,D]: ((~ (r1(dollar_c6,A)) | (p2(A) | (~ (r1(dollar_c6,B)) | (~ (r1(B,C)) | (~ (r1(C,D)) | (r1(D,dollar_f2(B,C,D)) | (~ (r1(C,E)) | (p1(E) | (~ (r1(dollar_c6,F)) | p1(F)))))))))))), file('LCL672+1.001.p',unknown), []).
 fof(5, axiom, (! [E,F,A,B,C,D]: ((~ (r1(dollar_c6,A)) | (p2(A) | (~ (r1(dollar_c6,B)) | (~ (r1(B,C)) | (~ (r1(C,D)) | (~ (p1(dollar_f2(B,C,D))) | (~ (r1(C,E)) | (p1(E) | (~ (r1(dollar_c6,F)) | p1(F)))))))))))), file('LCL672+1.001.p',unknown), []).
-fof(11, axiom, p2(dollar_c1), file('LCL672+1.001.p',unknown), []).
+fof(11, axiom, ~ (p2(dollar_c1)), file('LCL672+1.001.p',unknown), []).
 fof(12, axiom, (! [A]: ((~ (r1(dollar_c2,A)) | p1(A)))), file('LCL672+1.001.p',unknown), []).
 fof(13, axiom, ~ (p1(dollar_c3)), file('LCL672+1.001.p',unknown), []).
 fof(14, axiom, ~ (p1(dollar_c5)), file('LCL672+1.001.p',unknown), []).
 fof(57, plain, (! [E,A,B,C,D]: ((~ (r1(dollar_c6,A)) | (p2(A) | (~ (r1(dollar_c6,B)) | (~ (r1(B,C)) | (~ (r1(C,D)) | (~ (p1(dollar_f2(B,C,D))) | (~ (r1(C,E)) | (p1(E) | ~ (r1(dollar_c6,E)))))))))))), inference(factor,[status(thm)],[5]), [iquote('factor,5.8.10')]).
-fof(510, axiom, (! [A]: (r1(A,A))), file('LCL672+1.001.p',unknown), []).
+fof(510, axiom, (! [A]: (~ (r1(A,A)))), file('LCL672+1.001.p',unknown), []).
 fof(511, axiom, r1(dollar_c6,dollar_c1), file('LCL672+1.001.p',unknown), []).
 fof(512, axiom, r1(dollar_c6,dollar_c4), file('LCL672+1.001.p',unknown), []).
 fof(513, axiom, r1(dollar_c4,dollar_c2), file('LCL672+1.001.p',unknown), []).

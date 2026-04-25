@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '963':
 %%%%%   Replaced (! [A,B]: (accept_population(muslimcountrybhumanitarianorganization,A,B)))
-%%%%%   With (! [A,B]: (accept_population(muslim,A,B)))
+%%%%%   With (! [A,B]: (~ (accept_population(muslimcountrybhumanitarianorganization,A,B))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : AGT016+2 : TPTP v8.1.0. Bugfixed v3.1.0.
@@ -35,6 +35,6 @@
 %%% Generated on Tue Apr 14 19:10:14 CEST 2026 using command 'transform(fof)'.
 fof(60, axiom, (! [A]: ((~ (accept_population(A,atheist,n75)) | (~ (accept_population(A,christian,n24)) | (~ (accept_population(A,muslim,n1)) | (~ (accept_population(A,native,n0)) | (~ (accept_population(A,other,n0)) | accept_city(A,towna)))))))), file('AGT016+2.p',unknown), []).
 fof(134, axiom, ~ (accept_city(muslimcountrybhumanitarianorganization,towna)), file('AGT016+2.p',unknown), []).
-fof(963, axiom, (! [A,B]: (accept_population(muslim,A,B))), file('AGT016+2.p',unknown), []).
+fof(963, axiom, (! [A,B]: (~ (accept_population(muslimcountrybhumanitarianorganization,A,B)))), file('AGT016+2.p',unknown), []).
 fof(3080, plain, accept_city(muslimcountrybhumanitarianorganization,towna), inference(hyper,[status(thm)],[963,60,963,963,963,963]), [iquote('hyper,963,60,963,963,963,963')]).
 fof(3081, plain, $false, inference(binary,[status(thm)],[3080,134]), [iquote('binary,3080.1,134.1')]).

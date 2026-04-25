@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '94':
 %%%%%   Replaced (! [A]: ((addition(multiplication(dollar_c2,A),multiplication(dollar_c3,A)) = multiplication(dollar_c2,A))))
-%%%%%   With (! [A]: ((addition(multiplication(dollar_c3,A),multiplication(dollar_c3,A)) = multiplication(dollar_c2,A))))
+%%%%%   With (! [A]: (~ ((addition(multiplication(dollar_c2,A),multiplication(dollar_c3,A)) = multiplication(dollar_c2,A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE002+1 : TPTP v8.1.0. Released v4.0.0.
@@ -42,6 +42,6 @@ fof(28, axiom, le_q(dollar_c3,dollar_c2), file('KLE002+1.p',unknown), []).
 fof(29, plain, (addition(dollar_c3,dollar_c2) = dollar_c2), inference(hyper,[status(thm)],[28,1]), [iquote('hyper,28,1')]).
 fof(39, plain, (! [A,B]: ((le_q(A,B) | (addition(B,A) != B)))), inference(para_from,[status(thm),theory(equality)],[5,2]), [iquote('para_from,5.1.1,2.2.1')]).
 fof(50, plain, (addition(dollar_c2,dollar_c3) = dollar_c2), inference(para_into,[status(thm),theory(equality)],[29,5]), [iquote('para_into,29.1.1,5.1.1')]).
-fof(94, plain, (! [A]: ((addition(multiplication(dollar_c3,A),multiplication(dollar_c3,A)) = multiplication(dollar_c2,A)))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[22,50])]), [iquote('para_into,22.1.1.1,50.1.1,flip.1')]).
+fof(94, plain, (! [A]: (~ ((addition(multiplication(dollar_c2,A),multiplication(dollar_c3,A)) = multiplication(dollar_c2,A))))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[22,50])]), [iquote('para_into,22.1.1.1,50.1.1,flip.1')]).
 fof(1740, plain, (! [A]: (le_q(multiplication(dollar_c3,A),multiplication(dollar_c2,A)))), inference(hyper,[status(thm)],[94,39]), [iquote('hyper,94,39')]).
 fof(1741, plain, $false, inference(binary,[status(thm)],[1740,3]), [iquote('binary,1740.1,3.1')]).

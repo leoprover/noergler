@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '48':
-%%%%%   Replaced (in(ordered_pair(dollar_c9,dollar_c8),dollar_c7) | in(dollar_c9,relation_dom(dollar_c7)))
-%%%%%   With (~ (in(ordered_pair(dollar_c9,dollar_c8),dollar_c7)) | in(dollar_c9,relation_dom(dollar_c7)))
+%%%%% Mutated formula '25':
+%%%%%   Replaced (~ (in(ordered_pair(dollar_c9,dollar_c8),dollar_c7)) | (~ (in(dollar_c9,relation_dom(dollar_c7))) | (dollar_c8 != apply(dollar_c7,dollar_c9))))
+%%%%%   With (in(ordered_pair(dollar_c9,dollar_c8),dollar_c7) | (~ (in(dollar_c9,relation_dom(dollar_c7))) | (dollar_c8 != apply(dollar_c7,dollar_c9))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU212+1 : TPTP v8.1.0. Released v3.3.0.
@@ -36,12 +36,12 @@
 fof(4, axiom, (! [A,B,C]: ((~ (relation(A)) | (~ (function(A)) | (~ (in(B,relation_dom(A))) | ((C != apply(A,B)) | in(ordered_pair(B,C),A))))))), file('SEU212+1.p',unknown), []).
 fof(5, axiom, (! [A,B,C]: ((~ (relation(A)) | (~ (function(A)) | (~ (in(B,relation_dom(A))) | ((C = apply(A,B)) | ~ (in(ordered_pair(B,C),A)))))))), file('SEU212+1.p',unknown), []).
 fof(9, axiom, (! [A,B,C,D]: ((~ (relation(A)) | ((B != relation_dom(A)) | (in(C,B) | ~ (in(ordered_pair(C,D),A))))))), file('SEU212+1.p',unknown), []).
-fof(25, axiom, (~ (in(ordered_pair(dollar_c9,dollar_c8),dollar_c7)) | (~ (in(dollar_c9,relation_dom(dollar_c7))) | (dollar_c8 != apply(dollar_c7,dollar_c9)))), file('SEU212+1.p',unknown), []).
+fof(25, axiom, (in(ordered_pair(dollar_c9,dollar_c8),dollar_c7) | (~ (in(dollar_c9,relation_dom(dollar_c7))) | (dollar_c8 != apply(dollar_c7,dollar_c9)))), file('SEU212+1.p',unknown), []).
 fof(26, plain, (~ (in(ordered_pair(dollar_c9,dollar_c8),dollar_c7)) | (~ (in(dollar_c9,relation_dom(dollar_c7))) | (apply(dollar_c7,dollar_c9) != dollar_c8))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[25])]), [iquote('copy,25,flip.3')]).
 fof(29, axiom, (! [A]: ((A = A))), file('SEU212+1.p',unknown), []).
 fof(46, axiom, relation(dollar_c7), file('SEU212+1.p',unknown), []).
 fof(47, axiom, function(dollar_c7), file('SEU212+1.p',unknown), []).
-fof(48, axiom, (~ (in(ordered_pair(dollar_c9,dollar_c8),dollar_c7)) | in(dollar_c9,relation_dom(dollar_c7))), file('SEU212+1.p',unknown), []).
+fof(48, axiom, (in(ordered_pair(dollar_c9,dollar_c8),dollar_c7) | in(dollar_c9,relation_dom(dollar_c7))), file('SEU212+1.p',unknown), []).
 fof(49, axiom, (in(ordered_pair(dollar_c9,dollar_c8),dollar_c7) | (dollar_c8 = apply(dollar_c7,dollar_c9))), file('SEU212+1.p',unknown), []).
 fof(50, plain, (in(ordered_pair(dollar_c9,dollar_c8),dollar_c7) | (apply(dollar_c7,dollar_c9) = dollar_c8)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[49])]), [iquote('copy,49,flip.2')]).
 fof(152, plain, in(dollar_c9,relation_dom(dollar_c7)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[48,9,46,29])]), [iquote('hyper,48,9,46,29,factor_simp')]).

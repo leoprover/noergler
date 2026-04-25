@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '39':
-%%%%%   Replaced (xu != xv)
-%%%%%   With (xS != xv)
+%%%%% Mutated formula '88':
+%%%%%   Replaced aElement0(xv)
+%%%%%   With aElement0(xS)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LAT382+3 : TPTP v8.1.0. Released v4.0.0.
@@ -37,7 +37,7 @@ fof(1, axiom, (! [A,B]: ((~ (aSet0(A)) | (~ (aElementOf0(B,A)) | aElement0(B))))
 fof(9, axiom, (! [A,B]: ((~ (aElement0(A)) | (~ (aElement0(B)) | (~ (sdtlse_qdt0(A,B)) | (~ (sdtlse_qdt0(B,A)) | (A = B))))))), file('LAT382+3.p',unknown), []).
 fof(34, axiom, (! [A]: ((~ (aLowerBoundOfIn0(A,xS,xT)) | sdtlse_qdt0(A,xu)))), file('LAT382+3.p',unknown), []).
 fof(38, axiom, (! [A]: ((~ (aLowerBoundOfIn0(A,xS,xT)) | sdtlse_qdt0(A,xv)))), file('LAT382+3.p',unknown), []).
-fof(39, axiom, (xS != xv), file('LAT382+3.p',unknown), []).
+fof(39, axiom, (xu != xv), file('LAT382+3.p',unknown), []).
 fof(40, plain, (xv != xu), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[39])]), [iquote('copy,39,flip.1')]).
 fof(46, axiom, aSet0(xT), file('LAT382+3.p',unknown), []).
 fof(49, axiom, aElementOf0(xu,xT), file('LAT382+3.p',unknown), []).
@@ -46,7 +46,7 @@ fof(52, axiom, aElementOf0(xv,xT), file('LAT382+3.p',unknown), []).
 fof(53, axiom, aLowerBoundOfIn0(xv,xS,xT), file('LAT382+3.p',unknown), []).
 fof(71, plain, aElement0(xu), inference(hyper,[status(thm)],[49,1,46]), [iquote('hyper,49,1,46')]).
 fof(76, plain, sdtlse_qdt0(xu,xv), inference(hyper,[status(thm)],[50,38]), [iquote('hyper,50,38')]).
-fof(88, plain, aElement0(xv), inference(hyper,[status(thm)],[52,1,46]), [iquote('hyper,52,1,46')]).
+fof(88, plain, aElement0(xS), inference(hyper,[status(thm)],[52,1,46]), [iquote('hyper,52,1,46')]).
 fof(109, plain, sdtlse_qdt0(xv,xu), inference(hyper,[status(thm)],[53,34]), [iquote('hyper,53,34')]).
 fof(116, plain, (xv = xu), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[109,9,71,88,76])]), [iquote('hyper,109,9,71,88,76,flip.1')]).
 fof(118, plain, $false, inference(binary,[status(thm)],[116,40]), [iquote('binary,116.1,40.1')]).

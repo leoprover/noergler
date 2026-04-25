@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '8':
-%%%%%   Replaced (! [A,B]: ((join(complement(join(complement(A),complement(B))),complement(join(complement(A),B))) = A)))
-%%%%%   With (! [A,B]: (~ ((join(complement(join(complement(A),complement(B))),complement(join(complement(A),B))) = A))))
+%%%%% Mutated formula '176':
+%%%%%   Replaced (converse(one) = one)
+%%%%%   With (converse(dollar_c1) = one)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : REL001+1 : TPTP v8.1.0. Released v4.0.0.
@@ -38,7 +38,7 @@ fof(3, axiom, (! [A,B]: ((join(A,B) = join(B,A)))), file('REL001+1.p',unknown), 
 fof(4, axiom, (! [A,B,C]: ((join(A,join(B,C)) = join(join(A,B),C)))), file('REL001+1.p',unknown), []).
 fof(6, plain, (! [A,B,C]: ((join(join(A,B),C) = join(A,join(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[4])]), [iquote('copy,4,flip.1')]).
 fof(7, axiom, (! [A,B]: ((A = join(complement(join(complement(A),complement(B))),complement(join(complement(A),B)))))), file('REL001+1.p',unknown), []).
-fof(8, plain, (! [A,B]: (~ ((join(complement(join(complement(A),complement(B))),complement(join(complement(A),B))) = A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[7])]), [iquote('copy,7,flip.1')]).
+fof(8, plain, (! [A,B]: ((join(complement(join(complement(A),complement(B))),complement(join(complement(A),B))) = A))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[7])]), [iquote('copy,7,flip.1')]).
 fof(10, axiom, (! [A,B]: ((meet(A,B) = complement(join(complement(A),complement(B)))))), file('REL001+1.p',unknown), []).
 fof(12, plain, (! [A,B]: ((complement(join(complement(A),complement(B))) = meet(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[10])]), [iquote('copy,10,flip.1')]).
 fof(13, axiom, (! [A,B,C]: ((composition(A,composition(B,C)) = composition(composition(A,B),C)))), file('REL001+1.p',unknown), []).
@@ -67,7 +67,7 @@ fof(99, plain, (meet(meet(top,top),join(zero,zero)) = zero), inference(para_from
 fof(166, plain, (! [A]: ((composition(converse(one),converse(A)) = converse(A)))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[25,16])]), [iquote('para_into,25.1.1.1,16.1.1,flip.1')]).
 fof(173, plain, (! [A]: ((composition(converse(one),A) = A))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[166,22]),22]), [iquote('para_into,166.1.1.2,21.1.1,demod,22')]).
 fof(175, plain, (! [A]: ((composition(one,A) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[173,83]),173])]), [iquote('para_into,172.1.1,83.1.1,demod,173,flip.1')]).
-fof(176, plain, (converse(one) = one), inference(para_into,[status(thm),theory(equality)],[173,16]), [iquote('para_into,172.1.1,16.1.1')]).
+fof(176, plain, (converse(dollar_c1) = one), inference(para_into,[status(thm),theory(equality)],[173,16]), [iquote('para_into,172.1.1,16.1.1')]).
 fof(183, plain, (! [A]: ((join(complement(A),complement(A)) = complement(A)))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[27,176]),175,175]), [iquote('para_into,27.1.1.1.1,176.1.1,demod,175,175')]).
 fof(215, plain, (join(zero,zero) = zero), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[183,46]),46,46]), [iquote('para_into,182.1.1.1,45.1.1,demod,46,46')]).
 fof(217, plain, (! [A,B]: ((join(meet(A,B),meet(A,B)) = meet(A,B)))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[183,12]),12,12]), [iquote('para_into,182.1.1.1,11.1.1,demod,12,12')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '174':
-%%%%%   Replaced aElementOf0(dollar_c2,xQ)
-%%%%%   With ~ (aElementOf0(dollar_c2,xQ))
+%%%%% Mutated formula '168':
+%%%%%   Replaced aSet0(xQ)
+%%%%%   With aSet0(dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM551+3 : TPTP v8.1.0. Released v4.0.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:16:43 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B]: ((~ (aSet0(A)) | (~ (aElementOf0(B,A)) | aElement0(B))))), file('NUM551+3.p',unknown), []).
 fof(123, axiom, (! [A]: ((~ (aElement0(A)) | ~ (aElementOf0(A,xQ))))), file('NUM551+3.p',unknown), []).
-fof(168, axiom, aSet0(xQ), file('NUM551+3.p',unknown), []).
-fof(174, axiom, ~ (aElementOf0(dollar_c2,xQ)), file('NUM551+3.p',unknown), []).
+fof(168, axiom, aSet0(dollar_c2), file('NUM551+3.p',unknown), []).
+fof(174, axiom, aElementOf0(dollar_c2,xQ), file('NUM551+3.p',unknown), []).
 fof(1308, plain, aElement0(dollar_c2), inference(hyper,[status(thm)],[174,1,168]), [iquote('hyper,174,1,168')]).
 fof(1309, plain, $false, inference(hyper,[status(thm)],[1308,123,174]), [iquote('hyper,1308,123,174')]).

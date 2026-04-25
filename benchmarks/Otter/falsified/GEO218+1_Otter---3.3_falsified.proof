@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '27':
-%%%%%   Replaced (! [A]: ((convergent_lines(dollar_c3,A) | convergent_lines(dollar_c1,A))))
-%%%%%   With (! [A]: ((convergent_lines(dollar_c3,A) & convergent_lines(dollar_c1,A))))
+%%%%% Mutated formula '77':
+%%%%%   Replaced convergent_lines(dollar_c3,dollar_c2)
+%%%%%   With convergent_lines(dollar_c1,dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO218+1 : TPTP v8.1.0. Released v3.3.0.
@@ -41,9 +41,9 @@ fof(21, axiom, ~ (unorthogonal_lines(dollar_c3,dollar_c1)), file('GEO218+1.p',un
 fof(22, axiom, (! [A,B]: ((convergent_lines(A,B) | unorthogonal_lines(A,B)))), file('GEO218+1.p',unknown), []).
 fof(23, axiom, unorthogonal_lines(dollar_c2,dollar_c1), file('GEO218+1.p',unknown), []).
 fof(24, plain, convergent_lines(dollar_c3,dollar_c1), inference(hyper,[status(thm)],[22,21]), [iquote('hyper,22,21')]).
-fof(27, plain, (! [A]: ((convergent_lines(dollar_c3,A) & convergent_lines(dollar_c1,A)))), inference(hyper,[status(thm)],[24,6]), [iquote('hyper,24,6')]).
+fof(27, plain, (! [A]: ((convergent_lines(dollar_c3,A) | convergent_lines(dollar_c1,A)))), inference(hyper,[status(thm)],[24,6]), [iquote('hyper,24,6')]).
 fof(30, plain, convergent_lines(dollar_c1,dollar_c2), inference(hyper,[status(thm)],[27,20]), [iquote('hyper,27,20')]).
 fof(43, plain, (! [A]: ((convergent_lines(dollar_c1,A) | convergent_lines(dollar_c2,A)))), inference(hyper,[status(thm)],[30,6]), [iquote('hyper,30,6')]).
 fof(65, plain, (! [A]: ((convergent_lines(A,dollar_c2) | unorthogonal_lines(A,dollar_c1)))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[43,16,23]),3]), [iquote('hyper,43,16,23,unit_del,3')]).
-fof(77, plain, convergent_lines(dollar_c3,dollar_c2), inference(hyper,[status(thm)],[65,21]), [iquote('hyper,65,21')]).
+fof(77, plain, convergent_lines(dollar_c1,dollar_c2), inference(hyper,[status(thm)],[65,21]), [iquote('hyper,65,21')]).
 fof(78, plain, $false, inference(binary,[status(thm)],[77,20]), [iquote('binary,77.1,20.1')]).

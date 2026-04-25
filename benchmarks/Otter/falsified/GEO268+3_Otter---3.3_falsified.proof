@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '215':
-%%%%%   Replaced une_qually_directed_lines(dollar_c2,dollar_c1)
-%%%%%   With une_qually_directed_lines(dollar_c1,dollar_c1)
+%%%%% Mutated formula '141':
+%%%%%   Replaced une_qually_directed_lines(dollar_c2,reverse_line(dollar_c1))
+%%%%%   With une_qually_directed_lines(dollar_c1,reverse_line(dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO268+3 : TPTP v8.1.0. Released v4.0.0.
@@ -44,7 +44,7 @@ fof(67, axiom, (! [A,B]: ((une_qually_directed_lines(A,B) | une_qually_directed_
 fof(69, axiom, (une_qually_directed_lines(dollar_c2,dollar_c1) | une_qually_directed_opposite_lines(dollar_c2,reverse_line(dollar_c1))), file('GEO268+3.p',unknown), []).
 fof(75, plain, (! [A,B]: ((e_qually_directed_opposite_lines(A,B) | une_qually_directed_lines(A,reverse_line(B))))), inference(hyper,[status(thm)],[65,1]), [iquote('hyper,65,1')]).
 fof(88, plain, (! [A,B]: ((une_qually_directed_lines(A,B) | une_qually_directed_opposite_lines(A,B)))), inference(hyper,[status(thm)],[67,2]), [iquote('hyper,67,2')]).
-fof(141, plain, une_qually_directed_lines(dollar_c2,reverse_line(dollar_c1)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[88,55,67])]), [iquote('hyper,88,55,67,factor_simp')]).
+fof(141, plain, une_qually_directed_lines(dollar_c1,reverse_line(dollar_c1)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[88,55,67])]), [iquote('hyper,88,55,67,factor_simp')]).
 fof(194, plain, e_qually_directed_opposite_lines(dollar_c2,reverse_line(dollar_c1)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[75,39,141]),41,41]), [iquote('hyper,75,39,141,unit_del,41,41')]).
-fof(215, plain, une_qually_directed_lines(dollar_c1,dollar_c1), inference(hyper,[status(thm)],[194,8,69]), [iquote('hyper,194,8,69')]).
+fof(215, plain, une_qually_directed_lines(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[194,8,69]), [iquote('hyper,194,8,69')]).
 fof(216, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[215,39,141]),41,41]), [iquote('hyper,215,39,141,unit_del,41,41')]).

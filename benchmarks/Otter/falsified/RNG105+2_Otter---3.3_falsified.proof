@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '232':
-%%%%%   Replaced (sdtasdt0(xz,xx) = sdtasdt0(xc,sdtasdt0(xu,xz)))
-%%%%%   With ~ ((sdtasdt0(xz,xx) = sdtasdt0(xc,sdtasdt0(xu,xz))))
+%%%%% Mutated formula '226':
+%%%%%   Replaced aElement0(xv)
+%%%%%   With aElement0(xu)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : RNG105+2 : TPTP v8.1.0. Released v4.0.0.
@@ -39,9 +39,9 @@ fof(94, axiom, (! [A,B]: ((~ (aElement0(A)) | ((sdtasdt0(xc,A) != sdtpldt0(xx,xy
 fof(210, axiom, (! [A]: ((A = A))), file('RNG105+2.p',unknown), []).
 fof(222, axiom, aElement0(xz), file('RNG105+2.p',unknown), []).
 fof(223, axiom, aElement0(xu), file('RNG105+2.p',unknown), []).
-fof(226, axiom, aElement0(xv), file('RNG105+2.p',unknown), []).
+fof(226, axiom, aElement0(xu), file('RNG105+2.p',unknown), []).
 fof(230, axiom, (sdtpldt0(xx,xy) = sdtasdt0(xc,sdtpldt0(xu,xv))), file('RNG105+2.p',unknown), []).
-fof(232, axiom, ~ ((sdtasdt0(xz,xx) = sdtasdt0(xc,sdtasdt0(xu,xz)))), file('RNG105+2.p',unknown), []).
+fof(232, axiom, (sdtasdt0(xz,xx) = sdtasdt0(xc,sdtasdt0(xu,xz))), file('RNG105+2.p',unknown), []).
 fof(237, plain, (! [A,B]: ((~ (aElement0(A)) | ((sdtasdt0(xc,A) != sdtasdt0(xc,sdtpldt0(xu,xv))) | (~ (aElement0(B)) | (sdtasdt0(xc,B) != sdtasdt0(xc,sdtasdt0(xu,xz)))))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[94]),230,232]), [iquote('back_demod,94,demod,230,232')]).
 fof(1506, plain, aElement0(sdtasdt0(xu,xz)), inference(hyper,[status(thm)],[223,3,222]), [iquote('hyper,223,3,222')]).
 fof(1543, plain, aElement0(sdtpldt0(xu,xv)), inference(hyper,[status(thm)],[226,2,223]), [iquote('hyper,226,2,223')]).

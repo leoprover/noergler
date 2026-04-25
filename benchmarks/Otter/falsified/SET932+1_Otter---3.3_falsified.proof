@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '9':
-%%%%%   Replaced ~ (subset(powerset(dollar_c4),powerset(dollar_c3)))
-%%%%%   With ~ (subset(powerset(dollar_c3),powerset(dollar_c3)))
+%%%%% Mutated formula '48':
+%%%%%   Replaced in(dollar_f2(powerset(dollar_c4),powerset(dollar_c3)),powerset(dollar_c4))
+%%%%%   With in(dollar_f2(powerset(dollar_c3),powerset(dollar_c3)),powerset(dollar_c4))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET932+1 : TPTP v8.1.0. Released v3.2.0.
@@ -37,11 +37,11 @@ fof(2, axiom, (! [A,B,C]: (((A != powerset(B)) | (~ (in(C,A)) | subset(C,B))))),
 fof(3, axiom, (! [A,B,C]: (((A != powerset(B)) | (in(C,A) | ~ (subset(C,B)))))), file('SET932+1.p',unknown), []).
 fof(6, axiom, (! [A,B]: ((subset(A,B) | ~ (in(dollar_f2(A,B),B))))), file('SET932+1.p',unknown), []).
 fof(8, axiom, (! [A,B,C]: ((~ (subset(A,B)) | (~ (subset(B,C)) | subset(A,C))))), file('SET932+1.p',unknown), []).
-fof(9, axiom, ~ (subset(powerset(dollar_c3),powerset(dollar_c3))), file('SET932+1.p',unknown), []).
+fof(9, axiom, ~ (subset(powerset(dollar_c4),powerset(dollar_c3))), file('SET932+1.p',unknown), []).
 fof(11, axiom, (! [A]: ((A = A))), file('SET932+1.p',unknown), []).
 fof(13, axiom, (! [A,B]: ((subset(A,B) | in(dollar_f2(A,B),A)))), file('SET932+1.p',unknown), []).
 fof(16, axiom, subset(dollar_c4,dollar_c3), file('SET932+1.p',unknown), []).
-fof(48, plain, in(dollar_f2(powerset(dollar_c4),powerset(dollar_c3)),powerset(dollar_c4)), inference(hyper,[status(thm)],[13,9]), [iquote('hyper,13,9')]).
+fof(48, plain, in(dollar_f2(powerset(dollar_c3),powerset(dollar_c3)),powerset(dollar_c4)), inference(hyper,[status(thm)],[13,9]), [iquote('hyper,13,9')]).
 fof(60, plain, subset(dollar_f2(powerset(dollar_c4),powerset(dollar_c3)),dollar_c4), inference(hyper,[status(thm)],[48,2,11]), [iquote('hyper,48,2,11')]).
 fof(77, plain, subset(dollar_f2(powerset(dollar_c4),powerset(dollar_c3)),dollar_c3), inference(hyper,[status(thm)],[60,8,16]), [iquote('hyper,60,8,16')]).
 fof(106, plain, in(dollar_f2(powerset(dollar_c4),powerset(dollar_c3)),powerset(dollar_c3)), inference(hyper,[status(thm)],[77,3,11]), [iquote('hyper,77,3,11')]).

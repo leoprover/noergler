@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '87':
-%%%%%   Replaced relation(dollar_c9)
-%%%%%   With relation(dollar_c10)
+%%%%% Mutated formula '449':
+%%%%%   Replaced function(function_inverse(dollar_c9))
+%%%%%   With ~ (function(function_inverse(dollar_c9)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU023+1 : TPTP v8.1.0. Released v3.2.0.
@@ -40,11 +40,11 @@ fof(33, axiom, (! [A,B,C,D]: ((~ (relation(A)) | (~ (function(A)) | (~ (one_to_o
 fof(43, axiom, ((dollar_c10 != apply(function_inverse(dollar_c9),apply(dollar_c9,dollar_c10))) | (dollar_c10 != apply(relation_composition(dollar_c9,function_inverse(dollar_c9)),dollar_c10))), file('SEU023+1.p',unknown), []).
 fof(44, plain, ((apply(function_inverse(dollar_c9),apply(dollar_c9,dollar_c10)) != dollar_c10) | (apply(relation_composition(dollar_c9,function_inverse(dollar_c9)),dollar_c10) != dollar_c10)), inference(flip,[status(thm),theory(equality)],[inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[43])])]), [iquote('copy,43,flip.1,flip.2')]).
 fof(64, axiom, (! [A]: ((A = A))), file('SEU023+1.p',unknown), []).
-fof(87, axiom, relation(dollar_c10), file('SEU023+1.p',unknown), []).
+fof(87, axiom, relation(dollar_c9), file('SEU023+1.p',unknown), []).
 fof(88, axiom, function(dollar_c9), file('SEU023+1.p',unknown), []).
 fof(89, axiom, one_to_one(dollar_c9), file('SEU023+1.p',unknown), []).
 fof(90, axiom, in(dollar_c10,relation_dom(dollar_c9)), file('SEU023+1.p',unknown), []).
-fof(449, plain, function(function_inverse(dollar_c9)), inference(hyper,[status(thm)],[88,6,87]), [iquote('hyper,88,6,87')]).
+fof(449, plain, ~ (function(function_inverse(dollar_c9))), inference(hyper,[status(thm)],[88,6,87]), [iquote('hyper,88,6,87')]).
 fof(450, plain, relation(function_inverse(dollar_c9)), inference(hyper,[status(thm)],[88,5,87]), [iquote('hyper,88,5,87')]).
 fof(880, plain, (apply(function_inverse(dollar_c9),apply(dollar_c9,dollar_c10)) = dollar_c10), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[450,33,87,88,89,449,64,90,64])]), [iquote('hyper,450,33,87,88,89,449,64,90,64,flip.1')]).
 fof(885, plain, (apply(relation_composition(dollar_c9,function_inverse(dollar_c9)),dollar_c10) = dollar_c10), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[450,24,87,88,449,90]),880]), [iquote('hyper,450,24,87,88,449,90,demod,880')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3967':
-%%%%%   Replaced (! [A]: (le_q(multiplication(star(A),star(A)),star(A))))
-%%%%%   With (! [A]: (~ (le_q(multiplication(star(A),star(A)),star(A)))))
+%%%%% Mutated formula '3409':
+%%%%%   Replaced (! [A,B]: (le_q(A,multiplication(A,star(B)))))
+%%%%%   With (! [A,B]: (~ (le_q(A,multiplication(A,star(B))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE040+2 : TPTP v8.1.0. Released v4.0.0.
@@ -60,6 +60,6 @@ fof(571, plain, (! [A]: ((addition(multiplication(star(A),A),star(A)) = star(A))
 fof(572, plain, (! [A]: ((addition(one,star(A)) = star(A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[178]),571]), [iquote('back_demod,178,demod,571')]).
 fof(586, plain, (! [A]: (le_q(one,star(A)))), inference(hyper,[status(thm)],[572,2]), [iquote('hyper,572,2')]).
 fof(2374, plain, (! [A,B,C]: ((le_q(multiplication(A,B),multiplication(A,C)) | ~ (le_q(B,C))))), inference(para_from,[status(thm),theory(equality)],[113,458]), [iquote('para_from,113.1.1,458.1.2')]).
-fof(3409, plain, (! [A,B]: (le_q(A,multiplication(A,star(B))))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[2374,586]),19]), [iquote('hyper,2374,586,demod,19')]).
-fof(3967, plain, (! [A]: (~ (le_q(multiplication(star(A),star(A)),star(A))))), inference(hyper,[status(thm)],[263,38,539]), [iquote('hyper,263,38,539')]).
+fof(3409, plain, (! [A,B]: (~ (le_q(A,multiplication(A,star(B)))))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[2374,586]),19]), [iquote('hyper,2374,586,demod,19')]).
+fof(3967, plain, (! [A]: (le_q(multiplication(star(A),star(A)),star(A)))), inference(hyper,[status(thm)],[263,38,539]), [iquote('hyper,263,38,539')]).
 fof(3974, plain, $false, inference(hyper,[status(thm)],[3967,5,3409]), [iquote('hyper,3967,5,3409')]).

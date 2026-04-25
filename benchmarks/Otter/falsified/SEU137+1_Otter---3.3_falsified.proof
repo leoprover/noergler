@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '19':
-%%%%%   Replaced (set_union2(dollar_c4,set_difference(dollar_c3,dollar_c4)) != dollar_c3)
-%%%%%   With ~ ((set_union2(dollar_c4,set_difference(dollar_c3,dollar_c4)) != dollar_c3))
+%%%%% Mutated formula '2526':
+%%%%%   Replaced in(dollar_f1(dollar_c4,set_difference(dollar_c3,dollar_c4),dollar_c3),dollar_c3)
+%%%%%   With ~ (in(dollar_f1(dollar_c4,set_difference(dollar_c3,dollar_c4),dollar_c3),dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU137+1 : TPTP v8.1.0. Released v3.3.0.
@@ -40,7 +40,7 @@ fof(9, axiom, (! [A,B,C,D]: (((A != set_difference(B,C)) | (~ (in(D,A)) | in(D,B
 fof(10, axiom, (! [A,B,C,D]: (((A != set_difference(B,C)) | (~ (in(D,A)) | ~ (in(D,C)))))), file('SEU137+1.p',unknown), []).
 fof(11, axiom, (! [A,B,C,D]: (((A != set_difference(B,C)) | (in(D,A) | (~ (in(D,B)) | in(D,C)))))), file('SEU137+1.p',unknown), []).
 fof(18, axiom, (dollar_c3 != set_union2(dollar_c4,set_difference(dollar_c3,dollar_c4))), file('SEU137+1.p',unknown), []).
-fof(19, plain, ~ ((set_union2(dollar_c4,set_difference(dollar_c3,dollar_c4)) != dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[18])]), [iquote('copy,18,flip.1')]).
+fof(19, plain, (set_union2(dollar_c4,set_difference(dollar_c3,dollar_c4)) != dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[18])]), [iquote('copy,18,flip.1')]).
 fof(22, axiom, (! [A,B]: ((~ (empty(A)) | ((A = B) | ~ (empty(B)))))), file('SEU137+1.p',unknown), []).
 fof(32, axiom, (! [A]: ((A = A))), file('SEU137+1.p',unknown), []).
 fof(34, axiom, (! [A,B,C]: (((A = set_union2(B,C)) | (in(dollar_f1(B,C,A),A) | (in(dollar_f1(B,C,A),B) | in(dollar_f1(B,C,A),C)))))), file('SEU137+1.p',unknown), []).
@@ -59,7 +59,7 @@ fof(157, plain, (! [A,B,C,D]: (((A = set_union2(B,set_difference(C,D))) | (in(do
 fof(168, plain, (! [A,B,C]: (((set_union2(A,set_difference(B,C)) = B) | (in(dollar_f1(A,set_difference(B,C),B),A) | (in(dollar_f1(A,set_difference(B,C),B),set_difference(B,C)) | in(dollar_f1(A,set_difference(B,C),B),C)))))), inference(flip,[status(thm),theory(equality)],[inference(factor,[status(thm)],[139])]), [iquote('factor,139.3.4,flip.1')]).
 fof(198, plain, (! [A]: (((set_union2(dollar_c4,A) = dollar_c3) | (in(dollar_f1(dollar_c4,A,dollar_c3),dollar_c3) | in(dollar_f1(dollar_c4,A,dollar_c3),A))))), inference(flip,[status(thm),theory(equality)],[inference(factor,[status(thm)],[150])]), [iquote('factor,150.2.4,flip.1')]).
 fof(217, plain, (! [A,B,C]: (((set_union2(A,set_difference(B,C)) = B) | (in(dollar_f1(A,set_difference(B,C),B),B) | in(dollar_f1(A,set_difference(B,C),B),A))))), inference(flip,[status(thm),theory(equality)],[inference(factor,[status(thm)],[157])]), [iquote('factor,157.2.4,flip.1')]).
-fof(2526, plain, in(dollar_f1(dollar_c4,set_difference(dollar_c3,dollar_c4),dollar_c3),dollar_c3), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[217,10,32,198]),19,19])]), [iquote('hyper,217,10,32,198,unit_del,19,19,factor_simp')]).
+fof(2526, plain, ~ (in(dollar_f1(dollar_c4,set_difference(dollar_c3,dollar_c4),dollar_c3),dollar_c3)), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[217,10,32,198]),19,19])]), [iquote('hyper,217,10,32,198,unit_del,19,19,factor_simp')]).
 fof(2527, plain, in(dollar_f1(dollar_c4,set_difference(dollar_c3,dollar_c4),dollar_c3),dollar_c4), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[2526,117,168]),19,19])]), [iquote('hyper,2526,117,168,unit_del,19,19,factor_simp')]).
 fof(2528, plain, (set_union2(dollar_c4,set_difference(dollar_c3,dollar_c4)) = dollar_c3), inference(hyper,[status(thm)],[2527,118,2526]), [iquote('hyper,2527,118,2526')]).
 fof(2530, plain, $false, inference(binary,[status(thm)],[2528,19]), [iquote('binary,2528.1,19.1')]).

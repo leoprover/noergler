@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '31':
-%%%%%   Replaced (big_f(dollar_c6) | big_g(dollar_c4))
-%%%%%   With (~ (big_f(dollar_c6)) | big_g(dollar_c4))
+%%%%% Mutated formula '18':
+%%%%%   Replaced (big_f(dollar_c3) | (big_g(dollar_c4) | big_g(dollar_c5)))
+%%%%%   With (~ (big_f(dollar_c3)) | (big_g(dollar_c4) | big_g(dollar_c5)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN059+1 : TPTP v8.1.0. Released v2.0.0.
@@ -50,12 +50,12 @@ fof(14, axiom, (~ (big_h(dollar_c3)) | (~ (big_j(dollar_c4)) | (~ (big_h(dollar_
 fof(15, axiom, big_f(dollar_c1), file('SYN059+1.p',unknown), []).
 fof(16, axiom, big_g(dollar_c2), file('SYN059+1.p',unknown), []).
 fof(17, axiom, (big_f(dollar_c3) | (big_g(dollar_c4) | big_f(dollar_c6))), file('SYN059+1.p',unknown), []).
-fof(18, axiom, (big_f(dollar_c3) | (big_g(dollar_c4) | big_g(dollar_c5))), file('SYN059+1.p',unknown), []).
+fof(18, axiom, (~ (big_f(dollar_c3)) | (big_g(dollar_c4) | big_g(dollar_c5))), file('SYN059+1.p',unknown), []).
 fof(21, plain, (big_f(dollar_c3) | (big_f(dollar_c6) | big_j(dollar_c4))), inference(hyper,[status(thm)],[17,4,15]), [iquote('hyper,17,4,15')]).
 fof(22, plain, (big_f(dollar_c3) | (big_g(dollar_c5) | big_j(dollar_c4))), inference(hyper,[status(thm)],[18,4,15]), [iquote('hyper,18,4,15')]).
 fof(25, plain, (big_f(dollar_c3) | big_f(dollar_c6)), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[21,6])])]), [iquote('hyper,21,6,factor_simp,factor_simp')]).
 fof(26, plain, (big_f(dollar_c6) | big_h(dollar_c3)), inference(hyper,[status(thm)],[25,2,16]), [iquote('hyper,25,2,16')]).
-fof(31, plain, (~ (big_f(dollar_c6)) | big_g(dollar_c4)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[26,9])]), [iquote('hyper,26,9,factor_simp')]).
+fof(31, plain, (big_f(dollar_c6) | big_g(dollar_c4)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[26,9])]), [iquote('hyper,26,9,factor_simp')]).
 fof(32, plain, (big_f(dollar_c3) | big_g(dollar_c5)), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[22,7])])]), [iquote('hyper,22,7,factor_simp,factor_simp')]).
 fof(33, plain, (big_f(dollar_c6) | big_j(dollar_c4)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[31,4,25])]), [iquote('hyper,31,4,25,factor_simp')]).
 fof(34, plain, (big_f(dollar_c3) | big_j(dollar_c5)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[32,4,25])]), [iquote('hyper,32,4,25,factor_simp')]).

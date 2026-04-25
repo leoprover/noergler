@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '12':
-%%%%%   Replaced (! [A,B]: ((~ (object(A)) | (~ (exemplifies_property(none_greater,A)) | (~ (object(B)) | (~ (exemplifies_relation(greater_than,B,A)) | ~ (exemplifies_property(conceivable,B))))))))
-%%%%%   With (! [A,B]: ((~ (object(A)) | (~ (exemplifies_property(existence,A)) | (~ (object(B)) | (~ (exemplifies_relation(greater_than,B,A)) | ~ (exemplifies_property(conceivable,B))))))))
+%%%%% Mutated formula '19':
+%%%%%   Replaced (! [A]: ((~ (object(A)) | (~ (exemplifies_property(none_greater,A)) | (A = dollar_c2)))))
+%%%%%   With (! [A]: ((object(A) | (~ (exemplifies_property(none_greater,A)) | (A = dollar_c2)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PHI013+1 : TPTP v8.1.0. Released v7.2.0.
@@ -37,9 +37,9 @@ fof(7, axiom, (! [A,B,C]: ((~ (property(A)) | (~ (object(B)) | (~ (is_the(B,A)) 
 fof(8, plain, (! [A,B]: ((~ (property(A)) | (~ (object(B)) | (~ (is_the(B,A)) | exemplifies_property(A,B)))))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(copy,[status(thm)],[7])])]), [iquote('copy,7,factor_simp,factor_simp')]).
 fof(9, axiom, (! [A,B]: ((~ (is_the(A,B)) | property(B)))), file('PHI013+1.p',unknown), []).
 fof(10, axiom, (! [A,B]: ((~ (is_the(A,B)) | object(A)))), file('PHI013+1.p',unknown), []).
-fof(12, axiom, (! [A,B]: ((~ (object(A)) | (~ (exemplifies_property(existence,A)) | (~ (object(B)) | (~ (exemplifies_relation(greater_than,B,A)) | ~ (exemplifies_property(conceivable,B)))))))), file('PHI013+1.p',unknown), []).
+fof(12, axiom, (! [A,B]: ((~ (object(A)) | (~ (exemplifies_property(none_greater,A)) | (~ (object(B)) | (~ (exemplifies_relation(greater_than,B,A)) | ~ (exemplifies_property(conceivable,B)))))))), file('PHI013+1.p',unknown), []).
 fof(18, axiom, (! [A,B]: ((~ (object(A)) | (~ (exemplifies_property(none_greater,A)) | (~ (object(B)) | (~ (exemplifies_property(none_greater,B)) | (B = dollar_c2))))))), file('PHI013+1.p',unknown), []).
-fof(19, plain, (! [A]: ((~ (object(A)) | (~ (exemplifies_property(none_greater,A)) | (A = dollar_c2))))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(copy,[status(thm)],[18])])]), [iquote('copy,18,factor_simp,factor_simp')]).
+fof(19, plain, (! [A]: ((object(A) | (~ (exemplifies_property(none_greater,A)) | (A = dollar_c2))))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(copy,[status(thm)],[18])])]), [iquote('copy,18,factor_simp,factor_simp')]).
 fof(20, axiom, (! [A]: ((~ (object(A)) | (~ (is_the(A,none_greater)) | (exemplifies_property(existence,A) | object(dollar_f4(A))))))), file('PHI013+1.p',unknown), []).
 fof(21, axiom, (! [A]: ((~ (object(A)) | (~ (is_the(A,none_greater)) | (exemplifies_property(existence,A) | exemplifies_relation(greater_than,dollar_f4(A),A)))))), file('PHI013+1.p',unknown), []).
 fof(22, axiom, (! [A]: ((~ (object(A)) | (~ (is_the(A,none_greater)) | (exemplifies_property(existence,A) | exemplifies_property(conceivable,dollar_f4(A))))))), file('PHI013+1.p',unknown), []).

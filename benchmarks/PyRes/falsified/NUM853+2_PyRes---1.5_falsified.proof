@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'ass(cond(goal(130), 0), 2)':
-%%%%%   Replaced (! [Vd203,Vd204]: ((~ (greater(Vd203,Vd204)) | ~ (less(Vd203,Vd204)))))
-%%%%%   With (! [Vd203,Vd204]: ((greater(Vd203,Vd204) | ~ (less(Vd203,Vd204)))))
+%%%%% Mutated formula 'c115':
+%%%%%   Replaced (! [X401,X403,X402]: ((~ (less(X401,X403)) | less(vmul(X401,X402),vmul(X403,X402)))))
+%%%%%   With (! [X401,X403,X402]: ((less(X401,X403) | less(vmul(X401,X402),vmul(X403,X402)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM853+2 : TPTP v8.1.2. Released v4.1.0.
@@ -38,14 +38,14 @@
 %%% Generated on Tue Apr 14 15:06:04 CEST 2026 using command 'transform(fof)'.
 fof('holds(antec(307), 489, 0)', axiom, greater(vmul(vd486,vd487),vmul(vd488,vd487)), file('NUM853+2.p','holds(antec(307), 489, 0)')).
 fof(c116, plain, greater(vmul(vd486,vd487),vmul(vd488,vd487)), inference(split_conjunct,[status(thm)],['holds(antec(307), 489, 0)'])).
-fof('ass(cond(goal(130), 0), 2)', axiom, (! [Vd203,Vd204]: ((greater(Vd203,Vd204) | ~ (less(Vd203,Vd204))))), file('NUM853+2.p','ass(cond(goal(130), 0), 2)')).
+fof('ass(cond(goal(130), 0), 2)', axiom, (! [Vd203,Vd204]: ((~ (greater(Vd203,Vd204)) | ~ (less(Vd203,Vd204))))), file('NUM853+2.p','ass(cond(goal(130), 0), 2)')).
 fof(c67, plain, (! [Vd203,Vd204]: ((~ (greater(Vd203,Vd204)) | ~ (less(Vd203,Vd204))))), inference(fof_simplification,[status(thm)],['ass(cond(goal(130), 0), 2)'])).
 fof(c68, plain, (! [X50,X51]: ((~ (greater(X50,X51)) | ~ (less(X50,X51))))), inference(variable_rename,[status(thm)],[c67])).
 fof(c69, plain, (! [X102,X103]: ((~ (greater(X102,X103)) | ~ (less(X102,X103))))), inference(split_conjunct,[status(thm)],[c68])).
 fof('ass(cond(299, 0), 0)', axiom, (! [Vd456,Vd465,Vd466]: ((less(Vd465,Vd466) => less(vmul(Vd465,Vd456),vmul(Vd466,Vd456))))), file('NUM853+2.p','ass(cond(299, 0), 0)')).
 fof(c113, plain, (! [Vd456,Vd465,Vd466]: ((~ (less(Vd465,Vd466)) | less(vmul(Vd465,Vd456),vmul(Vd466,Vd456))))), inference(fof_nnf,[status(thm)],['ass(cond(299, 0), 0)'])).
 fof(c114, plain, (! [X89,X90,X91]: ((~ (less(X90,X91)) | less(vmul(X90,X89),vmul(X91,X89))))), inference(variable_rename,[status(thm)],[c113])).
-fof(c115, plain, (! [X401,X403,X402]: ((~ (less(X401,X403)) | less(vmul(X401,X402),vmul(X403,X402))))), inference(split_conjunct,[status(thm)],[c114])).
+fof(c115, plain, (! [X401,X403,X402]: ((less(X401,X403) | less(vmul(X401,X402),vmul(X403,X402))))), inference(split_conjunct,[status(thm)],[c114])).
 fof('holds(conseq(307), 490, 0)', conjecture, greater(vd486,vd488), file('NUM853+2.p','holds(conseq(307), 490, 0)')).
 fof(c117, negated_conjecture, ~ (greater(vd486,vd488)), inference(assume_negation,[status(cth)],['holds(conseq(307), 490, 0)'])).
 fof(c118, negated_conjecture, ~ (greater(vd486,vd488)), inference(fof_simplification,[status(thm)],[c117])).

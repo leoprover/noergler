@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '35':
-%%%%%   Replaced (hazard_of_mortality(dollar_c3,dollar_c1) = very_low)
-%%%%%   With (hazard_of_mortality(dollar_c2,dollar_c1) = very_low)
+%%%%% Mutated formula '29':
+%%%%%   Replaced (hazard_of_mortality(dollar_c3,dollar_c2) = very_low)
+%%%%%   With ~ ((hazard_of_mortality(dollar_c3,dollar_c2) = very_low))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT059+1 : TPTP v8.1.0. Released v2.4.0.
@@ -38,7 +38,7 @@ fof(16, axiom, (hazard_of_mortality(dollar_c3,dollar_c2) != hazard_of_mortality(
 fof(20, axiom, organization(dollar_c3), file('MGT059+1.p',unknown), []).
 fof(21, axiom, has_immunity(dollar_c3,dollar_c2), file('MGT059+1.p',unknown), []).
 fof(22, axiom, has_immunity(dollar_c3,dollar_c1), file('MGT059+1.p',unknown), []).
-fof(29, plain, (hazard_of_mortality(dollar_c3,dollar_c2) = very_low), inference(hyper,[status(thm)],[21,11,20]), [iquote('hyper,21,11,20')]).
+fof(29, plain, ~ ((hazard_of_mortality(dollar_c3,dollar_c2) = very_low)), inference(hyper,[status(thm)],[21,11,20]), [iquote('hyper,21,11,20')]).
 fof(30, plain, (hazard_of_mortality(dollar_c3,dollar_c1) != very_low), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[16]),29])]), [iquote('back_demod,16,demod,29,flip.1')]).
-fof(35, plain, (hazard_of_mortality(dollar_c2,dollar_c1) = very_low), inference(hyper,[status(thm)],[22,11,20]), [iquote('hyper,22,11,20')]).
+fof(35, plain, (hazard_of_mortality(dollar_c3,dollar_c1) = very_low), inference(hyper,[status(thm)],[22,11,20]), [iquote('hyper,22,11,20')]).
 fof(37, plain, $false, inference(binary,[status(thm)],[35,30]), [iquote('binary,35.1,30.1')]).

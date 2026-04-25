@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '28':
 %%%%%   Replaced cB(ia)
-%%%%%   With cB(dollar_c2)
+%%%%%   With ~ (cB(ia))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS163+1 : TPTP v8.1.0. Released v3.1.0.
@@ -47,5 +47,5 @@ fof(18, axiom, cB(ib), file('KRS163+1.p',unknown), []).
 fof(21, plain, (xsd_integer(dollar_c2) | (ib = ia)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[16,13,15,15,15])]), [iquote('hyper,16,13,15,15,15,factor_simp')]).
 fof(24, plain, ((ib = ia) | xsd_string(dollar_c2)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[21,11,15,15,15])]), [iquote('hyper,21,11,15,15,15,factor_simp')]).
 fof(27, plain, (ib = ia), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[24,8,21])]), [iquote('hyper,24,8,21,factor_simp')]).
-fof(28, plain, cB(dollar_c2), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[18]),27]), [iquote('back_demod,18,demod,27')]).
+fof(28, plain, ~ (cB(ia)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[18]),27]), [iquote('back_demod,18,demod,27')]).
 fof(29, plain, $false, inference(hyper,[status(thm)],[28,9,17]), [iquote('hyper,28,9,17')]).

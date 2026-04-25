@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '7':
-%%%%%   Replaced (~ (le_q(multiplication(dollar_c2,strong_iteration(dollar_c1)),dollar_c2)) | ~ (le_q(dollar_c2,multiplication(dollar_c2,strong_iteration(dollar_c1)))))
-%%%%%   With (le_q(multiplication(dollar_c2,strong_iteration(dollar_c1)),dollar_c2) | ~ (le_q(dollar_c2,multiplication(dollar_c2,strong_iteration(dollar_c1)))))
+%%%%% Mutated formula '18':
+%%%%%   Replaced (! [A,B,C]: ((multiplication(multiplication(A,B),C) = multiplication(A,multiplication(B,C)))))
+%%%%%   With (! [A,B,C]: (~ ((multiplication(multiplication(A,B),C) = multiplication(A,multiplication(B,C))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE148+2 : TPTP v8.1.0. Released v4.0.0.
@@ -35,14 +35,14 @@
 %%% Generated on Tue Apr 14 19:14:28 CEST 2026 using command 'transform(fof)'.
 fof(5, axiom, (! [A,B]: ((le_q(A,B) | (addition(A,B) != B)))), file('KLE148+2.p',unknown), []).
 fof(6, axiom, ((multiplication(dollar_c2,dollar_c1) = zero) | ~ (le_q(dollar_c2,multiplication(dollar_c2,strong_iteration(dollar_c1))))), file('KLE148+2.p',unknown), []).
-fof(7, axiom, (le_q(multiplication(dollar_c2,strong_iteration(dollar_c1)),dollar_c2) | ~ (le_q(dollar_c2,multiplication(dollar_c2,strong_iteration(dollar_c1))))), file('KLE148+2.p',unknown), []).
+fof(7, axiom, (~ (le_q(multiplication(dollar_c2,strong_iteration(dollar_c1)),dollar_c2)) | ~ (le_q(dollar_c2,multiplication(dollar_c2,strong_iteration(dollar_c1))))), file('KLE148+2.p',unknown), []).
 fof(9, axiom, (! [A,B]: ((addition(A,B) = addition(B,A)))), file('KLE148+2.p',unknown), []).
 fof(10, axiom, (! [A,B,C]: ((addition(A,addition(B,C)) = addition(addition(A,B),C)))), file('KLE148+2.p',unknown), []).
 fof(11, plain, (! [A,B,C]: ((addition(addition(A,B),C) = addition(A,addition(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[10])]), [iquote('copy,10,flip.1')]).
 fof(13, axiom, (! [A]: ((addition(A,zero) = A))), file('KLE148+2.p',unknown), []).
 fof(15, axiom, (! [A]: ((addition(A,A) = A))), file('KLE148+2.p',unknown), []).
 fof(17, axiom, (! [A,B,C]: ((multiplication(A,multiplication(B,C)) = multiplication(multiplication(A,B),C)))), file('KLE148+2.p',unknown), []).
-fof(18, plain, (! [A,B,C]: ((multiplication(multiplication(A,B),C) = multiplication(A,multiplication(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[17])]), [iquote('copy,17,flip.1')]).
+fof(18, plain, (! [A,B,C]: (~ ((multiplication(multiplication(A,B),C) = multiplication(A,multiplication(B,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[17])]), [iquote('copy,17,flip.1')]).
 fof(21, axiom, (! [A]: ((multiplication(A,one) = A))), file('KLE148+2.p',unknown), []).
 fof(24, axiom, (! [A,B,C]: ((multiplication(A,addition(B,C)) = addition(multiplication(A,B),multiplication(A,C))))), file('KLE148+2.p',unknown), []).
 fof(29, axiom, (! [A]: ((multiplication(zero,A) = zero))), file('KLE148+2.p',unknown), []).

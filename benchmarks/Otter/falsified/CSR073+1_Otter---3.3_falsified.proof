@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '56':
 %%%%%   Replaced genlmt(c_tptp_spindlecollectormt,c_tptp_member237_mt)
-%%%%%   With genlmt(c_tptp_member237_mt,c_tptp_member237_mt)
+%%%%%   With genlmt(c_pushingababycarriage,c_tptp_member237_mt)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR073+1 : TPTP v8.1.0. Released v3.4.0.
@@ -40,7 +40,7 @@ fof(4, axiom, (! [A,B]: ((~ (tptptypes_9_401(A,B)) | tptptypes_8_400(B,A)))), fi
 fof(5, axiom, (~ (mtvisible(c_tptp_member237_mt)) | tptptypes_9_401(c_pushingababycarriage,c_tptpcol_16_10258)), file('CSR073+1.p',unknown), []).
 fof(40, axiom, (! [A,B]: ((~ (mtvisible(A)) | (~ (genlmt(A,B)) | mtvisible(B))))), file('CSR073+1.p',unknown), []).
 fof(45, axiom, (! [A]: (~ (tptptypes_5_387(A,c_pushingababycarriage)))), file('CSR073+1.p',unknown), []).
-fof(56, axiom, genlmt(c_tptp_member237_mt,c_tptp_member237_mt), file('CSR073+1.p',unknown), []).
+fof(56, axiom, genlmt(c_pushingababycarriage,c_tptp_member237_mt), file('CSR073+1.p',unknown), []).
 fof(61, axiom, mtvisible(c_tptp_spindlecollectormt), file('CSR073+1.p',unknown), []).
 fof(94, plain, mtvisible(c_tptp_member237_mt), inference(hyper,[status(thm)],[56,40,61]), [iquote('hyper,56,40,61')]).
 fof(97, plain, tptptypes_9_401(c_pushingababycarriage,c_tptpcol_16_10258), inference(hyper,[status(thm)],[94,5]), [iquote('hyper,94,5')]).

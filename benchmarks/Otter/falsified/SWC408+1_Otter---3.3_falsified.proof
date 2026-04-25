@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '456':
-%%%%%   Replaced ~ (memberP(dollar_c5,dollar_c3))
-%%%%%   With ~ (memberP(dollar_c3,dollar_c3))
+%%%%% Mutated formula '927':
+%%%%%   Replaced memberP(dollar_c5,dollar_c3)
+%%%%%   With ~ (memberP(dollar_c5,dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC408+1 : TPTP v8.1.0. Released v2.4.0.
@@ -43,6 +43,6 @@ fof(452, axiom, (dollar_c7 = dollar_c5), file('SWC408+1.p',unknown), []).
 fof(453, axiom, ssItem(dollar_c3), file('SWC408+1.p',unknown), []).
 fof(454, axiom, memberP(dollar_c6,dollar_c3), file('SWC408+1.p',unknown), []).
 fof(455, plain, memberP(dollar_c4,dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[454]),450]), [iquote('copy,454,demod,450')]).
-fof(456, plain, ~ (memberP(dollar_c3,dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),452]), [iquote('back_demod,182,demod,452')]).
-fof(927, plain, memberP(dollar_c5,dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[455,259,453,446]),448]), [iquote('hyper,455,259,453,446,demod,448')]).
+fof(456, plain, ~ (memberP(dollar_c5,dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),452]), [iquote('back_demod,182,demod,452')]).
+fof(927, plain, ~ (memberP(dollar_c5,dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[455,259,453,446]),448]), [iquote('hyper,455,259,453,446,demod,448')]).
 fof(928, plain, $false, inference(binary,[status(thm)],[927,456]), [iquote('binary,927.1,456.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '38':
-%%%%%   Replaced ~ (e_qual_lines(dollar_c2,parallel_through_point(dollar_c1,dollar_c3)))
-%%%%%   With e_qual_lines(dollar_c2,parallel_through_point(dollar_c1,dollar_c3))
+%%%%% Mutated formula '35':
+%%%%%   Replaced (! [A,B]: ((~ (parallel_lines(A,B)) | ~ (convergent_lines(A,B)))))
+%%%%%   With (! [A,B]: ((parallel_lines(A,B) | ~ (convergent_lines(A,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO206+3 : TPTP v8.1.0. Bugfixed v4.0.1.
@@ -36,8 +36,8 @@
 fof(6, axiom, (! [A,B,C]: ((~ (convergent_lines(A,B)) | (convergent_lines(A,C) | convergent_lines(B,C))))), file('GEO206+3.p',unknown), []).
 fof(15, axiom, (! [A,B]: ((~ (distinct_lines(A,B)) | convergent_lines(A,B)))), file('GEO206+3.p',unknown), []).
 fof(16, axiom, (! [A,B]: (~ (convergent_lines(parallel_through_point(A,B),A)))), file('GEO206+3.p',unknown), []).
-fof(35, axiom, (! [A,B]: ((~ (parallel_lines(A,B)) | ~ (convergent_lines(A,B))))), file('GEO206+3.p',unknown), []).
-fof(38, axiom, e_qual_lines(dollar_c2,parallel_through_point(dollar_c1,dollar_c3)), file('GEO206+3.p',unknown), []).
+fof(35, axiom, (! [A,B]: ((parallel_lines(A,B) | ~ (convergent_lines(A,B))))), file('GEO206+3.p',unknown), []).
+fof(38, axiom, ~ (e_qual_lines(dollar_c2,parallel_through_point(dollar_c1,dollar_c3))), file('GEO206+3.p',unknown), []).
 fof(41, axiom, (! [A,B]: ((e_qual_lines(A,B) | distinct_lines(A,B)))), file('GEO206+3.p',unknown), []).
 fof(46, axiom, parallel_lines(dollar_c2,dollar_c1), file('GEO206+3.p',unknown), []).
 fof(51, plain, distinct_lines(dollar_c2,parallel_through_point(dollar_c1,dollar_c3)), inference(hyper,[status(thm)],[41,38]), [iquote('hyper,41,38')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '13':
-%%%%%   Replaced basis_of(dollar_f2(dollar_c1),dollar_c1)
-%%%%%   With ~ (basis_of(dollar_f2(dollar_c1),dollar_c1))
+%%%%% Mutated formula '17':
+%%%%%   Replaced a_subset_of(dollar_f2(dollar_c2),vec_to_class(dollar_c2))
+%%%%%   With ~ (a_subset_of(dollar_f2(dollar_c2),vec_to_class(dollar_c2)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG211+1 : TPTP v8.1.0. Released v3.1.0.
@@ -43,9 +43,9 @@ fof(9, axiom, (! [A,B]: ((~ (basis_of(union(A,B),dollar_c1)) | ~ (basis_of(A,dol
 fof(10, axiom, a_vector_subspace_of(dollar_c2,dollar_c1), file('ALG211+1.p',unknown), []).
 fof(11, axiom, a_vector_space(dollar_c1), file('ALG211+1.p',unknown), []).
 fof(12, plain, a_vector_space(dollar_c2), inference(hyper,[status(thm)],[10,6]), [iquote('hyper,10,6')]).
-fof(13, plain, ~ (basis_of(dollar_f2(dollar_c1),dollar_c1)), inference(hyper,[status(thm)],[11,5]), [iquote('hyper,11,5')]).
+fof(13, plain, basis_of(dollar_f2(dollar_c1),dollar_c1), inference(hyper,[status(thm)],[11,5]), [iquote('hyper,11,5')]).
 fof(14, plain, basis_of(dollar_f2(dollar_c2),dollar_c2), inference(hyper,[status(thm)],[12,5]), [iquote('hyper,12,5')]).
-fof(17, plain, a_subset_of(dollar_f2(dollar_c2),vec_to_class(dollar_c2)), inference(hyper,[status(thm)],[14,2]), [iquote('hyper,14,2')]).
+fof(17, plain, ~ (a_subset_of(dollar_f2(dollar_c2),vec_to_class(dollar_c2))), inference(hyper,[status(thm)],[14,2]), [iquote('hyper,14,2')]).
 fof(18, plain, lin_ind_subset(dollar_f2(dollar_c2),dollar_c2), inference(hyper,[status(thm)],[14,1]), [iquote('hyper,14,1')]).
 fof(23, plain, lin_ind_subset(dollar_f2(dollar_c2),dollar_c1), inference(hyper,[status(thm)],[17,7,10,18]), [iquote('hyper,17,7,10,18')]).
 fof(24, plain, basis_of(union(dollar_f2(dollar_c2),dollar_f1(dollar_f2(dollar_c2),dollar_f2(dollar_c1),dollar_c1)),dollar_c1), inference(hyper,[status(thm)],[23,4,13]), [iquote('hyper,23,4,13')]).

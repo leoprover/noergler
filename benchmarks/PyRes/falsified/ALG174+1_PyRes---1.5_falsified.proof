@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c4575':
-%%%%%   Replaced (op(e3,e2) = e4)
-%%%%%   With ~ ((op(e3,e2) = e4))
+%%%%% Mutated formula 'c6145':
+%%%%%   Replaced (op(e2,e2) = e3)
+%%%%%   With (op(e4,e2) = e3)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : ALG174+1 : TPTP v8.1.2. Released v2.7.0.
@@ -56,7 +56,7 @@ fof(c3649, plain, (! [X87]: (((X87 != op(e3,op(e3,e3))) | (X87 = e4)))), inferen
 fof(c3156, plain, (e2 = op(e3,e3)), inference(split_conjunct,[status(thm)],[ax6])).
 fof(c3374, plain, (! [X89,X88]: (((X89 != X88) | (op(X89,e2) = op(X88,op(e3,e3)))))), inference(resolution,[status(thm)],[c0,c3156])).
 fof(c4549, plain, (! [X90]: ((op(X90,e2) = op(X90,op(e3,e3))))), inference(resolution,[status(thm)],[c3374,reflexivity])).
-fof(c4575, plain, ~ ((op(e3,e2) = e4)), inference(resolution,[status(thm)],[c4549,c3649])).
+fof(c4575, plain, (op(e3,e2) = e4), inference(resolution,[status(thm)],[c4549,c3649])).
 fof(c4587, plain, (e4 = op(e3,e2)), inference(resolution,[status(thm)],[c4575,symmetry])).
 fof(c4592, plain, (! [X95]: ((op(e4,X95) = op(op(e3,e2),X95)))), inference(resolution,[status(thm)],[c4587,c3375])).
 fof(c4655, plain, (op(e4,e2) = e3), inference(resolution,[status(thm)],[c4592,c3431])).
@@ -71,6 +71,6 @@ fof(c3654, plain, (! [X168,X169]: (((X168 != op(op(e3,e3),X169)) | (X168 = op(e2
 fof(c6091, plain, (e3 = op(e2,op(e3,e3))), inference(resolution,[status(thm)],[c3654,c3768])).
 fof(c6102, plain, (op(e2,op(e3,e3)) = e3), inference(resolution,[status(thm)],[c6091,symmetry])).
 fof(c6103, plain, (! [X173]: (((X173 != op(e2,op(e3,e3))) | (X173 = e3)))), inference(resolution,[status(thm)],[c6102,transitivity])).
-fof(c6145, plain, (op(e2,e2) = e3), inference(resolution,[status(thm)],[c6103,c4549])).
+fof(c6145, plain, (op(e4,e2) = e3), inference(resolution,[status(thm)],[c6103,c4549])).
 fof(c6167, plain, (op(e2,e2) = op(e4,e2)), inference(resolution,[status(thm)],[c6145,c4668])).
 fof(c6188, plain, $false, inference(resolution,[status(thm)],[c6167,c3196])).

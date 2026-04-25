@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '87':
-%%%%%   Replaced (! [A]: (~ (model(A,dollar_c5))))
-%%%%%   With (! [A]: (model(A,dollar_c5)))
+%%%%% Mutated formula '120':
+%%%%%   Replaced (! [A]: (model(A,dollar_c1)))
+%%%%%   With (! [A]: (~ (model(A,dollar_c1))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS267+1 : TPTP v8.1.0. Bugfixed v5.4.0.
@@ -35,10 +35,10 @@
 %%% Generated on Tue Apr 14 19:14:58 CEST 2026 using command 'transform(fof)'.
 fof(54, axiom, (! [A,B]: ((model(dollar_f32(A,B),A) | (~ (model(dollar_f33(A,B),B)) | status(A,B,tca))))), file('KRS267+1.p',unknown), []).
 fof(72, axiom, (! [A,B,C,D]: ((~ (status(A,B,C)) | (~ (status(A,B,D)) | mighta(C,D))))), file('KRS267+1.p',unknown), []).
-fof(87, axiom, (! [A]: (model(A,dollar_c5))), file('KRS267+1.p',unknown), []).
+fof(87, axiom, (! [A]: (~ (model(A,dollar_c5)))), file('KRS267+1.p',unknown), []).
 fof(93, axiom, ~ (mighta(tca,thm)), file('KRS267+1.p',unknown), []).
 fof(114, axiom, (! [A,B]: ((model(dollar_f10(A,B),A) | status(A,B,thm)))), file('KRS267+1.p',unknown), []).
-fof(120, axiom, (! [A]: (model(A,dollar_c1))), file('KRS267+1.p',unknown), []).
+fof(120, axiom, (! [A]: (~ (model(A,dollar_c1)))), file('KRS267+1.p',unknown), []).
 fof(155, plain, (! [A]: ((model(dollar_f32(A,dollar_c1),A) | status(A,dollar_c1,tca)))), inference(hyper,[status(thm)],[120,54]), [iquote('hyper,120,54')]).
 fof(823, plain, (! [A]: (status(dollar_c5,A,thm))), inference(hyper,[status(thm)],[114,87]), [iquote('hyper,114,87')]).
 fof(5103, plain, status(dollar_c5,dollar_c1,tca), inference(hyper,[status(thm)],[155,87]), [iquote('hyper,155,87')]).

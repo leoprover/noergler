@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c39':
-%%%%%   Replaced (slcrc0 = skolem0001)
-%%%%%   With ~ ((slcrc0 = skolem0001))
+%%%%% Mutated formula 'c15':
+%%%%%   Replaced (! [X27]: ((~ (aSet0(X27)) | (~ (isCountable0(X27)) | ~ (isFinite0(X27))))))
+%%%%%   With (! [X27]: ((~ (aSet0(X27)) & (~ (isCountable0(X27)) | ~ (isFinite0(X27))))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM531+1 : TPTP v8.1.2. Released v4.0.0.
@@ -47,12 +47,12 @@ fof(mCountNFin, axiom, (! [W0]: (((aSet0(W0) & isCountable0(W0)) => ~ (isFinite0
 fof(c12, plain, (! [W0]: (((aSet0(W0) & isCountable0(W0)) => ~ (isFinite0(W0))))), inference(fof_simplification,[status(thm)],[mCountNFin])).
 fof(c13, plain, (! [W0]: ((~ (aSet0(W0)) | (~ (isCountable0(W0)) | ~ (isFinite0(W0)))))), inference(fof_nnf,[status(thm)],[c12])).
 fof(c14, plain, (! [X3]: ((~ (aSet0(X3)) | (~ (isCountable0(X3)) | ~ (isFinite0(X3)))))), inference(variable_rename,[status(thm)],[c13])).
-fof(c15, plain, (! [X27]: ((~ (aSet0(X27)) | (~ (isCountable0(X27)) | ~ (isFinite0(X27)))))), inference(split_conjunct,[status(thm)],[c14])).
+fof(c15, plain, (! [X27]: ((~ (aSet0(X27)) & (~ (isCountable0(X27)) | ~ (isFinite0(X27)))))), inference(split_conjunct,[status(thm)],[c14])).
 fof(mEmpFin, axiom, isFinite0(slcrc0), file('NUM531+1.p',mEmpFin)).
 fof(c18, plain, isFinite0(slcrc0), inference(split_conjunct,[status(thm)],[mEmpFin])).
 fof(symmetry, axiom, (! [X11,X12]: (((X11 != X12) | (X12 = X11)))), theory(equality)).
 fof(c11, negated_conjecture, (skolem0001 = slcrc0), inference(split_conjunct,[status(thm)],[c8])).
-fof(c39, plain, ~ ((slcrc0 = skolem0001)), inference(resolution,[status(thm)],[c11,symmetry])).
+fof(c39, plain, (slcrc0 = skolem0001), inference(resolution,[status(thm)],[c11,symmetry])).
 fof(c3, axiom, (! [X35,X34]: (((X35 != X34) | (~ (isFinite0(X35)) | isFinite0(X34))))), theory(equality)).
 fof(c54, plain, (~ (isFinite0(slcrc0)) | isFinite0(skolem0001)), inference(resolution,[status(thm)],[c3,c39])).
 fof(c57, plain, isFinite0(skolem0001), inference(resolution,[status(thm)],[c54,c18])).

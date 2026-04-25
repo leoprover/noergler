@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c6':
-%%%%%   Replaced p
-%%%%%   With ~ (p)
+%%%%% Mutated formula 'c1':
+%%%%%   Replaced (((p & ~ (q)) | p) & ~ (p))
+%%%%%   With (((p & ~ (q)) | p) | ~ (p))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN389+1 : TPTP v8.1.2. Released v2.0.0.
@@ -38,9 +38,9 @@
 %%% Generated on Tue Apr 14 15:06:49 CEST 2026 using command 'transform(fof)'.
 fof(pel8, conjecture, (((p => q) => p) => p), file('SYN389+1.p',pel8)).
 fof(c0, negated_conjecture, ~ ((((p => q) => p) => p)), inference(assume_negation,[status(cth)],[pel8])).
-fof(c1, negated_conjecture, (((p & ~ (q)) | p) & ~ (p)), inference(fof_nnf,[status(thm)],[c0])).
+fof(c1, negated_conjecture, (((p & ~ (q)) | p) | ~ (p)), inference(fof_nnf,[status(thm)],[c0])).
 fof(c2, negated_conjecture, ((p | p) & ((~ (q) | p) & ~ (p))), inference(distribute,[status(thm)],[c1])).
 fof(c5, negated_conjecture, ~ (p), inference(split_conjunct,[status(thm)],[c2])).
 fof(c3, negated_conjecture, (p | p), inference(split_conjunct,[status(thm)],[c2])).
-fof(c6, plain, ~ (p), inference(factor,[status(thm)],[c3])).
+fof(c6, plain, p, inference(factor,[status(thm)],[c3])).
 fof(c9, plain, $false, inference(resolution,[status(thm)],[c6,c5])).

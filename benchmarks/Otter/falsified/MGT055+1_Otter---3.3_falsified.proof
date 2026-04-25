@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '197':
 %%%%%   Replaced (! [A]: ((dissimilar(dollar_c5,dollar_c4,A) | is_aligned(dollar_c5,A))))
-%%%%%   With (! [A]: ((dissimilar(dollar_c2,dollar_c4,A) | is_aligned(dollar_c5,A))))
+%%%%%   With (! [A]: ((dissimilar(dollar_c5,dollar_c4,A) & is_aligned(dollar_c5,A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT055+1 : TPTP v8.1.0. Released v2.4.0.
@@ -74,7 +74,7 @@ fof(153, plain, (~ (smaller_or_e_qual(zero,eta)) | has_immunity(dollar_c5,dollar
 fof(162, plain, smaller_or_e_qual(zero,eta), inference(hyper,[status(thm)],[60,2]), [iquote('hyper,60,2')]).
 fof(181, plain, has_immunity(dollar_c5,dollar_c3), inference(hyper,[status(thm)],[41,12,38]), [iquote('hyper,41,12,38')]).
 fof(196, plain, (! [A]: ((dissimilar(dollar_c5,A,dollar_c4) | is_aligned(dollar_c5,A)))), inference(hyper,[status(thm)],[138,23,37]), [iquote('hyper,138,23,37')]).
-fof(197, plain, (! [A]: ((dissimilar(dollar_c2,dollar_c4,A) | is_aligned(dollar_c5,A)))), inference(hyper,[status(thm)],[138,22,37]), [iquote('hyper,138,22,37')]).
+fof(197, plain, (! [A]: ((dissimilar(dollar_c5,dollar_c4,A) & is_aligned(dollar_c5,A)))), inference(hyper,[status(thm)],[138,22,37]), [iquote('hyper,138,22,37')]).
 fof(238, plain, (! [A]: ((has_immunity(dollar_c5,A) | greater(hazard_of_mortality(dollar_c5,A),hazard_of_mortality(dollar_c5,dollar_c3))))), inference(hyper,[status(thm)],[181,18,37]), [iquote('hyper,181,18,37')]).
 fof(251, plain, (smaller(age(dollar_c5,dollar_c2),sigma) | (age(dollar_c5,dollar_c2) = sigma)), inference(hyper,[status(thm)],[43,1]), [iquote('hyper,43,1')]).
 fof(264, plain, dissimilar(dollar_c5,dollar_c4,dollar_c1), inference(hyper,[status(thm)],[44,26,37,39]), [iquote('hyper,44,26,37,39')]).

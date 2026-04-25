@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '21':
-%%%%%   Replaced less(vd203,vd204)
-%%%%%   With less(vd204,vd204)
+%%%%% Mutated formula '44':
+%%%%%   Replaced (vplus(vd203,dollar_f1(vd204,vd203)) = vd204)
+%%%%%   With ~ ((vplus(vd203,dollar_f1(vd204,vd203)) = vd204))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM836+1 : TPTP v8.1.0. Released v4.1.0.
@@ -42,11 +42,11 @@ fof(13, axiom, (! [A,B]: ((A != vplus(B,A)))), file('NUM836+1.p',unknown), []).
 fof(14, plain, (! [A,B]: ((vplus(A,B) != B))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[13])]), [iquote('copy,13,flip.1')]).
 fof(19, axiom, (! [A]: ((A = A))), file('NUM836+1.p',unknown), []).
 fof(20, axiom, greater(vd203,vd204), file('NUM836+1.p',unknown), []).
-fof(21, axiom, less(vd204,vd204), file('NUM836+1.p',unknown), []).
+fof(21, axiom, less(vd203,vd204), file('NUM836+1.p',unknown), []).
 fof(24, axiom, (! [A,B]: ((vplus(A,B) = vplus(B,A)))), file('NUM836+1.p',unknown), []).
 fof(31, axiom, (! [A,B,C]: ((vplus(vplus(A,B),C) = vplus(A,vplus(B,C))))), file('NUM836+1.p',unknown), []).
 fof(39, plain, (! [A,B]: (less(A,vplus(A,B)))), inference(hyper,[status(thm)],[19,5]), [iquote('hyper,19,5')]).
-fof(44, plain, (vplus(vd203,dollar_f1(vd204,vd203)) = vd204), inference(hyper,[status(thm)],[21,4]), [iquote('hyper,21,4')]).
+fof(44, plain, ~ ((vplus(vd203,dollar_f1(vd204,vd203)) = vd204)), inference(hyper,[status(thm)],[21,4]), [iquote('hyper,21,4')]).
 fof(55, plain, (! [A,B]: ((less(A,B) | ~ (greater(B,A))))), inference(para_into,[status(thm),theory(equality)],[39,7]), [iquote('para_into,39.1.2,7.2.1')]).
 fof(130, plain, less(vd204,vd203), inference(hyper,[status(thm)],[55,20]), [iquote('hyper,55,20')]).
 fof(143, plain, (vplus(vd204,dollar_f1(vd203,vd204)) = vd203), inference(hyper,[status(thm)],[130,4]), [iquote('hyper,130,4')]).

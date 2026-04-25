@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1928':
-%%%%%   Replaced (! [A,B]: (subset(unordered_pair(A,A),unordered_pair(B,A))))
-%%%%%   With (! [A,B]: (~ (subset(unordered_pair(A,A),unordered_pair(B,A)))))
+%%%%% Mutated formula '110':
+%%%%%   Replaced (! [A]: (subset(A,A)))
+%%%%%   With (! [A]: (~ (subset(A,A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU146+2 : TPTP v8.1.0. Released v3.3.0.
@@ -60,7 +60,7 @@ fof(104, axiom, (! [A]: ((set_union2(A,A) = A))), file('SEU146+2.p',unknown), []
 fof(107, axiom, (subset(dollar_c2,singleton(dollar_c1)) | ((dollar_c2 = empty_set) | (dollar_c2 = singleton(dollar_c1)))), file('SEU146+2.p',unknown), []).
 fof(108, plain, (subset(dollar_c2,singleton(dollar_c1)) | ((empty_set = dollar_c2) | (singleton(dollar_c1) = dollar_c2))), inference(flip,[status(thm),theory(equality)],[inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[107])])]), [iquote('copy,107,flip.2,flip.3')]).
 fof(109, axiom, empty(dollar_c3), file('SEU146+2.p',unknown), []).
-fof(110, axiom, (! [A]: (subset(A,A))), file('SEU146+2.p',unknown), []).
+fof(110, axiom, (! [A]: (~ (subset(A,A)))), file('SEU146+2.p',unknown), []).
 fof(112, axiom, (! [A]: ((set_union2(A,empty_set) = A))), file('SEU146+2.p',unknown), []).
 fof(117, axiom, (! [A]: (subset(empty_set,A))), file('SEU146+2.p',unknown), []).
 fof(134, axiom, (! [A]: ((unordered_pair(A,A) = singleton(A)))), file('SEU146+2.p',unknown), []).
@@ -91,7 +91,7 @@ fof(1360, plain, (! [A]: (((dollar_c3 = A) | ~ (empty(A))))), inference(demod,[s
 fof(1792, plain, (! [A]: (((dollar_c3 = A) | in(dollar_f2(A),A)))), inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[219,441]),441,441]), [iquote('para_from,219.1.1,440.1.1,demod,441,441')]).
 fof(1897, plain, (! [A]: ((empty(A) | in(dollar_f2(A),A)))), inference(para_from,[status(thm),theory(equality)],[1792,109]), [iquote('para_from,1792.1.1,109.1.1')]).
 fof(1927, plain, (! [A,B]: (subset(unordered_pair(A,A),unordered_pair(A,B)))), inference(hyper,[status(thm)],[169,174]), [iquote('hyper,169,174')]).
-fof(1928, plain, (! [A,B]: (~ (subset(unordered_pair(A,A),unordered_pair(B,A))))), inference(hyper,[status(thm)],[169,173]), [iquote('hyper,169,173')]).
+fof(1928, plain, (! [A,B]: (subset(unordered_pair(A,A),unordered_pair(B,A)))), inference(hyper,[status(thm)],[169,173]), [iquote('hyper,169,173')]).
 fof(1948, plain, ((dollar_c3 != dollar_c2) | ~ (empty(dollar_c2))), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[206,220]),216]), [iquote('para_into,206.1.1,220.2.1,unit_del,216')]).
 fof(1950, plain, (! [A]: (((A != dollar_c2) | (~ (empty(dollar_c2)) | ~ (empty(A)))))), inference(para_into,[status(thm),theory(equality)],[1948,1360]), [iquote('para_into,1948.1.1,1360.1.1')]).
 fof(1954, plain, ~ (empty(dollar_c2)), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[1950]),90]), [iquote('factor,1950.2.3,unit_del,90')]).

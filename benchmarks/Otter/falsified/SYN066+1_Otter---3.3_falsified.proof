@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '10':
-%%%%%   Replaced (! [A,B]: (big_q(dollar_f1(A,B),dollar_f3(A))))
-%%%%%   With (! [A,B]: (~ (big_q(dollar_f1(A,B),dollar_f3(A)))))
+%%%%% Mutated formula '8':
+%%%%%   Replaced (! [A,B,C]: ((big_p(A,B) | big_r(C,C))))
+%%%%%   With (! [A,B,C]: ((~ (big_p(A,B)) | big_r(C,C))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN066+1 : TPTP v8.1.0. Bugfixed v3.0.0.
@@ -37,8 +37,8 @@ fof(2, axiom, (! [A,B]: ((~ (big_p(dollar_f2(A,B),dollar_f3(A))) | big_q(dollar_
 fof(3, axiom, (! [A,B,C]: ((~ (big_q(A,B)) | big_r(C,C)))), file('SYN066+1.p',unknown), []).
 fof(4, axiom, (! [A]: (~ (big_r(dollar_c1,A)))), file('SYN066+1.p',unknown), []).
 fof(6, axiom, (! [A,B]: ((big_p(A,B) | big_q(dollar_f4(A,B),B)))), file('SYN066+1.p',unknown), []).
-fof(8, plain, (! [A,B,C]: ((big_p(A,B) | big_r(C,C)))), inference(hyper,[status(thm)],[6,3]), [iquote('hyper,6,3')]).
+fof(8, plain, (! [A,B,C]: ((~ (big_p(A,B)) | big_r(C,C)))), inference(hyper,[status(thm)],[6,3]), [iquote('hyper,6,3')]).
 fof(9, plain, (! [A,B]: (big_p(A,B))), inference(hyper,[status(thm)],[8,4]), [iquote('hyper,8,4')]).
-fof(10, plain, (! [A,B]: (~ (big_q(dollar_f1(A,B),dollar_f3(A))))), inference(hyper,[status(thm)],[9,2]), [iquote('hyper,9,2')]).
+fof(10, plain, (! [A,B]: (big_q(dollar_f1(A,B),dollar_f3(A)))), inference(hyper,[status(thm)],[9,2]), [iquote('hyper,9,2')]).
 fof(11, plain, (! [A]: (big_r(A,A))), inference(hyper,[status(thm)],[10,3]), [iquote('hyper,10,3')]).
 fof(12, plain, $false, inference(binary,[status(thm)],[11,4]), [iquote('binary,11.1,4.1')]).

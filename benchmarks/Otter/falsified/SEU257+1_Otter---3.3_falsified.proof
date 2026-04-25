@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '4':
-%%%%%   Replaced (! [A]: ((~ (relation(A)) | (~ (well_ordering(A)) | connected(A)))))
-%%%%%   With (! [A]: ((relation(A) | (~ (well_ordering(A)) | connected(A)))))
+%%%%% Mutated formula '14':
+%%%%%   Replaced (! [A,B]: ((~ (relation(A)) | (~ (well_founded_relation(A)) | well_founded_relation(relation_restriction(A,B))))))
+%%%%%   With (! [A,B]: ((relation(A) | (~ (well_founded_relation(A)) | well_founded_relation(relation_restriction(A,B))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU257+1 : TPTP v8.1.0. Released v3.3.0.
@@ -36,7 +36,7 @@
 fof(1, axiom, (! [A]: ((~ (relation(A)) | (~ (well_ordering(A)) | reflexive(A))))), file('SEU257+1.p',unknown), []).
 fof(2, axiom, (! [A]: ((~ (relation(A)) | (~ (well_ordering(A)) | transitive(A))))), file('SEU257+1.p',unknown), []).
 fof(3, axiom, (! [A]: ((~ (relation(A)) | (~ (well_ordering(A)) | antisymmetric(A))))), file('SEU257+1.p',unknown), []).
-fof(4, axiom, (! [A]: ((relation(A) | (~ (well_ordering(A)) | connected(A))))), file('SEU257+1.p',unknown), []).
+fof(4, axiom, (! [A]: ((~ (relation(A)) | (~ (well_ordering(A)) | connected(A))))), file('SEU257+1.p',unknown), []).
 fof(5, axiom, (! [A]: ((~ (relation(A)) | (~ (well_ordering(A)) | well_founded_relation(A))))), file('SEU257+1.p',unknown), []).
 fof(6, axiom, (! [A]: ((~ (relation(A)) | (well_ordering(A) | (~ (reflexive(A)) | (~ (transitive(A)) | (~ (antisymmetric(A)) | (~ (connected(A)) | ~ (well_founded_relation(A)))))))))), file('SEU257+1.p',unknown), []).
 fof(9, axiom, (! [A,B]: ((~ (relation(A)) | relation(relation_restriction(A,B))))), file('SEU257+1.p',unknown), []).
@@ -44,7 +44,7 @@ fof(10, axiom, (! [A,B]: ((~ (relation(A)) | (~ (reflexive(A)) | reflexive(relat
 fof(11, axiom, (! [A,B]: ((~ (relation(A)) | (~ (connected(A)) | connected(relation_restriction(A,B)))))), file('SEU257+1.p',unknown), []).
 fof(12, axiom, (! [A,B]: ((~ (relation(A)) | (~ (transitive(A)) | transitive(relation_restriction(A,B)))))), file('SEU257+1.p',unknown), []).
 fof(13, axiom, (! [A,B]: ((~ (relation(A)) | (~ (antisymmetric(A)) | antisymmetric(relation_restriction(A,B)))))), file('SEU257+1.p',unknown), []).
-fof(14, axiom, (! [A,B]: ((~ (relation(A)) | (~ (well_founded_relation(A)) | well_founded_relation(relation_restriction(A,B)))))), file('SEU257+1.p',unknown), []).
+fof(14, axiom, (! [A,B]: ((relation(A) | (~ (well_founded_relation(A)) | well_founded_relation(relation_restriction(A,B)))))), file('SEU257+1.p',unknown), []).
 fof(15, axiom, ~ (well_ordering(relation_restriction(dollar_c1,dollar_c2))), file('SEU257+1.p',unknown), []).
 fof(20, axiom, relation(dollar_c1), file('SEU257+1.p',unknown), []).
 fof(21, axiom, well_ordering(dollar_c1), file('SEU257+1.p',unknown), []).

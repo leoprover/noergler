@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c11':
-%%%%%   Replaced aElement0(xx)
-%%%%%   With aElement0(xz)
+%%%%% Mutated formula 'c171':
+%%%%%   Replaced (! [X158,X159]: ((sdtmndtplgtdt0(xy,xR,xz) | ((xx != X158) | ((xR != X159) | sdtmndtasgtdt0(X158,X159,xz))))))
+%%%%%   With (! [X158,X159]: ((sdtmndtplgtdt0(xR,xR,xz) | ((xx != X158) | ((xR != X159) | sdtmndtasgtdt0(X158,X159,xz))))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : COM012+1 : TPTP v8.1.2. Released v4.0.0.
@@ -41,7 +41,7 @@ fof(c6, negated_conjecture, ~ (((sdtmndtasgtdt0(xx,xR,xy) & sdtmndtasgtdt0(xy,xR
 fof(c7, negated_conjecture, (sdtmndtasgtdt0(xx,xR,xy) & (sdtmndtasgtdt0(xy,xR,xz) & ~ (sdtmndtasgtdt0(xx,xR,xz)))), inference(fof_nnf,[status(thm)],[c6])).
 fof(c10, negated_conjecture, ~ (sdtmndtasgtdt0(xx,xR,xz)), inference(split_conjunct,[status(thm)],[c7])).
 fof(m__349, plain, (aElement0(xx) & (aRewritingSystem0(xR) & (aElement0(xy) & aElement0(xz)))), file('COM012+1.p',m__349)).
-fof(c11, plain, aElement0(xz), inference(split_conjunct,[status(thm)],[m__349])).
+fof(c11, plain, aElement0(xx), inference(split_conjunct,[status(thm)],[m__349])).
 fof(c12, plain, aRewritingSystem0(xR), inference(split_conjunct,[status(thm)],[m__349])).
 fof(c14, plain, aElement0(xz), inference(split_conjunct,[status(thm)],[m__349])).
 fof(mTCRDef, plain, (! [W0,W1,W2]: (((aElement0(W0) & (aRewritingSystem0(W1) & aElement0(W2))) => (sdtmndtasgtdt0(W0,W1,W2) <=> ((W0 = W2) | sdtmndtplgtdt0(W0,W1,W2)))))), file('COM012+1.p',mTCRDef)).
@@ -75,7 +75,7 @@ fof(c66, plain, (~ (aElement0(xy)) | (~ (aRewritingSystem0(xR)) | (~ (aElement0(
 fof(c110, plain, (~ (aElement0(xy)) | (~ (aRewritingSystem0(xR)) | ((xy = xz) | sdtmndtplgtdt0(xy,xR,xz)))), inference(resolution,[status(thm)],[c66,c14])).
 fof(c158, plain, (~ (aElement0(xy)) | ((xy = xz) | sdtmndtplgtdt0(xy,xR,xz))), inference(resolution,[status(thm)],[c110,c12])).
 fof(c160, plain, ((xy = xz) | sdtmndtplgtdt0(xy,xR,xz)), inference(resolution,[status(thm)],[c158,c13])).
-fof(c171, plain, (! [X158,X159]: ((sdtmndtplgtdt0(xy,xR,xz) | ((xx != X158) | ((xR != X159) | sdtmndtasgtdt0(X158,X159,xz)))))), inference(resolution,[status(thm)],[c160,c58])).
+fof(c171, plain, (! [X158,X159]: ((sdtmndtplgtdt0(xR,xR,xz) | ((xx != X158) | ((xR != X159) | sdtmndtasgtdt0(X158,X159,xz)))))), inference(resolution,[status(thm)],[c160,c58])).
 fof(c226, plain, (! [X160]: ((sdtmndtplgtdt0(xy,xR,xz) | ((xx != X160) | sdtmndtasgtdt0(X160,xR,xz))))), inference(resolution,[status(thm)],[c171,reflexivity])).
 fof(c227, plain, (sdtmndtplgtdt0(xy,xR,xz) | sdtmndtasgtdt0(xx,xR,xz)), inference(resolution,[status(thm)],[c226,reflexivity])).
 fof(c237, plain, sdtmndtplgtdt0(xy,xR,xz), inference(resolution,[status(thm)],[c227,c10])).

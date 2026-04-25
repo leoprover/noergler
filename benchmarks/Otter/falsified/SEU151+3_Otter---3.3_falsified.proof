@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '16':
-%%%%%   Replaced (unordered_pair(dollar_c6,dollar_c5) = unordered_pair(dollar_c4,dollar_c3))
-%%%%%   With ~ ((unordered_pair(dollar_c6,dollar_c5) = unordered_pair(dollar_c4,dollar_c3)))
+%%%%% Mutated formula '20':
+%%%%%   Replaced (! [A,B]: (in(A,unordered_pair(A,B))))
+%%%%%   With (! [A,B]: (~ (in(A,unordered_pair(A,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU151+3 : TPTP v8.1.0. Released v3.2.0.
@@ -38,6 +38,6 @@ fof(3, axiom, (! [A,B,C,D]: (((A != unordered_pair(B,C)) | (in(D,A) | (D != B)))
 fof(8, axiom, (dollar_c6 != dollar_c4), file('SEU151+3.p',unknown), []).
 fof(9, axiom, (dollar_c6 != dollar_c3), file('SEU151+3.p',unknown), []).
 fof(12, axiom, (! [A]: ((A = A))), file('SEU151+3.p',unknown), []).
-fof(16, axiom, ~ ((unordered_pair(dollar_c6,dollar_c5) = unordered_pair(dollar_c4,dollar_c3))), file('SEU151+3.p',unknown), []).
-fof(20, plain, (! [A,B]: (in(A,unordered_pair(A,B)))), inference(hyper,[status(thm)],[12,3,12]), [iquote('hyper,12,3,12')]).
+fof(16, axiom, (unordered_pair(dollar_c6,dollar_c5) = unordered_pair(dollar_c4,dollar_c3)), file('SEU151+3.p',unknown), []).
+fof(20, plain, (! [A,B]: (~ (in(A,unordered_pair(A,B))))), inference(hyper,[status(thm)],[12,3,12]), [iquote('hyper,12,3,12')]).
 fof(117, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[16,2,20]),8,9]), [iquote('hyper,16,2,20,unit_del,8,9')]).

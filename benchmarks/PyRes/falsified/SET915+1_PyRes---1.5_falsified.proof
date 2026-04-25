@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c2':
-%%%%%   Replaced (! [X2,X3]: ((in(X2,X3) | disjoint(singleton(X2),X3))))
-%%%%%   With (! [X2,X3]: ((~ (in(X2,X3)) | disjoint(singleton(X2),X3))))
+%%%%% Mutated formula 'c10':
+%%%%%   Replaced ~ (disjoint(singleton(skolem0001),skolem0002))
+%%%%%   With disjoint(singleton(skolem0001),skolem0002)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SET915+1 : TPTP v8.1.2. Released v3.2.0.
@@ -43,11 +43,11 @@ fof(c6, negated_conjecture, (? [A,B]: ((~ (in(A,B)) & ~ (disjoint(singleton(A),B
 fof(c7, negated_conjecture, (? [X4,X5]: ((~ (in(X4,X5)) & ~ (disjoint(singleton(X4),X5))))), inference(variable_rename,[status(thm)],[c6])).
 fof(c8, negated_conjecture, (~ (in(skolem0001,skolem0002)) & ~ (disjoint(singleton(skolem0001),skolem0002))), inference(skolemize,[status(esa)],[c7])).
 fof(c9, negated_conjecture, ~ (in(skolem0001,skolem0002)), inference(split_conjunct,[status(thm)],[c8])).
-fof(c10, negated_conjecture, ~ (disjoint(singleton(skolem0001),skolem0002)), inference(split_conjunct,[status(thm)],[c8])).
+fof(c10, negated_conjecture, disjoint(singleton(skolem0001),skolem0002), inference(split_conjunct,[status(thm)],[c8])).
 fof(l28_zfmisc_1, axiom, (! [A,B]: ((~ (in(A,B)) => disjoint(singleton(A),B)))), file('SET915+1.p',l28_zfmisc_1)).
 fof(c0, plain, (! [A,B]: ((~ (in(A,B)) => disjoint(singleton(A),B)))), inference(fof_simplification,[status(thm)],[l28_zfmisc_1])).
 fof(c1, plain, (! [A,B]: ((in(A,B) | disjoint(singleton(A),B)))), inference(fof_nnf,[status(thm)],[c0])).
-fof(c2, plain, (! [X2,X3]: ((~ (in(X2,X3)) | disjoint(singleton(X2),X3)))), inference(variable_rename,[status(thm)],[c1])).
+fof(c2, plain, (! [X2,X3]: ((in(X2,X3) | disjoint(singleton(X2),X3)))), inference(variable_rename,[status(thm)],[c1])).
 fof(c3, plain, (! [X14,X15]: ((in(X14,X15) | disjoint(singleton(X14),X15)))), inference(split_conjunct,[status(thm)],[c2])).
 fof(c28, plain, in(skolem0001,skolem0002), inference(resolution,[status(thm)],[c3,c10])).
 fof(c30, plain, $false, inference(resolution,[status(thm)],[c28,c9])).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '764':
-%%%%%   Replaced (! [A]: ((hAPP_nat_int(power_power_int(one_one_int),A) = one_one_int)))
-%%%%%   With (! [A]: (~ ((hAPP_nat_int(power_power_int(one_one_int),A) = one_one_int))))
+%%%%% Mutated formula '622':
+%%%%%   Replaced (one_one_int = number_number_of_int(bit1(pls)))
+%%%%%   With ~ ((one_one_int = number_number_of_int(bit1(pls))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM925+2 : TPTP v8.1.0. Released v5.3.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:17:05 CEST 2026 using command 'transform(fof)'.
 fof(22, axiom, ~ (hBOOL(hAPP_int_bool(hAPP_i1948725293t_bool(ord_less_int,pls),pls))), file('NUM925+2.p',unknown), []).
 fof(589, axiom, hBOOL(hAPP_int_bool(hAPP_i1948725293t_bool(ord_less_int,zero_zero_int),hAPP_int_int(plus_plus_int(one_one_int),hAPP_nat_int(semiri1621563631at_int,n)))), file('NUM925+2.p',unknown), []).
-fof(622, axiom, (one_one_int = number_number_of_int(bit1(pls))), file('NUM925+2.p',unknown), []).
+fof(622, axiom, ~ ((one_one_int = number_number_of_int(bit1(pls)))), file('NUM925+2.p',unknown), []).
 fof(623, plain, (number_number_of_int(bit1(pls)) = one_one_int), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[622])]), [iquote('copy,622,flip.1')]).
 fof(653, axiom, (! [A,B,C]: ((hAPP_int_int(plus_plus_int(hAPP_int_int(plus_plus_int(A),B)),C) = hAPP_int_int(plus_plus_int(A),hAPP_int_int(plus_plus_int(B),C))))), file('NUM925+2.p',unknown), []).
 fof(659, axiom, (pls = zero_zero_int), file('NUM925+2.p',unknown), []).
@@ -43,7 +43,7 @@ fof(661, plain, (zero_zero_int = pls), inference(flip,[status(thm),theory(equali
 fof(697, axiom, (! [A]: ((hBOOL(hAPP_int_bool(hAPP_i1948725293t_bool(ord_less_int,zero_zero_int),hAPP_nat_int(power_power_int(A),number_number_of_nat(bit0(bit1(pls)))))) | (A = zero_zero_int)))), file('NUM925+2.p',unknown), []).
 fof(698, plain, (! [A]: ((hBOOL(hAPP_int_bool(hAPP_i1948725293t_bool(ord_less_int,pls),hAPP_nat_int(power_power_int(A),number_number_of_nat(bit0(bit1(pls)))))) | (A = pls)))), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[697]),661,661]), [iquote('copy,697,demod,661,661')]).
 fof(739, axiom, (! [A]: ((number_number_of_int(A) = A))), file('NUM925+2.p',unknown), []).
-fof(764, axiom, (! [A]: (~ ((hAPP_nat_int(power_power_int(one_one_int),A) = one_one_int)))), file('NUM925+2.p',unknown), []).
+fof(764, axiom, (! [A]: ((hAPP_nat_int(power_power_int(one_one_int),A) = one_one_int))), file('NUM925+2.p',unknown), []).
 fof(871, axiom, (! [A,B]: ((hAPP_nat_int(power_power_int(hAPP_int_int(plus_plus_int(A),B)),number_number_of_nat(bit0(bit1(pls)))) = hAPP_int_int(plus_plus_int(hAPP_int_int(plus_plus_int(hAPP_nat_int(power_power_int(A),number_number_of_nat(bit0(bit1(pls))))),times_times_int(times_times_int(number_number_of_int(bit0(bit1(pls))),A),B))),hAPP_nat_int(power_power_int(B),number_number_of_nat(bit0(bit1(pls)))))))), file('NUM925+2.p',unknown), []).
 fof(873, plain, (! [A,B]: ((hAPP_nat_int(power_power_int(hAPP_int_int(plus_plus_int(A),B)),number_number_of_nat(bit0(bit1(pls)))) = hAPP_int_int(plus_plus_int(hAPP_nat_int(power_power_int(A),number_number_of_nat(bit0(bit1(pls))))),hAPP_int_int(plus_plus_int(times_times_int(times_times_int(bit0(bit1(pls)),A),B)),hAPP_nat_int(power_power_int(B),number_number_of_nat(bit0(bit1(pls))))))))), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[871]),739,653]), [iquote('copy,871,demod,739,653')]).
 fof(881, axiom, (hAPP_nat_int(power_power_int(hAPP_int_int(plus_plus_int(one_one_int),hAPP_nat_int(semiri1621563631at_int,n))),number_number_of_nat(bit0(bit1(pls)))) = zero_zero_int), file('NUM925+2.p',unknown), []).

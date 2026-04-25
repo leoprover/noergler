@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '15':
-%%%%%   Replaced greater(dollar_c3,dollar_c4)
-%%%%%   With greater(dollar_c6,dollar_c4)
+%%%%% Mutated formula '19':
+%%%%%   Replaced greater(dollar_c5,dollar_c6)
+%%%%%   With ~ (greater(dollar_c5,dollar_c6))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT008+1 : TPTP v8.1.0. Released v2.0.0.
@@ -47,9 +47,9 @@ fof(11, axiom, survival_chance(dollar_c9,dollar_c6,dollar_c2), file('MGT008+1.p'
 fof(12, axiom, survival_chance(dollar_c8,dollar_c5,dollar_c1), file('MGT008+1.p',unknown), []).
 fof(13, axiom, size(dollar_c9,dollar_c4,dollar_c2), file('MGT008+1.p',unknown), []).
 fof(14, axiom, size(dollar_c8,dollar_c3,dollar_c1), file('MGT008+1.p',unknown), []).
-fof(15, axiom, greater(dollar_c6,dollar_c4), file('MGT008+1.p',unknown), []).
+fof(15, axiom, greater(dollar_c3,dollar_c4), file('MGT008+1.p',unknown), []).
 fof(16, plain, inertia(dollar_c9,dollar_f1(dollar_c9,dollar_c2),dollar_c2), inference(hyper,[status(thm)],[5,1]), [iquote('hyper,5,1')]).
 fof(17, plain, inertia(dollar_c8,dollar_f1(dollar_c8,dollar_c1),dollar_c1), inference(hyper,[status(thm)],[6,1]), [iquote('hyper,6,1')]).
 fof(18, plain, greater(dollar_f1(dollar_c8,dollar_c1),dollar_f1(dollar_c9,dollar_c2)), inference(hyper,[status(thm)],[17,2,5,6,9,10,13,14,16,15]), [iquote('hyper,17,2,5,6,9,10,13,14,16,15')]).
-fof(19, plain, greater(dollar_c5,dollar_c6), inference(hyper,[status(thm)],[18,3,5,6,7,8,16,17,11,12]), [iquote('hyper,18,3,5,6,7,8,16,17,11,12')]).
+fof(19, plain, ~ (greater(dollar_c5,dollar_c6)), inference(hyper,[status(thm)],[18,3,5,6,7,8,16,17,11,12]), [iquote('hyper,18,3,5,6,7,8,16,17,11,12')]).
 fof(20, plain, $false, inference(binary,[status(thm)],[19,4]), [iquote('binary,19.1,4.1')]).

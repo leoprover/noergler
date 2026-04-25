@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '238':
-%%%%%   Replaced (! [A,B,C]: ((apart_point_and_line(dollar_c3,orthogonal_through_point(A,B)) | (unorthogonal_lines(line_connecting(dollar_c1,dollar_c2),C) | (unorthogonal_lines(orthogonal_through_point(A,B),C) | unorthogonal_lines(line_connecting(dollar_c1,dollar_c2),A))))))
-%%%%%   With (! [A,B,C]: ((apart_point_and_line(dollar_c3,orthogonal_through_point(A,B)) & (unorthogonal_lines(line_connecting(dollar_c1,dollar_c2),C) | (unorthogonal_lines(orthogonal_through_point(A,B),C) | unorthogonal_lines(line_connecting(dollar_c1,dollar_c2),A))))))
+%%%%% Mutated formula '54':
+%%%%%   Replaced (! [A,B,C]: ((distinct_lines(A,B) | convergent_lines(orthogonal_through_point(A,C),B))))
+%%%%%   With (! [A,B,C]: ((~ (distinct_lines(A,B)) | convergent_lines(orthogonal_through_point(A,C),B))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO188+3 : TPTP v8.1.0. Released v4.0.0.
@@ -51,7 +51,7 @@ fof(39, axiom, (! [A,B]: ((convergent_lines(A,B) | unorthogonal_lines(A,B)))), f
 fof(43, axiom, (! [A,B]: ((incident_point_and_line(A,B) | apart_point_and_line(A,B)))), file('GEO188+3.p',unknown), []).
 fof(49, plain, (! [A,B]: (convergent_lines(orthogonal_through_point(A,B),A))), inference(hyper,[status(thm)],[39,21]), [iquote('hyper,39,21')]).
 fof(53, plain, (! [A,B,C]: ((unorthogonal_lines(A,orthogonal_through_point(B,C)) | unorthogonal_lines(A,B)))), inference(hyper,[status(thm)],[49,28]), [iquote('hyper,49,28')]).
-fof(54, plain, (! [A,B,C]: ((distinct_lines(A,B) | convergent_lines(orthogonal_through_point(A,C),B)))), inference(hyper,[status(thm)],[49,14]), [iquote('hyper,49,14')]).
+fof(54, plain, (! [A,B,C]: ((~ (distinct_lines(A,B)) | convergent_lines(orthogonal_through_point(A,C),B)))), inference(hyper,[status(thm)],[49,14]), [iquote('hyper,49,14')]).
 fof(55, plain, (! [A,B,C]: ((convergent_lines(orthogonal_through_point(A,B),C) | convergent_lines(A,C)))), inference(hyper,[status(thm)],[49,6]), [iquote('hyper,49,6')]).
 fof(56, plain, apart_point_and_line(dollar_c3,line_connecting(dollar_c1,dollar_c2)), inference(hyper,[status(thm)],[43,38]), [iquote('hyper,43,38')]).
 fof(61, plain, (! [A]: ((distinct_lines(line_connecting(dollar_c1,dollar_c2),A) | apart_point_and_line(dollar_c3,A)))), inference(hyper,[status(thm)],[56,13]), [iquote('hyper,56,13')]).
@@ -59,7 +59,7 @@ fof(84, plain, (! [A,B,C,D]: ((convergent_lines(orthogonal_through_point(A,B),C)
 fof(98, plain, (! [E,A,B,C,D]: ((convergent_lines(A,orthogonal_through_point(B,C)) | (unorthogonal_lines(orthogonal_through_point(A,D),E) | (unorthogonal_lines(orthogonal_through_point(B,C),E) | unorthogonal_lines(orthogonal_through_point(A,D),B)))))), inference(hyper,[status(thm)],[55,20,53]), [iquote('hyper,55,20,53')]).
 fof(143, plain, (! [A,B,C,D]: ((convergent_lines(A,orthogonal_through_point(B,C)) | unorthogonal_lines(orthogonal_through_point(A,D),B)))), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[98]),21]), [iquote('factor,98.2.4,unit_del,21')]).
 fof(169, plain, (! [A]: ((apart_point_and_line(dollar_c3,A) | convergent_lines(line_connecting(dollar_c1,dollar_c2),A)))), inference(hyper,[status(thm)],[61,15]), [iquote('hyper,61,15')]).
-fof(238, plain, (! [A,B,C]: ((apart_point_and_line(dollar_c3,orthogonal_through_point(A,B)) & (unorthogonal_lines(line_connecting(dollar_c1,dollar_c2),C) | (unorthogonal_lines(orthogonal_through_point(A,B),C) | unorthogonal_lines(line_connecting(dollar_c1,dollar_c2),A)))))), inference(hyper,[status(thm)],[169,20,53]), [iquote('hyper,169,20,53')]).
+fof(238, plain, (! [A,B,C]: ((apart_point_and_line(dollar_c3,orthogonal_through_point(A,B)) | (unorthogonal_lines(line_connecting(dollar_c1,dollar_c2),C) | (unorthogonal_lines(orthogonal_through_point(A,B),C) | unorthogonal_lines(line_connecting(dollar_c1,dollar_c2),A)))))), inference(hyper,[status(thm)],[169,20,53]), [iquote('hyper,169,20,53')]).
 fof(247, plain, (! [A,B]: ((apart_point_and_line(dollar_c3,orthogonal_through_point(A,B)) | unorthogonal_lines(line_connecting(dollar_c1,dollar_c2),A)))), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[238]),21]), [iquote('factor,238.2.4,unit_del,21')]).
 fof(2376, plain, (! [A,B,C]: ((convergent_lines(orthogonal_through_point(A,B),C) | distinct_lines(C,A)))), inference(hyper,[status(thm)],[84,2]), [iquote('hyper,84,2')]).
 fof(2546, plain, (! [A,B,C]: ((convergent_lines(orthogonal_through_point(A,B),C) | convergent_lines(C,A)))), inference(hyper,[status(thm)],[2376,15]), [iquote('hyper,2376,15')]).

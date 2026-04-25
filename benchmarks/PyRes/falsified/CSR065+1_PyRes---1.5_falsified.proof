@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'just48':
-%%%%%   Replaced (! [SPECMT,GENLMT]: (((mtvisible(SPECMT) & genlmt(SPECMT,GENLMT)) => mtvisible(GENLMT))))
-%%%%%   With (! [SPECMT,GENLMT]: (((~ (mtvisible(SPECMT)) & genlmt(SPECMT,GENLMT)) => mtvisible(GENLMT))))
+%%%%% Mutated formula 'c243':
+%%%%%   Replaced mtvisible(c_tptp_spindleheadmt)
+%%%%%   With ~ (mtvisible(c_tptp_spindleheadmt))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR065+1 : TPTP v8.1.2. Released v3.4.0.
@@ -43,7 +43,7 @@ fof(c3, negated_conjecture, ~ (tptpofobject(c_tptpridgeline_topographical,f_tptp
 fof(c2, negated_conjecture, mtvisible(c_tptp_spindlecollectormt), inference(split_conjunct,[status(thm)],[c1])).
 fof(just6, axiom, genlmt(c_tptp_spindlecollectormt,c_tptp_member235_mt), file('CSR065+1.p',just6)).
 fof(c163, plain, genlmt(c_tptp_spindlecollectormt,c_tptp_member235_mt), inference(split_conjunct,[status(thm)],[just6])).
-fof(just48, axiom, (! [SPECMT,GENLMT]: (((~ (mtvisible(SPECMT)) & genlmt(SPECMT,GENLMT)) => mtvisible(GENLMT)))), file('CSR065+1.p',just48)).
+fof(just48, axiom, (! [SPECMT,GENLMT]: (((mtvisible(SPECMT) & genlmt(SPECMT,GENLMT)) => mtvisible(GENLMT)))), file('CSR065+1.p',just48)).
 fof(c30, plain, (! [SPECMT,GENLMT]: ((~ (mtvisible(SPECMT)) | (~ (genlmt(SPECMT,GENLMT)) | mtvisible(GENLMT))))), inference(fof_nnf,[status(thm)],[just48])).
 fof(c31, plain, (! [X15,X16]: ((~ (mtvisible(X15)) | (~ (genlmt(X15,X16)) | mtvisible(X16))))), inference(variable_rename,[status(thm)],[c30])).
 fof(c32, plain, (! [X104,X105]: ((~ (mtvisible(X104)) | (~ (genlmt(X104,X105)) | mtvisible(X105))))), inference(split_conjunct,[status(thm)],[c31])).
@@ -62,7 +62,7 @@ fof(just8, axiom, genlmt(c_tptp_spindlecollectormt,c_tptp_member3993_mt), file('
 fof(c161, plain, genlmt(c_tptp_spindlecollectormt,c_tptp_member3993_mt), inference(split_conjunct,[status(thm)],[just8])).
 fof(c213, plain, (~ (mtvisible(c_tptp_spindlecollectormt)) | mtvisible(c_tptp_member3993_mt)), inference(resolution,[status(thm)],[c32,c161])).
 fof(c242, plain, mtvisible(c_tptp_member3993_mt), inference(resolution,[status(thm)],[c213,c2])).
-fof(c243, plain, mtvisible(c_tptp_spindleheadmt), inference(resolution,[status(thm)],[c242,c208])).
+fof(c243, plain, ~ (mtvisible(c_tptp_spindleheadmt)), inference(resolution,[status(thm)],[c242,c208])).
 fof(c244, plain, mtvisible(c_cyclistsmt), inference(resolution,[status(thm)],[c243,c209])).
 fof(c245, plain, ridgeline_topographical(c_tptpridgeline_topographical), inference(resolution,[status(thm)],[c244,c160])).
 fof(just10, axiom, (! [INS]: (((mtvisible(c_tptp_member235_mt) & ridgeline_topographical(INS)) => tptpofobject(INS,f_tptpquantityfn_13(n_468))))), file('CSR065+1.p',just10)).

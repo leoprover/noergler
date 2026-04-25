@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '11':
-%%%%%   Replaced ((cartesian_product2(dollar_c4,dollar_c3) != empty_set) | (dollar_c4 != empty_set))
-%%%%%   With (~ ((cartesian_product2(dollar_c4,dollar_c3) != empty_set)) | (dollar_c4 != empty_set))
+%%%%% Mutated formula '626':
+%%%%%   Replaced (empty_set != dollar_c3)
+%%%%%   With (dollar_c3 != dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET960+1 : TPTP v8.1.0. Released v3.2.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:19:39 CEST 2026 using command 'transform(fof)'.
 fof(2, axiom, (! [A,B]: (((A != empty_set) | ~ (in(B,A))))), file('SET960+1.p',unknown), []).
 fof(7, axiom, (! [E,F,A,B,C,D]: (((A != cartesian_product2(B,C)) | (in(D,A) | (~ (in(E,B)) | (~ (in(F,C)) | (D != ordered_pair(E,F)))))))), file('SET960+1.p',unknown), []).
-fof(11, axiom, (~ ((cartesian_product2(dollar_c4,dollar_c3) != empty_set)) | (dollar_c4 != empty_set)), file('SET960+1.p',unknown), []).
+fof(11, axiom, ((cartesian_product2(dollar_c4,dollar_c3) != empty_set) | (dollar_c4 != empty_set)), file('SET960+1.p',unknown), []).
 fof(12, plain, ((cartesian_product2(dollar_c4,dollar_c3) != empty_set) | (empty_set != dollar_c4)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[11])]), [iquote('copy,11,flip.2')]).
 fof(13, axiom, ((cartesian_product2(dollar_c4,dollar_c3) != empty_set) | (dollar_c3 != empty_set)), file('SET960+1.p',unknown), []).
 fof(14, plain, ((cartesian_product2(dollar_c4,dollar_c3) != empty_set) | (empty_set != dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[13])]), [iquote('copy,13,flip.2')]).
@@ -52,6 +52,6 @@ fof(528, plain, (! [A]: ((cartesian_product2(empty_set,A) = empty_set))), infere
 fof(540, plain, ((cartesian_product2(dollar_c4,dollar_c3) = empty_set) | (empty_set = dollar_c3)), inference(factor_simp,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[528,34])]), [iquote('para_into,527.1.1.1,34.2.1,factor_simp')]).
 fof(608, plain, (! [A]: ((cartesian_product2(A,empty_set) = empty_set))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[391,2,528]),528]), [iquote('hyper,391,2,527,demod,528')]).
 fof(621, plain, (cartesian_product2(dollar_c4,dollar_c3) = empty_set), inference(factor_simp,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[608,540])]), [iquote('para_into,608.1.1.2,540.2.1,factor_simp')]).
-fof(626, plain, (empty_set != dollar_c3), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[14]),621]),21]), [iquote('back_demod,14,demod,621,unit_del,21')]).
+fof(626, plain, (dollar_c3 != dollar_c3), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[14]),621]),21]), [iquote('back_demod,14,demod,621,unit_del,21')]).
 fof(627, plain, (empty_set != dollar_c4), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[12]),621]),21]), [iquote('back_demod,12,demod,621,unit_del,21')]).
 fof(646, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[51,2,621]),626,627]), [iquote('hyper,51,2,620,unit_del,626,627')]).

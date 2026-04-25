@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '830':
-%%%%%   Replaced segmentP(dollar_c5,dollar_c6)
-%%%%%   With ~ (segmentP(dollar_c5,dollar_c6))
+%%%%% Mutated formula '454':
+%%%%%   Replaced ssList(dollar_c6)
+%%%%%   With ssList(dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC339+1 : TPTP v8.1.0. Released v2.4.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:21:54 CEST 2026 using command 'transform(fof)'.
 fof(20, axiom, (! [A,B,C,D]: ((~ (ssList(A)) | (~ (ssList(B)) | (segmentP(A,B) | (~ (ssList(C)) | (~ (ssList(D)) | (app(app(C,B),D) != A)))))))), file('SWC339+1.p',unknown), []).
 fof(185, axiom, (~ (segmentP(dollar_c7,dollar_c8)) | ~ (totalorderedP(dollar_c8))), file('SWC339+1.p',unknown), []).
-fof(454, axiom, ssList(dollar_c6), file('SWC339+1.p',unknown), []).
+fof(454, axiom, ssList(dollar_c3), file('SWC339+1.p',unknown), []).
 fof(455, axiom, ssList(dollar_c5), file('SWC339+1.p',unknown), []).
 fof(457, axiom, (dollar_c7 = dollar_c5), file('SWC339+1.p',unknown), []).
 fof(459, axiom, (dollar_c8 = dollar_c6), file('SWC339+1.p',unknown), []).
@@ -44,5 +44,5 @@ fof(461, axiom, ssList(dollar_c3), file('SWC339+1.p',unknown), []).
 fof(462, axiom, (app(app(dollar_c4,dollar_c6),dollar_c3) = dollar_c5), file('SWC339+1.p',unknown), []).
 fof(464, axiom, totalorderedP(dollar_c6), file('SWC339+1.p',unknown), []).
 fof(465, plain, ~ (segmentP(dollar_c5,dollar_c6)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[185]),457,459,459]),464]), [iquote('back_demod,185,demod,457,459,459,unit_del,464')]).
-fof(830, plain, ~ (segmentP(dollar_c5,dollar_c6)), inference(hyper,[status(thm)],[462,20,455,454,460,461]), [iquote('hyper,462,20,455,454,460,461')]).
+fof(830, plain, segmentP(dollar_c5,dollar_c6), inference(hyper,[status(thm)],[462,20,455,454,460,461]), [iquote('hyper,462,20,455,454,460,461')]).
 fof(831, plain, $false, inference(binary,[status(thm)],[830,465]), [iquote('binary,830.1,465.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '87':
-%%%%%   Replaced ilf_type(range(dollar_c5,dollar_c4,dollar_c3),subset_type(dollar_c4))
-%%%%%   With ~ (ilf_type(range(dollar_c5,dollar_c4,dollar_c3),subset_type(dollar_c4)))
+%%%%% Mutated formula '42':
+%%%%%   Replaced (! [A]: ((~ (ilf_type(A,member_type(dollar_c4))) | ~ (member(A,range(dollar_c5,dollar_c4,dollar_c3))))))
+%%%%%   With (! [A]: ((~ (ilf_type(A,member_type(binary_relation_type))) | ~ (member(A,range(dollar_c5,dollar_c4,dollar_c3))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET682+3 : TPTP v8.1.0. Released v2.2.0.
@@ -46,11 +46,11 @@ fof(36, axiom, (! [A,B,C]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,set_type)
 fof(38, axiom, (! [A,B,C]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,set_type)) | (~ (ilf_type(C,relation_type(A,B))) | (range(A,B,C) = range_of(C))))))), file('SET682+3.p',unknown), []).
 fof(39, axiom, (! [A,B,C]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,set_type)) | (~ (ilf_type(C,relation_type(A,B))) | ilf_type(range(A,B,C),subset_type(B))))))), file('SET682+3.p',unknown), []).
 fof(41, axiom, ~ (empty(dollar_c4)), file('SET682+3.p',unknown), []).
-fof(42, axiom, (! [A]: ((~ (ilf_type(A,member_type(dollar_c4))) | ~ (member(A,range(dollar_c5,dollar_c4,dollar_c3)))))), file('SET682+3.p',unknown), []).
+fof(42, axiom, (! [A]: ((~ (ilf_type(A,member_type(binary_relation_type))) | ~ (member(A,range(dollar_c5,dollar_c4,dollar_c3)))))), file('SET682+3.p',unknown), []).
 fof(73, axiom, (! [A]: (ilf_type(A,set_type))), file('SET682+3.p',unknown), []).
 fof(74, axiom, ilf_type(dollar_c3,relation_type(dollar_c5,dollar_c4)), file('SET682+3.p',unknown), []).
 fof(76, axiom, member(dollar_c2,domain(dollar_c5,dollar_c4,dollar_c3)), file('SET682+3.p',unknown), []).
-fof(87, plain, ~ (ilf_type(range(dollar_c5,dollar_c4,dollar_c3),subset_type(dollar_c4))), inference(hyper,[status(thm)],[74,39,73,73]), [iquote('hyper,74,39,73,73')]).
+fof(87, plain, ilf_type(range(dollar_c5,dollar_c4,dollar_c3),subset_type(dollar_c4)), inference(hyper,[status(thm)],[74,39,73,73]), [iquote('hyper,74,39,73,73')]).
 fof(88, plain, (range_of(dollar_c3) = range(dollar_c5,dollar_c4,dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[74,38,73,73])]), [iquote('hyper,74,38,73,73,flip.1')]).
 fof(92, plain, (domain_of(dollar_c3) = domain(dollar_c5,dollar_c4,dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[74,36,73,73])]), [iquote('hyper,74,36,73,73,flip.1')]).
 fof(93, plain, ilf_type(dollar_c3,subset_type(cross_product(dollar_c5,dollar_c4))), inference(hyper,[status(thm)],[74,4,73,73]), [iquote('hyper,74,4,73,73')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '121':
-%%%%%   Replaced (unordered_pair(dollar_c4,dollar_c3) = null_class)
-%%%%%   With (unordered_pair(dollar_c3,dollar_c3) = null_class)
+%%%%% Mutated formula '1794':
+%%%%%   Replaced member(dollar_c4,null_class)
+%%%%%   With ~ (member(dollar_c4,null_class))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET073+1 : TPTP v8.1.0. Bugfixed v5.4.0.
@@ -37,7 +37,7 @@ fof(8, axiom, (! [A,B,C]: ((member(A,unordered_pair(B,C)) | (~ (member(A,univers
 fof(26, axiom, (! [A]: (~ (member(A,null_class)))), file('SET073+1.p',unknown), []).
 fof(81, axiom, (! [A]: ((A = A))), file('SET073+1.p',unknown), []).
 fof(120, axiom, member(dollar_c4,universal_class), file('SET073+1.p',unknown), []).
-fof(121, axiom, (unordered_pair(dollar_c3,dollar_c3) = null_class), file('SET073+1.p',unknown), []).
+fof(121, axiom, (unordered_pair(dollar_c4,dollar_c3) = null_class), file('SET073+1.p',unknown), []).
 fof(215, plain, (! [A]: (member(dollar_c4,unordered_pair(dollar_c4,A)))), inference(hyper,[status(thm)],[120,8,81]), [iquote('hyper,120,8,81')]).
-fof(1794, plain, member(dollar_c4,null_class), inference(para_into,[status(thm),theory(equality)],[215,121]), [iquote('para_into,215.1.2,121.1.1')]).
+fof(1794, plain, ~ (member(dollar_c4,null_class)), inference(para_into,[status(thm),theory(equality)],[215,121]), [iquote('para_into,215.1.2,121.1.1')]).
 fof(1795, plain, $false, inference(binary,[status(thm)],[1794,26]), [iquote('binary,1794.1,26.1')]).

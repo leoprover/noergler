@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '122':
-%%%%%   Replaced ~ (member(dollar_c3,unordered_pair(dollar_c3,dollar_c3)))
-%%%%%   With ~ (member(universal_class,unordered_pair(dollar_c3,dollar_c3)))
+%%%%% Mutated formula '87':
+%%%%%   Replaced (! [A]: ((singleton(A) = unordered_pair(A,A))))
+%%%%%   With (! [A]: (~ ((singleton(A) = unordered_pair(A,A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET024+1 : TPTP v8.1.0. Bugfixed v5.4.0.
@@ -36,8 +36,8 @@
 fof(9, axiom, (! [A,B,C]: ((member(A,unordered_pair(B,C)) | (~ (member(A,universal_class)) | (A != C))))), file('SET024+1.p',unknown), []).
 fof(68, axiom, ~ (member(dollar_c3,singleton(dollar_c3))), file('SET024+1.p',unknown), []).
 fof(82, axiom, (! [A]: ((A = A))), file('SET024+1.p',unknown), []).
-fof(87, axiom, (! [A]: ((singleton(A) = unordered_pair(A,A)))), file('SET024+1.p',unknown), []).
+fof(87, axiom, (! [A]: (~ ((singleton(A) = unordered_pair(A,A))))), file('SET024+1.p',unknown), []).
 fof(121, axiom, member(dollar_c3,universal_class), file('SET024+1.p',unknown), []).
-fof(122, plain, ~ (member(universal_class,unordered_pair(dollar_c3,dollar_c3))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[68]),87]), [iquote('back_demod,68,demod,87')]).
+fof(122, plain, ~ (member(dollar_c3,unordered_pair(dollar_c3,dollar_c3))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[68]),87]), [iquote('back_demod,68,demod,87')]).
 fof(214, plain, (! [A]: (member(dollar_c3,unordered_pair(A,dollar_c3)))), inference(hyper,[status(thm)],[121,9,82]), [iquote('hyper,121,9,82')]).
 fof(215, plain, $false, inference(binary,[status(thm)],[214,122]), [iquote('binary,214.1,122.1')]).

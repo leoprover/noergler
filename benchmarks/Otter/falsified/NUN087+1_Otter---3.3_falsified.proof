@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '59':
-%%%%%   Replaced (! [A]: (r1(dollar_f15(A))))
-%%%%%   With (! [A]: (~ (r1(dollar_f15(A)))))
+%%%%% Mutated formula '18':
+%%%%%   Replaced (! [E,F,A,B,C,D]: ((~ (id(A,B)) | (~ (id(C,D)) | (~ (id(E,F)) | (~ (r4(B,D,F)) | r4(A,C,E)))))))
+%%%%%   With (! [E,F,A,B,C,D]: ((id(A,B) | (~ (id(C,D)) | (~ (id(E,F)) | (~ (r4(B,D,F)) | r4(A,C,E)))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUN087+1 : TPTP v8.1.0. Released v7.3.0.
@@ -37,7 +37,7 @@ fof(1, axiom, (! [A]: ((id(A,dollar_c1) | ~ (r1(A))))), file('NUN087+1.p',unknow
 fof(2, axiom, (! [A]: ((r1(A) | ~ (id(A,dollar_c1))))), file('NUN087+1.p',unknown), []).
 fof(9, axiom, (! [A,B]: ((~ (id(A,B)) | id(B,A)))), file('NUN087+1.p',unknown), []).
 fof(10, axiom, (! [A,B,C]: ((~ (id(A,B)) | (id(A,C) | ~ (id(B,C)))))), file('NUN087+1.p',unknown), []).
-fof(18, axiom, (! [E,F,A,B,C,D]: ((~ (id(A,B)) | (~ (id(C,D)) | (~ (id(E,F)) | (~ (r4(B,D,F)) | r4(A,C,E))))))), file('NUN087+1.p',unknown), []).
+fof(18, axiom, (! [E,F,A,B,C,D]: ((id(A,B) | (~ (id(C,D)) | (~ (id(E,F)) | (~ (r4(B,D,F)) | r4(A,C,E))))))), file('NUN087+1.p',unknown), []).
 fof(21, axiom, (! [A,B,C]: ((~ (r1(A)) | (~ (r4(A,A,B)) | (~ (id(B,C)) | ~ (r1(C))))))), file('NUN087+1.p',unknown), []).
 fof(37, plain, (! [A,B]: ((~ (r1(A)) | (~ (r4(A,A,B)) | ~ (id(B,A)))))), inference(factor,[status(thm)],[21]), [iquote('factor,21.1.4')]).
 fof(42, axiom, (! [A]: (id(A,A))), file('NUN087+1.p',unknown), []).
@@ -45,7 +45,7 @@ fof(53, axiom, (! [A]: (id(dollar_f13(A),A))), file('NUN087+1.p',unknown), []).
 fof(56, axiom, (! [A]: (r1(dollar_f14(A)))), file('NUN087+1.p',unknown), []).
 fof(57, axiom, (! [A]: (r4(A,dollar_f14(A),dollar_f16(A)))), file('NUN087+1.p',unknown), []).
 fof(58, axiom, (! [A]: (id(dollar_f16(A),dollar_f15(A)))), file('NUN087+1.p',unknown), []).
-fof(59, axiom, (! [A]: (~ (r1(dollar_f15(A))))), file('NUN087+1.p',unknown), []).
+fof(59, axiom, (! [A]: (r1(dollar_f15(A)))), file('NUN087+1.p',unknown), []).
 fof(67, plain, r1(dollar_c1), inference(hyper,[status(thm)],[42,2]), [iquote('hyper,42,2')]).
 fof(69, plain, (! [A]: (id(dollar_f14(A),dollar_c1))), inference(hyper,[status(thm)],[56,1]), [iquote('hyper,56,1')]).
 fof(70, plain, (! [A]: (id(dollar_f15(A),dollar_c1))), inference(hyper,[status(thm)],[59,1]), [iquote('hyper,59,1')]).

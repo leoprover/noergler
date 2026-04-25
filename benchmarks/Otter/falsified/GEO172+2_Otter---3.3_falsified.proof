@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '18':
-%%%%%   Replaced distinct_points(dollar_c1,intersection_point(dollar_c3,dollar_c2))
-%%%%%   With distinct_points(dollar_c2,intersection_point(dollar_c3,dollar_c2))
+%%%%% Mutated formula '6':
+%%%%%   Replaced (! [A,B,C]: ((~ (convergent_lines(A,B)) | (convergent_lines(A,C) | convergent_lines(B,C)))))
+%%%%%   With (! [A,B,C]: ((convergent_lines(A,B) | (convergent_lines(A,C) | convergent_lines(B,C)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO172+2 : TPTP v8.1.0. Released v3.3.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:11:33 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A]: (~ (distinct_points(A,A)))), file('GEO172+2.p',unknown), []).
 fof(3, axiom, (! [A]: (~ (convergent_lines(A,A)))), file('GEO172+2.p',unknown), []).
-fof(6, axiom, (! [A,B,C]: ((~ (convergent_lines(A,B)) | (convergent_lines(A,C) | convergent_lines(B,C))))), file('GEO172+2.p',unknown), []).
+fof(6, axiom, (! [A,B,C]: ((convergent_lines(A,B) | (convergent_lines(A,C) | convergent_lines(B,C))))), file('GEO172+2.p',unknown), []).
 fof(9, axiom, (! [A,B,C]: ((~ (convergent_lines(A,B)) | (~ (apart_point_and_line(C,A)) | distinct_points(C,intersection_point(A,B)))))), file('GEO172+2.p',unknown), []).
 fof(10, axiom, (! [A,B,C]: ((~ (convergent_lines(A,B)) | (~ (apart_point_and_line(C,B)) | distinct_points(C,intersection_point(A,B)))))), file('GEO172+2.p',unknown), []).
 fof(11, axiom, (! [A,B,C,D]: ((~ (distinct_points(A,B)) | (~ (distinct_lines(C,D)) | (apart_point_and_line(A,C) | (apart_point_and_line(A,D) | (apart_point_and_line(B,C) | apart_point_and_line(B,D)))))))), file('GEO172+2.p',unknown), []).
@@ -43,7 +43,7 @@ fof(14, axiom, (! [A,B]: ((~ (convergent_lines(A,B)) | distinct_lines(A,B)))), f
 fof(15, axiom, ~ (apart_point_and_line(dollar_c1,dollar_c3)), file('GEO172+2.p',unknown), []).
 fof(16, axiom, ~ (apart_point_and_line(dollar_c1,dollar_c2)), file('GEO172+2.p',unknown), []).
 fof(17, axiom, convergent_lines(dollar_c3,dollar_c2), file('GEO172+2.p',unknown), []).
-fof(18, axiom, distinct_points(dollar_c2,intersection_point(dollar_c3,dollar_c2)), file('GEO172+2.p',unknown), []).
+fof(18, axiom, distinct_points(dollar_c1,intersection_point(dollar_c3,dollar_c2)), file('GEO172+2.p',unknown), []).
 fof(19, plain, distinct_lines(dollar_c3,dollar_c2), inference(hyper,[status(thm)],[17,14]), [iquote('hyper,17,14')]).
 fof(20, plain, (! [A]: ((convergent_lines(dollar_c3,A) | convergent_lines(dollar_c2,A)))), inference(hyper,[status(thm)],[17,6]), [iquote('hyper,17,6')]).
 fof(22, plain, (apart_point_and_line(intersection_point(dollar_c3,dollar_c2),dollar_c3) | apart_point_and_line(intersection_point(dollar_c3,dollar_c2),dollar_c2)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[18,11,19]),15,16]), [iquote('hyper,18,11,19,unit_del,15,16')]).

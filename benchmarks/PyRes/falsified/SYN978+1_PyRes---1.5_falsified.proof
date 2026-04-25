@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula 'c1':
 %%%%%   Replaced (a & (b & ((~ (a) | ~ (b)) & (a | b))))
-%%%%%   With (~ (a) & (b & ((~ (a) | ~ (b)) & (a | b))))
+%%%%%   With (a | (b & ((~ (a) | ~ (b)) & (a | b))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN978+1 : TPTP v8.1.2. Released v3.1.0.
@@ -38,7 +38,7 @@
 %%% Generated on Tue Apr 14 15:06:56 CEST 2026 using command 'transform(fof)'.
 fof(prove_this, conjecture, ((a & b) => (a <=> b)), file('SYN978+1.p',prove_this)).
 fof(c0, negated_conjecture, ~ (((a & b) => (a <=> b))), inference(assume_negation,[status(cth)],[prove_this])).
-fof(c1, negated_conjecture, (~ (a) & (b & ((~ (a) | ~ (b)) & (a | b)))), inference(fof_nnf,[status(thm)],[c0])).
+fof(c1, negated_conjecture, (a | (b & ((~ (a) | ~ (b)) & (a | b)))), inference(fof_nnf,[status(thm)],[c0])).
 fof(c2, negated_conjecture, a, inference(split_conjunct,[status(thm)],[c1])).
 fof(c3, negated_conjecture, b, inference(split_conjunct,[status(thm)],[c1])).
 fof(c4, negated_conjecture, (~ (a) | ~ (b)), inference(split_conjunct,[status(thm)],[c1])).

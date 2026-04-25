@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '147':
-%%%%%   Replaced (! [A]: ((une_qually_directed_lines(dollar_c3,reverse_line(A)) | une_qually_directed_lines(A,reverse_line(A)))))
-%%%%%   With (! [A]: ((une_qually_directed_lines(dollar_c3,reverse_line(A)) & une_qually_directed_lines(A,reverse_line(A)))))
+%%%%% Mutated formula '256':
+%%%%%   Replaced (! [A,B]: ((une_qually_directed_lines(A,reverse_line(A)) | (une_qually_directed_lines(reverse_line(A),B) | une_qually_directed_lines(A,B)))))
+%%%%%   With (! [A,B]: ((une_qually_directed_lines(A,reverse_line(A)) & (une_qually_directed_lines(reverse_line(A),B) | une_qually_directed_lines(A,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO255+1 : TPTP v8.1.0. Bugfixed v6.4.0.
@@ -47,8 +47,8 @@ fof(106, plain, (! [A]: ((une_qually_directed_lines(dollar_c3,reverse_line(A)) |
 fof(138, plain, (! [A,B]: ((une_qually_directed_lines(dollar_c3,A) | (une_qually_directed_lines(dollar_c3,B) | une_qually_directed_lines(reverse_line(A),B))))), inference(hyper,[status(thm)],[106,31]), [iquote('hyper,106,31')]).
 fof(145, plain, (! [A,B]: ((une_qually_directed_lines(dollar_c3,reverse_line(A)) | (une_qually_directed_lines(dollar_c3,B) | une_qually_directed_lines(A,B))))), inference(hyper,[status(thm)],[106,31]), [iquote('hyper,106,31')]).
 fof(146, plain, (! [A]: ((une_qually_directed_lines(dollar_c3,A) | une_qually_directed_lines(reverse_line(A),A)))), inference(factor,[status(thm)],[138]), [iquote('factor,138.1.2')]).
-fof(147, plain, (! [A]: ((une_qually_directed_lines(dollar_c3,reverse_line(A)) & une_qually_directed_lines(A,reverse_line(A))))), inference(factor,[status(thm)],[145]), [iquote('factor,145.1.2')]).
+fof(147, plain, (! [A]: ((une_qually_directed_lines(dollar_c3,reverse_line(A)) | une_qually_directed_lines(A,reverse_line(A))))), inference(factor,[status(thm)],[145]), [iquote('factor,145.1.2')]).
 fof(227, plain, (! [A]: ((une_qually_directed_lines(A,reverse_line(A)) | une_qually_directed_lines(reverse_line(A),A)))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[147,35,146]),37,37]), [iquote('hyper,147,35,146,unit_del,37,37')]).
-fof(256, plain, (! [A,B]: ((une_qually_directed_lines(A,reverse_line(A)) | (une_qually_directed_lines(reverse_line(A),B) | une_qually_directed_lines(A,B))))), inference(hyper,[status(thm)],[227,31]), [iquote('hyper,227,31')]).
+fof(256, plain, (! [A,B]: ((une_qually_directed_lines(A,reverse_line(A)) & (une_qually_directed_lines(reverse_line(A),B) | une_qually_directed_lines(A,B))))), inference(hyper,[status(thm)],[227,31]), [iquote('hyper,227,31')]).
 fof(258, plain, (! [A]: (une_qually_directed_lines(A,reverse_line(A)))), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[256]),30]), [iquote('factor,256.1.3,unit_del,30')]).
 fof(259, plain, $false, inference(binary,[status(thm)],[258,48]), [iquote('binary,258.1,48.1')]).

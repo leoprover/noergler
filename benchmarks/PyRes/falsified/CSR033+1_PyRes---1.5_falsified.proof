@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c158':
-%%%%%   Replaced (~ (mtvisible(c_tptpgeo_member2_mt)) | geographicalsubregions(c_georegion_l3_x25_y7,c_georegion_l4_x76_y23))
-%%%%%   With (~ (mtvisible(c_tptpgeo_member2_mt)) & geographicalsubregions(c_georegion_l3_x25_y7,c_georegion_l4_x76_y23))
+%%%%% Mutated formula 'c455':
+%%%%%   Replaced inregion(c_geolocation_x76_y23,c_georegion_l2_x8_y2)
+%%%%%   With inregion(c_georegion_l3_x25_y7,c_georegion_l2_x8_y2)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR033+1 : TPTP v8.1.2. Released v3.4.0.
@@ -79,7 +79,7 @@ fof(c172, plain, (! [X89,X90]: ((~ (geographicalsubregions(X89,X90)) | inregion(
 fof(c173, plain, (! [X161,X160]: ((~ (geographicalsubregions(X161,X160)) | inregion(X160,X161)))), inference(split_conjunct,[status(thm)],[c172])).
 fof(just15, axiom, (mtvisible(c_tptpgeo_member2_mt) => geographicalsubregions(c_georegion_l3_x25_y7,c_georegion_l4_x76_y23)), file('CSR033+1.p',just15)).
 fof(c157, plain, (~ (mtvisible(c_tptpgeo_member2_mt)) | geographicalsubregions(c_georegion_l3_x25_y7,c_georegion_l4_x76_y23)), inference(fof_nnf,[status(thm)],[just15])).
-fof(c158, plain, (~ (mtvisible(c_tptpgeo_member2_mt)) & geographicalsubregions(c_georegion_l3_x25_y7,c_georegion_l4_x76_y23)), inference(split_conjunct,[status(thm)],[c157])).
+fof(c158, plain, (~ (mtvisible(c_tptpgeo_member2_mt)) | geographicalsubregions(c_georegion_l3_x25_y7,c_georegion_l4_x76_y23)), inference(split_conjunct,[status(thm)],[c157])).
 fof(c281, plain, geographicalsubregions(c_georegion_l3_x25_y7,c_georegion_l4_x76_y23), inference(resolution,[status(thm)],[c158,c259])).
 fof(c285, plain, inregion(c_georegion_l4_x76_y23,c_georegion_l3_x25_y7), inference(resolution,[status(thm)],[c281,c173])).
 fof(c293, plain, (! [X205]: ((~ (inregion(X205,c_georegion_l4_x76_y23)) | inregion(X205,c_georegion_l3_x25_y7)))), inference(resolution,[status(thm)],[c285,c58])).
@@ -90,7 +90,7 @@ fof(c160, plain, (~ (mtvisible(c_tptpgeo_member2_mt)) | geographicalsubregions(c
 fof(c289, plain, geographicalsubregions(c_georegion_l2_x8_y2,c_georegion_l3_x25_y7), inference(resolution,[status(thm)],[c160,c259])).
 fof(c297, plain, inregion(c_georegion_l3_x25_y7,c_georegion_l2_x8_y2), inference(resolution,[status(thm)],[c289,c173])).
 fof(c324, plain, (! [X211]: ((~ (inregion(X211,c_georegion_l3_x25_y7)) | inregion(X211,c_georegion_l2_x8_y2)))), inference(resolution,[status(thm)],[c297,c58])).
-fof(c455, plain, inregion(c_geolocation_x76_y23,c_georegion_l2_x8_y2), inference(resolution,[status(thm)],[c324,c433])).
+fof(c455, plain, inregion(c_georegion_l3_x25_y7,c_georegion_l2_x8_y2), inference(resolution,[status(thm)],[c324,c433])).
 fof(just13, axiom, (mtvisible(c_tptpgeo_member2_mt) => geographicalsubregions(c_georegion_l1_x2_y0,c_georegion_l2_x8_y2)), file('CSR033+1.p',just13)).
 fof(c161, plain, (~ (mtvisible(c_tptpgeo_member2_mt)) | geographicalsubregions(c_georegion_l1_x2_y0,c_georegion_l2_x8_y2)), inference(fof_nnf,[status(thm)],[just13])).
 fof(c162, plain, (~ (mtvisible(c_tptpgeo_member2_mt)) | geographicalsubregions(c_georegion_l1_x2_y0,c_georegion_l2_x8_y2)), inference(split_conjunct,[status(thm)],[c161])).

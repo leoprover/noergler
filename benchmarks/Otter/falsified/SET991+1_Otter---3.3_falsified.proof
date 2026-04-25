@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '157':
-%%%%%   Replaced in(apply(dollar_c7,dollar_c8),relation_rng(dollar_c7))
-%%%%%   With ~ (in(apply(dollar_c7,dollar_c8),relation_rng(dollar_c7)))
+%%%%% Mutated formula '54':
+%%%%%   Replaced in(dollar_c8,relation_dom(dollar_c7))
+%%%%%   With in(dollar_c7,relation_dom(dollar_c7))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET991+1 : TPTP v8.1.0. Released v3.2.0.
@@ -38,6 +38,6 @@ fof(27, axiom, (! [A,B,C,D]: ((~ (relation(A)) | (~ (function(A)) | ((B != relat
 fof(35, axiom, (! [A]: ((A = A))), file('SET991+1.p',unknown), []).
 fof(52, axiom, relation(dollar_c7), file('SET991+1.p',unknown), []).
 fof(53, axiom, function(dollar_c7), file('SET991+1.p',unknown), []).
-fof(54, axiom, in(dollar_c8,relation_dom(dollar_c7)), file('SET991+1.p',unknown), []).
-fof(157, plain, ~ (in(apply(dollar_c7,dollar_c8),relation_rng(dollar_c7))), inference(hyper,[status(thm)],[54,27,52,53,35,35]), [iquote('hyper,54,27,52,53,35,35')]).
+fof(54, axiom, in(dollar_c7,relation_dom(dollar_c7)), file('SET991+1.p',unknown), []).
+fof(157, plain, in(apply(dollar_c7,dollar_c8),relation_rng(dollar_c7)), inference(hyper,[status(thm)],[54,27,52,53,35,35]), [iquote('hyper,54,27,52,53,35,35')]).
 fof(158, plain, $false, inference(binary,[status(thm)],[157,23]), [iquote('binary,157.1,23.1')]).

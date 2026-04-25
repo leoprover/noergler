@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '31':
-%%%%%   Replaced (! [A]: ((convergent_lines(dollar_c2,A) | convergent_lines(dollar_c1,A))))
-%%%%%   With (! [A]: ((convergent_lines(dollar_c3,A) | convergent_lines(dollar_c1,A))))
+%%%%% Mutated formula '40':
+%%%%%   Replaced (! [A,B]: ((convergent_lines(dollar_c2,A) | (convergent_lines(dollar_c1,B) | convergent_lines(A,B)))))
+%%%%%   With (! [A,B]: ((convergent_lines(dollar_c2,A) & (convergent_lines(dollar_c1,B) | convergent_lines(A,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO212+2 : TPTP v8.1.0. Released v3.3.0.
@@ -41,8 +41,8 @@ fof(25, axiom, ~ (unorthogonal_lines(dollar_c2,dollar_c1)), file('GEO212+2.p',un
 fof(26, axiom, (! [A,B]: ((convergent_lines(A,B) | unorthogonal_lines(A,B)))), file('GEO212+2.p',unknown), []).
 fof(27, axiom, unorthogonal_lines(dollar_c3,dollar_c2), file('GEO212+2.p',unknown), []).
 fof(28, plain, convergent_lines(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[26,25]), [iquote('hyper,26,25')]).
-fof(31, plain, (! [A]: ((convergent_lines(dollar_c3,A) | convergent_lines(dollar_c1,A)))), inference(hyper,[status(thm)],[28,6]), [iquote('hyper,28,6')]).
-fof(40, plain, (! [A,B]: ((convergent_lines(dollar_c2,A) | (convergent_lines(dollar_c1,B) | convergent_lines(A,B))))), inference(hyper,[status(thm)],[31,6]), [iquote('hyper,31,6')]).
+fof(31, plain, (! [A]: ((convergent_lines(dollar_c2,A) | convergent_lines(dollar_c1,A)))), inference(hyper,[status(thm)],[28,6]), [iquote('hyper,28,6')]).
+fof(40, plain, (! [A,B]: ((convergent_lines(dollar_c2,A) & (convergent_lines(dollar_c1,B) | convergent_lines(A,B))))), inference(hyper,[status(thm)],[31,6]), [iquote('hyper,31,6')]).
 fof(118, plain, convergent_lines(dollar_c2,dollar_c3), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[40,24]),3]), [iquote('hyper,40,24,unit_del,3')]).
 fof(126, plain, (! [A]: ((convergent_lines(dollar_c2,A) | convergent_lines(dollar_c3,A)))), inference(hyper,[status(thm)],[118,6]), [iquote('hyper,118,6')]).
 fof(262, plain, (! [A]: ((convergent_lines(dollar_c3,A) | unorthogonal_lines(dollar_c2,A)))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[126,18,27]),3]), [iquote('hyper,126,18,27,unit_del,3')]).

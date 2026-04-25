@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '7':
-%%%%%   Replaced (~ (subset(dollar_c5,unordered_pair(dollar_c4,dollar_c3))) | (singleton(dollar_c3) != dollar_c5))
-%%%%%   With (~ (subset(empty_set,unordered_pair(dollar_c4,dollar_c3))) | (singleton(dollar_c3) != dollar_c5))
+%%%%% Mutated formula '3489':
+%%%%%   Replaced ((empty_set = dollar_c5) | ((singleton(dollar_c4) = dollar_c5) | (singleton(dollar_c3) = dollar_c5)))
+%%%%%   With (~ ((empty_set = dollar_c5)) | ((singleton(dollar_c4) = dollar_c5) | (singleton(dollar_c3) = dollar_c5)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET901+1 : TPTP v8.1.0. Released v3.2.0.
@@ -38,7 +38,7 @@ fof(3, plain, (~ (subset(dollar_c5,unordered_pair(dollar_c4,dollar_c3))) | (empt
 fof(4, axiom, (~ (subset(dollar_c5,unordered_pair(dollar_c4,dollar_c3))) | (dollar_c5 != singleton(dollar_c4))), file('SET901+1.p',unknown), []).
 fof(5, plain, (~ (subset(dollar_c5,unordered_pair(dollar_c4,dollar_c3))) | (singleton(dollar_c4) != dollar_c5)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[4])]), [iquote('copy,4,flip.2')]).
 fof(6, axiom, (~ (subset(dollar_c5,unordered_pair(dollar_c4,dollar_c3))) | (dollar_c5 != singleton(dollar_c3))), file('SET901+1.p',unknown), []).
-fof(7, plain, (~ (subset(empty_set,unordered_pair(dollar_c4,dollar_c3))) | (singleton(dollar_c3) != dollar_c5)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[6])]), [iquote('copy,6,flip.2')]).
+fof(7, plain, (~ (subset(dollar_c5,unordered_pair(dollar_c4,dollar_c3))) | (singleton(dollar_c3) != dollar_c5)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[6])]), [iquote('copy,6,flip.2')]).
 fof(8, axiom, (~ (subset(dollar_c5,unordered_pair(dollar_c4,dollar_c3))) | (dollar_c5 != unordered_pair(dollar_c4,dollar_c3))), file('SET901+1.p',unknown), []).
 fof(9, plain, (~ (subset(dollar_c5,unordered_pair(dollar_c4,dollar_c3))) | (unordered_pair(dollar_c4,dollar_c3) != dollar_c5)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[8])]), [iquote('copy,8,flip.2')]).
 fof(10, axiom, (! [A,B,C]: ((~ (subset(A,unordered_pair(B,C))) | ((A = empty_set) | ((A = singleton(B)) | ((A = singleton(C)) | (A = unordered_pair(B,C)))))))), file('SET901+1.p',unknown), []).
@@ -59,7 +59,7 @@ fof(108, plain, ((empty_set = dollar_c5) | ((singleton(dollar_c4) = dollar_c5) |
 fof(217, plain, (~ (subset(dollar_c5,unordered_pair(dollar_c3,dollar_c4))) | (unordered_pair(dollar_c3,dollar_c4) != dollar_c5)), inference(para_into,[status(thm),theory(equality)],[44,17]), [iquote('para_into,44.1.2,17.1.1')]).
 fof(596, plain, ((empty_set = dollar_c5) | ((singleton(dollar_c4) = dollar_c5) | ((singleton(dollar_c3) = dollar_c5) | (unordered_pair(dollar_c3,dollar_c4) = dollar_c5)))), inference(para_into,[status(thm),theory(equality)],[108,17]), [iquote('para_into,108.4.1,17.1.1')]).
 fof(637, plain, (subset(dollar_c5,unordered_pair(dollar_c3,dollar_c4)) | ((empty_set = dollar_c5) | ((singleton(dollar_c4) = dollar_c5) | (singleton(dollar_c3) = dollar_c5)))), inference(para_from,[status(thm),theory(equality)],[108,34]), [iquote('para_from,108.4.1,34.1.1')]).
-fof(3489, plain, ((empty_set = dollar_c5) | ((singleton(dollar_c4) = dollar_c5) | (singleton(dollar_c3) = dollar_c5))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[637,217,596])])])]), [iquote('hyper,637,217,596,factor_simp,factor_simp,factor_simp')]).
+fof(3489, plain, (~ ((empty_set = dollar_c5)) | ((singleton(dollar_c4) = dollar_c5) | (singleton(dollar_c3) = dollar_c5))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[637,217,596])])])]), [iquote('hyper,637,217,596,factor_simp,factor_simp,factor_simp')]).
 fof(3495, plain, (! [A]: ((subset(dollar_c5,unordered_pair(dollar_c4,A)) | ((empty_set = dollar_c5) | (singleton(dollar_c3) = dollar_c5))))), inference(para_from,[status(thm),theory(equality)],[3489,24]), [iquote('para_from,3489.2.1,24.1.1')]).
 fof(3504, plain, ((empty_set = dollar_c5) | (singleton(dollar_c3) = dollar_c5)), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[3495,5,3489])])]), [iquote('hyper,3495,5,3489,factor_simp,factor_simp')]).
 fof(3531, plain, (! [A]: ((subset(dollar_c5,unordered_pair(dollar_c3,A)) | (empty_set = dollar_c5)))), inference(para_from,[status(thm),theory(equality)],[3504,24]), [iquote('para_from,3504.2.1,24.1.1')]).

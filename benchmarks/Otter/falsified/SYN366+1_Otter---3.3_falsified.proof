@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '6':
-%%%%%   Replaced big_r(dollar_c1,dollar_c1)
-%%%%%   With big_r(dollar_c2,dollar_c1)
+%%%%% Mutated formula '5':
+%%%%%   Replaced ~ (big_r(dollar_c2,dollar_c2))
+%%%%%   With big_r(dollar_c2,dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN366+1 : TPTP v8.1.0. Released v2.0.0.
@@ -35,8 +35,8 @@
 %%% Generated on Tue Apr 14 19:23:42 CEST 2026 using command 'transform(fof)'.
 fof(2, axiom, (! [A,B]: ((big_r(A,A) | ~ (big_r(A,B))))), file('SYN366+1.p',unknown), []).
 fof(3, axiom, (! [A,B]: ((~ (big_r(A,A)) | big_r(B,A)))), file('SYN366+1.p',unknown), []).
-fof(5, axiom, ~ (big_r(dollar_c2,dollar_c2)), file('SYN366+1.p',unknown), []).
-fof(6, axiom, big_r(dollar_c2,dollar_c1), file('SYN366+1.p',unknown), []).
+fof(5, axiom, big_r(dollar_c2,dollar_c2), file('SYN366+1.p',unknown), []).
+fof(6, axiom, big_r(dollar_c1,dollar_c1), file('SYN366+1.p',unknown), []).
 fof(7, plain, (! [A]: (big_r(A,dollar_c1))), inference(hyper,[status(thm)],[6,3]), [iquote('hyper,6,3')]).
 fof(9, plain, (! [A]: (big_r(A,A))), inference(hyper,[status(thm)],[7,2]), [iquote('hyper,7,2')]).
 fof(10, plain, $false, inference(binary,[status(thm)],[9,5]), [iquote('binary,9.1,5.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c3':
-%%%%%   Replaced (! [X,Y,Z]: ((~ (big_f(X,Y)) | (~ (big_f(Y,Z)) | big_f(X,Z)))))
-%%%%%   With (! [X,Y,Z]: ((big_f(X,Y) | (~ (big_f(Y,Z)) | big_f(X,Z)))))
+%%%%% Mutated formula 'c1':
+%%%%%   Replaced ~ (big_f(f(a,b),f(a,c)))
+%%%%%   With ~ (big_f(f(c,b),f(a,c)))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN079+1 : TPTP v8.1.2. Released v2.0.0.
@@ -38,12 +38,12 @@
 %%% Generated on Tue Apr 14 15:06:38 CEST 2026 using command 'transform(fof)'.
 fof(pel57, conjecture, big_f(f(a,b),f(a,c)), file('SYN079+1.p',pel57)).
 fof(c0, negated_conjecture, ~ (big_f(f(a,b),f(a,c))), inference(assume_negation,[status(cth)],[pel57])).
-fof(c1, negated_conjecture, ~ (big_f(f(a,b),f(a,c))), inference(fof_simplification,[status(thm)],[c0])).
+fof(c1, negated_conjecture, ~ (big_f(f(c,b),f(a,c))), inference(fof_simplification,[status(thm)],[c0])).
 fof(c2, negated_conjecture, ~ (big_f(f(a,b),f(a,c))), inference(split_conjunct,[status(thm)],[c1])).
 fof(pel57_1, axiom, big_f(f(a,b),f(b,c)), file('SYN079+1.p',pel57_1)).
 fof(c7, plain, big_f(f(a,b),f(b,c)), inference(split_conjunct,[status(thm)],[pel57_1])).
 fof(pel57_3, axiom, (! [X,Y,Z]: (((big_f(X,Y) & big_f(Y,Z)) => big_f(X,Z)))), file('SYN079+1.p',pel57_3)).
-fof(c3, plain, (! [X,Y,Z]: ((big_f(X,Y) | (~ (big_f(Y,Z)) | big_f(X,Z))))), inference(fof_nnf,[status(thm)],[pel57_3])).
+fof(c3, plain, (! [X,Y,Z]: ((~ (big_f(X,Y)) | (~ (big_f(Y,Z)) | big_f(X,Z))))), inference(fof_nnf,[status(thm)],[pel57_3])).
 fof(c4, plain, (! [X2,X3,X4]: ((~ (big_f(X2,X3)) | (~ (big_f(X3,X4)) | big_f(X2,X4))))), inference(variable_rename,[status(thm)],[c3])).
 fof(c5, plain, (! [X6,X5,X7]: ((~ (big_f(X6,X5)) | (~ (big_f(X5,X7)) | big_f(X6,X7))))), inference(split_conjunct,[status(thm)],[c4])).
 fof(pel57_2, axiom, big_f(f(b,c),f(a,c)), file('SYN079+1.p',pel57_2)).

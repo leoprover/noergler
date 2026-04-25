@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '290':
-%%%%%   Replaced disjoint(dollar_c5,dollar_c6)
-%%%%%   With ~ (disjoint(dollar_c5,dollar_c6))
+%%%%% Mutated formula '31':
+%%%%%   Replaced (disjoint(dollar_c5,dollar_c6) | disjoint(dollar_c3,dollar_c4))
+%%%%%   With (disjoint(dollar_c3,dollar_c6) | disjoint(dollar_c3,dollar_c4))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET974+1 : TPTP v8.1.0. Released v3.2.0.
@@ -42,11 +42,11 @@ fof(14, axiom, (! [A,B]: ((set_intersection2(A,B) = set_intersection2(B,A)))), f
 fof(21, axiom, (disjoint(dollar_c6,dollar_c5) | disjoint(dollar_c4,dollar_c3)), file('SET974+1.p',unknown), []).
 fof(22, axiom, (! [A,B]: ((disjoint(A,B) | in(dollar_f3(A,B),set_intersection2(A,B))))), file('SET974+1.p',unknown), []).
 fof(29, plain, (disjoint(dollar_c4,dollar_c3) | disjoint(dollar_c5,dollar_c6)), inference(hyper,[status(thm)],[21,4]), [iquote('hyper,21,4')]).
-fof(31, plain, (disjoint(dollar_c5,dollar_c6) | disjoint(dollar_c3,dollar_c4)), inference(hyper,[status(thm)],[29,4]), [iquote('hyper,29,4')]).
+fof(31, plain, (disjoint(dollar_c3,dollar_c6) | disjoint(dollar_c3,dollar_c4)), inference(hyper,[status(thm)],[29,4]), [iquote('hyper,29,4')]).
 fof(32, plain, (! [A,B,C]: ((~ (in(A,set_intersection2(B,C))) | ~ (disjoint(C,B))))), inference(para_from,[status(thm),theory(equality)],[14,10]), [iquote('para_from,14.1.1,10.1.2')]).
 fof(44, plain, (! [A,B,C,D]: ((disjoint(cartesian_product2(A,B),cartesian_product2(C,D)) | in(dollar_f1(dollar_f3(cartesian_product2(A,B),cartesian_product2(C,D)),A,B,C,D),set_intersection2(B,D))))), inference(hyper,[status(thm)],[22,8]), [iquote('hyper,22,8')]).
 fof(45, plain, (! [A,B,C,D]: ((disjoint(cartesian_product2(A,B),cartesian_product2(C,D)) | in(dollar_f2(dollar_f3(cartesian_product2(A,B),cartesian_product2(C,D)),A,B,C,D),set_intersection2(A,C))))), inference(hyper,[status(thm)],[22,7]), [iquote('hyper,22,7')]).
 fof(273, plain, (! [A,B]: ((disjoint(cartesian_product2(A,dollar_c4),cartesian_product2(B,dollar_c3)) | disjoint(dollar_c5,dollar_c6)))), inference(hyper,[status(thm)],[44,32,31]), [iquote('hyper,44,32,31')]).
-fof(290, plain, ~ (disjoint(dollar_c5,dollar_c6)), inference(hyper,[status(thm)],[273,9]), [iquote('hyper,273,9')]).
+fof(290, plain, disjoint(dollar_c5,dollar_c6), inference(hyper,[status(thm)],[273,9]), [iquote('hyper,273,9')]).
 fof(308, plain, (! [A,B]: (disjoint(cartesian_product2(dollar_c6,A),cartesian_product2(dollar_c5,B)))), inference(hyper,[status(thm)],[45,32,290]), [iquote('hyper,45,32,290')]).
 fof(309, plain, $false, inference(binary,[status(thm)],[308,9]), [iquote('binary,308.1,9.1')]).

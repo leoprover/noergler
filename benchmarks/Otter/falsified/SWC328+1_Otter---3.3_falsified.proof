@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '450':
-%%%%%   Replaced (dollar_c5 = dollar_c3)
-%%%%%   With (nil = dollar_c3)
+%%%%% Mutated formula '442':
+%%%%%   Replaced e_qualelemsP(nil)
+%%%%%   With e_qualelemsP(dollar_c6)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC328+1 : TPTP v8.1.0. Released v2.4.0.
@@ -35,10 +35,10 @@
 %%% Generated on Tue Apr 14 19:21:53 CEST 2026 using command 'transform(fof)'.
 fof(135, axiom, (! [A]: ((~ (ssList(A)) | segmentP(A,nil)))), file('SWC328+1.p',unknown), []).
 fof(182, axiom, (~ (segmentP(dollar_c5,dollar_c6)) | ~ (e_qualelemsP(dollar_c6))), file('SWC328+1.p',unknown), []).
-fof(442, axiom, e_qualelemsP(nil), file('SWC328+1.p',unknown), []).
+fof(442, axiom, e_qualelemsP(dollar_c6), file('SWC328+1.p',unknown), []).
 fof(446, axiom, ssList(dollar_c3), file('SWC328+1.p',unknown), []).
 fof(448, axiom, (nil = dollar_c4), file('SWC328+1.p',unknown), []).
-fof(450, axiom, (nil = dollar_c3), file('SWC328+1.p',unknown), []).
+fof(450, axiom, (dollar_c5 = dollar_c3), file('SWC328+1.p',unknown), []).
 fof(452, axiom, (dollar_c6 = dollar_c4), file('SWC328+1.p',unknown), []).
 fof(453, plain, e_qualelemsP(dollar_c4), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[442]),448]), [iquote('back_demod,442,demod,448')]).
 fof(494, plain, (! [A]: ((~ (ssList(A)) | segmentP(A,dollar_c4)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[135]),448]), [iquote('back_demod,135,demod,448')]).

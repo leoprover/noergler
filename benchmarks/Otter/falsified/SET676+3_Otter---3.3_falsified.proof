@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '141':
-%%%%%   Replaced (! [A]: (ilf_type(A,set_type)))
-%%%%%   With (! [A]: (ilf_type(A,dollar_c1)))
+%%%%% Mutated formula '174':
+%%%%%   Replaced (! [A]: (ilf_type(cross_product(A,A),identity_relation_of_type(A))))
+%%%%%   With (! [A]: (~ (ilf_type(cross_product(A,A),identity_relation_of_type(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET676+3 : TPTP v8.1.0. Released v2.2.0.
@@ -36,7 +36,7 @@
 fof(1, axiom, (! [A,B]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,set_type)) | ilf_type(cross_product(A,B),relation_type(A,B)))))), file('SET676+3.p',unknown), []).
 fof(11, axiom, (! [A,B]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,set_type)) | (ilf_type(B,identity_relation_of_type(A)) | ~ (ilf_type(B,relation_type(A,A)))))))), file('SET676+3.p',unknown), []).
 fof(41, axiom, ~ (ilf_type(cross_product(dollar_c1,dollar_c1),identity_relation_of_type(dollar_c1))), file('SET676+3.p',unknown), []).
-fof(141, axiom, (! [A]: (ilf_type(A,dollar_c1))), file('SET676+3.p',unknown), []).
+fof(141, axiom, (! [A]: (ilf_type(A,set_type))), file('SET676+3.p',unknown), []).
 fof(152, plain, (! [A,B]: (ilf_type(cross_product(A,B),relation_type(A,B)))), inference(hyper,[status(thm)],[141,1,141]), [iquote('hyper,141,1,141')]).
-fof(174, plain, (! [A]: (ilf_type(cross_product(A,A),identity_relation_of_type(A)))), inference(hyper,[status(thm)],[152,11,141,141]), [iquote('hyper,152,11,141,141')]).
+fof(174, plain, (! [A]: (~ (ilf_type(cross_product(A,A),identity_relation_of_type(A))))), inference(hyper,[status(thm)],[152,11,141,141]), [iquote('hyper,152,11,141,141')]).
 fof(175, plain, $false, inference(binary,[status(thm)],[174,41]), [iquote('binary,174.1,41.1')]).

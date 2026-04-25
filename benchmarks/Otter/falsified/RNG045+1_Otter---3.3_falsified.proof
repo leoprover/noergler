@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1229':
-%%%%%   Replaced (sdtasdt0(xx,xv) = sdtasdt0(xv,xx))
-%%%%%   With (sdtasdt0(xy,xv) = sdtasdt0(xv,xx))
+%%%%% Mutated formula '59':
+%%%%%   Replaced (sdtasdt0(sdtpldt0(xx,xy),sdtpldt0(xu,xv)) = sdtpldt0(sdtasdt0(xx,sdtpldt0(xu,xv)),sdtasdt0(xy,sdtpldt0(xu,xv))))
+%%%%%   With ~ ((sdtasdt0(sdtpldt0(xx,xy),sdtpldt0(xu,xv)) = sdtpldt0(sdtasdt0(xx,sdtpldt0(xu,xv)),sdtasdt0(xy,sdtpldt0(xu,xv)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : RNG045+1 : TPTP v8.1.0. Released v4.0.0.
@@ -48,7 +48,7 @@ fof(55, axiom, aScalar0(xx), file('RNG045+1.p',unknown), []).
 fof(56, axiom, aScalar0(xy), file('RNG045+1.p',unknown), []).
 fof(57, axiom, aScalar0(xu), file('RNG045+1.p',unknown), []).
 fof(58, axiom, aScalar0(xv), file('RNG045+1.p',unknown), []).
-fof(59, axiom, (sdtasdt0(sdtpldt0(xx,xy),sdtpldt0(xu,xv)) = sdtpldt0(sdtasdt0(xx,sdtpldt0(xu,xv)),sdtasdt0(xy,sdtpldt0(xu,xv)))), file('RNG045+1.p',unknown), []).
+fof(59, axiom, ~ ((sdtasdt0(sdtpldt0(xx,xy),sdtpldt0(xu,xv)) = sdtpldt0(sdtasdt0(xx,sdtpldt0(xu,xv)),sdtasdt0(xy,sdtpldt0(xu,xv))))), file('RNG045+1.p',unknown), []).
 fof(61, plain, (sdtpldt0(sdtasdt0(xx,sdtpldt0(xu,xv)),sdtasdt0(xy,sdtpldt0(xu,xv))) = sdtasdt0(sdtpldt0(xx,xy),sdtpldt0(xu,xv))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[59])]), [iquote('copy,59,flip.1')]).
 fof(652, plain, (sdtasdt0(xy,xu) = sdtasdt0(xu,xy)), inference(hyper,[status(thm)],[57,24,56]), [iquote('hyper,57,24,56')]).
 fof(654, plain, (sdtasdt0(xx,xu) = sdtasdt0(xu,xx)), inference(hyper,[status(thm)],[57,24,55]), [iquote('hyper,57,24,55')]).
@@ -60,7 +60,7 @@ fof(1131, plain, (sdtpldt0(sdtasdt0(xv,xx),sdtasdt0(xu,xx)) = sdtasdt0(sdtpldt0(
 fof(1182, plain, (sdtpldt0(sdtasdt0(xy,xv),sdtasdt0(xu,xy)) = sdtasdt0(xy,sdtpldt0(xv,xu))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[58,26,56,57]),652]), [iquote('hyper,58,26,56,57,demod,652')]).
 fof(1188, plain, (sdtpldt0(sdtasdt0(xx,xv),sdtasdt0(xu,xx)) = sdtasdt0(xx,sdtpldt0(xv,xu))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[58,26,55,57]),654]), [iquote('hyper,58,26,55,57,demod,654')]).
 fof(1227, plain, (sdtasdt0(xy,xv) = sdtasdt0(xv,xy)), inference(hyper,[status(thm)],[58,24,56]), [iquote('hyper,58,24,56')]).
-fof(1229, plain, (sdtasdt0(xy,xv) = sdtasdt0(xv,xx)), inference(hyper,[status(thm)],[58,24,55]), [iquote('hyper,58,24,55')]).
+fof(1229, plain, (sdtasdt0(xx,xv) = sdtasdt0(xv,xx)), inference(hyper,[status(thm)],[58,24,55]), [iquote('hyper,58,24,55')]).
 fof(1301, plain, (sdtpldt0(xv,xu) = sdtpldt0(xu,xv)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[58,21,57])]), [iquote('hyper,58,21,57,flip.1')]).
 fof(1401, plain, (sdtpldt0(sdtasdt0(sdtpldt0(xu,xv),xx),sdtasdt0(sdtpldt0(xu,xv),xy)) != sdtasdt0(sdtpldt0(xx,xy),sdtpldt0(xu,xv))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[768]),1229,1107,1227,1105]), [iquote('back_demod,768,demod,1229,1107,1227,1105')]).
 fof(1425, plain, (sdtasdt0(sdtpldt0(xu,xv),xy) = sdtasdt0(xy,sdtpldt0(xu,xv))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1182]),1227,1129,1301,1301]), [iquote('back_demod,1182,demod,1227,1129,1301,1301')]).

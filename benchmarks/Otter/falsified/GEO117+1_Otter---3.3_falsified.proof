@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1658':
-%%%%%   Replaced between_c(dollar_f18(dollar_c1,dollar_c1,dollar_c1,dollar_c2),dollar_c1,dollar_c1,dollar_c1)
-%%%%%   With between_c(dollar_f18(dollar_c2,dollar_c1,dollar_c1,dollar_c2),dollar_c1,dollar_c1,dollar_c1)
+%%%%% Mutated formula '96':
+%%%%%   Replaced (! [A,B]: ((between_o(A,B,B,B) | ~ (ordered_by(A,B,B)))))
+%%%%%   With (! [A,B]: ((~ (between_o(A,B,B,B)) | ~ (ordered_by(A,B,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO117+1 : TPTP v8.1.0. Released v2.4.0.
@@ -36,9 +36,9 @@
 fof(42, axiom, (! [A,B,C,D]: ((~ (between_c(A,B,C,D)) | (B != D)))), file('GEO117+1.p',unknown), []).
 fof(52, axiom, (! [A,B,C,D]: ((between_o(A,B,C,D) | (~ (ordered_by(A,B,C)) | ~ (ordered_by(A,C,D)))))), file('GEO117+1.p',unknown), []).
 fof(72, axiom, (! [A,B,C,D]: ((~ (between_o(A,B,C,D)) | between_c(dollar_f18(B,C,D,A),B,C,D)))), file('GEO117+1.p',unknown), []).
-fof(96, plain, (! [A,B]: ((between_o(A,B,B,B) | ~ (ordered_by(A,B,B))))), inference(factor,[status(thm)],[52]), [iquote('factor,52.2.3')]).
+fof(96, plain, (! [A,B]: ((~ (between_o(A,B,B,B)) | ~ (ordered_by(A,B,B))))), inference(factor,[status(thm)],[52]), [iquote('factor,52.2.3')]).
 fof(104, axiom, (! [A]: ((A = A))), file('GEO117+1.p',unknown), []).
 fof(114, axiom, ordered_by(dollar_c2,dollar_c1,dollar_c1), file('GEO117+1.p',unknown), []).
 fof(181, plain, between_o(dollar_c2,dollar_c1,dollar_c1,dollar_c1), inference(hyper,[status(thm)],[114,96]), [iquote('hyper,114,96')]).
-fof(1658, plain, between_c(dollar_f18(dollar_c2,dollar_c1,dollar_c1,dollar_c2),dollar_c1,dollar_c1,dollar_c1), inference(hyper,[status(thm)],[181,72]), [iquote('hyper,181,72')]).
+fof(1658, plain, between_c(dollar_f18(dollar_c1,dollar_c1,dollar_c1,dollar_c2),dollar_c1,dollar_c1,dollar_c1), inference(hyper,[status(thm)],[181,72]), [iquote('hyper,181,72')]).
 fof(1918, plain, $false, inference(hyper,[status(thm)],[1658,42,104]), [iquote('hyper,1658,42,104')]).

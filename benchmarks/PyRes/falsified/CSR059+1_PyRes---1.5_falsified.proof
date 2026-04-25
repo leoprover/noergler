@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c31':
-%%%%%   Replaced (! [X15,X16]: ((~ (mtvisible(X15)) | (~ (genlmt(X15,X16)) | mtvisible(X16)))))
-%%%%%   With (! [X15,X16]: ((mtvisible(X15) | (~ (genlmt(X15,X16)) | mtvisible(X16)))))
+%%%%% Mutated formula 'c147':
+%%%%%   Replaced mtvisible(c_tptpgeo_member5_mt)
+%%%%%   With mtvisible(c_georegion_l4_x57_y47)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR059+1 : TPTP v8.1.2. Released v3.4.0.
@@ -49,10 +49,10 @@ fof(just1, axiom, genlmt(c_tptpgeo_spindlecollectormt,c_tptpgeo_member5_mt), fil
 fof(c131, plain, genlmt(c_tptpgeo_spindlecollectormt,c_tptpgeo_member5_mt), inference(split_conjunct,[status(thm)],[just1])).
 fof(just31, axiom, (! [SPECMT,GENLMT]: (((mtvisible(SPECMT) & genlmt(SPECMT,GENLMT)) => mtvisible(GENLMT)))), file('CSR059+1.p',just31)).
 fof(c30, plain, (! [SPECMT,GENLMT]: ((~ (mtvisible(SPECMT)) | (~ (genlmt(SPECMT,GENLMT)) | mtvisible(GENLMT))))), inference(fof_nnf,[status(thm)],[just31])).
-fof(c31, plain, (! [X15,X16]: ((mtvisible(X15) | (~ (genlmt(X15,X16)) | mtvisible(X16))))), inference(variable_rename,[status(thm)],[c30])).
+fof(c31, plain, (! [X15,X16]: ((~ (mtvisible(X15)) | (~ (genlmt(X15,X16)) | mtvisible(X16))))), inference(variable_rename,[status(thm)],[c30])).
 fof(c32, plain, (! [X94,X95]: ((~ (mtvisible(X94)) | (~ (genlmt(X94,X95)) | mtvisible(X95))))), inference(split_conjunct,[status(thm)],[c31])).
 fof(c144, plain, (~ (mtvisible(c_tptpgeo_spindlecollectormt)) | mtvisible(c_tptpgeo_member5_mt)), inference(resolution,[status(thm)],[c32,c131])).
-fof(c147, plain, mtvisible(c_tptpgeo_member5_mt), inference(resolution,[status(thm)],[c144,c2])).
+fof(c147, plain, mtvisible(c_georegion_l4_x57_y47), inference(resolution,[status(thm)],[c144,c2])).
 fof(just2, axiom, (mtvisible(c_tptpgeo_member5_mt) => borderson(c_georegion_l4_x56_y47,c_georegion_l4_x57_y47)), file('CSR059+1.p',just2)).
 fof(c129, plain, (~ (mtvisible(c_tptpgeo_member5_mt)) | borderson(c_georegion_l4_x56_y47,c_georegion_l4_x57_y47)), inference(fof_nnf,[status(thm)],[just2])).
 fof(c130, plain, (~ (mtvisible(c_tptpgeo_member5_mt)) | borderson(c_georegion_l4_x56_y47,c_georegion_l4_x57_y47)), inference(split_conjunct,[status(thm)],[c129])).

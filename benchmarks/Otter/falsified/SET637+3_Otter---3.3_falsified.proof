@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '5710':
-%%%%%   Replaced (intersection(dollar_c2,dollar_c1) = empty_set)
-%%%%%   With (intersection(dollar_c1,dollar_c1) = empty_set)
+%%%%% Mutated formula '23':
+%%%%%   Replaced (intersect(dollar_c2,dollar_c1) | not_e_qual(intersection(dollar_c2,dollar_c1),empty_set))
+%%%%%   With (intersect(empty_set,dollar_c1) | not_e_qual(intersection(dollar_c2,dollar_c1),empty_set))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET637+3 : TPTP v8.1.0. Released v2.2.0.
@@ -46,7 +46,7 @@ fof(18, axiom, (! [A]: ((A = A))), file('SET637+3.p',unknown), []).
 fof(19, axiom, (! [A,B]: (((A = B) | (member(dollar_f2(A,B),A) | member(dollar_f2(A,B),B))))), file('SET637+3.p',unknown), []).
 fof(20, axiom, (! [A,B]: ((not_e_qual(A,B) | (A = B)))), file('SET637+3.p',unknown), []).
 fof(21, axiom, (! [A,B]: ((intersection(A,B) = intersection(B,A)))), file('SET637+3.p',unknown), []).
-fof(23, axiom, (intersect(dollar_c2,dollar_c1) | not_e_qual(intersection(dollar_c2,dollar_c1),empty_set)), file('SET637+3.p',unknown), []).
+fof(23, axiom, (intersect(empty_set,dollar_c1) | not_e_qual(intersection(dollar_c2,dollar_c1),empty_set)), file('SET637+3.p',unknown), []).
 fof(42, plain, (! [A,B,C]: (((A = intersection(B,C)) | not_e_qual(intersection(C,B),A)))), inference(para_into,[status(thm),theory(equality)],[21,20]), [iquote('para_into,21.1.1,20.2.1')]).
 fof(44, plain, (~ (intersect(dollar_c2,dollar_c1)) | ~ (not_e_qual(intersection(dollar_c1,dollar_c2),empty_set))), inference(para_from,[status(thm),theory(equality)],[21,14]), [iquote('para_from,21.1.1,14.2.1')]).
 fof(50, plain, (! [A]: (((empty_set = A) | member(dollar_f2(empty_set,A),A)))), inference(hyper,[status(thm)],[19,7]), [iquote('hyper,19,7')]).
@@ -54,7 +54,7 @@ fof(60, plain, (! [A,B,C]: (((A = intersection(B,C)) | (member(dollar_f2(A,inter
 fof(107, plain, (! [A]: ((intersect(dollar_c2,dollar_c1) | (not_e_qual(intersection(dollar_c2,dollar_c1),A) | not_e_qual(empty_set,A))))), inference(para_into,[status(thm),theory(equality)],[23,20]), [iquote('para_into,23.2.2,20.2.1')]).
 fof(130, plain, (! [A,B]: (((intersection(A,B) = empty_set) | member(dollar_f2(empty_set,intersection(A,B)),B)))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[50,2])]), [iquote('hyper,50,2,flip.1')]).
 fof(5707, plain, (! [A,B]: (((intersection(A,B) = empty_set) | intersect(A,B)))), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[130,6,60]),7])]), [iquote('hyper,130,6,60,unit_del,7,factor_simp')]).
-fof(5710, plain, (intersection(dollar_c1,dollar_c1) = empty_set), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[5707,44,42])]), [iquote('hyper,5707,44,42,factor_simp')]).
+fof(5710, plain, (intersection(dollar_c2,dollar_c1) = empty_set), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[5707,44,42])]), [iquote('hyper,5707,44,42,factor_simp')]).
 fof(5721, plain, (! [A]: ((intersect(dollar_c2,dollar_c1) | not_e_qual(empty_set,A)))), inference(factor_simp,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[107]),5710])]), [iquote('back_demod,107,demod,5710,factor_simp')]).
 fof(5729, plain, (intersection(dollar_c1,dollar_c2) = empty_set), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[5710,11,42])]), [iquote('hyper,5709,11,42,flip.1')]).
 fof(5742, plain, intersect(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[5721,11,18]), [iquote('hyper,5721,11,18')]).

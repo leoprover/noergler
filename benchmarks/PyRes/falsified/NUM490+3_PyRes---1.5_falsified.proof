@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c11':
-%%%%%   Replaced (sdtpldt0(sdtasdt0(xp,xm),sdtasdt0(xr,xm)) != sdtasdt0(xn,xm))
-%%%%%   With (sdtpldt0(sdtasdt0(xn,xm),sdtasdt0(xr,xm)) != sdtasdt0(xn,xm))
+%%%%% Mutated formula 'c13':
+%%%%%   Replaced (sdtasdt0(xn,xm) = sdtpldt0(sdtasdt0(xp,xm),sdtasdt0(xr,xm)))
+%%%%%   With (sdtasdt0(xp,xm) = sdtpldt0(sdtasdt0(xp,xm),sdtasdt0(xr,xm)))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM490+3 : TPTP v8.1.2. Released v4.0.0.
@@ -39,9 +39,9 @@
 fof(m__, conjecture, ((sdtpldt0(sdtasdt0(xp,xm),sdtasdt0(xr,xm)) = sdtasdt0(xn,xm)) | (sdtasdt0(xr,xm) = sdtmndt0(sdtasdt0(xn,xm),sdtasdt0(xp,xm)))), file('NUM490+3.p',m__)).
 fof(c9, negated_conjecture, ~ (((sdtpldt0(sdtasdt0(xp,xm),sdtasdt0(xr,xm)) = sdtasdt0(xn,xm)) | (sdtasdt0(xr,xm) = sdtmndt0(sdtasdt0(xn,xm),sdtasdt0(xp,xm))))), inference(assume_negation,[status(cth)],[m__])).
 fof(c10, negated_conjecture, ((sdtpldt0(sdtasdt0(xp,xm),sdtasdt0(xr,xm)) != sdtasdt0(xn,xm)) & (sdtasdt0(xr,xm) != sdtmndt0(sdtasdt0(xn,xm),sdtasdt0(xp,xm)))), inference(fof_nnf,[status(thm)],[c9])).
-fof(c11, negated_conjecture, (sdtpldt0(sdtasdt0(xn,xm),sdtasdt0(xr,xm)) != sdtasdt0(xn,xm)), inference(split_conjunct,[status(thm)],[c10])).
+fof(c11, negated_conjecture, (sdtpldt0(sdtasdt0(xp,xm),sdtasdt0(xr,xm)) != sdtasdt0(xn,xm)), inference(split_conjunct,[status(thm)],[c10])).
 fof(symmetry, axiom, (! [X100,X101]: (((X100 != X101) | (X101 = X100)))), theory(equality)).
 fof(m__1951, plain, (sdtasdt0(xn,xm) = sdtpldt0(sdtasdt0(xp,xm),sdtasdt0(xr,xm))), file('NUM490+3.p',m__1951)).
-fof(c13, plain, (sdtasdt0(xn,xm) = sdtpldt0(sdtasdt0(xp,xm),sdtasdt0(xr,xm))), inference(split_conjunct,[status(thm)],[m__1951])).
+fof(c13, plain, (sdtasdt0(xp,xm) = sdtpldt0(sdtasdt0(xp,xm),sdtasdt0(xr,xm))), inference(split_conjunct,[status(thm)],[m__1951])).
 fof(c502, plain, (sdtpldt0(sdtasdt0(xp,xm),sdtasdt0(xr,xm)) = sdtasdt0(xn,xm)), inference(resolution,[status(thm)],[c13,symmetry])).
 fof(c45119, plain, $false, inference(resolution,[status(thm)],[c502,c11])).

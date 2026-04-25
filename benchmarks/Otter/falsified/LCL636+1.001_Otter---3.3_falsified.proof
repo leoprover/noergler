@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '35':
 %%%%%   Replaced p2(dollar_c1)
-%%%%%   With ~ (p2(dollar_c1))
+%%%%%   With p2(dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LCL636+1.001 : TPTP v8.1.0. Released v4.0.0.
@@ -39,6 +39,6 @@ fof(16, axiom, (~ (p2(dollar_c1)) | (p101(dollar_c3) | ~ (p100(dollar_c3)))), fi
 fof(26, axiom, ~ (p101(dollar_c3)), file('LCL636+1.001.p',unknown), []).
 fof(27, axiom, p100(dollar_c3), file('LCL636+1.001.p',unknown), []).
 fof(32, plain, r1(dollar_c3,dollar_c1), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[27,15]),26]), [iquote('hyper,27,15,unit_del,26')]).
-fof(35, plain, ~ (p2(dollar_c1)), inference(hyper,[status(thm)],[32,1]), [iquote('hyper,32,1')]).
+fof(35, plain, p2(dollar_c3), inference(hyper,[status(thm)],[32,1]), [iquote('hyper,32,1')]).
 fof(36, plain, p101(dollar_c3), inference(hyper,[status(thm)],[35,16,27]), [iquote('hyper,35,16,27')]).
 fof(37, plain, $false, inference(binary,[status(thm)],[36,26]), [iquote('binary,36.1,26.1')]).

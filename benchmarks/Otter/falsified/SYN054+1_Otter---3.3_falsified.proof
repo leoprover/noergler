@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '8':
-%%%%%   Replaced big_p(dollar_c1)
-%%%%%   With big_p(dollar_c2)
+%%%%% Mutated formula '3':
+%%%%%   Replaced (! [A]: ((~ (big_q(A)) | big_s(A))))
+%%%%%   With (! [A]: ((big_q(A) | big_s(A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN054+1 : TPTP v8.1.0. Released v2.0.0.
@@ -35,11 +35,11 @@
 %%% Generated on Tue Apr 14 19:23:12 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A]: ((~ (big_s(A)) | ~ (big_q(A))))), file('SYN054+1.p',unknown), []).
 fof(2, axiom, (! [A]: ((~ (big_p(A)) | (big_q(A) | big_r(A))))), file('SYN054+1.p',unknown), []).
-fof(3, axiom, (! [A]: ((~ (big_q(A)) | big_s(A)))), file('SYN054+1.p',unknown), []).
+fof(3, axiom, (! [A]: ((big_q(A) | big_s(A)))), file('SYN054+1.p',unknown), []).
 fof(5, axiom, (! [A]: ((~ (big_p(A)) | ~ (big_r(A))))), file('SYN054+1.p',unknown), []).
 fof(6, axiom, (big_p(dollar_c1) | big_q(dollar_c2)), file('SYN054+1.p',unknown), []).
 fof(7, plain, (big_p(dollar_c1) | big_s(dollar_c2)), inference(hyper,[status(thm)],[6,3]), [iquote('hyper,6,3')]).
-fof(8, plain, big_p(dollar_c2), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[7,1,6])]), [iquote('hyper,7,1,6,factor_simp')]).
+fof(8, plain, big_p(dollar_c1), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[7,1,6])]), [iquote('hyper,7,1,6,factor_simp')]).
 fof(9, plain, (big_q(dollar_c1) | big_r(dollar_c1)), inference(hyper,[status(thm)],[8,2]), [iquote('hyper,8,2')]).
 fof(10, plain, big_q(dollar_c1), inference(hyper,[status(thm)],[9,5,8]), [iquote('hyper,9,5,8')]).
 fof(11, plain, big_s(dollar_c1), inference(hyper,[status(thm)],[10,3]), [iquote('hyper,10,3')]).

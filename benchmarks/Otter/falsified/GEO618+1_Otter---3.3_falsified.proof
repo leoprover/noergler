@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1673':
-%%%%%   Replaced coll(dollar_c1,dollar_c6,dollar_c3)
-%%%%%   With ~ (coll(dollar_c1,dollar_c6,dollar_c3))
+%%%%% Mutated formula '1470':
+%%%%%   Replaced para(dollar_c6,dollar_c2,dollar_c6,dollar_c2)
+%%%%%   With para(dollar_c2,dollar_c2,dollar_c6,dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO618+1 : TPTP v8.1.0. Released v7.5.0.
@@ -87,7 +87,7 @@ fof(568, plain, coll(dollar_c1,dollar_c4,dollar_c3), inference(hyper,[status(thm
 fof(1093, plain, coll(dollar_c1,dollar_c1,dollar_c3), inference(hyper,[status(thm)],[449,114]), [iquote('hyper,449,114')]).
 fof(1095, plain, coll(dollar_c3,dollar_c1,dollar_c3), inference(hyper,[status(thm)],[449,3,333]), [iquote('hyper,449,3,333')]).
 fof(1179, plain, coll(dollar_c3,dollar_c1,dollar_c1), inference(hyper,[status(thm)],[568,3,436]), [iquote('hyper,568,3,436')]).
-fof(1470, plain, para(dollar_c6,dollar_c2,dollar_c6,dollar_c2), inference(hyper,[status(thm)],[392,9,163]), [iquote('hyper,392,9,163')]).
+fof(1470, plain, para(dollar_c2,dollar_c2,dollar_c6,dollar_c2), inference(hyper,[status(thm)],[392,9,163]), [iquote('hyper,392,9,163')]).
 fof(1471, plain, para(dollar_c6,dollar_c1,dollar_c6,dollar_c1), inference(hyper,[status(thm)],[392,9,163]), [iquote('hyper,392,9,163')]).
 fof(1472, plain, perp(dollar_c6,dollar_c1,dollar_c2,dollar_c6), inference(hyper,[status(thm)],[392,7]), [iquote('hyper,392,7')]).
 fof(1473, plain, para(dollar_c6,dollar_c1,dollar_c1,dollar_c6), inference(hyper,[status(thm)],[393,9,392]), [iquote('hyper,393,9,392')]).
@@ -111,7 +111,7 @@ fof(1589, plain, coll(dollar_c3,dollar_c1,dollar_c6), inference(hyper,[status(th
 fof(1641, plain, coll(dollar_c2,dollar_c6,dollar_c1), inference(hyper,[status(thm)],[1578,1]), [iquote('hyper,1578,1')]).
 fof(1665, plain, coll(dollar_c1,dollar_c6,dollar_c2), inference(hyper,[status(thm)],[1580,1]), [iquote('hyper,1580,1')]).
 fof(1672, plain, coll(dollar_c6,dollar_c6,dollar_c3), inference(hyper,[status(thm)],[1589,114]), [iquote('hyper,1589,114')]).
-fof(1673, plain, ~ (coll(dollar_c1,dollar_c6,dollar_c3)), inference(hyper,[status(thm)],[1589,3,1179]), [iquote('hyper,1589,3,1179')]).
+fof(1673, plain, coll(dollar_c1,dollar_c6,dollar_c3), inference(hyper,[status(thm)],[1589,3,1179]), [iquote('hyper,1589,3,1179')]).
 fof(1674, plain, coll(dollar_c3,dollar_c6,dollar_c3), inference(hyper,[status(thm)],[1589,3,1095]), [iquote('hyper,1589,3,1095')]).
 fof(1758, plain, coll(dollar_c6,dollar_c2,dollar_c1), inference(hyper,[status(thm)],[1641,2]), [iquote('hyper,1641,2')]).
 fof(1778, plain, coll(dollar_c2,dollar_c3,dollar_c6), inference(hyper,[status(thm)],[1672,3,1486]), [iquote('hyper,1672,3,1486')]).

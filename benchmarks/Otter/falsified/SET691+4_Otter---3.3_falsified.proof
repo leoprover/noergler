@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '112':
-%%%%%   Replaced subset(dollar_c1,empty_set)
-%%%%%   With ~ (subset(dollar_c1,empty_set))
+%%%%% Mutated formula '14':
+%%%%%   Replaced (! [A]: (~ (member(A,empty_set))))
+%%%%%   With (! [A]: (member(A,empty_set)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET691+4 : TPTP v8.1.0. Released v2.2.0.
@@ -35,10 +35,10 @@
 %%% Generated on Tue Apr 14 19:19:01 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, (! [A,B]: ((~ (e_qual_set(A,B)) | subset(A,B)))), file('SET691+4.p',unknown), []).
 fof(5, axiom, (! [A,B]: ((e_qual_set(A,B) | (~ (subset(A,B)) | ~ (subset(B,A)))))), file('SET691+4.p',unknown), []).
-fof(14, axiom, (! [A]: (~ (member(A,empty_set)))), file('SET691+4.p',unknown), []).
+fof(14, axiom, (! [A]: (member(A,empty_set))), file('SET691+4.p',unknown), []).
 fof(28, axiom, (~ (subset(dollar_c1,empty_set)) | ~ (e_qual_set(dollar_c1,empty_set))), file('SET691+4.p',unknown), []).
 fof(35, axiom, (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A)))), file('SET691+4.p',unknown), []).
 fof(37, axiom, (subset(dollar_c1,empty_set) | e_qual_set(dollar_c1,empty_set)), file('SET691+4.p',unknown), []).
 fof(101, plain, e_qual_set(dollar_c1,empty_set), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[35,5,37]),14])]), [iquote('hyper,35,5,37,unit_del,14,factor_simp')]).
-fof(112, plain, ~ (subset(dollar_c1,empty_set)), inference(hyper,[status(thm)],[101,3]), [iquote('hyper,101,3')]).
+fof(112, plain, subset(dollar_c1,empty_set), inference(hyper,[status(thm)],[101,3]), [iquote('hyper,101,3')]).
 fof(130, plain, $false, inference(hyper,[status(thm)],[112,28,101]), [iquote('hyper,112,28,101')]).

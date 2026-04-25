@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c1172':
-%%%%%   Replaced (skolem0003 = skolem0002)
-%%%%%   With ~ ((skolem0003 = skolem0002))
+%%%%% Mutated formula 'c1155':
+%%%%%   Replaced (skolem0003 = singleton(skolem0001))
+%%%%%   With ~ ((skolem0003 = singleton(skolem0001)))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SET903+1 : TPTP v8.1.2. Released v3.2.0.
@@ -58,7 +58,7 @@ fof(c546, plain, (! [X181]: (((X181 != singleton(skolem0001)) | (X181 = skolem00
 fof(c10, negated_conjecture, (skolem0003 != empty_set), inference(split_conjunct,[status(thm)],[c6])).
 fof(c21, plain, (! [X113,X115,X114]: (((singleton(X113) != set_union2(X115,X114)) | ((X114 = singleton(X113)) | ((X114 = singleton(X113)) | (X114 = empty_set)))))), inference(split_conjunct,[status(thm)],[c13])).
 fof(c213, plain, ((skolem0003 = singleton(skolem0001)) | (skolem0003 = empty_set)), inference(resolution,[status(thm)],[c21,c7])).
-fof(c1155, plain, (skolem0003 = singleton(skolem0001)), inference(resolution,[status(thm)],[c213,c10])).
-fof(c1172, plain, ~ ((skolem0003 = skolem0002)), inference(resolution,[status(thm)],[c1155,c546])).
+fof(c1155, plain, ~ ((skolem0003 = singleton(skolem0001))), inference(resolution,[status(thm)],[c213,c10])).
+fof(c1172, plain, (skolem0003 = skolem0002), inference(resolution,[status(thm)],[c1155,c546])).
 fof(c1187, plain, (skolem0002 = skolem0003), inference(resolution,[status(thm)],[c1172,symmetry])).
 fof(c1208, plain, $false, inference(resolution,[status(thm)],[c1187,c8])).

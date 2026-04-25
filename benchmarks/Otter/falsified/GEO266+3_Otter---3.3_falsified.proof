@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '64':
-%%%%%   Replaced (! [A,B]: ((e_qually_directed_lines(A,B) | une_qually_directed_lines(A,B))))
-%%%%%   With (! [A,B]: ((~ (e_qually_directed_lines(A,B)) | une_qually_directed_lines(A,B))))
+%%%%% Mutated formula '282':
+%%%%%   Replaced e_qually_directed_lines(dollar_c2,dollar_c1)
+%%%%%   With e_qually_directed_lines(dollar_c1,dollar_c1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO266+3 : TPTP v8.1.0. Released v4.0.0.
@@ -42,7 +42,7 @@ fof(39, axiom, (! [A,B]: ((~ (une_qually_directed_lines(A,B)) | (~ (une_qually_d
 fof(41, axiom, (! [A,B]: (~ (left_convergent_lines(A,B)))), file('GEO266+3.p',unknown), []).
 fof(55, axiom, (~ (une_qually_directed_opposite_lines(dollar_c2,dollar_c1)) | ~ (une_qually_directed_opposite_lines(dollar_c1,dollar_c2))), file('GEO266+3.p',unknown), []).
 fof(62, plain, (! [A,B]: ((~ (une_qually_directed_lines(A,A)) | une_qually_directed_lines(A,B)))), inference(factor,[status(thm)],[36]), [iquote('factor,36.2.3')]).
-fof(64, axiom, (! [A,B]: ((~ (e_qually_directed_lines(A,B)) | une_qually_directed_lines(A,B)))), file('GEO266+3.p',unknown), []).
+fof(64, axiom, (! [A,B]: ((e_qually_directed_lines(A,B) | une_qually_directed_lines(A,B)))), file('GEO266+3.p',unknown), []).
 fof(65, axiom, (! [A,B]: ((e_qually_directed_opposite_lines(A,B) | une_qually_directed_opposite_lines(A,B)))), file('GEO266+3.p',unknown), []).
 fof(67, axiom, (! [A,B]: ((une_qually_directed_lines(A,B) | une_qually_directed_lines(A,reverse_line(B))))), file('GEO266+3.p',unknown), []).
 fof(69, axiom, (une_qually_directed_opposite_lines(dollar_c2,dollar_c1) | une_qually_directed_opposite_lines(dollar_c1,dollar_c2)), file('GEO266+3.p',unknown), []).
@@ -58,5 +58,5 @@ fof(243, plain, une_qually_directed_lines(dollar_c2,dollar_c1), inference(unit_d
 fof(247, plain, e_qually_directed_opposite_lines(dollar_c2,dollar_c1), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[243,39,75]),41,41]), [iquote('hyper,243,39,75,unit_del,41,41')]).
 fof(254, plain, une_qually_directed_opposite_lines(dollar_c1,dollar_c2), inference(hyper,[status(thm)],[247,8,69]), [iquote('hyper,247,8,69')]).
 fof(260, plain, une_qually_directed_lines(dollar_c1,reverse_line(dollar_c2)), inference(hyper,[status(thm)],[254,1]), [iquote('hyper,254,1')]).
-fof(282, plain, e_qually_directed_lines(dollar_c2,dollar_c1), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[260,39,116]),41,41]), [iquote('hyper,260,39,116,unit_del,41,41')]).
+fof(282, plain, e_qually_directed_lines(dollar_c1,dollar_c1), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[260,39,116]),41,41]), [iquote('hyper,260,39,116,unit_del,41,41')]).
 fof(294, plain, $false, inference(hyper,[status(thm)],[282,7,243]), [iquote('hyper,282,7,243')]).

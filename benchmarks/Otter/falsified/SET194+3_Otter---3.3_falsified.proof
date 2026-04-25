@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '18':
-%%%%%   Replaced ~ (subset(dollar_c2,union(dollar_c1,dollar_c2)))
-%%%%%   With ~ (subset(dollar_c1,union(dollar_c1,dollar_c2)))
+%%%%% Mutated formula '9':
+%%%%%   Replaced ~ (subset(dollar_c2,union(dollar_c2,dollar_c1)))
+%%%%%   With subset(dollar_c2,union(dollar_c2,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET194+3 : TPTP v8.1.0. Released v2.2.0.
@@ -35,10 +35,10 @@
 %%% Generated on Tue Apr 14 19:18:26 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, (! [A,B,C]: ((member(A,union(B,C)) | ~ (member(A,C))))), file('SET194+3.p',unknown), []).
 fof(5, axiom, (! [A,B]: ((subset(A,B) | ~ (member(dollar_f1(A,B),B))))), file('SET194+3.p',unknown), []).
-fof(9, axiom, ~ (subset(dollar_c2,union(dollar_c2,dollar_c1))), file('SET194+3.p',unknown), []).
+fof(9, axiom, subset(dollar_c2,union(dollar_c2,dollar_c1)), file('SET194+3.p',unknown), []).
 fof(13, axiom, (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A)))), file('SET194+3.p',unknown), []).
 fof(14, axiom, (! [A,B]: ((union(A,B) = union(B,A)))), file('SET194+3.p',unknown), []).
-fof(18, plain, ~ (subset(dollar_c1,union(dollar_c1,dollar_c2))), inference(para_from,[status(thm),theory(equality)],[14,9]), [iquote('para_from,14.1.1,9.1.2')]).
+fof(18, plain, ~ (subset(dollar_c2,union(dollar_c1,dollar_c2))), inference(para_from,[status(thm),theory(equality)],[14,9]), [iquote('para_from,14.1.1,9.1.2')]).
 fof(23, plain, member(dollar_f1(dollar_c2,union(dollar_c1,dollar_c2)),dollar_c2), inference(hyper,[status(thm)],[13,18]), [iquote('hyper,13,18')]).
 fof(72, plain, (! [A]: (member(dollar_f1(dollar_c2,union(dollar_c1,dollar_c2)),union(A,dollar_c2)))), inference(hyper,[status(thm)],[23,3]), [iquote('hyper,23,3')]).
 fof(101, plain, subset(dollar_c2,union(dollar_c1,dollar_c2)), inference(hyper,[status(thm)],[72,5]), [iquote('hyper,72,5')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '209':
-%%%%%   Replaced (! [A]: (subset(A,A)))
-%%%%%   With (! [A]: (~ (subset(A,A))))
+%%%%% Mutated formula '694':
+%%%%%   Replaced (empty(power_set(cross_product(dollar_c4,dollar_c3))) | member(dollar_c2,power_set(cross_product(dollar_c4,dollar_c3))))
+%%%%%   With (empty(power_set(cross_product(dollar_c4,dollar_c3))) & member(dollar_c2,power_set(cross_product(dollar_c4,dollar_c3))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET656+3 : TPTP v8.1.0. Released v2.2.0.
@@ -47,14 +47,14 @@ fof(65, axiom, (intersection(dollar_c2,cross_product(dollar_c4,dollar_c3)) != do
 fof(191, axiom, (! [A]: ((A = A))), file('SET656+3.p',unknown), []).
 fof(193, axiom, (! [A]: (ilf_type(A,set_type))), file('SET656+3.p',unknown), []).
 fof(194, axiom, ilf_type(dollar_c2,relation_type(dollar_c4,dollar_c3)), file('SET656+3.p',unknown), []).
-fof(209, plain, (! [A]: (~ (subset(A,A)))), inference(hyper,[status(thm)],[193,36]), [iquote('hyper,193,36')]).
+fof(209, plain, (! [A]: (subset(A,A))), inference(hyper,[status(thm)],[193,36]), [iquote('hyper,193,36')]).
 fof(210, plain, (! [A,B]: ((subset(A,B) | member(dollar_f7(A,B),A)))), inference(hyper,[status(thm)],[193,34,193]), [iquote('hyper,193,34,193')]).
 fof(213, plain, (! [A,B]: ((intersection(A,B) = intersection(B,A)))), inference(hyper,[status(thm)],[193,23,193]), [iquote('hyper,193,23,193')]).
 fof(230, plain, ilf_type(dollar_c2,subset_type(cross_product(dollar_c4,dollar_c3))), inference(hyper,[status(thm)],[194,15,193,193]), [iquote('hyper,194,15,193,193')]).
 fof(308, plain, ilf_type(dollar_c2,member_type(power_set(cross_product(dollar_c4,dollar_c3)))), inference(hyper,[status(thm)],[230,27,193,193]), [iquote('hyper,230,27,193,193')]).
 fof(490, plain, (! [A,B]: (((intersection(A,B) = B) | ~ (subset(B,A))))), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[213,1]),193,193])]), [iquote('para_into,213.1.1,1.4.1,unit_del,193,193,flip.1')]).
 fof(491, plain, (intersection(cross_product(dollar_c4,dollar_c3),dollar_c2) != dollar_c2), inference(para_from,[status(thm),theory(equality)],[213,65]), [iquote('para_from,213.1.1,65.1.1')]).
-fof(694, plain, (empty(power_set(cross_product(dollar_c4,dollar_c3))) | member(dollar_c2,power_set(cross_product(dollar_c4,dollar_c3)))), inference(hyper,[status(thm)],[308,43,193,193]), [iquote('hyper,308,43,193,193')]).
+fof(694, plain, (empty(power_set(cross_product(dollar_c4,dollar_c3))) & member(dollar_c2,power_set(cross_product(dollar_c4,dollar_c3)))), inference(hyper,[status(thm)],[308,43,193,193]), [iquote('hyper,308,43,193,193')]).
 fof(740, plain, (! [A,B]: (((A = B) | (~ (subset(B,A)) | ~ (subset(A,B)))))), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[490,1]),193,193]), [iquote('para_into,490.1.1,1.4.1,unit_del,193,193')]).
 fof(741, plain, ~ (subset(dollar_c2,cross_product(dollar_c4,dollar_c3))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[490,491]),191]), [iquote('para_from,490.1.1,491.1.1,unit_del,191')]).
 fof(742, plain, member(dollar_f7(dollar_c2,cross_product(dollar_c4,dollar_c3)),dollar_c2), inference(hyper,[status(thm)],[741,210]), [iquote('hyper,741,210')]).

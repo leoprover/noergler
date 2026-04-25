@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '10':
-%%%%%   Replaced (! [A]: ((addition(A,zero) = A)))
-%%%%%   With (! [A]: (~ ((addition(A,zero) = A))))
+%%%%% Mutated formula '2616':
+%%%%%   Replaced (! [A]: ((domain(antidomain(A)) = antidomain(A))))
+%%%%%   With (! [A]: (~ ((domain(antidomain(A)) = antidomain(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE078+1 : TPTP v8.1.0. Released v4.0.0.
@@ -37,7 +37,7 @@ fof(1, axiom, (! [A,B]: ((~ (le_q(A,B)) | (addition(A,B) = B)))), file('KLE078+1
 fof(2, axiom, (! [A,B]: ((le_q(A,B) | (addition(A,B) != B)))), file('KLE078+1.p',unknown), []).
 fof(3, axiom, (domain(antidomain(dollar_c1)) != antidomain(dollar_c1)), file('KLE078+1.p',unknown), []).
 fof(5, axiom, (! [A,B]: ((addition(A,B) = addition(B,A)))), file('KLE078+1.p',unknown), []).
-fof(10, axiom, (! [A]: (~ ((addition(A,zero) = A)))), file('KLE078+1.p',unknown), []).
+fof(10, axiom, (! [A]: ((addition(A,zero) = A))), file('KLE078+1.p',unknown), []).
 fof(17, axiom, (! [A]: ((multiplication(A,one) = A))), file('KLE078+1.p',unknown), []).
 fof(19, axiom, (! [A]: ((multiplication(one,A) = A))), file('KLE078+1.p',unknown), []).
 fof(20, axiom, (! [A,B,C]: ((multiplication(A,addition(B,C)) = addition(multiplication(A,B),multiplication(A,C))))), file('KLE078+1.p',unknown), []).
@@ -66,5 +66,5 @@ fof(2290, plain, (! [A]: ((multiplication(domain(A),domain(antidomain(A))) = zer
 fof(2296, plain, (! [A]: ((multiplication(domain(A),antidomain(antidomain(A))) = domain(A)))), inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[2290,134]),49]), [iquote('para_from,2290.1.1,134.1.1.1,demod,49')]).
 fof(2456, plain, (! [A]: (le_q(domain(A),antidomain(antidomain(A))))), inference(para_from,[status(thm),theory(equality)],[2296,633]), [iquote('para_from,2296.1.1,633.1.1')]).
 fof(2612, plain, (! [A]: ((multiplication(domain(antidomain(A)),domain(A)) = zero))), inference(hyper,[status(thm)],[1615,2456]), [iquote('hyper,1615,2456')]).
-fof(2616, plain, (! [A]: ((domain(antidomain(A)) = antidomain(A)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[2612,235]),116,10])]), [iquote('para_from,2612.1.1,235.1.1.2,demod,116,10,flip.1')]).
+fof(2616, plain, (! [A]: (~ ((domain(antidomain(A)) = antidomain(A))))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[2612,235]),116,10])]), [iquote('para_from,2612.1.1,235.1.1.2,demod,116,10,flip.1')]).
 fof(2618, plain, $false, inference(binary,[status(thm)],[2616,3]), [iquote('binary,2616.1,3.1')]).

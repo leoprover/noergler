@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '34':
-%%%%%   Replaced (! [A]: (~ (less(A,A))))
-%%%%%   With (! [A]: (less(A,A)))
+%%%%% Mutated formula '1838':
+%%%%%   Replaced (! [A,B,C,D]: ((~ (rdn_translate(A,B)) | (~ (rdn_translate(C,rdn_pos(D))) | less(A,C)))))
+%%%%%   With (! [A,B,C,D]: ((rdn_translate(A,B) | (~ (rdn_translate(C,rdn_pos(D))) | less(A,C)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM304+1 : TPTP v8.1.0. Released v3.1.0.
@@ -35,12 +35,12 @@
 %%% Generated on Tue Apr 14 19:15:58 CEST 2026 using command 'transform(fof)'.
 fof(8, axiom, (! [A,B,C,D]: ((~ (rdn_translate(A,rdn_neg(B))) | (~ (rdn_translate(C,rdn_pos(D))) | less(A,C))))), file('NUM304+1.p',unknown), []).
 fof(10, axiom, (! [A,B]: ((~ (less(A,B)) | ~ (less(B,A))))), file('NUM304+1.p',unknown), []).
-fof(34, plain, (! [A]: (less(A,A))), inference(factor,[status(thm)],[10]), [iquote('factor,10.1.2')]).
+fof(34, plain, (! [A]: (~ (less(A,A)))), inference(factor,[status(thm)],[10]), [iquote('factor,10.1.2')]).
 fof(87, axiom, rdn_translate(n1,rdn_pos(rdnn(n1))), file('NUM304+1.p',unknown), []).
 fof(461, axiom, (! [A]: ((A = n12))), file('NUM304+1.p',unknown), []).
 fof(462, plain, (! [A]: ((n12 = A))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[461])]), [iquote('copy,461,flip.1')]).
 fof(1534, plain, (! [A,B]: ((A = B))), inference(para_into,[status(thm),theory(equality)],[462,462]), [iquote('para_into,462.1.1,462.1.1')]).
 fof(1820, plain, (! [A]: (rdn_translate(A,rdn_pos(rdnn(n1))))), inference(para_from,[status(thm),theory(equality)],[1534,87]), [iquote('para_from,1534.1.1,87.1.1')]).
-fof(1838, plain, (! [A,B,C,D]: ((~ (rdn_translate(A,B)) | (~ (rdn_translate(C,rdn_pos(D))) | less(A,C))))), inference(para_from,[status(thm),theory(equality)],[1534,8]), [iquote('para_from,1534.1.1,8.1.2')]).
+fof(1838, plain, (! [A,B,C,D]: ((rdn_translate(A,B) | (~ (rdn_translate(C,rdn_pos(D))) | less(A,C))))), inference(para_from,[status(thm),theory(equality)],[1534,8]), [iquote('para_from,1534.1.1,8.1.2')]).
 fof(2480, plain, (! [A,B]: (~ (rdn_translate(A,rdn_pos(B))))), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[1838]),34]), [iquote('factor,1838.1.2,unit_del,34')]).
 fof(2481, plain, $false, inference(binary,[status(thm)],[2480,1820]), [iquote('binary,2480.1,1820.1')]).

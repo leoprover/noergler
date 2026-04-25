@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '46':
-%%%%%   Replaced (element(dollar_f1(dollar_c1,dollar_c2),dollar_c2) | element(dollar_f1(dollar_c2,dollar_c1),dollar_c2))
-%%%%%   With (element(dollar_f1(dollar_c1,dollar_c2),dollar_c2) & element(dollar_f1(dollar_c2,dollar_c1),dollar_c2))
+%%%%% Mutated formula '94':
+%%%%%   Replaced set_e_qual(dollar_c1,dollar_c2)
+%%%%%   With set_e_qual(dollar_c2,dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET047+1 : TPTP v8.1.0. Released v2.0.0.
@@ -46,7 +46,7 @@ fof(22, plain, (element(dollar_f1(dollar_c1,dollar_c2),dollar_c2) | (element(dol
 fof(26, plain, (element(dollar_f1(dollar_c1,dollar_c2),dollar_c2) | (element(dollar_f1(dollar_c2,dollar_c1),dollar_c2) | set_e_qual(dollar_c1,dollar_c2))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[11,2,7])]), [iquote('hyper,11,2,7,factor_simp')]).
 fof(30, plain, (element(dollar_f1(dollar_c2,dollar_c1),dollar_c2) | (element(dollar_f1(dollar_c2,dollar_c1),dollar_c1) | set_e_qual(dollar_c1,dollar_c2))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[14,3,11])])]), [iquote('hyper,14,3,11,factor_simp,factor_simp')]).
 fof(41, plain, (element(dollar_f1(dollar_c1,dollar_c2),dollar_c2) | element(dollar_f1(dollar_c2,dollar_c1),dollar_c1)), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[22,1,11])])])]), [iquote('hyper,22,1,11,factor_simp,factor_simp,factor_simp')]).
-fof(46, plain, (element(dollar_f1(dollar_c1,dollar_c2),dollar_c2) & element(dollar_f1(dollar_c2,dollar_c1),dollar_c2)), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[26,1,41])])]), [iquote('hyper,26,1,41,factor_simp,factor_simp')]).
+fof(46, plain, (element(dollar_f1(dollar_c1,dollar_c2),dollar_c2) | element(dollar_f1(dollar_c2,dollar_c1),dollar_c2)), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[26,1,41])])]), [iquote('hyper,26,1,41,factor_simp,factor_simp')]).
 fof(49, plain, (element(dollar_f1(dollar_c1,dollar_c2),dollar_c2) | set_e_qual(dollar_c2,dollar_c1)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[46,3,41])]), [iquote('hyper,46,3,41,factor_simp')]).
 fof(52, plain, (element(dollar_f1(dollar_c2,dollar_c1),dollar_c2) | element(dollar_f1(dollar_c2,dollar_c1),dollar_c1)), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[30,4,6])])]), [iquote('hyper,30,4,6,factor_simp,factor_simp')]).
 fof(53, plain, (element(dollar_f1(dollar_c1,dollar_c2),dollar_c2) | element(dollar_f1(dollar_c1,dollar_c2),dollar_c1)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[49,4,6])]), [iquote('hyper,49,4,6,factor_simp')]).
@@ -57,5 +57,5 @@ fof(78, plain, element(dollar_f1(dollar_c2,dollar_c1),dollar_c2), inference(fact
 fof(79, plain, set_e_qual(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[78,3,62]), [iquote('hyper,78,3,62')]).
 fof(83, plain, element(dollar_f1(dollar_c1,dollar_c2),dollar_c1), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[53,1,79])]), [iquote('hyper,53,1,79,factor_simp')]).
 fof(84, plain, element(dollar_f1(dollar_c1,dollar_c2),dollar_c2), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[53,2,79])]), [iquote('hyper,53,2,79,factor_simp')]).
-fof(94, plain, set_e_qual(dollar_c1,dollar_c2), inference(hyper,[status(thm)],[84,3,83]), [iquote('hyper,84,3,83')]).
+fof(94, plain, set_e_qual(dollar_c2,dollar_c2), inference(hyper,[status(thm)],[84,3,83]), [iquote('hyper,84,3,83')]).
 fof(97, plain, $false, inference(hyper,[status(thm)],[94,4,79]), [iquote('hyper,94,4,79')]).

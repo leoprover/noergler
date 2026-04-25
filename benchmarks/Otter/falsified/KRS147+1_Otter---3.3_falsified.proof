@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '173':
-%%%%%   Replaced rR1(iV8467,iV8470)
-%%%%%   With ~ (rR1(iV8467,iV8470))
+%%%%% Mutated formula '161':
+%%%%%   Replaced (! [A]: (cowlThing(A)))
+%%%%%   With (! [A]: (~ (cowlThing(A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS147+1 : TPTP v8.1.0. Released v3.1.0.
@@ -55,14 +55,14 @@ fof(157, axiom, (~ (cowlThing(dollar_c1)) | (cowlNothing(dollar_c1) | (xsd_strin
 fof(158, plain, (~ (cowlThing(dollar_c1)) | (xsd_string(dollar_c2) | (~ (xsd_integer(dollar_c2)) | (~ (cC10(iV8467)) | (~ (cC48(iV8467)) | (~ (cC4(iV8467)) | (~ (cC82(iV8467)) | (~ (cC14(iV8467)) | (~ (cC8(iV8467)) | (~ (cC20(iV8467)) | (~ (cowlThing(iV8467)) | (~ (cC62(iV8467)) | (~ (cC34(iV8467)) | (~ (cowlThing(iV8471)) | (~ (cC80(iV8471)) | (~ (cC60(iV8472)) | (~ (cowlThing(iV8472)) | ~ (cC58(iV8472))))))))))))))))))), inference(unit_del,[status(thm)],[inference(copy,[status(thm)],[157]),1]), [iquote('copy,157,unit_del,1')]).
 fof(159, axiom, (~ (cowlThing(dollar_c1)) | (cowlNothing(dollar_c1) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (~ (cC10(iV8467)) | (~ (cC48(iV8467)) | (~ (cC4(iV8467)) | (~ (cC82(iV8467)) | (~ (cC14(iV8467)) | (~ (cC8(iV8467)) | (~ (cC20(iV8467)) | (~ (cowlThing(iV8467)) | (~ (cC62(iV8467)) | (~ (cC34(iV8467)) | (~ (cowlThing(iV8471)) | (~ (cC80(iV8471)) | (~ (cC60(iV8472)) | (~ (cowlThing(iV8472)) | ~ (cC58(iV8472)))))))))))))))))))), file('KRS147+1.p',unknown), []).
 fof(160, plain, (~ (cowlThing(dollar_c1)) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (~ (cC10(iV8467)) | (~ (cC48(iV8467)) | (~ (cC4(iV8467)) | (~ (cC82(iV8467)) | (~ (cC14(iV8467)) | (~ (cC8(iV8467)) | (~ (cC20(iV8467)) | (~ (cowlThing(iV8467)) | (~ (cC62(iV8467)) | (~ (cC34(iV8467)) | (~ (cowlThing(iV8471)) | (~ (cC80(iV8471)) | (~ (cC60(iV8472)) | (~ (cowlThing(iV8472)) | ~ (cC58(iV8472))))))))))))))))))), inference(unit_del,[status(thm)],[inference(copy,[status(thm)],[159]),1]), [iquote('copy,159,unit_del,1')]).
-fof(161, axiom, (! [A]: (cowlThing(A))), file('KRS147+1.p',unknown), []).
+fof(161, axiom, (! [A]: (~ (cowlThing(A)))), file('KRS147+1.p',unknown), []).
 fof(162, axiom, (! [A]: ((xsd_string(A) | xsd_integer(A)))), file('KRS147+1.p',unknown), []).
 fof(164, axiom, (! [A]: ((cC80(A) | (cC2(A) | cC78(A))))), file('KRS147+1.p',unknown), []).
 fof(166, axiom, rR1(iV8467,iV8471), file('KRS147+1.p',unknown), []).
 fof(169, axiom, rR1(iV8467,iV8469), file('KRS147+1.p',unknown), []).
 fof(171, axiom, rR1(iV8467,iV8472), file('KRS147+1.p',unknown), []).
 fof(172, axiom, rR1(iV8467,iV8474), file('KRS147+1.p',unknown), []).
-fof(173, axiom, ~ (rR1(iV8467,iV8470)), file('KRS147+1.p',unknown), []).
+fof(173, axiom, rR1(iV8467,iV8470), file('KRS147+1.p',unknown), []).
 fof(174, axiom, cTOP(iV8470), file('KRS147+1.p',unknown), []).
 fof(175, axiom, rR1(iV8472,iV8476), file('KRS147+1.p',unknown), []).
 fof(176, axiom, cC2(iV8476), file('KRS147+1.p',unknown), []).

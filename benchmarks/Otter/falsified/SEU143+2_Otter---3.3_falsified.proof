@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '189':
-%%%%%   Replaced (! [A]: ((empty(A) | proper_subset(dollar_c2,A))))
-%%%%%   With (! [A]: ((~ (empty(A)) | proper_subset(dollar_c2,A))))
+%%%%% Mutated formula '681':
+%%%%%   Replaced in(dollar_c1,dollar_c2)
+%%%%%   With ~ (in(dollar_c1,dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU143+2 : TPTP v8.1.0. Released v3.3.0.
@@ -49,8 +49,8 @@ fof(156, plain, (unordered_pair(dollar_c1,dollar_c1) = empty_set), inference(dem
 fof(161, plain, (! [A,B]: (in(A,unordered_pair(A,B)))), inference(hyper,[status(thm)],[82,11,82]), [iquote('hyper,82,11,82')]).
 fof(164, plain, (! [A]: ((empty(A) | proper_subset(empty_set,A)))), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[94,35]),109]), [iquote('para_into,94.1.1,35.3.1,unit_del,109')]).
 fof(177, plain, (empty_set = dollar_c2), inference(hyper,[status(thm)],[101,61,94]), [iquote('hyper,101,61,94')]).
-fof(189, plain, (! [A]: ((~ (empty(A)) | proper_subset(dollar_c2,A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[164]),177]), [iquote('back_demod,164,demod,177')]).
+fof(189, plain, (! [A]: ((empty(A) | proper_subset(dollar_c2,A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[164]),177]), [iquote('back_demod,164,demod,177')]).
 fof(192, plain, (unordered_pair(dollar_c1,dollar_c1) = dollar_c2), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[156]),177]), [iquote('back_demod,156,demod,177')]).
-fof(681, plain, in(dollar_c1,dollar_c2), inference(para_from,[status(thm),theory(equality)],[192,161]), [iquote('para_from,192.1.1,161.1.2')]).
+fof(681, plain, ~ (in(dollar_c1,dollar_c2)), inference(para_from,[status(thm),theory(equality)],[192,161]), [iquote('para_from,192.1.1,161.1.2')]).
 fof(682, plain, proper_subset(dollar_c2,dollar_c2), inference(hyper,[status(thm)],[681,58,189]), [iquote('hyper,681,58,189')]).
 fof(683, plain, $false, inference(binary,[status(thm)],[682,38]), [iquote('binary,682.1,38.1')]).

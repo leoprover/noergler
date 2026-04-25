@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1758':
-%%%%%   Replaced le_q(n0,n2)
-%%%%%   With ~ (le_q(n0,n2))
+%%%%% Mutated formula '1681':
+%%%%%   Replaced gt(n2,n0)
+%%%%%   With ~ (gt(n2,n0))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV138+1 : TPTP v8.1.0. Bugfixed v3.3.0.
@@ -37,7 +37,7 @@ fof(3, axiom, (! [A,B,C]: ((~ (le_q(A,B)) | (~ (le_q(B,C)) | le_q(A,C))))), file
 fof(8, axiom, (! [A,B]: ((~ (gt(A,B)) | le_q(B,A)))), file('SWV138+1.p',unknown), []).
 fof(240, axiom, ~ (le_q(n0,pv1325)), file('SWV138+1.p',unknown), []).
 fof(1665, axiom, le_q(n2,pv1325), file('SWV138+1.p',unknown), []).
-fof(1681, axiom, gt(n2,n0), file('SWV138+1.p',unknown), []).
-fof(1758, plain, ~ (le_q(n0,n2)), inference(hyper,[status(thm)],[1681,8]), [iquote('hyper,1681,8')]).
+fof(1681, axiom, ~ (gt(n2,n0)), file('SWV138+1.p',unknown), []).
+fof(1758, plain, le_q(n0,n2), inference(hyper,[status(thm)],[1681,8]), [iquote('hyper,1681,8')]).
 fof(1797, plain, le_q(n0,pv1325), inference(hyper,[status(thm)],[1758,3,1665]), [iquote('hyper,1758,3,1665')]).
 fof(1798, plain, $false, inference(binary,[status(thm)],[1797,240]), [iquote('binary,1797.1,240.1')]).

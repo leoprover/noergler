@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1154':
-%%%%%   Replaced s_m(dollar_c1,dollar_c4,dollar_c2)
-%%%%%   With s_m(dollar_c3,dollar_c4,dollar_c2)
+%%%%% Mutated formula '262':
+%%%%%   Replaced (s(dollar_c4,dollar_c3) = dollar_c2)
+%%%%%   With (s(dollar_c3,dollar_c3) = dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO498+1 : TPTP v8.1.0. Released v7.0.0.
@@ -37,9 +37,9 @@ fof(91, axiom, (! [A,B,C]: ((~ (s_m(A,B,C)) | s_m(C,B,A)))), file('GEO498+1.p',u
 fof(95, axiom, (! [A,B,C]: ((~ (s_m(A,B,C)) | (C = s(B,A))))), file('GEO498+1.p',unknown), []).
 fof(96, axiom, (dollar_c3 != dollar_c1), file('GEO498+1.p',unknown), []).
 fof(259, axiom, (! [A,B]: (s_m(A,B,s(B,A)))), file('GEO498+1.p',unknown), []).
-fof(262, axiom, (s(dollar_c4,dollar_c3) = dollar_c2), file('GEO498+1.p',unknown), []).
+fof(262, axiom, (s(dollar_c3,dollar_c3) = dollar_c2), file('GEO498+1.p',unknown), []).
 fof(264, axiom, (s(dollar_c4,dollar_c1) = dollar_c2), file('GEO498+1.p',unknown), []).
-fof(1154, plain, s_m(dollar_c3,dollar_c4,dollar_c2), inference(para_into,[status(thm),theory(equality)],[259,264]), [iquote('para_into,259.1.3,264.1.1')]).
+fof(1154, plain, s_m(dollar_c1,dollar_c4,dollar_c2), inference(para_into,[status(thm),theory(equality)],[259,264]), [iquote('para_into,259.1.3,264.1.1')]).
 fof(1155, plain, s_m(dollar_c3,dollar_c4,dollar_c2), inference(para_into,[status(thm),theory(equality)],[259,262]), [iquote('para_into,259.1.3,262.1.1')]).
 fof(1216, plain, s_m(dollar_c2,dollar_c4,dollar_c1), inference(hyper,[status(thm)],[1154,91]), [iquote('hyper,1154,91')]).
 fof(1403, plain, s_m(dollar_c2,dollar_c4,dollar_c3), inference(hyper,[status(thm)],[1155,91]), [iquote('hyper,1155,91')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '17':
-%%%%%   Replaced (in(ordered_pair(dollar_c6,dollar_c5),cartesian_product2(dollar_c4,dollar_c3)) | in(dollar_c5,dollar_c3))
-%%%%%   With (~ (in(ordered_pair(dollar_c6,dollar_c5),cartesian_product2(dollar_c4,dollar_c3))) | in(dollar_c5,dollar_c3))
+%%%%% Mutated formula '7':
+%%%%%   Replaced (! [A,B,C,D]: ((in(ordered_pair(A,B),cartesian_product2(C,D)) | (~ (in(A,C)) | ~ (in(B,D))))))
+%%%%%   With (! [A,B,C,D]: ((~ (in(ordered_pair(A,B),cartesian_product2(C,D))) | (~ (in(A,C)) | ~ (in(B,D))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU165+1 : TPTP v8.1.0. Released v3.3.0.
@@ -36,9 +36,9 @@
 fof(4, axiom, (~ (in(ordered_pair(dollar_c6,dollar_c5),cartesian_product2(dollar_c4,dollar_c3))) | (~ (in(dollar_c6,dollar_c4)) | ~ (in(dollar_c5,dollar_c3)))), file('SEU165+1.p',unknown), []).
 fof(5, axiom, (! [A,B,C,D]: ((~ (in(ordered_pair(A,B),cartesian_product2(C,D))) | in(A,C)))), file('SEU165+1.p',unknown), []).
 fof(6, axiom, (! [A,B,C,D]: ((~ (in(ordered_pair(A,B),cartesian_product2(C,D))) | in(B,D)))), file('SEU165+1.p',unknown), []).
-fof(7, axiom, (! [A,B,C,D]: ((in(ordered_pair(A,B),cartesian_product2(C,D)) | (~ (in(A,C)) | ~ (in(B,D)))))), file('SEU165+1.p',unknown), []).
+fof(7, axiom, (! [A,B,C,D]: ((~ (in(ordered_pair(A,B),cartesian_product2(C,D))) | (~ (in(A,C)) | ~ (in(B,D)))))), file('SEU165+1.p',unknown), []).
 fof(16, axiom, (in(ordered_pair(dollar_c6,dollar_c5),cartesian_product2(dollar_c4,dollar_c3)) | in(dollar_c6,dollar_c4)), file('SEU165+1.p',unknown), []).
-fof(17, axiom, (~ (in(ordered_pair(dollar_c6,dollar_c5),cartesian_product2(dollar_c4,dollar_c3))) | in(dollar_c5,dollar_c3)), file('SEU165+1.p',unknown), []).
+fof(17, axiom, (in(ordered_pair(dollar_c6,dollar_c5),cartesian_product2(dollar_c4,dollar_c3)) | in(dollar_c5,dollar_c3)), file('SEU165+1.p',unknown), []).
 fof(26, plain, in(dollar_c6,dollar_c4), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[16,5])]), [iquote('hyper,16,5,factor_simp')]).
 fof(29, plain, in(dollar_c5,dollar_c3), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[17,6])]), [iquote('hyper,17,6,factor_simp')]).
 fof(33, plain, in(ordered_pair(dollar_c6,dollar_c5),cartesian_product2(dollar_c4,dollar_c3)), inference(hyper,[status(thm)],[29,7,26]), [iquote('hyper,29,7,26')]).

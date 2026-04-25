@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '22':
-%%%%%   Replaced (! [A]: (((dollar_f3(A) = A) | (dollar_f3(A) = dollar_c2))))
-%%%%%   With (! [A]: (((dollar_f3(A) = A) & (dollar_f3(A) = dollar_c2))))
+%%%%% Mutated formula '24':
+%%%%%   Replaced (dollar_f3(dollar_c2) = dollar_c2)
+%%%%%   With (dollar_f3(dollar_c1) = dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN074+1 : TPTP v8.1.0. Released v2.0.0.
@@ -42,8 +42,8 @@ fof(7, axiom, (! [A,B]: ((~ (big_f(dollar_f3(A),dollar_f2(A,B))) | ((dollar_f2(A
 fof(8, axiom, (! [A]: ((A = A))), file('SYN074+1.p',unknown), []).
 fof(9, plain, (! [A]: ((big_f(dollar_f3(A),dollar_f1(A)) | (dollar_f3(A) = A)))), inference(hyper,[status(thm)],[8,5]), [iquote('hyper,8,5')]).
 fof(10, plain, big_f(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[8,3,8]), [iquote('hyper,8,3,8')]).
-fof(22, plain, (! [A]: (((dollar_f3(A) = A) & (dollar_f3(A) = dollar_c2)))), inference(hyper,[status(thm)],[9,1]), [iquote('hyper,9,1')]).
-fof(24, plain, (dollar_f3(dollar_c2) = dollar_c2), inference(factor,[status(thm)],[22]), [iquote('factor,22.1.2')]).
+fof(22, plain, (! [A]: (((dollar_f3(A) = A) | (dollar_f3(A) = dollar_c2)))), inference(hyper,[status(thm)],[9,1]), [iquote('hyper,9,1')]).
+fof(24, plain, (dollar_f3(dollar_c1) = dollar_c2), inference(factor,[status(thm)],[22]), [iquote('factor,22.1.2')]).
 fof(53, plain, (! [A]: ((big_f(dollar_c2,dollar_f2(dollar_c2,A)) | (dollar_f2(dollar_c2,A) = A)))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[24,6]),24]), [iquote('hyper,23,6,demod,24')]).
 fof(155, plain, (! [A]: (((dollar_f2(dollar_c2,A) = A) | (dollar_f2(dollar_c2,A) = dollar_c1)))), inference(hyper,[status(thm)],[53,2]), [iquote('hyper,53,2')]).
 fof(157, plain, (dollar_f2(dollar_c2,dollar_c1) = dollar_c1), inference(factor,[status(thm)],[155]), [iquote('factor,155.1.2')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '145':
-%%%%%   Replaced iext(uri_rdf_first,dollar_c2,dollar_c1)
-%%%%%   With iext(uri_rdf_type,dollar_c2,dollar_c1)
+%%%%% Mutated formula '146':
+%%%%%   Replaced iext(uri_rdf_rest,dollar_c2,uri_rdf_nil)
+%%%%%   With iext(dollar_c2,dollar_c2,uri_rdf_nil)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWB027+2 : TPTP v8.1.0. Released v5.2.0.
@@ -45,8 +45,8 @@ fof(23, axiom, ~ (iext(uri_rdf_type,uri_ex_p,uri_owl_InverseFunctionalProperty))
 fof(142, axiom, iext(uri_owl_propertyChainAxiom,uri_owl_sameAs,dollar_c3), file('SWB027+2.p',unknown), []).
 fof(143, axiom, iext(uri_rdf_first,dollar_c3,uri_ex_p), file('SWB027+2.p',unknown), []).
 fof(144, axiom, iext(uri_rdf_rest,dollar_c3,dollar_c2), file('SWB027+2.p',unknown), []).
-fof(145, axiom, iext(uri_rdf_type,dollar_c2,dollar_c1), file('SWB027+2.p',unknown), []).
-fof(146, axiom, iext(uri_rdf_rest,dollar_c2,uri_rdf_nil), file('SWB027+2.p',unknown), []).
+fof(145, axiom, iext(uri_rdf_first,dollar_c2,dollar_c1), file('SWB027+2.p',unknown), []).
+fof(146, axiom, iext(dollar_c2,dollar_c2,uri_rdf_nil), file('SWB027+2.p',unknown), []).
 fof(147, axiom, iext(uri_owl_inverseOf,dollar_c1,uri_ex_p), file('SWB027+2.p',unknown), []).
 fof(174, plain, ip(uri_ex_p), inference(hyper,[status(thm)],[146,6,143,144,145,142]), [iquote('hyper,146,6,143,144,145,142')]).
 fof(193, plain, (icext(uri_owl_InverseFunctionalProperty,uri_ex_p) | iext(uri_ex_p,dollar_f5(uri_ex_p),dollar_f4(uri_ex_p))), inference(hyper,[status(thm)],[174,15]), [iquote('hyper,174,15')]).

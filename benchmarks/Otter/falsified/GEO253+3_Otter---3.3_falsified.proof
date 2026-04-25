@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '69':
-%%%%%   Replaced apart_point_and_line(dollar_c3,dollar_c1)
-%%%%%   With ~ (apart_point_and_line(dollar_c3,dollar_c1))
+%%%%% Mutated formula '74':
+%%%%%   Replaced right_apart_point(dollar_c3,dollar_c1)
+%%%%%   With ~ (right_apart_point(dollar_c3,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO253+3 : TPTP v8.1.0. Released v4.0.0.
@@ -36,7 +36,7 @@
 fof(3, axiom, (! [A,B]: ((~ (right_apart_point(A,B)) | left_apart_point(A,reverse_line(B))))), file('GEO253+3.p',unknown), []).
 fof(9, axiom, (! [A,B]: ((~ (apart_point_and_line(A,B)) | (left_apart_point(A,B) | right_apart_point(A,B))))), file('GEO253+3.p',unknown), []).
 fof(40, axiom, (! [A,B]: (~ (left_apart_point(A,B)))), file('GEO253+3.p',unknown), []).
-fof(69, axiom, ~ (apart_point_and_line(dollar_c3,dollar_c1)), file('GEO253+3.p',unknown), []).
-fof(74, plain, right_apart_point(dollar_c3,dollar_c1), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[69,9]),40]), [iquote('hyper,69,9,unit_del,40')]).
+fof(69, axiom, apart_point_and_line(dollar_c3,dollar_c1), file('GEO253+3.p',unknown), []).
+fof(74, plain, ~ (right_apart_point(dollar_c3,dollar_c1)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[69,9]),40]), [iquote('hyper,69,9,unit_del,40')]).
 fof(75, plain, left_apart_point(dollar_c3,reverse_line(dollar_c1)), inference(hyper,[status(thm)],[74,3]), [iquote('hyper,74,3')]).
 fof(76, plain, $false, inference(binary,[status(thm)],[75,40]), [iquote('binary,75.1,40.1')]).

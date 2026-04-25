@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '40':
-%%%%%   Replaced m2_relset_1(dollar_c1,dollar_c4,dollar_c3)
-%%%%%   With ~ (m2_relset_1(dollar_c1,dollar_c4,dollar_c3))
+%%%%% Mutated formula '39':
+%%%%%   Replaced m1_subset_1(dollar_c2,k1_zfmisc_1(dollar_c4))
+%%%%%   With ~ (m1_subset_1(dollar_c2,k1_zfmisc_1(dollar_c4)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU424+1 : TPTP v8.1.0. Released v3.4.0.
@@ -36,6 +36,6 @@
 fof(1, axiom, ~ (v1_xboole_0(dollar_c4)), file('SEU424+1.p',unknown), []).
 fof(2, axiom, ~ (m1_subset_1(a_4_0_relset_2(dollar_c4,dollar_c3,dollar_c2,dollar_c1),k1_zfmisc_1(k1_zfmisc_1(dollar_c3)))), file('SEU424+1.p',unknown), []).
 fof(23, axiom, (! [A,B,C,D]: ((v1_xboole_0(A) | (~ (m1_subset_1(B,k1_zfmisc_1(A))) | (~ (m2_relset_1(C,A,D)) | m1_subset_1(a_4_0_relset_2(A,D,B,C),k1_zfmisc_1(k1_zfmisc_1(D)))))))), file('SEU424+1.p',unknown), []).
-fof(39, axiom, m1_subset_1(dollar_c2,k1_zfmisc_1(dollar_c4)), file('SEU424+1.p',unknown), []).
-fof(40, axiom, ~ (m2_relset_1(dollar_c1,dollar_c4,dollar_c3)), file('SEU424+1.p',unknown), []).
+fof(39, axiom, ~ (m1_subset_1(dollar_c2,k1_zfmisc_1(dollar_c4))), file('SEU424+1.p',unknown), []).
+fof(40, axiom, m2_relset_1(dollar_c1,dollar_c4,dollar_c3), file('SEU424+1.p',unknown), []).
 fof(78, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[40,23,39]),1,2]), [iquote('hyper,40,23,39,unit_del,1,2')]).

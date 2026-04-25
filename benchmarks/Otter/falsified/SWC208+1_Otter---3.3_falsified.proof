@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '445':
-%%%%%   Replaced ssList(dollar_c4)
-%%%%%   With ~ (ssList(dollar_c4))
+%%%%% Mutated formula '903':
+%%%%%   Replaced (nil = dollar_c4)
+%%%%%   With (dollar_c3 = dollar_c4)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC208+1 : TPTP v8.1.0. Released v2.4.0.
@@ -36,14 +36,14 @@
 fof(80, axiom, (! [A,B]: ((~ (ssList(A)) | (~ (ssList(B)) | (ne_q(A,B) | (A = B)))))), file('SWC208+1.p',unknown), []).
 fof(182, axiom, ~ (ne_q(dollar_c6,nil)), file('SWC208+1.p',unknown), []).
 fof(435, axiom, ssList(nil), file('SWC208+1.p',unknown), []).
-fof(445, axiom, ~ (ssList(dollar_c4)), file('SWC208+1.p',unknown), []).
+fof(445, axiom, ssList(dollar_c4), file('SWC208+1.p',unknown), []).
 fof(448, axiom, (dollar_c5 = dollar_c3), file('SWC208+1.p',unknown), []).
 fof(450, axiom, (dollar_c6 = dollar_c4), file('SWC208+1.p',unknown), []).
 fof(451, axiom, ne_q(dollar_c5,nil), file('SWC208+1.p',unknown), []).
 fof(452, plain, ne_q(dollar_c3,nil), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[451]),448]), [iquote('copy,451,demod,448')]).
 fof(453, axiom, ((nil = dollar_c3) | ne_q(dollar_c4,nil)), file('SWC208+1.p',unknown), []).
 fof(457, plain, ~ (ne_q(dollar_c4,nil)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),450]), [iquote('back_demod,182,demod,450')]).
-fof(903, plain, (nil = dollar_c4), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[445,80,435]),457])]), [iquote('hyper,445,80,435,unit_del,457,flip.1')]).
+fof(903, plain, (dollar_c3 = dollar_c4), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[445,80,435]),457])]), [iquote('hyper,445,80,435,unit_del,457,flip.1')]).
 fof(918, plain, ~ (ne_q(dollar_c4,dollar_c4)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[457]),903]), [iquote('back_demod,457,demod,903')]).
 fof(920, plain, (dollar_c4 = dollar_c3), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[453]),903,903]),918]), [iquote('back_demod,453,demod,903,903,unit_del,918')]).
 fof(921, plain, ne_q(dollar_c3,dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[452]),903,920]), [iquote('back_demod,452,demod,903,920')]).

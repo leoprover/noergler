@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '89':
-%%%%%   Replaced in(dollar_c4,set_difference(dollar_c5,dollar_c3))
-%%%%%   With in(dollar_c5,set_difference(dollar_c5,dollar_c3))
+%%%%% Mutated formula '33':
+%%%%%   Replaced in(dollar_c4,subset_complement(dollar_c5,dollar_c3))
+%%%%%   With ~ (in(dollar_c4,subset_complement(dollar_c5,dollar_c3)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU172+1 : TPTP v8.1.0. Released v3.3.0.
@@ -37,8 +37,8 @@ fof(10, axiom, (! [A,B]: ((~ (element(A,powerset(B))) | (subset_complement(B,A) 
 fof(12, axiom, (! [A,B,C,D]: (((A != set_difference(B,C)) | (~ (in(D,A)) | ~ (in(D,C)))))), file('SEU172+1.p',unknown), []).
 fof(21, axiom, (! [A]: ((A = A))), file('SEU172+1.p',unknown), []).
 fof(32, axiom, element(dollar_c3,powerset(dollar_c5)), file('SEU172+1.p',unknown), []).
-fof(33, axiom, in(dollar_c4,subset_complement(dollar_c5,dollar_c3)), file('SEU172+1.p',unknown), []).
+fof(33, axiom, ~ (in(dollar_c4,subset_complement(dollar_c5,dollar_c3))), file('SEU172+1.p',unknown), []).
 fof(34, axiom, in(dollar_c4,dollar_c3), file('SEU172+1.p',unknown), []).
 fof(85, plain, (subset_complement(dollar_c5,dollar_c3) = set_difference(dollar_c5,dollar_c3)), inference(hyper,[status(thm)],[32,10]), [iquote('hyper,32,10')]).
-fof(89, plain, in(dollar_c5,set_difference(dollar_c5,dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[33]),85]), [iquote('back_demod,33,demod,85')]).
+fof(89, plain, in(dollar_c4,set_difference(dollar_c5,dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[33]),85]), [iquote('back_demod,33,demod,85')]).
 fof(319, plain, $false, inference(hyper,[status(thm)],[89,12,21,34]), [iquote('hyper,89,12,21,34')]).

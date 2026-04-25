@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '147':
-%%%%%   Replaced (antidomain(zero) = one)
-%%%%%   With (antidomain(one) = one)
+%%%%% Mutated formula '44':
+%%%%%   Replaced (antidomain(antidomain(zero)) != zero)
+%%%%%   With (antidomain(antidomain(one)) != zero)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE086+1 : TPTP v8.1.0. Released v4.0.0.
@@ -40,8 +40,8 @@ fof(16, axiom, (! [A]: ((multiplication(A,one) = A))), file('KLE086+1.p',unknown
 fof(28, axiom, (! [A]: ((multiplication(antidomain(A),A) = zero))), file('KLE086+1.p',unknown), []).
 fof(32, axiom, (! [A]: ((addition(antidomain(antidomain(A)),antidomain(A)) = one))), file('KLE086+1.p',unknown), []).
 fof(35, axiom, (! [A]: ((domain(A) = antidomain(antidomain(A))))), file('KLE086+1.p',unknown), []).
-fof(44, plain, (antidomain(antidomain(zero)) != zero), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[3]),35]), [iquote('back_demod,3,demod,35')]).
+fof(44, plain, (antidomain(antidomain(one)) != zero), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[3]),35]), [iquote('back_demod,3,demod,35')]).
 fof(66, plain, (antidomain(one) = zero), inference(para_into,[status(thm),theory(equality)],[28,16]), [iquote('para_into,28.1.1,16.1.1')]).
-fof(147, plain, (antidomain(one) = one), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[32,66]),66,10]), [iquote('para_into,32.1.1.1.1,65.1.1,demod,66,10')]).
+fof(147, plain, (antidomain(zero) = one), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[32,66]),66,10]), [iquote('para_into,32.1.1.1.1,65.1.1,demod,66,10')]).
 fof(165, plain, (zero != zero), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[44]),147,66]), [iquote('back_demod,44,demod,147,66')]).
 fof(166, plain, $false, inference(binary,[status(thm)],[165,4]), [iquote('binary,165.1,4.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '18':
-%%%%%   Replaced (! [A,B]: ((~ (ordinal(A)) | (~ (ordinal(B)) | (in(A,B) | ((A = B) | in(B,A)))))))
-%%%%%   With (! [A,B]: ((ordinal(A) | (~ (ordinal(B)) | (in(A,B) | ((A = B) | in(B,A)))))))
+%%%%% Mutated formula '16':
+%%%%%   Replaced (! [A]: ((~ (ordinal(A)) | ordinal_subset(A,A))))
+%%%%%   With (! [A]: ((~ (ordinal(A)) & ordinal_subset(A,A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM394+1 : TPTP v8.1.0. Released v3.2.0.
@@ -37,8 +37,8 @@ fof(1, axiom, (! [A,B]: ((~ (in(A,B)) | ~ (in(B,A))))), file('NUM394+1.p',unknow
 fof(8, axiom, (! [A,B]: ((~ (ordinal(A)) | (~ (ordinal(B)) | (ordinal_subset(A,B) | ordinal_subset(B,A)))))), file('NUM394+1.p',unknown), []).
 fof(13, axiom, (! [A,B]: ((~ (ordinal(A)) | (~ (ordinal(B)) | (~ (ordinal_subset(A,B)) | subset(A,B)))))), file('NUM394+1.p',unknown), []).
 fof(15, axiom, (! [A,B]: ((~ (ordinal(A)) | (~ (ordinal(B)) | ordinal_subset(A,A))))), file('NUM394+1.p',unknown), []).
-fof(16, plain, (! [A]: ((~ (ordinal(A)) | ordinal_subset(A,A)))), inference(factor_simp,[status(thm)],[inference(copy,[status(thm)],[15])]), [iquote('copy,15,factor_simp')]).
-fof(18, axiom, (! [A,B]: ((ordinal(A) | (~ (ordinal(B)) | (in(A,B) | ((A = B) | in(B,A))))))), file('NUM394+1.p',unknown), []).
+fof(16, plain, (! [A]: ((~ (ordinal(A)) & ordinal_subset(A,A)))), inference(factor_simp,[status(thm)],[inference(copy,[status(thm)],[15])]), [iquote('copy,15,factor_simp')]).
+fof(18, axiom, (! [A,B]: ((~ (ordinal(A)) | (~ (ordinal(B)) | (in(A,B) | ((A = B) | in(B,A))))))), file('NUM394+1.p',unknown), []).
 fof(19, axiom, ~ (ordinal_subset(dollar_c13,dollar_c12)), file('NUM394+1.p',unknown), []).
 fof(20, axiom, ~ (in(dollar_c12,dollar_c13)), file('NUM394+1.p',unknown), []).
 fof(21, axiom, (! [A,B]: ((~ (element(A,B)) | (empty(B) | in(A,B))))), file('NUM394+1.p',unknown), []).

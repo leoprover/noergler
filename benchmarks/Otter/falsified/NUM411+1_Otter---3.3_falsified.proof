@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '160':
-%%%%%   Replaced subset(relation_rng(dollar_c15),dollar_c16)
-%%%%%   With ~ (subset(relation_rng(dollar_c15),dollar_c16))
+%%%%% Mutated formula '197':
+%%%%%   Replaced transfinite_se_quence_of(dollar_c15,dollar_c16)
+%%%%%   With ~ (transfinite_se_quence_of(dollar_c15,dollar_c16))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM411+1 : TPTP v8.1.0. Released v3.2.0.
@@ -46,6 +46,6 @@ fof(126, plain, transfinite_se_quence(dollar_c15), inference(hyper,[status(thm)]
 fof(127, plain, function(dollar_c15), inference(hyper,[status(thm)],[85,14]), [iquote('hyper,85,14')]).
 fof(128, plain, relation(dollar_c15), inference(hyper,[status(thm)],[85,13]), [iquote('hyper,85,13')]).
 fof(133, plain, subset(relation_rng(dollar_c15),dollar_c17), inference(hyper,[status(thm)],[128,11,127,126,85]), [iquote('hyper,128,11,127,126,85')]).
-fof(160, plain, ~ (subset(relation_rng(dollar_c15),dollar_c16)), inference(hyper,[status(thm)],[133,24,84]), [iquote('hyper,133,24,84')]).
-fof(197, plain, transfinite_se_quence_of(dollar_c15,dollar_c16), inference(hyper,[status(thm)],[160,12,128,127,126]), [iquote('hyper,160,12,128,127,126')]).
+fof(160, plain, subset(relation_rng(dollar_c15),dollar_c16), inference(hyper,[status(thm)],[133,24,84]), [iquote('hyper,133,24,84')]).
+fof(197, plain, ~ (transfinite_se_quence_of(dollar_c15,dollar_c16)), inference(hyper,[status(thm)],[160,12,128,127,126]), [iquote('hyper,160,12,128,127,126')]).
 fof(198, plain, $false, inference(binary,[status(thm)],[197,28]), [iquote('binary,197.1,28.1')]).

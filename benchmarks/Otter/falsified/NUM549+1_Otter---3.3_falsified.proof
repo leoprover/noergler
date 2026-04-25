@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '136':
-%%%%%   Replaced aElementOf0(sz00,szNzAzT0)
-%%%%%   With ~ (aElementOf0(sz00,szNzAzT0))
+%%%%% Mutated formula '145':
+%%%%%   Replaced aSet0(xQ)
+%%%%%   With aSet0(slcrc0)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM549+1 : TPTP v8.1.0. Released v4.0.0.
@@ -38,9 +38,9 @@ fof(4, axiom, (! [A]: (((A = slcrc0) | (~ (aSet0(A)) | aElementOf0(dollar_f1(A),
 fof(91, axiom, (! [A]: ((~ (aElementOf0(A,szNzAzT0)) | (sbrdtbr0(slbdtrb0(A)) = A)))), file('NUM549+1.p',unknown), []).
 fof(102, axiom, (xk != sz00), file('NUM549+1.p',unknown), []).
 fof(104, axiom, (! [A]: ((~ (aElement0(A)) | ~ (aElementOf0(A,xQ))))), file('NUM549+1.p',unknown), []).
-fof(136, axiom, ~ (aElementOf0(sz00,szNzAzT0)), file('NUM549+1.p',unknown), []).
+fof(136, axiom, aElementOf0(sz00,szNzAzT0), file('NUM549+1.p',unknown), []).
 fof(138, axiom, (slbdtrb0(sz00) = slcrc0), file('NUM549+1.p',unknown), []).
-fof(145, axiom, aSet0(xQ), file('NUM549+1.p',unknown), []).
+fof(145, axiom, aSet0(slcrc0), file('NUM549+1.p',unknown), []).
 fof(147, axiom, (sbrdtbr0(xQ) = xk), file('NUM549+1.p',unknown), []).
 fof(302, plain, (sbrdtbr0(slcrc0) = sz00), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[136,91]),138]), [iquote('hyper,136,91,demod,138')]).
 fof(1285, plain, aElementOf0(dollar_f1(xQ),xQ), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[147,4]),302]),102,145]), [iquote('para_into,147.1.1.1,4.1.1,demod,302,unit_del,102,145')]).

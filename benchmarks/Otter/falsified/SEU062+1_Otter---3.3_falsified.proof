@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '18':
-%%%%%   Replaced ~ (subset(dollar_c10,relation_rng(dollar_c9)))
-%%%%%   With ~ (subset(empty_set,relation_rng(dollar_c9)))
+%%%%% Mutated formula '33':
+%%%%%   Replaced empty(empty_set)
+%%%%%   With ~ (empty(empty_set))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU062+1 : TPTP v8.1.0. Released v3.2.0.
@@ -36,11 +36,11 @@
 fof(6, axiom, (! [A,B]: ((subset(A,B) | ~ (in(dollar_f1(A,B),B))))), file('SEU062+1.p',unknown), []).
 fof(16, axiom, (! [A,B]: ((~ (relation(A)) | (in(B,relation_rng(A)) | (relation_inverse_image(A,singleton(B)) = empty_set))))), file('SEU062+1.p',unknown), []).
 fof(17, axiom, (! [A]: ((~ (in(A,dollar_c10)) | (relation_inverse_image(dollar_c9,singleton(A)) != empty_set)))), file('SEU062+1.p',unknown), []).
-fof(18, axiom, ~ (subset(empty_set,relation_rng(dollar_c9))), file('SEU062+1.p',unknown), []).
+fof(18, axiom, ~ (subset(dollar_c10,relation_rng(dollar_c9))), file('SEU062+1.p',unknown), []).
 fof(27, axiom, (! [A,B]: ((~ (empty(A)) | ((A = B) | ~ (empty(B)))))), file('SEU062+1.p',unknown), []).
 fof(30, axiom, (! [A]: ((A = A))), file('SEU062+1.p',unknown), []).
 fof(31, axiom, (! [A,B]: ((subset(A,B) | in(dollar_f1(A,B),A)))), file('SEU062+1.p',unknown), []).
-fof(33, axiom, empty(empty_set), file('SEU062+1.p',unknown), []).
+fof(33, axiom, ~ (empty(empty_set)), file('SEU062+1.p',unknown), []).
 fof(38, axiom, empty(dollar_c2), file('SEU062+1.p',unknown), []).
 fof(54, axiom, relation(dollar_c9), file('SEU062+1.p',unknown), []).
 fof(62, plain, in(dollar_f1(dollar_c10,relation_rng(dollar_c9)),dollar_c10), inference(hyper,[status(thm)],[31,18]), [iquote('hyper,31,18')]).

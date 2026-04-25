@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '94':
-%%%%%   Replaced (! [A,B]: ((convergent_lines(dollar_c2,A) | (distinct_lines(dollar_c1,B) | distinct_lines(A,B)))))
-%%%%%   With (! [A,B]: ((convergent_lines(dollar_c2,A) & (distinct_lines(dollar_c1,B) | distinct_lines(A,B)))))
+%%%%% Mutated formula '38':
+%%%%%   Replaced ~ (parallel_lines(dollar_c2,dollar_c1))
+%%%%%   With ~ (parallel_lines(dollar_c1,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO217+3 : TPTP v8.1.0. Released v4.0.0.
@@ -44,7 +44,7 @@ fof(21, axiom, (! [A,B]: (~ (unorthogonal_lines(orthogonal_through_point(A,B),A)
 fof(24, axiom, (! [A,B,C]: ((convergent_lines(A,B) | (convergent_lines(A,C) | (~ (convergent_lines(B,C)) | ~ (unorthogonal_lines(B,C))))))), file('GEO217+3.p',unknown), []).
 fof(28, axiom, (! [A,B,C]: ((unorthogonal_lines(A,B) | (unorthogonal_lines(A,C) | ~ (convergent_lines(B,C)))))), file('GEO217+3.p',unknown), []).
 fof(35, axiom, (! [A,B]: ((~ (parallel_lines(A,B)) | ~ (convergent_lines(A,B))))), file('GEO217+3.p',unknown), []).
-fof(38, axiom, ~ (parallel_lines(dollar_c2,dollar_c1)), file('GEO217+3.p',unknown), []).
+fof(38, axiom, ~ (parallel_lines(dollar_c1,dollar_c1)), file('GEO217+3.p',unknown), []).
 fof(39, axiom, (! [A,B]: ((convergent_lines(A,B) | unorthogonal_lines(A,B)))), file('GEO217+3.p',unknown), []).
 fof(42, axiom, (! [A,B]: ((parallel_lines(A,B) | convergent_lines(A,B)))), file('GEO217+3.p',unknown), []).
 fof(45, axiom, parallel_lines(dollar_c3,dollar_c2), file('GEO217+3.p',unknown), []).
@@ -54,7 +54,7 @@ fof(48, plain, (! [A,B,C]: ((unorthogonal_lines(A,orthogonal_through_point(B,C))
 fof(50, plain, (! [A,B,C]: ((convergent_lines(orthogonal_through_point(A,B),C) | convergent_lines(A,C)))), inference(hyper,[status(thm)],[47,6]), [iquote('hyper,47,6')]).
 fof(51, plain, convergent_lines(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[42,38]), [iquote('hyper,42,38')]).
 fof(53, plain, (! [A]: ((distinct_lines(dollar_c1,A) | convergent_lines(dollar_c2,A)))), inference(hyper,[status(thm)],[51,14]), [iquote('hyper,51,14')]).
-fof(94, plain, (! [A,B]: ((convergent_lines(dollar_c2,A) & (distinct_lines(dollar_c1,B) | distinct_lines(A,B))))), inference(hyper,[status(thm)],[53,5]), [iquote('hyper,53,5')]).
+fof(94, plain, (! [A,B]: ((convergent_lines(dollar_c2,A) | (distinct_lines(dollar_c1,B) | distinct_lines(A,B))))), inference(hyper,[status(thm)],[53,5]), [iquote('hyper,53,5')]).
 fof(202, plain, (! [A,B]: (convergent_lines(A,orthogonal_through_point(A,B)))), inference(hyper,[status(thm)],[50,3]), [iquote('hyper,50,3')]).
 fof(204, plain, (! [A]: (convergent_lines(orthogonal_through_point(dollar_c3,A),dollar_c2))), inference(hyper,[status(thm)],[50,35,45]), [iquote('hyper,50,35,45')]).
 fof(273, plain, (! [A,B,C]: ((unorthogonal_lines(A,B) | (unorthogonal_lines(orthogonal_through_point(A,C),B) | unorthogonal_lines(A,A))))), inference(hyper,[status(thm)],[202,20,48]), [iquote('hyper,202,20,48')]).

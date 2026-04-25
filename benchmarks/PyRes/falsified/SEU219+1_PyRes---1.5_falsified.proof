@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c2014':
-%%%%%   Replaced (relation_dom(function_inverse(skolem0001)) = relation_rng(skolem0001))
-%%%%%   With ~ ((relation_dom(function_inverse(skolem0001)) = relation_rng(skolem0001)))
+%%%%% Mutated formula 'c1821':
+%%%%%   Replaced (function_inverse(skolem0001) = relation_inverse(skolem0001))
+%%%%%   With ~ ((function_inverse(skolem0001) = relation_inverse(skolem0001)))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SEU219+1 : TPTP v8.1.2. Released v3.3.0.
@@ -61,9 +61,9 @@ fof(c48, plain, (! [X10]: ((~ (relation(X10)) | (~ (function(X10)) | (~ (one_to_
 fof(c49, plain, (! [X50]: ((~ (relation(X50)) | (~ (function(X50)) | (~ (one_to_one(X50)) | (function_inverse(X50) = relation_inverse(X50))))))), inference(split_conjunct,[status(thm)],[c48])).
 fof(c213, plain, (~ (relation(skolem0001)) | (~ (function(skolem0001)) | (function_inverse(skolem0001) = relation_inverse(skolem0001)))), inference(resolution,[status(thm)],[c49,c13])).
 fof(c1641, plain, (~ (relation(skolem0001)) | (function_inverse(skolem0001) = relation_inverse(skolem0001))), inference(resolution,[status(thm)],[c213,c12])).
-fof(c1821, plain, (function_inverse(skolem0001) = relation_inverse(skolem0001)), inference(resolution,[status(thm)],[c1641,c11])).
+fof(c1821, plain, ~ ((function_inverse(skolem0001) = relation_inverse(skolem0001))), inference(resolution,[status(thm)],[c1641,c11])).
 fof(c1826, plain, (relation_dom(function_inverse(skolem0001)) = relation_dom(relation_inverse(skolem0001))), inference(resolution,[status(thm)],[c1821,c3])).
-fof(c2014, plain, ~ ((relation_dom(function_inverse(skolem0001)) = relation_rng(skolem0001))), inference(resolution,[status(thm)],[c1826,c373])).
+fof(c2014, plain, (relation_dom(function_inverse(skolem0001)) = relation_rng(skolem0001)), inference(resolution,[status(thm)],[c1826,c373])).
 fof(c2019, plain, (relation_rng(skolem0001) = relation_dom(function_inverse(skolem0001))), inference(resolution,[status(thm)],[c2014,symmetry])).
 fof(c14, negated_conjecture, ((relation_rng(skolem0001) != relation_dom(function_inverse(skolem0001))) | (relation_dom(skolem0001) != relation_rng(function_inverse(skolem0001)))), inference(split_conjunct,[status(thm)],[c10])).
 fof(c2, axiom, (! [X32,X31]: (((X32 != X31) | (relation_rng(X32) = relation_rng(X31))))), theory(equality)).

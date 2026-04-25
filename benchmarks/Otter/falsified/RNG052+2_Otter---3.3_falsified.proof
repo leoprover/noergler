@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '53':
-%%%%%   Replaced (! [A,B]: ((~ (aVector0(A)) | (~ (aVector0(B)) | ((aDimensionOf0(A) != aDimensionOf0(B)) | ((aDimensionOf0(B) = sz00) | (aDimensionOf0(sziznziztdt0(A)) = aDimensionOf0(sziznziztdt0(B)))))))))
-%%%%%   With (! [A,B]: ((~ (aVector0(A)) | (~ (aVector0(B)) | ((aDimensionOf0(A) != aDimensionOf0(B)) | ((aDimensionOf0(B) = xD) | (aDimensionOf0(sziznziztdt0(A)) = aDimensionOf0(sziznziztdt0(B)))))))))
+%%%%% Mutated formula '171':
+%%%%%   Replaced (sziznziztdt0(xt) = xq)
+%%%%%   With ~ ((sziznziztdt0(xt) = xq))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : RNG052+2 : TPTP v8.1.0. Released v4.0.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:17:50 CEST 2026 using command 'transform(fof)'.
 fof(7, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | iLess0(A,szszuzczcdt0(A))))), file('RNG052+2.p',unknown), []).
 fof(46, axiom, (! [A]: ((~ (aVector0(A)) | aNaturalNumber0(aDimensionOf0(A))))), file('RNG052+2.p',unknown), []).
-fof(53, axiom, (! [A,B]: ((~ (aVector0(A)) | (~ (aVector0(B)) | ((aDimensionOf0(A) != aDimensionOf0(B)) | ((aDimensionOf0(B) = xD) | (aDimensionOf0(sziznziztdt0(A)) = aDimensionOf0(sziznziztdt0(B))))))))), file('RNG052+2.p',unknown), []).
+fof(53, axiom, (! [A,B]: ((~ (aVector0(A)) | (~ (aVector0(B)) | ((aDimensionOf0(A) != aDimensionOf0(B)) | ((aDimensionOf0(B) = sz00) | (aDimensionOf0(sziznziztdt0(A)) = aDimensionOf0(sziznziztdt0(B))))))))), file('RNG052+2.p',unknown), []).
 fof(59, axiom, (! [A,B]: ((~ (aVector0(A)) | (~ (aVector0(B)) | ((aDimensionOf0(A) != aDimensionOf0(B)) | (~ (iLess0(aDimensionOf0(A),aDimensionOf0(xs))) | sdtlse_qdt0(sdtasdt0(sdtasasdt0(A,B),sdtasasdt0(A,B)),sdtasdt0(sdtasasdt0(A,A),sdtasasdt0(B,B))))))))), file('RNG052+2.p',unknown), []).
 fof(60, axiom, (aDimensionOf0(xs) != sz00), file('RNG052+2.p',unknown), []).
 fof(65, axiom, ~ (sdtlse_qdt0(sdtasdt0(xE,xE),sdtasdt0(xC,xD))), file('RNG052+2.p',unknown), []).
@@ -50,7 +50,7 @@ fof(162, axiom, (xp = sziznziztdt0(xs)), file('RNG052+2.p',unknown), []).
 fof(164, plain, (sziznziztdt0(xs) = xp), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[162])]), [iquote('copy,162,flip.1')]).
 fof(165, axiom, aVector0(xq), file('RNG052+2.p',unknown), []).
 fof(169, axiom, (xq = sziznziztdt0(xt)), file('RNG052+2.p',unknown), []).
-fof(171, plain, (sziznziztdt0(xt) = xq), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[169])]), [iquote('copy,169,flip.1')]).
+fof(171, plain, ~ ((sziznziztdt0(xt) = xq)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[169])]), [iquote('copy,169,flip.1')]).
 fof(181, axiom, (xC = sdtasasdt0(xp,xp)), file('RNG052+2.p',unknown), []).
 fof(183, plain, (sdtasasdt0(xp,xp) = xC), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[181])]), [iquote('copy,181,flip.1')]).
 fof(185, axiom, (xD = sdtasasdt0(xq,xq)), file('RNG052+2.p',unknown), []).

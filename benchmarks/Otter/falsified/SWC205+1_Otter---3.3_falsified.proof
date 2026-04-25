@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '437':
-%%%%%   Replaced ssList(nil)
-%%%%%   With ssList(dollar_c3)
+%%%%% Mutated formula '452':
+%%%%%   Replaced (dollar_c6 = dollar_c4)
+%%%%%   With (dollar_c5 = dollar_c4)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC205+1 : TPTP v8.1.0. Released v2.4.0.
@@ -37,10 +37,10 @@ fof(80, axiom, (! [A,B]: ((~ (ssList(A)) | (~ (ssList(B)) | (ne_q(A,B) | (A = B)
 fof(182, axiom, ~ (ne_q(dollar_c6,nil)), file('SWC205+1.p',unknown), []).
 fof(183, axiom, ((nil = dollar_c3) | (nil != dollar_c4)), file('SWC205+1.p',unknown), []).
 fof(434, axiom, (! [A]: ((A = A))), file('SWC205+1.p',unknown), []).
-fof(437, axiom, ssList(dollar_c3), file('SWC205+1.p',unknown), []).
+fof(437, axiom, ssList(nil), file('SWC205+1.p',unknown), []).
 fof(447, axiom, ssList(dollar_c4), file('SWC205+1.p',unknown), []).
 fof(450, axiom, (dollar_c5 = dollar_c3), file('SWC205+1.p',unknown), []).
-fof(452, axiom, (dollar_c6 = dollar_c4), file('SWC205+1.p',unknown), []).
+fof(452, axiom, (dollar_c5 = dollar_c4), file('SWC205+1.p',unknown), []).
 fof(453, axiom, ne_q(dollar_c5,nil), file('SWC205+1.p',unknown), []).
 fof(454, plain, ne_q(dollar_c3,nil), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[453]),450]), [iquote('copy,453,demod,450')]).
 fof(455, plain, ~ (ne_q(dollar_c4,nil)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),452]), [iquote('back_demod,182,demod,452')]).

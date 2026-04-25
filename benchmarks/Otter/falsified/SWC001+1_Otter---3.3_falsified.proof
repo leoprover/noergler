@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '457':
-%%%%%   Replaced (memberP(dollar_c4,dollar_c3) | memberP(dollar_c5,dollar_c3))
-%%%%%   With (memberP(dollar_c5,dollar_c3) | memberP(dollar_c5,dollar_c3))
+%%%%% Mutated formula '185':
+%%%%%   Replaced (memberP(dollar_c6,dollar_c3) | (memberP(dollar_c7,dollar_c3) | ~ (duplicatefreeP(dollar_c7))))
+%%%%%   With (~ (memberP(dollar_c6,dollar_c3)) | (memberP(dollar_c7,dollar_c3) | ~ (duplicatefreeP(dollar_c7))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC001+1 : TPTP v8.1.0. Released v2.4.0.
@@ -36,13 +36,13 @@
 fof(182, axiom, (! [A]: ((~ (ssItem(A)) | (memberP(dollar_c4,A) | ~ (memberP(dollar_c5,A)))))), file('SWC001+1.p',unknown), []).
 fof(183, axiom, (! [A]: ((~ (ssItem(A)) | (memberP(dollar_c5,A) | ~ (memberP(dollar_c4,A)))))), file('SWC001+1.p',unknown), []).
 fof(184, axiom, (ssItem(dollar_c3) | ~ (duplicatefreeP(dollar_c7))), file('SWC001+1.p',unknown), []).
-fof(185, axiom, (memberP(dollar_c6,dollar_c3) | (memberP(dollar_c7,dollar_c3) | ~ (duplicatefreeP(dollar_c7)))), file('SWC001+1.p',unknown), []).
+fof(185, axiom, (~ (memberP(dollar_c6,dollar_c3)) | (memberP(dollar_c7,dollar_c3) | ~ (duplicatefreeP(dollar_c7)))), file('SWC001+1.p',unknown), []).
 fof(186, axiom, (~ (memberP(dollar_c6,dollar_c3)) | (~ (memberP(dollar_c7,dollar_c3)) | ~ (duplicatefreeP(dollar_c7)))), file('SWC001+1.p',unknown), []).
 fof(452, axiom, (dollar_c6 = dollar_c4), file('SWC001+1.p',unknown), []).
 fof(454, axiom, (dollar_c7 = dollar_c5), file('SWC001+1.p',unknown), []).
 fof(455, axiom, duplicatefreeP(dollar_c5), file('SWC001+1.p',unknown), []).
 fof(456, plain, (~ (memberP(dollar_c4,dollar_c3)) | ~ (memberP(dollar_c5,dollar_c3))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[186]),452,454,454]),455]), [iquote('back_demod,186,demod,452,454,454,unit_del,455')]).
-fof(457, plain, (memberP(dollar_c5,dollar_c3) | memberP(dollar_c5,dollar_c3)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[185]),452,454,454]),455]), [iquote('back_demod,185,demod,452,454,454,unit_del,455')]).
+fof(457, plain, (memberP(dollar_c4,dollar_c3) | memberP(dollar_c5,dollar_c3)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[185]),452,454,454]),455]), [iquote('back_demod,185,demod,452,454,454,unit_del,455')]).
 fof(458, plain, ssItem(dollar_c3), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[184]),454]),455]), [iquote('back_demod,184,demod,454,unit_del,455')]).
 fof(930, plain, memberP(dollar_c5,dollar_c3), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[457,183,458])]), [iquote('hyper,457,183,458,factor_simp')]).
 fof(931, plain, memberP(dollar_c4,dollar_c3), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[457,182,458])]), [iquote('hyper,457,182,458,factor_simp')]).

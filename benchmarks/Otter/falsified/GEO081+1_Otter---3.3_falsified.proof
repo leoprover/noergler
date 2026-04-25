@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '136':
-%%%%%   Replaced incident_c(dollar_f1(dollar_c1,dollar_c3),dollar_c3)
-%%%%%   With incident_c(dollar_f1(dollar_c2,dollar_c3),dollar_c3)
+%%%%% Mutated formula '1361':
+%%%%%   Replaced incident_c(dollar_f1(dollar_c1,dollar_c3),dollar_c2)
+%%%%%   With ~ (incident_c(dollar_f1(dollar_c1,dollar_c3),dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO081+1 : TPTP v8.1.0. Released v2.4.0.
@@ -39,8 +39,8 @@ fof(42, axiom, ~ (part_of(dollar_c3,dollar_c1)), file('GEO081+1.p',unknown), [])
 fof(54, axiom, (! [A,B]: ((part_of(A,B) | incident_c(dollar_f1(B,A),A)))), file('GEO081+1.p',unknown), []).
 fof(59, axiom, part_of(dollar_c3,dollar_c2), file('GEO081+1.p',unknown), []).
 fof(60, axiom, part_of(dollar_c2,dollar_c1), file('GEO081+1.p',unknown), []).
-fof(136, plain, incident_c(dollar_f1(dollar_c2,dollar_c3),dollar_c3), inference(hyper,[status(thm)],[54,42]), [iquote('hyper,54,42')]).
-fof(1361, plain, incident_c(dollar_f1(dollar_c1,dollar_c3),dollar_c2), inference(hyper,[status(thm)],[136,1,59]), [iquote('hyper,136,1,59')]).
+fof(136, plain, incident_c(dollar_f1(dollar_c1,dollar_c3),dollar_c3), inference(hyper,[status(thm)],[54,42]), [iquote('hyper,54,42')]).
+fof(1361, plain, ~ (incident_c(dollar_f1(dollar_c1,dollar_c3),dollar_c2)), inference(hyper,[status(thm)],[136,1,59]), [iquote('hyper,136,1,59')]).
 fof(1367, plain, incident_c(dollar_f1(dollar_c1,dollar_c3),dollar_c1), inference(hyper,[status(thm)],[1361,1,60]), [iquote('hyper,1361,1,60')]).
 fof(1373, plain, part_of(dollar_c3,dollar_c1), inference(hyper,[status(thm)],[1367,2]), [iquote('hyper,1367,2')]).
 fof(1374, plain, $false, inference(binary,[status(thm)],[1373,42]), [iquote('binary,1373.1,42.1')]).

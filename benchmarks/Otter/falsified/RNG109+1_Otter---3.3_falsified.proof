@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '218':
-%%%%%   Replaced aElementOf0(sz00,slsdtgt0(xa))
-%%%%%   With aElementOf0(xa,slsdtgt0(xa))
+%%%%% Mutated formula '1521':
+%%%%%   Replaced (xb = sz00)
+%%%%%   With ~ ((xb = sz00))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : RNG109+1 : TPTP v8.1.0. Released v4.0.0.
@@ -45,7 +45,7 @@ fof(211, axiom, aElement0(xa), file('RNG109+1.p',unknown), []).
 fof(212, axiom, aElement0(xb), file('RNG109+1.p',unknown), []).
 fof(215, axiom, (xI = sdtpldt1(slsdtgt0(xa),slsdtgt0(xb))), file('RNG109+1.p',unknown), []).
 fof(217, plain, (sdtpldt1(slsdtgt0(xa),slsdtgt0(xb)) = xI), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[215])]), [iquote('copy,215,flip.1')]).
-fof(218, axiom, aElementOf0(xa,slsdtgt0(xa)), file('RNG109+1.p',unknown), []).
+fof(218, axiom, aElementOf0(sz00,slsdtgt0(xa)), file('RNG109+1.p',unknown), []).
 fof(219, axiom, aElementOf0(xa,slsdtgt0(xa)), file('RNG109+1.p',unknown), []).
 fof(220, axiom, aElementOf0(sz00,slsdtgt0(xb)), file('RNG109+1.p',unknown), []).
 fof(221, axiom, aElementOf0(xb,slsdtgt0(xb)), file('RNG109+1.p',unknown), []).
@@ -58,5 +58,5 @@ fof(1502, plain, aElementOf0(xa,xI), inference(demod,[status(thm),theory(equalit
 fof(1508, plain, aElementOf0(xb,xI), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[221,37,551,917,208,218,208]),1067,217]), [iquote('hyper,221,37,551,917,208,218,208,demod,1067,217')]).
 fof(1513, plain, (xa = sz00), inference(hyper,[status(thm)],[222,1502]), [iquote('hyper,222,1502')]).
 fof(1518, plain, (xb != sz00), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[95]),1513]),208]), [iquote('back_demod,95,demod,1513,unit_del,208')]).
-fof(1521, plain, (xb = sz00), inference(hyper,[status(thm)],[1508,222]), [iquote('hyper,1508,222')]).
+fof(1521, plain, ~ ((xb = sz00)), inference(hyper,[status(thm)],[1508,222]), [iquote('hyper,1508,222')]).
 fof(1523, plain, $false, inference(binary,[status(thm)],[1521,1518]), [iquote('binary,1521.1,1518.1')]).

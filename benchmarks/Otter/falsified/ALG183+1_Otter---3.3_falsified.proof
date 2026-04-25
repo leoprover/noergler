@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '218':
-%%%%%   Replaced (op2(h(e11),h(e10)) = h(e10))
-%%%%%   With (op2(h(e21),h(e10)) = h(e10))
+%%%%% Mutated formula '147':
+%%%%%   Replaced (op2(e20,e22) = e24)
+%%%%%   With ~ ((op2(e20,e22) = e24))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG183+1 : TPTP v8.1.0. Released v2.7.0.
@@ -60,7 +60,7 @@ fof(137, axiom, (op1(e14,e12) = e11), file('ALG183+1.p',unknown), []).
 fof(141, axiom, (op1(e14,e14) = e10), file('ALG183+1.p',unknown), []).
 fof(143, axiom, (op2(e20,e20) = e20), file('ALG183+1.p',unknown), []).
 fof(145, axiom, (op2(e20,e21) = e23), file('ALG183+1.p',unknown), []).
-fof(147, axiom, (op2(e20,e22) = e24), file('ALG183+1.p',unknown), []).
+fof(147, axiom, ~ ((op2(e20,e22) = e24)), file('ALG183+1.p',unknown), []).
 fof(151, axiom, (op2(e20,e24) = e22), file('ALG183+1.p',unknown), []).
 fof(179, axiom, (op2(e23,e23) = e23), file('ALG183+1.p',unknown), []).
 fof(192, axiom, ((h(e10) = e20) | ((h(e10) = e21) | ((h(e10) = e22) | ((h(e10) = e23) | (h(e10) = e24))))), file('ALG183+1.p',unknown), []).
@@ -74,7 +74,7 @@ fof(212, plain, (op2(h(e10),h(e13)) = h(e11)), inference(flip,[status(thm),theor
 fof(214, axiom, (h(op1(e10,e14)) = op2(h(e10),h(e14))), file('ALG183+1.p',unknown), []).
 fof(216, plain, (h(e13) = op2(h(e10),op2(h(e10),h(e10)))), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[214]),101,204]), [iquote('copy,214,demod,101,204')]).
 fof(217, axiom, (h(op1(e11,e10)) = op2(h(e11),h(e10))), file('ALG183+1.p',unknown), []).
-fof(218, plain, (op2(h(e21),h(e10)) = h(e10)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[217]),103])]), [iquote('copy,217,demod,103,flip.1')]).
+fof(218, plain, (op2(h(e11),h(e10)) = h(e10)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[217]),103])]), [iquote('copy,217,demod,103,flip.1')]).
 fof(259, axiom, (h(op1(e13,e14)) = op2(h(e13),h(e14))), file('ALG183+1.p',unknown), []).
 fof(261, plain, (h(e11) = op2(op2(h(e10),op2(h(e10),h(e10))),op2(h(e10),h(e10)))), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[259]),131,216,204]), [iquote('copy,259,demod,131,216,204')]).
 fof(262, axiom, (h(op1(e14,e10)) = op2(h(e14),h(e10))), file('ALG183+1.p',unknown), []).

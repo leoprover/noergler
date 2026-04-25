@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '24':
-%%%%%   Replaced (! [A]: (~ (borderson(A,c_georegion_l4_x29_y75))))
-%%%%%   With (! [A]: (~ (borderson(A,c_tptpgeo_member7_mt))))
+%%%%% Mutated formula '27':
+%%%%%   Replaced borderson(c_georegion_l4_x29_y75,c_georegion_l4_x29_y76)
+%%%%%   With ~ (borderson(c_georegion_l4_x29_y75,c_georegion_l4_x29_y76))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR067+1 : TPTP v8.1.0. Released v3.4.0.
@@ -35,8 +35,8 @@
 %%% Generated on Tue Apr 14 19:11:18 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (~ (mtvisible(c_tptpgeo_member7_mt)) | borderson(c_georegion_l4_x29_y75,c_georegion_l4_x29_y76)), file('CSR067+1.p',unknown), []).
 fof(22, axiom, (! [A,B]: ((~ (borderson(A,B)) | borderson(B,A)))), file('CSR067+1.p',unknown), []).
-fof(24, axiom, (! [A]: (~ (borderson(A,c_tptpgeo_member7_mt)))), file('CSR067+1.p',unknown), []).
+fof(24, axiom, (! [A]: (~ (borderson(A,c_georegion_l4_x29_y75)))), file('CSR067+1.p',unknown), []).
 fof(26, axiom, mtvisible(c_tptpgeo_member7_mt), file('CSR067+1.p',unknown), []).
-fof(27, plain, borderson(c_georegion_l4_x29_y75,c_georegion_l4_x29_y76), inference(hyper,[status(thm)],[26,1]), [iquote('hyper,26,1')]).
+fof(27, plain, ~ (borderson(c_georegion_l4_x29_y75,c_georegion_l4_x29_y76)), inference(hyper,[status(thm)],[26,1]), [iquote('hyper,26,1')]).
 fof(28, plain, borderson(c_georegion_l4_x29_y76,c_georegion_l4_x29_y75), inference(hyper,[status(thm)],[27,22]), [iquote('hyper,27,22')]).
 fof(29, plain, $false, inference(binary,[status(thm)],[28,24]), [iquote('binary,28.1,24.1')]).

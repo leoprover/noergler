@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '656':
-%%%%%   Replaced (! [A]: (in(dollar_c6,set_union2(relation_dom(dollar_c4),A))))
-%%%%%   With (! [A]: (~ (in(dollar_c6,set_union2(relation_dom(dollar_c4),A)))))
+%%%%% Mutated formula '753':
+%%%%%   Replaced in(dollar_c5,relation_field(dollar_c4))
+%%%%%   With ~ (in(dollar_c5,relation_field(dollar_c4)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU180+1 : TPTP v8.1.0. Released v3.3.0.
@@ -46,7 +46,7 @@ fof(53, axiom, in(ordered_pair(dollar_c6,dollar_c5),dollar_c4), file('SEU180+1.p
 fof(184, plain, in(dollar_c5,relation_rng(dollar_c4)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[53,12,52,46]),46]), [iquote('hyper,53,12,52,45,demod,46')]).
 fof(185, plain, in(dollar_c6,relation_dom(dollar_c4)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[53,8,52,46]),46]), [iquote('hyper,53,8,52,45,demod,46')]).
 fof(648, plain, (! [A]: (in(dollar_c5,set_union2(A,relation_rng(dollar_c4))))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[184,4,46]),46]), [iquote('hyper,184,4,45,demod,46')]).
-fof(656, plain, (! [A]: (~ (in(dollar_c6,set_union2(relation_dom(dollar_c4),A))))), inference(hyper,[status(thm)],[185,4,38]), [iquote('hyper,185,4,38')]).
-fof(753, plain, in(dollar_c5,relation_field(dollar_c4)), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[648,16]),52]), [iquote('para_into,648.1.2,16.2.1,unit_del,52')]).
+fof(656, plain, (! [A]: (in(dollar_c6,set_union2(relation_dom(dollar_c4),A)))), inference(hyper,[status(thm)],[185,4,38]), [iquote('hyper,185,4,38')]).
+fof(753, plain, ~ (in(dollar_c5,relation_field(dollar_c4))), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[648,16]),52]), [iquote('para_into,648.1.2,16.2.1,unit_del,52')]).
 fof(776, plain, in(dollar_c6,relation_field(dollar_c4)), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[656,16]),52]), [iquote('para_into,656.1.2,16.2.1,unit_del,52')]).
 fof(777, plain, $false, inference(hyper,[status(thm)],[776,26,753]), [iquote('hyper,776,26,753')]).

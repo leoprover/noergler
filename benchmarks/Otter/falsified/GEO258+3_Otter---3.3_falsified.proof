@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '29':
-%%%%%   Replaced (! [A,B,C,D]: ((~ (between_on_line(A,B,C,D)) | (before_on_line(A,C,D) | before_on_line(A,C,B)))))
-%%%%%   With (! [A,B,C,D]: ((between_on_line(A,B,C,D) | (before_on_line(A,C,D) | before_on_line(A,C,B)))))
+%%%%% Mutated formula '55':
+%%%%%   Replaced ~ (between_on_line(dollar_c4,dollar_c1,dollar_c2,dollar_c3))
+%%%%%   With between_on_line(dollar_c4,dollar_c1,dollar_c2,dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO258+3 : TPTP v8.1.0. Released v4.0.0.
@@ -36,10 +36,10 @@
 fof(26, axiom, (! [A,B,C,D]: ((~ (between_on_line(A,B,C,D)) | (before_on_line(A,B,C) | before_on_line(A,D,C))))), file('GEO258+3.p',unknown), []).
 fof(27, axiom, (! [A,B,C,D]: ((~ (between_on_line(A,B,C,D)) | (before_on_line(A,B,C) | before_on_line(A,C,B))))), file('GEO258+3.p',unknown), []).
 fof(28, axiom, (! [A,B,C,D]: ((~ (between_on_line(A,B,C,D)) | (before_on_line(A,C,D) | before_on_line(A,D,C))))), file('GEO258+3.p',unknown), []).
-fof(29, axiom, (! [A,B,C,D]: ((between_on_line(A,B,C,D) | (before_on_line(A,C,D) | before_on_line(A,C,B))))), file('GEO258+3.p',unknown), []).
+fof(29, axiom, (! [A,B,C,D]: ((~ (between_on_line(A,B,C,D)) | (before_on_line(A,C,D) | before_on_line(A,C,B))))), file('GEO258+3.p',unknown), []).
 fof(30, axiom, (! [A,B,C,D]: ((between_on_line(A,B,C,D) | (~ (before_on_line(A,B,C)) | ~ (before_on_line(A,C,D)))))), file('GEO258+3.p',unknown), []).
 fof(31, axiom, (! [A,B,C,D]: ((between_on_line(A,B,C,D) | (~ (before_on_line(A,D,C)) | ~ (before_on_line(A,C,B)))))), file('GEO258+3.p',unknown), []).
-fof(55, axiom, ~ (between_on_line(dollar_c4,dollar_c1,dollar_c2,dollar_c3)), file('GEO258+3.p',unknown), []).
+fof(55, axiom, between_on_line(dollar_c4,dollar_c1,dollar_c2,dollar_c3), file('GEO258+3.p',unknown), []).
 fof(69, axiom, between_on_line(dollar_c4,dollar_c3,dollar_c2,dollar_c1), file('GEO258+3.p',unknown), []).
 fof(73, plain, (before_on_line(dollar_c4,dollar_c2,dollar_c1) | before_on_line(dollar_c4,dollar_c2,dollar_c3)), inference(hyper,[status(thm)],[69,29]), [iquote('hyper,69,29')]).
 fof(74, plain, (before_on_line(dollar_c4,dollar_c2,dollar_c1) | before_on_line(dollar_c4,dollar_c1,dollar_c2)), inference(hyper,[status(thm)],[69,28]), [iquote('hyper,69,28')]).

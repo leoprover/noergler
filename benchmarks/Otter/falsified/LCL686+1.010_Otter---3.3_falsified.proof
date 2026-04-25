@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '390':
-%%%%%   Replaced p2(dollar_f30(dollar_c3))
-%%%%%   With ~ (p2(dollar_f30(dollar_c3)))
+%%%%% Mutated formula '153':
+%%%%%   Replaced (p1(dollar_f30(dollar_c3)) | p2(dollar_f30(dollar_c3)))
+%%%%%   With (p1(dollar_f30(dollar_c3)) & p2(dollar_f30(dollar_c3)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LCL686+1.010 : TPTP v8.1.0. Released v4.0.0.
@@ -39,8 +39,8 @@ fof(88, axiom, (! [A]: ((~ (r1(dollar_c3,A)) | r1(A,dollar_f30(A))))), file('LCL
 fof(143, axiom, (! [A]: ((~ (r1(dollar_c3,A)) | (p1(dollar_f30(A)) | p2(dollar_f30(A)))))), file('LCL686+1.010.p',unknown), []).
 fof(144, axiom, (! [A]: ((~ (r1(dollar_c3,A)) | (~ (p2(dollar_f30(A))) | ~ (p1(dollar_f30(A))))))), file('LCL686+1.010.p',unknown), []).
 fof(147, axiom, (! [A]: (r1(A,A))), file('LCL686+1.010.p',unknown), []).
-fof(153, plain, (p1(dollar_f30(dollar_c3)) | p2(dollar_f30(dollar_c3))), inference(hyper,[status(thm)],[147,143]), [iquote('hyper,147,143')]).
+fof(153, plain, (p1(dollar_f30(dollar_c3)) & p2(dollar_f30(dollar_c3))), inference(hyper,[status(thm)],[147,143]), [iquote('hyper,147,143')]).
 fof(181, plain, r1(dollar_c3,dollar_f30(dollar_c3)), inference(hyper,[status(thm)],[147,88]), [iquote('hyper,147,88')]).
 fof(389, plain, p1(dollar_f30(dollar_c3)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[153,84,181,147])]), [iquote('hyper,153,84,181,147,factor_simp')]).
-fof(390, plain, ~ (p2(dollar_f30(dollar_c3))), inference(hyper,[status(thm)],[389,85,181,147]), [iquote('hyper,389,85,181,147')]).
+fof(390, plain, p2(dollar_f30(dollar_c3)), inference(hyper,[status(thm)],[389,85,181,147]), [iquote('hyper,389,85,181,147')]).
 fof(391, plain, $false, inference(hyper,[status(thm)],[390,144,147,389]), [iquote('hyper,390,144,147,389')]).

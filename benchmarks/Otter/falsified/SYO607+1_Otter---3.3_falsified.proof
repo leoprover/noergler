@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '44':
-%%%%%   Replaced (g_both(a,dollar_f1(a)) | g_false(dollar_f1(a),dollar_f1(dollar_f1(a))))
-%%%%%   With (g_both(dollar_c3,dollar_f1(a)) | g_false(dollar_f1(a),dollar_f1(dollar_f1(a))))
+%%%%% Mutated formula '39':
+%%%%%   Replaced (! [A]: ((g_both(A,dollar_f1(A)) | g_false_only(A,dollar_f1(A)))))
+%%%%%   With (! [A]: ((g_both(A,dollar_f1(A)) & g_false_only(A,dollar_f1(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYO607+1 : TPTP v8.1.0. Released v7.0.0.
@@ -46,11 +46,11 @@ fof(20, plain, (! [A,B,C]: ((~ (g_both(a,A)) | (g_true_only(a,A) | (g_true_only(
 fof(23, plain, (! [A,B,C,D]: ((~ (g_both(A,B)) | (g_false_only(A,dollar_f2(A)) | (g_true_only(a,A) | (g_true_only(A,C) | (g_false_only(a,dollar_c2) | (g_false_only(A,dollar_f3(A)) | g_true_only(dollar_c3,D))))))))), inference(factor,[status(thm)],[5]), [iquote('factor,5.1.6')]).
 fof(26, plain, (! [A,B,C,D]: ((~ (g_both(A,B)) | (g_false_only(A,dollar_f2(A)) | (g_true_only(a,A) | (g_true_only(A,C) | (g_false_only(dollar_c2,dollar_c1) | (g_false_only(A,dollar_f3(A)) | g_true_only(dollar_c3,D))))))))), inference(factor,[status(thm)],[6]), [iquote('factor,6.1.6')]).
 fof(37, axiom, (! [A,B]: ((g_true_only(A,B) | (g_both(A,B) | g_false_only(A,B))))), file('SYO607+1.p',unknown), []).
-fof(39, plain, (! [A]: ((g_both(A,dollar_f1(A)) | g_false_only(A,dollar_f1(A))))), inference(hyper,[status(thm)],[37,2]), [iquote('hyper,37,2')]).
+fof(39, plain, (! [A]: ((g_both(A,dollar_f1(A)) & g_false_only(A,dollar_f1(A))))), inference(hyper,[status(thm)],[37,2]), [iquote('hyper,37,2')]).
 fof(41, plain, (g_both(dollar_f1(a),dollar_f1(dollar_f1(a))) | g_both(a,dollar_f1(a))), inference(hyper,[status(thm)],[39,1,39]), [iquote('hyper,39,1,39')]).
 fof(42, plain, (! [A,B]: ((g_both(a,dollar_f1(a)) | (g_false_only(dollar_f1(a),dollar_f2(dollar_f1(a))) | (g_true_only(dollar_f1(a),A) | (g_false_only(dollar_c2,dollar_c1) | (g_false_only(dollar_f1(a),dollar_f3(dollar_f1(a))) | g_true_only(dollar_c3,B)))))))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[41,26]),2]), [iquote('hyper,41,26,unit_del,2')]).
 fof(43, plain, (! [A,B]: ((g_both(a,dollar_f1(a)) | (g_false_only(dollar_f1(a),dollar_f2(dollar_f1(a))) | (g_true_only(dollar_f1(a),A) | (g_false_only(a,dollar_c2) | (g_false_only(dollar_f1(a),dollar_f3(dollar_f1(a))) | g_true_only(dollar_c3,B)))))))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[41,23]),2]), [iquote('hyper,41,23,unit_del,2')]).
-fof(44, plain, (g_both(dollar_c3,dollar_f1(a)) | g_false(dollar_f1(a),dollar_f1(dollar_f1(a)))), inference(hyper,[status(thm)],[41,11]), [iquote('hyper,41,11')]).
+fof(44, plain, (g_both(a,dollar_f1(a)) | g_false(dollar_f1(a),dollar_f1(dollar_f1(a)))), inference(hyper,[status(thm)],[41,11]), [iquote('hyper,41,11')]).
 fof(53, plain, (! [A]: ((g_both(a,dollar_f1(a)) | (g_false_only(dollar_f1(a),dollar_f2(dollar_f1(a))) | (g_false_only(dollar_c2,dollar_c1) | (g_false_only(dollar_f1(a),dollar_f3(dollar_f1(a))) | g_true_only(dollar_c3,A))))))), inference(hyper,[status(thm)],[42,2]), [iquote('hyper,42,2')]).
 fof(57, plain, (! [A]: ((g_both(a,dollar_f1(a)) | (g_false_only(dollar_f1(a),dollar_f2(dollar_f1(a))) | (g_false_only(a,dollar_c2) | (g_false_only(dollar_f1(a),dollar_f3(dollar_f1(a))) | g_true_only(dollar_c3,A))))))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[43,8,44])]), [iquote('hyper,43,8,44,factor_simp')]).
 fof(94, plain, (g_both(a,dollar_f1(a)) | (g_false_only(dollar_f1(a),dollar_f2(dollar_f1(a))) | (g_false_only(dollar_c2,dollar_c1) | g_false_only(dollar_f1(a),dollar_f3(dollar_f1(a)))))), inference(hyper,[status(thm)],[53,2]), [iquote('hyper,53,2')]).

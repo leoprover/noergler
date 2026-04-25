@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '88':
-%%%%%   Replaced subset(intersection(dollar_c1,dollar_c2),dollar_c2)
-%%%%%   With subset(intersection(dollar_c2,dollar_c2),dollar_c2)
+%%%%% Mutated formula '13':
+%%%%%   Replaced (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A))))
+%%%%%   With (! [A,B]: ((~ (subset(A,B)) | member(dollar_f1(A,B),A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET196+3 : TPTP v8.1.0. Released v2.2.0.
@@ -36,10 +36,10 @@
 fof(2, axiom, (! [A,B,C]: ((~ (member(A,intersection(B,C))) | member(A,C)))), file('SET196+3.p',unknown), []).
 fof(5, axiom, (! [A,B]: ((subset(A,B) | ~ (member(dollar_f1(A,B),B))))), file('SET196+3.p',unknown), []).
 fof(9, axiom, ~ (subset(intersection(dollar_c2,dollar_c1),dollar_c2)), file('SET196+3.p',unknown), []).
-fof(13, axiom, (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A)))), file('SET196+3.p',unknown), []).
+fof(13, axiom, (! [A,B]: ((~ (subset(A,B)) | member(dollar_f1(A,B),A)))), file('SET196+3.p',unknown), []).
 fof(14, axiom, (! [A,B]: ((intersection(A,B) = intersection(B,A)))), file('SET196+3.p',unknown), []).
 fof(18, plain, ~ (subset(intersection(dollar_c1,dollar_c2),dollar_c2)), inference(para_from,[status(thm),theory(equality)],[14,9]), [iquote('para_from,14.1.1,9.1.1')]).
 fof(23, plain, member(dollar_f1(intersection(dollar_c1,dollar_c2),dollar_c2),intersection(dollar_c1,dollar_c2)), inference(hyper,[status(thm)],[13,18]), [iquote('hyper,13,18')]).
 fof(68, plain, member(dollar_f1(intersection(dollar_c1,dollar_c2),dollar_c2),dollar_c2), inference(hyper,[status(thm)],[23,2]), [iquote('hyper,23,2')]).
-fof(88, plain, subset(intersection(dollar_c2,dollar_c2),dollar_c2), inference(hyper,[status(thm)],[68,5]), [iquote('hyper,68,5')]).
+fof(88, plain, subset(intersection(dollar_c1,dollar_c2),dollar_c2), inference(hyper,[status(thm)],[68,5]), [iquote('hyper,68,5')]).
 fof(89, plain, $false, inference(binary,[status(thm)],[88,18]), [iquote('binary,88.1,18.1')]).

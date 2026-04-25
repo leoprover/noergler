@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3':
-%%%%%   Replaced (multiplication(antidomain(dollar_c1),dollar_c1) != zero)
-%%%%%   With (multiplication(antidomain(zero),dollar_c1) != zero)
+%%%%% Mutated formula '27':
+%%%%%   Replaced (! [A]: ((multiplication(zero,A) = zero)))
+%%%%%   With (! [A]: ((multiplication(dollar_c1,A) = zero)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE081+1 : TPTP v8.1.0. Released v4.0.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:14:17 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B]: ((~ (le_q(A,B)) | (addition(A,B) = B)))), file('KLE081+1.p',unknown), []).
 fof(2, axiom, (! [A,B]: ((le_q(A,B) | (addition(A,B) != B)))), file('KLE081+1.p',unknown), []).
-fof(3, axiom, (multiplication(antidomain(zero),dollar_c1) != zero), file('KLE081+1.p',unknown), []).
+fof(3, axiom, (multiplication(antidomain(dollar_c1),dollar_c1) != zero), file('KLE081+1.p',unknown), []).
 fof(4, axiom, (! [A]: ((A = A))), file('KLE081+1.p',unknown), []).
 fof(5, axiom, (! [A,B]: ((addition(A,B) = addition(B,A)))), file('KLE081+1.p',unknown), []).
 fof(10, axiom, (! [A]: ((addition(A,zero) = A))), file('KLE081+1.p',unknown), []).
@@ -43,7 +43,7 @@ fof(17, axiom, (! [A]: ((multiplication(A,one) = A))), file('KLE081+1.p',unknown
 fof(19, axiom, (! [A]: ((multiplication(one,A) = A))), file('KLE081+1.p',unknown), []).
 fof(20, axiom, (! [A,B,C]: ((multiplication(A,addition(B,C)) = addition(multiplication(A,B),multiplication(A,C))))), file('KLE081+1.p',unknown), []).
 fof(22, axiom, (! [A,B,C]: ((multiplication(addition(A,B),C) = addition(multiplication(A,C),multiplication(B,C))))), file('KLE081+1.p',unknown), []).
-fof(27, axiom, (! [A]: ((multiplication(zero,A) = zero))), file('KLE081+1.p',unknown), []).
+fof(27, axiom, (! [A]: ((multiplication(dollar_c1,A) = zero))), file('KLE081+1.p',unknown), []).
 fof(28, axiom, (! [A]: ((addition(A,multiplication(domain(A),A)) = multiplication(domain(A),A)))), file('KLE081+1.p',unknown), []).
 fof(30, axiom, (! [A,B]: ((domain(multiplication(A,B)) = domain(multiplication(A,domain(B)))))), file('KLE081+1.p',unknown), []).
 fof(31, plain, (! [A,B]: ((domain(multiplication(A,domain(B))) = domain(multiplication(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[30])]), [iquote('copy,30,flip.1')]).

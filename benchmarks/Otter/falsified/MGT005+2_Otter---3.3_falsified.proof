@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '19':
-%%%%%   Replaced (dollar_c8 != dollar_c7)
-%%%%%   With ~ ((dollar_c8 != dollar_c7))
+%%%%% Mutated formula '11':
+%%%%%   Replaced (! [E,J,F,A,I,G,L,B,C,H,K,D]: ((~ (organization(A,B)) | (~ (organization(C,B)) | (~ (organization(A,D)) | (~ (organization(C,D)) | (~ (class(A,E,B)) | (~ (class(C,E,B)) | (~ (survival_chance(A,F,B)) | (~ (survival_chance(C,F,B)) | (~ (reorganization(A,B,D)) | (~ (reorganization(C,B,G)) | (~ (reorganization_type(A,H,B)) | (~ (reorganization_type(C,H,B)) | (~ (survival_chance(A,I,D)) | (~ (survival_chance(C,J,D)) | (~ (complexity(A,K,B)) | (~ (complexity(C,L,B)) | (~ (greater(L,K)) | (greater(I,J) | (I = J)))))))))))))))))))))
+%%%%%   With (! [E,J,F,A,I,G,L,B,C,H,K,D]: ((organization(A,B) | (~ (organization(C,B)) | (~ (organization(A,D)) | (~ (organization(C,D)) | (~ (class(A,E,B)) | (~ (class(C,E,B)) | (~ (survival_chance(A,F,B)) | (~ (survival_chance(C,F,B)) | (~ (reorganization(A,B,D)) | (~ (reorganization(C,B,G)) | (~ (reorganization_type(A,H,B)) | (~ (reorganization_type(C,H,B)) | (~ (survival_chance(A,I,D)) | (~ (survival_chance(C,J,D)) | (~ (complexity(A,K,B)) | (~ (complexity(C,L,B)) | (~ (greater(L,K)) | (greater(I,J) | (I = J)))))))))))))))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT005+2 : TPTP v8.1.0. Bugfixed v3.2.0.
@@ -36,9 +36,9 @@
 fof(6, axiom, (! [A,B,C,D]: ((~ (organization(A,B)) | (~ (organization(A,C)) | (~ (greater(D,B)) | (~ (greater(C,D)) | organization(A,D))))))), file('MGT005+2.p',unknown), []).
 fof(7, axiom, (! [A,B,C]: ((~ (reorganization(A,B,C)) | greater(C,B)))), file('MGT005+2.p',unknown), []).
 fof(10, axiom, (! [E,F,A,I,G,B,C,H,D]: ((~ (organization(A,B)) | (~ (organization(C,B)) | (~ (organization(C,D)) | (~ (class(A,E,B)) | (~ (class(C,E,B)) | (~ (reorganization(A,B,F)) | (~ (reorganization(C,B,D)) | (~ (reorganization_type(A,G,B)) | (~ (reorganization_type(C,G,B)) | (~ (complexity(A,H,B)) | (~ (complexity(C,I,B)) | (~ (greater(I,H)) | greater(D,F))))))))))))))), file('MGT005+2.p',unknown), []).
-fof(11, axiom, (! [E,J,F,A,I,G,L,B,C,H,K,D]: ((~ (organization(A,B)) | (~ (organization(C,B)) | (~ (organization(A,D)) | (~ (organization(C,D)) | (~ (class(A,E,B)) | (~ (class(C,E,B)) | (~ (survival_chance(A,F,B)) | (~ (survival_chance(C,F,B)) | (~ (reorganization(A,B,D)) | (~ (reorganization(C,B,G)) | (~ (reorganization_type(A,H,B)) | (~ (reorganization_type(C,H,B)) | (~ (survival_chance(A,I,D)) | (~ (survival_chance(C,J,D)) | (~ (complexity(A,K,B)) | (~ (complexity(C,L,B)) | (~ (greater(L,K)) | (greater(I,J) | (I = J))))))))))))))))))))), file('MGT005+2.p',unknown), []).
+fof(11, axiom, (! [E,J,F,A,I,G,L,B,C,H,K,D]: ((organization(A,B) | (~ (organization(C,B)) | (~ (organization(A,D)) | (~ (organization(C,D)) | (~ (class(A,E,B)) | (~ (class(C,E,B)) | (~ (survival_chance(A,F,B)) | (~ (survival_chance(C,F,B)) | (~ (reorganization(A,B,D)) | (~ (reorganization(C,B,G)) | (~ (reorganization_type(A,H,B)) | (~ (reorganization_type(C,H,B)) | (~ (survival_chance(A,I,D)) | (~ (survival_chance(C,J,D)) | (~ (complexity(A,K,B)) | (~ (complexity(C,L,B)) | (~ (greater(L,K)) | (greater(I,J) | (I = J))))))))))))))))))))), file('MGT005+2.p',unknown), []).
 fof(18, axiom, ~ (greater(dollar_c8,dollar_c7)), file('MGT005+2.p',unknown), []).
-fof(19, axiom, ~ ((dollar_c8 != dollar_c7)), file('MGT005+2.p',unknown), []).
+fof(19, axiom, (dollar_c8 != dollar_c7), file('MGT005+2.p',unknown), []).
 fof(58, axiom, organization(dollar_c13,dollar_c3), file('MGT005+2.p',unknown), []).
 fof(59, axiom, organization(dollar_c12,dollar_c3), file('MGT005+2.p',unknown), []).
 fof(60, axiom, organization(dollar_c13,dollar_c1), file('MGT005+2.p',unknown), []).

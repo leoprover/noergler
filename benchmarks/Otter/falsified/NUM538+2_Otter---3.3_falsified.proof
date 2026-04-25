@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '352':
-%%%%%   Replaced aElement0(xx)
-%%%%%   With aElement0(xS)
+%%%%% Mutated formula '62':
+%%%%%   Replaced (! [A,B]: ((~ (aSet0(A)) | (~ (isFinite0(A)) | (~ (aElement0(B)) | (aElementOf0(B,A) | (sbrdtbr0(sdtpldt0(A,B)) = szszuzczcdt0(sbrdtbr0(A)))))))))
+%%%%%   With (! [A,B]: ((aSet0(A) | (~ (isFinite0(A)) | (~ (aElement0(B)) | (aElementOf0(B,A) | (sbrdtbr0(sdtpldt0(A,B)) = szszuzczcdt0(sbrdtbr0(A)))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM538+2 : TPTP v8.1.0. Released v4.0.0.
@@ -36,7 +36,7 @@
 fof(1, axiom, (! [A,B]: ((~ (aSet0(A)) | (~ (aElementOf0(B,A)) | aElement0(B))))), file('NUM538+2.p',unknown), []).
 fof(33, axiom, (! [A,B]: ((~ (aSet0(A)) | (~ (aElementOf0(B,A)) | (sdtpldt0(sdtmndt0(A,B),B) = A))))), file('NUM538+2.p',unknown), []).
 fof(38, axiom, (! [A,B]: ((~ (aElement0(A)) | (~ (aSet0(B)) | (~ (isFinite0(B)) | isFinite0(sdtmndt0(B,A))))))), file('NUM538+2.p',unknown), []).
-fof(62, axiom, (! [A,B]: ((~ (aSet0(A)) | (~ (isFinite0(A)) | (~ (aElement0(B)) | (aElementOf0(B,A) | (sbrdtbr0(sdtpldt0(A,B)) = szszuzczcdt0(sbrdtbr0(A))))))))), file('NUM538+2.p',unknown), []).
+fof(62, axiom, (! [A,B]: ((aSet0(A) | (~ (isFinite0(A)) | (~ (aElement0(B)) | (aElementOf0(B,A) | (sbrdtbr0(sdtpldt0(A,B)) = szszuzczcdt0(sbrdtbr0(A))))))))), file('NUM538+2.p',unknown), []).
 fof(65, axiom, (! [A]: ((~ (aElementOf0(A,sdtmndt0(xS,xx))) | (A != xx)))), file('NUM538+2.p',unknown), []).
 fof(67, axiom, (szszuzczcdt0(sbrdtbr0(sdtmndt0(xS,xx))) != sbrdtbr0(xS)), file('NUM538+2.p',unknown), []).
 fof(81, axiom, (! [A]: ((A = A))), file('NUM538+2.p',unknown), []).
@@ -45,7 +45,7 @@ fof(87, axiom, isFinite0(xS), file('NUM538+2.p',unknown), []).
 fof(88, axiom, aElementOf0(xx,xS), file('NUM538+2.p',unknown), []).
 fof(89, axiom, aSet0(sdtmndt0(xS,xx)), file('NUM538+2.p',unknown), []).
 fof(351, plain, (sdtpldt0(sdtmndt0(xS,xx),xx) = xS), inference(hyper,[status(thm)],[88,33,86]), [iquote('hyper,88,33,86')]).
-fof(352, plain, aElement0(xS), inference(hyper,[status(thm)],[88,1,86]), [iquote('hyper,88,1,86')]).
+fof(352, plain, aElement0(xx), inference(hyper,[status(thm)],[88,1,86]), [iquote('hyper,88,1,86')]).
 fof(519, plain, isFinite0(sdtmndt0(xS,xx)), inference(hyper,[status(thm)],[352,38,86,87]), [iquote('hyper,352,38,86,87')]).
 fof(1800, plain, aElementOf0(xx,sdtmndt0(xS,xx)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[519,62,89,352]),351]),67]), [iquote('hyper,519,62,89,352,demod,351,unit_del,67')]).
 fof(1903, plain, $false, inference(hyper,[status(thm)],[1800,65,81]), [iquote('hyper,1800,65,81')]).

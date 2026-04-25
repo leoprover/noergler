@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1560':
-%%%%%   Replaced (addition(one,dollar_c2) = one)
-%%%%%   With (addition(dollar_c2,dollar_c2) = one)
+%%%%% Mutated formula '218':
+%%%%%   Replaced (addition(dollar_f1(dollar_c1),dollar_c1) = one)
+%%%%%   With (addition(dollar_f1(one),dollar_c1) = one)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE011+1 : TPTP v8.1.0. Released v4.0.0.
@@ -74,7 +74,7 @@ fof(87, plain, (! [A,B,C]: ((addition(A,addition(B,C)) = addition(C,addition(A,B
 fof(104, plain, (! [A,B]: ((addition(A,addition(A,B)) = addition(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[21,18])]), [iquote('para_from,21.1.1,17.1.1.1,flip.1')]).
 fof(164, plain, (! [A]: ((addition(multiplication(A,c(dollar_c1)),multiplication(A,dollar_c1)) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[47,30]),27])]), [iquote('para_from,47.1.1,30.1.1.2,demod,27,flip.1')]).
 fof(194, plain, (addition(multiplication(dollar_c1,dollar_c2),addition(multiplication(c(dollar_c1),dollar_c2),addition(multiplication(dollar_c2,dollar_c1),c(dollar_c2)))) != one), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[41,15]),164]), [iquote('para_into,41.1.1.2.2.2,15.1.1,demod,164')]).
-fof(218, plain, (addition(dollar_f1(dollar_c1),dollar_c1) = one), inference(para_into,[status(thm),theory(equality)],[60,15]), [iquote('para_into,60.1.1,15.1.1')]).
+fof(218, plain, (addition(dollar_f1(one),dollar_c1) = one), inference(para_into,[status(thm),theory(equality)],[60,15]), [iquote('para_into,60.1.1,15.1.1')]).
 fof(220, plain, (! [A]: ((addition(multiplication(A,dollar_c1),multiplication(A,dollar_f1(dollar_c1))) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[60,30]),27])]), [iquote('para_from,60.1.1,30.1.1.2,demod,27,flip.1')]).
 fof(223, plain, (! [A]: ((addition(multiplication(dollar_c1,A),multiplication(dollar_f1(dollar_c1),A)) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[60,33]),29])]), [iquote('para_from,60.1.1,32.1.1.1,demod,29,flip.1')]).
 fof(229, plain, complement(dollar_c1,dollar_f1(dollar_c1)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[62,8]),65,218]),14,14,14]), [iquote('para_from,62.1.1,8.2.1,demod,65,218,unit_del,14,14,14')]).
@@ -87,7 +87,7 @@ fof(408, plain, (addition(multiplication(dollar_c1,dollar_c2),addition(multiplic
 fof(1498, plain, (! [A,B]: (le_q(A,addition(A,B)))), inference(hyper,[status(thm)],[104,2]), [iquote('hyper,104,2')]).
 fof(1547, plain, (! [A,B,C]: (le_q(A,addition(B,addition(A,C))))), inference(para_into,[status(thm),theory(equality)],[1498,87]), [iquote('para_into,1498.1.2,87.1.1')]).
 fof(1552, plain, le_q(dollar_c2,one), inference(para_into,[status(thm),theory(equality)],[1498,75]), [iquote('para_into,1498.1.2,75.1.1')]).
-fof(1560, plain, (addition(dollar_c2,dollar_c2) = one), inference(hyper,[status(thm)],[1552,57]), [iquote('hyper,1552,57')]).
+fof(1560, plain, (addition(one,dollar_c2) = one), inference(hyper,[status(thm)],[1552,57]), [iquote('hyper,1552,57')]).
 fof(2986, plain, (! [A,B]: (le_q(multiplication(A,dollar_c1),addition(B,A)))), inference(para_into,[status(thm),theory(equality)],[1547,220]), [iquote('para_into,1547.1.2.2,220.1.1')]).
 fof(3040, plain, le_q(multiplication(dollar_c2,dollar_c1),one), inference(para_into,[status(thm),theory(equality)],[2986,1560]), [iquote('para_into,2986.1.2,1560.1.1')]).
 fof(3043, plain, (addition(multiplication(dollar_c2,dollar_c1),one) = one), inference(hyper,[status(thm)],[3040,1]), [iquote('hyper,3040,1')]).

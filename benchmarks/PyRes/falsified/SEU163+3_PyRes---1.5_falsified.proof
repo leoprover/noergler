@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c23':
-%%%%%   Replaced subset(skolem0001,union(skolem0002))
-%%%%%   With subset(skolem0002,union(skolem0002))
+%%%%% Mutated formula 'c4':
+%%%%%   Replaced (? [A,B]: ((in(A,B) & ~ (subset(A,union(B))))))
+%%%%%   With (? [A,B]: ((in(A,B) | ~ (subset(A,union(B))))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SEU163+3 : TPTP v8.1.2. Released v3.2.0.
@@ -38,7 +38,7 @@
 %%% Generated on Tue Apr 14 15:06:25 CEST 2026 using command 'transform(fof)'.
 fof(t92_zfmisc_1, conjecture, (! [A,B]: ((in(A,B) => subset(A,union(B))))), file('SEU163+3.p',t92_zfmisc_1)).
 fof(c3, negated_conjecture, ~ ((! [A,B]: ((in(A,B) => subset(A,union(B)))))), inference(assume_negation,[status(cth)],[t92_zfmisc_1])).
-fof(c4, negated_conjecture, (? [A,B]: ((in(A,B) & ~ (subset(A,union(B)))))), inference(fof_nnf,[status(thm)],[c3])).
+fof(c4, negated_conjecture, (? [A,B]: ((in(A,B) | ~ (subset(A,union(B)))))), inference(fof_nnf,[status(thm)],[c3])).
 fof(c5, negated_conjecture, (? [X4,X5]: ((in(X4,X5) & ~ (subset(X4,union(X5)))))), inference(variable_rename,[status(thm)],[c4])).
 fof(c6, negated_conjecture, (in(skolem0001,skolem0002) & ~ (subset(skolem0001,union(skolem0002)))), inference(skolemize,[status(esa)],[c5])).
 fof(c8, negated_conjecture, ~ (subset(skolem0001,union(skolem0002))), inference(split_conjunct,[status(thm)],[c6])).
@@ -47,5 +47,5 @@ fof(l50_zfmisc_1, axiom, (! [A,B]: ((in(A,B) => subset(A,union(B))))), file('SEU
 fof(c0, plain, (! [A,B]: ((~ (in(A,B)) | subset(A,union(B))))), inference(fof_nnf,[status(thm)],[l50_zfmisc_1])).
 fof(c1, plain, (! [X2,X3]: ((~ (in(X2,X3)) | subset(X2,union(X3))))), inference(variable_rename,[status(thm)],[c0])).
 fof(c2, plain, (! [X12,X13]: ((~ (in(X12,X13)) | subset(X12,union(X13))))), inference(split_conjunct,[status(thm)],[c1])).
-fof(c23, plain, subset(skolem0002,union(skolem0002)), inference(resolution,[status(thm)],[c2,c7])).
+fof(c23, plain, subset(skolem0001,union(skolem0002)), inference(resolution,[status(thm)],[c2,c7])).
 fof(c26, plain, $false, inference(resolution,[status(thm)],[c23,c8])).

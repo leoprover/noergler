@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '13':
-%%%%%   Replaced reorganization_type(dollar_c8,dollar_c7,dollar_c3)
-%%%%%   With reorganization_type(dollar_c2,dollar_c7,dollar_c3)
+%%%%% Mutated formula '14':
+%%%%%   Replaced size(dollar_c9,dollar_c5,dollar_c3)
+%%%%%   With ~ (size(dollar_c9,dollar_c5,dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT017+1 : TPTP v8.1.0. Released v2.0.0.
@@ -45,8 +45,8 @@ fof(9, axiom, class(dollar_c8,dollar_c6,dollar_c3), file('MGT017+1.p',unknown), 
 fof(10, axiom, reorganization(dollar_c9,dollar_c3,dollar_c2), file('MGT017+1.p',unknown), []).
 fof(11, axiom, reorganization(dollar_c8,dollar_c3,dollar_c1), file('MGT017+1.p',unknown), []).
 fof(12, axiom, reorganization_type(dollar_c9,dollar_c7,dollar_c3), file('MGT017+1.p',unknown), []).
-fof(13, axiom, reorganization_type(dollar_c2,dollar_c7,dollar_c3), file('MGT017+1.p',unknown), []).
-fof(14, axiom, size(dollar_c9,dollar_c5,dollar_c3), file('MGT017+1.p',unknown), []).
+fof(13, axiom, reorganization_type(dollar_c8,dollar_c7,dollar_c3), file('MGT017+1.p',unknown), []).
+fof(14, axiom, ~ (size(dollar_c9,dollar_c5,dollar_c3)), file('MGT017+1.p',unknown), []).
 fof(15, axiom, size(dollar_c8,dollar_c4,dollar_c3), file('MGT017+1.p',unknown), []).
 fof(16, axiom, greater(dollar_c4,dollar_c5), file('MGT017+1.p',unknown), []).
 fof(17, plain, inertia(dollar_c9,dollar_f1(dollar_c9,dollar_c3),dollar_c3), inference(hyper,[status(thm)],[5,1]), [iquote('hyper,5,1')]).

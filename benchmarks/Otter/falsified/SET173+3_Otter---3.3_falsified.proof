@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3620':
-%%%%%   Replaced (intersection(dollar_c2,union(dollar_c1,dollar_c2)) = dollar_c2)
-%%%%%   With ~ ((intersection(dollar_c2,union(dollar_c1,dollar_c2)) = dollar_c2))
+%%%%% Mutated formula '209':
+%%%%%   Replaced (! [A]: (member(dollar_f2(intersection(union(dollar_c1,dollar_c2),dollar_c2),dollar_c2),union(A,dollar_c2))))
+%%%%%   With (! [A]: (member(dollar_f2(intersection(union(dollar_c2,dollar_c2),dollar_c2),dollar_c2),union(A,dollar_c2))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET173+3 : TPTP v8.1.0. Released v2.2.0.
@@ -48,7 +48,7 @@ fof(49, plain, (intersection(union(dollar_c1,dollar_c2),dollar_c2) != dollar_c2)
 fof(81, plain, (! [A,B,C]: (((intersection(A,B) = C) | (member(dollar_f2(intersection(A,B),C),C) | member(dollar_f2(intersection(A,B),C),B))))), inference(hyper,[status(thm)],[25,5]), [iquote('hyper,25,5')]).
 fof(99, plain, (! [A,B]: (((intersection(A,B) = B) | member(dollar_f2(intersection(A,B),B),B)))), inference(factor,[status(thm)],[81]), [iquote('factor,81.2.3')]).
 fof(200, plain, member(dollar_f2(intersection(union(dollar_c1,dollar_c2),dollar_c2),dollar_c2),dollar_c2), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[99,49]),20]), [iquote('para_from,99.1.1,49.1.1,unit_del,20')]).
-fof(209, plain, (! [A]: (member(dollar_f2(intersection(union(dollar_c1,dollar_c2),dollar_c2),dollar_c2),union(A,dollar_c2)))), inference(hyper,[status(thm)],[200,3]), [iquote('hyper,200,3')]).
+fof(209, plain, (! [A]: (member(dollar_f2(intersection(union(dollar_c2,dollar_c2),dollar_c2),dollar_c2),union(A,dollar_c2)))), inference(hyper,[status(thm)],[200,3]), [iquote('hyper,200,3')]).
 fof(485, plain, (! [A]: (member(dollar_f2(intersection(union(dollar_c1,dollar_c2),dollar_c2),dollar_c2),intersection(union(A,dollar_c2),dollar_c2)))), inference(hyper,[status(thm)],[209,6,200]), [iquote('hyper,209,6,200')]).
-fof(3620, plain, ~ ((intersection(dollar_c2,union(dollar_c1,dollar_c2)) = dollar_c2)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[485,31,200])]), [iquote('hyper,485,31,200,flip.1')]).
+fof(3620, plain, (intersection(dollar_c2,union(dollar_c1,dollar_c2)) = dollar_c2), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[485,31,200])]), [iquote('hyper,485,31,200,flip.1')]).
 fof(3622, plain, $false, inference(binary,[status(thm)],[3620,29]), [iquote('binary,3620.1,29.1')]).

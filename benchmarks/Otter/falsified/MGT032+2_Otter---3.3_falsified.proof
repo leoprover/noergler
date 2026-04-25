@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '10':
-%%%%%   Replaced greater_or_e_qual(dollar_f2(dollar_f1(dollar_c1)),dollar_f1(dollar_c1))
-%%%%%   With greater_or_e_qual(dollar_f2(dollar_f1(efficient_producers)),dollar_f1(dollar_c1))
+%%%%% Mutated formula '7':
+%%%%%   Replaced environment(dollar_c1)
+%%%%%   With ~ (environment(dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT032+2 : TPTP v8.1.0. Released v2.0.0.
@@ -39,10 +39,10 @@ fof(3, axiom, (! [A,B]: ((~ (environment(A)) | (~ (stable(A)) | (~ (subpopulatio
 fof(4, axiom, (! [A]: ((~ (in_environment(dollar_c1,A)) | subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f2(A))))), file('MGT032+2.p',unknown), []).
 fof(5, axiom, (! [A]: ((~ (in_environment(dollar_c1,A)) | greater_or_e_qual(dollar_f2(A),A)))), file('MGT032+2.p',unknown), []).
 fof(6, axiom, (! [A]: ((~ (in_environment(dollar_c1,A)) | ~ (selection_favors(efficient_producers,first_movers,dollar_f2(A)))))), file('MGT032+2.p',unknown), []).
-fof(7, axiom, environment(dollar_c1), file('MGT032+2.p',unknown), []).
+fof(7, axiom, ~ (environment(dollar_c1)), file('MGT032+2.p',unknown), []).
 fof(8, axiom, stable(dollar_c1), file('MGT032+2.p',unknown), []).
 fof(9, plain, in_environment(dollar_c1,dollar_f1(dollar_c1)), inference(hyper,[status(thm)],[8,2,7]), [iquote('hyper,8,2,7')]).
-fof(10, plain, greater_or_e_qual(dollar_f2(dollar_f1(efficient_producers)),dollar_f1(dollar_c1)), inference(hyper,[status(thm)],[9,5]), [iquote('hyper,9,5')]).
+fof(10, plain, greater_or_e_qual(dollar_f2(dollar_f1(dollar_c1)),dollar_f1(dollar_c1)), inference(hyper,[status(thm)],[9,5]), [iquote('hyper,9,5')]).
 fof(11, plain, subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f2(dollar_f1(dollar_c1))), inference(hyper,[status(thm)],[9,4]), [iquote('hyper,9,4')]).
 fof(12, plain, greater(growth_rate(efficient_producers,dollar_f2(dollar_f1(dollar_c1))),growth_rate(first_movers,dollar_f2(dollar_f1(dollar_c1)))), inference(hyper,[status(thm)],[11,3,7,8,10]), [iquote('hyper,11,3,7,8,10')]).
 fof(13, plain, selection_favors(efficient_producers,first_movers,dollar_f2(dollar_f1(dollar_c1))), inference(hyper,[status(thm)],[12,1,7,11]), [iquote('hyper,12,1,7,11')]).

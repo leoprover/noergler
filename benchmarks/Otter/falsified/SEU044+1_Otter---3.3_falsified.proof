@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '242':
-%%%%%   Replaced (! [A]: (function(relation_rng_restriction(A,dollar_c9))))
-%%%%%   With (! [A]: (~ (function(relation_rng_restriction(A,dollar_c9)))))
+%%%%% Mutated formula '908':
+%%%%%   Replaced in(dollar_c10,relation_dom(dollar_c9))
+%%%%%   With in(dollar_c11,relation_dom(dollar_c9))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU044+1 : TPTP v8.1.0. Released v3.2.0.
@@ -45,8 +45,8 @@ fof(66, axiom, function(dollar_c9), file('SEU044+1.p',unknown), []).
 fof(67, axiom, (in(dollar_c10,relation_dom(relation_rng_restriction(dollar_c11,dollar_c9))) | in(dollar_c10,relation_dom(dollar_c9))), file('SEU044+1.p',unknown), []).
 fof(68, axiom, (in(dollar_c10,relation_dom(relation_rng_restriction(dollar_c11,dollar_c9))) | in(apply(dollar_c9,dollar_c10),dollar_c11)), file('SEU044+1.p',unknown), []).
 fof(227, plain, (! [A]: (relation(relation_rng_restriction(A,dollar_c9)))), inference(hyper,[status(thm)],[65,16]), [iquote('hyper,65,16')]).
-fof(242, plain, (! [A]: (~ (function(relation_rng_restriction(A,dollar_c9))))), inference(hyper,[status(thm)],[66,17,65]), [iquote('hyper,66,17,65')]).
+fof(242, plain, (! [A]: (function(relation_rng_restriction(A,dollar_c9)))), inference(hyper,[status(thm)],[66,17,65]), [iquote('hyper,66,17,65')]).
 fof(906, plain, in(dollar_c10,relation_dom(relation_rng_restriction(dollar_c11,dollar_c9))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[242,26,227,65,66,42,67,68])])]), [iquote('hyper,242,26,227,65,66,42,67,68,factor_simp,factor_simp')]).
 fof(907, plain, in(apply(dollar_c9,dollar_c10),dollar_c11), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[242,25,227,65,66,42,68])]), [iquote('hyper,242,25,227,65,66,42,68,factor_simp')]).
-fof(908, plain, in(dollar_c10,relation_dom(dollar_c9)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[242,24,227,65,66,42,67])]), [iquote('hyper,242,24,227,65,66,42,67,factor_simp')]).
+fof(908, plain, in(dollar_c11,relation_dom(dollar_c9)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[242,24,227,65,66,42,67])]), [iquote('hyper,242,24,227,65,66,42,67,factor_simp')]).
 fof(1179, plain, $false, inference(hyper,[status(thm)],[906,23,908,907]), [iquote('hyper,906,23,908,907')]).

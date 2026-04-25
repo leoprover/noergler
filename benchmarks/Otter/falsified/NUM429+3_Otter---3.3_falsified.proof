@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '79':
-%%%%%   Replaced aInteger0(xq)
-%%%%%   With aInteger0(xa)
+%%%%% Mutated formula '82':
+%%%%%   Replaced (sdtasdt0(xq,dollar_c1) = sdtpldt0(xa,smndt0(xb)))
+%%%%%   With (sdtasdt0(xa,dollar_c1) = sdtpldt0(xa,smndt0(xb)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM429+3 : TPTP v8.1.0. Released v4.0.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:16:10 CEST 2026 using command 'transform(fof)'.
 fof(15, axiom, (! [A,B]: ((~ (aInteger0(A)) | (~ (aInteger0(B)) | (sdtasdt0(A,B) = sdtasdt0(B,A)))))), file('NUM429+3.p',unknown), []).
 fof(39, axiom, (! [A]: ((~ (aInteger0(A)) | (sdtasdt0(xq,A) != sdtpldt0(xa,smndt0(xb)))))), file('NUM429+3.p',unknown), []).
-fof(79, axiom, aInteger0(xa), file('NUM429+3.p',unknown), []).
+fof(79, axiom, aInteger0(xq), file('NUM429+3.p',unknown), []).
 fof(81, axiom, aInteger0(dollar_c1), file('NUM429+3.p',unknown), []).
-fof(82, axiom, (sdtasdt0(xq,dollar_c1) = sdtpldt0(xa,smndt0(xb))), file('NUM429+3.p',unknown), []).
+fof(82, axiom, (sdtasdt0(xa,dollar_c1) = sdtpldt0(xa,smndt0(xb))), file('NUM429+3.p',unknown), []).
 fof(84, plain, (sdtpldt0(xa,smndt0(xb)) = sdtasdt0(xq,dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[82])]), [iquote('copy,82,flip.1')]).
 fof(95, plain, (! [A]: ((~ (aInteger0(A)) | (sdtasdt0(xq,A) != sdtasdt0(xq,dollar_c1))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[39]),84]), [iquote('back_demod,39,demod,84')]).
 fof(3253, plain, (sdtasdt0(xq,dollar_c1) = sdtasdt0(dollar_c1,xq)), inference(hyper,[status(thm)],[81,15,79]), [iquote('hyper,81,15,79')]).

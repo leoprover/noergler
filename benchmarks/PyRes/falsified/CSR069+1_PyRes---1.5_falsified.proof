@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c101':
-%%%%%   Replaced (~ (mtvisible(c_tptpgeo_member1_mt)) | borderson(c_georegion_l4_x38_y24,c_georegion_l4_x39_y24))
-%%%%%   With (~ (mtvisible(c_georegion_l4_x39_y24)) | borderson(c_georegion_l4_x38_y24,c_georegion_l4_x39_y24))
+%%%%% Mutated formula 'c2':
+%%%%%   Replaced mtvisible(c_tptpgeo_member1_mt)
+%%%%%   With mtvisible(c_georegion_l4_x38_y24)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR069+1 : TPTP v8.1.2. Released v3.4.0.
@@ -40,9 +40,9 @@ fof(query69, conjecture, (mtvisible(c_tptpgeo_member1_mt) => borderson(c_georegi
 fof(c0, negated_conjecture, ~ ((mtvisible(c_tptpgeo_member1_mt) => borderson(c_georegion_l4_x38_y24,c_georegion_l4_x39_y24))), inference(assume_negation,[status(cth)],[query69])).
 fof(c1, negated_conjecture, (mtvisible(c_tptpgeo_member1_mt) & ~ (borderson(c_georegion_l4_x38_y24,c_georegion_l4_x39_y24))), inference(fof_nnf,[status(thm)],[c0])).
 fof(c3, negated_conjecture, ~ (borderson(c_georegion_l4_x38_y24,c_georegion_l4_x39_y24)), inference(split_conjunct,[status(thm)],[c1])).
-fof(c2, negated_conjecture, mtvisible(c_tptpgeo_member1_mt), inference(split_conjunct,[status(thm)],[c1])).
+fof(c2, negated_conjecture, mtvisible(c_georegion_l4_x38_y24), inference(split_conjunct,[status(thm)],[c1])).
 fof(just1, axiom, (mtvisible(c_tptpgeo_member1_mt) => borderson(c_georegion_l4_x38_y24,c_georegion_l4_x39_y24)), file('CSR069+1.p',just1)).
 fof(c100, plain, (~ (mtvisible(c_tptpgeo_member1_mt)) | borderson(c_georegion_l4_x38_y24,c_georegion_l4_x39_y24)), inference(fof_nnf,[status(thm)],[just1])).
-fof(c101, plain, (~ (mtvisible(c_georegion_l4_x39_y24)) | borderson(c_georegion_l4_x38_y24,c_georegion_l4_x39_y24)), inference(split_conjunct,[status(thm)],[c100])).
+fof(c101, plain, (~ (mtvisible(c_tptpgeo_member1_mt)) | borderson(c_georegion_l4_x38_y24,c_georegion_l4_x39_y24)), inference(split_conjunct,[status(thm)],[c100])).
 fof(c102, plain, borderson(c_georegion_l4_x38_y24,c_georegion_l4_x39_y24), inference(resolution,[status(thm)],[c101,c2])).
 fof(c103, plain, $false, inference(resolution,[status(thm)],[c102,c3])).

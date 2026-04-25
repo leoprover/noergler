@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '64':
-%%%%%   Replaced (! [A]: ((addition(one,domain(A)) = one)))
-%%%%%   With (! [A]: ((addition(dollar_c1,domain(A)) = one)))
+%%%%% Mutated formula '1531':
+%%%%%   Replaced (! [A,B]: (((multiplication(domain(A),B) = zero) | ~ (le_q(B,antidomain(A))))))
+%%%%%   With (! [A,B]: (((multiplication(domain(A),B) = zero) & ~ (le_q(B,antidomain(A))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE079+1 : TPTP v8.1.0. Released v4.0.0.
@@ -53,7 +53,7 @@ fof(39, axiom, (! [A]: ((addition(domain(A),antidomain(A)) = one))), file('KLE07
 fof(42, axiom, (! [A]: ((multiplication(domain(A),antidomain(A)) = zero))), file('KLE079+1.p',unknown), []).
 fof(49, plain, (! [A]: ((addition(zero,A) = A))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[5,10])]), [iquote('para_into,5.1.1,9.1.1,flip.1')]).
 fof(51, plain, (! [A,B]: ((le_q(A,B) | (addition(B,A) != B)))), inference(para_from,[status(thm),theory(equality)],[5,2]), [iquote('para_from,5.1.1,2.2.1')]).
-fof(64, plain, (! [A]: ((addition(dollar_c1,domain(A)) = one))), inference(para_into,[status(thm),theory(equality)],[33,5]), [iquote('para_into,33.1.1,5.1.1')]).
+fof(64, plain, (! [A]: ((addition(one,domain(A)) = one))), inference(para_into,[status(thm),theory(equality)],[33,5]), [iquote('para_into,33.1.1,5.1.1')]).
 fof(94, plain, (! [A,B,C]: (((addition(multiplication(A,B),multiplication(A,C)) = multiplication(A,C)) | ~ (le_q(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[20,1])]), [iquote('para_into,20.1.1.2,1.2.1,flip.1')]).
 fof(106, plain, (! [A,B]: ((addition(A,multiplication(domain(B),A)) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[22,64]),19,19])]), [iquote('para_into,22.1.1.1,64.1.1,demod,19,19,flip.1')]).
 fof(113, plain, (! [A]: ((multiplication(domain(A),A) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[28]),106])]), [iquote('back_demod,28,demod,106,flip.1')]).
@@ -64,7 +64,7 @@ fof(155, plain, (! [A,B]: ((addition(multiplication(A,domain(B)),multiplication(
 fof(193, plain, (! [A,B]: ((multiplication(domain(multiplication(A,B)),antidomain(multiplication(A,domain(B)))) = zero))), inference(para_into,[status(thm),theory(equality)],[42,31]), [iquote('para_into,41.1.1.1,31.1.1')]).
 fof(247, plain, (! [A,B]: ((addition(multiplication(A,antidomain(B)),multiplication(A,domain(B))) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[151,20]),17])]), [iquote('para_from,151.1.1,20.1.1.2,demod,17,flip.1')]).
 fof(618, plain, (! [A,B]: (le_q(multiplication(domain(A),B),B))), inference(hyper,[status(thm)],[106,51]), [iquote('hyper,105,51')]).
-fof(1531, plain, (! [A,B]: (((multiplication(domain(A),B) = zero) | ~ (le_q(B,antidomain(A)))))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[94,42]),10,42]), [iquote('para_into,94.1.1.2,41.1.1,demod,10,42')]).
+fof(1531, plain, (! [A,B]: (((multiplication(domain(A),B) = zero) & ~ (le_q(B,antidomain(A)))))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[94,42]),10,42]), [iquote('para_into,94.1.1.2,41.1.1,demod,10,42')]).
 fof(2203, plain, (! [A]: ((multiplication(domain(A),domain(antidomain(A))) = zero))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[136,42]),36,27])]), [iquote('para_into,136.1.1.1.1,41.1.1,demod,36,27,flip.1')]).
 fof(2226, plain, (! [A]: ((multiplication(domain(A),antidomain(antidomain(A))) = domain(A)))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[155,2203]),49]), [iquote('para_into,155.1.1.1,2203.1.1,demod,49')]).
 fof(2406, plain, (! [A]: (le_q(domain(A),antidomain(antidomain(A))))), inference(para_from,[status(thm),theory(equality)],[2226,618]), [iquote('para_from,2226.1.1,618.1.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '69':
-%%%%%   Replaced (! [A,B,C]: ((member(A,difference(unordered_pair(A,B),C)) | member(A,C))))
-%%%%%   With (! [A,B,C]: ((member(A,difference(unordered_pair(A,B),C)) & member(A,C))))
+%%%%% Mutated formula '6':
+%%%%%   Replaced (! [A,B]: ((~ (member(A,power_set(B))) | subset(A,B))))
+%%%%%   With (! [A,B]: ((member(A,power_set(B)) | subset(A,B))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET347+4 : TPTP v8.1.0. Released v2.2.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:18:27 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B,C]: ((~ (subset(A,B)) | (~ (member(C,A)) | member(C,B))))), file('SET347+4.p',unknown), []).
 fof(5, axiom, (! [A,B]: ((e_qual_set(A,B) | (~ (subset(A,B)) | ~ (subset(B,A)))))), file('SET347+4.p',unknown), []).
-fof(6, axiom, (! [A,B]: ((~ (member(A,power_set(B))) | subset(A,B)))), file('SET347+4.p',unknown), []).
+fof(6, axiom, (! [A,B]: ((member(A,power_set(B)) | subset(A,B)))), file('SET347+4.p',unknown), []).
 fof(7, axiom, (! [A,B]: ((member(A,power_set(B)) | ~ (subset(A,B))))), file('SET347+4.p',unknown), []).
 fof(14, axiom, (! [A]: (~ (member(A,empty_set)))), file('SET347+4.p',unknown), []).
 fof(16, axiom, (! [A,B,C]: ((~ (member(A,difference(B,C))) | ~ (member(A,C))))), file('SET347+4.p',unknown), []).
@@ -52,7 +52,7 @@ fof(36, axiom, (! [A,B]: ((member(A,product(B)) | member(dollar_f3(A,B),B)))), f
 fof(38, plain, (! [A,B]: (member(A,unordered_pair(A,B)))), inference(hyper,[status(thm)],[34,21]), [iquote('hyper,34,21')]).
 fof(39, plain, (! [A]: (member(A,singleton(A)))), inference(hyper,[status(thm)],[34,19]), [iquote('hyper,34,19')]).
 fof(42, plain, (! [A,B]: ((member(A,difference(singleton(A),B)) | member(A,B)))), inference(hyper,[status(thm)],[39,17]), [iquote('hyper,39,17')]).
-fof(69, plain, (! [A,B,C]: ((member(A,difference(unordered_pair(A,B),C)) & member(A,C)))), inference(hyper,[status(thm)],[38,17]), [iquote('hyper,38,17')]).
+fof(69, plain, (! [A,B,C]: ((member(A,difference(unordered_pair(A,B),C)) | member(A,C)))), inference(hyper,[status(thm)],[38,17]), [iquote('hyper,38,17')]).
 fof(113, plain, (! [A,B]: ((member(dollar_f1(A,B),A) | member(A,power_set(B))))), inference(hyper,[status(thm)],[35,7]), [iquote('hyper,35,7')]).
 fof(116, plain, (! [A,B]: ((member(dollar_f1(singleton(A),B),singleton(A)) | member(A,B)))), inference(hyper,[status(thm)],[35,1,39]), [iquote('hyper,35,1,39')]).
 fof(289, plain, (! [A,B]: ((member(dollar_f3(A,singleton(B)),singleton(B)) | member(A,B)))), inference(hyper,[status(thm)],[36,26,39]), [iquote('hyper,36,26,39')]).

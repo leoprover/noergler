@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '86':
-%%%%%   Replaced ilf_type(dollar_c2,binary_relation_type)
-%%%%%   With ~ (ilf_type(dollar_c2,binary_relation_type))
+%%%%% Mutated formula '101':
+%%%%%   Replaced ilf_type(dollar_c2,relation_type(domain_of(dollar_c2),range_of(dollar_c2)))
+%%%%%   With ilf_type(binary_relation_type,relation_type(domain_of(dollar_c2),range_of(dollar_c2)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET658+3 : TPTP v8.1.0. Released v2.2.0.
@@ -37,7 +37,7 @@ fof(1, axiom, (! [A,B]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,binary_relat
 fof(24, axiom, (! [A]: ((~ (ilf_type(A,set_type)) | subset(A,A)))), file('SET658+3.p',unknown), []).
 fof(50, axiom, ~ (ilf_type(dollar_c2,relation_type(domain_of(dollar_c2),range_of(dollar_c2)))), file('SET658+3.p',unknown), []).
 fof(85, axiom, (! [A]: (ilf_type(A,set_type))), file('SET658+3.p',unknown), []).
-fof(86, axiom, ~ (ilf_type(dollar_c2,binary_relation_type)), file('SET658+3.p',unknown), []).
+fof(86, axiom, ilf_type(dollar_c2,binary_relation_type), file('SET658+3.p',unknown), []).
 fof(93, plain, (! [A]: (subset(A,A))), inference(hyper,[status(thm)],[85,24]), [iquote('hyper,85,24')]).
-fof(101, plain, ilf_type(dollar_c2,relation_type(domain_of(dollar_c2),range_of(dollar_c2))), inference(hyper,[status(thm)],[93,1,85,86]), [iquote('hyper,93,1,85,86')]).
+fof(101, plain, ilf_type(binary_relation_type,relation_type(domain_of(dollar_c2),range_of(dollar_c2))), inference(hyper,[status(thm)],[93,1,85,86]), [iquote('hyper,93,1,85,86')]).
 fof(102, plain, $false, inference(binary,[status(thm)],[101,50]), [iquote('binary,101.1,50.1')]).

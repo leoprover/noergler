@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c101':
-%%%%%   Replaced (~ (mtvisible(c_tptpgeo_member1_mt)) | geographicalsubregions(c_georegion_l3_x11_y2,c_georegion_l4_x35_y7))
-%%%%%   With (~ (mtvisible(c_georegion_l3_x11_y2)) | geographicalsubregions(c_georegion_l3_x11_y2,c_georegion_l4_x35_y7))
+%%%%% Mutated formula 'just1':
+%%%%%   Replaced (mtvisible(c_tptpgeo_member1_mt) => geographicalsubregions(c_georegion_l3_x11_y2,c_georegion_l4_x35_y7))
+%%%%%   With (mtvisible(c_georegion_l3_x11_y2) => geographicalsubregions(c_georegion_l3_x11_y2,c_georegion_l4_x35_y7))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR053+1 : TPTP v8.1.2. Released v3.4.0.
@@ -41,8 +41,8 @@ fof(c0, negated_conjecture, ~ ((mtvisible(c_tptpgeo_member1_mt) => geographicals
 fof(c1, negated_conjecture, (mtvisible(c_tptpgeo_member1_mt) & ~ (geographicalsubregions(c_georegion_l3_x11_y2,c_georegion_l4_x35_y7))), inference(fof_nnf,[status(thm)],[c0])).
 fof(c3, negated_conjecture, ~ (geographicalsubregions(c_georegion_l3_x11_y2,c_georegion_l4_x35_y7)), inference(split_conjunct,[status(thm)],[c1])).
 fof(c2, negated_conjecture, mtvisible(c_tptpgeo_member1_mt), inference(split_conjunct,[status(thm)],[c1])).
-fof(just1, axiom, (mtvisible(c_tptpgeo_member1_mt) => geographicalsubregions(c_georegion_l3_x11_y2,c_georegion_l4_x35_y7)), file('CSR053+1.p',just1)).
+fof(just1, axiom, (mtvisible(c_georegion_l3_x11_y2) => geographicalsubregions(c_georegion_l3_x11_y2,c_georegion_l4_x35_y7)), file('CSR053+1.p',just1)).
 fof(c100, plain, (~ (mtvisible(c_tptpgeo_member1_mt)) | geographicalsubregions(c_georegion_l3_x11_y2,c_georegion_l4_x35_y7)), inference(fof_nnf,[status(thm)],[just1])).
-fof(c101, plain, (~ (mtvisible(c_georegion_l3_x11_y2)) | geographicalsubregions(c_georegion_l3_x11_y2,c_georegion_l4_x35_y7)), inference(split_conjunct,[status(thm)],[c100])).
+fof(c101, plain, (~ (mtvisible(c_tptpgeo_member1_mt)) | geographicalsubregions(c_georegion_l3_x11_y2,c_georegion_l4_x35_y7)), inference(split_conjunct,[status(thm)],[c100])).
 fof(c103, plain, geographicalsubregions(c_georegion_l3_x11_y2,c_georegion_l4_x35_y7), inference(resolution,[status(thm)],[c101,c2])).
 fof(c106, plain, $false, inference(resolution,[status(thm)],[c103,c3])).

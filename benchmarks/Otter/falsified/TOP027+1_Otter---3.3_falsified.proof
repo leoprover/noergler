@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '259':
-%%%%%   Replaced v3_pre_topc(k1_tops_1(dollar_c3,dollar_c1),dollar_c3)
-%%%%%   With v3_pre_topc(k1_tops_1(dollar_c1,dollar_c1),dollar_c3)
+%%%%% Mutated formula '164':
+%%%%%   Replaced v1_tsp_2(dollar_c2,dollar_c3)
+%%%%%   With ~ (v1_tsp_2(dollar_c2,dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : TOP027+1 : TPTP v8.1.0. Released v3.4.0.
@@ -43,8 +43,8 @@ fof(153, plain, (! [A,B,C]: ((v3_struct_0(A) | (~ (v2_pre_topc(A)) | (~ (l1_pre_
 fof(161, axiom, v2_pre_topc(dollar_c3), file('TOP027+1.p',unknown), []).
 fof(162, axiom, l1_pre_topc(dollar_c3), file('TOP027+1.p',unknown), []).
 fof(163, axiom, m1_subset_1(dollar_c2,k1_zfmisc_1(u1_struct_0(dollar_c3))), file('TOP027+1.p',unknown), []).
-fof(164, axiom, v1_tsp_2(dollar_c2,dollar_c3), file('TOP027+1.p',unknown), []).
+fof(164, axiom, ~ (v1_tsp_2(dollar_c2,dollar_c3)), file('TOP027+1.p',unknown), []).
 fof(165, axiom, m1_subset_1(dollar_c1,k1_zfmisc_1(u1_struct_0(dollar_c3))), file('TOP027+1.p',unknown), []).
-fof(259, plain, v3_pre_topc(k1_tops_1(dollar_c1,dollar_c1),dollar_c3), inference(hyper,[status(thm)],[165,147,161,162]), [iquote('hyper,165,147,161,162')]).
+fof(259, plain, v3_pre_topc(k1_tops_1(dollar_c3,dollar_c1),dollar_c3), inference(hyper,[status(thm)],[165,147,161,162]), [iquote('hyper,165,147,161,162')]).
 fof(263, plain, m1_subset_1(k1_tops_1(dollar_c3,dollar_c1),k1_zfmisc_1(u1_struct_0(dollar_c3))), inference(hyper,[status(thm)],[165,142,162]), [iquote('hyper,165,142,162')]).
 fof(1368, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[263,153,161,162,163,164,259]),1,3]), [iquote('hyper,263,153,161,162,163,164,259,unit_del,1,3')]).

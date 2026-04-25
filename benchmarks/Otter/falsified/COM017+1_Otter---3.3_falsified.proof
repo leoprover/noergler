@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '96':
-%%%%%   Replaced aReductOfIn0(xu,xa,xR)
-%%%%%   With ~ (aReductOfIn0(xu,xa,xR))
+%%%%% Mutated formula '156':
+%%%%%   Replaced aElement0(dollar_f6(xR,xa,xu,xv))
+%%%%%   With aElement0(dollar_f6(xv,xa,xu,xv))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : COM017+1 : TPTP v8.1.0. Released v4.0.0.
@@ -41,10 +41,10 @@ fof(87, axiom, aRewritingSystem0(xR), file('COM017+1.p',unknown), []).
 fof(88, axiom, isLocallyConfluent0(xR), file('COM017+1.p',unknown), []).
 fof(90, axiom, aElement0(xa), file('COM017+1.p',unknown), []).
 fof(95, axiom, aElement0(xu), file('COM017+1.p',unknown), []).
-fof(96, axiom, ~ (aReductOfIn0(xu,xa,xR)), file('COM017+1.p',unknown), []).
+fof(96, axiom, aReductOfIn0(xu,xa,xR), file('COM017+1.p',unknown), []).
 fof(98, axiom, aElement0(xv), file('COM017+1.p',unknown), []).
 fof(99, axiom, aReductOfIn0(xv,xa,xR), file('COM017+1.p',unknown), []).
 fof(152, plain, sdtmndtasgtdt0(xv,xR,dollar_f6(xR,xa,xu,xv)), inference(hyper,[status(thm)],[99,23,87,88,90,95,98,96]), [iquote('hyper,99,23,87,88,90,95,98,96')]).
 fof(154, plain, sdtmndtasgtdt0(xu,xR,dollar_f6(xR,xa,xu,xv)), inference(hyper,[status(thm)],[99,22,87,88,90,95,98,96]), [iquote('hyper,99,22,87,88,90,95,98,96')]).
-fof(156, plain, aElement0(dollar_f6(xR,xa,xu,xv)), inference(hyper,[status(thm)],[99,21,87,88,90,95,98,96]), [iquote('hyper,99,21,87,88,90,95,98,96')]).
+fof(156, plain, aElement0(dollar_f6(xv,xa,xu,xv)), inference(hyper,[status(thm)],[99,21,87,88,90,95,98,96]), [iquote('hyper,99,21,87,88,90,95,98,96')]).
 fof(4211, plain, $false, inference(hyper,[status(thm)],[154,43,156,152]), [iquote('hyper,154,43,156,152')]).

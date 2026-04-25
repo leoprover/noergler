@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '17':
-%%%%%   Replaced subset(dollar_c4,dollar_c3)
-%%%%%   With subset(dollar_c5,dollar_c3)
+%%%%% Mutated formula '23':
+%%%%%   Replaced in(dollar_f1(dollar_c5,dollar_c3),dollar_c5)
+%%%%%   With in(dollar_f1(dollar_c3,dollar_c3),dollar_c5)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU121+1 : TPTP v8.1.0. Released v3.3.0.
@@ -38,8 +38,8 @@ fof(3, axiom, (! [A,B]: ((subset(A,B) | ~ (in(dollar_f1(A,B),B))))), file('SEU12
 fof(5, axiom, ~ (subset(dollar_c5,dollar_c3)), file('SEU121+1.p',unknown), []).
 fof(12, axiom, (! [A,B]: ((subset(A,B) | in(dollar_f1(A,B),A)))), file('SEU121+1.p',unknown), []).
 fof(16, axiom, subset(dollar_c5,dollar_c4), file('SEU121+1.p',unknown), []).
-fof(17, axiom, subset(dollar_c5,dollar_c3), file('SEU121+1.p',unknown), []).
-fof(23, plain, in(dollar_f1(dollar_c5,dollar_c3),dollar_c5), inference(hyper,[status(thm)],[12,5]), [iquote('hyper,12,5')]).
+fof(17, axiom, subset(dollar_c4,dollar_c3), file('SEU121+1.p',unknown), []).
+fof(23, plain, in(dollar_f1(dollar_c3,dollar_c3),dollar_c5), inference(hyper,[status(thm)],[12,5]), [iquote('hyper,12,5')]).
 fof(35, plain, in(dollar_f1(dollar_c5,dollar_c3),dollar_c4), inference(hyper,[status(thm)],[23,2,16]), [iquote('hyper,23,2,16')]).
 fof(60, plain, in(dollar_f1(dollar_c5,dollar_c3),dollar_c3), inference(hyper,[status(thm)],[35,2,17]), [iquote('hyper,35,2,17')]).
 fof(70, plain, subset(dollar_c5,dollar_c3), inference(hyper,[status(thm)],[60,3]), [iquote('hyper,60,3')]).

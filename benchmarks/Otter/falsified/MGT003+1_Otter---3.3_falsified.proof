@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '18':
-%%%%%   Replaced greater(dollar_c3,dollar_c4)
-%%%%%   With greater(dollar_c1,dollar_c4)
+%%%%% Mutated formula '13':
+%%%%%   Replaced inertia(dollar_c5,dollar_f1(dollar_c5,dollar_c2),dollar_c2)
+%%%%%   With inertia(dollar_c4,dollar_f1(dollar_c5,dollar_c2),dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT003+1 : TPTP v8.1.0. Released v2.0.0.
@@ -45,10 +45,10 @@ fof(9, axiom, reorganization_free(dollar_c5,dollar_c2,dollar_c1), file('MGT003+1
 fof(10, axiom, survival_chance(dollar_c5,dollar_c4,dollar_c2), file('MGT003+1.p',unknown), []).
 fof(11, axiom, survival_chance(dollar_c5,dollar_c3,dollar_c1), file('MGT003+1.p',unknown), []).
 fof(12, axiom, greater(dollar_c1,dollar_c2), file('MGT003+1.p',unknown), []).
-fof(13, plain, inertia(dollar_c5,dollar_f1(dollar_c5,dollar_c2),dollar_c2), inference(hyper,[status(thm)],[7,3]), [iquote('hyper,7,3')]).
+fof(13, plain, inertia(dollar_c4,dollar_f1(dollar_c5,dollar_c2),dollar_c2), inference(hyper,[status(thm)],[7,3]), [iquote('hyper,7,3')]).
 fof(14, plain, inertia(dollar_c5,dollar_f1(dollar_c5,dollar_c1),dollar_c1), inference(hyper,[status(thm)],[8,3]), [iquote('hyper,8,3')]).
 fof(15, plain, reorganization_free(dollar_c5,dollar_c1,dollar_c1), inference(hyper,[status(thm)],[9,2]), [iquote('hyper,9,2')]).
 fof(16, plain, reorganization_free(dollar_c5,dollar_c2,dollar_c2), inference(hyper,[status(thm)],[9,1]), [iquote('hyper,9,1')]).
 fof(17, plain, greater(dollar_f1(dollar_c5,dollar_c1),dollar_f1(dollar_c5,dollar_c2)), inference(hyper,[status(thm)],[14,5,7,8,9,13,12]), [iquote('hyper,14,5,7,8,9,13,12')]).
-fof(18, plain, greater(dollar_c1,dollar_c4), inference(hyper,[status(thm)],[17,4,7,8,16,15,13,14,10,11]), [iquote('hyper,17,4,7,8,16,15,13,14,10,11')]).
+fof(18, plain, greater(dollar_c3,dollar_c4), inference(hyper,[status(thm)],[17,4,7,8,16,15,13,14,10,11]), [iquote('hyper,17,4,7,8,16,15,13,14,10,11')]).
 fof(19, plain, $false, inference(binary,[status(thm)],[18,6]), [iquote('binary,18.1,6.1')]).

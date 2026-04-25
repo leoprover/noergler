@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '13':
-%%%%%   Replaced (! [A,B]: (r2(A,dollar_f4(B,A))))
-%%%%%   With (! [A,B]: (~ (r2(A,dollar_f4(B,A)))))
+%%%%% Mutated formula '849':
+%%%%%   Replaced (! [A]: ((r2(dollar_f21(A),dollar_f22(A)) | r1(A))))
+%%%%%   With (! [A]: ((r2(dollar_f21(A),dollar_f22(A)) & r1(A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUN066+2 : TPTP v8.1.0. Released v7.3.0.
@@ -40,7 +40,7 @@ fof(4, axiom, (! [A,B]: (((A != dollar_f1(B)) | r2(B,A)))), file('NUN066+2.p',un
 fof(9, axiom, (! [A,B,C,D]: ((~ (r2(A,B)) | ((B != C) | (~ (r2(D,C)) | (A = D)))))), file('NUN066+2.p',unknown), []).
 fof(10, axiom, (! [A,B,C]: ((~ (r1(A)) | ((A != B) | ~ (r2(C,B)))))), file('NUN066+2.p',unknown), []).
 fof(12, axiom, (! [A]: ((A = A))), file('NUN066+2.p',unknown), []).
-fof(13, axiom, (! [A,B]: (~ (r2(A,dollar_f4(B,A))))), file('NUN066+2.p',unknown), []).
+fof(13, axiom, (! [A,B]: (r2(A,dollar_f4(B,A)))), file('NUN066+2.p',unknown), []).
 fof(21, axiom, (! [A,B]: (r2(A,dollar_f8(B,A)))), file('NUN066+2.p',unknown), []).
 fof(30, axiom, (! [A]: ((dollar_f13(A) = A))), file('NUN066+2.p',unknown), []).
 fof(36, axiom, (! [A]: ((r1(dollar_f17(A)) | r2(dollar_f19(A),dollar_f18(A))))), file('NUN066+2.p',unknown), []).
@@ -78,7 +78,7 @@ fof(330, plain, (! [A]: (r1(dollar_f20(dollar_f1(A))))), inference(hyper,[status
 fof(346, plain, (! [A]: ((dollar_f20(dollar_f1(A)) = dollar_c1))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[330,89])]), [iquote('hyper,330,89,flip.1')]).
 fof(364, plain, (! [A]: ((dollar_f18(dollar_f1(A)) = dollar_f1(A)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[42,10,38,61])]), [iquote('hyper,42,10,38,61,factor_simp')]).
 fof(506, plain, (! [A]: ((r2(dollar_f20(A),dollar_f21(A)) | r1(A)))), inference(factor_simp,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[48,46])]), [iquote('para_from,48.2.1,46.2.1,factor_simp')]).
-fof(849, plain, (! [A]: ((r2(dollar_f21(A),dollar_f22(A)) | r1(A)))), inference(factor_simp,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[51,49])]), [iquote('para_from,51.2.1,49.2.1,factor_simp')]).
+fof(849, plain, (! [A]: ((r2(dollar_f21(A),dollar_f22(A)) & r1(A)))), inference(factor_simp,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[51,49])]), [iquote('para_from,51.2.1,49.2.1,factor_simp')]).
 fof(988, plain, (! [A]: ((dollar_f22(dollar_f1(A)) = dollar_f1(A)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[55,10,53,61])]), [iquote('hyper,55,10,53,61,factor_simp')]).
 fof(1244, plain, (! [A]: (r2(dollar_f19(dollar_f1(A)),dollar_f1(A)))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[318,10,988,61]),988,988,364]), [iquote('hyper,318,10,987,61,demod,988,988,364')]).
 fof(1268, plain, (! [A]: ((dollar_f19(dollar_f1(A)) = A))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[1244,9,61,12])]), [iquote('hyper,1244,9,61,12,flip.1')]).

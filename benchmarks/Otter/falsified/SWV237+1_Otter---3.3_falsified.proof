@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '22':
-%%%%%   Replaced p(enc(tmk,pp))
-%%%%%   With ~ (p(enc(tmk,pp)))
+%%%%% Mutated formula '14':
+%%%%%   Replaced ~ (p(enc(pp,a)))
+%%%%%   With ~ (p(enc(tc,a)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV237+1 : TPTP v8.1.0. Released v3.2.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:22:59 CEST 2026 using command 'transform(fof)'.
 fof(6, axiom, (! [A,B,C]: ((~ (p(A)) | (~ (p(B)) | (~ (p(C)) | p(enc(enc(i(tmk),B),enc(i(tc),A)))))))), file('SWV237+1.p',unknown), []).
 fof(7, axiom, (! [A,B,C]: ((~ (p(A)) | (~ (p(B)) | (~ (p(C)) | p(enc(tc,A))))))), file('SWV237+1.p',unknown), []).
-fof(14, axiom, ~ (p(enc(pp,a))), file('SWV237+1.p',unknown), []).
+fof(14, axiom, ~ (p(enc(tc,a))), file('SWV237+1.p',unknown), []).
 fof(17, axiom, (! [A,B]: ((enc(i(A),enc(A,B)) = B))), file('SWV237+1.p',unknown), []).
-fof(22, axiom, ~ (p(enc(tmk,pp))), file('SWV237+1.p',unknown), []).
+fof(22, axiom, p(enc(tmk,pp)), file('SWV237+1.p',unknown), []).
 fof(29, axiom, p(a), file('SWV237+1.p',unknown), []).
 fof(64, plain, p(enc(tc,a)), inference(hyper,[status(thm)],[29,7,29,29]), [iquote('hyper,29,7,29,29')]).
 fof(8255, plain, p(enc(pp,a)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[64,6,64,22]),17,17]), [iquote('hyper,64,6,64,22,demod,17,17')]).

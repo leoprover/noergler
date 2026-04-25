@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '91':
-%%%%%   Replaced (! [A,B]: ((~ (less(A,B)) | ~ (less(B,A)))))
-%%%%%   With (! [A,B]: ((less(A,B) | ~ (less(B,A)))))
+%%%%% Mutated formula '21':
+%%%%%   Replaced (! [A,B,C]: ((~ (happens(A,B)) | (~ (initiates(A,C,B)) | holdsAt(C,plus(B,n1))))))
+%%%%%   With (! [A,B,C]: ((~ (happens(A,B)) | (~ (initiates(A,C,B)) | holdsAt(C,plus(B,spinning))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR016+1 : TPTP v8.1.0. Bugfixed v3.1.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:10:51 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, (! [A,B,C]: ((~ (stoppedIn(A,B,C)) | less(dollar_f1(A,B,C),C)))), file('CSR016+1.p',unknown), []).
 fof(5, axiom, (! [E,A,B,C,D]: ((stoppedIn(A,B,C) | (~ (happens(D,E)) | (~ (less(A,E)) | (~ (less(E,C)) | ~ (terminates(D,B,E)))))))), file('CSR016+1.p',unknown), []).
-fof(21, axiom, (! [A,B,C]: ((~ (happens(A,B)) | (~ (initiates(A,C,B)) | holdsAt(C,plus(B,n1)))))), file('CSR016+1.p',unknown), []).
+fof(21, axiom, (! [A,B,C]: ((~ (happens(A,B)) | (~ (initiates(A,C,B)) | holdsAt(C,plus(B,spinning)))))), file('CSR016+1.p',unknown), []).
 fof(30, axiom, (! [A,B,C]: ((~ (initiates(A,B,C)) | ((B = forwards) | (A = pull))))), file('CSR016+1.p',unknown), []).
 fof(38, axiom, (! [A,B,C]: ((initiates(A,B,C) | ((A != push) | ((B != forwards) | happens(pull,C)))))), file('CSR016+1.p',unknown), []).
 fof(40, axiom, (! [A,B,C]: ((initiates(A,B,C) | ((A != pull) | ((B != spinning) | ~ (happens(push,C))))))), file('CSR016+1.p',unknown), []).
@@ -52,7 +52,7 @@ fof(71, axiom, (! [A,B]: ((less_or_e_qual(A,B) | (A != B)))), file('CSR016+1.p',
 fof(72, axiom, (! [A]: (~ (less(A,n0)))), file('CSR016+1.p',unknown), []).
 fof(74, axiom, (! [A]: ((less(A,n1) | ~ (less_or_e_qual(A,n0))))), file('CSR016+1.p',unknown), []).
 fof(76, axiom, (! [A]: ((less(A,n2) | ~ (less_or_e_qual(A,n1))))), file('CSR016+1.p',unknown), []).
-fof(91, axiom, (! [A,B]: ((less(A,B) | ~ (less(B,A))))), file('CSR016+1.p',unknown), []).
+fof(91, axiom, (! [A,B]: ((~ (less(A,B)) | ~ (less(B,A))))), file('CSR016+1.p',unknown), []).
 fof(97, axiom, ~ (holdsAt(forwards,n1)), file('CSR016+1.p',unknown), []).
 fof(98, plain, (! [A]: (~ (less(A,A)))), inference(factor,[status(thm)],[91]), [iquote('factor,91.1.2')]).
 fof(99, axiom, (! [A]: ((A = A))), file('CSR016+1.p',unknown), []).

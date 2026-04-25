@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '219':
-%%%%%   Replaced (! [A]: ((member(A,universal_class) | ~ (member(dollar_c3,unordered_pair(A,A))))))
-%%%%%   With (! [A]: ((~ (member(A,universal_class)) | ~ (member(dollar_c3,unordered_pair(A,A))))))
+%%%%% Mutated formula '121':
+%%%%%   Replaced (singleton(dollar_c4) = singleton(dollar_c3))
+%%%%%   With ~ ((singleton(dollar_c4) = singleton(dollar_c3)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET084+1 : TPTP v8.1.0. Bugfixed v5.4.0.
@@ -39,11 +39,11 @@ fof(68, axiom, (dollar_c4 != dollar_c3), file('SET084+1.p',unknown), []).
 fof(70, plain, (! [A,B]: ((~ (member(A,unordered_pair(B,B))) | (A = B)))), inference(factor,[status(thm)],[7]), [iquote('factor,7.2.3')]).
 fof(82, axiom, (! [A]: ((A = A))), file('SET084+1.p',unknown), []).
 fof(87, axiom, (! [A]: ((singleton(A) = unordered_pair(A,A)))), file('SET084+1.p',unknown), []).
-fof(121, axiom, (singleton(dollar_c4) = singleton(dollar_c3)), file('SET084+1.p',unknown), []).
+fof(121, axiom, ~ ((singleton(dollar_c4) = singleton(dollar_c3))), file('SET084+1.p',unknown), []).
 fof(122, plain, (unordered_pair(dollar_c4,dollar_c4) = unordered_pair(dollar_c3,dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[121]),87,87]), [iquote('copy,121,demod,87,87')]).
 fof(124, axiom, member(dollar_c3,universal_class), file('SET084+1.p',unknown), []).
 fof(216, plain, (! [A]: (member(dollar_c3,unordered_pair(A,dollar_c3)))), inference(hyper,[status(thm)],[124,9,82]), [iquote('hyper,124,9,82')]).
-fof(219, plain, (! [A]: ((~ (member(A,universal_class)) | ~ (member(dollar_c3,unordered_pair(A,A)))))), inference(para_into,[status(thm),theory(equality)],[124,70]), [iquote('para_into,124.1.1,70.2.1')]).
+fof(219, plain, (! [A]: ((member(A,universal_class) | ~ (member(dollar_c3,unordered_pair(A,A)))))), inference(para_into,[status(thm),theory(equality)],[124,70]), [iquote('para_into,124.1.1,70.2.1')]).
 fof(2062, plain, member(dollar_c4,universal_class), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[219,122]),216]), [iquote('para_into,219.2.2,122.1.1,unit_del,216')]).
 fof(2100, plain, (! [A]: (member(dollar_c4,unordered_pair(A,dollar_c4)))), inference(hyper,[status(thm)],[2062,9,82]), [iquote('hyper,2062,9,82')]).
 fof(2141, plain, member(dollar_c4,unordered_pair(dollar_c3,dollar_c3)), inference(para_into,[status(thm),theory(equality)],[2100,122]), [iquote('para_into,2100.1.2,122.1.1')]).

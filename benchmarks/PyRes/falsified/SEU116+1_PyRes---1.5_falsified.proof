@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c19':
-%%%%%   Replaced (? [A,B]: ((element(B,finite_subsets(A)) & ~ (finite(B)))))
-%%%%%   With (? [A,B]: ((~ (element(B,finite_subsets(A))) & ~ (finite(B)))))
+%%%%% Mutated formula 'c84':
+%%%%%   Replaced (! [X18,X19]: ((~ (element(X19,finite_subsets(X18))) | finite(X19))))
+%%%%%   With (! [X18,X19]: ((~ (element(X19,finite_subsets(X18))) & finite(X19))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SEU116+1 : TPTP v8.1.2. Released v3.2.0.
@@ -38,14 +38,14 @@
 %%% Generated on Tue Apr 14 15:06:22 CEST 2026 using command 'transform(fof)'.
 fof(t30_finsub_1, conjecture, (! [A,B]: ((element(B,finite_subsets(A)) => finite(B)))), file('SEU116+1.p',t30_finsub_1)).
 fof(c18, negated_conjecture, ~ ((! [A,B]: ((element(B,finite_subsets(A)) => finite(B))))), inference(assume_negation,[status(cth)],[t30_finsub_1])).
-fof(c19, negated_conjecture, (? [A,B]: ((~ (element(B,finite_subsets(A))) & ~ (finite(B))))), inference(fof_nnf,[status(thm)],[c18])).
+fof(c19, negated_conjecture, (? [A,B]: ((element(B,finite_subsets(A)) & ~ (finite(B))))), inference(fof_nnf,[status(thm)],[c18])).
 fof(c20, negated_conjecture, (? [X2,X3]: ((element(X3,finite_subsets(X2)) & ~ (finite(X3))))), inference(variable_rename,[status(thm)],[c19])).
 fof(c21, negated_conjecture, (element(skolem0002,finite_subsets(skolem0001)) & ~ (finite(skolem0002))), inference(skolemize,[status(esa)],[c20])).
 fof(c23, negated_conjecture, ~ (finite(skolem0002)), inference(split_conjunct,[status(thm)],[c21])).
 fof(c22, negated_conjecture, element(skolem0002,finite_subsets(skolem0001)), inference(split_conjunct,[status(thm)],[c21])).
 fof(cc3_finsub_1, axiom, (! [A,B]: ((element(B,finite_subsets(A)) => finite(B)))), file('SEU116+1.p',cc3_finsub_1)).
 fof(c83, plain, (! [A,B]: ((~ (element(B,finite_subsets(A))) | finite(B)))), inference(fof_nnf,[status(thm)],[cc3_finsub_1])).
-fof(c84, plain, (! [X18,X19]: ((~ (element(X19,finite_subsets(X18))) | finite(X19)))), inference(variable_rename,[status(thm)],[c83])).
+fof(c84, plain, (! [X18,X19]: ((~ (element(X19,finite_subsets(X18))) & finite(X19)))), inference(variable_rename,[status(thm)],[c83])).
 fof(c85, plain, (! [X188,X187]: ((~ (element(X188,finite_subsets(X187))) | finite(X188)))), inference(split_conjunct,[status(thm)],[c84])).
 fof(c355, plain, finite(skolem0002), inference(resolution,[status(thm)],[c85,c22])).
 fof(c357, plain, $false, inference(resolution,[status(thm)],[c355,c23])).

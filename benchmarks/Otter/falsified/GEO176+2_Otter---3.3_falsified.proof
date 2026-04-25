@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '25':
-%%%%%   Replaced apart_point_and_line(dollar_c4,dollar_c1)
-%%%%%   With apart_point_and_line(dollar_c1,dollar_c1)
+%%%%% Mutated formula '31':
+%%%%%   Replaced distinct_points(dollar_c4,intersection_point(dollar_c2,dollar_c1))
+%%%%%   With distinct_points(dollar_c1,intersection_point(dollar_c2,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO176+2 : TPTP v8.1.0. Released v3.3.0.
@@ -38,6 +38,6 @@ fof(10, axiom, (! [A,B,C]: ((~ (convergent_lines(A,B)) | (~ (apart_point_and_lin
 fof(15, axiom, ~ (distinct_points(dollar_c4,intersection_point(dollar_c2,dollar_c1))), file('GEO176+2.p',unknown), []).
 fof(17, axiom, convergent_lines(dollar_c2,dollar_c1), file('GEO176+2.p',unknown), []).
 fof(18, axiom, (apart_point_and_line(dollar_c4,dollar_c2) | apart_point_and_line(dollar_c4,dollar_c1)), file('GEO176+2.p',unknown), []).
-fof(25, plain, apart_point_and_line(dollar_c1,dollar_c1), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[18,9,17]),15]), [iquote('hyper,18,9,17,unit_del,15')]).
-fof(31, plain, distinct_points(dollar_c4,intersection_point(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[25,10,17]), [iquote('hyper,25,10,17')]).
+fof(25, plain, apart_point_and_line(dollar_c4,dollar_c1), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[18,9,17]),15]), [iquote('hyper,18,9,17,unit_del,15')]).
+fof(31, plain, distinct_points(dollar_c1,intersection_point(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[25,10,17]), [iquote('hyper,25,10,17')]).
 fof(32, plain, $false, inference(binary,[status(thm)],[31,15]), [iquote('binary,31.1,15.1')]).

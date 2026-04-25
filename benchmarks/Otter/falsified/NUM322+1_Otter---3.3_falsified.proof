@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '219':
-%%%%%   Replaced rdn_translate(nn5,rdn_neg(rdnn(n5)))
-%%%%%   With ~ (rdn_translate(nn5,rdn_neg(rdnn(n5))))
+%%%%% Mutated formula '2356':
+%%%%%   Replaced sum(n5,nn5,n0)
+%%%%%   With sum(nn5,nn5,n0)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM322+1 : TPTP v8.1.0. Released v3.1.0.
@@ -36,6 +36,6 @@
 fof(20, axiom, (! [A,B,C]: ((~ (rdn_translate(A,rdn_pos(B))) | (~ (rdn_translate(C,rdn_neg(B))) | sum(A,C,n0))))), file('NUM322+1.p',unknown), []).
 fof(32, axiom, (! [A]: (~ (sum(n5,nn5,A)))), file('NUM322+1.p',unknown), []).
 fof(92, axiom, rdn_translate(n5,rdn_pos(rdnn(n5))), file('NUM322+1.p',unknown), []).
-fof(219, axiom, ~ (rdn_translate(nn5,rdn_neg(rdnn(n5)))), file('NUM322+1.p',unknown), []).
-fof(2356, plain, sum(n5,nn5,n0), inference(hyper,[status(thm)],[219,20,92]), [iquote('hyper,219,20,92')]).
+fof(219, axiom, rdn_translate(nn5,rdn_neg(rdnn(n5))), file('NUM322+1.p',unknown), []).
+fof(2356, plain, sum(nn5,nn5,n0), inference(hyper,[status(thm)],[219,20,92]), [iquote('hyper,219,20,92')]).
 fof(2357, plain, $false, inference(binary,[status(thm)],[2356,32]), [iquote('binary,2356.1,32.1')]).

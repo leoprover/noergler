@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3':
-%%%%%   Replaced (! [A]: ((~ (a(A)) | ~ (c(A)))))
-%%%%%   With (! [A]: ((a(A) | ~ (c(A)))))
+%%%%% Mutated formula '5':
+%%%%%   Replaced c(dollar_c1)
+%%%%%   With ~ (c(dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN942+1 : TPTP v8.1.0. Released v3.1.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:24:24 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A]: ((~ (a(A)) | (b(A) | c(A))))), file('SYN942+1.p',unknown), []).
 fof(2, axiom, ~ (b(dollar_c1)), file('SYN942+1.p',unknown), []).
-fof(3, axiom, (! [A]: ((a(A) | ~ (c(A))))), file('SYN942+1.p',unknown), []).
+fof(3, axiom, (! [A]: ((~ (a(A)) | ~ (c(A))))), file('SYN942+1.p',unknown), []).
 fof(4, axiom, a(dollar_c1), file('SYN942+1.p',unknown), []).
-fof(5, plain, c(dollar_c1), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[4,1]),2]), [iquote('hyper,4,1,unit_del,2')]).
+fof(5, plain, ~ (c(dollar_c1)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[4,1]),2]), [iquote('hyper,4,1,unit_del,2')]).
 fof(6, plain, $false, inference(hyper,[status(thm)],[5,3,4]), [iquote('hyper,5,3,4')]).

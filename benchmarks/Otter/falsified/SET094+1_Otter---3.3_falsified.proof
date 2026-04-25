@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '2524':
-%%%%%   Replaced subclass(member_of(dollar_c4),dollar_c3)
-%%%%%   With subclass(member_of(dollar_c3),dollar_c3)
+%%%%% Mutated formula '867':
+%%%%%   Replaced (! [A]: ((member(A,power_class(dollar_c3)) | ~ (member(dollar_c3,unordered_pair(A,A))))))
+%%%%%   With (! [A]: ((~ (member(A,power_class(dollar_c3))) | ~ (member(dollar_c3,unordered_pair(A,A))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET094+1 : TPTP v8.1.0. Bugfixed v7.3.0.
@@ -50,10 +50,10 @@ fof(129, axiom, member(dollar_c3,dollar_c4), file('SET094+1.p',unknown), []).
 fof(141, plain, (! [A]: (subclass(A,A))), inference(hyper,[status(thm)],[84,4]), [iquote('hyper,84,4')]).
 fof(203, plain, member(dollar_c3,universal_class), inference(hyper,[status(thm)],[129,1,86]), [iquote('hyper,129,1,86')]).
 fof(247, plain, member(dollar_c3,power_class(dollar_c3)), inference(hyper,[status(thm)],[203,53,141]), [iquote('hyper,203,53,141')]).
-fof(867, plain, (! [A]: ((member(A,power_class(dollar_c3)) | ~ (member(dollar_c3,unordered_pair(A,A)))))), inference(para_into,[status(thm),theory(equality)],[247,72]), [iquote('para_into,247.1.1,72.2.1')]).
+fof(867, plain, (! [A]: ((~ (member(A,power_class(dollar_c3))) | ~ (member(dollar_c3,unordered_pair(A,A)))))), inference(para_into,[status(thm),theory(equality)],[247,72]), [iquote('para_into,247.1.1,72.2.1')]).
 fof(871, plain, (! [A]: ((member(dollar_c3,power_class(A)) | ~ (member(dollar_c3,unordered_pair(A,A)))))), inference(para_into,[status(thm),theory(equality)],[247,72]), [iquote('para_into,247.1.2.1,72.2.1')]).
 fof(2523, plain, member(member_of(dollar_c4),power_class(dollar_c3)), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[867,127]),129]), [iquote('para_into,867.2.2,127.1.1,unit_del,129')]).
-fof(2524, plain, subclass(member_of(dollar_c3),dollar_c3), inference(hyper,[status(thm)],[2523,52]), [iquote('hyper,2523,52')]).
+fof(2524, plain, subclass(member_of(dollar_c4),dollar_c3), inference(hyper,[status(thm)],[2523,52]), [iquote('hyper,2523,52')]).
 fof(2597, plain, member(dollar_c3,power_class(member_of(dollar_c4))), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[871,127]),129]), [iquote('para_into,871.2.2,127.1.1,unit_del,129')]).
 fof(2598, plain, subclass(dollar_c3,member_of(dollar_c4)), inference(hyper,[status(thm)],[2597,52]), [iquote('hyper,2597,52')]).
 fof(2599, plain, (member_of(dollar_c4) = dollar_c3), inference(hyper,[status(thm)],[2598,5,2524]), [iquote('hyper,2598,5,2524')]).

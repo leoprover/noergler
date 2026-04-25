@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '41':
-%%%%%   Replaced (zero = dollar_c1)
-%%%%%   With ~ ((zero = dollar_c1))
+%%%%% Mutated formula '43':
+%%%%%   Replaced (domain(dollar_c1) = dollar_c1)
+%%%%%   With ~ ((domain(dollar_c1) = dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE057+1 : TPTP v8.1.0. Released v4.0.0.
@@ -37,7 +37,7 @@ fof(3, axiom, (domain(dollar_c1) != zero), file('KLE057+1.p',unknown), []).
 fof(4, axiom, (! [A]: ((A = A))), file('KLE057+1.p',unknown), []).
 fof(35, axiom, (domain(zero) = zero), file('KLE057+1.p',unknown), []).
 fof(39, axiom, (dollar_c1 = zero), file('KLE057+1.p',unknown), []).
-fof(41, plain, ~ ((zero = dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[39])]), [iquote('copy,39,flip.1')]).
-fof(43, plain, (domain(dollar_c1) = dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[35]),41,41]), [iquote('back_demod,35,demod,41,41')]).
+fof(41, plain, (zero = dollar_c1), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[39])]), [iquote('copy,39,flip.1')]).
+fof(43, plain, ~ ((domain(dollar_c1) = dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[35]),41,41]), [iquote('back_demod,35,demod,41,41')]).
 fof(50, plain, (dollar_c1 != dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[3]),43,41]), [iquote('back_demod,3,demod,43,41')]).
 fof(51, plain, $false, inference(binary,[status(thm)],[50,4]), [iquote('binary,50.1,4.1')]).

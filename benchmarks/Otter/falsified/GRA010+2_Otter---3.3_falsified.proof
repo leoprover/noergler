@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '366':
-%%%%%   Replaced triangle(dollar_f8(dollar_c3,dollar_c2,dollar_c1),dollar_f7(dollar_c3,dollar_c2,dollar_c1),dollar_f10(dollar_f8(dollar_c3,dollar_c2,dollar_c1),dollar_f7(dollar_c3,dollar_c2,dollar_c1)))
-%%%%%   With triangle(dollar_f8(edges,dollar_c2,dollar_c1),dollar_f7(dollar_c3,dollar_c2,dollar_c1),dollar_f10(dollar_f8(dollar_c3,dollar_c2,dollar_c1),dollar_f7(dollar_c3,dollar_c2,dollar_c1)))
+%%%%% Mutated formula '76':
+%%%%%   Replaced (! [A,B,C,D]: ((~ (path(A,B,C)) | (~ (triangle(dollar_f8(C,A,B),dollar_f7(C,A,B),D)) | (number_of_in(triangles,C) = number_of_in(se_quential_pairs,C))))))
+%%%%%   With (! [A,B,C,D]: ((~ (path(A,B,C)) & (~ (triangle(dollar_f8(C,A,B),dollar_f7(C,A,B),D)) | (number_of_in(triangles,C) = number_of_in(se_quential_pairs,C))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GRA010+2 : TPTP v8.1.0. Bugfixed v3.2.0.
@@ -43,7 +43,7 @@ fof(72, plain, (! [A,B,C]: ((~ (path(A,B,C)) | (on_path(dollar_f7(C,A,B),C) | (n
 fof(73, axiom, (! [A,B,C]: ((~ (path(A,B,C)) | (se_quential(dollar_f8(C,A,B),dollar_f7(C,A,B)) | (number_of_in(se_quential_pairs,C) = number_of_in(triangles,C)))))), file('GRA010+2.p',unknown), []).
 fof(74, plain, (! [A,B,C]: ((~ (path(A,B,C)) | (se_quential(dollar_f8(C,A,B),dollar_f7(C,A,B)) | (number_of_in(triangles,C) = number_of_in(se_quential_pairs,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[73])]), [iquote('copy,73,flip.3')]).
 fof(75, axiom, (! [A,B,C,D]: ((~ (path(A,B,C)) | (~ (triangle(dollar_f8(C,A,B),dollar_f7(C,A,B),D)) | (number_of_in(se_quential_pairs,C) = number_of_in(triangles,C)))))), file('GRA010+2.p',unknown), []).
-fof(76, plain, (! [A,B,C,D]: ((~ (path(A,B,C)) | (~ (triangle(dollar_f8(C,A,B),dollar_f7(C,A,B),D)) | (number_of_in(triangles,C) = number_of_in(se_quential_pairs,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[75])]), [iquote('copy,75,flip.3')]).
+fof(76, plain, (! [A,B,C,D]: ((~ (path(A,B,C)) & (~ (triangle(dollar_f8(C,A,B),dollar_f7(C,A,B),D)) | (number_of_in(triangles,C) = number_of_in(se_quential_pairs,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[75])]), [iquote('copy,75,flip.3')]).
 fof(78, axiom, (! [A,B]: ((~ (on_path(A,dollar_c3)) | (~ (on_path(B,dollar_c3)) | (~ (se_quential(A,B)) | triangle(A,B,dollar_f10(A,B))))))), file('GRA010+2.p',unknown), []).
 fof(79, axiom, (number_of_in(se_quential_pairs,dollar_c3) != number_of_in(triangles,dollar_c3)), file('GRA010+2.p',unknown), []).
 fof(80, plain, (number_of_in(triangles,dollar_c3) != number_of_in(se_quential_pairs,dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[79])]), [iquote('copy,79,flip.1')]).
@@ -55,6 +55,6 @@ fof(106, plain, (minus(length_of(dollar_c3),n1) = number_of_in(se_quential_pairs
 fof(109, plain, (length_of(dollar_c3) = number_of_in(edges,dollar_c3)), inference(hyper,[status(thm)],[102,66]), [iquote('hyper,102,66')]).
 fof(121, plain, (number_of_in(se_quential_pairs,dollar_c3) = minus(number_of_in(edges,dollar_c3),n1)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[106]),109])]), [iquote('back_demod,106,demod,109,flip.1')]).
 fof(122, plain, (number_of_in(triangles,dollar_c3) != minus(number_of_in(edges,dollar_c3),n1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[80]),121]), [iquote('back_demod,80,demod,121')]).
-fof(366, plain, triangle(dollar_f8(edges,dollar_c2,dollar_c1),dollar_f7(dollar_c3,dollar_c2,dollar_c1),dollar_f10(dollar_f8(dollar_c3,dollar_c2,dollar_c1),dollar_f7(dollar_c3,dollar_c2,dollar_c1))), inference(hyper,[status(thm)],[103,78,105,104]), [iquote('hyper,103,78,105,104')]).
+fof(366, plain, triangle(dollar_f8(dollar_c3,dollar_c2,dollar_c1),dollar_f7(dollar_c3,dollar_c2,dollar_c1),dollar_f10(dollar_f8(dollar_c3,dollar_c2,dollar_c1),dollar_f7(dollar_c3,dollar_c2,dollar_c1))), inference(hyper,[status(thm)],[103,78,105,104]), [iquote('hyper,103,78,105,104')]).
 fof(1164, plain, (number_of_in(triangles,dollar_c3) = minus(number_of_in(edges,dollar_c3),n1)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[366,76,102]),121]), [iquote('hyper,366,76,102,demod,121')]).
 fof(1166, plain, $false, inference(binary,[status(thm)],[1164,122]), [iquote('binary,1164.1,122.1')]).

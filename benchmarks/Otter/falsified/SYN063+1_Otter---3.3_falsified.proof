@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '6':
-%%%%%   Replaced big_p(c)
-%%%%%   With ~ (big_p(c))
+%%%%% Mutated formula '4':
+%%%%%   Replaced ~ (big_p(c))
+%%%%%   With big_p(c)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN063+1 : TPTP v8.1.0. Released v2.0.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:23:15 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B]: ((big_p(A) | (~ (big_p(a)) | (big_p(B) | big_p(c)))))), file('SYN063+1.p',unknown), []).
 fof(2, plain, (big_p(c) | ~ (big_p(a))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(copy,[status(thm)],[1])])]), [iquote('copy,1,factor_simp,factor_simp')]).
-fof(4, axiom, ~ (big_p(c)), file('SYN063+1.p',unknown), []).
+fof(4, axiom, big_p(c), file('SYN063+1.p',unknown), []).
 fof(5, axiom, big_p(a), file('SYN063+1.p',unknown), []).
-fof(6, plain, ~ (big_p(c)), inference(hyper,[status(thm)],[5,2]), [iquote('hyper,5,2')]).
+fof(6, plain, big_p(c), inference(hyper,[status(thm)],[5,2]), [iquote('hyper,5,2')]).
 fof(7, plain, $false, inference(binary,[status(thm)],[6,4]), [iquote('binary,6.1,4.1')]).

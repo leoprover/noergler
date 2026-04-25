@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '22':
-%%%%%   Replaced (! [A]: ((big_f(dollar_f2(dollar_f1(A))) | big_g(dollar_f2(dollar_f2(dollar_f1(A)))))))
-%%%%%   With (! [A]: ((big_f(dollar_f2(dollar_f1(A))) & big_g(dollar_f2(dollar_f2(dollar_f1(A)))))))
+%%%%% Mutated formula '36':
+%%%%%   Replaced (! [A]: ((big_f(dollar_f2(dollar_f2(A))) | big_g(A))))
+%%%%%   With (! [A]: ((big_f(dollar_f2(dollar_f2(A))) & big_g(A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN328+1 : TPTP v8.1.0. Released v2.0.0.
@@ -45,10 +45,10 @@ fof(11, axiom, (! [A]: ((big_f(dollar_f2(A)) | big_g(A)))), file('SYN328+1.p',un
 fof(12, plain, (! [A]: ((big_f(A) | (big_g(dollar_f2(A)) | big_h(A))))), inference(hyper,[status(thm)],[10,5]), [iquote('hyper,10,5')]).
 fof(13, plain, (! [A]: ((big_f(dollar_f2(dollar_f2(A))) | big_f(A)))), inference(hyper,[status(thm)],[11,1]), [iquote('hyper,11,1')]).
 fof(20, plain, (! [A]: ((big_f(dollar_f2(A)) | (big_g(dollar_f2(dollar_f2(A))) | big_h(A))))), inference(hyper,[status(thm)],[12,6]), [iquote('hyper,12,6')]).
-fof(22, plain, (! [A]: ((big_f(dollar_f2(dollar_f1(A))) & big_g(dollar_f2(dollar_f2(dollar_f1(A))))))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[20,9,10,11])])]), [iquote('hyper,20,9,10,11,factor_simp,factor_simp')]).
+fof(22, plain, (! [A]: ((big_f(dollar_f2(dollar_f1(A))) | big_g(dollar_f2(dollar_f2(dollar_f1(A))))))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[20,9,10,11])])]), [iquote('hyper,20,9,10,11,factor_simp,factor_simp')]).
 fof(24, plain, (! [A]: ((big_f(dollar_f2(dollar_f2(A))) | (big_g(dollar_f2(dollar_f2(dollar_f2(A)))) | big_g(A))))), inference(hyper,[status(thm)],[20,3]), [iquote('hyper,20,3')]).
 fof(27, plain, (! [A]: (big_f(dollar_f2(dollar_f1(A))))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[22,1])]), [iquote('hyper,22,1,factor_simp')]).
-fof(36, plain, (! [A]: ((big_f(dollar_f2(dollar_f2(A))) | big_g(A)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[24,1])]), [iquote('hyper,24,1,factor_simp')]).
+fof(36, plain, (! [A]: ((big_f(dollar_f2(dollar_f2(A))) & big_g(A)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[24,1])]), [iquote('hyper,24,1,factor_simp')]).
 fof(41, plain, (! [A]: ((big_f(dollar_f2(dollar_f2(A))) | big_h(dollar_f2(A))))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[36,4,10])]), [iquote('hyper,36,4,10,factor_simp')]).
 fof(42, plain, (! [A]: ((big_f(dollar_f2(dollar_f2(dollar_f2(A)))) | big_f(A)))), inference(hyper,[status(thm)],[36,1]), [iquote('hyper,36,1')]).
 fof(44, plain, (! [A]: ((big_f(dollar_f2(dollar_f2(A))) | big_h(A)))), inference(hyper,[status(thm)],[41,6]), [iquote('hyper,41,6')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '10':
-%%%%%   Replaced (! [A]: ((~ (relation(A)) | (relation_rng(relation_inverse(A)) = relation_dom(A)))))
-%%%%%   With (! [A]: ((relation(A) | (relation_rng(relation_inverse(A)) = relation_dom(A)))))
+%%%%% Mutated formula '21':
+%%%%%   Replaced one_to_one(dollar_c3)
+%%%%%   With ~ (one_to_one(dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU219+1 : TPTP v8.1.0. Released v3.3.0.
@@ -37,13 +37,13 @@ fof(1, axiom, (! [A]: ((~ (relation(A)) | (~ (function(A)) | (~ (one_to_one(A)) 
 fof(2, plain, (! [A]: ((~ (relation(A)) | (~ (function(A)) | (~ (one_to_one(A)) | (relation_inverse(A) = function_inverse(A))))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1])]), [iquote('copy,1,flip.4')]).
 fof(8, axiom, (! [A]: ((~ (relation(A)) | (relation_rng(A) = relation_dom(relation_inverse(A)))))), file('SEU219+1.p',unknown), []).
 fof(9, axiom, (! [A]: ((~ (relation(A)) | (relation_dom(A) = relation_rng(relation_inverse(A)))))), file('SEU219+1.p',unknown), []).
-fof(10, plain, (! [A]: ((relation(A) | (relation_rng(relation_inverse(A)) = relation_dom(A))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[9])]), [iquote('copy,9,flip.2')]).
+fof(10, plain, (! [A]: ((~ (relation(A)) | (relation_rng(relation_inverse(A)) = relation_dom(A))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[9])]), [iquote('copy,9,flip.2')]).
 fof(11, axiom, ((relation_rng(dollar_c3) != relation_dom(function_inverse(dollar_c3))) | (relation_dom(dollar_c3) != relation_rng(function_inverse(dollar_c3)))), file('SEU219+1.p',unknown), []).
 fof(12, plain, ((relation_rng(dollar_c3) != relation_dom(function_inverse(dollar_c3))) | (relation_rng(function_inverse(dollar_c3)) != relation_dom(dollar_c3))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[11])]), [iquote('copy,11,flip.2')]).
 fof(13, axiom, (! [A]: ((A = A))), file('SEU219+1.p',unknown), []).
 fof(19, axiom, relation(dollar_c3), file('SEU219+1.p',unknown), []).
 fof(20, axiom, function(dollar_c3), file('SEU219+1.p',unknown), []).
-fof(21, axiom, one_to_one(dollar_c3), file('SEU219+1.p',unknown), []).
+fof(21, axiom, ~ (one_to_one(dollar_c3)), file('SEU219+1.p',unknown), []).
 fof(49, plain, (relation_rng(relation_inverse(dollar_c3)) = relation_dom(dollar_c3)), inference(hyper,[status(thm)],[19,10]), [iquote('hyper,19,10')]).
 fof(52, plain, (relation_rng(dollar_c3) = relation_dom(relation_inverse(dollar_c3))), inference(hyper,[status(thm)],[19,8]), [iquote('hyper,19,8')]).
 fof(56, plain, ((relation_dom(relation_inverse(dollar_c3)) != relation_dom(function_inverse(dollar_c3))) | (relation_rng(function_inverse(dollar_c3)) != relation_dom(dollar_c3))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[12]),52]), [iquote('back_demod,12,demod,52')]).

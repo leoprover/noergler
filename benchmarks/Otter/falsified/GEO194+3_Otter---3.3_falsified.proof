@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '277':
 %%%%%   Replaced (! [A,B]: ((apart_point_and_line(intersection_point(dollar_c3,dollar_c2),A) | (distinct_lines(dollar_c1,B) | distinct_lines(A,B)))))
-%%%%%   With (! [A,B]: ((apart_point_and_line(intersection_point(dollar_c2,dollar_c2),A) | (distinct_lines(dollar_c1,B) | distinct_lines(A,B)))))
+%%%%%   With (! [A,B]: ((apart_point_and_line(intersection_point(dollar_c1,dollar_c2),A) | (distinct_lines(dollar_c1,B) | distinct_lines(A,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO194+3 : TPTP v8.1.0. Released v4.0.0.
@@ -41,7 +41,7 @@ fof(16, axiom, (! [A,B]: (~ (convergent_lines(parallel_through_point(A,B),A)))),
 fof(17, axiom, (! [A,B]: (~ (apart_point_and_line(A,parallel_through_point(B,A))))), file('GEO194+3.p',unknown), []).
 fof(48, axiom, apart_point_and_line(intersection_point(dollar_c3,dollar_c2),dollar_c1), file('GEO194+3.p',unknown), []).
 fof(59, plain, (! [A]: ((distinct_lines(dollar_c1,A) | apart_point_and_line(intersection_point(dollar_c3,dollar_c2),A)))), inference(hyper,[status(thm)],[48,13]), [iquote('hyper,48,13')]).
-fof(277, plain, (! [A,B]: ((apart_point_and_line(intersection_point(dollar_c2,dollar_c2),A) | (distinct_lines(dollar_c1,B) | distinct_lines(A,B))))), inference(hyper,[status(thm)],[59,5]), [iquote('hyper,59,5')]).
+fof(277, plain, (! [A,B]: ((apart_point_and_line(intersection_point(dollar_c1,dollar_c2),A) | (distinct_lines(dollar_c1,B) | distinct_lines(A,B))))), inference(hyper,[status(thm)],[59,5]), [iquote('hyper,59,5')]).
 fof(6751, plain, (! [A]: ((apart_point_and_line(intersection_point(dollar_c3,dollar_c2),A) | distinct_lines(A,dollar_c1)))), inference(hyper,[status(thm)],[277,2]), [iquote('hyper,277,2')]).
 fof(6752, plain, (! [A]: ((apart_point_and_line(intersection_point(dollar_c3,dollar_c2),A) | convergent_lines(A,dollar_c1)))), inference(hyper,[status(thm)],[6751,15]), [iquote('hyper,6751,15')]).
 fof(6753, plain, (! [A]: (apart_point_and_line(intersection_point(dollar_c3,dollar_c2),parallel_through_point(dollar_c1,A)))), inference(hyper,[status(thm)],[6752,16]), [iquote('hyper,6752,16')]).

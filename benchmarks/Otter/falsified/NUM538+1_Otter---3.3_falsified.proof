@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '337':
-%%%%%   Replaced (sdtpldt0(sdtmndt0(xS,xx),xx) = xS)
-%%%%%   With ~ ((sdtpldt0(sdtmndt0(xS,xx),xx) = xS))
+%%%%% Mutated formula '84':
+%%%%%   Replaced aElementOf0(xx,xS)
+%%%%%   With aElementOf0(xS,xS)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM538+1 : TPTP v8.1.0. Released v4.0.0.
@@ -43,8 +43,8 @@ fof(63, axiom, (szszuzczcdt0(sbrdtbr0(sdtmndt0(xS,xx))) != sbrdtbr0(xS)), file('
 fof(77, axiom, (! [A]: ((A = A))), file('NUM538+1.p',unknown), []).
 fof(82, axiom, aSet0(xS), file('NUM538+1.p',unknown), []).
 fof(83, axiom, isFinite0(xS), file('NUM538+1.p',unknown), []).
-fof(84, axiom, aElementOf0(xx,xS), file('NUM538+1.p',unknown), []).
-fof(337, plain, ~ ((sdtpldt0(sdtmndt0(xS,xx),xx) = xS)), inference(hyper,[status(thm)],[84,33,82]), [iquote('hyper,84,33,82')]).
+fof(84, axiom, aElementOf0(xS,xS), file('NUM538+1.p',unknown), []).
+fof(337, plain, (sdtpldt0(sdtmndt0(xS,xx),xx) = xS), inference(hyper,[status(thm)],[84,33,82]), [iquote('hyper,84,33,82')]).
 fof(338, plain, aElement0(xx), inference(hyper,[status(thm)],[84,1,82]), [iquote('hyper,84,1,82')]).
 fof(520, plain, isFinite0(sdtmndt0(xS,xx)), inference(hyper,[status(thm)],[338,38,82,83]), [iquote('hyper,338,38,82,83')]).
 fof(542, plain, aSet0(sdtmndt0(xS,xx)), inference(hyper,[status(thm)],[338,24,82,77]), [iquote('hyper,338,24,82,77')]).

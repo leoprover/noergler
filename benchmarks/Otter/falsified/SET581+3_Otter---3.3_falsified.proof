@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '143':
-%%%%%   Replaced member(dollar_c3,empty_set)
-%%%%%   With ~ (member(dollar_c3,empty_set))
+%%%%% Mutated formula '18':
+%%%%%   Replaced member(dollar_c3,dollar_c2)
+%%%%%   With member(dollar_c2,dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET581+3 : TPTP v8.1.0. Released v2.2.0.
@@ -37,9 +37,9 @@ fof(3, axiom, (! [A,B,C]: ((member(A,intersection(B,C)) | (~ (member(A,B)) | ~ (
 fof(4, axiom, (! [A]: (~ (member(A,empty_set)))), file('SET581+3.p',unknown), []).
 fof(10, axiom, ~ (not_e_qual(intersection(dollar_c2,dollar_c1),empty_set)), file('SET581+3.p',unknown), []).
 fof(15, axiom, (! [A,B]: ((not_e_qual(A,B) | (A = B)))), file('SET581+3.p',unknown), []).
-fof(18, axiom, member(dollar_c3,dollar_c2), file('SET581+3.p',unknown), []).
+fof(18, axiom, member(dollar_c2,dollar_c2), file('SET581+3.p',unknown), []).
 fof(19, axiom, member(dollar_c3,dollar_c1), file('SET581+3.p',unknown), []).
 fof(24, plain, member(dollar_c3,intersection(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[19,3,18]), [iquote('hyper,19,3,18')]).
 fof(126, plain, (intersection(dollar_c2,dollar_c1) = empty_set), inference(hyper,[status(thm)],[15,10]), [iquote('hyper,15,10')]).
-fof(143, plain, ~ (member(dollar_c3,empty_set)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[24]),126]), [iquote('back_demod,24,demod,126')]).
+fof(143, plain, member(dollar_c3,empty_set), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[24]),126]), [iquote('back_demod,24,demod,126')]).
 fof(144, plain, $false, inference(binary,[status(thm)],[143,4]), [iquote('binary,143.1,4.1')]).

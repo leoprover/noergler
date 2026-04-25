@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '43':
-%%%%%   Replaced (! [A]: ((~ (r1(dollar_c3,A)) | r1(A,dollar_f15(A)))))
-%%%%%   With (! [A]: ((r1(dollar_c3,A) | r1(A,dollar_f15(A)))))
+%%%%% Mutated formula '69':
+%%%%%   Replaced (! [A]: ((~ (r1(dollar_c3,A)) | (~ (p2(dollar_f15(A))) | ~ (p1(dollar_f15(A)))))))
+%%%%%   With (! [A]: ((r1(dollar_c3,A) | (~ (p2(dollar_f15(A))) | ~ (p1(dollar_f15(A)))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LCL686+1.005 : TPTP v8.1.0. Released v4.0.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:15:18 CEST 2026 using command 'transform(fof)'.
 fof(39, axiom, (! [A,B]: ((~ (r1(dollar_c3,A)) | (~ (r1(A,B)) | (~ (p2(B)) | p1(B)))))), file('LCL686+1.005.p',unknown), []).
 fof(40, axiom, (! [A,B]: ((~ (r1(dollar_c3,A)) | (~ (r1(A,B)) | (p2(B) | ~ (p1(B))))))), file('LCL686+1.005.p',unknown), []).
-fof(43, axiom, (! [A]: ((r1(dollar_c3,A) | r1(A,dollar_f15(A))))), file('LCL686+1.005.p',unknown), []).
+fof(43, axiom, (! [A]: ((~ (r1(dollar_c3,A)) | r1(A,dollar_f15(A))))), file('LCL686+1.005.p',unknown), []).
 fof(68, axiom, (! [A]: ((~ (r1(dollar_c3,A)) | (p1(dollar_f15(A)) | p2(dollar_f15(A)))))), file('LCL686+1.005.p',unknown), []).
-fof(69, axiom, (! [A]: ((~ (r1(dollar_c3,A)) | (~ (p2(dollar_f15(A))) | ~ (p1(dollar_f15(A))))))), file('LCL686+1.005.p',unknown), []).
+fof(69, axiom, (! [A]: ((r1(dollar_c3,A) | (~ (p2(dollar_f15(A))) | ~ (p1(dollar_f15(A))))))), file('LCL686+1.005.p',unknown), []).
 fof(72, axiom, (! [A]: (r1(A,A))), file('LCL686+1.005.p',unknown), []).
 fof(78, plain, (p1(dollar_f15(dollar_c3)) | p2(dollar_f15(dollar_c3))), inference(hyper,[status(thm)],[72,68]), [iquote('hyper,72,68')]).
 fof(91, plain, r1(dollar_c3,dollar_f15(dollar_c3)), inference(hyper,[status(thm)],[72,43]), [iquote('hyper,72,43')]).

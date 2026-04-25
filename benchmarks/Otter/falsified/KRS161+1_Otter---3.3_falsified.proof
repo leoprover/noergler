@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '435':
-%%%%%   Replaced cC64xcomp(iV16459)
-%%%%%   With ~ (cC64xcomp(iV16459))
+%%%%% Mutated formula '397':
+%%%%%   Replaced cTEST(iV16439)
+%%%%%   With ~ (cTEST(iV16439))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS161+1 : TPTP v8.1.0. Released v3.1.0.
@@ -67,7 +67,7 @@ fof(349, axiom, (~ (cowlThing(dollar_c1)) | (cowlNothing(dollar_c1) | (~ (xsd_st
 fof(350, plain, (~ (cowlThing(dollar_c1)) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (~ (cC130(iV16439)) | (~ (cC108(iV16439)) | (~ (cC104(iV16439)) | (~ (cC106(iV16439)) | (~ (cC28(iV16439)) | (~ (cowlThing(iV16439)) | (~ (cC98(iV16440)) | (~ (cC80(iV16440)) | (~ (cC82(iV16440)) | (~ (cowlThing(iV16440)) | (~ (cC38(iV16448)) | (~ (cowlThing(iV16448)) | (~ (cC76(iV16453)) | (~ (cC62(iV16453)) | (~ (cowlThing(iV16453)) | (~ (cC60(iV16453)) | (~ (cC56(iV16455)) | (~ (cC44(iV16455)) | (~ (cC42(iV16455)) | (~ (cowlThing(iV16455)) | (~ (cC38(iV16457)) | (~ (cowlThing(iV16457)) | (~ (cC50(iV16459)) | (~ (cC88(iV16459)) | (~ (cC34(iV16459)) | (~ (cC68(iV16459)) | (~ (cowlThing(iV16459)) | (~ (cC38(iV16460)) | (~ (cowlThing(iV16460)) | (~ (cC42(iV16461)) | (~ (cC56(iV16461)) | (~ (cC44(iV16461)) | (~ (cowlThing(iV16461)) | (~ (cC38(iV16462)) | (~ (cowlThing(iV16462)) | (~ (cC76(iV16463)) | (~ (cC62(iV16463)) | (~ (cowlThing(iV16463)) | (~ (cC60(iV16463)) | (~ (cC56(iV16464)) | (~ (cC42(iV16464)) | (~ (cC44(iV16464)) | (~ (cowlThing(iV16464)) | (~ (cC38(iV16465)) | ~ (cowlThing(iV16465))))))))))))))))))))))))))))))))))))))))))))))))), inference(unit_del,[status(thm)],[inference(copy,[status(thm)],[349]),1]), [iquote('copy,349,unit_del,1')]).
 fof(351, axiom, (! [A]: (cowlThing(A))), file('KRS161+1.p',unknown), []).
 fof(352, axiom, (! [A]: ((xsd_string(A) | xsd_integer(A)))), file('KRS161+1.p',unknown), []).
-fof(397, axiom, cTEST(iV16439), file('KRS161+1.p',unknown), []).
+fof(397, axiom, ~ (cTEST(iV16439)), file('KRS161+1.p',unknown), []).
 fof(398, axiom, rR1(iV16439,iV16440), file('KRS161+1.p',unknown), []).
 fof(404, axiom, rR1(iV16440,iV16463), file('KRS161+1.p',unknown), []).
 fof(405, axiom, cTOP(iV16448), file('KRS161+1.p',unknown), []).
@@ -83,7 +83,7 @@ fof(425, axiom, cC36xcomp(iV16457), file('KRS161+1.p',unknown), []).
 fof(431, axiom, cC30xcomp(iV16459), file('KRS161+1.p',unknown), []).
 fof(432, axiom, cC84xcomp(iV16459), file('KRS161+1.p',unknown), []).
 fof(434, axiom, cC46xcomp(iV16459), file('KRS161+1.p',unknown), []).
-fof(435, axiom, ~ (cC64xcomp(iV16459)), file('KRS161+1.p',unknown), []).
+fof(435, axiom, cC64xcomp(iV16459), file('KRS161+1.p',unknown), []).
 fof(437, axiom, cC86xcomp(iV16459), file('KRS161+1.p',unknown), []).
 fof(438, axiom, cC32xcomp(iV16459), file('KRS161+1.p',unknown), []).
 fof(439, axiom, cC48xcomp(iV16459), file('KRS161+1.p',unknown), []).

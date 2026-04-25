@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '72':
-%%%%%   Replaced ~ (doDivides0(xp,xn))
-%%%%%   With doDivides0(xp,xn)
+%%%%% Mutated formula '32':
+%%%%%   Replaced (! [A,B,C]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (~ (sdtlse_qdt0(A,B)) | ((C != sdtmndt0(B,A)) | (sdtpldt0(A,C) = B)))))))
+%%%%%   With (! [A,B,C]: ((aNaturalNumber0(A) | (~ (aNaturalNumber0(B)) | (~ (sdtlse_qdt0(A,B)) | ((C != sdtmndt0(B,A)) | (sdtpldt0(A,C) = B)))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM496+1 : TPTP v8.1.0. Released v4.0.0.
@@ -36,10 +36,10 @@
 fof(4, axiom, (! [A,B]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (sdtpldt0(A,B) = sdtpldt0(B,A)))))), file('NUM496+1.p',unknown), []).
 fof(11, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | (sdtasdt0(A,sz10) = A)))), file('NUM496+1.p',unknown), []).
 fof(31, axiom, (! [A,B,C]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (~ (sdtlse_qdt0(A,B)) | ((C != sdtmndt0(B,A)) | aNaturalNumber0(C))))))), file('NUM496+1.p',unknown), []).
-fof(32, axiom, (! [A,B,C]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (~ (sdtlse_qdt0(A,B)) | ((C != sdtmndt0(B,A)) | (sdtpldt0(A,C) = B))))))), file('NUM496+1.p',unknown), []).
+fof(32, axiom, (! [A,B,C]: ((aNaturalNumber0(A) | (~ (aNaturalNumber0(B)) | (~ (sdtlse_qdt0(A,B)) | ((C != sdtmndt0(B,A)) | (sdtpldt0(A,C) = B))))))), file('NUM496+1.p',unknown), []).
 fof(50, axiom, (! [A,B,C]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (doDivides0(A,B) | (~ (aNaturalNumber0(C)) | (B != sdtasdt0(A,C)))))))), file('NUM496+1.p',unknown), []).
 fof(55, axiom, (! [A,B,C]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (~ (aNaturalNumber0(C)) | (~ (doDivides0(A,B)) | (~ (doDivides0(A,C)) | doDivides0(A,sdtpldt0(B,C))))))))), file('NUM496+1.p',unknown), []).
-fof(72, axiom, doDivides0(xp,xn), file('NUM496+1.p',unknown), []).
+fof(72, axiom, ~ (doDivides0(xp,xn)), file('NUM496+1.p',unknown), []).
 fof(73, axiom, ~ (doDivides0(xp,xm)), file('NUM496+1.p',unknown), []).
 fof(129, plain, (! [A,B]: ((~ (aNaturalNumber0(A)) | (doDivides0(A,A) | (~ (aNaturalNumber0(B)) | (sdtasdt0(A,B) != A)))))), inference(flip,[status(thm),theory(equality)],[inference(factor,[status(thm)],[50])]), [iquote('factor,50.1.2,flip.4')]).
 fof(139, plain, (! [A,B]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (~ (doDivides0(A,B)) | (~ (doDivides0(A,A)) | doDivides0(A,sdtpldt0(B,A)))))))), inference(factor,[status(thm)],[55]), [iquote('factor,55.1.3')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '4240':
 %%%%%   Replaced (plus(n2,n1) = n3)
-%%%%%   With (plus(n3,n1) = n3)
+%%%%%   With (plus(pull,n1) = n3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR023+1 : TPTP v8.1.0. Bugfixed v3.1.0.
@@ -44,6 +44,6 @@ fof(120, axiom, (! [A,B]: ((plus(A,B) = plus(B,A)))), file('CSR023+1.p',unknown)
 fof(123, plain, happens(push,n2), inference(hyper,[status(thm)],[99,63,99]), [iquote('hyper,99,63,99')]).
 fof(124, plain, happens(pull,n2), inference(hyper,[status(thm)],[99,62,99]), [iquote('hyper,99,62,99')]).
 fof(144, plain, initiates(pull,spinning,n2), inference(hyper,[status(thm)],[123,40,99,99]), [iquote('hyper,123,40,99,99')]).
-fof(4240, plain, (plus(n3,n1) = n3), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[120,110])]), [iquote('para_into,120.1.1,110.1.1,flip.1')]).
+fof(4240, plain, (plus(pull,n1) = n3), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[120,110])]), [iquote('para_into,120.1.1,110.1.1,flip.1')]).
 fof(4761, plain, holdsAt(spinning,n3), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[144,21,124]),4240]), [iquote('hyper,144,21,124,demod,4240')]).
 fof(4762, plain, $false, inference(binary,[status(thm)],[4761,97]), [iquote('binary,4761.1,97.1')]).

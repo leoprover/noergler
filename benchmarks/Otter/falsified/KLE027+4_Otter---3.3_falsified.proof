@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '19':
-%%%%%   Replaced (! [A,B,C]: ((addition(A,addition(B,C)) = addition(addition(A,B),C))))
-%%%%%   With (! [A,B,C]: (~ ((addition(A,addition(B,C)) = addition(addition(A,B),C)))))
+%%%%% Mutated formula '395':
+%%%%%   Replaced (c(c(dollar_c2)) = dollar_c2)
+%%%%%   With (c(c(dollar_c4)) = dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE027+4 : TPTP v8.1.0. Released v4.0.0.
@@ -45,7 +45,7 @@ fof(11, axiom, (! [A,B]: ((~ (test(A)) | (~ (test(B)) | (c(addition(A,B)) = mult
 fof(13, axiom, (~ (le_q(addition(multiplication(dollar_c2,addition(multiplication(dollar_c2,dollar_c5),multiplication(c(dollar_c2),dollar_c4))),multiplication(c(dollar_c2),dollar_c3)),addition(multiplication(dollar_c2,dollar_c5),multiplication(c(dollar_c2),dollar_c3)))) | ~ (le_q(addition(multiplication(dollar_c2,dollar_c5),multiplication(c(dollar_c2),dollar_c3)),addition(multiplication(dollar_c2,addition(multiplication(dollar_c2,dollar_c5),multiplication(c(dollar_c2),dollar_c4))),multiplication(c(dollar_c2),dollar_c3))))), file('KLE027+4.p',unknown), []).
 fof(17, axiom, (! [A]: ((A = A))), file('KLE027+4.p',unknown), []).
 fof(18, axiom, (! [A,B]: ((addition(A,B) = addition(B,A)))), file('KLE027+4.p',unknown), []).
-fof(19, axiom, (! [A,B,C]: (~ ((addition(A,addition(B,C)) = addition(addition(A,B),C))))), file('KLE027+4.p',unknown), []).
+fof(19, axiom, (! [A,B,C]: ((addition(A,addition(B,C)) = addition(addition(A,B),C)))), file('KLE027+4.p',unknown), []).
 fof(21, plain, (! [A,B,C]: ((addition(addition(A,B),C) = addition(A,addition(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[19])]), [iquote('copy,19,flip.1')]).
 fof(22, axiom, (! [A]: ((addition(A,zero) = A))), file('KLE027+4.p',unknown), []).
 fof(25, axiom, (! [A]: ((addition(A,A) = A))), file('KLE027+4.p',unknown), []).
@@ -67,7 +67,7 @@ fof(379, plain, (addition(dollar_c2,c(dollar_c2)) = one), inference(para_into,[s
 fof(391, plain, (! [A]: ((multiplication(dollar_c2,multiplication(c(dollar_c2),A)) = zero))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[70,27]),40])]), [iquote('para_from,70.1.1,27.1.1.1,demod,40,flip.1')]).
 fof(392, plain, complement(c(dollar_c2),dollar_c2), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[70,8]),73,379]),17,17,17]), [iquote('para_from,70.1.1,8.2.1,demod,73,379,unit_del,17,17,17')]).
 fof(393, plain, (~ (le_q(addition(multiplication(dollar_c2,multiplication(dollar_c2,dollar_c5)),multiplication(c(dollar_c2),dollar_c3)),addition(multiplication(dollar_c2,dollar_c5),multiplication(c(dollar_c2),dollar_c3)))) | ~ (le_q(addition(multiplication(dollar_c2,dollar_c5),multiplication(c(dollar_c2),dollar_c3)),addition(multiplication(dollar_c2,multiplication(dollar_c2,dollar_c5)),multiplication(c(dollar_c2),dollar_c3))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[47]),391,160,391,160]), [iquote('back_demod,47,demod,391,160,391,160')]).
-fof(395, plain, (c(c(dollar_c2)) = dollar_c2), inference(hyper,[status(thm)],[392,10,74]), [iquote('hyper,392,10,74')]).
+fof(395, plain, (c(c(dollar_c4)) = dollar_c2), inference(hyper,[status(thm)],[392,10,74]), [iquote('hyper,392,10,74')]).
 fof(416, plain, (multiplication(dollar_c2,dollar_c2) = dollar_c2), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[83]),395,395,395]), [iquote('back_demod,83,demod,395,395,395')]).
 fof(449, plain, (! [A]: ((multiplication(dollar_c2,multiplication(dollar_c2,A)) = multiplication(dollar_c2,A)))), inference(flip,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[416,27])]), [iquote('para_from,416.1.1,27.1.1.1,flip.1')]).
 fof(451, plain, $false, inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[393]),449,449]),168,168]), [iquote('back_demod,393,demod,449,449,unit_del,168,168')]).

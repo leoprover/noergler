@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '70':
-%%%%%   Replaced convergent_lines(dollar_c5,dollar_c4)
-%%%%%   With convergent_lines(dollar_c4,dollar_c4)
+%%%%% Mutated formula '41':
+%%%%%   Replaced (! [A,B]: (~ (left_convergent_lines(A,B))))
+%%%%%   With (! [A,B]: (left_convergent_lines(A,B)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO261+3 : TPTP v8.1.0. Released v4.0.0.
@@ -37,8 +37,8 @@ fof(1, axiom, (! [A,B]: ((~ (une_qually_directed_opposite_lines(A,B)) | une_qual
 fof(12, axiom, (! [A,B]: ((~ (convergent_lines(A,B)) | une_qually_directed_lines(A,B)))), file('GEO261+3.p',unknown), []).
 fof(13, axiom, (! [A,B]: ((~ (convergent_lines(A,B)) | une_qually_directed_opposite_lines(A,B)))), file('GEO261+3.p',unknown), []).
 fof(39, axiom, (! [A,B]: ((~ (une_qually_directed_lines(A,B)) | (~ (une_qually_directed_lines(A,reverse_line(B))) | (left_convergent_lines(A,B) | left_convergent_lines(A,reverse_line(B))))))), file('GEO261+3.p',unknown), []).
-fof(41, axiom, (! [A,B]: (~ (left_convergent_lines(A,B)))), file('GEO261+3.p',unknown), []).
-fof(70, axiom, convergent_lines(dollar_c4,dollar_c4), file('GEO261+3.p',unknown), []).
+fof(41, axiom, (! [A,B]: (left_convergent_lines(A,B))), file('GEO261+3.p',unknown), []).
+fof(70, axiom, convergent_lines(dollar_c5,dollar_c4), file('GEO261+3.p',unknown), []).
 fof(75, plain, une_qually_directed_opposite_lines(dollar_c5,dollar_c4), inference(hyper,[status(thm)],[70,13]), [iquote('hyper,70,13')]).
 fof(76, plain, une_qually_directed_lines(dollar_c5,dollar_c4), inference(hyper,[status(thm)],[70,12]), [iquote('hyper,70,12')]).
 fof(77, plain, une_qually_directed_lines(dollar_c5,reverse_line(dollar_c4)), inference(hyper,[status(thm)],[75,1]), [iquote('hyper,75,1')]).

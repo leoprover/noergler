@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '37':
-%%%%%   Replaced member(dollar_c1,dollar_c2)
-%%%%%   With member(dollar_c2,dollar_c2)
+%%%%% Mutated formula '28':
+%%%%%   Replaced ~ (subset(singleton(dollar_c1),dollar_c2))
+%%%%%   With ~ (subset(singleton(dollar_c2),dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET095+4 : TPTP v8.1.0. Released v2.2.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:18:21 CEST 2026 using command 'transform(fof)'.
 fof(2, axiom, (! [A,B]: ((subset(A,B) | ~ (member(dollar_f1(A,B),B))))), file('SET095+4.p',unknown), []).
 fof(18, axiom, (! [A,B]: ((~ (member(A,singleton(B))) | (A = B)))), file('SET095+4.p',unknown), []).
-fof(28, axiom, ~ (subset(singleton(dollar_c1),dollar_c2)), file('SET095+4.p',unknown), []).
+fof(28, axiom, ~ (subset(singleton(dollar_c2),dollar_c2)), file('SET095+4.p',unknown), []).
 fof(35, axiom, (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A)))), file('SET095+4.p',unknown), []).
-fof(37, axiom, member(dollar_c2,dollar_c2), file('SET095+4.p',unknown), []).
+fof(37, axiom, member(dollar_c1,dollar_c2), file('SET095+4.p',unknown), []).
 fof(104, plain, member(dollar_f1(singleton(dollar_c1),dollar_c2),singleton(dollar_c1)), inference(hyper,[status(thm)],[35,28]), [iquote('hyper,35,28')]).
 fof(979, plain, (dollar_f1(singleton(dollar_c1),dollar_c2) = dollar_c1), inference(hyper,[status(thm)],[104,18]), [iquote('hyper,104,18')]).
 fof(982, plain, $false, inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[979,2]),28,37]), [iquote('para_from,979.1.1,2.2.1,unit_del,28,37')]).

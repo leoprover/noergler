@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '187':
-%%%%%   Replaced leaf(dollar_f16(dollar_c1),dollar_f15(dollar_f16(dollar_c1),dollar_c1))
-%%%%%   With leaf(dollar_f16(tptp0),dollar_f15(dollar_f16(dollar_c1),dollar_c1))
+%%%%% Mutated formula '624':
+%%%%%   Replaced (dollar_f15(dollar_f16(dollar_c1),dollar_c1) = tptp0)
+%%%%%   With ~ ((dollar_f15(dollar_f16(dollar_c1),dollar_c1) = tptp0))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PRO010+1 : TPTP v8.1.0. Released v4.0.0.
@@ -42,9 +42,9 @@ fof(90, axiom, (! [A,B]: ((~ (leaf_occ(A,dollar_c1)) | (min_precedes(B,dollar_f1
 fof(107, axiom, occurrence_of(dollar_c1,tptp0), file('PRO010+1.p',unknown), []).
 fof(123, plain, leaf_occ(dollar_f16(dollar_c1),dollar_c1), inference(hyper,[status(thm)],[107,73]), [iquote('hyper,107,73')]).
 fof(179, plain, (! [A]: ((min_precedes(A,dollar_f19(A,dollar_f16(dollar_c1)),tptp0) | min_precedes(A,dollar_f20(A,dollar_f16(dollar_c1)),tptp0)))), inference(hyper,[status(thm)],[123,90]), [iquote('hyper,123,90')]).
-fof(187, plain, leaf(dollar_f16(tptp0),dollar_f15(dollar_f16(dollar_c1),dollar_c1)), inference(hyper,[status(thm)],[123,65]), [iquote('hyper,123,65')]).
+fof(187, plain, leaf(dollar_f16(dollar_c1),dollar_f15(dollar_f16(dollar_c1),dollar_c1)), inference(hyper,[status(thm)],[123,65]), [iquote('hyper,123,65')]).
 fof(189, plain, occurrence_of(dollar_c1,dollar_f15(dollar_f16(dollar_c1),dollar_c1)), inference(hyper,[status(thm)],[123,63]), [iquote('hyper,123,63')]).
-fof(624, plain, (dollar_f15(dollar_f16(dollar_c1),dollar_c1) = tptp0), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[189,5,107])]), [iquote('hyper,189,5,107,flip.1')]).
+fof(624, plain, ~ ((dollar_f15(dollar_f16(dollar_c1),dollar_c1) = tptp0)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[189,5,107])]), [iquote('hyper,189,5,107,flip.1')]).
 fof(625, plain, leaf(dollar_f16(dollar_c1),tptp0), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[187]),624]), [iquote('back_demod,187,demod,624')]).
 fof(1308, plain, min_precedes(dollar_f16(dollar_c1),dollar_f20(dollar_f16(dollar_c1),dollar_f16(dollar_c1)),tptp0), inference(hyper,[status(thm)],[179,33,625]), [iquote('hyper,179,33,625')]).
 fof(1357, plain, $false, inference(hyper,[status(thm)],[1308,33,625]), [iquote('hyper,1308,33,625')]).

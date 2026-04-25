@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '28':
-%%%%%   Replaced p101(dollar_c1)
-%%%%%   With ~ (p101(dollar_c1))
+%%%%% Mutated formula '24':
+%%%%%   Replaced r1(dollar_c1,dollar_f1(dollar_c1))
+%%%%%   With ~ (r1(dollar_c1,dollar_f1(dollar_c1)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LCL674+1.001 : TPTP v8.1.0. Released v4.0.0.
@@ -39,7 +39,7 @@ fof(4, axiom, (! [A]: ((~ (r1(dollar_c1,A)) | (~ (p2(dollar_f1(A))) | (p101(A) |
 fof(16, axiom, ~ (p101(dollar_c1)), file('LCL674+1.001.p',unknown), []).
 fof(17, axiom, (! [A]: (r1(A,A))), file('LCL674+1.001.p',unknown), []).
 fof(18, axiom, p100(dollar_c1), file('LCL674+1.001.p',unknown), []).
-fof(24, plain, r1(dollar_c1,dollar_f1(dollar_c1)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[18,3,17]),16]), [iquote('hyper,18,3,17,unit_del,16')]).
+fof(24, plain, ~ (r1(dollar_c1,dollar_f1(dollar_c1))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[18,3,17]),16]), [iquote('hyper,18,3,17,unit_del,16')]).
 fof(27, plain, p2(dollar_f1(dollar_c1)), inference(hyper,[status(thm)],[24,2]), [iquote('hyper,24,2')]).
-fof(28, plain, ~ (p101(dollar_c1)), inference(hyper,[status(thm)],[27,4,17,18]), [iquote('hyper,27,4,17,18')]).
+fof(28, plain, p101(dollar_c1), inference(hyper,[status(thm)],[27,4,17,18]), [iquote('hyper,27,4,17,18')]).
 fof(29, plain, $false, inference(binary,[status(thm)],[28,16]), [iquote('binary,28.1,16.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '62':
-%%%%%   Replaced ssSingleRole(singleRoleEntry(ssZBANF_WRK_INF_ED,authObj(ssM_BANF_BSA,ssBSART,ssSTAR)))
-%%%%%   With ~ (ssSingleRole(singleRoleEntry(ssZBANF_WRK_INF_ED,authObj(ssM_BANF_BSA,ssBSART,ssSTAR))))
+%%%%% Mutated formula '283':
+%%%%%   Replaced (! [A]: (ssAccess(ssMUELLER,authObj(ssM_BANF_BSA,ssBSART,A))))
+%%%%%   With (! [A]: (~ (ssAccess(ssMUELLER,authObj(ssM_BANF_BSA,ssBSART,A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT067+1 : TPTP v8.1.0. Released v5.5.0.
@@ -43,7 +43,7 @@ fof(56, axiom, ssSingleRole(singleRoleEntry(ssZBANF_WRK_INF_ED,authObj(ssS_TCODE
 fof(57, axiom, ssSingleRole(singleRoleEntry(ssZBANF_WRK_INF_ED,authObj(ssM_BANF_WRK,ssACTVT,np__1))), file('MGT067+1.p',unknown), []).
 fof(60, axiom, ssSingleRole(singleRoleEntry(ssZBANF_WRK_INF_ED,authObj(ssM_BANF_WRK,ssWERKS,ssINF))), file('MGT067+1.p',unknown), []).
 fof(61, axiom, ssSingleRole(singleRoleEntry(ssZBANF_WRK_INF_ED,authObj(ssM_BANF_BSA,ssACTVT,ssSTAR))), file('MGT067+1.p',unknown), []).
-fof(62, axiom, ~ (ssSingleRole(singleRoleEntry(ssZBANF_WRK_INF_ED,authObj(ssM_BANF_BSA,ssBSART,ssSTAR)))), file('MGT067+1.p',unknown), []).
+fof(62, axiom, ssSingleRole(singleRoleEntry(ssZBANF_WRK_INF_ED,authObj(ssM_BANF_BSA,ssBSART,ssSTAR))), file('MGT067+1.p',unknown), []).
 fof(63, axiom, ssSingleRole(singleRoleEntry(ssZBANF_WRK_INF_ED,authObj(ssM_BANF_EKG,ssACTVT,ssSTAR))), file('MGT067+1.p',unknown), []).
 fof(64, axiom, ssSingleRole(singleRoleEntry(ssZBANF_WRK_INF_ED,authObj(ssM_BANF_EKG,ssEKGRP,ssI26))), file('MGT067+1.p',unknown), []).
 fof(158, axiom, ssHolds(ssMUELLER,ssZBANF_WRK_INF_ED), file('MGT067+1.p',unknown), []).
@@ -60,7 +60,7 @@ fof(277, plain, ssAccess(ssMUELLER,authObj(ssS_TCODE,ssTCD,ssME51N)), inference(
 fof(278, plain, ssAccess(ssMUELLER,authObj(ssM_BANF_WRK,ssACTVT,np__1)), inference(hyper,[status(thm)],[174,9]), [iquote('hyper,174,9')]).
 fof(281, plain, ssAccess(ssMUELLER,authObj(ssM_BANF_WRK,ssWERKS,ssINF)), inference(hyper,[status(thm)],[177,9]), [iquote('hyper,177,9')]).
 fof(282, plain, (! [A]: (ssAccess(ssMUELLER,authObj(ssM_BANF_BSA,ssACTVT,A)))), inference(hyper,[status(thm)],[178,10]), [iquote('hyper,178,10')]).
-fof(283, plain, (! [A]: (ssAccess(ssMUELLER,authObj(ssM_BANF_BSA,ssBSART,A)))), inference(hyper,[status(thm)],[179,10]), [iquote('hyper,179,10')]).
+fof(283, plain, (! [A]: (~ (ssAccess(ssMUELLER,authObj(ssM_BANF_BSA,ssBSART,A))))), inference(hyper,[status(thm)],[179,10]), [iquote('hyper,179,10')]).
 fof(284, plain, (! [A]: (ssAccess(ssMUELLER,authObj(ssM_BANF_EKG,ssACTVT,A)))), inference(hyper,[status(thm)],[180,10]), [iquote('hyper,180,10')]).
 fof(285, plain, ssAccess(ssMUELLER,authObj(ssM_BANF_EKG,ssEKGRP,ssI26)), inference(hyper,[status(thm)],[181,9]), [iquote('hyper,181,9')]).
 fof(286, plain, ssAccess(ssMUELLER,ssME51N), inference(hyper,[status(thm)],[285,17,277,278,281,282,283,284]), [iquote('hyper,285,17,277,278,281,282,283,284')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '439':
-%%%%%   Replaced ((op(e2,e2) = e0) | ((op(e0,e0) = e1) | ((op(e0,e0) = e2) | (op(e0,e0) = e3))))
-%%%%%   With (~ ((op(e2,e2) = e0)) | ((op(e0,e0) = e1) | ((op(e0,e0) = e2) | (op(e0,e0) = e3))))
+%%%%% Mutated formula '435':
+%%%%%   Replaced (op(e0,e0) = e0)
+%%%%%   With (op(e1,e0) = e0)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG017+1 : TPTP v8.1.0. Released v2.7.0.
@@ -44,9 +44,9 @@ fof(137, axiom, (! [A]: ((A = A))), file('ALG017+1.p',unknown), []).
 fof(329, axiom, (e0 = op(e3,e3)), file('ALG017+1.p',unknown), []).
 fof(331, plain, (op(e3,e3) = e0), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[329])]), [iquote('copy,329,flip.1')]).
 fof(433, axiom, ((op(e0,e0) = e0) | ((op(e3,e3) = e1) | ((op(e3,e3) = e2) | (op(e3,e3) = e3)))), file('ALG017+1.p',unknown), []).
-fof(435, plain, (op(e0,e0) = e0), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[433]),331,331,331]),122,124,126]), [iquote('copy,433,demod,331,331,331,unit_del,122,124,126')]).
+fof(435, plain, (op(e1,e0) = e0), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[433]),331,331,331]),122,124,126]), [iquote('copy,433,demod,331,331,331,unit_del,122,124,126')]).
 fof(436, axiom, ((op(e1,e1) = e0) | ((op(e0,e0) = e1) | ((op(e0,e0) = e2) | (op(e0,e0) = e3)))), file('ALG017+1.p',unknown), []).
 fof(438, plain, (op(e1,e1) = e0), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[436]),435,435,435]),122,124,126]), [iquote('copy,436,demod,435,435,435,unit_del,122,124,126')]).
-fof(439, axiom, (~ ((op(e2,e2) = e0)) | ((op(e0,e0) = e1) | ((op(e0,e0) = e2) | (op(e0,e0) = e3)))), file('ALG017+1.p',unknown), []).
+fof(439, axiom, ((op(e2,e2) = e0) | ((op(e0,e0) = e1) | ((op(e0,e0) = e2) | (op(e0,e0) = e3)))), file('ALG017+1.p',unknown), []).
 fof(441, plain, (op(e2,e2) = e0), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[439]),435,435,435]),122,124,126]), [iquote('copy,439,demod,435,435,435,unit_del,122,124,126')]).
 fof(456, plain, $false, inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[133]),435,438,441,331]),137,137,137,137]), [iquote('back_demod,133,demod,435,438,441,331,unit_del,137,137,137,137')]).

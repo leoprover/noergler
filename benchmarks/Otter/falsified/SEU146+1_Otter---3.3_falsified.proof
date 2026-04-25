@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '115':
-%%%%%   Replaced in(dollar_c1,dollar_c2)
-%%%%%   With in(dollar_c2,dollar_c2)
+%%%%% Mutated formula '126':
+%%%%%   Replaced (singleton(dollar_c1) = dollar_c2)
+%%%%%   With (singleton(empty_set) = dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU146+1 : TPTP v8.1.0. Released v3.3.0.
@@ -56,7 +56,7 @@ fof(69, plain, subset(dollar_c2,singleton(dollar_c1)), inference(factor_simp,[st
 fof(70, plain, (set_difference(dollar_c2,singleton(dollar_c1)) = empty_set), inference(hyper,[status(thm)],[69,14]), [iquote('hyper,69,14')]).
 fof(90, plain, (in(dollar_c1,dollar_c2) | subset(dollar_c2,empty_set)), inference(para_into,[status(thm),theory(equality)],[29,70]), [iquote('para_into,29.2.2,70.1.1')]).
 fof(95, plain, (in(dollar_c1,dollar_c2) | (empty_set = dollar_c2)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[90,15])]), [iquote('hyper,90,15,flip.2')]).
-fof(115, plain, in(dollar_c2,dollar_c2), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[95,9]),69,18]), [iquote('para_from,95.2.1,9.2.1,unit_del,69,18')]).
+fof(115, plain, in(dollar_c1,dollar_c2), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[95,9]),69,18]), [iquote('para_from,95.2.1,9.2.1,unit_del,69,18')]).
 fof(117, plain, subset(singleton(dollar_c1),dollar_c2), inference(hyper,[status(thm)],[115,6]), [iquote('hyper,115,6')]).
-fof(126, plain, (singleton(dollar_c1) = dollar_c2), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[117,4,69])]), [iquote('hyper,117,4,69,flip.1')]).
+fof(126, plain, (singleton(empty_set) = dollar_c2), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[117,4,69])]), [iquote('hyper,117,4,69,flip.1')]).
 fof(127, plain, $false, inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[11]),126,126]),23,18]), [iquote('back_demod,11,demod,126,126,unit_del,23,18')]).

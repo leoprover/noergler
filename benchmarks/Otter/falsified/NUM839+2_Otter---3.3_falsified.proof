@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '76':
 %%%%%   Replaced (vplus(vd329,vplus(vd330,dollar_f2(vplus(vd329,vd330),vplus(vd328,vd330)))) = vplus(vd328,vd330))
-%%%%%   With (vplus(vd330,vplus(vd330,dollar_f2(vplus(vd329,vd330),vplus(vd328,vd330)))) = vplus(vd328,vd330))
+%%%%%   With ~ ((vplus(vd329,vplus(vd330,dollar_f2(vplus(vd329,vd330),vplus(vd328,vd330)))) = vplus(vd328,vd330)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM839+2 : TPTP v8.1.0. Released v4.1.0.
@@ -62,7 +62,7 @@ fof(55, plain, (! [A]: (((A = v1) | (vplus(v1,vskolem2(A)) = A)))), inference(fl
 fof(57, plain, (! [A,B]: (less(A,vplus(A,B)))), inference(hyper,[status(thm)],[37,24]), [iquote('hyper,37,24')]).
 fof(62, plain, (! [A,B]: (ge_q(vplus(A,B),A))), inference(hyper,[status(thm)],[39,15]), [iquote('hyper,39,15')]).
 fof(68, plain, (! [A,B]: ((vplus(A,dollar_f1(vplus(A,B),A)) = vplus(A,B)))), inference(hyper,[status(thm)],[57,23]), [iquote('hyper,57,23')]).
-fof(76, plain, (vplus(vd330,vplus(vd330,dollar_f2(vplus(vd329,vd330),vplus(vd328,vd330)))) = vplus(vd328,vd330)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[38,26]),51]), [iquote('hyper,38,26,demod,51')]).
+fof(76, plain, ~ ((vplus(vd329,vplus(vd330,dollar_f2(vplus(vd329,vd330),vplus(vd328,vd330)))) = vplus(vd328,vd330))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[38,26]),51]), [iquote('hyper,38,26,demod,51')]).
 fof(80, plain, (! [A]: (greater(vplus(vd328,vplus(vd330,A)),vplus(vd329,vplus(vd330,A))))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[38,4]),51,51]), [iquote('hyper,38,4,demod,51,51')]).
 fof(102, plain, (! [A,B]: ((ge_q(A,B) | ~ (less(B,A))))), inference(para_into,[status(thm),theory(equality)],[62,23]), [iquote('para_into,62.1.1,23.2.1')]).
 fof(114, plain, (! [A,B]: (((A = B) | (greater(A,B) | ge_q(B,A))))), inference(hyper,[status(thm)],[40,102]), [iquote('hyper,40,102')]).

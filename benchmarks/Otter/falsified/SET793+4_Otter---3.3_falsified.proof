@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '127':
-%%%%%   Replaced member(dollar_c1,dollar_c2)
-%%%%%   With member(dollar_c3,dollar_c2)
+%%%%% Mutated formula '63':
+%%%%%   Replaced (! [A,B,C,D]: ((~ (max(A,B,C)) | (~ (member(D,C)) | (~ (apply(B,A,D)) | (A = D))))))
+%%%%%   With (! [A,B,C,D]: ((max(A,B,C) | (~ (member(D,C)) | (~ (apply(B,A,D)) | (A = D))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET793+4 : TPTP v8.1.0. Released v3.2.0.
@@ -37,12 +37,12 @@ fof(45, axiom, (! [A,B,C,D]: ((~ (total_order(A,B)) | (~ (member(C,B)) | (~ (mem
 fof(56, axiom, (! [A,B,C]: ((greatest(A,B,C) | (~ (member(A,C)) | member(dollar_f11(B,C,A),C))))), file('SET793+4.p',unknown), []).
 fof(57, axiom, (! [A,B,C]: ((greatest(A,B,C) | (~ (member(A,C)) | ~ (apply(B,dollar_f11(B,C,A),A)))))), file('SET793+4.p',unknown), []).
 fof(62, axiom, (! [A,B,C]: ((~ (max(A,B,C)) | member(A,C)))), file('SET793+4.p',unknown), []).
-fof(63, axiom, (! [A,B,C,D]: ((~ (max(A,B,C)) | (~ (member(D,C)) | (~ (apply(B,A,D)) | (A = D)))))), file('SET793+4.p',unknown), []).
+fof(63, axiom, (! [A,B,C,D]: ((max(A,B,C) | (~ (member(D,C)) | (~ (apply(B,A,D)) | (A = D)))))), file('SET793+4.p',unknown), []).
 fof(86, axiom, ~ (greatest(dollar_c1,dollar_c3,dollar_c2)), file('SET793+4.p',unknown), []).
 fof(88, plain, (! [A,B,C]: ((~ (total_order(A,B)) | (~ (member(C,B)) | apply(A,C,C))))), inference(factor_simp,[status(thm)],[inference(factor,[status(thm)],[45])]), [iquote('factor,45.2.3,factor_simp')]).
 fof(112, axiom, total_order(dollar_c3,dollar_c2), file('SET793+4.p',unknown), []).
 fof(113, axiom, max(dollar_c1,dollar_c3,dollar_c2), file('SET793+4.p',unknown), []).
-fof(127, plain, member(dollar_c3,dollar_c2), inference(hyper,[status(thm)],[113,62]), [iquote('hyper,113,62')]).
+fof(127, plain, member(dollar_c1,dollar_c2), inference(hyper,[status(thm)],[113,62]), [iquote('hyper,113,62')]).
 fof(137, plain, apply(dollar_c3,dollar_c1,dollar_c1), inference(hyper,[status(thm)],[127,88,112]), [iquote('hyper,127,88,112')]).
 fof(143, plain, (! [A]: ((greatest(dollar_c1,A,dollar_c2) | member(dollar_f11(A,dollar_c2,dollar_c1),dollar_c2)))), inference(hyper,[status(thm)],[127,56]), [iquote('hyper,127,56')]).
 fof(184, plain, (! [A,B,C]: ((apply(dollar_c3,A,dollar_c1) | (~ (max(dollar_c1,B,C)) | (~ (member(A,C)) | ~ (apply(B,dollar_c1,A))))))), inference(para_into,[status(thm),theory(equality)],[137,63]), [iquote('para_into,137.1.2,63.4.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '32':
-%%%%%   Replaced (! [A,B]: ((vplus(vmul(A,B),A) = vmul(A,vplus(B,v1)))))
-%%%%%   With (! [A,B]: (~ ((vplus(vmul(A,B),A) = vmul(A,vplus(B,v1))))))
+%%%%% Mutated formula '35':
+%%%%%   Replaced (vmul(vmul(vd448,vd449),vplus(dollar_c1,v1)) != vmul(vd448,vmul(vd449,vplus(dollar_c1,v1))))
+%%%%%   With ~ ((vmul(vmul(vd448,vd449),vplus(dollar_c1,v1)) != vmul(vd448,vmul(vd449,vplus(dollar_c1,v1)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM849+2 : TPTP v8.1.0. Released v4.1.0.
@@ -44,8 +44,8 @@ fof(18, axiom, (! [A,B]: ((vmul(A,vsucc(B)) = vplus(vmul(A,B),A)))), file('NUM84
 fof(25, axiom, (! [A]: ((vplus(A,v1) = vsucc(A)))), file('NUM849+2.p',unknown), []).
 fof(27, plain, (! [A]: ((vsucc(A) = vplus(A,v1)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[25])]), [iquote('copy,25,flip.1')]).
 fof(28, plain, (! [A]: (((vmul(vmul(vd448,vd449),A) != vmul(vd448,vmul(vd449,A))) | (vplus(vmul(vmul(vd448,vd449),A),vmul(vd448,vd449)) = vmul(vd448,vplus(vmul(vd449,A),vd449)))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[5]),15]), [iquote('back_demod,5,demod,15')]).
-fof(32, plain, (! [A,B]: (~ ((vplus(vmul(A,B),A) = vmul(A,vplus(B,v1)))))), inference(demod,[status(thm),theory(equality)],[inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[18])]),27]), [iquote('copy,18,flip.1,demod,27')]).
-fof(35, plain, (vmul(vmul(vd448,vd449),vplus(dollar_c1,v1)) != vmul(vd448,vmul(vd449,vplus(dollar_c1,v1)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1]),27,27]), [iquote('back_demod,1,demod,27,27')]).
+fof(32, plain, (! [A,B]: ((vplus(vmul(A,B),A) = vmul(A,vplus(B,v1))))), inference(demod,[status(thm),theory(equality)],[inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[18])]),27]), [iquote('copy,18,flip.1,demod,27')]).
+fof(35, plain, ~ ((vmul(vmul(vd448,vd449),vplus(dollar_c1,v1)) != vmul(vd448,vmul(vd449,vplus(dollar_c1,v1))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1]),27,27]), [iquote('back_demod,1,demod,27,27')]).
 fof(36, plain, (! [A]: (((vmul(vmul(vd448,vd449),A) != vmul(vd448,vmul(vd449,A))) | (vmul(vmul(vd448,vd449),vplus(A,v1)) = vmul(vd448,vmul(vd449,vplus(A,v1))))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[28]),32,32]), [iquote('back_demod,28,demod,32,32')]).
 fof(42, plain, (vmul(vd448,vmul(vd449,dollar_c1)) = vmul(dollar_c1,vmul(vd448,vd449))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[8,16])]), [iquote('para_into,8.1.1,16.1.1,flip.1')]).
 fof(159, plain, ((vmul(vd448,vmul(vd449,vplus(dollar_c1,v1))) != vmul(vd448,vmul(vd449,vplus(dollar_c1,v1)))) | (vmul(vmul(vd448,vd449),dollar_c1) != vmul(dollar_c1,vmul(vd448,vd449)))), inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[36,35]),42]), [iquote('para_from,36.2.1,35.1.1,demod,42')]).

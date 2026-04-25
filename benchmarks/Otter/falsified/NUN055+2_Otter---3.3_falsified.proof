@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '71':
-%%%%%   Replaced (! [A]: ((dollar_f13(A) = A)))
-%%%%%   With (! [A]: (~ ((dollar_f13(A) = A))))
+%%%%% Mutated formula '81':
+%%%%%   Replaced (! [A]: (((dollar_f17(A) = A) | r2(dollar_f19(A),dollar_f18(A)))))
+%%%%%   With (! [A]: ((~ ((dollar_f17(A) = A)) | r2(dollar_f19(A),dollar_f18(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUN055+2 : TPTP v8.1.0. Released v7.3.0.
@@ -49,12 +49,12 @@ fof(60, plain, (! [A,B]: (r2(dollar_f6(A,B),dollar_f5(A,B)))), inference(demod,[
 fof(61, axiom, (! [A,B]: (r3(A,B,dollar_f6(A,B)))), file('NUN055+2.p',unknown), []).
 fof(68, axiom, (! [A]: (r1(dollar_f12(A)))), file('NUN055+2.p',unknown), []).
 fof(69, axiom, (! [A]: (r3(A,dollar_f12(A),dollar_f13(A)))), file('NUN055+2.p',unknown), []).
-fof(71, axiom, (! [A]: (~ ((dollar_f13(A) = A)))), file('NUN055+2.p',unknown), []).
+fof(71, axiom, (! [A]: ((dollar_f13(A) = A))), file('NUN055+2.p',unknown), []).
 fof(77, axiom, (! [A]: ((r1(dollar_f17(A)) | r2(dollar_f19(A),dollar_f18(A))))), file('NUN055+2.p',unknown), []).
 fof(78, axiom, (! [A]: ((r1(dollar_f17(A)) | (A = dollar_f18(A))))), file('NUN055+2.p',unknown), []).
 fof(79, plain, (! [A]: ((r1(dollar_f17(A)) | (dollar_f18(A) = A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[78])]), [iquote('copy,78,flip.2')]).
 fof(80, axiom, (! [A]: (((A = dollar_f17(A)) | r2(dollar_f19(A),dollar_f18(A))))), file('NUN055+2.p',unknown), []).
-fof(81, plain, (! [A]: (((dollar_f17(A) = A) | r2(dollar_f19(A),dollar_f18(A))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[80])]), [iquote('copy,80,flip.1')]).
+fof(81, plain, (! [A]: ((~ ((dollar_f17(A) = A)) | r2(dollar_f19(A),dollar_f18(A))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[80])]), [iquote('copy,80,flip.1')]).
 fof(82, axiom, (! [A]: (((A = dollar_f17(A)) | (A = dollar_f18(A))))), file('NUN055+2.p',unknown), []).
 fof(83, plain, (! [A]: (((dollar_f17(A) = A) | (dollar_f18(A) = A)))), inference(flip,[status(thm),theory(equality)],[inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[82])])]), [iquote('copy,82,flip.1,flip.2')]).
 fof(85, plain, (! [A]: (r3(A,dollar_f12(A),A))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[69]),71]), [iquote('back_demod,69,demod,71')]).

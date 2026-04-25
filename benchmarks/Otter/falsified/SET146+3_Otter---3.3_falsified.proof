@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '126':
-%%%%%   Replaced (! [A]: (((empty_set = A) | member(dollar_f2(A),A))))
-%%%%%   With (! [A]: ((~ ((empty_set = A)) | member(dollar_f2(A),A))))
+%%%%% Mutated formula '69':
+%%%%%   Replaced (! [A]: (((empty_set = A) | member(dollar_f3(empty_set,A),A))))
+%%%%%   With (! [A]: ((~ ((empty_set = A)) | member(dollar_f3(empty_set,A),A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET146+3 : TPTP v8.1.0. Released v2.2.0.
@@ -42,9 +42,9 @@ fof(19, axiom, (! [A,B]: ((intersection(A,B) = intersection(B,A)))), file('SET14
 fof(22, axiom, (! [A]: ((empty(A) | member(dollar_f2(A),A)))), file('SET146+3.p',unknown), []).
 fof(23, axiom, (! [A,B]: (((A = B) | (member(dollar_f3(A,B),A) | member(dollar_f3(A,B),B))))), file('SET146+3.p',unknown), []).
 fof(29, plain, (intersection(empty_set,dollar_c1) != empty_set), inference(para_from,[status(thm),theory(equality)],[19,14]), [iquote('para_from,19.1.1,14.1.1')]).
-fof(69, plain, (! [A]: (((empty_set = A) | member(dollar_f3(empty_set,A),A)))), inference(hyper,[status(thm)],[23,4]), [iquote('hyper,23,4')]).
+fof(69, plain, (! [A]: ((~ ((empty_set = A)) | member(dollar_f3(empty_set,A),A)))), inference(hyper,[status(thm)],[23,4]), [iquote('hyper,23,4')]).
 fof(76, plain, (! [A]: (((A = empty_set) | member(dollar_f3(A,empty_set),A)))), inference(hyper,[status(thm)],[23,4]), [iquote('hyper,23,4')]).
-fof(126, plain, (! [A]: ((~ ((empty_set = A)) | member(dollar_f2(A),A)))), inference(hyper,[status(thm)],[69,10,22]), [iquote('hyper,69,10,22')]).
+fof(126, plain, (! [A]: (((empty_set = A) | member(dollar_f2(A),A)))), inference(hyper,[status(thm)],[69,10,22]), [iquote('hyper,69,10,22')]).
 fof(157, plain, (! [A,B]: ((~ (member(A,B)) | member(dollar_f2(B),B)))), inference(para_from,[status(thm),theory(equality)],[126,4]), [iquote('para_from,126.1.1,4.1.2')]).
 fof(162, plain, (! [A]: (((A = empty_set) | member(dollar_f2(A),A)))), inference(hyper,[status(thm)],[76,157]), [iquote('hyper,76,157')]).
 fof(235, plain, member(dollar_f2(intersection(empty_set,dollar_c1)),intersection(empty_set,dollar_c1)), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[162,29]),18]), [iquote('para_from,162.1.1,29.1.1,unit_del,18')]).

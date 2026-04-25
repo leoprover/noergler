@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c207':
-%%%%%   Replaced genlmt(c_tptp_spindlecollectormt,c_tptp_member2668_mt)
-%%%%%   With ~ (genlmt(c_tptp_spindlecollectormt,c_tptp_member2668_mt))
+%%%%% Mutated formula 'c1':
+%%%%%   Replaced (mtvisible(c_tptp_spindlecollectormt) & ~ (tptptypes_5_802(f_subcollectionofwithrelationfromtypefn(c_orientationvector,c_orientation,c_partiallytangible),c_tptpcol_16_8886)))
+%%%%%   With (~ (mtvisible(c_tptp_spindlecollectormt)) & ~ (tptptypes_5_802(f_subcollectionofwithrelationfromtypefn(c_orientationvector,c_orientation,c_partiallytangible),c_tptpcol_16_8886)))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR070+1 : TPTP v8.1.2. Released v3.4.0.
@@ -38,7 +38,7 @@
 %%% Generated on Tue Apr 14 15:05:42 CEST 2026 using command 'transform(fof)'.
 fof(query70, conjecture, (mtvisible(c_tptp_spindlecollectormt) => tptptypes_5_802(f_subcollectionofwithrelationfromtypefn(c_orientationvector,c_orientation,c_partiallytangible),c_tptpcol_16_8886)), file('CSR070+1.p',query70)).
 fof(c0, negated_conjecture, ~ ((mtvisible(c_tptp_spindlecollectormt) => tptptypes_5_802(f_subcollectionofwithrelationfromtypefn(c_orientationvector,c_orientation,c_partiallytangible),c_tptpcol_16_8886))), inference(assume_negation,[status(cth)],[query70])).
-fof(c1, negated_conjecture, (mtvisible(c_tptp_spindlecollectormt) & ~ (tptptypes_5_802(f_subcollectionofwithrelationfromtypefn(c_orientationvector,c_orientation,c_partiallytangible),c_tptpcol_16_8886))), inference(fof_nnf,[status(thm)],[c0])).
+fof(c1, negated_conjecture, (~ (mtvisible(c_tptp_spindlecollectormt)) & ~ (tptptypes_5_802(f_subcollectionofwithrelationfromtypefn(c_orientationvector,c_orientation,c_partiallytangible),c_tptpcol_16_8886))), inference(fof_nnf,[status(thm)],[c0])).
 fof(c3, negated_conjecture, ~ (tptptypes_5_802(f_subcollectionofwithrelationfromtypefn(c_orientationvector,c_orientation,c_partiallytangible),c_tptpcol_16_8886)), inference(split_conjunct,[status(thm)],[c1])).
 fof(just8, axiom, (! [ARG1,ARG2]: ((tptptypes_6_818(ARG1,ARG2) => tptptypes_5_802(ARG1,ARG2)))), file('CSR070+1.p',just8)).
 fof(c221, plain, (! [ARG1,ARG2]: ((~ (tptptypes_6_818(ARG1,ARG2)) | tptptypes_5_802(ARG1,ARG2)))), inference(fof_nnf,[status(thm)],[just8])).
@@ -58,7 +58,7 @@ fof(c210, plain, (! [X118,X119]: ((~ (tptptypes_9_824(X118,X119)) | tptptypes_8_
 fof(c211, plain, (! [X215,X216]: ((~ (tptptypes_9_824(X215,X216)) | tptptypes_8_823(X215,X216)))), inference(split_conjunct,[status(thm)],[c210])).
 fof(c2, negated_conjecture, mtvisible(c_tptp_spindlecollectormt), inference(split_conjunct,[status(thm)],[c1])).
 fof(just16, axiom, genlmt(c_tptp_spindlecollectormt,c_tptp_member2668_mt), file('CSR070+1.p',just16)).
-fof(c207, plain, ~ (genlmt(c_tptp_spindlecollectormt,c_tptp_member2668_mt)), inference(split_conjunct,[status(thm)],[just16])).
+fof(c207, plain, genlmt(c_tptp_spindlecollectormt,c_tptp_member2668_mt), inference(split_conjunct,[status(thm)],[just16])).
 fof(just57, axiom, (! [SPECMT,GENLMT]: (((mtvisible(SPECMT) & genlmt(SPECMT,GENLMT)) => mtvisible(GENLMT)))), file('CSR070+1.p',just57)).
 fof(c80, plain, (! [SPECMT,GENLMT]: ((~ (mtvisible(SPECMT)) | (~ (genlmt(SPECMT,GENLMT)) | mtvisible(GENLMT))))), inference(fof_nnf,[status(thm)],[just57])).
 fof(c81, plain, (! [X41,X42]: ((~ (mtvisible(X41)) | (~ (genlmt(X41,X42)) | mtvisible(X42))))), inference(variable_rename,[status(thm)],[c80])).

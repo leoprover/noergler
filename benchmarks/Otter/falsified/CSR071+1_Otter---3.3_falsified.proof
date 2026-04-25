@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '43':
-%%%%%   Replaced ~ (tptpofobject(c_tptpnavypersonnel_3,f_tptpquantityfn_6(n_414)))
-%%%%%   With tptpofobject(c_tptpnavypersonnel_3,f_tptpquantityfn_6(n_414))
+%%%%% Mutated formula '95':
+%%%%%   Replaced militaryperson(c_tptpnavypersonnel_3)
+%%%%%   With ~ (militaryperson(c_tptpnavypersonnel_3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR071+1 : TPTP v8.1.0. Released v3.4.0.
@@ -37,13 +37,13 @@ fof(1, axiom, (! [A]: ((~ (navypersonnel(A)) | militaryperson(A)))), file('CSR07
 fof(2, axiom, (! [A]: ((~ (mtvisible(c_tptp_member698_mt)) | (~ (militaryperson(A)) | tptpofobject(A,f_tptpquantityfn_6(n_414)))))), file('CSR071+1.p',unknown), []).
 fof(4, axiom, (~ (mtvisible(c_tptp_member1672_mt)) | navypersonnel(c_tptpnavypersonnel_3)), file('CSR071+1.p',unknown), []).
 fof(30, axiom, (! [A,B]: ((~ (mtvisible(A)) | (~ (genlmt(A,B)) | mtvisible(B))))), file('CSR071+1.p',unknown), []).
-fof(43, axiom, tptpofobject(c_tptpnavypersonnel_3,f_tptpquantityfn_6(n_414)), file('CSR071+1.p',unknown), []).
+fof(43, axiom, ~ (tptpofobject(c_tptpnavypersonnel_3,f_tptpquantityfn_6(n_414))), file('CSR071+1.p',unknown), []).
 fof(51, axiom, genlmt(c_tptp_spindlecollectormt,c_tptp_member698_mt), file('CSR071+1.p',unknown), []).
 fof(52, axiom, genlmt(c_tptp_spindlecollectormt,c_tptp_member1672_mt), file('CSR071+1.p',unknown), []).
 fof(60, axiom, mtvisible(c_tptp_spindlecollectormt), file('CSR071+1.p',unknown), []).
 fof(84, plain, mtvisible(c_tptp_member698_mt), inference(hyper,[status(thm)],[51,30,60]), [iquote('hyper,51,30,60')]).
 fof(87, plain, mtvisible(c_tptp_member1672_mt), inference(hyper,[status(thm)],[52,30,60]), [iquote('hyper,52,30,60')]).
 fof(91, plain, navypersonnel(c_tptpnavypersonnel_3), inference(hyper,[status(thm)],[87,4]), [iquote('hyper,87,4')]).
-fof(95, plain, militaryperson(c_tptpnavypersonnel_3), inference(hyper,[status(thm)],[91,1]), [iquote('hyper,91,1')]).
+fof(95, plain, ~ (militaryperson(c_tptpnavypersonnel_3)), inference(hyper,[status(thm)],[91,1]), [iquote('hyper,91,1')]).
 fof(98, plain, tptpofobject(c_tptpnavypersonnel_3,f_tptpquantityfn_6(n_414)), inference(hyper,[status(thm)],[95,2,84]), [iquote('hyper,95,2,84')]).
 fof(99, plain, $false, inference(binary,[status(thm)],[98,43]), [iquote('binary,98.1,43.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '125':
-%%%%%   Replaced (e0 != e3)
-%%%%%   With (e1 != e3)
+%%%%% Mutated formula '301':
+%%%%%   Replaced (op(inv(e0),e0) = unit)
+%%%%%   With (op(inv(e3),e0) = unit)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG014+1 : TPTP v8.1.0. Released v2.7.0.
@@ -37,11 +37,11 @@ fof(121, axiom, (e0 != e1), file('ALG014+1.p',unknown), []).
 fof(122, plain, (e1 != e0), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[121])]), [iquote('copy,121,flip.1')]).
 fof(123, axiom, (e0 != e2), file('ALG014+1.p',unknown), []).
 fof(124, plain, (e2 != e0), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[123])]), [iquote('copy,123,flip.1')]).
-fof(125, axiom, (e1 != e3), file('ALG014+1.p',unknown), []).
+fof(125, axiom, (e0 != e3), file('ALG014+1.p',unknown), []).
 fof(126, plain, (e3 != e0), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[125])]), [iquote('copy,125,flip.1')]).
 fof(133, axiom, ((op(e0,e0) != e0) | ((op(e1,e1) != e0) | ((op(e2,e2) != e0) | (op(e3,e3) != e0)))), file('ALG014+1.p',unknown), []).
 fof(137, axiom, (! [A]: ((A = A))), file('ALG014+1.p',unknown), []).
-fof(301, axiom, (op(inv(e0),e0) = unit), file('ALG014+1.p',unknown), []).
+fof(301, axiom, (op(inv(e3),e0) = unit), file('ALG014+1.p',unknown), []).
 fof(320, axiom, (unit = e0), file('ALG014+1.p',unknown), []).
 fof(321, axiom, (inv(unit) = unit), file('ALG014+1.p',unknown), []).
 fof(323, plain, (inv(e0) = e0), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[321]),320,320]), [iquote('copy,321,demod,320,320')]).

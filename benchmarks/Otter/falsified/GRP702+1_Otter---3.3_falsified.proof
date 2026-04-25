@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '24':
-%%%%%   Replaced (! [A,B]: ((mult(mult(A,B),op_c) = mult(A,mult(B,op_c)))))
-%%%%%   With (! [A,B]: (~ ((mult(mult(A,B),op_c) = mult(A,mult(B,op_c))))))
+%%%%% Mutated formula '25':
+%%%%%   Replaced (! [A,B]: ((mult(A,mult(op_c,B)) = mult(mult(A,op_c),B))))
+%%%%%   With (! [A,B]: (~ ((mult(A,mult(op_c,B)) = mult(mult(A,op_c),B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GRP702+1 : TPTP v8.1.0. Released v4.0.0.
@@ -42,8 +42,8 @@ fof(14, axiom, (! [A]: ((mult(unit,A) = A))), file('GRP702+1.p',unknown), []).
 fof(19, axiom, (! [A,B]: ((mult(op_c,mult(A,B)) = mult(mult(op_c,A),B)))), file('GRP702+1.p',unknown), []).
 fof(21, plain, (! [A,B]: ((mult(mult(op_c,A),B) = mult(op_c,mult(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[19])]), [iquote('copy,19,flip.1')]).
 fof(22, axiom, (! [A,B]: ((mult(A,mult(B,op_c)) = mult(mult(A,B),op_c)))), file('GRP702+1.p',unknown), []).
-fof(24, plain, (! [A,B]: (~ ((mult(mult(A,B),op_c) = mult(A,mult(B,op_c)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[22])]), [iquote('copy,22,flip.1')]).
-fof(25, axiom, (! [A,B]: ((mult(A,mult(op_c,B)) = mult(mult(A,op_c),B)))), file('GRP702+1.p',unknown), []).
+fof(24, plain, (! [A,B]: ((mult(mult(A,B),op_c) = mult(A,mult(B,op_c))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[22])]), [iquote('copy,22,flip.1')]).
+fof(25, axiom, (! [A,B]: (~ ((mult(A,mult(op_c,B)) = mult(mult(A,op_c),B))))), file('GRP702+1.p',unknown), []).
 fof(27, plain, (! [A,B]: ((mult(mult(A,op_c),B) = mult(A,mult(op_c,B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[25])]), [iquote('copy,25,flip.1')]).
 fof(28, axiom, (! [A]: ((op_d = ld(A,mult(op_c,A))))), file('GRP702+1.p',unknown), []).
 fof(29, plain, (! [A]: ((ld(A,mult(op_c,A)) = op_d))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[28])]), [iquote('copy,28,flip.1')]).

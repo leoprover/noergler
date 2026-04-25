@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1120':
-%%%%%   Replaced incident_c(dollar_f13(dollar_c2,dollar_c1),dollar_c1)
-%%%%%   With incident_c(dollar_f13(dollar_c1,dollar_c1),dollar_c1)
+%%%%% Mutated formula '60':
+%%%%%   Replaced part_of(dollar_c1,dollar_c2)
+%%%%%   With part_of(dollar_c2,dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO082+1 : TPTP v8.1.0. Released v2.4.0.
@@ -38,10 +38,10 @@ fof(41, axiom, (! [A,B]: ((~ (incident_c(dollar_f13(A,B),A)) | (~ (incident_c(do
 fof(42, axiom, (dollar_c2 != dollar_c1), file('GEO082+1.p',unknown), []).
 fof(58, axiom, (! [A,B]: ((incident_c(dollar_f13(A,B),A) | (incident_c(dollar_f13(A,B),B) | (A = B))))), file('GEO082+1.p',unknown), []).
 fof(59, axiom, part_of(dollar_c2,dollar_c1), file('GEO082+1.p',unknown), []).
-fof(60, axiom, part_of(dollar_c1,dollar_c2), file('GEO082+1.p',unknown), []).
+fof(60, axiom, part_of(dollar_c2,dollar_c2), file('GEO082+1.p',unknown), []).
 fof(1097, plain, (! [A]: ((incident_c(dollar_f13(dollar_c2,A),A) | ((dollar_c2 = A) | incident_c(dollar_f13(dollar_c2,A),dollar_c1))))), inference(hyper,[status(thm)],[58,1,59]), [iquote('hyper,58,1,59')]).
 fof(1111, plain, (! [A]: ((incident_c(dollar_f13(A,dollar_c1),A) | ((A = dollar_c1) | incident_c(dollar_f13(A,dollar_c1),dollar_c2))))), inference(hyper,[status(thm)],[58,1,60]), [iquote('hyper,58,1,60')]).
-fof(1120, plain, incident_c(dollar_f13(dollar_c1,dollar_c1),dollar_c1), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[1097]),42]), [iquote('factor,1097.1.3,unit_del,42')]).
+fof(1120, plain, incident_c(dollar_f13(dollar_c2,dollar_c1),dollar_c1), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[1097]),42]), [iquote('factor,1097.1.3,unit_del,42')]).
 fof(1127, plain, incident_c(dollar_f13(dollar_c2,dollar_c1),dollar_c2), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[1111]),42]), [iquote('factor,1111.1.3,unit_del,42')]).
 fof(1365, plain, (dollar_c2 = dollar_c1), inference(hyper,[status(thm)],[1127,41,1120]), [iquote('hyper,1127,41,1120')]).
 fof(1367, plain, $false, inference(binary,[status(thm)],[1365,42]), [iquote('binary,1365.1,42.1')]).

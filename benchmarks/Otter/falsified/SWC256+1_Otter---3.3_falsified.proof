@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '941':
-%%%%%   Replaced (nil = dollar_c4)
-%%%%%   With (dollar_c6 = dollar_c4)
+%%%%% Mutated formula '455':
+%%%%%   Replaced ((cons(dollar_c3,nil) = dollar_c5) | (nil = dollar_c4))
+%%%%%   With ((cons(dollar_c7,nil) = dollar_c5) | (nil = dollar_c4))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC256+1 : TPTP v8.1.0. Released v2.4.0.
@@ -45,8 +45,8 @@ fof(450, axiom, (dollar_c7 = dollar_c5), file('SWC256+1.p',unknown), []).
 fof(451, axiom, ne_q(dollar_c6,nil), file('SWC256+1.p',unknown), []).
 fof(452, plain, ne_q(dollar_c4,nil), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[451]),448]), [iquote('copy,451,demod,448')]).
 fof(453, axiom, (ssItem(dollar_c3) | (nil = dollar_c4)), file('SWC256+1.p',unknown), []).
-fof(455, axiom, ((cons(dollar_c3,nil) = dollar_c5) | (nil = dollar_c4)), file('SWC256+1.p',unknown), []).
+fof(455, axiom, ((cons(dollar_c7,nil) = dollar_c5) | (nil = dollar_c4)), file('SWC256+1.p',unknown), []).
 fof(459, plain, ~ (singletonP(dollar_c5)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),450]), [iquote('back_demod,182,demod,450')]).
-fof(941, plain, (dollar_c6 = dollar_c4), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[455,10,445,453]),459])]), [iquote('hyper,455,10,445,453,unit_del,459,factor_simp')]).
+fof(941, plain, (nil = dollar_c4), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[455,10,445,453]),459])]), [iquote('hyper,455,10,445,453,unit_del,459,factor_simp')]).
 fof(965, plain, ne_q(dollar_c4,dollar_c4), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[452]),941]), [iquote('back_demod,452,demod,941')]).
 fof(974, plain, $false, inference(hyper,[status(thm)],[965,248,446,432]), [iquote('hyper,965,248,446,432')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '913':
-%%%%%   Replaced segmentP(dollar_c3,dollar_c4)
-%%%%%   With segmentP(dollar_c6,dollar_c4)
+%%%%% Mutated formula '455':
+%%%%%   Replaced (~ (ne_q(dollar_c4,nil)) | ~ (segmentP(dollar_c3,dollar_c4)))
+%%%%%   With (ne_q(dollar_c4,nil) | ~ (segmentP(dollar_c3,dollar_c4)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC121+1 : TPTP v8.1.0. Released v2.4.0.
@@ -40,7 +40,7 @@ fof(450, axiom, (dollar_c5 = dollar_c3), file('SWC121+1.p',unknown), []).
 fof(452, axiom, (dollar_c6 = dollar_c4), file('SWC121+1.p',unknown), []).
 fof(453, axiom, ne_q(dollar_c5,nil), file('SWC121+1.p',unknown), []).
 fof(454, plain, ne_q(dollar_c3,nil), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[453]),450]), [iquote('copy,453,demod,450')]).
-fof(455, plain, (~ (ne_q(dollar_c4,nil)) | ~ (segmentP(dollar_c3,dollar_c4))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[184]),452,450,452]),454]), [iquote('back_demod,184,demod,452,450,452,unit_del,454')]).
-fof(913, plain, segmentP(dollar_c6,dollar_c4), inference(hyper,[status(thm)],[454,183]), [iquote('hyper,454,183')]).
+fof(455, plain, (ne_q(dollar_c4,nil) | ~ (segmentP(dollar_c3,dollar_c4))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[184]),452,450,452]),454]), [iquote('back_demod,184,demod,452,450,452,unit_del,454')]).
+fof(913, plain, segmentP(dollar_c3,dollar_c4), inference(hyper,[status(thm)],[454,183]), [iquote('hyper,454,183')]).
 fof(914, plain, ne_q(dollar_c4,nil), inference(hyper,[status(thm)],[454,182]), [iquote('hyper,454,182')]).
 fof(937, plain, $false, inference(hyper,[status(thm)],[914,455,913]), [iquote('hyper,914,455,913')]).

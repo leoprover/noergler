@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '458':
-%%%%%   Replaced (frontsegP(dollar_c4,dollar_c3) | (nil = dollar_c5))
-%%%%%   With (~ (frontsegP(dollar_c4,dollar_c3)) | (nil = dollar_c5))
+%%%%% Mutated formula '451':
+%%%%%   Replaced ne_q(dollar_c6,nil)
+%%%%%   With ~ (ne_q(dollar_c6,nil))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC023+1 : TPTP v8.1.0. Released v2.4.0.
@@ -40,14 +40,14 @@ fof(432, axiom, (! [A]: ((A = A))), file('SWC023+1.p',unknown), []).
 fof(446, axiom, ssList(dollar_c4), file('SWC023+1.p',unknown), []).
 fof(448, axiom, (dollar_c6 = dollar_c4), file('SWC023+1.p',unknown), []).
 fof(450, axiom, (dollar_c7 = dollar_c5), file('SWC023+1.p',unknown), []).
-fof(451, axiom, ne_q(dollar_c6,nil), file('SWC023+1.p',unknown), []).
+fof(451, axiom, ~ (ne_q(dollar_c6,nil)), file('SWC023+1.p',unknown), []).
 fof(452, plain, ne_q(dollar_c4,nil), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[451]),448]), [iquote('copy,451,demod,448')]).
 fof(453, axiom, (ssList(dollar_c3) | (nil = dollar_c4)), file('SWC023+1.p',unknown), []).
 fof(454, axiom, (ssList(dollar_c3) | (nil = dollar_c5)), file('SWC023+1.p',unknown), []).
 fof(455, axiom, (ne_q(dollar_c3,nil) | (nil = dollar_c4)), file('SWC023+1.p',unknown), []).
 fof(456, axiom, (ne_q(dollar_c3,nil) | (nil = dollar_c5)), file('SWC023+1.p',unknown), []).
 fof(457, axiom, (frontsegP(dollar_c4,dollar_c3) | (nil = dollar_c4)), file('SWC023+1.p',unknown), []).
-fof(458, axiom, (~ (frontsegP(dollar_c4,dollar_c3)) | (nil = dollar_c5)), file('SWC023+1.p',unknown), []).
+fof(458, axiom, (frontsegP(dollar_c4,dollar_c3) | (nil = dollar_c5)), file('SWC023+1.p',unknown), []).
 fof(459, axiom, (frontsegP(dollar_c5,dollar_c3) | (nil = dollar_c4)), file('SWC023+1.p',unknown), []).
 fof(460, axiom, (frontsegP(dollar_c5,dollar_c3) | (nil = dollar_c5)), file('SWC023+1.p',unknown), []).
 fof(461, plain, (! [A]: ((~ (ssList(A)) | (~ (ne_q(A,nil)) | (~ (frontsegP(dollar_c4,A)) | ~ (frontsegP(dollar_c5,A))))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),448,450]), [iquote('back_demod,182,demod,448,450')]).

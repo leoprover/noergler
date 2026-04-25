@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '156':
-%%%%%   Replaced (relation_dom(dollar_c5) = dollar_c1)
-%%%%%   With (relation_dom(dollar_c1) = dollar_c1)
+%%%%% Mutated formula '155':
+%%%%%   Replaced (relation_dom(dollar_c5) != dollar_c1)
+%%%%%   With ~ ((relation_dom(dollar_c5) != dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU189+1 : TPTP v8.1.0. Released v3.3.0.
@@ -51,6 +51,6 @@ fof(46, plain, (! [A]: ((~ (relation(A)) | ((relation_rng(A) != dollar_c1) | (A 
 fof(47, plain, (! [A]: ((~ (relation(A)) | ((relation_dom(A) != dollar_c1) | (A = dollar_c1))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[17]),36,36]), [iquote('back_demod,17,demod,36,36')]).
 fof(48, plain, ((relation_dom(dollar_c5) != dollar_c1) | (relation_rng(dollar_c5) != dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[16]),36,36]), [iquote('back_demod,16,demod,36,36')]).
 fof(153, plain, (relation_rng(dollar_c5) != dollar_c1), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[48,46]),44]),21,29])]), [iquote('para_into,48.1.1.1,46.3.1,demod,44,unit_del,21,29,factor_simp')]).
-fof(155, plain, (relation_dom(dollar_c5) != dollar_c1), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[48,47]),42]),21,29])]), [iquote('para_into,48.2.1.1,47.3.1,demod,42,unit_del,21,29,factor_simp')]).
-fof(156, plain, (relation_dom(dollar_c1) = dollar_c1), inference(hyper,[status(thm)],[153,45]), [iquote('hyper,153,45')]).
+fof(155, plain, ~ ((relation_dom(dollar_c5) != dollar_c1)), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[48,47]),42]),21,29])]), [iquote('para_into,48.2.1.1,47.3.1,demod,42,unit_del,21,29,factor_simp')]).
+fof(156, plain, (relation_dom(dollar_c5) = dollar_c1), inference(hyper,[status(thm)],[153,45]), [iquote('hyper,153,45')]).
 fof(158, plain, $false, inference(binary,[status(thm)],[156,155]), [iquote('binary,156.1,155.1')]).

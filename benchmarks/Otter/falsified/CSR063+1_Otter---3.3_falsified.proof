@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '73':
-%%%%%   Replaced genls(c_mathematicalorcomputationalthing,c_intangible)
-%%%%%   With ~ (genls(c_mathematicalorcomputationalthing,c_intangible))
+%%%%% Mutated formula '75':
+%%%%%   Replaced genls(c_computerdataartifact,c_artifact)
+%%%%%   With ~ (genls(c_computerdataartifact,c_artifact))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR063+1 : TPTP v8.1.0. Released v3.4.0.
@@ -44,9 +44,9 @@ fof(62, axiom, (! [A,B,C]: ((~ (isa(A,B)) | (~ (genls(B,C)) | isa(A,C))))), file
 fof(66, axiom, (! [A]: ((~ (setorcollection(A)) | isa(A,c_setorcollection)))), file('CSR063+1.p',unknown), []).
 fof(69, axiom, (! [A,B,C]: ((~ (genls(A,B)) | (~ (genls(B,C)) | genls(A,C))))), file('CSR063+1.p',unknown), []).
 fof(71, axiom, genls(c_setorcollection,c_mathematicalthing), file('CSR063+1.p',unknown), []).
-fof(73, axiom, ~ (genls(c_mathematicalorcomputationalthing,c_intangible)), file('CSR063+1.p',unknown), []).
+fof(73, axiom, genls(c_mathematicalorcomputationalthing,c_intangible), file('CSR063+1.p',unknown), []).
 fof(74, axiom, disjointwith(c_intangible,c_partiallytangible), file('CSR063+1.p',unknown), []).
-fof(75, axiom, genls(c_computerdataartifact,c_artifact), file('CSR063+1.p',unknown), []).
+fof(75, axiom, ~ (genls(c_computerdataartifact,c_artifact)), file('CSR063+1.p',unknown), []).
 fof(76, axiom, genls(c_mathematicalthing,c_mathematicalorcomputationalthing), file('CSR063+1.p',unknown), []).
 fof(78, axiom, genls(c_artifact,c_inanimateobject_nonnatural), file('CSR063+1.p',unknown), []).
 fof(79, axiom, genls(c_inanimateobject_nonnatural,c_inanimateobject), file('CSR063+1.p',unknown), []).

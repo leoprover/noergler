@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '999':
-%%%%%   Replaced antisymmetric(dollar_c14)
-%%%%%   With ~ (antisymmetric(dollar_c14))
+%%%%% Mutated formula '1000':
+%%%%%   Replaced connected(dollar_c14)
+%%%%%   With connected(dollar_c13)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU261+2 : TPTP v8.1.0. Released v3.3.0.
@@ -57,8 +57,8 @@ fof(993, plain, antisymmetric(dollar_c15), inference(hyper,[status(thm)],[884,17
 fof(994, plain, transitive(dollar_c15), inference(hyper,[status(thm)],[884,170,880]), [iquote('hyper,884,170,880')]).
 fof(995, plain, reflexive(dollar_c15), inference(hyper,[status(thm)],[884,169,880]), [iquote('hyper,884,169,880')]).
 fof(998, plain, well_founded_relation(dollar_c14), inference(hyper,[status(thm)],[885,488,880,881,882,883,991]), [iquote('hyper,885,488,880,881,882,883,991')]).
-fof(999, plain, ~ (antisymmetric(dollar_c14)), inference(hyper,[status(thm)],[885,487,880,881,882,883,993]), [iquote('hyper,885,487,880,881,882,883,993')]).
-fof(1000, plain, connected(dollar_c14), inference(hyper,[status(thm)],[885,486,880,881,882,883,992]), [iquote('hyper,885,486,880,881,882,883,992')]).
+fof(999, plain, antisymmetric(dollar_c14), inference(hyper,[status(thm)],[885,487,880,881,882,883,993]), [iquote('hyper,885,487,880,881,882,883,993')]).
+fof(1000, plain, connected(dollar_c13), inference(hyper,[status(thm)],[885,486,880,881,882,883,992]), [iquote('hyper,885,486,880,881,882,883,992')]).
 fof(1001, plain, transitive(dollar_c14), inference(hyper,[status(thm)],[885,485,880,881,882,883,994]), [iquote('hyper,885,485,880,881,882,883,994')]).
 fof(1002, plain, reflexive(dollar_c14), inference(hyper,[status(thm)],[885,484,880,881,882,883,995]), [iquote('hyper,885,484,880,881,882,883,995')]).
 fof(1004, plain, well_ordering(dollar_c14), inference(hyper,[status(thm)],[1002,174,881,1001,999,1000,998]), [iquote('hyper,1002,174,881,1001,999,1000,998')]).

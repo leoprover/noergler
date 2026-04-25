@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '58':
-%%%%%   Replaced tuesday(yesterday(a_wednesday))
-%%%%%   With tuesday(yesterday(a_tuesday))
+%%%%% Mutated formula '102':
+%%%%%   Replaced day(yesterday(a_wednesday))
+%%%%%   With ~ (day(yesterday(a_wednesday)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PUZ005+1 : TPTP v8.1.0. Released v2.2.0.
@@ -60,7 +60,7 @@ fof(47, axiom, thursday(a_thursday), file('PUZ005+1.p',unknown), []).
 fof(49, axiom, saturday(a_saturday), file('PUZ005+1.p',unknown), []).
 fof(55, plain, monday(yesterday(a_tuesday)), inference(hyper,[status(thm)],[45,9]), [iquote('hyper,45,9')]).
 fof(57, plain, lion_lies(a_wednesday), inference(hyper,[status(thm)],[46,17]), [iquote('hyper,46,17')]).
-fof(58, plain, tuesday(yesterday(a_tuesday)), inference(hyper,[status(thm)],[46,10]), [iquote('hyper,46,10')]).
+fof(58, plain, tuesday(yesterday(a_wednesday)), inference(hyper,[status(thm)],[46,10]), [iquote('hyper,46,10')]).
 fof(59, plain, day(a_wednesday), inference(hyper,[status(thm)],[46,3]), [iquote('hyper,46,3')]).
 fof(60, plain, unicorn_lies(a_thursday), inference(hyper,[status(thm)],[47,25]), [iquote('hyper,47,25')]).
 fof(61, plain, wednesday(yesterday(a_thursday)), inference(hyper,[status(thm)],[47,11]), [iquote('hyper,47,11')]).
@@ -71,7 +71,7 @@ fof(73, plain, lion_lies(yesterday(a_tuesday)), inference(hyper,[status(thm)],[5
 fof(75, plain, day(yesterday(a_tuesday)), inference(hyper,[status(thm)],[55,1]), [iquote('hyper,55,1')]).
 fof(82, plain, (lies_on_one_of(a_lion,a_wednesday,a_thursday) | lion_lies(a_thursday)), inference(hyper,[status(thm)],[62,34,59,57]), [iquote('hyper,62,34,59,57')]).
 fof(100, plain, lion_lies(yesterday(a_wednesday)), inference(hyper,[status(thm)],[58,16]), [iquote('hyper,58,16')]).
-fof(102, plain, day(yesterday(a_wednesday)), inference(hyper,[status(thm)],[58,2]), [iquote('hyper,58,2')]).
+fof(102, plain, ~ (day(yesterday(a_wednesday))), inference(hyper,[status(thm)],[58,2]), [iquote('hyper,58,2')]).
 fof(127, plain, lion_lies(yesterday(a_thursday)), inference(hyper,[status(thm)],[61,17]), [iquote('hyper,61,17')]).
 fof(129, plain, day(yesterday(a_thursday)), inference(hyper,[status(thm)],[61,3]), [iquote('hyper,61,3')]).
 fof(161, plain, (lies_on_one_of(a_lion,yesterday(a_tuesday),a_thursday) | lion_lies(a_thursday)), inference(hyper,[status(thm)],[75,34,62,73]), [iquote('hyper,75,34,62,73')]).

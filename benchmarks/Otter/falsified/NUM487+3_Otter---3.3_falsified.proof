@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1364':
-%%%%%   Replaced aNaturalNumber0(sz00)
-%%%%%   With ~ (aNaturalNumber0(sz00))
+%%%%% Mutated formula '3581':
+%%%%%   Replaced sdtlse_qdt0(sz00,xp)
+%%%%%   With ~ (sdtlse_qdt0(sz00,xp))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM487+3 : TPTP v8.1.0. Released v4.0.0.
@@ -51,7 +51,7 @@ fof(274, axiom, (xp != sz00), file('NUM487+3.p',unknown), []).
 fof(280, axiom, ((xr = xn) | ~ (sdtlse_qdt0(xr,xn))), file('NUM487+3.p',unknown), []).
 fof(316, plain, (! [A,B]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (sdtlse_qdt0(A,B) | (sdtpldt0(A,B) != B)))))), inference(factor,[status(thm)],[30]), [iquote('factor,30.2.4')]).
 fof(319, plain, (! [A,B]: ((~ (aNaturalNumber0(A)) | (~ (sdtlse_qdt0(A,A)) | ((B = sdtmndt0(A,A)) | (~ (aNaturalNumber0(B)) | (sdtpldt0(A,B) != A))))))), inference(factor,[status(thm)],[33]), [iquote('factor,33.1.2')]).
-fof(1364, axiom, ~ (aNaturalNumber0(sz00)), file('NUM487+3.p',unknown), []).
+fof(1364, axiom, aNaturalNumber0(sz00), file('NUM487+3.p',unknown), []).
 fof(1365, axiom, aNaturalNumber0(sz10), file('NUM487+3.p',unknown), []).
 fof(1366, axiom, aNaturalNumber0(xn), file('NUM487+3.p',unknown), []).
 fof(1368, axiom, aNaturalNumber0(xp), file('NUM487+3.p',unknown), []).
@@ -70,7 +70,7 @@ fof(3214, plain, (sdtpldt0(dollar_c2,xp) = xn), inference(flip,[status(thm),theo
 fof(3373, plain, (xr = dollar_c2), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[1378,33,1368,1366,1375,1377]),1384])]), [iquote('hyper,1378,33,1368,1366,1375,1376,demod,1384,flip.1')]).
 fof(3379, plain, ((xn = dollar_c2) | ~ (sdtlse_qdt0(dollar_c2,xn))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[280]),3373,3373])]), [iquote('back_demod,280,demod,3373,3373,flip.1')]).
 fof(3574, plain, sdtlse_qdt0(sz00,sz10), inference(hyper,[status(thm)],[1460,316,1364,1365]), [iquote('hyper,1460,316,1364,1365')]).
-fof(3581, plain, sdtlse_qdt0(sz00,xp), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[3574,42,1368,1364,1365]),3001,3005]),274,1]), [iquote('hyper,3574,42,1368,1364,1365,demod,3001,3005,unit_del,274,1')]).
+fof(3581, plain, ~ (sdtlse_qdt0(sz00,xp)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[3574,42,1368,1364,1365]),3001,3005]),274,1]), [iquote('hyper,3574,42,1368,1364,1365,demod,3001,3005,unit_del,274,1')]).
 fof(3590, plain, sdtlse_qdt0(dollar_c2,xn), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[3581,40,1364,1368,1375]),3209,1377]),274]), [iquote('hyper,3581,40,1364,1368,1375,demod,3209,1377,unit_del,274')]).
 fof(3711, plain, (sdtmndt0(dollar_c2,dollar_c2) = sz00), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[3210,319,1375,3125,1364])]), [iquote('hyper,3210,319,1375,3125,1364,flip.1')]).
 fof(3714, plain, (xn != dollar_c2), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[3214,319]),3711]),1375,3125,274,1368]), [iquote('para_from,3214.1.1,319.5.1,demod,3711,unit_del,1375,3125,274,1368')]).

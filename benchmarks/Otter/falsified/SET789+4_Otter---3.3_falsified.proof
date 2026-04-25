@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '86':
-%%%%%   Replaced (dollar_c2 != dollar_c1)
-%%%%%   With (dollar_c4 != dollar_c1)
+%%%%% Mutated formula '194':
+%%%%%   Replaced apply(dollar_c4,dollar_c1,dollar_c2)
+%%%%%   With apply(dollar_c2,dollar_c1,dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET789+4 : TPTP v8.1.0. Released v3.2.0.
@@ -36,13 +36,13 @@
 fof(2, axiom, (! [A,B,C,D]: ((~ (order(A,B)) | (~ (member(C,B)) | (~ (member(D,B)) | (~ (apply(A,C,D)) | (~ (apply(A,D,C)) | (C = D)))))))), file('SET789+4.p',unknown), []).
 fof(54, axiom, (! [A,B,C]: ((~ (greatest(A,B,C)) | member(A,C)))), file('SET789+4.p',unknown), []).
 fof(55, axiom, (! [A,B,C,D]: ((~ (greatest(A,B,C)) | (~ (member(D,C)) | apply(B,D,A))))), file('SET789+4.p',unknown), []).
-fof(86, axiom, (dollar_c4 != dollar_c1), file('SET789+4.p',unknown), []).
+fof(86, axiom, (dollar_c2 != dollar_c1), file('SET789+4.p',unknown), []).
 fof(112, axiom, order(dollar_c4,dollar_c3), file('SET789+4.p',unknown), []).
 fof(113, axiom, greatest(dollar_c2,dollar_c4,dollar_c3), file('SET789+4.p',unknown), []).
 fof(114, axiom, greatest(dollar_c1,dollar_c4,dollar_c3), file('SET789+4.p',unknown), []).
 fof(123, plain, member(dollar_c2,dollar_c3), inference(hyper,[status(thm)],[113,54]), [iquote('hyper,113,54')]).
 fof(146, plain, apply(dollar_c4,dollar_c2,dollar_c1), inference(hyper,[status(thm)],[114,55,123]), [iquote('hyper,114,55,123')]).
 fof(147, plain, member(dollar_c1,dollar_c3), inference(hyper,[status(thm)],[114,54]), [iquote('hyper,114,54')]).
-fof(194, plain, apply(dollar_c4,dollar_c1,dollar_c2), inference(hyper,[status(thm)],[147,55,113]), [iquote('hyper,147,55,113')]).
+fof(194, plain, apply(dollar_c2,dollar_c1,dollar_c2), inference(hyper,[status(thm)],[147,55,113]), [iquote('hyper,147,55,113')]).
 fof(260, plain, (dollar_c2 = dollar_c1), inference(hyper,[status(thm)],[194,2,112,123,147,146]), [iquote('hyper,194,2,112,123,147,146')]).
 fof(262, plain, $false, inference(binary,[status(thm)],[260,86]), [iquote('binary,260.1,86.1')]).

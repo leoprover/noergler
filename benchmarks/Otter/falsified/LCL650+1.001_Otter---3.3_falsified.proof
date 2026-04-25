@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '77':
-%%%%%   Replaced r1(dollar_c3,dollar_c2)
-%%%%%   With ~ (r1(dollar_c3,dollar_c2))
+%%%%% Mutated formula '10':
+%%%%%   Replaced (! [A,B,C,D]: ((~ (r1(dollar_c10,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,D)) | (p1(D) | p2(D))))))))
+%%%%%   With (! [A,B,C,D]: ((r1(dollar_c10,A) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,D)) | (p1(D) | p2(D))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LCL650+1.001 : TPTP v8.1.0. Released v4.0.0.
@@ -37,11 +37,11 @@ fof(2, axiom, (! [A,B,C,D]: ((~ (r1(dollar_c10,A)) | (~ (r1(A,B)) | (~ (r1(B,C))
 fof(3, axiom, (! [A,B,C,D]: ((~ (r1(dollar_c10,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,D)) | (~ (p1(D)) | ~ (p3(D))))))))), file('LCL650+1.001.p',unknown), []).
 fof(6, axiom, (! [A,B,C,D]: ((~ (r1(dollar_c10,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,D)) | (p2(D) | p3(D)))))))), file('LCL650+1.001.p',unknown), []).
 fof(7, axiom, (! [A,B,C,D]: ((~ (r1(dollar_c10,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,D)) | (~ (p3(D)) | ~ (p2(D))))))))), file('LCL650+1.001.p',unknown), []).
-fof(10, axiom, (! [A,B,C,D]: ((~ (r1(dollar_c10,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,D)) | (p1(D) | p2(D)))))))), file('LCL650+1.001.p',unknown), []).
+fof(10, axiom, (! [A,B,C,D]: ((r1(dollar_c10,A) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,D)) | (p1(D) | p2(D)))))))), file('LCL650+1.001.p',unknown), []).
 fof(11, axiom, (! [A,B,C,D]: ((~ (r1(dollar_c10,A)) | (~ (r1(A,B)) | (~ (r1(B,C)) | (~ (r1(C,D)) | (~ (p2(D)) | ~ (p1(D))))))))), file('LCL650+1.001.p',unknown), []).
 fof(75, axiom, r1(dollar_c10,dollar_c4), file('LCL650+1.001.p',unknown), []).
 fof(76, axiom, r1(dollar_c4,dollar_c3), file('LCL650+1.001.p',unknown), []).
-fof(77, axiom, ~ (r1(dollar_c3,dollar_c2)), file('LCL650+1.001.p',unknown), []).
+fof(77, axiom, r1(dollar_c3,dollar_c2), file('LCL650+1.001.p',unknown), []).
 fof(78, axiom, r1(dollar_c2,dollar_c1), file('LCL650+1.001.p',unknown), []).
 fof(87, plain, (p1(dollar_c1) | p2(dollar_c1)), inference(hyper,[status(thm)],[78,10,75,76,77]), [iquote('hyper,78,10,75,76,77')]).
 fof(88, plain, (p2(dollar_c1) | p3(dollar_c1)), inference(hyper,[status(thm)],[78,6,75,76,77]), [iquote('hyper,78,6,75,76,77')]).

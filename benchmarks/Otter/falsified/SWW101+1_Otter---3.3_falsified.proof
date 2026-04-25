@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1095':
-%%%%%   Replaced (lazy_and1(true,true) = true)
-%%%%%   With ~ ((lazy_and1(true,true) = true))
+%%%%% Mutated formula '1292':
+%%%%%   Replaced ~ (forallprefers(false,dollar_c1))
+%%%%%   With ~ (forallprefers(true,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWW101+1 : TPTP v8.1.0. Released v5.2.0.
@@ -69,7 +69,7 @@ fof(965, plain, (! [A]: (((f7(A) = true) | bool(A)))), inference(flip,[status(th
 fof(1003, plain, ((lazy_and1(true,lazy_and1(true,false)) = false2) | (~ (bool(dollar_c1)) | (true = dollar_c1))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[111,1]),962])]), [iquote('para_into,111.1.1.2.1,1.2.1,demod,962,flip.3')]).
 fof(1078, plain, ~ (forallprefers(lazy_and1(true,false),f7(dollar_c1))), inference(para_from,[status(thm),theory(equality)],[962,44]), [iquote('para_from,961.1.1,44.1.1')]).
 fof(1093, plain, (lazy_and1(true,false) = false), inference(hyper,[status(thm)],[130,49]), [iquote('hyper,130,49')]).
-fof(1095, plain, ~ ((lazy_and1(true,true) = true)), inference(hyper,[status(thm)],[130,48]), [iquote('hyper,130,48')]).
+fof(1095, plain, (lazy_and1(true,true) = true), inference(hyper,[status(thm)],[130,48]), [iquote('hyper,130,48')]).
 fof(1096, plain, ~ (forallprefers(false,f7(dollar_c1))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1078]),1093]), [iquote('back_demod,1078,demod,1093')]).
 fof(1100, plain, (~ (bool(dollar_c1)) | (true = dollar_c1)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1003]),1093,1093]),137]), [iquote('back_demod,1003,demod,1093,1093,unit_del,137')]).
 fof(1110, plain, (f7(true) = true), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[963]),1095]), [iquote('back_demod,963,demod,1095')]).
@@ -82,5 +82,5 @@ fof(1177, plain, ~ (forallprefers(false,lazy_and1(dollar_c1,dollar_c1))), infere
 fof(1181, plain, (f7(dollar_c1) = lazy_and1(dollar_c1,dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1150]),1166]), [iquote('back_demod,1149,demod,1166')]).
 fof(1197, plain, (lazy_and1(dollar_c1,dollar_c1) = dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1110]),1166,1181,1166]), [iquote('back_demod,1110,demod,1166,1181,1166')]).
 fof(1264, plain, forallprefers(false,dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[139]),1166]), [iquote('back_demod,139,demod,1166')]).
-fof(1292, plain, ~ (forallprefers(false,dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1177]),1197]), [iquote('back_demod,1177,demod,1197')]).
+fof(1292, plain, ~ (forallprefers(true,dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1177]),1197]), [iquote('back_demod,1177,demod,1197')]).
 fof(1293, plain, $false, inference(binary,[status(thm)],[1292,1264]), [iquote('binary,1292.1,1264.1')]).

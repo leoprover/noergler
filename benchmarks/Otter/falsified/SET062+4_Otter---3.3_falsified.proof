@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '113':
 %%%%%   Replaced member(dollar_f1(empty_set,dollar_c1),empty_set)
-%%%%%   With ~ (member(dollar_f1(empty_set,dollar_c1),empty_set))
+%%%%%   With member(dollar_f1(dollar_c1,dollar_c1),empty_set)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET062+4 : TPTP v8.1.0. Released v2.2.0.
@@ -36,5 +36,5 @@
 fof(14, axiom, (! [A]: (~ (member(A,empty_set)))), file('SET062+4.p',unknown), []).
 fof(28, axiom, ~ (subset(empty_set,dollar_c1)), file('SET062+4.p',unknown), []).
 fof(35, axiom, (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A)))), file('SET062+4.p',unknown), []).
-fof(113, plain, ~ (member(dollar_f1(empty_set,dollar_c1),empty_set)), inference(hyper,[status(thm)],[35,28]), [iquote('hyper,35,28')]).
+fof(113, plain, member(dollar_f1(dollar_c1,dollar_c1),empty_set), inference(hyper,[status(thm)],[35,28]), [iquote('hyper,35,28')]).
 fof(114, plain, $false, inference(binary,[status(thm)],[113,14]), [iquote('binary,113.1,14.1')]).

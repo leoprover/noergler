@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '835':
-%%%%%   Replaced (! [A,B]: ((~ (in(dollar_c12,set_union2(set_union2(A,B),singleton(dollar_c11)))) | ((dollar_c12 != dollar_c11) | (in(dollar_f2(A,B,dollar_c11),dollar_c11) | (in(dollar_f2(A,B,dollar_c11),A) | in(dollar_f2(A,B,dollar_c11),B)))))))
-%%%%%   With (! [A,B]: ((~ (in(dollar_c12,set_union2(set_union2(A,B),singleton(dollar_c11)))) & ((dollar_c12 != dollar_c11) | (in(dollar_f2(A,B,dollar_c11),dollar_c11) | (in(dollar_f2(A,B,dollar_c11),A) | in(dollar_f2(A,B,dollar_c11),B)))))))
+%%%%% Mutated formula '3876':
+%%%%%   Replaced (! [A]: (in(dollar_f2(A,dollar_c11,dollar_c11),A)))
+%%%%%   With (! [A]: (~ (in(dollar_f2(A,dollar_c11,dollar_c11),A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM386+1 : TPTP v8.1.0. Released v3.2.0.
@@ -54,12 +54,12 @@ fof(699, plain, (! [A,B,C]: (((A = B) | ((C != singleton(A)) | ~ (in(B,C)))))), 
 fof(716, plain, (in(dollar_c12,dollar_c11) | ((dollar_c12 = dollar_c11) | in(dollar_c12,singleton(dollar_c11)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[65,8,33])]), [iquote('hyper,65,8,33,factor_simp')]).
 fof(719, plain, (in(dollar_c12,set_union2(dollar_c11,singleton(dollar_c11))) | (dollar_c12 = dollar_c11)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[65,10,33])]), [iquote('hyper,65,10,33,factor_simp')]).
 fof(721, plain, (! [A,B]: (in(A,set_union2(B,singleton(A))))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[75,10,43]),43]), [iquote('hyper,75,10,42,demod,43')]).
-fof(835, plain, (! [A,B]: ((~ (in(dollar_c12,set_union2(set_union2(A,B),singleton(dollar_c11)))) & ((dollar_c12 != dollar_c11) | (in(dollar_f2(A,B,dollar_c11),dollar_c11) | (in(dollar_f2(A,B,dollar_c11),A) | in(dollar_f2(A,B,dollar_c11),B))))))), inference(para_into,[status(thm),theory(equality)],[68,37]), [iquote('para_into,68.1.2.1,37.1.1')]).
+fof(835, plain, (! [A,B]: ((~ (in(dollar_c12,set_union2(set_union2(A,B),singleton(dollar_c11)))) | ((dollar_c12 != dollar_c11) | (in(dollar_f2(A,B,dollar_c11),dollar_c11) | (in(dollar_f2(A,B,dollar_c11),A) | in(dollar_f2(A,B,dollar_c11),B))))))), inference(para_into,[status(thm),theory(equality)],[68,37]), [iquote('para_into,68.1.2.1,37.1.1')]).
 fof(838, plain, (! [A,B]: ((~ (in(dollar_c12,set_union2(set_union2(A,B),singleton(dollar_c11)))) | ((dollar_c12 != dollar_c11) | (~ (in(dollar_f2(A,B,dollar_c11),dollar_c11)) | ~ (in(dollar_f2(A,B,dollar_c11),B))))))), inference(para_into,[status(thm),theory(equality)],[68,12]), [iquote('para_into,68.1.2.1,12.1.1')]).
 fof(878, plain, (! [A]: ((~ (in(dollar_c12,set_union2(set_union2(A,dollar_c11),singleton(dollar_c11)))) | ((dollar_c12 != dollar_c11) | (in(dollar_f2(A,dollar_c11,dollar_c11),dollar_c11) | in(dollar_f2(A,dollar_c11,dollar_c11),A)))))), inference(factor,[status(thm)],[835]), [iquote('factor,835.3.5')]).
 fof(880, plain, (! [A]: ((~ (in(dollar_c12,set_union2(set_union2(A,dollar_c11),singleton(dollar_c11)))) | ((dollar_c12 != dollar_c11) | ~ (in(dollar_f2(A,dollar_c11,dollar_c11),dollar_c11)))))), inference(factor,[status(thm)],[838]), [iquote('factor,838.3.4')]).
 fof(3871, plain, (in(dollar_c12,dollar_c11) | (dollar_c12 = dollar_c11)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[716,699,32])]), [iquote('hyper,716,699,32,factor_simp')]).
 fof(3873, plain, (dollar_c12 = dollar_c11), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[3871,69,719])]), [iquote('hyper,3871,69,719,factor_simp')]).
 fof(3875, plain, (! [A]: (~ (in(dollar_f2(A,dollar_c11,dollar_c11),dollar_c11)))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[880]),3873,3873]),721,32]), [iquote('back_demod,880,demod,3873,3873,unit_del,721,32')]).
-fof(3876, plain, (! [A]: (in(dollar_f2(A,dollar_c11,dollar_c11),A))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[878]),3873,3873]),721,32,3875]), [iquote('back_demod,878,demod,3873,3873,unit_del,721,32,3875')]).
+fof(3876, plain, (! [A]: (~ (in(dollar_f2(A,dollar_c11,dollar_c11),A)))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[878]),3873,3873]),721,32,3875]), [iquote('back_demod,878,demod,3873,3873,unit_del,721,32,3875')]).
 fof(3877, plain, $false, inference(binary,[status(thm)],[3876,3875]), [iquote('binary,3876.1,3875.1')]).

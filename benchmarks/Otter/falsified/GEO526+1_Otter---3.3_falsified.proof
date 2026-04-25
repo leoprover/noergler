@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '502':
-%%%%%   Replaced s_e(dollar_c5,dollar_c4,dollar_c2,dollar_c4)
-%%%%%   With s_e(dollar_c4,dollar_c4,dollar_c2,dollar_c4)
+%%%%% Mutated formula '504':
+%%%%%   Replaced (dollar_c4 = midpoint(dollar_c3,dollar_c1))
+%%%%%   With (dollar_c1 = midpoint(dollar_c3,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO526+1 : TPTP v8.1.0. Released v7.0.0.
@@ -42,8 +42,8 @@ fof(239, axiom, (! [A,B,C]: ((~ (s_r(A,B,C)) | s_e(A,C,A,s(B,C))))), file('GEO52
 fof(491, axiom, (! [A,B]: (s_m(A,midpoint(A,B),B))), file('GEO526+1.p',unknown), []).
 fof(500, axiom, s_r(dollar_c5,dollar_c4,dollar_c3), file('GEO526+1.p',unknown), []).
 fof(501, axiom, s_r(dollar_c2,dollar_c4,dollar_c1), file('GEO526+1.p',unknown), []).
-fof(502, axiom, s_e(dollar_c4,dollar_c4,dollar_c2,dollar_c4), file('GEO526+1.p',unknown), []).
-fof(504, axiom, (dollar_c4 = midpoint(dollar_c3,dollar_c1)), file('GEO526+1.p',unknown), []).
+fof(502, axiom, s_e(dollar_c5,dollar_c4,dollar_c2,dollar_c4), file('GEO526+1.p',unknown), []).
+fof(504, axiom, (dollar_c1 = midpoint(dollar_c3,dollar_c1)), file('GEO526+1.p',unknown), []).
 fof(505, plain, (midpoint(dollar_c3,dollar_c1) = dollar_c4), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[504])]), [iquote('copy,504,flip.1')]).
 fof(577, plain, s_e(dollar_c5,dollar_c3,dollar_c5,s(dollar_c4,dollar_c3)), inference(hyper,[status(thm)],[500,239]), [iquote('hyper,500,239')]).
 fof(578, plain, s_r(dollar_c5,dollar_c4,s(dollar_c4,dollar_c3)), inference(hyper,[status(thm)],[500,115]), [iquote('hyper,500,115')]).

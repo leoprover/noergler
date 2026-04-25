@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '21':
-%%%%%   Replaced (! [A,B,C]: ((mult(mult(A,B),A) = mult(mult(A,C),mult(ld(C,B),A)))))
-%%%%%   With (! [A,B,C]: (~ ((mult(mult(A,B),A) = mult(mult(A,C),mult(ld(C,B),A))))))
+%%%%% Mutated formula '353':
+%%%%%   Replaced (! [A,B]: ((mult(ld(A,A),B) = B)))
+%%%%%   With (! [A,B]: (~ ((mult(ld(A,A),B) = B))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GRP656+1 : TPTP v8.1.0. Released v4.0.0.
@@ -40,9 +40,9 @@ fof(5, axiom, (! [A,B]: ((ld(A,mult(A,B)) = B))), file('GRP656+1.p',unknown), []
 fof(9, axiom, (! [A,B]: ((rd(mult(A,B),B) = A))), file('GRP656+1.p',unknown), []).
 fof(11, axiom, (! [A,B,C]: ((mult(mult(A,B),mult(C,A)) = mult(mult(A,mult(B,C)),A)))), file('GRP656+1.p',unknown), []).
 fof(12, plain, (! [A,B,C]: ((mult(mult(A,mult(B,C)),A) = mult(mult(A,B),mult(C,A))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[11])]), [iquote('copy,11,flip.1')]).
-fof(21, plain, (! [A,B,C]: (~ ((mult(mult(A,B),A) = mult(mult(A,C),mult(ld(C,B),A)))))), inference(para_into,[status(thm),theory(equality)],[12,3]), [iquote('para_into,12.1.1.1.2,3.1.1')]).
+fof(21, plain, (! [A,B,C]: ((mult(mult(A,B),A) = mult(mult(A,C),mult(ld(C,B),A))))), inference(para_into,[status(thm),theory(equality)],[12,3]), [iquote('para_into,12.1.1.1.2,3.1.1')]).
 fof(70, plain, (! [A,B,C]: ((ld(mult(A,B),mult(mult(A,C),mult(ld(C,B),A))) = A))), inference(para_from,[status(thm),theory(equality)],[21,5]), [iquote('para_from,21.1.1,5.1.1.2')]).
-fof(353, plain, (! [A,B]: ((mult(ld(A,A),B) = B))), inference(para_into,[status(thm),theory(equality)],[70,5]), [iquote('para_into,70.1.1,5.1.1')]).
+fof(353, plain, (! [A,B]: (~ ((mult(ld(A,A),B) = B)))), inference(para_into,[status(thm),theory(equality)],[70,5]), [iquote('para_into,70.1.1,5.1.1')]).
 fof(379, plain, (! [A,B]: ((rd(A,A) = ld(B,B)))), inference(para_from,[status(thm),theory(equality)],[353,9]), [iquote('para_from,353.1.1,9.1.1.1')]).
 fof(382, plain, (! [A,B]: ((ld(A,A) = rd(B,B)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[379])]), [iquote('copy,379,flip.1')]).
 fof(391, plain, (! [A,B]: ((mult(rd(A,A),B) = B))), inference(para_from,[status(thm),theory(equality)],[382,353]), [iquote('para_from,382.1.1,353.1.1.1')]).

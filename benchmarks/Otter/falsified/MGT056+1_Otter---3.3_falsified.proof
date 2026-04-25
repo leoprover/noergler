@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '973':
-%%%%%   Replaced (! [A]: ((has_endowment(A) | (greater(dollar_c4,A) | greater(A,dollar_c4)))))
-%%%%%   With (! [A]: ((~ (has_endowment(A)) | (greater(dollar_c4,A) | greater(A,dollar_c4)))))
+%%%%% Mutated formula '25':
+%%%%%   Replaced organization(dollar_c4)
+%%%%%   With ~ (organization(dollar_c4))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT056+1 : TPTP v8.1.0. Released v2.4.0.
@@ -48,7 +48,7 @@ fof(20, plain, (~ (greater(hazard_of_mortality(dollar_c4,dollar_c1),hazard_of_mo
 fof(21, plain, (! [A]: (~ (greater(A,A)))), inference(factor,[status(thm)],[9]), [iquote('factor,9.1.2')]).
 fof(23, axiom, (! [A]: ((A = A))), file('MGT056+1.p',unknown), []).
 fof(24, axiom, (! [A,B]: ((smaller(A,B) | ((A = B) | greater(A,B))))), file('MGT056+1.p',unknown), []).
-fof(25, axiom, organization(dollar_c4), file('MGT056+1.p',unknown), []).
+fof(25, axiom, ~ (organization(dollar_c4)), file('MGT056+1.p',unknown), []).
 fof(26, axiom, has_endowment(dollar_c4), file('MGT056+1.p',unknown), []).
 fof(27, axiom, (age(dollar_c4,dollar_c3) = zero), file('MGT056+1.p',unknown), []).
 fof(29, axiom, smaller_or_e_qual(age(dollar_c4,dollar_c2),eta), file('MGT056+1.p',unknown), []).
@@ -67,5 +67,5 @@ fof(274, plain, smaller_or_e_qual(zero,eta), inference(hyper,[status(thm)],[260,
 fof(287, plain, has_immunity(dollar_c4,dollar_c3), inference(hyper,[status(thm)],[274,112]), [iquote('hyper,274,112')]).
 fof(296, plain, (hazard_of_mortality(dollar_c4,dollar_c3) = hazard_of_mortality(dollar_c4,dollar_c2)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[287,17,25,119])]), [iquote('hyper,287,17,25,119,flip.1')]).
 fof(304, plain, ~ (greater(hazard_of_mortality(dollar_c4,dollar_c1),hazard_of_mortality(dollar_c4,dollar_c2))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[20]),296]),23]), [iquote('back_demod,20,demod,296,unit_del,23')]).
-fof(973, plain, (! [A]: ((~ (has_endowment(A)) | (greater(dollar_c4,A) | greater(A,dollar_c4))))), inference(para_from,[status(thm),theory(equality)],[50,26]), [iquote('para_from,50.1.1,26.1.1')]).
+fof(973, plain, (! [A]: ((has_endowment(A) | (greater(dollar_c4,A) | greater(A,dollar_c4))))), inference(para_from,[status(thm),theory(equality)],[50,26]), [iquote('para_from,50.1.1,26.1.1')]).
 fof(4488, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[133,13,973,30]),304,21,21]), [iquote('hyper,133,13,973,30,unit_del,304,21,21')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '12':
-%%%%%   Replaced reorganization_type(dollar_c9,dollar_c7,dollar_c3)
-%%%%%   With reorganization_type(dollar_c2,dollar_c7,dollar_c3)
+%%%%% Mutated formula '21':
+%%%%%   Replaced greater(dollar_c1,dollar_c2)
+%%%%%   With ~ (greater(dollar_c1,dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT015+1 : TPTP v8.1.0. Released v2.0.0.
@@ -44,7 +44,7 @@ fof(8, axiom, class(dollar_c9,dollar_c6,dollar_c3), file('MGT015+1.p',unknown), 
 fof(9, axiom, class(dollar_c8,dollar_c6,dollar_c3), file('MGT015+1.p',unknown), []).
 fof(10, axiom, reorganization(dollar_c9,dollar_c3,dollar_c2), file('MGT015+1.p',unknown), []).
 fof(11, axiom, reorganization(dollar_c8,dollar_c3,dollar_c1), file('MGT015+1.p',unknown), []).
-fof(12, axiom, reorganization_type(dollar_c2,dollar_c7,dollar_c3), file('MGT015+1.p',unknown), []).
+fof(12, axiom, reorganization_type(dollar_c9,dollar_c7,dollar_c3), file('MGT015+1.p',unknown), []).
 fof(13, axiom, reorganization_type(dollar_c8,dollar_c7,dollar_c3), file('MGT015+1.p',unknown), []).
 fof(14, axiom, complexity(dollar_c9,dollar_c5,dollar_c3), file('MGT015+1.p',unknown), []).
 fof(15, axiom, complexity(dollar_c8,dollar_c4,dollar_c3), file('MGT015+1.p',unknown), []).
@@ -52,5 +52,5 @@ fof(16, axiom, greater(dollar_c4,dollar_c5), file('MGT015+1.p',unknown), []).
 fof(17, plain, inertia(dollar_c9,dollar_f1(dollar_c9,dollar_c3),dollar_c3), inference(hyper,[status(thm)],[5,1]), [iquote('hyper,5,1')]).
 fof(18, plain, inertia(dollar_c8,dollar_f1(dollar_c8,dollar_c3),dollar_c3), inference(hyper,[status(thm)],[6,1]), [iquote('hyper,6,1')]).
 fof(20, plain, greater(dollar_f1(dollar_c8,dollar_c3),dollar_f1(dollar_c9,dollar_c3)), inference(hyper,[status(thm)],[18,2,5,6,8,9,14,15,17,16]), [iquote('hyper,18,2,5,6,8,9,14,15,17,16')]).
-fof(21, plain, greater(dollar_c1,dollar_c2), inference(hyper,[status(thm)],[20,3,5,6,7,8,9,10,11,12,13,17,18]), [iquote('hyper,20,3,5,6,7,8,9,10,11,12,13,17,18')]).
+fof(21, plain, ~ (greater(dollar_c1,dollar_c2)), inference(hyper,[status(thm)],[20,3,5,6,7,8,9,10,11,12,13,17,18]), [iquote('hyper,20,3,5,6,7,8,9,10,11,12,13,17,18')]).
 fof(22, plain, $false, inference(binary,[status(thm)],[21,4]), [iquote('binary,21.1,4.1')]).

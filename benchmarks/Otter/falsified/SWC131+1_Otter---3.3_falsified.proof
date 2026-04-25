@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '449':
-%%%%%   Replaced (dollar_c5 = dollar_c3)
-%%%%%   With ~ ((dollar_c5 = dollar_c3))
+%%%%% Mutated formula '1030':
+%%%%%   Replaced (nil = dollar_c3)
+%%%%%   With ~ ((nil = dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC131+1 : TPTP v8.1.0. Released v2.4.0.
@@ -39,8 +39,8 @@ fof(183, axiom, ~ (cyclefreeP(dollar_c5)), file('SWC131+1.p',unknown), []).
 fof(436, axiom, ssList(nil), file('SWC131+1.p',unknown), []).
 fof(437, axiom, cyclefreeP(nil), file('SWC131+1.p',unknown), []).
 fof(447, axiom, ssList(dollar_c3), file('SWC131+1.p',unknown), []).
-fof(449, axiom, ~ ((dollar_c5 = dollar_c3)), file('SWC131+1.p',unknown), []).
+fof(449, axiom, (dollar_c5 = dollar_c3), file('SWC131+1.p',unknown), []).
 fof(452, plain, ~ (cyclefreeP(dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[183]),449]), [iquote('back_demod,183,demod,449')]).
-fof(1030, plain, (nil = dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[447,80,436]),182])]), [iquote('hyper,447,80,436,unit_del,182,flip.1')]).
+fof(1030, plain, ~ ((nil = dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[447,80,436]),182])]), [iquote('hyper,447,80,436,unit_del,182,flip.1')]).
 fof(1059, plain, cyclefreeP(dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[437]),1030]), [iquote('back_demod,437,demod,1030')]).
 fof(1060, plain, $false, inference(binary,[status(thm)],[1059,452]), [iquote('binary,1059.1,452.1')]).

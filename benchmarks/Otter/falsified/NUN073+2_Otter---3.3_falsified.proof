@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '124':
-%%%%%   Replaced r2(dollar_c1,dollar_c1)
-%%%%%   With r2(dollar_c3,dollar_c1)
+%%%%% Mutated formula '58':
+%%%%%   Replaced r1(dollar_c1)
+%%%%%   With r1(dollar_c4)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUN073+2 : TPTP v8.1.0. Released v7.3.0.
@@ -46,11 +46,11 @@ fof(48, axiom, r1(dollar_c4), file('NUN073+2.p',unknown), []).
 fof(49, axiom, r2(dollar_c4,dollar_c5), file('NUN073+2.p',unknown), []).
 fof(50, axiom, r2(dollar_c5,dollar_c6), file('NUN073+2.p',unknown), []).
 fof(51, plain, r2(dollar_c5,dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[50]),47]), [iquote('copy,50,demod,47')]).
-fof(58, plain, r1(dollar_c1), inference(hyper,[status(thm)],[12,2]), [iquote('hyper,12,2')]).
+fof(58, plain, r1(dollar_c4), inference(hyper,[status(thm)],[12,2]), [iquote('hyper,12,2')]).
 fof(60, plain, (dollar_c2 = dollar_c1), inference(hyper,[status(thm)],[43,1]), [iquote('hyper,43,1')]).
 fof(61, plain, r2(dollar_c1,dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[44]),60]), [iquote('back_demod,44,demod,60')]).
 fof(63, plain, (dollar_c4 = dollar_c1), inference(hyper,[status(thm)],[48,1]), [iquote('hyper,48,1')]).
 fof(64, plain, r2(dollar_c1,dollar_c5), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[49]),63]), [iquote('back_demod,49,demod,63')]).
 fof(112, plain, (dollar_c5 = dollar_c1), inference(hyper,[status(thm)],[61,9,51,12]), [iquote('hyper,61,9,51,12')]).
-fof(124, plain, r2(dollar_c3,dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[64]),112]), [iquote('back_demod,64,demod,112')]).
+fof(124, plain, r2(dollar_c1,dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[64]),112]), [iquote('back_demod,64,demod,112')]).
 fof(128, plain, $false, inference(hyper,[status(thm)],[124,10,58,12]), [iquote('hyper,124,10,58,12')]).

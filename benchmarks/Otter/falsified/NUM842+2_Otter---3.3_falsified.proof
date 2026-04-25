@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '448':
-%%%%%   Replaced (~ (greater(vplus(vd353,vd355),vplus(vd354,vd355))) | greater(vd355,vd356))
-%%%%%   With (~ (greater(vplus(vd354,vd355),vplus(vd354,vd355))) | greater(vd355,vd356))
+%%%%% Mutated formula '92':
+%%%%%   Replaced ge_q(vd355,vd356)
+%%%%%   With ~ (ge_q(vd355,vd356))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM842+2 : TPTP v8.1.0. Released v4.1.0.
@@ -42,12 +42,12 @@ fof(44, axiom, (greater(vd355,vd356) | ge_q(vd355,vd356)), file('NUM842+2.p',unk
 fof(45, axiom, (greater(vd355,vd356) | greater(vd353,vd354)), file('NUM842+2.p',unknown), []).
 fof(47, axiom, (ge_q(vd353,vd354) | greater(vd353,vd354)), file('NUM842+2.p',unknown), []).
 fof(52, axiom, (! [A,B]: ((vplus(A,B) = vplus(B,A)))), file('NUM842+2.p',unknown), []).
-fof(92, plain, ge_q(vd355,vd356), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[44,19])]), [iquote('hyper,44,19,factor_simp')]).
+fof(92, plain, ~ (ge_q(vd355,vd356)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[44,19])]), [iquote('hyper,44,19,factor_simp')]).
 fof(93, plain, (greater(vd355,vd356) | (vd356 = vd355)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[92,18])]), [iquote('hyper,92,18,flip.2')]).
 fof(136, plain, (! [A]: ((greater(vd355,vd356) | greater(vplus(vd353,A),vplus(vd354,A))))), inference(hyper,[status(thm)],[45,8]), [iquote('hyper,45,8')]).
 fof(234, plain, ge_q(vd353,vd354), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[47,19])]), [iquote('hyper,47,19,factor_simp')]).
 fof(235, plain, (greater(vd353,vd354) | (vd354 = vd353)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[234,18])]), [iquote('hyper,234,18,flip.2')]).
-fof(448, plain, (~ (greater(vplus(vd354,vd355),vplus(vd354,vd355))) | greater(vd355,vd356)), inference(para_from,[status(thm),theory(equality)],[93,1]), [iquote('para_from,93.2.1,1.1.2.2')]).
+fof(448, plain, (~ (greater(vplus(vd353,vd355),vplus(vd354,vd355))) | greater(vd355,vd356)), inference(para_from,[status(thm),theory(equality)],[93,1]), [iquote('para_from,93.2.1,1.1.2.2')]).
 fof(741, plain, ~ (greater(vplus(vd353,vd355),vplus(vd356,vd354))), inference(para_from,[status(thm),theory(equality)],[52,1]), [iquote('para_from,52.1.1,1.1.2')]).
 fof(1604, plain, ~ (greater(vplus(vd355,vd353),vplus(vd356,vd354))), inference(para_into,[status(thm),theory(equality)],[741,52]), [iquote('para_into,741.1.1,52.1.1')]).
 fof(1896, plain, greater(vd355,vd356), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[448,136])]), [iquote('hyper,448,136,factor_simp')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c113':
-%%%%%   Replaced (! [X65,X66]: ((~ (big_f(X65,X66)) | big_f(X66,X65))))
-%%%%%   With (! [X65,X66]: ((~ (big_f(X65,X66)) & big_f(X66,X65))))
+%%%%% Mutated formula 'c162':
+%%%%%   Replaced (! [X88]: (~ (big_f(X88,X88))))
+%%%%%   With (! [X88]: (big_f(X88,X88)))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN332+1 : TPTP v8.1.2. Released v2.0.0.
@@ -49,7 +49,7 @@ fof(c9, negated_conjecture, (! [X9,X10]: ((~ (big_f(X9,skolem0001(X9,X10))) | bi
 fof(c21, plain, (! [X12,X11]: ((big_f(skolem0001(X12,X11),X12) | big_f(X11,X12)))), inference(resolution,[status(thm)],[c9,c8])).
 fof(c17, negated_conjecture, (! [X59,X60]: ((big_f(X59,X60) | (big_f(X60,X59) | ~ (big_f(skolem0001(X59,X60),X60)))))), inference(split_conjunct,[status(thm)],[c5])).
 fof(c109, plain, (! [X61]: (big_f(X61,X61))), inference(resolution,[status(thm)],[c17,c21])).
-fof(c113, plain, (! [X65,X66]: ((~ (big_f(X65,X66)) & big_f(X66,X65)))), inference(resolution,[status(thm)],[c109,c15])).
+fof(c113, plain, (! [X65,X66]: ((~ (big_f(X65,X66)) | big_f(X66,X65)))), inference(resolution,[status(thm)],[c109,c15])).
 fof(c7, negated_conjecture, (! [X5,X6]: ((big_f(X5,X6) | big_f(X5,skolem0001(X5,X6))))), inference(split_conjunct,[status(thm)],[c5])).
 fof(c11, negated_conjecture, (! [X27,X28]: ((~ (big_f(X27,skolem0001(X27,X28))) | big_f(X28,skolem0001(X27,X28))))), inference(split_conjunct,[status(thm)],[c5])).
 fof(c39, plain, (! [X33,X32]: ((big_f(X33,skolem0001(X32,X33)) | big_f(X32,X33)))), inference(resolution,[status(thm)],[c11,c7])).
@@ -58,5 +58,5 @@ fof(c141, plain, (! [X77,X78]: ((big_f(X77,X78) | big_f(X78,X77)))), inference(r
 fof(c150, plain, (! [X81,X80]: (big_f(X81,X80))), inference(resolution,[status(thm)],[c141,c113])).
 fof(c6, negated_conjecture, (! [X15,X16]: ((~ (big_f(X15,X16)) | (~ (big_f(X16,X15)) | ~ (big_f(X15,skolem0001(X15,X16))))))), inference(split_conjunct,[status(thm)],[c5])).
 fof(c160, plain, (! [X86,X87]: ((~ (big_f(X86,X87)) | ~ (big_f(X87,X86))))), inference(resolution,[status(thm)],[c150,c6])).
-fof(c162, plain, (! [X88]: (~ (big_f(X88,X88)))), inference(factor,[status(thm)],[c160])).
+fof(c162, plain, (! [X88]: (big_f(X88,X88))), inference(factor,[status(thm)],[c160])).
 fof(c164, plain, $false, inference(resolution,[status(thm)],[c162,c150])).

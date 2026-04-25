@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '27':
-%%%%%   Replaced distinct_lines(dollar_c2,orthogonal_through_point(dollar_c1,dollar_c3))
-%%%%%   With ~ (distinct_lines(dollar_c2,orthogonal_through_point(dollar_c1,dollar_c3)))
+%%%%% Mutated formula '24':
+%%%%%   Replaced ~ (apart_point_and_line(dollar_c3,dollar_c2))
+%%%%%   With apart_point_and_line(dollar_c3,dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO210+1 : TPTP v8.1.0. Released v3.3.0.
@@ -36,9 +36,9 @@
 fof(21, axiom, (! [A,B]: (~ (unorthogonal_lines(orthogonal_through_point(A,B),A)))), file('GEO210+1.p',unknown), []).
 fof(22, axiom, (! [A,B]: (~ (apart_point_and_line(A,orthogonal_through_point(B,A))))), file('GEO210+1.p',unknown), []).
 fof(23, axiom, (! [A,B,C,D]: ((~ (distinct_lines(A,B)) | (apart_point_and_line(C,A) | (apart_point_and_line(C,B) | (unorthogonal_lines(A,D) | unorthogonal_lines(B,D))))))), file('GEO210+1.p',unknown), []).
-fof(24, axiom, ~ (apart_point_and_line(dollar_c3,dollar_c2)), file('GEO210+1.p',unknown), []).
+fof(24, axiom, apart_point_and_line(dollar_c3,dollar_c2), file('GEO210+1.p',unknown), []).
 fof(25, axiom, ~ (unorthogonal_lines(dollar_c2,dollar_c1)), file('GEO210+1.p',unknown), []).
-fof(27, axiom, ~ (distinct_lines(dollar_c2,orthogonal_through_point(dollar_c1,dollar_c3))), file('GEO210+1.p',unknown), []).
+fof(27, axiom, distinct_lines(dollar_c2,orthogonal_through_point(dollar_c1,dollar_c3)), file('GEO210+1.p',unknown), []).
 fof(32, plain, (! [A,B]: ((apart_point_and_line(A,dollar_c2) | (apart_point_and_line(A,orthogonal_through_point(dollar_c1,dollar_c3)) | (unorthogonal_lines(dollar_c2,B) | unorthogonal_lines(orthogonal_through_point(dollar_c1,dollar_c3),B)))))), inference(hyper,[status(thm)],[27,23]), [iquote('hyper,27,23')]).
 fof(55, plain, (! [A]: ((apart_point_and_line(A,dollar_c2) | apart_point_and_line(A,orthogonal_through_point(dollar_c1,dollar_c3))))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[32,25]),21]), [iquote('hyper,32,25,unit_del,21')]).
 fof(102, plain, apart_point_and_line(dollar_c3,orthogonal_through_point(dollar_c1,dollar_c3)), inference(hyper,[status(thm)],[55,24]), [iquote('hyper,55,24')]).

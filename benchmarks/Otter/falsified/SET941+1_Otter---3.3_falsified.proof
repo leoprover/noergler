@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '315':
-%%%%%   Replaced subset(union(dollar_c4),dollar_c3)
-%%%%%   With subset(union(dollar_c3),dollar_c3)
+%%%%% Mutated formula '5':
+%%%%%   Replaced (! [A,B,C]: (((A != union(B)) | (~ (in(C,A)) | in(dollar_f2(B,A,C),B)))))
+%%%%%   With (! [A,B,C]: ((~ ((A != union(B))) | (~ (in(C,A)) | in(dollar_f2(B,A,C),B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET941+1 : TPTP v8.1.0. Released v3.2.0.
@@ -36,7 +36,7 @@
 fof(2, axiom, (! [A,B,C]: ((~ (subset(A,B)) | (~ (in(C,A)) | in(C,B))))), file('SET941+1.p',unknown), []).
 fof(3, axiom, (! [A,B]: ((subset(A,B) | ~ (in(dollar_f1(A,B),B))))), file('SET941+1.p',unknown), []).
 fof(4, axiom, (! [A,B,C]: (((A != union(B)) | (~ (in(C,A)) | in(C,dollar_f2(B,A,C)))))), file('SET941+1.p',unknown), []).
-fof(5, axiom, (! [A,B,C]: (((A != union(B)) | (~ (in(C,A)) | in(dollar_f2(B,A,C),B))))), file('SET941+1.p',unknown), []).
+fof(5, axiom, (! [A,B,C]: ((~ ((A != union(B))) | (~ (in(C,A)) | in(dollar_f2(B,A,C),B))))), file('SET941+1.p',unknown), []).
 fof(9, axiom, (! [A]: ((~ (in(A,dollar_c4)) | subset(A,dollar_c3)))), file('SET941+1.p',unknown), []).
 fof(10, axiom, ~ (subset(union(dollar_c4),dollar_c3)), file('SET941+1.p',unknown), []).
 fof(13, axiom, (! [A]: ((A = A))), file('SET941+1.p',unknown), []).
@@ -46,5 +46,5 @@ fof(24, plain, in(dollar_f2(dollar_c4,union(dollar_c4),dollar_f1(union(dollar_c4
 fof(25, plain, in(dollar_f1(union(dollar_c4),dollar_c3),dollar_f2(dollar_c4,union(dollar_c4),dollar_f1(union(dollar_c4),dollar_c3))), inference(hyper,[status(thm)],[21,4,13]), [iquote('hyper,21,4,13')]).
 fof(87, plain, subset(dollar_f2(dollar_c4,union(dollar_c4),dollar_f1(union(dollar_c4),dollar_c3)),dollar_c3), inference(hyper,[status(thm)],[24,9]), [iquote('hyper,24,9')]).
 fof(167, plain, in(dollar_f1(union(dollar_c4),dollar_c3),dollar_c3), inference(hyper,[status(thm)],[25,2,87]), [iquote('hyper,25,2,87')]).
-fof(315, plain, subset(union(dollar_c3),dollar_c3), inference(hyper,[status(thm)],[167,3]), [iquote('hyper,167,3')]).
+fof(315, plain, subset(union(dollar_c4),dollar_c3), inference(hyper,[status(thm)],[167,3]), [iquote('hyper,167,3')]).
 fof(316, plain, $false, inference(binary,[status(thm)],[315,10]), [iquote('binary,315.1,10.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '2134':
-%%%%%   Replaced accept_city(muslimcountrybhumanitarianorganization,towna)
-%%%%%   With ~ (accept_city(muslimcountrybhumanitarianorganization,towna))
+%%%%% Mutated formula '2111':
+%%%%%   Replaced accept_leader(muslimcountrybhumanitarianorganization,sufferterragovernment)
+%%%%%   With accept_leader(n24,sufferterragovernment)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : AGT016+1 : TPTP v8.1.0. Bugfixed v3.1.0.
@@ -39,6 +39,6 @@ fof(60, axiom, (! [A]: ((~ (accept_population(A,atheist,n75)) | (~ (accept_popul
 fof(356, axiom, the_agent_not_in_any_proposed_teams(muslimcountrybhumanitarianorganization,sufferterragovernment,towna), file('AGT016+1.p',unknown), []).
 fof(357, axiom, any_agent_in_all_proposed_teams(muslimcountrybhumanitarianorganization,sufferterragovernment,towna), file('AGT016+1.p',unknown), []).
 fof(633, axiom, (! [A,B]: (accept_population(muslimcountrybhumanitarianorganization,A,B))), file('AGT016+1.p',unknown), []).
-fof(2111, plain, accept_leader(muslimcountrybhumanitarianorganization,sufferterragovernment), inference(hyper,[status(thm)],[357,9]), [iquote('hyper,357,9')]).
-fof(2134, plain, ~ (accept_city(muslimcountrybhumanitarianorganization,towna)), inference(hyper,[status(thm)],[633,60,633,633,633,633]), [iquote('hyper,633,60,633,633,633,633')]).
+fof(2111, plain, accept_leader(n24,sufferterragovernment), inference(hyper,[status(thm)],[357,9]), [iquote('hyper,357,9')]).
+fof(2134, plain, accept_city(muslimcountrybhumanitarianorganization,towna), inference(hyper,[status(thm)],[633,60,633,633,633,633]), [iquote('hyper,633,60,633,633,633,633')]).
 fof(2201, plain, $false, inference(hyper,[status(thm)],[2134,10,356,2111]), [iquote('hyper,2134,10,356,2111')]).

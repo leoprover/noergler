@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '25':
-%%%%%   Replaced (age(dollar_c2,dollar_c1) = zero)
-%%%%%   With (age(sigma,dollar_c1) = zero)
+%%%%% Mutated formula '482':
+%%%%%   Replaced greater(tau,zero)
+%%%%%   With greater(sigma,zero)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT058+1 : TPTP v8.1.0. Released v2.4.0.
@@ -42,7 +42,7 @@ fof(11, axiom, (! [A,B]: ((~ (fragile_position(A)) | (~ (smaller_or_e_qual(age(A
 fof(14, axiom, (! [A,B]: ((~ (robust_position(A)) | (~ (smaller_or_e_qual(age(A,B),tau)) | ~ (positional_advantage(A,B)))))), file('MGT058+1.p',unknown), []).
 fof(17, plain, (! [A]: (~ (greater(A,A)))), inference(factor,[status(thm)],[9]), [iquote('factor,9.1.2')]).
 fof(18, axiom, (! [A]: ((A = A))), file('MGT058+1.p',unknown), []).
-fof(25, axiom, (age(sigma,dollar_c1) = zero), file('MGT058+1.p',unknown), []).
+fof(25, axiom, (age(dollar_c2,dollar_c1) = zero), file('MGT058+1.p',unknown), []).
 fof(27, axiom, greater_or_e_qual(sigma,zero), file('MGT058+1.p',unknown), []).
 fof(28, axiom, greater_or_e_qual(tau,zero), file('MGT058+1.p',unknown), []).
 fof(29, axiom, fragile_position(dollar_c2), file('MGT058+1.p',unknown), []).
@@ -60,7 +60,7 @@ fof(195, plain, ((zero = sigma) | smaller_or_e_qual(zero,sigma)), inference(hype
 fof(243, plain, ((zero = tau) | smaller_or_e_qual(zero,tau)), inference(hyper,[status(thm)],[116,2]), [iquote('hyper,116,2')]).
 fof(320, plain, ((zero = sigma) | positional_advantage(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[195,86]), [iquote('hyper,195,86')]).
 fof(474, plain, positional_advantage(dollar_c2,dollar_c1), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[320,182]),17])]), [iquote('para_from,320.1.1,182.2.2,unit_del,17,factor_simp')]).
-fof(482, plain, greater(tau,zero), inference(hyper,[status(thm)],[474,143]), [iquote('hyper,474,143')]).
+fof(482, plain, greater(sigma,zero), inference(hyper,[status(thm)],[474,143]), [iquote('hyper,474,143')]).
 fof(484, plain, (zero = tau), inference(hyper,[status(thm)],[474,84,243]), [iquote('hyper,474,84,243')]).
 fof(485, plain, greater(tau,tau), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[482]),484]), [iquote('back_demod,482,demod,484')]).
 fof(486, plain, $false, inference(binary,[status(thm)],[485,17]), [iquote('binary,485.1,17.1')]).

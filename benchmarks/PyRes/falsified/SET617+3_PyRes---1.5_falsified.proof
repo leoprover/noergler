@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c41':
-%%%%%   Replaced (! [X22,X23]: ((symmetric_difference(X22,X23) = symmetric_difference(X23,X22))))
-%%%%%   With (! [X22,X23]: (~ ((symmetric_difference(X22,X23) = symmetric_difference(X23,X22)))))
+%%%%% Mutated formula 'c138':
+%%%%%   Replaced (! [X457,X458,X459]: (((X457 != symmetric_difference(X458,X459)) | (X457 = symmetric_difference(X459,X458)))))
+%%%%%   With (! [X457,X458,X459]: (((X457 != symmetric_difference(X458,X459)) & (X457 = symmetric_difference(X459,X458)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SET617+3 : TPTP v8.1.2. Released v2.2.0.
@@ -39,9 +39,9 @@
 fof(symmetry, axiom, (! [X42,X41]: (((X42 != X41) | (X41 = X42)))), theory(equality)).
 fof(transitivity, axiom, (! [X44,X43,X45]: (((X44 != X43) | ((X43 != X45) | (X44 = X45))))), theory(equality)).
 fof(commutativity_of_symmetric_difference, axiom, (! [B,C]: ((symmetric_difference(B,C) = symmetric_difference(C,B)))), file('SET617+3.p',commutativity_of_symmetric_difference)).
-fof(c41, plain, (! [X22,X23]: (~ ((symmetric_difference(X22,X23) = symmetric_difference(X23,X22))))), inference(variable_rename,[status(thm)],[commutativity_of_symmetric_difference])).
+fof(c41, plain, (! [X22,X23]: ((symmetric_difference(X22,X23) = symmetric_difference(X23,X22)))), inference(variable_rename,[status(thm)],[commutativity_of_symmetric_difference])).
 fof(c42, plain, (! [X102,X103]: ((symmetric_difference(X102,X103) = symmetric_difference(X103,X102)))), inference(split_conjunct,[status(thm)],[c41])).
-fof(c138, plain, (! [X457,X458,X459]: (((X457 != symmetric_difference(X458,X459)) | (X457 = symmetric_difference(X459,X458))))), inference(resolution,[status(thm)],[c42,transitivity])).
+fof(c138, plain, (! [X457,X458,X459]: (((X457 != symmetric_difference(X458,X459)) & (X457 = symmetric_difference(X459,X458))))), inference(resolution,[status(thm)],[c42,transitivity])).
 fof(no_difference_with_empty_set1, axiom, (! [B]: ((difference(B,empty_set) = B))), file('SET617+3.p',no_difference_with_empty_set1)).
 fof(c58, plain, (! [X32]: ((difference(X32,empty_set) = X32))), inference(variable_rename,[status(thm)],[no_difference_with_empty_set1])).
 fof(c59, plain, (! [X57]: ((difference(X57,empty_set) = X57))), inference(split_conjunct,[status(thm)],[c58])).

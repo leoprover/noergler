@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '11':
-%%%%%   Replaced subpopulations(first_movers,efficient_producers,dollar_c2,dollar_c1)
-%%%%%   With subpopulations(dollar_c2,efficient_producers,dollar_c2,dollar_c1)
+%%%%% Mutated formula '10':
+%%%%%   Replaced environment(dollar_c2)
+%%%%%   With environment(efficient_producers)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT021+1 : TPTP v8.1.0. Released v2.0.0.
@@ -40,8 +40,8 @@ fof(5, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | (~ (gr
 fof(6, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | (~ (greater(number_of_organizations(A,B),zero)) | (greater(e_quilibrium(A),B) | constant(resources(A,B)))))))), file('MGT021+1.p',unknown), []).
 fof(7, axiom, (! [A,B]: ((~ (environment(A)) | (~ (subpopulations(first_movers,efficient_producers,A,B)) | (~ (decreases(resources(A,B))) | increases(difference(disbanding_rate(first_movers,B),disbanding_rate(efficient_producers,B)))))))), file('MGT021+1.p',unknown), []).
 fof(8, axiom, (! [A,B]: ((~ (environment(A)) | (~ (subpopulations(first_movers,efficient_producers,A,B)) | (~ (constant(resources(A,B))) | ~ (decreases(difference(disbanding_rate(first_movers,B),disbanding_rate(efficient_producers,B))))))))), file('MGT021+1.p',unknown), []).
-fof(10, axiom, environment(dollar_c2), file('MGT021+1.p',unknown), []).
-fof(11, axiom, subpopulations(dollar_c2,efficient_producers,dollar_c2,dollar_c1), file('MGT021+1.p',unknown), []).
+fof(10, axiom, environment(efficient_producers), file('MGT021+1.p',unknown), []).
+fof(11, axiom, subpopulations(first_movers,efficient_producers,dollar_c2,dollar_c1), file('MGT021+1.p',unknown), []).
 fof(12, axiom, decreases(difference(disbanding_rate(first_movers,dollar_c1),disbanding_rate(efficient_producers,dollar_c1))), file('MGT021+1.p',unknown), []).
 fof(14, plain, greater(number_of_organizations(dollar_c2,dollar_c1),zero), inference(hyper,[status(thm)],[11,2,10]), [iquote('hyper,11,2,10')]).
 fof(15, plain, in_environment(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[11,1,10]), [iquote('hyper,11,1,10')]).

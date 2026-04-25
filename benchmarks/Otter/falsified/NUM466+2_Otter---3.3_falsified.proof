@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '133':
-%%%%%   Replaced aNaturalNumber0(xl)
-%%%%%   With ~ (aNaturalNumber0(xl))
+%%%%% Mutated formula '141':
+%%%%%   Replaced aNaturalNumber0(dollar_c2)
+%%%%%   With aNaturalNumber0(xm)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM466+2 : TPTP v8.1.0. Released v4.0.0.
@@ -37,11 +37,11 @@ fof(3, axiom, (! [A,B]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | aNa
 fof(10, axiom, (! [A,B,C]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (~ (aNaturalNumber0(C)) | (sdtasdt0(sdtasdt0(A,B),C) = sdtasdt0(A,sdtasdt0(B,C)))))))), file('NUM466+2.p',unknown), []).
 fof(54, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | (xn != sdtasdt0(xl,A))))), file('NUM466+2.p',unknown), []).
 fof(55, plain, (! [A]: ((~ (aNaturalNumber0(A)) | (sdtasdt0(xl,A) != xn)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[54])]), [iquote('copy,54,flip.2')]).
-fof(133, axiom, ~ (aNaturalNumber0(xl)), file('NUM466+2.p',unknown), []).
+fof(133, axiom, aNaturalNumber0(xl), file('NUM466+2.p',unknown), []).
 fof(136, axiom, aNaturalNumber0(dollar_c1), file('NUM466+2.p',unknown), []).
 fof(137, axiom, (xm = sdtasdt0(xl,dollar_c1)), file('NUM466+2.p',unknown), []).
 fof(139, plain, (sdtasdt0(xl,dollar_c1) = xm), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[137])]), [iquote('copy,137,flip.1')]).
-fof(141, axiom, aNaturalNumber0(dollar_c2), file('NUM466+2.p',unknown), []).
+fof(141, axiom, aNaturalNumber0(xm), file('NUM466+2.p',unknown), []).
 fof(142, axiom, (xn = sdtasdt0(xm,dollar_c2)), file('NUM466+2.p',unknown), []).
 fof(144, plain, (sdtasdt0(xm,dollar_c2) = xn), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[142])]), [iquote('copy,142,flip.1')]).
 fof(3849, plain, (sdtasdt0(xl,sdtasdt0(dollar_c1,dollar_c2)) = xn), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[141,10,133,136]),139,144])]), [iquote('hyper,141,10,133,136,demod,139,144,flip.1')]).

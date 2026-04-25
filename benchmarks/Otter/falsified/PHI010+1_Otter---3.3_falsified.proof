@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '46':
-%%%%%   Replaced (dollar_c3 = dollar_c1)
-%%%%%   With ~ ((dollar_c3 = dollar_c1))
+%%%%% Mutated formula '47':
+%%%%%   Replaced is_the(dollar_c1,dollar_c2)
+%%%%%   With is_the(dollar_c2,dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PHI010+1 : TPTP v8.1.0. Released v7.2.0.
@@ -42,8 +42,8 @@ fof(40, axiom, (! [A]: ((A = A))), file('PHI010+1.p',unknown), []).
 fof(42, axiom, property(dollar_c2), file('PHI010+1.p',unknown), []).
 fof(43, axiom, object(dollar_c1), file('PHI010+1.p',unknown), []).
 fof(44, axiom, is_the(dollar_c3,dollar_c2), file('PHI010+1.p',unknown), []).
-fof(46, axiom, ~ ((dollar_c3 = dollar_c1)), file('PHI010+1.p',unknown), []).
-fof(47, plain, is_the(dollar_c1,dollar_c2), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[44]),46]), [iquote('back_demod,44,demod,46')]).
+fof(46, axiom, (dollar_c3 = dollar_c1), file('PHI010+1.p',unknown), []).
+fof(47, plain, is_the(dollar_c2,dollar_c2), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[44]),46]), [iquote('back_demod,44,demod,46')]).
 fof(72, plain, (dollar_f1(dollar_c2,dollar_c1,dollar_c1) = dollar_c1), inference(hyper,[status(thm)],[47,21,42,43,40]), [iquote('hyper,47,21,42,43,40')]).
 fof(73, plain, exemplifies_property(dollar_c2,dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[47,18,42,43,40]),72]), [iquote('hyper,47,18,42,43,40,demod,72')]).
 fof(74, plain, $false, inference(binary,[status(thm)],[73,16]), [iquote('binary,73.1,16.1')]).

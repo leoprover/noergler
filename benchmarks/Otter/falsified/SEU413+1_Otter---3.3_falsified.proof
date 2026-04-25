@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '384':
-%%%%%   Replaced r2_hidden(k4_tarski(dollar_c2,dollar_c1),u1_orders_2(k1_latsum_1(dollar_c4,dollar_c3)))
-%%%%%   With ~ (r2_hidden(k4_tarski(dollar_c2,dollar_c1),u1_orders_2(k1_latsum_1(dollar_c4,dollar_c3))))
+%%%%% Mutated formula '40':
+%%%%%   Replaced m1_subset_1(dollar_c2,u1_struct_0(k1_latsum_1(dollar_c4,dollar_c3)))
+%%%%%   With m1_subset_1(dollar_c1,u1_struct_0(k1_latsum_1(dollar_c4,dollar_c3)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU413+1 : TPTP v8.1.0. Released v3.4.0.
@@ -39,13 +39,13 @@ fof(11, axiom, (! [A,B]: ((~ (l1_orders_2(A)) | (~ (l1_orders_2(B)) | l1_orders_
 fof(21, axiom, (! [A,B,C,D]: ((~ (l1_orders_2(A)) | (~ (l1_orders_2(B)) | (~ (v12_waybel_0(k3_xboole_0(u1_struct_0(A),u1_struct_0(B)),B)) | (~ (m1_subset_1(k3_xboole_0(u1_struct_0(A),u1_struct_0(B)),k1_zfmisc_1(u1_struct_0(B)))) | (~ (r2_hidden(k4_tarski(C,D),u1_orders_2(k1_latsum_1(A,B)))) | (~ (r2_hidden(D,u1_struct_0(A))) | r2_hidden(C,u1_struct_0(A)))))))))), file('SEU413+1.p',unknown), []).
 fof(38, axiom, l1_orders_2(dollar_c4), file('SEU413+1.p',unknown), []).
 fof(39, axiom, l1_orders_2(dollar_c3), file('SEU413+1.p',unknown), []).
-fof(40, axiom, m1_subset_1(dollar_c2,u1_struct_0(k1_latsum_1(dollar_c4,dollar_c3))), file('SEU413+1.p',unknown), []).
+fof(40, axiom, m1_subset_1(dollar_c1,u1_struct_0(k1_latsum_1(dollar_c4,dollar_c3))), file('SEU413+1.p',unknown), []).
 fof(41, axiom, m1_subset_1(dollar_c1,u1_struct_0(k1_latsum_1(dollar_c4,dollar_c3))), file('SEU413+1.p',unknown), []).
 fof(42, axiom, v12_waybel_0(k3_xboole_0(u1_struct_0(dollar_c4),u1_struct_0(dollar_c3)),dollar_c3), file('SEU413+1.p',unknown), []).
 fof(43, axiom, m1_subset_1(k3_xboole_0(u1_struct_0(dollar_c4),u1_struct_0(dollar_c3)),k1_zfmisc_1(u1_struct_0(dollar_c3))), file('SEU413+1.p',unknown), []).
 fof(44, axiom, r1_orders_2(k1_latsum_1(dollar_c4,dollar_c3),dollar_c2,dollar_c1), file('SEU413+1.p',unknown), []).
 fof(45, axiom, r2_hidden(dollar_c1,u1_struct_0(dollar_c4)), file('SEU413+1.p',unknown), []).
 fof(72, plain, l1_orders_2(k1_latsum_1(dollar_c4,dollar_c3)), inference(hyper,[status(thm)],[39,11,38]), [iquote('hyper,39,11,38')]).
-fof(384, plain, ~ (r2_hidden(k4_tarski(dollar_c2,dollar_c1),u1_orders_2(k1_latsum_1(dollar_c4,dollar_c3)))), inference(hyper,[status(thm)],[44,6,72,40,41]), [iquote('hyper,44,6,72,40,41')]).
+fof(384, plain, r2_hidden(k4_tarski(dollar_c2,dollar_c1),u1_orders_2(k1_latsum_1(dollar_c4,dollar_c3))), inference(hyper,[status(thm)],[44,6,72,40,41]), [iquote('hyper,44,6,72,40,41')]).
 fof(2416, plain, r2_hidden(dollar_c2,u1_struct_0(dollar_c4)), inference(hyper,[status(thm)],[384,21,38,39,42,43,45]), [iquote('hyper,384,21,38,39,42,43,45')]).
 fof(2417, plain, $false, inference(binary,[status(thm)],[2416,1]), [iquote('binary,2416.1,1.1')]).

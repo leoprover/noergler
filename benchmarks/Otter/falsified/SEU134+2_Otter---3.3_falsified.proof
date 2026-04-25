@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '117':
-%%%%%   Replaced (empty_set = dollar_c1)
-%%%%%   With (dollar_c1 = dollar_c1)
+%%%%% Mutated formula '1882':
+%%%%%   Replaced subset(dollar_c4,dollar_c3)
+%%%%%   With subset(empty_set,dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU134+2 : TPTP v8.1.0. Released v3.3.0.
@@ -42,7 +42,7 @@ fof(63, axiom, (! [A]: ((A = A))), file('SEU134+2.p',unknown), []).
 fof(72, axiom, empty(empty_set), file('SEU134+2.p',unknown), []).
 fof(77, axiom, empty(dollar_c1), file('SEU134+2.p',unknown), []).
 fof(87, axiom, ((set_difference(dollar_c4,dollar_c3) = empty_set) | subset(dollar_c4,dollar_c3)), file('SEU134+2.p',unknown), []).
-fof(117, plain, (dollar_c1 = dollar_c1), inference(hyper,[status(thm)],[77,43,72]), [iquote('hyper,77,43,72')]).
+fof(117, plain, (empty_set = dollar_c1), inference(hyper,[status(thm)],[77,43,72]), [iquote('hyper,77,43,72')]).
 fof(133, plain, ((set_difference(dollar_c4,dollar_c3) = dollar_c1) | subset(dollar_c4,dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[87]),117]), [iquote('back_demod,87,demod,117')]).
 fof(140, plain, (! [A]: ((~ (empty(A)) | (A = dollar_c1)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[41]),117]), [iquote('back_demod,41,demod,117')]).
 fof(142, plain, ((set_difference(dollar_c4,dollar_c3) != dollar_c1) | ~ (subset(dollar_c4,dollar_c3))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[37]),117]), [iquote('back_demod,37,demod,117')]).
@@ -51,5 +51,5 @@ fof(144, plain, (! [A,B]: (((set_difference(A,B) != dollar_c1) | subset(A,B)))),
 fof(1819, plain, (~ (subset(dollar_c4,dollar_c3)) | ~ (empty(set_difference(dollar_c4,dollar_c3)))), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[142,140]),63]), [iquote('para_into,142.1.1,140.2.1,unit_del,63')]).
 fof(1838, plain, (set_difference(dollar_c4,dollar_c3) = dollar_c1), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[143,133])]), [iquote('hyper,143,133,factor_simp')]).
 fof(1847, plain, ~ (subset(dollar_c4,dollar_c3)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1819]),1838]),77]), [iquote('back_demod,1819,demod,1838,unit_del,77')]).
-fof(1882, plain, subset(dollar_c4,dollar_c3), inference(hyper,[status(thm)],[1838,144]), [iquote('hyper,1837,144')]).
+fof(1882, plain, subset(empty_set,dollar_c3), inference(hyper,[status(thm)],[1838,144]), [iquote('hyper,1837,144')]).
 fof(1883, plain, $false, inference(binary,[status(thm)],[1882,1847]), [iquote('binary,1882.1,1847.1')]).

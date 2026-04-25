@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '12':
 %%%%%   Replaced (slcrc0 = dollar_c1)
-%%%%%   With (dollar_c1 = dollar_c1)
+%%%%%   With ~ ((slcrc0 = dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM531+1 : TPTP v8.1.0. Released v4.0.0.
@@ -38,6 +38,6 @@ fof(7, axiom, isFinite0(slcrc0), file('NUM531+1.p',unknown), []).
 fof(8, axiom, aSet0(dollar_c1), file('NUM531+1.p',unknown), []).
 fof(9, axiom, isCountable0(dollar_c1), file('NUM531+1.p',unknown), []).
 fof(10, axiom, (dollar_c1 = slcrc0), file('NUM531+1.p',unknown), []).
-fof(12, plain, (dollar_c1 = dollar_c1), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[10])]), [iquote('copy,10,flip.1')]).
+fof(12, plain, ~ ((slcrc0 = dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[10])]), [iquote('copy,10,flip.1')]).
 fof(13, plain, isFinite0(dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[7]),12]), [iquote('back_demod,7,demod,12')]).
 fof(17, plain, $false, inference(hyper,[status(thm)],[13,5,8,9]), [iquote('hyper,13,5,8,9')]).

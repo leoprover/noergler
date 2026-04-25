@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '64':
-%%%%%   Replaced p101(dollar_f10(dollar_c1))
-%%%%%   With ~ (p101(dollar_f10(dollar_c1)))
+%%%%% Mutated formula '105':
+%%%%%   Replaced p3(dollar_f7(dollar_f10(dollar_c1)))
+%%%%%   With ~ (p3(dollar_f7(dollar_f10(dollar_c1))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LCL674+1.005 : TPTP v8.1.0. Released v4.0.0.
@@ -43,12 +43,12 @@ fof(42, axiom, (! [A]: ((~ (r1(dollar_c1,A)) | (p101(dollar_f10(A)) | (p101(A) |
 fof(60, axiom, ~ (p101(dollar_c1)), file('LCL674+1.005.p',unknown), []).
 fof(61, axiom, (! [A]: (r1(A,A))), file('LCL674+1.005.p',unknown), []).
 fof(62, axiom, p100(dollar_c1), file('LCL674+1.005.p',unknown), []).
-fof(64, plain, ~ (p101(dollar_f10(dollar_c1))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[62,42,61]),60]), [iquote('hyper,62,42,61,unit_del,60')]).
+fof(64, plain, p101(dollar_f10(dollar_c1)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[62,42,61]),60]), [iquote('hyper,62,42,61,unit_del,60')]).
 fof(66, plain, r1(dollar_c1,dollar_f10(dollar_c1)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[62,39,61]),60]), [iquote('hyper,62,39,61,unit_del,60')]).
 fof(74, plain, (r1(dollar_f10(dollar_c1),dollar_f7(dollar_f10(dollar_c1))) | p102(dollar_f10(dollar_c1))), inference(hyper,[status(thm)],[66,27,64]), [iquote('hyper,66,27,64')]).
 fof(97, plain, r1(dollar_f10(dollar_c1),dollar_f7(dollar_f10(dollar_c1))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[74,41,61,62]),60]), [iquote('hyper,74,41,61,62,unit_del,60')]).
 fof(98, plain, r1(dollar_c1,dollar_f7(dollar_f10(dollar_c1))), inference(hyper,[status(thm)],[97,1,66]), [iquote('hyper,97,1,66')]).
-fof(105, plain, p3(dollar_f7(dollar_f10(dollar_c1))), inference(hyper,[status(thm)],[98,2]), [iquote('hyper,98,2')]).
+fof(105, plain, ~ (p3(dollar_f7(dollar_f10(dollar_c1)))), inference(hyper,[status(thm)],[98,2]), [iquote('hyper,98,2')]).
 fof(108, plain, p102(dollar_f10(dollar_c1)), inference(hyper,[status(thm)],[105,28,66,64]), [iquote('hyper,105,28,66,64')]).
 fof(109, plain, p101(dollar_c1), inference(hyper,[status(thm)],[108,41,61,62]), [iquote('hyper,108,41,61,62')]).
 fof(110, plain, $false, inference(binary,[status(thm)],[109,60]), [iquote('binary,109.1,60.1')]).

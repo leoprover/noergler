@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '4882':
-%%%%%   Replaced (sdtasdt0(xq,sdtasdt0(xm,xp)) = sdtasdt0(dollar_c1,sdtasdt0(xp,xq)))
-%%%%%   With ~ ((sdtasdt0(xq,sdtasdt0(xm,xp)) = sdtasdt0(dollar_c1,sdtasdt0(xp,xq))))
+%%%%% Mutated formula '3697':
+%%%%%   Replaced (sdtasdt0(sdtasdt0(xp,xq),xm) = sdtasdt0(dollar_c1,sdtasdt0(xp,xq)))
+%%%%%   With (sdtasdt0(sdtasdt0(xa,xq),xm) = sdtasdt0(dollar_c1,sdtasdt0(xp,xq)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM435+3 : TPTP v8.1.0. Released v4.0.0.
@@ -55,8 +55,8 @@ fof(3254, plain, (sdtasdt0(xq,sdtasdt0(dollar_c1,xp)) = sdtasdt0(xp,sdtasdt0(dol
 fof(3298, plain, (sdtasdt0(sdtasdt0(dollar_c1,xq),xp) = sdtasdt0(xp,sdtasdt0(dollar_c1,xq))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[87,14,86,85]),3236,3254]), [iquote('hyper,87,14,86,85,demod,3236,3254')]).
 fof(3344, plain, (sdtasdt0(xp,sdtasdt0(dollar_c1,xq)) = sdtasdt0(dollar_c1,sdtasdt0(xp,xq))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[87,14,86,85]),3298,2079]), [iquote('hyper,87,14,86,85,demod,3298,2079')]).
 fof(3695, plain, (sdtasdt0(xq,sdtasdt0(xp,xm)) != sdtasdt0(dollar_c1,sdtasdt0(xp,xq))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[98]),3246,3254,3344])]), [iquote('back_demod,98,demod,3246,3254,3344,flip.1')]).
-fof(3697, plain, (sdtasdt0(sdtasdt0(xp,xq),xm) = sdtasdt0(dollar_c1,sdtasdt0(xp,xq))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[96]),3246,3254,3344]), [iquote('back_demod,96,demod,3246,3254,3344')]).
+fof(3697, plain, (sdtasdt0(sdtasdt0(xa,xq),xm) = sdtasdt0(dollar_c1,sdtasdt0(xp,xq))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[96]),3246,3254,3344]), [iquote('back_demod,96,demod,3246,3254,3344')]).
 fof(4858, plain, (sdtasdt0(xp,xm) = sdtasdt0(xm,xp)), inference(hyper,[status(thm)],[94,15,85]), [iquote('hyper,94,15,85')]).
-fof(4882, plain, ~ ((sdtasdt0(xq,sdtasdt0(xm,xp)) = sdtasdt0(dollar_c1,sdtasdt0(xp,xq)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[94,14,86,85]),2079,3697,4858])]), [iquote('hyper,94,14,86,85,demod,2079,3697,4858,flip.1')]).
+fof(4882, plain, (sdtasdt0(xq,sdtasdt0(xm,xp)) = sdtasdt0(dollar_c1,sdtasdt0(xp,xq))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[94,14,86,85]),2079,3697,4858])]), [iquote('hyper,94,14,86,85,demod,2079,3697,4858,flip.1')]).
 fof(5447, plain, (sdtasdt0(dollar_c1,sdtasdt0(xp,xq)) != sdtasdt0(dollar_c1,sdtasdt0(xp,xq))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[3695]),4858,4882]), [iquote('back_demod,3695,demod,4858,4882')]).
 fof(5448, plain, $false, inference(binary,[status(thm)],[5447,80]), [iquote('binary,5447.1,80.1')]).

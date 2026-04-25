@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '23':
 %%%%%   Replaced (apply(relation_rng_restriction(dollar_c11,dollar_c9),dollar_c10) != apply(dollar_c9,dollar_c10))
-%%%%%   With ~ ((apply(relation_rng_restriction(dollar_c11,dollar_c9),dollar_c10) != apply(dollar_c9,dollar_c10)))
+%%%%%   With (apply(relation_rng_restriction(dollar_c10,dollar_c9),dollar_c10) != apply(dollar_c9,dollar_c10))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU045+1 : TPTP v8.1.0. Released v3.2.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:19:50 CEST 2026 using command 'transform(fof)'.
 fof(16, axiom, (! [A,B]: ((~ (relation(A)) | relation(relation_rng_restriction(B,A))))), file('SEU045+1.p',unknown), []).
 fof(17, axiom, (! [A,B]: ((~ (relation(A)) | (~ (function(A)) | function(relation_rng_restriction(B,A)))))), file('SEU045+1.p',unknown), []).
-fof(23, axiom, ~ ((apply(relation_rng_restriction(dollar_c11,dollar_c9),dollar_c10) != apply(dollar_c9,dollar_c10))), file('SEU045+1.p',unknown), []).
+fof(23, axiom, (apply(relation_rng_restriction(dollar_c10,dollar_c9),dollar_c10) != apply(dollar_c9,dollar_c10)), file('SEU045+1.p',unknown), []).
 fof(27, axiom, (! [A,B,C,D]: ((~ (relation(A)) | (~ (function(A)) | (~ (relation(B)) | (~ (function(B)) | ((A != relation_rng_restriction(C,B)) | (~ (in(D,relation_dom(A))) | (apply(A,D) = apply(B,D)))))))))), file('SEU045+1.p',unknown), []).
 fof(42, axiom, (! [A]: ((A = A))), file('SEU045+1.p',unknown), []).
 fof(65, axiom, relation(dollar_c9), file('SEU045+1.p',unknown), []).

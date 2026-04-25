@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '31':
-%%%%%   Replaced (intersection(dollar_c2,dollar_c1) = empty_set)
-%%%%%   With ~ ((intersection(dollar_c2,dollar_c1) = empty_set))
+%%%%% Mutated formula '17':
+%%%%%   Replaced (empty_set != dollar_c3)
+%%%%%   With (dollar_c3 != dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET592+3 : TPTP v8.1.0. Released v2.2.0.
@@ -36,10 +36,10 @@
 fof(1, axiom, (! [A]: ((~ (subset(A,empty_set)) | (A = empty_set)))), file('SET592+3.p',unknown), []).
 fof(2, axiom, (! [A,B,C]: ((~ (subset(A,B)) | (~ (subset(A,C)) | subset(A,intersection(B,C)))))), file('SET592+3.p',unknown), []).
 fof(16, axiom, (dollar_c3 != empty_set), file('SET592+3.p',unknown), []).
-fof(17, plain, (empty_set != dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[16])]), [iquote('copy,16,flip.1')]).
+fof(17, plain, (dollar_c3 != dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[16])]), [iquote('copy,16,flip.1')]).
 fof(28, axiom, subset(dollar_c3,dollar_c2), file('SET592+3.p',unknown), []).
 fof(29, axiom, subset(dollar_c3,dollar_c1), file('SET592+3.p',unknown), []).
-fof(31, axiom, ~ ((intersection(dollar_c2,dollar_c1) = empty_set)), file('SET592+3.p',unknown), []).
+fof(31, axiom, (intersection(dollar_c2,dollar_c1) = empty_set), file('SET592+3.p',unknown), []).
 fof(43, plain, subset(dollar_c3,empty_set), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[29,2,28]),31]), [iquote('hyper,29,2,28,demod,31')]).
 fof(59, plain, (empty_set = dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[43,1])]), [iquote('hyper,43,1,flip.1')]).
 fof(61, plain, $false, inference(binary,[status(thm)],[59,17]), [iquote('binary,59.1,17.1')]).

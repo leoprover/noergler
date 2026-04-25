@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '116':
-%%%%%   Replaced rel_str(dollar_c17)
-%%%%%   With rel_str(dollar_c16)
+%%%%% Mutated formula '936':
+%%%%%   Replaced in(dollar_c12,the_carrier(dollar_c16))
+%%%%%   With in(dollar_c17,the_carrier(dollar_c16))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU375+1 : TPTP v8.1.0. Released v3.3.0.
@@ -59,7 +59,7 @@ fof(81, axiom, related(dollar_c17,dollar_c15,dollar_c14), file('SEU375+1.p',unkn
 fof(82, plain, related(dollar_c17,dollar_c13,dollar_c12), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[81]),78,80]), [iquote('copy,81,demod,78,80')]).
 fof(83, plain, element(dollar_c13,the_carrier(dollar_c17)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[73]),78]), [iquote('back_demod,73,demod,78')]).
 fof(84, plain, element(dollar_c12,the_carrier(dollar_c17)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[74]),80]), [iquote('back_demod,74,demod,80')]).
-fof(116, plain, rel_str(dollar_c16), inference(hyper,[status(thm)],[70,10,69]), [iquote('hyper,70,10,69')]).
+fof(116, plain, rel_str(dollar_c17), inference(hyper,[status(thm)],[70,10,69]), [iquote('hyper,70,10,69')]).
 fof(128, plain, net_str(dollar_c16,dollar_c18), inference(hyper,[status(thm)],[72,12,69,70]), [iquote('hyper,72,12,69,70')]).
 fof(129, plain, subrelstr(dollar_c16,dollar_c17), inference(hyper,[status(thm)],[72,7,69,70,71]), [iquote('hyper,72,7,69,70,71')]).
 fof(130, plain, full_subrelstr(dollar_c16,dollar_c17), inference(hyper,[status(thm)],[72,6,69,70,71]), [iquote('hyper,72,6,69,70,71')]).
@@ -68,6 +68,6 @@ fof(139, plain, rel_str(dollar_c16), inference(hyper,[status(thm)],[128,10,69]),
 fof(143, plain, one_sorted_str(dollar_c16), inference(hyper,[status(thm)],[139,9]), [iquote('hyper,139,9')]).
 fof(149, plain, (empty(the_carrier(dollar_c16)) | in(dollar_c12,the_carrier(dollar_c16))), inference(hyper,[status(thm)],[76,23]), [iquote('hyper,76,23')]).
 fof(617, plain, in(dollar_c13,the_carrier(dollar_c16)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[134,16,143]),21]), [iquote('hyper,134,16,143,unit_del,21')]).
-fof(936, plain, in(dollar_c12,the_carrier(dollar_c16)), inference(hyper,[status(thm)],[149,26,617]), [iquote('hyper,149,26,617')]).
+fof(936, plain, in(dollar_c17,the_carrier(dollar_c16)), inference(hyper,[status(thm)],[149,26,617]), [iquote('hyper,149,26,617')]).
 fof(937, plain, related(dollar_c16,dollar_c13,dollar_c12), inference(hyper,[status(thm)],[936,24,116,130,129,83,84,75,76,42,42,82,617]), [iquote('hyper,936,24,116,130,129,83,84,75,76,42,42,82,617')]).
 fof(938, plain, $false, inference(binary,[status(thm)],[937,22]), [iquote('binary,937.1,22.1')]).

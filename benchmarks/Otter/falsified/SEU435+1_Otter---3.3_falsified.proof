@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '53':
-%%%%%   Replaced m1_subset_1(dollar_c1,k1_zfmisc_1(dollar_c3))
-%%%%%   With m1_subset_1(dollar_c5,k1_zfmisc_1(dollar_c3))
+%%%%% Mutated formula '114':
+%%%%%   Replaced (! [A]: (m1_subset_1(a_6_0_relset_2(dollar_c6,dollar_c5,dollar_c4,dollar_c3,A,dollar_c1),k1_zfmisc_1(k1_zfmisc_1(A)))))
+%%%%%   With (! [A]: (~ (m1_subset_1(a_6_0_relset_2(dollar_c6,dollar_c5,dollar_c4,dollar_c3,A,dollar_c1),k1_zfmisc_1(k1_zfmisc_1(A))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU435+1 : TPTP v8.1.0. Released v3.4.0.
@@ -36,6 +36,6 @@
 fof(1, axiom, ~ (m1_subset_1(a_6_0_relset_2(dollar_c6,dollar_c5,dollar_c4,dollar_c3,dollar_c2,dollar_c1),k1_zfmisc_1(k1_zfmisc_1(dollar_c2)))), file('SEU435+1.p',unknown), []).
 fof(31, axiom, (! [E,F,A,B,C,D]: ((~ (m1_subset_1(A,k1_zfmisc_1(k1_zfmisc_1(k2_zfmisc_1(B,C))))) | (~ (m1_subset_1(D,k1_zfmisc_1(E))) | m1_subset_1(a_6_0_relset_2(B,C,A,E,F,D),k1_zfmisc_1(k1_zfmisc_1(F))))))), file('SEU435+1.p',unknown), []).
 fof(52, axiom, m1_subset_1(dollar_c4,k1_zfmisc_1(k1_zfmisc_1(k2_zfmisc_1(dollar_c6,dollar_c5)))), file('SEU435+1.p',unknown), []).
-fof(53, axiom, m1_subset_1(dollar_c5,k1_zfmisc_1(dollar_c3)), file('SEU435+1.p',unknown), []).
-fof(114, plain, (! [A]: (m1_subset_1(a_6_0_relset_2(dollar_c6,dollar_c5,dollar_c4,dollar_c3,A,dollar_c1),k1_zfmisc_1(k1_zfmisc_1(A))))), inference(hyper,[status(thm)],[53,31,52]), [iquote('hyper,53,31,52')]).
+fof(53, axiom, m1_subset_1(dollar_c1,k1_zfmisc_1(dollar_c3)), file('SEU435+1.p',unknown), []).
+fof(114, plain, (! [A]: (~ (m1_subset_1(a_6_0_relset_2(dollar_c6,dollar_c5,dollar_c4,dollar_c3,A,dollar_c1),k1_zfmisc_1(k1_zfmisc_1(A)))))), inference(hyper,[status(thm)],[53,31,52]), [iquote('hyper,53,31,52')]).
 fof(115, plain, $false, inference(binary,[status(thm)],[114,1]), [iquote('binary,114.1,1.1')]).

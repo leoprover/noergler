@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '12':
-%%%%%   Replaced (! [A,B]: (((set_difference(singleton(A),B) = singleton(A)) | in(A,B))))
-%%%%%   With (! [A,B]: ((~ ((set_difference(singleton(A),B) = singleton(A))) | in(A,B))))
+%%%%% Mutated formula '7':
+%%%%%   Replaced ((set_difference(singleton(dollar_c4),singleton(dollar_c3)) = singleton(dollar_c4)) | (dollar_c4 != dollar_c3))
+%%%%%   With (~ ((set_difference(singleton(dollar_c4),singleton(dollar_c3)) = singleton(dollar_c4))) | (dollar_c4 != dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET879+1 : TPTP v8.1.0. Released v3.2.0.
@@ -36,10 +36,10 @@
 fof(2, axiom, (! [A,B,C]: (((A != singleton(B)) | (~ (in(C,A)) | (C = B))))), file('SET879+1.p',unknown), []).
 fof(3, axiom, (! [A,B,C]: (((A != singleton(B)) | (in(C,A) | (C != B))))), file('SET879+1.p',unknown), []).
 fof(5, axiom, (! [A,B]: (((set_difference(singleton(A),B) != singleton(A)) | ~ (in(A,B))))), file('SET879+1.p',unknown), []).
-fof(7, axiom, ((set_difference(singleton(dollar_c4),singleton(dollar_c3)) = singleton(dollar_c4)) | (dollar_c4 != dollar_c3)), file('SET879+1.p',unknown), []).
+fof(7, axiom, (~ ((set_difference(singleton(dollar_c4),singleton(dollar_c3)) = singleton(dollar_c4))) | (dollar_c4 != dollar_c3)), file('SET879+1.p',unknown), []).
 fof(8, axiom, ((set_difference(singleton(dollar_c4),singleton(dollar_c3)) != singleton(dollar_c4)) | (dollar_c4 = dollar_c3)), file('SET879+1.p',unknown), []).
 fof(10, axiom, (! [A]: ((A = A))), file('SET879+1.p',unknown), []).
-fof(12, axiom, (! [A,B]: ((~ ((set_difference(singleton(A),B) = singleton(A))) | in(A,B)))), file('SET879+1.p',unknown), []).
+fof(12, axiom, (! [A,B]: (((set_difference(singleton(A),B) = singleton(A)) | in(A,B)))), file('SET879+1.p',unknown), []).
 fof(14, plain, (! [A]: (in(A,singleton(A)))), inference(hyper,[status(thm)],[10,3,10]), [iquote('hyper,10,3,10')]).
 fof(33, plain, ((dollar_c4 = dollar_c3) | in(dollar_c4,singleton(dollar_c3))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[12,8]),10]), [iquote('para_from,12.1.1,8.1.1,unit_del,10')]).
 fof(72, plain, (dollar_c4 = dollar_c3), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[33,2,10])]), [iquote('hyper,33,2,10,factor_simp')]).

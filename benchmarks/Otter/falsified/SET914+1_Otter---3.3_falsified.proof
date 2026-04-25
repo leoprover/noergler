@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '34':
-%%%%%   Replaced disjoint(unordered_pair(dollar_c5,dollar_c4),dollar_c3)
-%%%%%   With disjoint(unordered_pair(empty_set,dollar_c4),dollar_c3)
+%%%%% Mutated formula '42':
+%%%%%   Replaced (! [A,B]: (in(A,unordered_pair(A,B))))
+%%%%%   With (! [A,B]: (~ (in(A,unordered_pair(A,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET914+1 : TPTP v8.1.0. Released v3.2.0.
@@ -39,9 +39,9 @@ fof(10, axiom, (! [A,B,C,D]: (((A != set_intersection2(B,C)) | (in(D,A) | (~ (in
 fof(12, axiom, (! [A,B]: ((~ (disjoint(A,B)) | (set_intersection2(A,B) = empty_set)))), file('SET914+1.p',unknown), []).
 fof(23, axiom, (! [A]: ((A = A))), file('SET914+1.p',unknown), []).
 fof(32, axiom, (! [A]: ((set_intersection2(A,A) = A))), file('SET914+1.p',unknown), []).
-fof(34, axiom, disjoint(unordered_pair(empty_set,dollar_c4),dollar_c3), file('SET914+1.p',unknown), []).
+fof(34, axiom, disjoint(unordered_pair(dollar_c5,dollar_c4),dollar_c3), file('SET914+1.p',unknown), []).
 fof(35, axiom, in(dollar_c5,dollar_c3), file('SET914+1.p',unknown), []).
-fof(42, plain, (! [A,B]: (in(A,unordered_pair(A,B)))), inference(hyper,[status(thm)],[23,4,23]), [iquote('hyper,23,4,23')]).
+fof(42, plain, (! [A,B]: (~ (in(A,unordered_pair(A,B))))), inference(hyper,[status(thm)],[23,4,23]), [iquote('hyper,23,4,23')]).
 fof(120, plain, (set_intersection2(unordered_pair(dollar_c5,dollar_c4),dollar_c3) = empty_set), inference(hyper,[status(thm)],[34,12]), [iquote('hyper,34,12')]).
 fof(175, plain, (! [A]: (in(dollar_c5,set_intersection2(unordered_pair(dollar_c5,A),dollar_c3)))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[42,10,32,35]),32]), [iquote('hyper,42,10,31,35,demod,32')]).
 fof(1586, plain, $false, inference(hyper,[status(thm)],[175,2,120]), [iquote('hyper,175,2,120')]).

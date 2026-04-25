@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '105':
-%%%%%   Replaced ~ (iext(uri_owl_sameAs,uri_ex_u,uri_ex_u))
-%%%%%   With ~ (iext(uri_owl_oneOf,uri_ex_u,uri_ex_u))
+%%%%% Mutated formula '18':
+%%%%%   Replaced iext(uri_rdf_type,uri_rdf_first,uri_owl_FunctionalProperty)
+%%%%%   With ~ (iext(uri_rdf_type,uri_rdf_first,uri_owl_FunctionalProperty))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWB023+2 : TPTP v8.1.0. Released v5.2.0.
@@ -39,7 +39,7 @@ fof(9, axiom, (! [A,B,C,D]: ((~ (icext(uri_owl_FunctionalProperty,A)) | (~ (iext
 fof(14, axiom, (! [A,B]: ((iext(uri_owl_sameAs,A,B) | (A != B)))), file('SWB023+2.p',unknown), []).
 fof(15, axiom, (~ (iext(uri_owl_sameAs,uri_ex_w,uri_ex_u)) | ~ (iext(uri_owl_sameAs,uri_ex_w,uri_ex_v))), file('SWB023+2.p',unknown), []).
 fof(17, axiom, (! [A]: ((A = A))), file('SWB023+2.p',unknown), []).
-fof(18, axiom, iext(uri_rdf_type,uri_rdf_first,uri_owl_FunctionalProperty), file('SWB023+2.p',unknown), []).
+fof(18, axiom, ~ (iext(uri_rdf_type,uri_rdf_first,uri_owl_FunctionalProperty)), file('SWB023+2.p',unknown), []).
 fof(19, axiom, iext(uri_rdf_type,uri_ex_w,dollar_c2), file('SWB023+2.p',unknown), []).
 fof(21, axiom, iext(uri_owl_oneOf,dollar_c2,dollar_c1), file('SWB023+2.p',unknown), []).
 fof(22, axiom, iext(uri_rdf_first,dollar_c1,uri_ex_u), file('SWB023+2.p',unknown), []).
@@ -51,5 +51,5 @@ fof(46, plain, icext(dollar_c2,uri_ex_w), inference(hyper,[status(thm)],[19,1]),
 fof(97, plain, (uri_ex_v = uri_ex_u), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[23,9,26,22])]), [iquote('hyper,23,9,26,22,flip.1')]).
 fof(98, plain, ~ (iext(uri_owl_sameAs,uri_ex_w,uri_ex_u)), inference(factor_simp,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[15]),97])]), [iquote('back_demod,15,demod,97,factor_simp')]).
 fof(103, plain, (uri_ex_w = uri_ex_u), inference(hyper,[status(thm)],[24,4,22,21,46]), [iquote('hyper,24,4,22,21,46')]).
-fof(105, plain, ~ (iext(uri_owl_oneOf,uri_ex_u,uri_ex_u)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[98]),103]), [iquote('back_demod,98,demod,103')]).
+fof(105, plain, ~ (iext(uri_owl_sameAs,uri_ex_u,uri_ex_u)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[98]),103]), [iquote('back_demod,98,demod,103')]).
 fof(106, plain, $false, inference(binary,[status(thm)],[105,25]), [iquote('binary,105.1,25.1')]).

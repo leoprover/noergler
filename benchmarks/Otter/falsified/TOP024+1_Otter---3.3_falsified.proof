@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '222':
-%%%%%   Replaced (u1_struct_0(dollar_c2) = k3_tex_4(dollar_c2,dollar_c1))
-%%%%%   With (u1_struct_0(dollar_c1) = k3_tex_4(dollar_c2,dollar_c1))
+%%%%% Mutated formula '330':
+%%%%%   Replaced (! [A]: (m1_subset_1(A,k1_zfmisc_1(A))))
+%%%%%   With (! [A]: (~ (m1_subset_1(A,k1_zfmisc_1(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : TOP024+1 : TPTP v8.1.0. Released v3.4.0.
@@ -53,10 +53,10 @@ fof(149, axiom, (! [A]: (r1_tarski(A,A))), file('TOP024+1.p',unknown), []).
 fof(185, plain, v4_pre_topc(k2_pre_topc(dollar_c2),dollar_c2), inference(hyper,[status(thm)],[128,69,127]), [iquote('hyper,128,69,127')]).
 fof(186, plain, l1_struct_0(dollar_c2), inference(hyper,[status(thm)],[128,64]), [iquote('hyper,128,64')]).
 fof(207, plain, (k6_pre_topc(dollar_c2,k3_tex_4(dollar_c2,dollar_c1)) = k6_pre_topc(dollar_c2,dollar_c1)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[129,120,127,128]),1]), [iquote('hyper,129,120,127,128,unit_del,1')]).
-fof(222, plain, (u1_struct_0(dollar_c1) = k3_tex_4(dollar_c2,dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[130,59,127,128,129]),1])]), [iquote('hyper,130,59,127,128,129,unit_del,1,flip.1')]).
+fof(222, plain, (u1_struct_0(dollar_c2) = k3_tex_4(dollar_c2,dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[130,59,127,128,129]),1])]), [iquote('hyper,130,59,127,128,129,unit_del,1,flip.1')]).
 fof(239, plain, m1_subset_1(dollar_c1,k1_zfmisc_1(k3_tex_4(dollar_c2,dollar_c1))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[129]),222]), [iquote('back_demod,129,demod,222')]).
 fof(304, plain, (k2_pre_topc(dollar_c2) = k3_tex_4(dollar_c2,dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[186,111]),222])]), [iquote('hyper,186,111,demod,222,flip.1')]).
 fof(308, plain, v4_pre_topc(k3_tex_4(dollar_c2,dollar_c1),dollar_c2), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[185]),304]), [iquote('back_demod,185,demod,304')]).
-fof(330, plain, (! [A]: (m1_subset_1(A,k1_zfmisc_1(A)))), inference(hyper,[status(thm)],[149,115]), [iquote('hyper,149,115')]).
+fof(330, plain, (! [A]: (~ (m1_subset_1(A,k1_zfmisc_1(A))))), inference(hyper,[status(thm)],[149,115]), [iquote('hyper,149,115')]).
 fof(599, plain, (k6_pre_topc(dollar_c2,dollar_c1) = k3_tex_4(dollar_c2,dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[207,117]),222]),128,330,308])]), [iquote('para_into,207.1.1,117.4.1,demod,222,unit_del,128,330,308,flip.1')]).
 fof(1538, plain, $false, inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[599,57]),222,222]),128,239,2,126]), [iquote('para_from,599.1.1,57.4.1,demod,222,222,unit_del,128,239,2,126')]).

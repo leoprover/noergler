@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '651':
-%%%%%   Replaced exemplifies_property(conceivable,dollar_f6(dollar_c1))
-%%%%%   With ~ (exemplifies_property(conceivable,dollar_f6(dollar_c1)))
+%%%%% Mutated formula '79':
+%%%%%   Replaced object(dollar_c1)
+%%%%%   With object(greater_than)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PHI015+1 : TPTP v8.1.0. Released v7.2.0.
@@ -45,7 +45,7 @@ fof(35, axiom, ~ (exemplifies_property(existence,god)), file('PHI015+1.p',unknow
 fof(52, plain, (! [A,B,C]: ((~ (property(A)) | (~ (object(B)) | (~ (is_the(B,A)) | ((B != B) | (~ (object(C)) | (~ (exemplifies_property(A,C)) | (C = dollar_f3(A,B,B)))))))))), inference(factor,[status(thm)],[18]), [iquote('factor,18.2.3')]).
 fof(54, plain, (! [A,B]: ((~ (property(A)) | (~ (object(B)) | (~ (is_the(B,A)) | ((B != B) | (dollar_f3(A,B,B) = B))))))), inference(factor,[status(thm)],[19]), [iquote('factor,19.2.3')]).
 fof(78, axiom, (! [A]: ((A = A))), file('PHI015+1.p',unknown), []).
-fof(79, axiom, object(dollar_c1), file('PHI015+1.p',unknown), []).
+fof(79, axiom, object(greater_than), file('PHI015+1.p',unknown), []).
 fof(80, axiom, exemplifies_property(none_greater,dollar_c1), file('PHI015+1.p',unknown), []).
 fof(81, axiom, is_the(god,none_greater), file('PHI015+1.p',unknown), []).
 fof(84, plain, property(none_greater), inference(hyper,[status(thm)],[80,2]), [iquote('hyper,80,2')]).
@@ -54,7 +54,7 @@ fof(223, plain, (dollar_f3(none_greater,god,god) = god), inference(hyper,[status
 fof(225, plain, (god = dollar_c1), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[139,52,84,81,78,79,80]),223])]), [iquote('hyper,139,52,84,81,78,79,80,demod,223,flip.1')]).
 fof(264, plain, is_the(dollar_c1,none_greater), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[81]),225]), [iquote('back_demod,81,demod,225')]).
 fof(265, plain, ~ (exemplifies_property(existence,dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[35]),225]), [iquote('back_demod,35,demod,225')]).
-fof(651, plain, ~ (exemplifies_property(conceivable,dollar_f6(dollar_c1))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[264,34,79]),265]), [iquote('hyper,264,34,79,unit_del,265')]).
+fof(651, plain, exemplifies_property(conceivable,dollar_f6(dollar_c1)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[264,34,79]),265]), [iquote('hyper,264,34,79,unit_del,265')]).
 fof(652, plain, exemplifies_relation(greater_than,dollar_f6(dollar_c1),dollar_c1), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[264,33,79]),265]), [iquote('hyper,264,33,79,unit_del,265')]).
 fof(653, plain, object(dollar_f6(dollar_c1)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[264,32,79]),265]), [iquote('hyper,264,32,79,unit_del,265')]).
 fof(1036, plain, $false, inference(hyper,[status(thm)],[652,28,79,80,653,651]), [iquote('hyper,652,28,79,80,653,651')]).

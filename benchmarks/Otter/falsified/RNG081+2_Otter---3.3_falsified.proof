@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '279':
 %%%%%   Replaced ~ (sdtlse_qdt0(sdtasdt0(sdtasasdt0(xs,xt),sdtasasdt0(xs,xt)),sdtasdt0(sz0z00,sdtasasdt0(xt,xt))))
-%%%%%   With ~ (sdtlse_qdt0(sdtasdt0(sdtasasdt0(sz0z00,xt),sdtasasdt0(xs,xt)),sdtasdt0(sz0z00,sdtasasdt0(xt,xt))))
+%%%%%   With ~ (sdtlse_qdt0(sdtasdt0(sdtasasdt0(xt,xt),sdtasasdt0(xs,xt)),sdtasdt0(sz0z00,sdtasasdt0(xt,xt))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : RNG081+2 : TPTP v8.1.0. Released v4.0.0.
@@ -50,7 +50,7 @@ fof(210, plain, (aDimensionOf0(xt) = sz00), inference(demod,[status(thm),theory(
 fof(241, plain, sdtlse_qdt0(sz0z00,sz0z00), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[152,41,152])]), [iquote('hyper,152,41,152,factor_simp')]).
 fof(247, plain, (sdtasdt0(sz0z00,sz0z00) = sz0z00), inference(hyper,[status(thm)],[152,14]), [iquote('hyper,152,14')]).
 fof(278, plain, (sdtasasdt0(xs,xs) = sz0z00), inference(hyper,[status(thm)],[208,114,153,150]), [iquote('hyper,207,114,153,150')]).
-fof(279, plain, ~ (sdtlse_qdt0(sdtasdt0(sdtasasdt0(sz0z00,xt),sdtasasdt0(xs,xt)),sdtasdt0(sz0z00,sdtasasdt0(xt,xt)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[64]),278]), [iquote('back_demod,64,demod,278')]).
+fof(279, plain, ~ (sdtlse_qdt0(sdtasdt0(sdtasasdt0(xt,xt),sdtasasdt0(xs,xt)),sdtasdt0(sz0z00,sdtasasdt0(xt,xt)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[64]),278]), [iquote('back_demod,64,demod,278')]).
 fof(328, plain, (sdtasasdt0(xt,xt) = sz0z00), inference(hyper,[status(thm)],[210,114,154,150]), [iquote('hyper,209,114,154,150')]).
 fof(329, plain, ~ (sdtlse_qdt0(sdtasdt0(sdtasasdt0(xs,xt),sdtasasdt0(xs,xt)),sz0z00)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[279]),328,247]), [iquote('back_demod,279,demod,328,247')]).
 fof(1328, plain, ~ (sdtlse_qdt0(sdtasdt0(sz0z00,sdtasasdt0(xs,xt)),sz0z00)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[329,55]),208,210,210]),153,154,150,150]), [iquote('para_into,329.1.1.1,55.5.1,demod,208,210,210,unit_del,153,154,150,150')]).

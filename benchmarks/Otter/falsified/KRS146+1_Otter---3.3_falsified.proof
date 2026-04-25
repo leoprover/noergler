@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '27':
-%%%%%   Replaced (! [A]: ((cC116(A) | (~ (cC114(A)) | ~ (cC80(A))))))
-%%%%%   With (! [A]: ((~ (cC116(A)) | (~ (cC114(A)) | ~ (cC80(A))))))
+%%%%% Mutated formula '228':
+%%%%%   Replaced cC2(iV822576)
+%%%%%   With cC2(dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS146+1 : TPTP v8.1.0. Released v3.1.0.
@@ -37,7 +37,7 @@ fof(1, axiom, (! [A]: (~ (cowlNothing(A)))), file('KRS146+1.p',unknown), []).
 fof(2, axiom, (! [A]: ((~ (xsd_string(A)) | ~ (xsd_integer(A))))), file('KRS146+1.p',unknown), []).
 fof(22, axiom, (! [A]: ((cC112(A) | (cC110(A) | ~ (cC4(A)))))), file('KRS146+1.p',unknown), []).
 fof(26, axiom, (! [A]: ((~ (cC116(A)) | cC80(A)))), file('KRS146+1.p',unknown), []).
-fof(27, axiom, (! [A]: ((~ (cC116(A)) | (~ (cC114(A)) | ~ (cC80(A)))))), file('KRS146+1.p',unknown), []).
+fof(27, axiom, (! [A]: ((cC116(A) | (~ (cC114(A)) | ~ (cC80(A)))))), file('KRS146+1.p',unknown), []).
 fof(60, axiom, (! [A]: ((cC136(A) | (~ (cC116(A)) | cC134(A))))), file('KRS146+1.p',unknown), []).
 fof(122, axiom, (! [A]: ((cC56(A) | (~ (cC4(A)) | cC10(A))))), file('KRS146+1.p',unknown), []).
 fof(125, axiom, (! [A]: ((cC58(A) | (~ (cC34(A)) | ~ (cC56(A)))))), file('KRS146+1.p',unknown), []).
@@ -58,7 +58,7 @@ fof(218, axiom, (! [A]: ((cC114(A) | (cC96(A) | cC112(A))))), file('KRS146+1.p',
 fof(223, axiom, (! [A]: ((cC80(A) | (cC78(A) | cC76(A))))), file('KRS146+1.p',unknown), []).
 fof(226, axiom, cC34(iV822576), file('KRS146+1.p',unknown), []).
 fof(227, axiom, cC4(iV822576), file('KRS146+1.p',unknown), []).
-fof(228, axiom, cC2(iV822576), file('KRS146+1.p',unknown), []).
+fof(228, axiom, cC2(dollar_c2), file('KRS146+1.p',unknown), []).
 fof(230, plain, cC56(iV822576), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[227,122]),205]), [iquote('hyper,227,122,unit_del,205')]).
 fof(235, plain, cC110(iV822576), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[227,22]),208]), [iquote('hyper,227,22,unit_del,208')]).
 fof(237, plain, cC94(iV822576), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[228,186]),198]), [iquote('hyper,228,186,unit_del,198')]).

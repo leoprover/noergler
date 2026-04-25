@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '143':
 %%%%%   Replaced e_quivalence(dollar_c2,dollar_c3)
-%%%%%   With ~ (e_quivalence(dollar_c2,dollar_c3))
+%%%%%   With e_quivalence(dollar_c1,dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET766+4 : TPTP v8.1.0. Released v2.2.0.
@@ -36,7 +36,7 @@
 fof(53, axiom, (! [A,B,C]: ((~ (e_quivalence(A,B)) | (~ (member(C,B)) | apply(A,C,C))))), file('SET766+4.p',unknown), []).
 fof(91, axiom, (! [A,B,C,D]: ((member(A,e_quivalence_class(B,C,D)) | (~ (member(A,C)) | ~ (apply(D,B,A)))))), file('SET766+4.p',unknown), []).
 fof(101, axiom, ~ (member(dollar_c1,e_quivalence_class(dollar_c1,dollar_c3,dollar_c2))), file('SET766+4.p',unknown), []).
-fof(143, axiom, ~ (e_quivalence(dollar_c2,dollar_c3)), file('SET766+4.p',unknown), []).
+fof(143, axiom, e_quivalence(dollar_c1,dollar_c3), file('SET766+4.p',unknown), []).
 fof(144, axiom, member(dollar_c1,dollar_c3), file('SET766+4.p',unknown), []).
 fof(167, plain, apply(dollar_c2,dollar_c1,dollar_c1), inference(hyper,[status(thm)],[144,53,143]), [iquote('hyper,144,53,143')]).
 fof(207, plain, member(dollar_c1,e_quivalence_class(dollar_c1,dollar_c3,dollar_c2)), inference(hyper,[status(thm)],[167,91,144]), [iquote('hyper,167,91,144')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula 'c5':
 %%%%%   Replaced (~ (iext(uri_rdf_type,uri_ex_r,uri_owl_Restriction)) | ~ (iext(uri_owl_onProperty,uri_ex_r,uri_ex_p)))
-%%%%%   With (~ (iext(uri_ex_c,uri_ex_r,uri_owl_Restriction)) | ~ (iext(uri_owl_onProperty,uri_ex_r,uri_ex_p)))
+%%%%%   With (iext(uri_rdf_type,uri_ex_r,uri_owl_Restriction) | ~ (iext(uri_owl_onProperty,uri_ex_r,uri_ex_p)))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SWB001+2 : TPTP v8.1.2. Released v5.2.0.
@@ -41,7 +41,7 @@ fof(c1, plain, iext(uri_rdf_type,uri_ex_r,uri_owl_Restriction), inference(split_
 fof(c2, plain, iext(uri_owl_onProperty,uri_ex_r,uri_ex_p), inference(split_conjunct,[status(thm)],[testcase_premise_fullish_001_Subgraph_Entailment])).
 fof(testcase_conclusion_fullish_001_Subgraph_Entailment, conjecture, (iext(uri_rdf_type,uri_ex_r,uri_owl_Restriction) & iext(uri_owl_onProperty,uri_ex_r,uri_ex_p)), file('SWB001+2.p',testcase_conclusion_fullish_001_Subgraph_Entailment)).
 fof(c4, negated_conjecture, ~ ((iext(uri_rdf_type,uri_ex_r,uri_owl_Restriction) & iext(uri_owl_onProperty,uri_ex_r,uri_ex_p))), inference(assume_negation,[status(cth)],[testcase_conclusion_fullish_001_Subgraph_Entailment])).
-fof(c5, negated_conjecture, (~ (iext(uri_ex_c,uri_ex_r,uri_owl_Restriction)) | ~ (iext(uri_owl_onProperty,uri_ex_r,uri_ex_p))), inference(fof_nnf,[status(thm)],[c4])).
+fof(c5, negated_conjecture, (iext(uri_rdf_type,uri_ex_r,uri_owl_Restriction) | ~ (iext(uri_owl_onProperty,uri_ex_r,uri_ex_p))), inference(fof_nnf,[status(thm)],[c4])).
 fof(c6, negated_conjecture, (~ (iext(uri_rdf_type,uri_ex_r,uri_owl_Restriction)) | ~ (iext(uri_owl_onProperty,uri_ex_r,uri_ex_p))), inference(split_conjunct,[status(thm)],[c5])).
 fof(c7, plain, ~ (iext(uri_rdf_type,uri_ex_r,uri_owl_Restriction)), inference(resolution,[status(thm)],[c6,c2])).
 fof(c8, plain, $false, inference(resolution,[status(thm)],[c7,c1])).

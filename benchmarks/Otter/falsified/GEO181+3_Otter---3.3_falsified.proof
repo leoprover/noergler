@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '66':
-%%%%%   Replaced (! [A,B]: ((apart_point_and_line(dollar_c1,A) | (distinct_lines(line_connecting(dollar_c3,dollar_c2),B) | distinct_lines(A,B)))))
-%%%%%   With (! [A,B]: ((~ (apart_point_and_line(dollar_c1,A)) | (distinct_lines(line_connecting(dollar_c3,dollar_c2),B) | distinct_lines(A,B)))))
+%%%%% Mutated formula '46':
+%%%%%   Replaced apart_point_and_line(dollar_c1,line_connecting(dollar_c3,dollar_c2))
+%%%%%   With apart_point_and_line(dollar_c3,line_connecting(dollar_c3,dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO181+3 : TPTP v8.1.0. Released v4.0.0.
@@ -39,9 +39,9 @@ fof(13, axiom, (! [A,B,C]: ((~ (apart_point_and_line(A,B)) | (distinct_lines(B,C
 fof(15, axiom, (! [A,B]: ((~ (distinct_lines(A,B)) | convergent_lines(A,B)))), file('GEO181+3.p',unknown), []).
 fof(16, axiom, (! [A,B]: (~ (convergent_lines(parallel_through_point(A,B),A)))), file('GEO181+3.p',unknown), []).
 fof(17, axiom, (! [A,B]: (~ (apart_point_and_line(A,parallel_through_point(B,A))))), file('GEO181+3.p',unknown), []).
-fof(46, axiom, apart_point_and_line(dollar_c1,line_connecting(dollar_c3,dollar_c2)), file('GEO181+3.p',unknown), []).
+fof(46, axiom, apart_point_and_line(dollar_c3,line_connecting(dollar_c3,dollar_c2)), file('GEO181+3.p',unknown), []).
 fof(49, plain, (! [A]: ((distinct_lines(line_connecting(dollar_c3,dollar_c2),A) | apart_point_and_line(dollar_c1,A)))), inference(hyper,[status(thm)],[46,13]), [iquote('hyper,46,13')]).
-fof(66, plain, (! [A,B]: ((~ (apart_point_and_line(dollar_c1,A)) | (distinct_lines(line_connecting(dollar_c3,dollar_c2),B) | distinct_lines(A,B))))), inference(hyper,[status(thm)],[49,5]), [iquote('hyper,49,5')]).
+fof(66, plain, (! [A,B]: ((apart_point_and_line(dollar_c1,A) | (distinct_lines(line_connecting(dollar_c3,dollar_c2),B) | distinct_lines(A,B))))), inference(hyper,[status(thm)],[49,5]), [iquote('hyper,49,5')]).
 fof(922, plain, (! [A]: ((apart_point_and_line(dollar_c1,A) | distinct_lines(A,line_connecting(dollar_c3,dollar_c2))))), inference(hyper,[status(thm)],[66,2]), [iquote('hyper,66,2')]).
 fof(942, plain, (! [A]: ((apart_point_and_line(dollar_c1,A) | convergent_lines(A,line_connecting(dollar_c3,dollar_c2))))), inference(hyper,[status(thm)],[922,15]), [iquote('hyper,922,15')]).
 fof(989, plain, (! [A]: (apart_point_and_line(dollar_c1,parallel_through_point(line_connecting(dollar_c3,dollar_c2),A)))), inference(hyper,[status(thm)],[942,16]), [iquote('hyper,942,16')]).

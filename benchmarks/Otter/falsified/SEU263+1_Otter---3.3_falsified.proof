@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '52':
-%%%%%   Replaced subset(cartesian_product2(relation_dom(dollar_c1),relation_rng(dollar_c1)),cartesian_product2(dollar_c2,dollar_c3))
-%%%%%   With subset(cartesian_product2(relation_dom(dollar_c3),relation_rng(dollar_c1)),cartesian_product2(dollar_c2,dollar_c3))
+%%%%% Mutated formula '3865':
+%%%%%   Replaced relation_of2_as_subset(dollar_c1,dollar_c2,dollar_c3)
+%%%%%   With relation_of2_as_subset(dollar_c2,dollar_c2,dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU263+1 : TPTP v8.1.0. Released v3.3.0.
@@ -46,10 +46,10 @@ fof(19, axiom, relation_of2_as_subset(dollar_c1,dollar_c2,dollar_c4), file('SEU2
 fof(20, axiom, subset(relation_rng(dollar_c1),dollar_c3), file('SEU263+1.p',unknown), []).
 fof(28, plain, subset(relation_dom(dollar_c1),dollar_c2), inference(hyper,[status(thm)],[19,8]), [iquote('hyper,19,8')]).
 fof(30, plain, element(dollar_c1,powerset(cartesian_product2(dollar_c2,dollar_c4))), inference(hyper,[status(thm)],[19,4]), [iquote('hyper,19,4')]).
-fof(52, plain, subset(cartesian_product2(relation_dom(dollar_c3),relation_rng(dollar_c1)),cartesian_product2(dollar_c2,dollar_c3)), inference(hyper,[status(thm)],[28,7,20]), [iquote('hyper,28,7,20')]).
+fof(52, plain, subset(cartesian_product2(relation_dom(dollar_c1),relation_rng(dollar_c1)),cartesian_product2(dollar_c2,dollar_c3)), inference(hyper,[status(thm)],[28,7,20]), [iquote('hyper,28,7,20')]).
 fof(101, plain, relation(dollar_c1), inference(hyper,[status(thm)],[30,1]), [iquote('hyper,30,1')]).
 fof(102, plain, subset(dollar_c1,cartesian_product2(relation_dom(dollar_c1),relation_rng(dollar_c1))), inference(hyper,[status(thm)],[101,12]), [iquote('hyper,101,12')]).
 fof(3622, plain, subset(dollar_c1,cartesian_product2(dollar_c2,dollar_c3)), inference(hyper,[status(thm)],[52,11,102]), [iquote('hyper,52,11,102')]).
 fof(3864, plain, relation_of2(dollar_c1,dollar_c2,dollar_c3), inference(hyper,[status(thm)],[3622,3]), [iquote('hyper,3622,3')]).
-fof(3865, plain, relation_of2_as_subset(dollar_c1,dollar_c2,dollar_c3), inference(hyper,[status(thm)],[3864,6]), [iquote('hyper,3864,6')]).
+fof(3865, plain, relation_of2_as_subset(dollar_c2,dollar_c2,dollar_c3), inference(hyper,[status(thm)],[3864,6]), [iquote('hyper,3864,6')]).
 fof(3866, plain, $false, inference(binary,[status(thm)],[3865,10]), [iquote('binary,3865.1,10.1')]).

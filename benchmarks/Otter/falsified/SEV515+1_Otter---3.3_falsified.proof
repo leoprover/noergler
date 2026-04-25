@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '68':
-%%%%%   Replaced (! [A]: ((~ (g_both(A,A)) | (g_true_only(dollar_f1(A),A) | (g_both(dollar_f1(A),A) | (g_false_only(dollar_f1(A),dollar_f1(A)) | (g_both(dollar_f1(A),dollar_f1(A)) | g_false_only(dollar_c2,dollar_c2))))))))
-%%%%%   With (! [A]: ((~ (g_both(A,A)) | (g_true_only(dollar_f1(A),A) | (g_both(dollar_f1(A),A) | (g_false_only(dollar_f1(A),dollar_f1(A)) | (g_both(dollar_f1(A),dollar_f1(A)) | g_false_only(dollar_c1,dollar_c2))))))))
+%%%%% Mutated formula '38':
+%%%%%   Replaced ~ (g_true_only(dollar_c1,dollar_c1))
+%%%%%   With ~ (g_true_only(dollar_c2,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEV515+1 : TPTP v8.1.0. Released v7.0.0.
@@ -51,7 +51,7 @@ fof(32, axiom, (! [A,B]: ((~ (g_both(A,B)) | g_true(A,B)))), file('SEV515+1.p',u
 fof(33, axiom, (! [A,B]: ((~ (g_both(A,B)) | g_false(A,B)))), file('SEV515+1.p',unknown), []).
 fof(35, axiom, (! [A,B]: ((~ (g_false_only(A,B)) | g_false(A,B)))), file('SEV515+1.p',unknown), []).
 fof(36, axiom, (! [A,B]: ((~ (g_false_only(A,B)) | ~ (g_true(A,B))))), file('SEV515+1.p',unknown), []).
-fof(38, plain, ~ (g_true_only(dollar_c1,dollar_c1)), inference(factor,[status(thm)],[2]), [iquote('factor,2.1.2')]).
+fof(38, plain, ~ (g_true_only(dollar_c2,dollar_c1)), inference(factor,[status(thm)],[2]), [iquote('factor,2.1.2')]).
 fof(39, plain, ~ (g_false_only(dollar_c1,dollar_c1)), inference(factor,[status(thm)],[5]), [iquote('factor,5.1.2')]).
 fof(48, plain, (! [A,B]: ((~ (g_both(A,A)) | (g_true_only(dollar_f1(A),A) | (g_both(dollar_f1(A),A) | (g_false_only(dollar_f1(A),dollar_f1(A)) | (g_both(dollar_f1(A),dollar_f1(A)) | (g_true_only(B,dollar_c2) | g_true_only(B,B))))))))), inference(factor,[status(thm)],[12]), [iquote('factor,12.1.2')]).
 fof(50, plain, (! [A,B]: ((~ (g_both(A,A)) | (g_true_only(dollar_f1(A),A) | (g_both(dollar_f1(A),A) | (g_false_only(dollar_f1(A),dollar_f1(A)) | (g_both(dollar_f1(A),dollar_f1(A)) | (g_false_only(B,B) | g_false_only(B,dollar_c2))))))))), inference(factor,[status(thm)],[13]), [iquote('factor,13.1.2')]).
@@ -59,7 +59,7 @@ fof(54, plain, (! [A]: ((~ (g_both(A,A)) | (g_true_only(dollar_f1(A),A) | (g_fal
 fof(56, plain, (! [A,B]: ((~ (g_both(A,A)) | (g_both(dollar_f1(A),dollar_f1(A)) | (g_true_only(dollar_f1(A),dollar_f1(A)) | (g_both(dollar_f1(A),A) | (g_false_only(dollar_f1(A),A) | (g_true_only(B,dollar_c2) | g_true_only(B,B))))))))), inference(factor,[status(thm)],[21]), [iquote('factor,21.1.2')]).
 fof(59, plain, (! [A,B]: ((~ (g_both(A,A)) | (g_both(dollar_f1(A),dollar_f1(A)) | (g_true_only(dollar_f1(A),dollar_f1(A)) | (g_both(dollar_f1(A),A) | (g_false_only(dollar_f1(A),A) | (g_false_only(B,B) | g_false_only(B,dollar_c2))))))))), inference(factor,[status(thm)],[22]), [iquote('factor,22.1.2')]).
 fof(66, plain, (! [A]: ((~ (g_both(A,A)) | (g_true_only(dollar_f1(A),A) | (g_both(dollar_f1(A),A) | (g_false_only(dollar_f1(A),dollar_f1(A)) | (g_both(dollar_f1(A),dollar_f1(A)) | g_true_only(dollar_c2,dollar_c2)))))))), inference(factor,[status(thm)],[48]), [iquote('factor,48.6.7')]).
-fof(68, plain, (! [A]: ((~ (g_both(A,A)) | (g_true_only(dollar_f1(A),A) | (g_both(dollar_f1(A),A) | (g_false_only(dollar_f1(A),dollar_f1(A)) | (g_both(dollar_f1(A),dollar_f1(A)) | g_false_only(dollar_c1,dollar_c2)))))))), inference(factor,[status(thm)],[50]), [iquote('factor,50.6.7')]).
+fof(68, plain, (! [A]: ((~ (g_both(A,A)) | (g_true_only(dollar_f1(A),A) | (g_both(dollar_f1(A),A) | (g_false_only(dollar_f1(A),dollar_f1(A)) | (g_both(dollar_f1(A),dollar_f1(A)) | g_false_only(dollar_c2,dollar_c2)))))))), inference(factor,[status(thm)],[50]), [iquote('factor,50.6.7')]).
 fof(70, plain, (! [A]: ((~ (g_both(A,A)) | (g_both(dollar_f1(A),dollar_f1(A)) | (g_true_only(dollar_f1(A),dollar_f1(A)) | (g_both(dollar_f1(A),A) | (g_false_only(dollar_f1(A),A) | g_true_only(dollar_c2,dollar_c2)))))))), inference(factor,[status(thm)],[56]), [iquote('factor,56.6.7')]).
 fof(71, plain, (! [A]: ((~ (g_both(A,A)) | (g_both(dollar_f1(A),dollar_f1(A)) | (g_true_only(dollar_f1(A),dollar_f1(A)) | (g_both(dollar_f1(A),A) | (g_false_only(dollar_f1(A),A) | g_false_only(dollar_c2,dollar_c2)))))))), inference(factor,[status(thm)],[59]), [iquote('factor,59.6.7')]).
 fof(72, axiom, (! [A,B]: ((g_true_only(A,B) | (g_both(A,B) | g_false_only(A,B))))), file('SEV515+1.p',unknown), []).

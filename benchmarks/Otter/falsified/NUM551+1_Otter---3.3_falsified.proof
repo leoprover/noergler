@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '475':
-%%%%%   Replaced aElementOf0(dollar_f1(xQ),xQ)
-%%%%%   With aElementOf0(dollar_f1(slcrc0),xQ)
+%%%%% Mutated formula '104':
+%%%%%   Replaced (xQ != slcrc0)
+%%%%%   With ~ ((xQ != slcrc0))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM551+1 : TPTP v8.1.0. Released v4.0.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:16:42 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B]: ((~ (aSet0(A)) | (~ (aElementOf0(B,A)) | aElement0(B))))), file('NUM551+1.p',unknown), []).
 fof(4, axiom, (! [A]: (((A = slcrc0) | (~ (aSet0(A)) | aElementOf0(dollar_f1(A),A))))), file('NUM551+1.p',unknown), []).
-fof(104, axiom, (xQ != slcrc0), file('NUM551+1.p',unknown), []).
+fof(104, axiom, ~ ((xQ != slcrc0)), file('NUM551+1.p',unknown), []).
 fof(105, axiom, (! [A]: ((~ (aElement0(A)) | ~ (aElementOf0(A,xQ))))), file('NUM551+1.p',unknown), []).
 fof(146, axiom, aSet0(xQ), file('NUM551+1.p',unknown), []).
-fof(475, plain, aElementOf0(dollar_f1(slcrc0),xQ), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[146,4]),104]), [iquote('hyper,146,4,unit_del,104')]).
+fof(475, plain, aElementOf0(dollar_f1(xQ),xQ), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[146,4]),104]), [iquote('hyper,146,4,unit_del,104')]).
 fof(1291, plain, aElement0(dollar_f1(xQ)), inference(hyper,[status(thm)],[475,1,146]), [iquote('hyper,475,1,146')]).
 fof(1292, plain, $false, inference(hyper,[status(thm)],[1291,105,475]), [iquote('hyper,1291,105,475')]).

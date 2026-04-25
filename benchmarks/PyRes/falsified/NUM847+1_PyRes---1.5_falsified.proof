@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c190':
+%%%%% Mutated formula 'c189':
 %%%%%   Replaced (vplus(vplus(vmul(vd436,vd437),vmul(vd436,vd439)),vd436) != vplus(vmul(vd436,vd437),vplus(vmul(vd436,vd439),vd436)))
-%%%%%   With ~ ((vplus(vplus(vmul(vd436,vd437),vmul(vd436,vd439)),vd436) != vplus(vmul(vd436,vd437),vplus(vmul(vd436,vd439),vd436))))
+%%%%%   With (vplus(vplus(vmul(vd437,vd437),vmul(vd436,vd439)),vd436) != vplus(vmul(vd436,vd437),vplus(vmul(vd436,vd439),vd436)))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM847+1 : TPTP v8.1.2. Released v4.1.0.
@@ -41,6 +41,6 @@ fof(c26, plain, (! [X12,X13,X14]: ((vplus(vplus(X12,X13),X14) = vplus(X12,vplus(
 fof(c27, plain, (! [X275,X274,X276]: ((vplus(vplus(X275,X274),X276) = vplus(X275,vplus(X274,X276))))), inference(split_conjunct,[status(thm)],[c26])).
 fof('holds(286, 441, 3)', conjecture, (vplus(vplus(vmul(vd436,vd437),vmul(vd436,vd439)),vd436) = vplus(vmul(vd436,vd437),vplus(vmul(vd436,vd439),vd436))), file('NUM847+1.p','holds(286, 441, 3)')).
 fof(c188, negated_conjecture, (vplus(vplus(vmul(vd436,vd437),vmul(vd436,vd439)),vd436) != vplus(vmul(vd436,vd437),vplus(vmul(vd436,vd439),vd436))), inference(assume_negation,[status(cth)],['holds(286, 441, 3)'])).
-fof(c189, negated_conjecture, (vplus(vplus(vmul(vd436,vd437),vmul(vd436,vd439)),vd436) != vplus(vmul(vd436,vd437),vplus(vmul(vd436,vd439),vd436))), inference(fof_simplification,[status(thm)],[c188])).
-fof(c190, negated_conjecture, ~ ((vplus(vplus(vmul(vd436,vd437),vmul(vd436,vd439)),vd436) != vplus(vmul(vd436,vd437),vplus(vmul(vd436,vd439),vd436)))), inference(split_conjunct,[status(thm)],[c189])).
+fof(c189, negated_conjecture, (vplus(vplus(vmul(vd437,vd437),vmul(vd436,vd439)),vd436) != vplus(vmul(vd436,vd437),vplus(vmul(vd436,vd439),vd436))), inference(fof_simplification,[status(thm)],[c188])).
+fof(c190, negated_conjecture, (vplus(vplus(vmul(vd436,vd437),vmul(vd436,vd439)),vd436) != vplus(vmul(vd436,vd437),vplus(vmul(vd436,vd439),vd436))), inference(split_conjunct,[status(thm)],[c189])).
 fof(c1201, plain, $false, inference(resolution,[status(thm)],[c190,c27])).

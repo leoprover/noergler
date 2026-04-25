@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '212':
-%%%%%   Replaced disjoint(dollar_c5,dollar_c4)
-%%%%%   With ~ (disjoint(dollar_c5,dollar_c4))
+%%%%% Mutated formula '53':
+%%%%%   Replaced ((set_intersection2(dollar_c5,dollar_c4) = empty_set) | disjoint(dollar_c5,dollar_c4))
+%%%%%   With (~ ((set_intersection2(dollar_c5,dollar_c4) = empty_set)) | disjoint(dollar_c5,dollar_c4))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU120+1 : TPTP v8.1.0. Released v3.3.0.
@@ -42,9 +42,9 @@ fof(11, axiom, (! [A]: ((A = A))), file('SEU120+1.p',unknown), []).
 fof(12, axiom, (! [A,B]: ((set_intersection2(A,B) = set_intersection2(B,A)))), file('SEU120+1.p',unknown), []).
 fof(13, axiom, (! [A]: (((A = empty_set) | in(dollar_f1(A),A)))), file('SEU120+1.p',unknown), []).
 fof(26, plain, (~ (disjoint(dollar_c5,dollar_c4)) | in(dollar_c3,set_intersection2(dollar_c4,dollar_c5))), inference(para_from,[status(thm),theory(equality)],[12,7]), [iquote('para_from,12.1.1,7.2.2')]).
-fof(53, plain, ((set_intersection2(dollar_c5,dollar_c4) = empty_set) | disjoint(dollar_c5,dollar_c4)), inference(hyper,[status(thm)],[13,9]), [iquote('hyper,13,9')]).
+fof(53, plain, (~ ((set_intersection2(dollar_c5,dollar_c4) = empty_set)) | disjoint(dollar_c5,dollar_c4)), inference(hyper,[status(thm)],[13,9]), [iquote('hyper,13,9')]).
 fof(180, plain, (set_intersection2(dollar_c5,dollar_c4) = empty_set), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[53,3])]), [iquote('hyper,53,3,factor_simp')]).
-fof(212, plain, ~ (disjoint(dollar_c5,dollar_c4)), inference(hyper,[status(thm)],[180,4]), [iquote('hyper,180,4')]).
+fof(212, plain, disjoint(dollar_c5,dollar_c4), inference(hyper,[status(thm)],[180,4]), [iquote('hyper,180,4')]).
 fof(218, plain, (set_intersection2(dollar_c4,dollar_c5) = empty_set), inference(para_into,[status(thm),theory(equality)],[180,12]), [iquote('para_into,180.1.1,12.1.1')]).
 fof(219, plain, in(dollar_c3,empty_set), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[26]),218]),212]), [iquote('back_demod,26,demod,218,unit_del,212')]).
 fof(252, plain, $false, inference(hyper,[status(thm)],[219,2,11]), [iquote('hyper,219,2,11')]).

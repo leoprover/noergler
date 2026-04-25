@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '52':
-%%%%%   Replaced (! [A]: ((~ (r1(dollar_c1,A)) | (~ (p5(dollar_f13(A))) | (p104(A) | ~ (p103(A)))))))
-%%%%%   With (! [A]: ((r1(dollar_c1,A) | (~ (p5(dollar_f13(A))) | (p104(A) | ~ (p103(A)))))))
+%%%%% Mutated formula '144':
+%%%%%   Replaced (r1(dollar_f18(dollar_f20(dollar_c1)),dollar_f16(dollar_f18(dollar_f20(dollar_c1)))) | p103(dollar_f18(dollar_f20(dollar_c1))))
+%%%%%   With (~ (r1(dollar_f18(dollar_f20(dollar_c1)),dollar_f16(dollar_f18(dollar_f20(dollar_c1))))) | p103(dollar_f18(dollar_f20(dollar_c1))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LCL674+1.010 : TPTP v8.1.0. Released v4.0.0.
@@ -36,7 +36,7 @@
 fof(1, axiom, (! [A,B,C]: ((~ (r1(A,B)) | (~ (r1(B,C)) | r1(A,C))))), file('LCL674+1.010.p',unknown), []).
 fof(2, axiom, (! [A]: ((~ (r1(dollar_c1,A)) | p5(A)))), file('LCL674+1.010.p',unknown), []).
 fof(51, axiom, (! [A]: ((~ (r1(dollar_c1,A)) | (r1(A,dollar_f13(A)) | (p104(A) | ~ (p103(A))))))), file('LCL674+1.010.p',unknown), []).
-fof(52, axiom, (! [A]: ((r1(dollar_c1,A) | (~ (p5(dollar_f13(A))) | (p104(A) | ~ (p103(A))))))), file('LCL674+1.010.p',unknown), []).
+fof(52, axiom, (! [A]: ((~ (r1(dollar_c1,A)) | (~ (p5(dollar_f13(A))) | (p104(A) | ~ (p103(A))))))), file('LCL674+1.010.p',unknown), []).
 fof(63, axiom, (! [A]: ((~ (r1(dollar_c1,A)) | (r1(A,dollar_f16(A)) | (p103(A) | ~ (p102(A))))))), file('LCL674+1.010.p',unknown), []).
 fof(65, axiom, (! [A]: ((~ (r1(dollar_c1,A)) | (~ (p104(dollar_f16(A))) | (p103(A) | ~ (p102(A))))))), file('LCL674+1.010.p',unknown), []).
 fof(66, axiom, (! [A]: ((~ (r1(dollar_c1,A)) | (p103(dollar_f16(A)) | (p103(A) | ~ (p102(A))))))), file('LCL674+1.010.p',unknown), []).
@@ -57,7 +57,7 @@ fof(138, plain, p102(dollar_f18(dollar_f20(dollar_c1))), inference(unit_del,[sta
 fof(139, plain, r1(dollar_f20(dollar_c1),dollar_f18(dollar_f20(dollar_c1))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[127,81,116,117]),115]), [iquote('hyper,127,81,116,117,unit_del,115')]).
 fof(140, plain, r1(dollar_c1,dollar_f18(dollar_f20(dollar_c1))), inference(hyper,[status(thm)],[139,1,121]), [iquote('hyper,139,1,121')]).
 fof(142, plain, (p103(dollar_f16(dollar_f18(dollar_f20(dollar_c1)))) | p103(dollar_f18(dollar_f20(dollar_c1)))), inference(hyper,[status(thm)],[140,66,138]), [iquote('hyper,140,66,138')]).
-fof(144, plain, (r1(dollar_f18(dollar_f20(dollar_c1)),dollar_f16(dollar_f18(dollar_f20(dollar_c1)))) | p103(dollar_f18(dollar_f20(dollar_c1)))), inference(hyper,[status(thm)],[140,63,138]), [iquote('hyper,140,63,138')]).
+fof(144, plain, (~ (r1(dollar_f18(dollar_f20(dollar_c1)),dollar_f16(dollar_f18(dollar_f20(dollar_c1))))) | p103(dollar_f18(dollar_f20(dollar_c1)))), inference(hyper,[status(thm)],[140,63,138]), [iquote('hyper,140,63,138')]).
 fof(183, plain, (p103(dollar_f16(dollar_f18(dollar_f20(dollar_c1)))) | p102(dollar_f20(dollar_c1))), inference(hyper,[status(thm)],[142,73,121,119]), [iquote('hyper,142,73,121,119')]).
 fof(202, plain, (r1(dollar_f18(dollar_f20(dollar_c1)),dollar_f16(dollar_f18(dollar_f20(dollar_c1)))) | p102(dollar_f20(dollar_c1))), inference(hyper,[status(thm)],[144,73,121,119]), [iquote('hyper,144,73,121,119')]).
 fof(256, plain, r1(dollar_f18(dollar_f20(dollar_c1)),dollar_f16(dollar_f18(dollar_f20(dollar_c1)))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[202,81,116,117]),115]), [iquote('hyper,202,81,116,117,unit_del,115')]).

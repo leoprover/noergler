@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '13':
-%%%%%   Replaced (! [A,B]: ((subset(A,B) | in(dollar_f2(A,B),A))))
-%%%%%   With (! [A,B]: ((~ (subset(A,B)) | in(dollar_f2(A,B),A))))
+%%%%% Mutated formula '7':
+%%%%%   Replaced (! [A,B]: ((~ (in(A,B)) | subset(A,union(B)))))
+%%%%%   With (! [A,B]: ((in(A,B) | subset(A,union(B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET947+1 : TPTP v8.1.0. Released v3.2.0.
@@ -35,10 +35,10 @@
 %%% Generated on Tue Apr 14 19:19:35 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, (! [A,B,C]: (((A != powerset(B)) | (in(C,A) | ~ (subset(C,B)))))), file('SET947+1.p',unknown), []).
 fof(6, axiom, (! [A,B]: ((subset(A,B) | ~ (in(dollar_f2(A,B),B))))), file('SET947+1.p',unknown), []).
-fof(7, axiom, (! [A,B]: ((~ (in(A,B)) | subset(A,union(B))))), file('SET947+1.p',unknown), []).
+fof(7, axiom, (! [A,B]: ((in(A,B) | subset(A,union(B))))), file('SET947+1.p',unknown), []).
 fof(9, axiom, ~ (subset(dollar_c3,powerset(union(dollar_c3)))), file('SET947+1.p',unknown), []).
 fof(11, axiom, (! [A]: ((A = A))), file('SET947+1.p',unknown), []).
-fof(13, axiom, (! [A,B]: ((~ (subset(A,B)) | in(dollar_f2(A,B),A)))), file('SET947+1.p',unknown), []).
+fof(13, axiom, (! [A,B]: ((subset(A,B) | in(dollar_f2(A,B),A)))), file('SET947+1.p',unknown), []).
 fof(81, plain, in(dollar_f2(dollar_c3,powerset(union(dollar_c3))),dollar_c3), inference(hyper,[status(thm)],[13,9]), [iquote('hyper,13,9')]).
 fof(88, plain, subset(dollar_f2(dollar_c3,powerset(union(dollar_c3))),union(dollar_c3)), inference(hyper,[status(thm)],[81,7]), [iquote('hyper,81,7')]).
 fof(190, plain, in(dollar_f2(dollar_c3,powerset(union(dollar_c3))),powerset(union(dollar_c3))), inference(hyper,[status(thm)],[88,3,11]), [iquote('hyper,88,3,11')]).

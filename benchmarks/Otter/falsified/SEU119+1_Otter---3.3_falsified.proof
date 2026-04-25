@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '106':
-%%%%%   Replaced (! [A,B]: (((set_intersection2(A,B) = empty_set) | in(dollar_f1(set_intersection2(A,B)),B))))
-%%%%%   With (! [A,B]: (((set_intersection2(A,B) = empty_set) & in(dollar_f1(set_intersection2(A,B)),B))))
+%%%%% Mutated formula '4412':
+%%%%%   Replaced disjoint(dollar_c5,dollar_c4)
+%%%%%   With ~ (disjoint(dollar_c5,dollar_c4))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU119+1 : TPTP v8.1.0. Released v3.3.0.
@@ -47,12 +47,12 @@ fof(24, axiom, (! [A]: (((A = empty_set) | in(dollar_f1(A),A)))), file('SEU119+1
 fof(29, axiom, (! [A]: ((set_intersection2(A,A) = A))), file('SEU119+1.p',unknown), []).
 fof(59, plain, (! [A,B]: (((set_intersection2(A,B) = empty_set) | ~ (disjoint(B,A))))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[23,7])]), [iquote('para_into,23.1.1,7.2.1,flip.1')]).
 fof(64, plain, (! [A,B]: ((disjoint(A,B) | (set_intersection2(B,A) != empty_set)))), inference(para_from,[status(thm),theory(equality)],[23,8]), [iquote('para_from,23.1.1,8.2.1')]).
-fof(106, plain, (! [A,B]: (((set_intersection2(A,B) = empty_set) & in(dollar_f1(set_intersection2(A,B)),B)))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[24,4,29]),29,29]), [iquote('hyper,24,4,28,demod,29,29')]).
+fof(106, plain, (! [A,B]: (((set_intersection2(A,B) = empty_set) | in(dollar_f1(set_intersection2(A,B)),B)))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[24,4,29]),29,29]), [iquote('hyper,24,4,28,demod,29,29')]).
 fof(107, plain, (! [A,B]: (((set_intersection2(A,B) = empty_set) | in(dollar_f1(set_intersection2(A,B)),A)))), inference(hyper,[status(thm)],[24,4,23]), [iquote('hyper,24,4,23')]).
 fof(4390, plain, (! [A,B]: ((disjoint(A,B) | in(dollar_f1(set_intersection2(B,A)),A)))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[106,64]),22]), [iquote('para_from,106.1.1,64.2.1,unit_del,22')]).
 fof(4397, plain, ((set_intersection2(dollar_c4,dollar_c5) = empty_set) | disjoint(dollar_c5,dollar_c4)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[107,15,4390])]), [iquote('hyper,107,15,4390,factor_simp')]).
 fof(4408, plain, (set_intersection2(dollar_c4,dollar_c5) = empty_set), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[4397,59])]), [iquote('hyper,4397,59,factor_simp')]).
-fof(4412, plain, disjoint(dollar_c5,dollar_c4), inference(hyper,[status(thm)],[4408,64]), [iquote('hyper,4407,64')]).
+fof(4412, plain, ~ (disjoint(dollar_c5,dollar_c4)), inference(hyper,[status(thm)],[4408,64]), [iquote('hyper,4407,64')]).
 fof(4420, plain, in(dollar_c3,dollar_c4), inference(hyper,[status(thm)],[4412,12]), [iquote('hyper,4412,12')]).
 fof(4421, plain, in(dollar_c3,dollar_c5), inference(hyper,[status(thm)],[4412,11]), [iquote('hyper,4412,11')]).
 fof(4431, plain, in(dollar_c3,empty_set), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[4421,5,29,4420]),4408,4408,29]), [iquote('hyper,4421,5,28,4420,demod,4408,4408,29')]).

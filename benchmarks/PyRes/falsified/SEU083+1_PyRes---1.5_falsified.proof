@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c20':
-%%%%%   Replaced (! [A,B]: ((~ (finite(A)) | (~ (finite(B)) | finite(set_union2(A,B))))))
-%%%%%   With (! [A,B]: ((~ (finite(A)) & (~ (finite(B)) | finite(set_union2(A,B))))))
+%%%%% Mutated formula 'c29':
+%%%%%   Replaced ~ (finite(set_union2(skolem0001,skolem0002)))
+%%%%%   With ~ (finite(set_union2(skolem0002,skolem0002)))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SEU083+1 : TPTP v8.1.2. Released v3.2.0.
@@ -41,11 +41,11 @@ fof(c23, negated_conjecture, ~ ((! [A,B]: (((finite(A) & finite(B)) => finite(se
 fof(c24, negated_conjecture, (? [A,B]: ((finite(A) & (finite(B) & ~ (finite(set_union2(A,B))))))), inference(fof_nnf,[status(thm)],[c23])).
 fof(c25, negated_conjecture, (? [X4,X5]: ((finite(X4) & (finite(X5) & ~ (finite(set_union2(X4,X5))))))), inference(variable_rename,[status(thm)],[c24])).
 fof(c26, negated_conjecture, (finite(skolem0001) & (finite(skolem0002) & ~ (finite(set_union2(skolem0001,skolem0002))))), inference(skolemize,[status(esa)],[c25])).
-fof(c29, negated_conjecture, ~ (finite(set_union2(skolem0001,skolem0002))), inference(split_conjunct,[status(thm)],[c26])).
+fof(c29, negated_conjecture, ~ (finite(set_union2(skolem0002,skolem0002))), inference(split_conjunct,[status(thm)],[c26])).
 fof(c27, negated_conjecture, finite(skolem0001), inference(split_conjunct,[status(thm)],[c26])).
 fof(c28, negated_conjecture, finite(skolem0002), inference(split_conjunct,[status(thm)],[c26])).
 fof(l3_finset_1, axiom, (! [A,B]: (((finite(A) & finite(B)) => finite(set_union2(A,B))))), file('SEU083+1.p',l3_finset_1)).
-fof(c20, plain, (! [A,B]: ((~ (finite(A)) & (~ (finite(B)) | finite(set_union2(A,B)))))), inference(fof_nnf,[status(thm)],[l3_finset_1])).
+fof(c20, plain, (! [A,B]: ((~ (finite(A)) | (~ (finite(B)) | finite(set_union2(A,B)))))), inference(fof_nnf,[status(thm)],[l3_finset_1])).
 fof(c21, plain, (! [X2,X3]: ((~ (finite(X2)) | (~ (finite(X3)) | finite(set_union2(X2,X3)))))), inference(variable_rename,[status(thm)],[c20])).
 fof(c22, plain, (! [X156,X157]: ((~ (finite(X156)) | (~ (finite(X157)) | finite(set_union2(X156,X157)))))), inference(split_conjunct,[status(thm)],[c21])).
 fof(c354, plain, (! [X333]: ((~ (finite(X333)) | finite(set_union2(X333,skolem0002))))), inference(resolution,[status(thm)],[c22,c28])).

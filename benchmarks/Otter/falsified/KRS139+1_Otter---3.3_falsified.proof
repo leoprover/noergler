@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '7':
-%%%%%   Replaced (~ (cowlThing(dollar_c1)) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (~ (cowlThing(iAntwerp)) | (~ (rpath(iAntwerp,iGhent)) | ~ (cowlThing(iGhent)))))))
-%%%%%   With (~ (cowlThing(dollar_c2)) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (~ (cowlThing(iAntwerp)) | (~ (rpath(iAntwerp,iGhent)) | ~ (cowlThing(iGhent)))))))
+%%%%% Mutated formula '11':
+%%%%%   Replaced rpath(iAntwerp,iGhent)
+%%%%%   With ~ (rpath(iAntwerp,iGhent))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS139+1 : TPTP v8.1.0. Released v3.1.0.
@@ -39,11 +39,11 @@ fof(3, axiom, (! [A,B]: ((~ (rpath(A,B)) | rpath(B,A)))), file('KRS139+1.p',unkn
 fof(4, axiom, (~ (cowlThing(dollar_c1)) | (cowlNothing(dollar_c1) | (xsd_string(dollar_c2) | (~ (xsd_integer(dollar_c2)) | (~ (cowlThing(iAntwerp)) | (~ (rpath(iAntwerp,iGhent)) | ~ (cowlThing(iGhent)))))))), file('KRS139+1.p',unknown), []).
 fof(5, plain, (~ (cowlThing(dollar_c1)) | (xsd_string(dollar_c2) | (~ (xsd_integer(dollar_c2)) | (~ (cowlThing(iAntwerp)) | (~ (rpath(iAntwerp,iGhent)) | ~ (cowlThing(iGhent))))))), inference(unit_del,[status(thm)],[inference(copy,[status(thm)],[4]),1]), [iquote('copy,4,unit_del,1')]).
 fof(6, axiom, (~ (cowlThing(dollar_c1)) | (cowlNothing(dollar_c1) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (~ (cowlThing(iAntwerp)) | (~ (rpath(iAntwerp,iGhent)) | ~ (cowlThing(iGhent)))))))), file('KRS139+1.p',unknown), []).
-fof(7, plain, (~ (cowlThing(dollar_c2)) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (~ (cowlThing(iAntwerp)) | (~ (rpath(iAntwerp,iGhent)) | ~ (cowlThing(iGhent))))))), inference(unit_del,[status(thm)],[inference(copy,[status(thm)],[6]),1]), [iquote('copy,6,unit_del,1')]).
+fof(7, plain, (~ (cowlThing(dollar_c1)) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (~ (cowlThing(iAntwerp)) | (~ (rpath(iAntwerp,iGhent)) | ~ (cowlThing(iGhent))))))), inference(unit_del,[status(thm)],[inference(copy,[status(thm)],[6]),1]), [iquote('copy,6,unit_del,1')]).
 fof(8, axiom, (! [A]: (cowlThing(A))), file('KRS139+1.p',unknown), []).
 fof(9, axiom, (! [A]: ((xsd_string(A) | xsd_integer(A)))), file('KRS139+1.p',unknown), []).
 fof(10, axiom, rpath(iGhent,iAntwerp), file('KRS139+1.p',unknown), []).
-fof(11, plain, rpath(iAntwerp,iGhent), inference(hyper,[status(thm)],[10,3]), [iquote('hyper,10,3')]).
+fof(11, plain, ~ (rpath(iAntwerp,iGhent)), inference(hyper,[status(thm)],[10,3]), [iquote('hyper,10,3')]).
 fof(12, plain, xsd_integer(dollar_c2), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[9,7,8,8,11,8])]), [iquote('hyper,9,7,8,8,11,8,factor_simp')]).
 fof(13, plain, xsd_string(dollar_c2), inference(hyper,[status(thm)],[12,5,8,8,11,8]), [iquote('hyper,12,5,8,8,11,8')]).
 fof(14, plain, $false, inference(hyper,[status(thm)],[13,2,12]), [iquote('hyper,13,2,12')]).

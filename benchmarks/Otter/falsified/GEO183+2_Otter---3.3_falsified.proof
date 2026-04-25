@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '15':
-%%%%%   Replaced ~ (distinct_lines(dollar_c2,line_connecting(dollar_c4,dollar_c3)))
-%%%%%   With distinct_lines(dollar_c2,line_connecting(dollar_c4,dollar_c3))
+%%%%% Mutated formula '13':
+%%%%%   Replaced (! [A,B,C]: ((~ (apart_point_and_line(A,B)) | (distinct_lines(B,C) | apart_point_and_line(A,C)))))
+%%%%%   With (! [A,B,C]: ((apart_point_and_line(A,B) | (distinct_lines(B,C) | apart_point_and_line(A,C)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO183+2 : TPTP v8.1.0. Released v3.3.0.
@@ -38,8 +38,8 @@ fof(4, axiom, (! [A,B,C]: ((~ (distinct_points(A,B)) | (distinct_points(A,C) | d
 fof(7, axiom, (! [A,B,C]: ((~ (distinct_points(A,B)) | (~ (apart_point_and_line(C,line_connecting(A,B))) | distinct_points(C,A))))), file('GEO183+2.p',unknown), []).
 fof(8, axiom, (! [A,B,C]: ((~ (distinct_points(A,B)) | (~ (apart_point_and_line(C,line_connecting(A,B))) | distinct_points(C,B))))), file('GEO183+2.p',unknown), []).
 fof(12, axiom, (! [A,B,C]: ((~ (apart_point_and_line(A,B)) | (distinct_points(A,C) | apart_point_and_line(C,B))))), file('GEO183+2.p',unknown), []).
-fof(13, axiom, (! [A,B,C]: ((~ (apart_point_and_line(A,B)) | (distinct_lines(B,C) | apart_point_and_line(A,C))))), file('GEO183+2.p',unknown), []).
-fof(15, axiom, distinct_lines(dollar_c2,line_connecting(dollar_c4,dollar_c3)), file('GEO183+2.p',unknown), []).
+fof(13, axiom, (! [A,B,C]: ((apart_point_and_line(A,B) | (distinct_lines(B,C) | apart_point_and_line(A,C))))), file('GEO183+2.p',unknown), []).
+fof(15, axiom, ~ (distinct_lines(dollar_c2,line_connecting(dollar_c4,dollar_c3))), file('GEO183+2.p',unknown), []).
 fof(16, axiom, distinct_points(dollar_c4,dollar_c3), file('GEO183+2.p',unknown), []).
 fof(18, axiom, (apart_point_and_line(dollar_c4,dollar_c2) | apart_point_and_line(dollar_c3,dollar_c2)), file('GEO183+2.p',unknown), []).
 fof(19, plain, (! [A]: ((distinct_points(dollar_c4,A) | distinct_points(dollar_c3,A)))), inference(hyper,[status(thm)],[16,4]), [iquote('hyper,16,4')]).

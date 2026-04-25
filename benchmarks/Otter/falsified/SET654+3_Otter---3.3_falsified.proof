@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '90':
-%%%%%   Replaced subset(range_of(dollar_c1),dollar_c3)
-%%%%%   With ~ (subset(range_of(dollar_c1),dollar_c3))
+%%%%% Mutated formula '91':
+%%%%%   Replaced ilf_type(dollar_c1,relation_type(dollar_c2,dollar_c3))
+%%%%%   With ilf_type(dollar_c2,relation_type(dollar_c2,dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET654+3 : TPTP v8.1.0. Released v2.2.0.
@@ -41,6 +41,6 @@ fof(73, axiom, (! [A]: (ilf_type(A,set_type))), file('SET654+3.p',unknown), []).
 fof(74, axiom, ilf_type(dollar_c1,relation_type(dollar_c2,dollar_c4)), file('SET654+3.p',unknown), []).
 fof(75, axiom, subset(dollar_c4,dollar_c3), file('SET654+3.p',unknown), []).
 fof(88, plain, subset(range_of(dollar_c1),dollar_c4), inference(hyper,[status(thm)],[74,3,73,73]), [iquote('hyper,74,3,73,73')]).
-fof(90, plain, ~ (subset(range_of(dollar_c1),dollar_c3)), inference(hyper,[status(thm)],[88,1,73,73,73,75]), [iquote('hyper,88,1,73,73,73,75')]).
-fof(91, plain, ilf_type(dollar_c1,relation_type(dollar_c2,dollar_c3)), inference(hyper,[status(thm)],[90,4,73,73,73,74]), [iquote('hyper,90,4,73,73,73,74')]).
+fof(90, plain, subset(range_of(dollar_c1),dollar_c3), inference(hyper,[status(thm)],[88,1,73,73,73,75]), [iquote('hyper,88,1,73,73,73,75')]).
+fof(91, plain, ilf_type(dollar_c2,relation_type(dollar_c2,dollar_c3)), inference(hyper,[status(thm)],[90,4,73,73,73,74]), [iquote('hyper,90,4,73,73,73,74')]).
 fof(92, plain, $false, inference(binary,[status(thm)],[91,41]), [iquote('binary,91.1,41.1')]).

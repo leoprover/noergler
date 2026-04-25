@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '10':
-%%%%%   Replaced (decreases(resources(dollar_c2,dollar_c1)) | decreases(difference(disbanding_rate(first_movers,dollar_c1),disbanding_rate(efficient_producers,dollar_c1))))
-%%%%%   With (decreases(resources(first_movers,dollar_c1)) | decreases(difference(disbanding_rate(first_movers,dollar_c1),disbanding_rate(efficient_producers,dollar_c1))))
+%%%%% Mutated formula '3':
+%%%%%   Replaced (! [A,B,C,D]: ((~ (environment(A)) | (~ (subpopulations(B,C,A,D)) | (~ (greater(resilience(C),resilience(B))) | (~ (constant(resources(A,D))) | constant(difference(disbanding_rate(B,D),disbanding_rate(C,D)))))))))
+%%%%%   With (! [A,B,C,D]: ((environment(A) | (~ (subpopulations(B,C,A,D)) | (~ (greater(resilience(C),resilience(B))) | (~ (constant(resources(A,D))) | constant(difference(disbanding_rate(B,D),disbanding_rate(C,D)))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT022+2 : TPTP v8.1.0. Released v2.0.0.
@@ -35,13 +35,13 @@
 %%% Generated on Tue Apr 14 19:15:31 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A]: ((~ (constant(A)) | ~ (decreases(A))))), file('MGT022+2.p',unknown), []).
 fof(2, axiom, (! [A,B,C,D]: ((~ (environment(A)) | (~ (subpopulations(B,C,A,D)) | (~ (greater(resilience(C),resilience(B))) | (~ (decreases(resources(A,D))) | increases(difference(disbanding_rate(B,D),disbanding_rate(C,D))))))))), file('MGT022+2.p',unknown), []).
-fof(3, axiom, (! [A,B,C,D]: ((~ (environment(A)) | (~ (subpopulations(B,C,A,D)) | (~ (greater(resilience(C),resilience(B))) | (~ (constant(resources(A,D))) | constant(difference(disbanding_rate(B,D),disbanding_rate(C,D))))))))), file('MGT022+2.p',unknown), []).
+fof(3, axiom, (! [A,B,C,D]: ((environment(A) | (~ (subpopulations(B,C,A,D)) | (~ (greater(resilience(C),resilience(B))) | (~ (constant(resources(A,D))) | constant(difference(disbanding_rate(B,D),disbanding_rate(C,D))))))))), file('MGT022+2.p',unknown), []).
 fof(4, axiom, (~ (increases(difference(disbanding_rate(first_movers,dollar_c1),disbanding_rate(efficient_producers,dollar_c1)))) | constant(resources(dollar_c2,dollar_c1))), file('MGT022+2.p',unknown), []).
 fof(6, axiom, greater(resilience(efficient_producers),resilience(first_movers)), file('MGT022+2.p',unknown), []).
 fof(7, axiom, environment(dollar_c2), file('MGT022+2.p',unknown), []).
 fof(8, axiom, subpopulations(first_movers,efficient_producers,dollar_c2,dollar_c1), file('MGT022+2.p',unknown), []).
 fof(9, axiom, (decreases(resources(dollar_c2,dollar_c1)) | constant(resources(dollar_c2,dollar_c1))), file('MGT022+2.p',unknown), []).
-fof(10, axiom, (decreases(resources(first_movers,dollar_c1)) | decreases(difference(disbanding_rate(first_movers,dollar_c1),disbanding_rate(efficient_producers,dollar_c1)))), file('MGT022+2.p',unknown), []).
+fof(10, axiom, (decreases(resources(dollar_c2,dollar_c1)) | decreases(difference(disbanding_rate(first_movers,dollar_c1),disbanding_rate(efficient_producers,dollar_c1)))), file('MGT022+2.p',unknown), []).
 fof(11, plain, (constant(resources(dollar_c2,dollar_c1)) | increases(difference(disbanding_rate(first_movers,dollar_c1),disbanding_rate(efficient_producers,dollar_c1)))), inference(hyper,[status(thm)],[9,2,7,8,6]), [iquote('hyper,9,2,7,8,6')]).
 fof(14, plain, constant(resources(dollar_c2,dollar_c1)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[11,4])]), [iquote('hyper,11,4,factor_simp')]).
 fof(15, plain, constant(difference(disbanding_rate(first_movers,dollar_c1),disbanding_rate(efficient_producers,dollar_c1))), inference(hyper,[status(thm)],[14,3,7,8,6]), [iquote('hyper,14,3,7,8,6')]).

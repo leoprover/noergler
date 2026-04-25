@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'p61_1':
-%%%%%   Replaced (! [X,Y,Z]: ((f(X,f(Y,Z)) = f(f(X,Y),Z))))
-%%%%%   With (! [X,Y,Z]: (~ ((f(X,f(Y,Z)) = f(f(X,Y),Z)))))
+%%%%% Mutated formula 'c2':
+%%%%%   Replaced (? [X,Y,Z,W]: ((f(X,f(Y,f(Z,W))) != f(f(f(X,Y),Z),W))))
+%%%%%   With (? [X,Y,Z,W]: (~ ((f(X,f(Y,f(Z,W))) != f(f(f(X,Y),Z),W)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN083+1 : TPTP v8.1.2. Released v2.0.0.
@@ -38,11 +38,11 @@
 %%% Generated on Tue Apr 14 15:06:39 CEST 2026 using command 'transform(fof)'.
 fof(pel61, conjecture, (! [X,Y,Z,W]: ((f(X,f(Y,f(Z,W))) = f(f(f(X,Y),Z),W)))), file('SYN083+1.p',pel61)).
 fof(c1, negated_conjecture, ~ ((! [X,Y,Z,W]: ((f(X,f(Y,f(Z,W))) = f(f(f(X,Y),Z),W))))), inference(assume_negation,[status(cth)],[pel61])).
-fof(c2, negated_conjecture, (? [X,Y,Z,W]: ((f(X,f(Y,f(Z,W))) != f(f(f(X,Y),Z),W)))), inference(fof_nnf,[status(thm)],[c1])).
+fof(c2, negated_conjecture, (? [X,Y,Z,W]: (~ ((f(X,f(Y,f(Z,W))) != f(f(f(X,Y),Z),W))))), inference(fof_nnf,[status(thm)],[c1])).
 fof(c3, negated_conjecture, (? [X2,X3,X4,X5]: ((f(X2,f(X3,f(X4,X5))) != f(f(f(X2,X3),X4),X5)))), inference(variable_rename,[status(thm)],[c2])).
 fof(c4, negated_conjecture, (f(skolem0001,f(skolem0002,f(skolem0003,skolem0004))) != f(f(f(skolem0001,skolem0002),skolem0003),skolem0004)), inference(skolemize,[status(esa)],[c3])).
 fof(c5, negated_conjecture, (f(skolem0001,f(skolem0002,f(skolem0003,skolem0004))) != f(f(f(skolem0001,skolem0002),skolem0003),skolem0004)), inference(split_conjunct,[status(thm)],[c4])).
-fof(p61_1, axiom, (! [X,Y,Z]: (~ ((f(X,f(Y,Z)) = f(f(X,Y),Z))))), file('SYN083+1.p',p61_1)).
+fof(p61_1, axiom, (! [X,Y,Z]: ((f(X,f(Y,Z)) = f(f(X,Y),Z)))), file('SYN083+1.p',p61_1)).
 fof(c6, plain, (! [X6,X7,X8]: ((f(X6,f(X7,X8)) = f(f(X6,X7),X8)))), inference(variable_rename,[status(thm)],[p61_1])).
 fof(c7, plain, (! [X31,X33,X32]: ((f(X31,f(X33,X32)) = f(f(X31,X33),X32)))), inference(split_conjunct,[status(thm)],[c6])).
 fof(transitivity, axiom, (! [X15,X13,X14]: (((X15 != X13) | ((X13 != X14) | (X15 = X14))))), theory(equality)).

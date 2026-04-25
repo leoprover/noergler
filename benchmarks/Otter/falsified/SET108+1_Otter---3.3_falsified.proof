@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '139':
-%%%%%   Replaced (ordered_pair(dollar_f7(dollar_c3,dollar_c3),dollar_f6(dollar_c3,dollar_c3)) = dollar_c3)
-%%%%%   With ~ ((ordered_pair(dollar_f7(dollar_c3,dollar_c3),dollar_f6(dollar_c3,dollar_c3)) = dollar_c3))
+%%%%% Mutated formula '141':
+%%%%%   Replaced member(dollar_f6(dollar_c3,dollar_c3),universal_class)
+%%%%%   With member(dollar_f6(universal_class,dollar_c3),universal_class)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET108+1 : TPTP v8.1.0. Bugfixed v5.4.0.
@@ -43,7 +43,7 @@ fof(88, plain, (! [A]: ((member(dollar_f7(A,A),universal_class) | (A != dollar_c
 fof(89, plain, (! [A]: ((member(dollar_f6(A,A),universal_class) | (A != dollar_c3)))), inference(factor,[status(thm)],[71]), [iquote('factor,71.2.3')]).
 fof(90, plain, (! [A]: (((ordered_pair(dollar_f7(A,A),dollar_f6(A,A)) = dollar_c3) | (A != dollar_c3)))), inference(factor,[status(thm)],[73]), [iquote('factor,73.2.3')]).
 fof(91, axiom, (! [A]: ((A = A))), file('SET108+1.p',unknown), []).
-fof(139, plain, ~ ((ordered_pair(dollar_f7(dollar_c3,dollar_c3),dollar_f6(dollar_c3,dollar_c3)) = dollar_c3)), inference(hyper,[status(thm)],[91,90]), [iquote('hyper,91,90')]).
-fof(141, plain, member(dollar_f6(dollar_c3,dollar_c3),universal_class), inference(hyper,[status(thm)],[91,89]), [iquote('hyper,91,89')]).
+fof(139, plain, (ordered_pair(dollar_f7(dollar_c3,dollar_c3),dollar_f6(dollar_c3,dollar_c3)) = dollar_c3), inference(hyper,[status(thm)],[91,90]), [iquote('hyper,91,90')]).
+fof(141, plain, member(dollar_f6(universal_class,dollar_c3),universal_class), inference(hyper,[status(thm)],[91,89]), [iquote('hyper,91,89')]).
 fof(142, plain, member(dollar_f7(dollar_c3,dollar_c3),universal_class), inference(hyper,[status(thm)],[91,88]), [iquote('hyper,91,88')]).
 fof(1594, plain, $false, inference(hyper,[status(thm)],[139,69,142,141]), [iquote('hyper,139,69,142,141')]).

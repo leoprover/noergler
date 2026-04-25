@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '456':
-%%%%%   Replaced ssList(dollar_c3)
-%%%%%   With ~ (ssList(dollar_c3))
+%%%%% Mutated formula '451':
+%%%%%   Replaced ssList(dollar_c4)
+%%%%%   With ~ (ssList(dollar_c4))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC353+1 : TPTP v8.1.0. Released v2.4.0.
@@ -36,10 +36,10 @@
 fof(13, axiom, (! [A,B,C]: ((~ (ssList(A)) | (~ (ssList(B)) | (frontsegP(A,B) | (~ (ssList(C)) | (app(B,C) != A))))))), file('SWC353+1.p',unknown), []).
 fof(183, axiom, ~ (frontsegP(dollar_c6,dollar_c7)), file('SWC353+1.p',unknown), []).
 fof(450, axiom, ssList(dollar_c5), file('SWC353+1.p',unknown), []).
-fof(451, axiom, ssList(dollar_c4), file('SWC353+1.p',unknown), []).
+fof(451, axiom, ~ (ssList(dollar_c4)), file('SWC353+1.p',unknown), []).
 fof(453, axiom, (dollar_c6 = dollar_c4), file('SWC353+1.p',unknown), []).
 fof(455, axiom, (dollar_c7 = dollar_c5), file('SWC353+1.p',unknown), []).
-fof(456, axiom, ~ (ssList(dollar_c3)), file('SWC353+1.p',unknown), []).
+fof(456, axiom, ssList(dollar_c3), file('SWC353+1.p',unknown), []).
 fof(457, axiom, (app(dollar_c5,dollar_c3) = dollar_c4), file('SWC353+1.p',unknown), []).
 fof(460, plain, ~ (frontsegP(dollar_c4,dollar_c5)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[183]),453,455]), [iquote('back_demod,183,demod,453,455')]).
 fof(890, plain, frontsegP(dollar_c4,dollar_c5), inference(hyper,[status(thm)],[457,13,451,450,456]), [iquote('hyper,457,13,451,450,456')]).

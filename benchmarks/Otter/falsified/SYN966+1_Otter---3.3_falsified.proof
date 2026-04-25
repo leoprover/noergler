@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3':
-%%%%%   Replaced (! [A,B]: ((e_q(A,B) | (~ (a_member_of(dollar_f1(A,B),A)) | ~ (a_member_of(dollar_f1(A,B),B))))))
-%%%%%   With (! [A,B]: ((~ (e_q(A,B)) | (~ (a_member_of(dollar_f1(A,B),A)) | ~ (a_member_of(dollar_f1(A,B),B))))))
+%%%%% Mutated formula '9':
+%%%%%   Replaced (a_member_of(dollar_f1(dollar_c1,dollar_c2),dollar_c1) | a_member_of(dollar_f1(dollar_c1,dollar_c2),dollar_c2))
+%%%%%   With (a_member_of(dollar_f1(dollar_c2,dollar_c2),dollar_c1) | a_member_of(dollar_f1(dollar_c1,dollar_c2),dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN966+1 : TPTP v8.1.0. Released v3.1.0.
@@ -35,11 +35,11 @@
 %%% Generated on Tue Apr 14 19:24:35 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B,C]: ((~ (e_q(A,B)) | (~ (a_member_of(C,A)) | a_member_of(C,B))))), file('SYN966+1.p',unknown), []).
 fof(2, axiom, (! [A,B,C]: ((~ (e_q(A,B)) | (a_member_of(C,A) | ~ (a_member_of(C,B)))))), file('SYN966+1.p',unknown), []).
-fof(3, axiom, (! [A,B]: ((~ (e_q(A,B)) | (~ (a_member_of(dollar_f1(A,B),A)) | ~ (a_member_of(dollar_f1(A,B),B)))))), file('SYN966+1.p',unknown), []).
+fof(3, axiom, (! [A,B]: ((e_q(A,B) | (~ (a_member_of(dollar_f1(A,B),A)) | ~ (a_member_of(dollar_f1(A,B),B)))))), file('SYN966+1.p',unknown), []).
 fof(4, axiom, ~ (e_q(dollar_c1,dollar_c2)), file('SYN966+1.p',unknown), []).
 fof(6, axiom, (! [A,B]: ((e_q(A,B) | (a_member_of(dollar_f1(A,B),A) | a_member_of(dollar_f1(A,B),B))))), file('SYN966+1.p',unknown), []).
 fof(7, axiom, e_q(dollar_c2,dollar_c1), file('SYN966+1.p',unknown), []).
-fof(9, plain, (a_member_of(dollar_f1(dollar_c1,dollar_c2),dollar_c1) | a_member_of(dollar_f1(dollar_c1,dollar_c2),dollar_c2)), inference(hyper,[status(thm)],[6,4]), [iquote('hyper,6,4')]).
+fof(9, plain, (a_member_of(dollar_f1(dollar_c2,dollar_c2),dollar_c1) | a_member_of(dollar_f1(dollar_c1,dollar_c2),dollar_c2)), inference(hyper,[status(thm)],[6,4]), [iquote('hyper,6,4')]).
 fof(10, plain, a_member_of(dollar_f1(dollar_c1,dollar_c2),dollar_c2), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[9,2,7])]), [iquote('hyper,9,2,7,factor_simp')]).
 fof(12, plain, a_member_of(dollar_f1(dollar_c1,dollar_c2),dollar_c1), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[9,1,7])]), [iquote('hyper,9,1,7,factor_simp')]).
 fof(15, plain, e_q(dollar_c1,dollar_c2), inference(hyper,[status(thm)],[12,3,10]), [iquote('hyper,12,3,10')]).

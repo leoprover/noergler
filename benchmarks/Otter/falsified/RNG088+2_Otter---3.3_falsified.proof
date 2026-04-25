@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '152':
-%%%%%   Replaced aElementOf0(xk,xI)
-%%%%%   With aElementOf0(xm,xI)
+%%%%% Mutated formula '157':
+%%%%%   Replaced aElementOf0(xm,xI)
+%%%%%   With aElementOf0(xI,xI)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : RNG088+2 : TPTP v8.1.0. Released v4.0.0.
@@ -36,9 +36,9 @@
 fof(57, axiom, (! [A,B]: ((~ (aElementOf0(A,xI)) | (~ (aElementOf0(B,xI)) | aElementOf0(sdtpldt0(A,B),xI))))), file('RNG088+2.p',unknown), []).
 fof(59, axiom, (! [A,B]: ((~ (aElementOf0(A,xJ)) | (~ (aElementOf0(B,xJ)) | aElementOf0(sdtpldt0(A,B),xJ))))), file('RNG088+2.p',unknown), []).
 fof(61, axiom, (~ (aElementOf0(sdtpldt0(xk,xm),xI)) | ~ (aElementOf0(sdtpldt0(xl,xn),xJ))), file('RNG088+2.p',unknown), []).
-fof(152, axiom, aElementOf0(xm,xI), file('RNG088+2.p',unknown), []).
+fof(152, axiom, aElementOf0(xk,xI), file('RNG088+2.p',unknown), []).
 fof(153, axiom, aElementOf0(xl,xJ), file('RNG088+2.p',unknown), []).
-fof(157, axiom, aElementOf0(xm,xI), file('RNG088+2.p',unknown), []).
+fof(157, axiom, aElementOf0(xI,xI), file('RNG088+2.p',unknown), []).
 fof(158, axiom, aElementOf0(xn,xJ), file('RNG088+2.p',unknown), []).
 fof(2501, plain, aElementOf0(sdtpldt0(xk,xm),xI), inference(hyper,[status(thm)],[157,57,152]), [iquote('hyper,157,57,152')]).
 fof(2582, plain, aElementOf0(sdtpldt0(xl,xn),xJ), inference(hyper,[status(thm)],[158,59,153]), [iquote('hyper,158,59,153')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '16':
-%%%%%   Replaced (! [A]: (r1(A,A)))
-%%%%%   With (! [A]: (~ (r1(A,A))))
+%%%%% Mutated formula '26':
+%%%%%   Replaced p2(dollar_f1(dollar_c1))
+%%%%%   With ~ (p2(dollar_f1(dollar_c1)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LCL656+1.001 : TPTP v8.1.0. Released v4.0.0.
@@ -37,9 +37,9 @@ fof(1, axiom, (! [A]: ((~ (r1(dollar_c1,A)) | p2(A)))), file('LCL656+1.001.p',un
 fof(2, axiom, (! [A]: ((~ (r1(dollar_c1,A)) | (r1(A,dollar_f1(A)) | (p101(A) | ~ (p100(A))))))), file('LCL656+1.001.p',unknown), []).
 fof(3, axiom, (! [A]: ((~ (r1(dollar_c1,A)) | (~ (p2(dollar_f1(A))) | (p101(A) | ~ (p100(A))))))), file('LCL656+1.001.p',unknown), []).
 fof(15, axiom, ~ (p101(dollar_c1)), file('LCL656+1.001.p',unknown), []).
-fof(16, axiom, (! [A]: (~ (r1(A,A)))), file('LCL656+1.001.p',unknown), []).
+fof(16, axiom, (! [A]: (r1(A,A))), file('LCL656+1.001.p',unknown), []).
 fof(17, axiom, p100(dollar_c1), file('LCL656+1.001.p',unknown), []).
 fof(23, plain, r1(dollar_c1,dollar_f1(dollar_c1)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[17,2,16]),15]), [iquote('hyper,17,2,16,unit_del,15')]).
-fof(26, plain, p2(dollar_f1(dollar_c1)), inference(hyper,[status(thm)],[23,1]), [iquote('hyper,23,1')]).
+fof(26, plain, ~ (p2(dollar_f1(dollar_c1))), inference(hyper,[status(thm)],[23,1]), [iquote('hyper,23,1')]).
 fof(27, plain, p101(dollar_c1), inference(hyper,[status(thm)],[26,3,16,17]), [iquote('hyper,26,3,16,17')]).
 fof(28, plain, $false, inference(binary,[status(thm)],[27,15]), [iquote('binary,27.1,15.1')]).

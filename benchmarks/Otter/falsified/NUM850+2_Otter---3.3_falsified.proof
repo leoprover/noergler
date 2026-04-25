@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '90':
 %%%%%   Replaced (vplus(vd471,dollar_f2(vd471,vd470)) = vd470)
-%%%%%   With (vplus(vd470,dollar_f2(vd471,vd470)) = vd470)
+%%%%%   With ~ ((vplus(vd471,dollar_f2(vd471,vd470)) = vd470))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM850+2 : TPTP v8.1.0. Released v4.1.0.
@@ -38,5 +38,5 @@ fof(2, plain, (! [A]: ((vplus(vd471,A) != vd470))), inference(flip,[status(thm),
 fof(34, axiom, (! [A,B]: ((~ (greater(A,B)) | (A = vplus(B,dollar_f2(B,A)))))), file('NUM850+2.p',unknown), []).
 fof(35, plain, (! [A,B]: ((~ (greater(A,B)) | (vplus(B,dollar_f2(B,A)) = A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[34])]), [iquote('copy,34,flip.2')]).
 fof(50, axiom, greater(vd470,vd471), file('NUM850+2.p',unknown), []).
-fof(90, plain, (vplus(vd470,dollar_f2(vd471,vd470)) = vd470), inference(hyper,[status(thm)],[50,35]), [iquote('hyper,50,35')]).
+fof(90, plain, ~ ((vplus(vd471,dollar_f2(vd471,vd470)) = vd470)), inference(hyper,[status(thm)],[50,35]), [iquote('hyper,50,35')]).
 fof(92, plain, $false, inference(binary,[status(thm)],[90,2]), [iquote('binary,90.1,2.1')]).

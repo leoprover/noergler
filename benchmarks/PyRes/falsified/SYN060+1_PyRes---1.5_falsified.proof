@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c4':
-%%%%%   Replaced ~ (big_i(skolem0001))
-%%%%%   With big_i(skolem0001)
+%%%%% Mutated formula 'c21':
+%%%%%   Replaced ~ (big_f(skolem0001))
+%%%%%   With big_f(skolem0001)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN060+1 : TPTP v8.1.2. Released v2.0.0.
@@ -41,7 +41,7 @@ fof(c0, negated_conjecture, ~ ((! [X]: (big_i(X)))), inference(assume_negation,[
 fof(c1, negated_conjecture, (? [X]: (~ (big_i(X)))), inference(fof_nnf,[status(thm)],[c0])).
 fof(c2, negated_conjecture, (? [X2]: (~ (big_i(X2)))), inference(variable_rename,[status(thm)],[c1])).
 fof(c3, negated_conjecture, ~ (big_i(skolem0001)), inference(skolemize,[status(esa)],[c2])).
-fof(c4, negated_conjecture, big_i(skolem0001), inference(split_conjunct,[status(thm)],[c3])).
+fof(c4, negated_conjecture, ~ (big_i(skolem0001)), inference(split_conjunct,[status(thm)],[c3])).
 fof(pel30_2, axiom, (! [X]: (((big_g(X) => ~ (big_i(X))) => (big_f(X) & big_h(X))))), file('SYN060+1.p',pel30_2)).
 fof(c5, plain, (! [X]: (((big_g(X) => ~ (big_i(X))) => (big_f(X) & big_h(X))))), inference(fof_simplification,[status(thm)],[pel30_2])).
 fof(c6, plain, (! [X]: (((big_g(X) & big_i(X)) | (big_f(X) & big_h(X))))), inference(fof_nnf,[status(thm)],[c5])).
@@ -57,5 +57,5 @@ fof(c14, plain, (! [X]: (((~ (big_f(X)) & ~ (big_g(X))) | ~ (big_h(X))))), infer
 fof(c15, plain, (! [X4]: (((~ (big_f(X4)) & ~ (big_g(X4))) | ~ (big_h(X4))))), inference(variable_rename,[status(thm)],[c14])).
 fof(c16, plain, (! [X4]: (((~ (big_f(X4)) | ~ (big_h(X4))) & (~ (big_g(X4)) | ~ (big_h(X4)))))), inference(distribute,[status(thm)],[c15])).
 fof(c17, plain, (! [X9]: ((~ (big_f(X9)) | ~ (big_h(X9))))), inference(split_conjunct,[status(thm)],[c16])).
-fof(c21, plain, ~ (big_f(skolem0001)), inference(resolution,[status(thm)],[c17,c20])).
+fof(c21, plain, big_f(skolem0001), inference(resolution,[status(thm)],[c17,c20])).
 fof(c25, plain, $false, inference(resolution,[status(thm)],[c21,c19])).

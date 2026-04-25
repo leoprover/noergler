@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '76':
-%%%%%   Replaced (greater(end_time(dollar_f1(dollar_c1)),dollar_f2(dollar_c1,dollar_f1(dollar_c1))) | (end_time(dollar_f1(dollar_c1)) = dollar_f2(dollar_c1,dollar_f1(dollar_c1))))
-%%%%%   With (greater(end_time(dollar_f1(dollar_c1)),dollar_f2(dollar_c1,dollar_f1(dollar_c1))) & (end_time(dollar_f1(dollar_c1)) = dollar_f2(dollar_c1,dollar_f1(dollar_c1))))
+%%%%% Mutated formula '5':
+%%%%%   Replaced (! [A,B]: ((~ (observational_period(A)) | (~ (slow_change(A)) | (~ (environment(B)) | (~ (in_environment(A,B)) | greater(dollar_f2(A,B),critical_point(B))))))))
+%%%%%   With (! [A,B]: ((observational_period(A) | (~ (slow_change(A)) | (~ (environment(B)) | (~ (in_environment(A,B)) | greater(dollar_f2(A,B),critical_point(B))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT039+1 : TPTP v8.1.0. Released v2.0.0.
@@ -37,7 +37,7 @@ fof(1, axiom, (! [A]: ((~ (observational_period(A)) | (~ (propagation_strategy(f
 fof(2, axiom, (! [A]: ((~ (observational_period(A)) | (~ (propagation_strategy(first_movers)) | (~ (propagation_strategy(efficient_producers)) | (in_environment(A,dollar_f1(A)) | selection_favors(efficient_producers,first_movers,A))))))), file('MGT039+1.p',unknown), []).
 fof(3, axiom, (! [A]: ((~ (observational_period(A)) | (~ (propagation_strategy(first_movers)) | (~ (propagation_strategy(efficient_producers)) | (~ (selection_favors(efficient_producers,first_movers,end_time(dollar_f1(A)))) | selection_favors(efficient_producers,first_movers,A))))))), file('MGT039+1.p',unknown), []).
 fof(4, axiom, (! [A,B]: ((~ (observational_period(A)) | (~ (slow_change(A)) | (~ (environment(B)) | (~ (in_environment(A,B)) | in_environment(B,dollar_f2(A,B)))))))), file('MGT039+1.p',unknown), []).
-fof(5, axiom, (! [A,B]: ((~ (observational_period(A)) | (~ (slow_change(A)) | (~ (environment(B)) | (~ (in_environment(A,B)) | greater(dollar_f2(A,B),critical_point(B)))))))), file('MGT039+1.p',unknown), []).
+fof(5, axiom, (! [A,B]: ((observational_period(A) | (~ (slow_change(A)) | (~ (environment(B)) | (~ (in_environment(A,B)) | greater(dollar_f2(A,B),critical_point(B)))))))), file('MGT039+1.p',unknown), []).
 fof(6, axiom, (! [A,B]: ((~ (environment(A)) | (~ (greater_or_e_qual(B,start_time(A))) | (~ (greater_or_e_qual(end_time(A),B)) | in_environment(A,B)))))), file('MGT039+1.p',unknown), []).
 fof(7, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | greater_or_e_qual(end_time(A),B))))), file('MGT039+1.p',unknown), []).
 fof(8, axiom, (! [A]: ((~ (environment(A)) | greater_or_e_qual(critical_point(A),start_time(A))))), file('MGT039+1.p',unknown), []).
@@ -61,7 +61,7 @@ fof(32, plain, in_environment(dollar_f1(dollar_c1),dollar_f2(dollar_c1,dollar_f1
 fof(36, plain, (greater(critical_point(dollar_f1(dollar_c1)),start_time(dollar_f1(dollar_c1))) | (start_time(dollar_f1(dollar_c1)) = critical_point(dollar_f1(dollar_c1)))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[28,10])]), [iquote('hyper,28,10,flip.2')]).
 fof(43, plain, greater_or_e_qual(end_time(dollar_f1(dollar_c1)),dollar_f2(dollar_c1,dollar_f1(dollar_c1))), inference(hyper,[status(thm)],[32,7,25]), [iquote('hyper,32,7,25')]).
 fof(58, plain, selection_favors(efficient_producers,first_movers,dollar_f2(dollar_c1,dollar_f1(dollar_c1))), inference(hyper,[status(thm)],[31,14,25,32]), [iquote('hyper,31,14,25,32')]).
-fof(76, plain, (greater(end_time(dollar_f1(dollar_c1)),dollar_f2(dollar_c1,dollar_f1(dollar_c1))) & (end_time(dollar_f1(dollar_c1)) = dollar_f2(dollar_c1,dollar_f1(dollar_c1)))), inference(hyper,[status(thm)],[43,10]), [iquote('hyper,43,10')]).
+fof(76, plain, (greater(end_time(dollar_f1(dollar_c1)),dollar_f2(dollar_c1,dollar_f1(dollar_c1))) | (end_time(dollar_f1(dollar_c1)) = dollar_f2(dollar_c1,dollar_f1(dollar_c1)))), inference(hyper,[status(thm)],[43,10]), [iquote('hyper,43,10')]).
 fof(119, plain, ((start_time(dollar_f1(dollar_c1)) = critical_point(dollar_f1(dollar_c1))) | greater(dollar_f2(dollar_c1,dollar_f1(dollar_c1)),start_time(dollar_f1(dollar_c1)))), inference(hyper,[status(thm)],[36,9,31]), [iquote('hyper,36,9,31')]).
 fof(640, plain, greater(end_time(dollar_f1(dollar_c1)),dollar_f2(dollar_c1,dollar_f1(dollar_c1))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[76,3]),19,17,18,58,15]), [iquote('para_from,76.2.1,3.4.3,unit_del,19,17,18,58,15')]).
 fof(641, plain, (greater(end_time(dollar_f1(dollar_c1)),start_time(dollar_f1(dollar_c1))) | (start_time(dollar_f1(dollar_c1)) = critical_point(dollar_f1(dollar_c1)))), inference(hyper,[status(thm)],[640,9,119]), [iquote('hyper,640,9,119')]).

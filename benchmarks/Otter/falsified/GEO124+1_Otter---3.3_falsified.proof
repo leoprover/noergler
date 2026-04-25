@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1534':
-%%%%%   Replaced between_c(dollar_f18(dollar_c1,dollar_c2,dollar_c1,dollar_c3),dollar_c1,dollar_c2,dollar_c1)
-%%%%%   With between_c(dollar_f18(dollar_c3,dollar_c2,dollar_c1,dollar_c3),dollar_c1,dollar_c2,dollar_c1)
+%%%%% Mutated formula '54':
+%%%%%   Replaced (! [A,B]: ((~ (start_point(A,B)) | incident_o(A,B))))
+%%%%%   With (! [A,B]: ((start_point(A,B) | incident_o(A,B))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO124+1 : TPTP v8.1.0. Released v2.4.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:11:27 CEST 2026 using command 'transform(fof)'.
 fof(42, axiom, (! [A,B,C,D]: ((~ (between_c(A,B,C,D)) | (B != D)))), file('GEO124+1.p',unknown), []).
 fof(53, axiom, (! [A,B,C,D]: ((between_o(A,B,C,D) | (~ (ordered_by(A,D,C)) | ~ (ordered_by(A,C,B)))))), file('GEO124+1.p',unknown), []).
-fof(54, axiom, (! [A,B]: ((~ (start_point(A,B)) | incident_o(A,B)))), file('GEO124+1.p',unknown), []).
+fof(54, axiom, (! [A,B]: ((start_point(A,B) | incident_o(A,B)))), file('GEO124+1.p',unknown), []).
 fof(55, axiom, (! [A,B,C]: ((~ (start_point(A,B)) | ((A = C) | (~ (incident_o(C,B)) | ordered_by(B,A,C)))))), file('GEO124+1.p',unknown), []).
 fof(72, axiom, (! [A,B,C,D]: ((~ (between_o(A,B,C,D)) | between_c(dollar_f18(B,C,D,A),B,C,D)))), file('GEO124+1.p',unknown), []).
 fof(82, axiom, (dollar_c2 != dollar_c1), file('GEO124+1.p',unknown), []).
@@ -47,5 +47,5 @@ fof(179, plain, incident_o(dollar_c1,dollar_c3), inference(hyper,[status(thm)],[
 fof(221, plain, ordered_by(dollar_c3,dollar_c1,dollar_c2), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[140,55,116]),82]), [iquote('hyper,140,55,116,unit_del,82')]).
 fof(283, plain, ordered_by(dollar_c3,dollar_c2,dollar_c1), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[179,55,115]),82]), [iquote('hyper,179,55,115,unit_del,82')]).
 fof(1506, plain, between_o(dollar_c3,dollar_c1,dollar_c2,dollar_c1), inference(hyper,[status(thm)],[283,53,221]), [iquote('hyper,283,53,221')]).
-fof(1534, plain, between_c(dollar_f18(dollar_c3,dollar_c2,dollar_c1,dollar_c3),dollar_c1,dollar_c2,dollar_c1), inference(hyper,[status(thm)],[1506,72]), [iquote('hyper,1506,72')]).
+fof(1534, plain, between_c(dollar_f18(dollar_c1,dollar_c2,dollar_c1,dollar_c3),dollar_c1,dollar_c2,dollar_c1), inference(hyper,[status(thm)],[1506,72]), [iquote('hyper,1506,72')]).
 fof(1691, plain, $false, inference(hyper,[status(thm)],[1534,42,105]), [iquote('hyper,1534,42,105')]).

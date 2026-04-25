@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '84':
-%%%%%   Replaced empty(dollar_c12)
-%%%%%   With empty(dollar_c11)
+%%%%% Mutated formula '45':
+%%%%%   Replaced subset(dollar_c11,dollar_c12)
+%%%%%   With ~ (subset(dollar_c11,dollar_c12))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM383+1 : TPTP v8.1.0. Released v3.2.0.
@@ -40,8 +40,8 @@ fof(11, axiom, (! [A,B,C]: ((~ (in(A,B)) | (~ (element(B,powerset(C))) | element
 fof(12, axiom, (! [A,B,C]: ((~ (in(A,B)) | (~ (element(B,powerset(C))) | ~ (empty(C)))))), file('NUM383+1.p',unknown), []).
 fof(16, plain, (! [A]: (~ (in(A,A)))), inference(factor,[status(thm)],[1]), [iquote('factor,1.1.2')]).
 fof(44, axiom, in(dollar_c12,dollar_c11), file('NUM383+1.p',unknown), []).
-fof(45, axiom, subset(dollar_c11,dollar_c12), file('NUM383+1.p',unknown), []).
+fof(45, axiom, ~ (subset(dollar_c11,dollar_c12)), file('NUM383+1.p',unknown), []).
 fof(70, plain, element(dollar_c11,powerset(dollar_c12)), inference(hyper,[status(thm)],[45,10]), [iquote('hyper,45,10')]).
 fof(79, plain, element(dollar_c12,dollar_c12), inference(hyper,[status(thm)],[70,11,44]), [iquote('hyper,70,11,44')]).
-fof(84, plain, empty(dollar_c11), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[79,8]),16]), [iquote('hyper,79,8,unit_del,16')]).
+fof(84, plain, empty(dollar_c12), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[79,8]),16]), [iquote('hyper,79,8,unit_del,16')]).
 fof(105, plain, $false, inference(hyper,[status(thm)],[84,12,44,70]), [iquote('hyper,84,12,44,70')]).

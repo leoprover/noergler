@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c20':
-%%%%%   Replaced (in(skolem0001,skolem0002) & ~ (subset(skolem0001,union(skolem0002))))
-%%%%%   With (in(skolem0002,skolem0002) & ~ (subset(skolem0001,union(skolem0002))))
+%%%%% Mutated formula 'l50_zfmisc_1':
+%%%%%   Replaced (! [A,B]: ((in(A,B) => subset(A,union(B)))))
+%%%%%   With (! [A,B]: ((~ (in(A,B)) => subset(A,union(B)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SEU163+2 : TPTP v8.1.2. Released v3.3.0.
@@ -40,10 +40,10 @@ fof(t92_zfmisc_1, conjecture, (! [A,B]: ((in(A,B) => subset(A,union(B))))), file
 fof(c17, negated_conjecture, ~ ((! [A,B]: ((in(A,B) => subset(A,union(B)))))), inference(assume_negation,[status(cth)],[t92_zfmisc_1])).
 fof(c18, negated_conjecture, (? [A,B]: ((in(A,B) & ~ (subset(A,union(B)))))), inference(fof_nnf,[status(thm)],[c17])).
 fof(c19, negated_conjecture, (? [X5,X6]: ((in(X5,X6) & ~ (subset(X5,union(X6)))))), inference(variable_rename,[status(thm)],[c18])).
-fof(c20, negated_conjecture, (in(skolem0002,skolem0002) & ~ (subset(skolem0001,union(skolem0002)))), inference(skolemize,[status(esa)],[c19])).
+fof(c20, negated_conjecture, (in(skolem0001,skolem0002) & ~ (subset(skolem0001,union(skolem0002)))), inference(skolemize,[status(esa)],[c19])).
 fof(c22, negated_conjecture, ~ (subset(skolem0001,union(skolem0002))), inference(split_conjunct,[status(thm)],[c20])).
 fof(c21, negated_conjecture, in(skolem0001,skolem0002), inference(split_conjunct,[status(thm)],[c20])).
-fof(l50_zfmisc_1, plain, (! [A,B]: ((in(A,B) => subset(A,union(B))))), file('SEU163+2.p',l50_zfmisc_1)).
+fof(l50_zfmisc_1, plain, (! [A,B]: ((~ (in(A,B)) => subset(A,union(B))))), file('SEU163+2.p',l50_zfmisc_1)).
 fof(c199, plain, (! [A,B]: ((~ (in(A,B)) | subset(A,union(B))))), inference(fof_nnf,[status(thm)],[l50_zfmisc_1])).
 fof(c200, plain, (! [X126,X127]: ((~ (in(X126,X127)) | subset(X126,union(X127))))), inference(variable_rename,[status(thm)],[c199])).
 fof(c201, plain, (! [X782,X781]: ((~ (in(X782,X781)) | subset(X782,union(X781))))), inference(split_conjunct,[status(thm)],[c200])).

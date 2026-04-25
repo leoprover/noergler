@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '252':
-%%%%%   Replaced sdte_qdtlpzmzozddtrp0(xc,xb,xq)
-%%%%%   With ~ (sdte_qdtlpzmzozddtrp0(xc,xb,xq))
+%%%%% Mutated formula '121':
+%%%%%   Replaced ~ (aElementOf0(xb,szAzrzSzezqlpdtcmdtrp0(xa,xq)))
+%%%%%   With ~ (aElementOf0(xc,szAzrzSzezqlpdtcmdtrp0(xa,xq)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM443+4 : TPTP v8.1.0. Released v4.0.0.
@@ -38,12 +38,12 @@ fof(38, axiom, (! [A,B,C,D]: ((~ (aInteger0(A)) | (~ (aInteger0(B)) | (~ (aInteg
 fof(112, axiom, (xq != sz00), file('NUM443+4.p',unknown), []).
 fof(117, axiom, (! [A]: ((~ (aElementOf0(A,szAzrzSzezqlpdtcmdtrp0(xa,xq))) | sdte_qdtlpzmzozddtrp0(A,xa,xq)))), file('NUM443+4.p',unknown), []).
 fof(120, axiom, (! [A]: ((~ (aInteger0(A)) | (~ (sdte_qdtlpzmzozddtrp0(A,xa,xq)) | aElementOf0(A,szAzrzSzezqlpdtcmdtrp0(xa,xq)))))), file('NUM443+4.p',unknown), []).
-fof(121, axiom, ~ (aElementOf0(xb,szAzrzSzezqlpdtcmdtrp0(xa,xq))), file('NUM443+4.p',unknown), []).
+fof(121, axiom, ~ (aElementOf0(xc,szAzrzSzezqlpdtcmdtrp0(xa,xq))), file('NUM443+4.p',unknown), []).
 fof(240, axiom, aInteger0(xa), file('NUM443+4.p',unknown), []).
 fof(241, axiom, aInteger0(xq), file('NUM443+4.p',unknown), []).
 fof(242, axiom, aInteger0(xb), file('NUM443+4.p',unknown), []).
 fof(243, axiom, aInteger0(xc), file('NUM443+4.p',unknown), []).
-fof(252, axiom, ~ (sdte_qdtlpzmzozddtrp0(xc,xb,xq)), file('NUM443+4.p',unknown), []).
+fof(252, axiom, sdte_qdtlpzmzozddtrp0(xc,xb,xq), file('NUM443+4.p',unknown), []).
 fof(253, axiom, aElementOf0(xc,szAzrzSzezqlpdtcmdtrp0(xa,xq)), file('NUM443+4.p',unknown), []).
 fof(3186, plain, sdte_qdtlpzmzozddtrp0(xb,xc,xq), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[252,37,243,242,241]),112]), [iquote('hyper,252,37,243,242,241,unit_del,112')]).
 fof(3198, plain, sdte_qdtlpzmzozddtrp0(xc,xa,xq), inference(hyper,[status(thm)],[253,117]), [iquote('hyper,253,117')]).

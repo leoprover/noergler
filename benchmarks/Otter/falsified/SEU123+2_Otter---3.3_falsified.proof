@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '99':
-%%%%%   Replaced (dollar_c3 = dollar_c1)
-%%%%%   With (empty_set = dollar_c1)
+%%%%% Mutated formula '39':
+%%%%%   Replaced empty(empty_set)
+%%%%%   With ~ (empty(empty_set))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU123+2 : TPTP v8.1.0. Released v3.3.0.
@@ -37,7 +37,7 @@ fof(4, axiom, (! [A,B]: (((A = B) | (~ (subset(A,B)) | ~ (subset(B,A)))))), file
 fof(18, axiom, (dollar_c3 != empty_set), file('SEU123+2.p',unknown), []).
 fof(19, plain, (empty_set != dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[18])]), [iquote('copy,18,flip.1')]).
 fof(23, axiom, (! [A,B]: ((~ (empty(A)) | ((A = B) | ~ (empty(B)))))), file('SEU123+2.p',unknown), []).
-fof(39, axiom, empty(empty_set), file('SEU123+2.p',unknown), []).
+fof(39, axiom, ~ (empty(empty_set)), file('SEU123+2.p',unknown), []).
 fof(42, axiom, empty(dollar_c1), file('SEU123+2.p',unknown), []).
 fof(44, axiom, (! [A]: (subset(empty_set,A))), file('SEU123+2.p',unknown), []).
 fof(47, axiom, subset(dollar_c3,empty_set), file('SEU123+2.p',unknown), []).
@@ -45,5 +45,5 @@ fof(59, plain, (empty_set = dollar_c1), inference(hyper,[status(thm)],[42,23,39]
 fof(65, plain, subset(dollar_c3,dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[47]),59]), [iquote('back_demod,47,demod,59')]).
 fof(66, plain, (! [A]: (subset(dollar_c1,A))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[44]),59]), [iquote('back_demod,44,demod,59')]).
 fof(69, plain, (dollar_c3 != dollar_c1), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[19]),59])]), [iquote('back_demod,19,demod,59,flip.1')]).
-fof(99, plain, (empty_set = dollar_c1), inference(hyper,[status(thm)],[66,4,65]), [iquote('hyper,66,4,65')]).
+fof(99, plain, (dollar_c3 = dollar_c1), inference(hyper,[status(thm)],[66,4,65]), [iquote('hyper,66,4,65')]).
 fof(101, plain, $false, inference(binary,[status(thm)],[99,69]), [iquote('binary,99.1,69.1')]).

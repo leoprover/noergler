@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '222':
-%%%%%   Replaced (xI = sdtpldt1(slsdtgt0(xa),slsdtgt0(xb)))
-%%%%%   With ~ ((xI = sdtpldt1(slsdtgt0(xa),slsdtgt0(xb))))
+%%%%% Mutated formula '940':
+%%%%%   Replaced aSet0(slsdtgt0(xb))
+%%%%%   With aSet0(slsdtgt0(sz00))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : RNG121+1 : TPTP v8.1.0. Released v4.0.0.
@@ -41,12 +41,12 @@ fof(103, axiom, ~ (aElementOf0(xb,xI)), file('RNG121+1.p',unknown), []).
 fof(215, axiom, (! [A]: ((A = A))), file('RNG121+1.p',unknown), []).
 fof(218, axiom, aElement0(xa), file('RNG121+1.p',unknown), []).
 fof(219, axiom, aElement0(xb), file('RNG121+1.p',unknown), []).
-fof(222, axiom, ~ ((xI = sdtpldt1(slsdtgt0(xa),slsdtgt0(xb)))), file('RNG121+1.p',unknown), []).
+fof(222, axiom, (xI = sdtpldt1(slsdtgt0(xa),slsdtgt0(xb))), file('RNG121+1.p',unknown), []).
 fof(224, plain, (sdtpldt1(slsdtgt0(xa),slsdtgt0(xb)) = xI), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[222])]), [iquote('copy,222,flip.1')]).
 fof(225, axiom, aElementOf0(sz00,slsdtgt0(xa)), file('RNG121+1.p',unknown), []).
 fof(228, axiom, aElementOf0(xb,slsdtgt0(xb)), file('RNG121+1.p',unknown), []).
 fof(574, plain, aSet0(slsdtgt0(xa)), inference(hyper,[status(thm)],[218,87,215]), [iquote('hyper,218,87,215')]).
-fof(940, plain, aSet0(slsdtgt0(xb)), inference(hyper,[status(thm)],[219,87,215]), [iquote('hyper,219,87,215')]).
+fof(940, plain, aSet0(slsdtgt0(sz00)), inference(hyper,[status(thm)],[219,87,215]), [iquote('hyper,219,87,215')]).
 fof(1090, plain, (sdtpldt0(sz00,xb) = xb), inference(hyper,[status(thm)],[219,8]), [iquote('hyper,219,8')]).
 fof(1766, plain, aElementOf0(xb,xI), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[940,37,574,215,225,228,215]),1090,224]), [iquote('hyper,940,37,574,215,225,228,215,demod,1090,224')]).
 fof(1767, plain, $false, inference(binary,[status(thm)],[1766,103]), [iquote('binary,1766.1,103.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '1666':
 %%%%%   Replaced le_q(n0,pv31)
-%%%%%   With le_q(n5,pv31)
+%%%%%   With le_q(pv31,pv31)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV078+1 : TPTP v8.1.0. Bugfixed v3.3.0.
@@ -35,6 +35,6 @@
 %%% Generated on Tue Apr 14 19:22:18 CEST 2026 using command 'transform(fof)'.
 fof(244, axiom, (~ (le_q(n0,pv31)) | (~ (le_q(pv31,minus(n5,n1))) | ~ (true))), file('SWV078+1.p',unknown), []).
 fof(1665, axiom, true, file('SWV078+1.p',unknown), []).
-fof(1666, axiom, le_q(n5,pv31), file('SWV078+1.p',unknown), []).
+fof(1666, axiom, le_q(pv31,pv31), file('SWV078+1.p',unknown), []).
 fof(1667, axiom, le_q(pv31,minus(n5,n1)), file('SWV078+1.p',unknown), []).
 fof(1791, plain, $false, inference(hyper,[status(thm)],[1667,244,1666,1665]), [iquote('hyper,1667,244,1666,1665')]).

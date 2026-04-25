@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1272':
-%%%%%   Replaced ((dollar_c2 != dollar_c2) | (join(dollar_c1,dollar_c3) != dollar_c1))
-%%%%%   With ((dollar_c2 != dollar_c2) & (join(dollar_c1,dollar_c3) != dollar_c1))
+%%%%% Mutated formula '754':
+%%%%%   Replaced (! [A]: ((join(A,A) = A)))
+%%%%%   With (! [A]: (~ ((join(A,A) = A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : REL046+1 : TPTP v8.1.0. Released v4.0.0.
@@ -85,7 +85,7 @@ fof(663, plain, (! [A]: ((meet(A,A) = A))), inference(flip,[status(thm),theory(e
 fof(693, plain, (! [A,B]: ((complement(meet(A,B)) = join(complement(A),complement(B))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[315]),663]), [iquote('back_demod,315,demod,663')]).
 fof(697, plain, (! [A]: ((complement(complement(A)) = A))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[260]),663]), [iquote('back_demod,259,demod,663')]).
 fof(716, plain, (! [A,B]: ((complement(join(complement(A),B)) = meet(A,complement(B))))), inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[663,47]),200]), [iquote('para_from,662.1.1,47.1.1.1.2,demod,200')]).
-fof(754, plain, (! [A]: ((join(A,A) = A))), inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[697,200]),697,697]), [iquote('para_from,696.1.1,199.1.1.2,demod,697,697')]).
+fof(754, plain, (! [A]: (~ ((join(A,A) = A)))), inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[697,200]),697,697]), [iquote('para_from,696.1.1,199.1.1.2,demod,697,697')]).
 fof(804, plain, (! [A,B]: ((join(A,join(B,A)) = join(B,A)))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[69,754])]), [iquote('para_into,69.1.1.2,754.1.1,flip.1')]).
 fof(970, plain, (join(meet(dollar_c1,dollar_c2),dollar_c3) = meet(dollar_c1,dollar_c2)), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[94,52])]), [iquote('para_into,94.1.1,52.1.1,flip.1')]).
 fof(1082, plain, (join(meet(dollar_c2,dollar_c1),dollar_c3) = meet(dollar_c1,dollar_c2)), inference(para_into,[status(thm),theory(equality)],[970,52]), [iquote('para_into,970.1.1.1,52.1.1')]).
@@ -100,7 +100,7 @@ fof(1236, plain, (! [A]: ((meet(dollar_c3,join(A,meet(dollar_c1,dollar_c2))) = d
 fof(1254, plain, (meet(dollar_c3,dollar_c2) = dollar_c3), inference(para_into,[status(thm),theory(equality)],[1236,1102]), [iquote('para_into,1236.1.1.2,1102.1.1')]).
 fof(1256, plain, (meet(dollar_c3,dollar_c1) = dollar_c3), inference(para_into,[status(thm),theory(equality)],[1236,1098]), [iquote('para_into,1236.1.1.2,1098.1.1')]).
 fof(1265, plain, (join(dollar_c2,dollar_c3) = dollar_c2), inference(para_from,[status(thm),theory(equality)],[1254,1102]), [iquote('para_from,1254.1.1,1102.1.1.2')]).
-fof(1272, plain, ((dollar_c2 != dollar_c2) & (join(dollar_c1,dollar_c3) != dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[343]),1265]), [iquote('back_demod,343,demod,1265')]).
+fof(1272, plain, ((dollar_c2 != dollar_c2) | (join(dollar_c1,dollar_c3) != dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[343]),1265]), [iquote('back_demod,343,demod,1265')]).
 fof(1279, plain, (join(dollar_c1,dollar_c3) = dollar_c1), inference(para_from,[status(thm),theory(equality)],[1256,1102]), [iquote('para_from,1256.1.1,1102.1.1.2')]).
 fof(1286, plain, ((dollar_c2 != dollar_c2) | (dollar_c1 != dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1272]),1279]), [iquote('back_demod,1272,demod,1279')]).
 fof(1323, plain, $false, inference(hyper,[status(thm)],[1286,2,2]), [iquote('hyper,1286,2,2')]).

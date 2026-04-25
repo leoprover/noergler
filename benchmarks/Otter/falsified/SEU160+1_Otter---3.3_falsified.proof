@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '7':
-%%%%%   Replaced (! [A,B]: ((subset(A,singleton(B)) | (A != empty_set))))
-%%%%%   With (! [A,B]: ((subset(A,singleton(B)) | (A != dollar_c3))))
+%%%%% Mutated formula '5':
+%%%%%   Replaced (~ (subset(dollar_c4,singleton(dollar_c3))) | (singleton(dollar_c3) != dollar_c4))
+%%%%%   With (~ (subset(dollar_c4,singleton(dollar_c3))) & (singleton(dollar_c3) != dollar_c4))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU160+1 : TPTP v8.1.0. Released v3.3.0.
@@ -36,9 +36,9 @@
 fof(2, axiom, (~ (subset(dollar_c4,singleton(dollar_c3))) | (dollar_c4 != empty_set)), file('SEU160+1.p',unknown), []).
 fof(3, plain, (~ (subset(dollar_c4,singleton(dollar_c3))) | (empty_set != dollar_c4)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[2])]), [iquote('copy,2,flip.2')]).
 fof(4, axiom, (~ (subset(dollar_c4,singleton(dollar_c3))) | (dollar_c4 != singleton(dollar_c3))), file('SEU160+1.p',unknown), []).
-fof(5, plain, (~ (subset(dollar_c4,singleton(dollar_c3))) | (singleton(dollar_c3) != dollar_c4)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[4])]), [iquote('copy,4,flip.2')]).
+fof(5, plain, (~ (subset(dollar_c4,singleton(dollar_c3))) & (singleton(dollar_c3) != dollar_c4)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[4])]), [iquote('copy,4,flip.2')]).
 fof(6, axiom, (! [A,B]: ((~ (subset(A,singleton(B))) | ((A = empty_set) | (A = singleton(B)))))), file('SEU160+1.p',unknown), []).
-fof(7, axiom, (! [A,B]: ((subset(A,singleton(B)) | (A != dollar_c3)))), file('SEU160+1.p',unknown), []).
+fof(7, axiom, (! [A,B]: ((subset(A,singleton(B)) | (A != empty_set)))), file('SEU160+1.p',unknown), []).
 fof(9, axiom, (! [A]: ((A = A))), file('SEU160+1.p',unknown), []).
 fof(11, axiom, (! [A]: (subset(A,A))), file('SEU160+1.p',unknown), []).
 fof(13, axiom, (subset(dollar_c4,singleton(dollar_c3)) | ((dollar_c4 = empty_set) | (dollar_c4 = singleton(dollar_c3)))), file('SEU160+1.p',unknown), []).

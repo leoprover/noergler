@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '8':
-%%%%%   Replaced (butler != agatha)
-%%%%%   With (dollar_c1 != agatha)
+%%%%% Mutated formula '19':
+%%%%%   Replaced hates(dollar_c1,agatha)
+%%%%%   With ~ (hates(dollar_c1,agatha))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PUZ001+1 : TPTP v8.1.0. Released v2.0.0.
@@ -40,13 +40,13 @@ fof(4, axiom, (! [A]: ((~ (hates(agatha,A)) | ~ (hates(charles,A))))), file('PUZ
 fof(5, axiom, (! [A]: ((~ (hates(agatha,A)) | hates(butler,A)))), file('PUZ001+1.p',unknown), []).
 fof(6, axiom, (! [A]: (~ (hates(A,dollar_f1(A))))), file('PUZ001+1.p',unknown), []).
 fof(7, axiom, (agatha != butler), file('PUZ001+1.p',unknown), []).
-fof(8, plain, (dollar_c1 != agatha), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[7])]), [iquote('copy,7,flip.1')]).
+fof(8, plain, (butler != agatha), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[7])]), [iquote('copy,7,flip.1')]).
 fof(9, axiom, ~ (killed(agatha,agatha)), file('PUZ001+1.p',unknown), []).
 fof(11, axiom, lives(dollar_c1), file('PUZ001+1.p',unknown), []).
 fof(12, axiom, killed(dollar_c1,agatha), file('PUZ001+1.p',unknown), []).
 fof(16, axiom, (! [A]: (((A = butler) | hates(agatha,A)))), file('PUZ001+1.p',unknown), []).
 fof(17, axiom, (! [A]: ((richer(A,agatha) | hates(butler,A)))), file('PUZ001+1.p',unknown), []).
-fof(19, plain, hates(dollar_c1,agatha), inference(hyper,[status(thm)],[12,2]), [iquote('hyper,12,2')]).
+fof(19, plain, ~ (hates(dollar_c1,agatha)), inference(hyper,[status(thm)],[12,2]), [iquote('hyper,12,2')]).
 fof(22, plain, ((butler = dollar_c1) | (charles = dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[12,1]),9,11])])]), [iquote('para_into,12.1.1,1.2.1,unit_del,9,11,flip.1,flip.2')]).
 fof(27, plain, (! [A]: (((A = butler) | hates(butler,A)))), inference(hyper,[status(thm)],[16,5]), [iquote('hyper,16,5')]).
 fof(40, plain, hates(butler,dollar_c1), inference(hyper,[status(thm)],[17,3,12]), [iquote('hyper,17,3,12')]).

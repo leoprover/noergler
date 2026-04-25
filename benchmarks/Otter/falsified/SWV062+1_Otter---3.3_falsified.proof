@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1666':
-%%%%%   Replaced le_q(pv41,minus(n5,n1))
-%%%%%   With le_q(pv43,minus(n5,n1))
+%%%%% Mutated formula '1665':
+%%%%%   Replaced le_q(pv10,minus(n135300,n1))
+%%%%%   With ~ (le_q(pv10,minus(n135300,n1)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV062+1 : TPTP v8.1.0. Bugfixed v3.3.0.
@@ -37,7 +37,7 @@ fof(240, axiom, (~ (le_q(n0,pv10)) | (~ (le_q(n0,pv41)) | (~ (le_q(n0,pv43)) | (
 fof(1662, axiom, le_q(n0,pv10), file('SWV062+1.p',unknown), []).
 fof(1663, axiom, le_q(n0,pv41), file('SWV062+1.p',unknown), []).
 fof(1664, axiom, le_q(n0,pv43), file('SWV062+1.p',unknown), []).
-fof(1665, axiom, le_q(pv10,minus(n135300,n1)), file('SWV062+1.p',unknown), []).
-fof(1666, axiom, le_q(pv43,minus(n5,n1)), file('SWV062+1.p',unknown), []).
+fof(1665, axiom, ~ (le_q(pv10,minus(n135300,n1))), file('SWV062+1.p',unknown), []).
+fof(1666, axiom, le_q(pv41,minus(n5,n1)), file('SWV062+1.p',unknown), []).
 fof(1667, axiom, le_q(pv43,minus(n5,n1)), file('SWV062+1.p',unknown), []).
 fof(1815, plain, $false, inference(hyper,[status(thm)],[1667,240,1662,1663,1664,1665,1666]), [iquote('hyper,1667,240,1662,1663,1664,1665,1666')]).

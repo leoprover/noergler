@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '25':
-%%%%%   Replaced (! [A]: ((convergent_lines(dollar_c3,A) | convergent_lines(dollar_c1,A))))
-%%%%%   With (! [A]: ((convergent_lines(dollar_c2,A) | convergent_lines(dollar_c1,A))))
+%%%%% Mutated formula '110':
+%%%%%   Replaced (! [A,B]: ((convergent_lines(A,dollar_c3) | (convergent_lines(dollar_c2,B) | convergent_lines(A,B)))))
+%%%%%   With (! [A,B]: ((convergent_lines(A,dollar_c3) & (convergent_lines(dollar_c2,B) | convergent_lines(A,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO194+2 : TPTP v8.1.0. Released v3.3.0.
@@ -45,7 +45,7 @@ fof(16, axiom, convergent_lines(dollar_c3,dollar_c2), file('GEO194+2.p',unknown)
 fof(18, axiom, convergent_lines(dollar_c3,dollar_c1), file('GEO194+2.p',unknown), []).
 fof(19, axiom, apart_point_and_line(intersection_point(dollar_c3,dollar_c2),dollar_c1), file('GEO194+2.p',unknown), []).
 fof(21, plain, (! [A]: ((convergent_lines(dollar_c3,A) | convergent_lines(dollar_c2,A)))), inference(hyper,[status(thm)],[16,6]), [iquote('hyper,16,6')]).
-fof(25, plain, (! [A]: ((convergent_lines(dollar_c2,A) | convergent_lines(dollar_c1,A)))), inference(hyper,[status(thm)],[18,6]), [iquote('hyper,18,6')]).
+fof(25, plain, (! [A]: ((convergent_lines(dollar_c3,A) | convergent_lines(dollar_c1,A)))), inference(hyper,[status(thm)],[18,6]), [iquote('hyper,18,6')]).
 fof(30, plain, distinct_points(intersection_point(dollar_c3,dollar_c2),intersection_point(dollar_c3,dollar_c1)), inference(hyper,[status(thm)],[19,10,18]), [iquote('hyper,19,10,18')]).
 fof(34, plain, (! [A,B]: ((convergent_lines(dollar_c2,A) | (convergent_lines(dollar_c3,B) | convergent_lines(A,B))))), inference(hyper,[status(thm)],[21,6]), [iquote('hyper,21,6')]).
 fof(35, plain, convergent_lines(dollar_c2,dollar_c3), inference(hyper,[status(thm)],[21,3]), [iquote('hyper,21,3')]).
@@ -55,7 +55,7 @@ fof(79, plain, (apart_point_and_line(intersection_point(dollar_c3,dollar_c2),dol
 fof(105, plain, (! [A]: ((convergent_lines(dollar_c2,A) | convergent_lines(A,dollar_c3)))), inference(hyper,[status(thm)],[34,3]), [iquote('hyper,34,3')]).
 fof(107, plain, (! [A,B,C]: ((convergent_lines(dollar_c2,A) | (convergent_lines(dollar_c3,B) | (convergent_lines(A,C) | convergent_lines(B,C)))))), inference(hyper,[status(thm)],[34,6]), [iquote('hyper,34,6')]).
 fof(108, plain, (! [A]: ((convergent_lines(dollar_c3,A) | convergent_lines(A,dollar_c2)))), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[107]),3]), [iquote('factor,107.1.3,unit_del,3')]).
-fof(110, plain, (! [A,B]: ((convergent_lines(A,dollar_c3) | (convergent_lines(dollar_c2,B) | convergent_lines(A,B))))), inference(hyper,[status(thm)],[105,6]), [iquote('hyper,105,6')]).
+fof(110, plain, (! [A,B]: ((convergent_lines(A,dollar_c3) & (convergent_lines(dollar_c2,B) | convergent_lines(A,B))))), inference(hyper,[status(thm)],[105,6]), [iquote('hyper,105,6')]).
 fof(186, plain, (! [A]: ((convergent_lines(dollar_c1,A) | convergent_lines(A,dollar_c3)))), inference(hyper,[status(thm)],[49,3]), [iquote('hyper,49,3')]).
 fof(192, plain, (! [A,B]: ((convergent_lines(A,dollar_c3) | (convergent_lines(dollar_c1,B) | convergent_lines(A,B))))), inference(hyper,[status(thm)],[186,6]), [iquote('hyper,186,6')]).
 fof(433, plain, (! [A]: ((convergent_lines(A,dollar_c3) | convergent_lines(A,dollar_c2)))), inference(hyper,[status(thm)],[110,3]), [iquote('hyper,110,3')]).

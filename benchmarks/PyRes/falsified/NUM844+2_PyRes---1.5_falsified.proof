@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c75':
-%%%%%   Replaced (! [X249,X248,X247,X246]: (((X249 != X248) | (vplus(X249,vplus(X247,X246)) = vplus(X248,vplus(X246,X247))))))
-%%%%%   With (! [X249,X248,X247,X246]: ((~ ((X249 != X248)) | (vplus(X249,vplus(X247,X246)) = vplus(X248,vplus(X246,X247))))))
+%%%%% Mutated formula 'c1094':
+%%%%%   Replaced (! [X1253,X1254,X1255]: ((vplus(X1253,vplus(X1254,X1255)) = vplus(X1253,vplus(X1255,X1254)))))
+%%%%%   With (! [X1253,X1254,X1255]: (~ ((vplus(X1253,vplus(X1254,X1255)) = vplus(X1253,vplus(X1255,X1254))))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM844+2 : TPTP v8.1.2. Released v4.1.0.
@@ -45,6 +45,6 @@ fof(c0, axiom, (! [X41,X43,X42,X40]: (((X41 != X43) | ((X42 != X40) | (vplus(X41
 fof('ass(cond(61, 0), 0)', axiom, (! [Vd78,Vd79]: ((vplus(Vd79,Vd78) = vplus(Vd78,Vd79)))), file('NUM844+2.p','ass(cond(61, 0), 0)')).
 fof(c27, plain, (! [X15,X16]: ((vplus(X16,X15) = vplus(X15,X16)))), inference(variable_rename,[status(thm)],['ass(cond(61, 0), 0)'])).
 fof(c28, plain, (! [X49,X48]: ((vplus(X49,X48) = vplus(X48,X49)))), inference(split_conjunct,[status(thm)],[c27])).
-fof(c75, plain, (! [X249,X248,X247,X246]: ((~ ((X249 != X248)) | (vplus(X249,vplus(X247,X246)) = vplus(X248,vplus(X246,X247)))))), inference(resolution,[status(thm)],[c28,c0])).
-fof(c1094, plain, (! [X1253,X1254,X1255]: ((vplus(X1253,vplus(X1254,X1255)) = vplus(X1253,vplus(X1255,X1254))))), inference(resolution,[status(thm)],[c75,reflexivity])).
+fof(c75, plain, (! [X249,X248,X247,X246]: (((X249 != X248) | (vplus(X249,vplus(X247,X246)) = vplus(X248,vplus(X246,X247)))))), inference(resolution,[status(thm)],[c28,c0])).
+fof(c1094, plain, (! [X1253,X1254,X1255]: (~ ((vplus(X1253,vplus(X1254,X1255)) = vplus(X1253,vplus(X1255,X1254)))))), inference(resolution,[status(thm)],[c75,reflexivity])).
 fof(c27361, plain, $false, inference(resolution,[status(thm)],[c1094,c51])).

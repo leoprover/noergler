@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c3':
-%%%%%   Replaced ~ (genls(c_tptpcol_16_30972,c_tptpcol_15_30970))
-%%%%%   With genls(c_tptpcol_16_30972,c_tptpcol_15_30970)
+%%%%% Mutated formula 'just6':
+%%%%%   Replaced genls(c_tptpcol_16_30972,c_tptpcol_15_30970)
+%%%%%   With ~ (genls(c_tptpcol_16_30972,c_tptpcol_15_30970))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR043+1 : TPTP v8.1.2. Released v3.4.0.
@@ -39,7 +39,7 @@
 fof(query43, conjecture, (mtvisible(c_tptp_member2862_mt) => genls(c_tptpcol_16_30972,c_tptpcol_15_30970)), file('CSR043+1.p',query43)).
 fof(c0, negated_conjecture, ~ ((mtvisible(c_tptp_member2862_mt) => genls(c_tptpcol_16_30972,c_tptpcol_15_30970))), inference(assume_negation,[status(cth)],[query43])).
 fof(c1, negated_conjecture, (mtvisible(c_tptp_member2862_mt) & ~ (genls(c_tptpcol_16_30972,c_tptpcol_15_30970))), inference(fof_nnf,[status(thm)],[c0])).
-fof(c3, negated_conjecture, genls(c_tptpcol_16_30972,c_tptpcol_15_30970), inference(split_conjunct,[status(thm)],[c1])).
-fof(just6, axiom, genls(c_tptpcol_16_30972,c_tptpcol_15_30970), file('CSR043+1.p',just6)).
+fof(c3, negated_conjecture, ~ (genls(c_tptpcol_16_30972,c_tptpcol_15_30970)), inference(split_conjunct,[status(thm)],[c1])).
+fof(just6, axiom, ~ (genls(c_tptpcol_16_30972,c_tptpcol_15_30970)), file('CSR043+1.p',just6)).
 fof(c169, plain, genls(c_tptpcol_16_30972,c_tptpcol_15_30970), inference(split_conjunct,[status(thm)],[just6])).
 fof(c175, plain, $false, inference(resolution,[status(thm)],[c169,c3])).

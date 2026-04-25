@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c2473':
-%%%%%   Replaced disjointwith(c_tptpcol_3_65538,c_tptpcol_3_16386)
-%%%%%   With disjointwith(c_tptpcol_11_22023,c_tptpcol_3_16386)
+%%%%% Mutated formula 'c3':
+%%%%%   Replaced ~ (disjointwith(c_tptpcol_15_22076,c_tptpcol_16_72795))
+%%%%%   With disjointwith(c_tptpcol_15_22076,c_tptpcol_16_72795)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR036+1 : TPTP v8.1.2. Released v3.4.0.
@@ -39,7 +39,7 @@
 fof(query36, conjecture, (mtvisible(c_tptp_member974_mt) => disjointwith(c_tptpcol_15_22076,c_tptpcol_16_72795)), file('CSR036+1.p',query36)).
 fof(c0, negated_conjecture, ~ ((mtvisible(c_tptp_member974_mt) => disjointwith(c_tptpcol_15_22076,c_tptpcol_16_72795))), inference(assume_negation,[status(cth)],[query36])).
 fof(c1, negated_conjecture, (mtvisible(c_tptp_member974_mt) & ~ (disjointwith(c_tptpcol_15_22076,c_tptpcol_16_72795))), inference(fof_nnf,[status(thm)],[c0])).
-fof(c3, negated_conjecture, ~ (disjointwith(c_tptpcol_15_22076,c_tptpcol_16_72795)), inference(split_conjunct,[status(thm)],[c1])).
+fof(c3, negated_conjecture, disjointwith(c_tptpcol_15_22076,c_tptpcol_16_72795), inference(split_conjunct,[status(thm)],[c1])).
 fof(just85, axiom, (! [OLD,ARG2,NEW]: (((disjointwith(OLD,ARG2) & genls(NEW,OLD)) => disjointwith(NEW,ARG2)))), file('CSR036+1.p',just85)).
 fof(c276, plain, (! [OLD,ARG2,NEW]: ((~ (disjointwith(OLD,ARG2)) | (~ (genls(NEW,OLD)) | disjointwith(NEW,ARG2))))), inference(fof_nnf,[status(thm)],[just85])).
 fof(c277, plain, (! [X111,X112,X113]: ((~ (disjointwith(X111,X112)) | (~ (genls(X113,X111)) | disjointwith(X113,X112))))), inference(variable_rename,[status(thm)],[c276])).
@@ -150,7 +150,7 @@ fof(c2455, plain, disjointwith(c_tptpcol_2_65537,c_tptpcol_3_16386), inference(r
 fof(just36, axiom, genls(c_tptpcol_3_65538,c_tptpcol_2_65537), file('CSR036+1.p',just36)).
 fof(c399, plain, genls(c_tptpcol_3_65538,c_tptpcol_2_65537), inference(split_conjunct,[status(thm)],[just36])).
 fof(c862, plain, (! [X551]: ((~ (disjointwith(c_tptpcol_2_65537,X551)) | disjointwith(c_tptpcol_3_65538,X551)))), inference(resolution,[status(thm)],[c278,c399])).
-fof(c2473, plain, disjointwith(c_tptpcol_11_22023,c_tptpcol_3_16386), inference(resolution,[status(thm)],[c862,c2455])).
+fof(c2473, plain, disjointwith(c_tptpcol_3_65538,c_tptpcol_3_16386), inference(resolution,[status(thm)],[c862,c2455])).
 fof(c2488, plain, disjointwith(c_tptpcol_4_65539,c_tptpcol_3_16386), inference(resolution,[status(thm)],[c2473,c850])).
 fof(c2527, plain, disjointwith(c_tptpcol_3_16386,c_tptpcol_4_65539), inference(resolution,[status(thm)],[c2488,c284])).
 fof(c2578, plain, disjointwith(c_tptpcol_4_16387,c_tptpcol_4_65539), inference(resolution,[status(thm)],[c2527,c863])).

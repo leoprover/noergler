@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '15':
-%%%%%   Replaced (! [A,B,C,D]: (((A != unordered_pair(B,C)) | (in(D,A) | (D != C)))))
-%%%%%   With (! [A,B,C,D]: ((~ ((A != unordered_pair(B,C))) | (in(D,A) | (D != C)))))
+%%%%% Mutated formula '23':
+%%%%%   Replaced (! [A,B,C]: ((~ (subset(A,B)) | (~ (in(C,A)) | in(C,B)))))
+%%%%%   With (! [A,B,C]: ((subset(A,B) | (~ (in(C,A)) | in(C,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU150+2 : TPTP v8.1.0. Released v3.3.0.
@@ -35,8 +35,8 @@
 %%% Generated on Tue Apr 14 19:20:20 CEST 2026 using command 'transform(fof)'.
 fof(13, axiom, (! [A,B,C,D]: (((A != unordered_pair(B,C)) | (~ (in(D,A)) | ((D = B) | (D = C)))))), file('SEU150+2.p',unknown), []).
 fof(14, axiom, (! [A,B,C,D]: (((A != unordered_pair(B,C)) | (in(D,A) | (D != B))))), file('SEU150+2.p',unknown), []).
-fof(15, axiom, (! [A,B,C,D]: ((~ ((A != unordered_pair(B,C))) | (in(D,A) | (D != C))))), file('SEU150+2.p',unknown), []).
-fof(23, axiom, (! [A,B,C]: ((~ (subset(A,B)) | (~ (in(C,A)) | in(C,B))))), file('SEU150+2.p',unknown), []).
+fof(15, axiom, (! [A,B,C,D]: (((A != unordered_pair(B,C)) | (in(D,A) | (D != C))))), file('SEU150+2.p',unknown), []).
+fof(23, axiom, (! [A,B,C]: ((subset(A,B) | (~ (in(C,A)) | in(C,B))))), file('SEU150+2.p',unknown), []).
 fof(44, axiom, (! [A,B]: ((subset(singleton(A),B) | ~ (in(A,B))))), file('SEU150+2.p',unknown), []).
 fof(73, axiom, (! [A,B,C]: (((singleton(A) != unordered_pair(B,C)) | (A = B)))), file('SEU150+2.p',unknown), []).
 fof(74, axiom, (dollar_c4 != dollar_c3), file('SEU150+2.p',unknown), []).

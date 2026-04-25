@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c1':
-%%%%%   Replaced (mtvisible(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_wwwarthritis_symptomcoma_cbursitishtm)),c_translation_0_885)) & ~ (genls(c_tptpcol_16_130924,c_tptpcol_15_130923)))
-%%%%%   With (~ (mtvisible(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_wwwarthritis_symptomcoma_cbursitishtm)),c_translation_0_885))) & ~ (genls(c_tptpcol_16_130924,c_tptpcol_15_130923)))
+%%%%% Mutated formula 'c3':
+%%%%%   Replaced ~ (genls(c_tptpcol_16_130924,c_tptpcol_15_130923))
+%%%%%   With genls(c_tptpcol_16_130924,c_tptpcol_15_130923)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR072+1 : TPTP v8.1.2. Released v3.4.0.
@@ -38,8 +38,8 @@
 %%% Generated on Tue Apr 14 15:05:42 CEST 2026 using command 'transform(fof)'.
 fof(query72, conjecture, (mtvisible(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_wwwarthritis_symptomcoma_cbursitishtm)),c_translation_0_885)) => genls(c_tptpcol_16_130924,c_tptpcol_15_130923)), file('CSR072+1.p',query72)).
 fof(c0, negated_conjecture, ~ ((mtvisible(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_wwwarthritis_symptomcoma_cbursitishtm)),c_translation_0_885)) => genls(c_tptpcol_16_130924,c_tptpcol_15_130923))), inference(assume_negation,[status(cth)],[query72])).
-fof(c1, negated_conjecture, (~ (mtvisible(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_wwwarthritis_symptomcoma_cbursitishtm)),c_translation_0_885))) & ~ (genls(c_tptpcol_16_130924,c_tptpcol_15_130923))), inference(fof_nnf,[status(thm)],[c0])).
-fof(c3, negated_conjecture, ~ (genls(c_tptpcol_16_130924,c_tptpcol_15_130923)), inference(split_conjunct,[status(thm)],[c1])).
+fof(c1, negated_conjecture, (mtvisible(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_wwwarthritis_symptomcoma_cbursitishtm)),c_translation_0_885)) & ~ (genls(c_tptpcol_16_130924,c_tptpcol_15_130923))), inference(fof_nnf,[status(thm)],[c0])).
+fof(c3, negated_conjecture, genls(c_tptpcol_16_130924,c_tptpcol_15_130923), inference(split_conjunct,[status(thm)],[c1])).
 fof(just7, axiom, genls(c_tptpcol_16_130924,c_tptpcol_15_130923), file('CSR072+1.p',just7)).
 fof(c187, plain, genls(c_tptpcol_16_130924,c_tptpcol_15_130923), inference(split_conjunct,[status(thm)],[just7])).
 fof(c194, plain, $false, inference(resolution,[status(thm)],[c187,c3])).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '47':
-%%%%%   Replaced (subset_complement(the_carrier(dollar_c4),topstr_closure(dollar_c4,subset_complement(the_carrier(dollar_c4),dollar_c3))) = interior(dollar_c4,dollar_c3))
-%%%%%   With (subset_complement(the_carrier(dollar_c3),topstr_closure(dollar_c4,subset_complement(the_carrier(dollar_c4),dollar_c3))) = interior(dollar_c4,dollar_c3))
+%%%%% Mutated formula '52':
+%%%%%   Replaced element(subset_complement(the_carrier(dollar_c4),dollar_c3),powerset(the_carrier(dollar_c4)))
+%%%%%   With ~ (element(subset_complement(the_carrier(dollar_c4),dollar_c3),powerset(the_carrier(dollar_c4))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU323+1 : TPTP v8.1.0. Released v3.3.0.
@@ -43,8 +43,8 @@ fof(17, axiom, ~ (open_subset(interior(dollar_c4,dollar_c3),dollar_c4)), file('S
 fof(23, axiom, topological_space(dollar_c4), file('SEU323+1.p',unknown), []).
 fof(24, axiom, top_str(dollar_c4), file('SEU323+1.p',unknown), []).
 fof(25, axiom, element(dollar_c3,powerset(the_carrier(dollar_c4))), file('SEU323+1.p',unknown), []).
-fof(47, plain, (subset_complement(the_carrier(dollar_c3),topstr_closure(dollar_c4,subset_complement(the_carrier(dollar_c4),dollar_c3))) = interior(dollar_c4,dollar_c3)), inference(hyper,[status(thm)],[25,16,24]), [iquote('hyper,25,16,24')]).
-fof(52, plain, element(subset_complement(the_carrier(dollar_c4),dollar_c3),powerset(the_carrier(dollar_c4))), inference(hyper,[status(thm)],[25,5]), [iquote('hyper,25,5')]).
+fof(47, plain, (subset_complement(the_carrier(dollar_c4),topstr_closure(dollar_c4,subset_complement(the_carrier(dollar_c4),dollar_c3))) = interior(dollar_c4,dollar_c3)), inference(hyper,[status(thm)],[25,16,24]), [iquote('hyper,25,16,24')]).
+fof(52, plain, ~ (element(subset_complement(the_carrier(dollar_c4),dollar_c3),powerset(the_carrier(dollar_c4)))), inference(hyper,[status(thm)],[25,5]), [iquote('hyper,25,5')]).
 fof(178, plain, closed_subset(topstr_closure(dollar_c4,subset_complement(the_carrier(dollar_c4),dollar_c3)),dollar_c4), inference(hyper,[status(thm)],[52,7,23,24]), [iquote('hyper,52,7,23,24')]).
 fof(179, plain, element(topstr_closure(dollar_c4,subset_complement(the_carrier(dollar_c4),dollar_c3)),powerset(the_carrier(dollar_c4))), inference(hyper,[status(thm)],[52,6,24]), [iquote('hyper,52,6,24')]).
 fof(406, plain, open_subset(interior(dollar_c4,dollar_c3),dollar_c4), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[179,1,23,24,178]),47]), [iquote('hyper,179,1,23,24,178,demod,47')]).

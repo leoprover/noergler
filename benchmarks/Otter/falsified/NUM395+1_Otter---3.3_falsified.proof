@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '103':
-%%%%%   Replaced ordinal(dollar_c10)
-%%%%%   With ~ (ordinal(dollar_c10))
+%%%%% Mutated formula '56':
+%%%%%   Replaced (empty_set = dollar_c3)
+%%%%%   With ~ ((empty_set = dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM395+1 : TPTP v8.1.0. Released v3.2.0.
@@ -41,7 +41,7 @@ fof(26, axiom, empty(dollar_c3), file('NUM395+1.p',unknown), []).
 fof(45, axiom, empty(dollar_c10), file('NUM395+1.p',unknown), []).
 fof(46, axiom, epsilon_transitive(empty_set), file('NUM395+1.p',unknown), []).
 fof(47, axiom, epsilon_connected(empty_set), file('NUM395+1.p',unknown), []).
-fof(56, plain, (empty_set = dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[26,14])]), [iquote('hyper,26,14,flip.1')]).
+fof(56, plain, ~ ((empty_set = dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[26,14])]), [iquote('hyper,26,14,flip.1')]).
 fof(58, plain, epsilon_connected(dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[47]),56]), [iquote('back_demod,47,demod,56')]).
 fof(59, plain, epsilon_transitive(dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[46]),56]), [iquote('back_demod,46,demod,56')]).
 fof(61, plain, ~ (ordinal(dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[15]),56]), [iquote('back_demod,15,demod,56')]).
@@ -49,5 +49,5 @@ fof(71, plain, (dollar_c3 = dollar_c10), inference(hyper,[status(thm)],[45,8,26]
 fof(78, plain, ~ (ordinal(dollar_c10)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[61]),71]), [iquote('back_demod,61,demod,71')]).
 fof(80, plain, epsilon_transitive(dollar_c10), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[59]),71]), [iquote('back_demod,59,demod,71')]).
 fof(81, plain, epsilon_connected(dollar_c10), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[58]),71]), [iquote('back_demod,58,demod,71')]).
-fof(103, plain, ~ (ordinal(dollar_c10)), inference(hyper,[status(thm)],[81,11,80]), [iquote('hyper,81,11,80')]).
+fof(103, plain, ordinal(dollar_c10), inference(hyper,[status(thm)],[81,11,80]), [iquote('hyper,81,11,80')]).
 fof(104, plain, $false, inference(binary,[status(thm)],[103,78]), [iquote('binary,103.1,78.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '56':
-%%%%%   Replaced r1(dollar_c1)
-%%%%%   With ~ (r1(dollar_c1))
+%%%%% Mutated formula '11':
+%%%%%   Replaced (! [E,F,A,B,C,D]: ((~ (r1(A)) | (~ (r3(B,A,C)) | (~ (r1(D)) | (~ (r2(D,B)) | ((C != E) | (~ (r1(F)) | ~ (r2(F,E))))))))))
+%%%%%   With (! [E,F,A,B,C,D]: ((r1(A) | (~ (r3(B,A,C)) | (~ (r1(D)) | (~ (r2(D,B)) | ((C != E) | (~ (r1(F)) | ~ (r2(F,E))))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUN070+2 : TPTP v8.1.0. Released v7.3.0.
@@ -36,7 +36,7 @@
 fof(1, axiom, (! [A]: ((~ (r1(A)) | (A = dollar_c1)))), file('NUN070+2.p',unknown), []).
 fof(2, axiom, (! [A]: (((A != dollar_c1) | r1(A)))), file('NUN070+2.p',unknown), []).
 fof(4, axiom, (! [A,B]: (((A != dollar_f1(B)) | r2(B,A)))), file('NUN070+2.p',unknown), []).
-fof(11, axiom, (! [E,F,A,B,C,D]: ((~ (r1(A)) | (~ (r3(B,A,C)) | (~ (r1(D)) | (~ (r2(D,B)) | ((C != E) | (~ (r1(F)) | ~ (r2(F,E)))))))))), file('NUN070+2.p',unknown), []).
+fof(11, axiom, (! [E,F,A,B,C,D]: ((r1(A) | (~ (r3(B,A,C)) | (~ (r1(D)) | (~ (r2(D,B)) | ((C != E) | (~ (r1(F)) | ~ (r2(F,E)))))))))), file('NUN070+2.p',unknown), []).
 fof(13, plain, (! [E,A,B,C,D]: ((~ (r1(A)) | (~ (r3(B,A,C)) | (~ (r2(A,B)) | ((C != D) | (~ (r1(E)) | ~ (r2(E,D))))))))), inference(factor,[status(thm)],[11]), [iquote('factor,11.1.3')]).
 fof(18, plain, (! [A,B,C]: ((~ (r1(A)) | (~ (r3(B,A,C)) | (~ (r2(A,B)) | (C != B)))))), inference(factor_simp,[status(thm)],[inference(factor,[status(thm)],[13])]), [iquote('factor,13.3.6,factor_simp')]).
 fof(19, axiom, (! [A]: ((A = A))), file('NUN070+2.p',unknown), []).
@@ -45,7 +45,7 @@ fof(35, axiom, (! [A]: (r3(A,dollar_f12(A),dollar_f13(A)))), file('NUN070+2.p',u
 fof(37, axiom, (! [A]: ((dollar_f13(A) = A))), file('NUN070+2.p',unknown), []).
 fof(51, plain, (! [A]: (r3(A,dollar_f12(A),A))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[35]),37]), [iquote('back_demod,35,demod,37')]).
 fof(55, plain, (! [A]: (r2(A,dollar_f1(A)))), inference(hyper,[status(thm)],[19,4]), [iquote('hyper,19,4')]).
-fof(56, plain, ~ (r1(dollar_c1)), inference(hyper,[status(thm)],[19,2]), [iquote('hyper,19,2')]).
+fof(56, plain, r1(dollar_c1), inference(hyper,[status(thm)],[19,2]), [iquote('hyper,19,2')]).
 fof(62, plain, (! [A]: ((dollar_f12(A) = dollar_c1))), inference(hyper,[status(thm)],[34,1]), [iquote('hyper,34,1')]).
 fof(63, plain, (! [A]: (r3(A,dollar_c1,A))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[51]),62]), [iquote('back_demod,51,demod,62')]).
 fof(89, plain, $false, inference(hyper,[status(thm)],[63,18,56,55,19]), [iquote('hyper,63,18,56,55,19')]).

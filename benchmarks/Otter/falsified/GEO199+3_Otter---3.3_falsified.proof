@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1408':
-%%%%%   Replaced (! [A,B,C]: ((apart_point_and_line(intersection_point(dollar_c2,dollar_c3),orthogonal_through_point(A,B)) | (unorthogonal_lines(dollar_c1,C) | (unorthogonal_lines(orthogonal_through_point(A,B),C) | unorthogonal_lines(dollar_c1,A))))))
-%%%%%   With (! [A,B,C]: ((apart_point_and_line(intersection_point(dollar_c1,dollar_c3),orthogonal_through_point(A,B)) | (unorthogonal_lines(dollar_c1,C) | (unorthogonal_lines(orthogonal_through_point(A,B),C) | unorthogonal_lines(dollar_c1,A))))))
+%%%%% Mutated formula '62':
+%%%%%   Replaced apart_point_and_line(intersection_point(dollar_c2,dollar_c3),dollar_c1)
+%%%%%   With ~ (apart_point_and_line(intersection_point(dollar_c2,dollar_c3),dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO199+3 : TPTP v8.1.0. Released v4.0.0.
@@ -50,13 +50,13 @@ fof(44, axiom, (! [A,B]: ((orthogonal_lines(A,B) | unorthogonal_lines(A,B)))), f
 fof(49, plain, (! [A,B]: (convergent_lines(orthogonal_through_point(A,B),A))), inference(hyper,[status(thm)],[39,21]), [iquote('hyper,39,21')]).
 fof(59, plain, (! [A,B,C]: ((unorthogonal_lines(A,orthogonal_through_point(B,C)) | unorthogonal_lines(A,B)))), inference(hyper,[status(thm)],[49,28]), [iquote('hyper,49,28')]).
 fof(61, plain, (! [A,B,C]: ((convergent_lines(orthogonal_through_point(A,B),C) | convergent_lines(A,C)))), inference(hyper,[status(thm)],[49,6]), [iquote('hyper,49,6')]).
-fof(62, plain, apart_point_and_line(intersection_point(dollar_c2,dollar_c3),dollar_c1), inference(hyper,[status(thm)],[43,38]), [iquote('hyper,43,38')]).
+fof(62, plain, ~ (apart_point_and_line(intersection_point(dollar_c2,dollar_c3),dollar_c1)), inference(hyper,[status(thm)],[43,38]), [iquote('hyper,43,38')]).
 fof(75, plain, (! [A,B]: (orthogonal_lines(orthogonal_through_point(A,B),A))), inference(hyper,[status(thm)],[44,21]), [iquote('hyper,44,21')]).
 fof(85, plain, (! [A]: ((distinct_lines(dollar_c1,A) | apart_point_and_line(intersection_point(dollar_c2,dollar_c3),A)))), inference(hyper,[status(thm)],[62,13]), [iquote('hyper,62,13')]).
 fof(518, plain, (! [A,B]: (convergent_lines(A,orthogonal_through_point(A,B)))), inference(hyper,[status(thm)],[61,3]), [iquote('hyper,61,3')]).
 fof(652, plain, (! [A,B,C]: ((convergent_lines(A,B) | (unorthogonal_lines(orthogonal_through_point(A,C),B) | orthogonal_lines(A,orthogonal_through_point(A,C)))))), inference(hyper,[status(thm)],[518,18,44]), [iquote('hyper,518,18,44')]).
 fof(939, plain, (! [A]: ((apart_point_and_line(intersection_point(dollar_c2,dollar_c3),A) | convergent_lines(dollar_c1,A)))), inference(hyper,[status(thm)],[85,15]), [iquote('hyper,85,15')]).
-fof(1408, plain, (! [A,B,C]: ((apart_point_and_line(intersection_point(dollar_c1,dollar_c3),orthogonal_through_point(A,B)) | (unorthogonal_lines(dollar_c1,C) | (unorthogonal_lines(orthogonal_through_point(A,B),C) | unorthogonal_lines(dollar_c1,A)))))), inference(hyper,[status(thm)],[939,20,59]), [iquote('hyper,939,20,59')]).
+fof(1408, plain, (! [A,B,C]: ((apart_point_and_line(intersection_point(dollar_c2,dollar_c3),orthogonal_through_point(A,B)) | (unorthogonal_lines(dollar_c1,C) | (unorthogonal_lines(orthogonal_through_point(A,B),C) | unorthogonal_lines(dollar_c1,A)))))), inference(hyper,[status(thm)],[939,20,59]), [iquote('hyper,939,20,59')]).
 fof(1421, plain, (! [A,B]: ((apart_point_and_line(intersection_point(dollar_c2,dollar_c3),orthogonal_through_point(A,B)) | unorthogonal_lines(dollar_c1,A)))), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[1408]),21]), [iquote('factor,1408.2.4,unit_del,21')]).
 fof(6701, plain, (! [A,B]: (orthogonal_lines(A,orthogonal_through_point(A,B)))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[652,37,75]),3]), [iquote('hyper,652,37,75,unit_del,3')]).
 fof(6712, plain, (! [A,B]: (apart_point_and_line(intersection_point(dollar_c2,dollar_c3),orthogonal_through_point(orthogonal_through_point(dollar_c1,A),B)))), inference(hyper,[status(thm)],[6701,37,1421]), [iquote('hyper,6701,37,1421')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c29':
-%%%%%   Replaced r
-%%%%%   With ~ (r)
+%%%%% Mutated formula 'c23':
+%%%%%   Replaced (p | r)
+%%%%%   With (p & r)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN045+1 : TPTP v8.1.2. Released v2.0.0.
@@ -48,7 +48,7 @@ fof(c22, plain, q, inference(resolution,[status(thm)],[c18,c15])).
 fof(c10, negated_conjecture, (~ (q) | (~ (r) | (~ (q) | ~ (r)))), inference(split_conjunct,[status(thm)],[c2])).
 fof(c17, plain, (~ (q) | ~ (r)), inference(factor,[status(thm)],[c10])).
 fof(c14, negated_conjecture, (p | (r | (p | r))), inference(split_conjunct,[status(thm)],[c2])).
-fof(c23, plain, (p | r), inference(factor,[status(thm)],[c14])).
-fof(c29, plain, ~ (r), inference(resolution,[status(thm)],[c23,c15])).
+fof(c23, plain, (p & r), inference(factor,[status(thm)],[c14])).
+fof(c29, plain, r, inference(resolution,[status(thm)],[c23,c15])).
 fof(c31, plain, ~ (q), inference(resolution,[status(thm)],[c29,c17])).
 fof(c32, plain, $false, inference(resolution,[status(thm)],[c31,c22])).

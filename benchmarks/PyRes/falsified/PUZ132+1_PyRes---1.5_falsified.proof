@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'beautiful_capital_axiom':
-%%%%%   Replaced (! [X]: ((country(X) => beautiful(capital_city(X)))))
-%%%%%   With (! [X]: ((~ (country(X)) => beautiful(capital_city(X)))))
+%%%%% Mutated formula 'c41':
+%%%%%   Replaced ~ (beautiful(washington))
+%%%%%   With beautiful(washington)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : PUZ132+1 : TPTP v8.1.2. Released v4.1.0.
@@ -52,10 +52,10 @@ fof(washington_conjecture, conjecture, (beautiful(washington) & has_crime(washin
 fof(c6, negated_conjecture, ~ ((beautiful(washington) & has_crime(washington))), inference(assume_negation,[status(cth)],[washington_conjecture])).
 fof(c7, negated_conjecture, (~ (beautiful(washington)) | ~ (has_crime(washington))), inference(fof_nnf,[status(thm)],[c6])).
 fof(c8, negated_conjecture, (~ (beautiful(washington)) | ~ (has_crime(washington))), inference(split_conjunct,[status(thm)],[c7])).
-fof(c41, plain, ~ (beautiful(washington)), inference(resolution,[status(thm)],[c8,c39])).
+fof(c41, plain, beautiful(washington), inference(resolution,[status(thm)],[c8,c39])).
 fof(usa_type, axiom, country(usa), file('PUZ132+1.p',usa_type)).
 fof(c19, plain, country(usa), inference(split_conjunct,[status(thm)],[usa_type])).
-fof(beautiful_capital_axiom, axiom, (! [X]: ((~ (country(X)) => beautiful(capital_city(X))))), file('PUZ132+1.p',beautiful_capital_axiom)).
+fof(beautiful_capital_axiom, axiom, (! [X]: ((country(X) => beautiful(capital_city(X))))), file('PUZ132+1.p',beautiful_capital_axiom)).
 fof(c9, plain, (! [X]: ((~ (country(X)) | beautiful(capital_city(X))))), inference(fof_nnf,[status(thm)],[beautiful_capital_axiom])).
 fof(c10, plain, (! [X2]: ((~ (country(X2)) | beautiful(capital_city(X2))))), inference(variable_rename,[status(thm)],[c9])).
 fof(c11, plain, (! [X20]: ((~ (country(X20)) | beautiful(capital_city(X20))))), inference(split_conjunct,[status(thm)],[c10])).

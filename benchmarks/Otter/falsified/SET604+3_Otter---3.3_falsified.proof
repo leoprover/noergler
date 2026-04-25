@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '16':
-%%%%%   Replaced (! [A]: (subset(empty_set,A)))
-%%%%%   With (! [A]: (~ (subset(empty_set,A))))
+%%%%% Mutated formula '20':
+%%%%%   Replaced (! [A]: ((difference(empty_set,A) = empty_set)))
+%%%%%   With (! [A]: (~ ((difference(empty_set,A) = empty_set))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET604+3 : TPTP v8.1.0. Released v2.2.0.
@@ -35,6 +35,6 @@
 %%% Generated on Tue Apr 14 19:18:39 CEST 2026 using command 'transform(fof)'.
 fof(2, axiom, (! [A,B]: (((difference(A,B) = empty_set) | ~ (subset(A,B))))), file('SET604+3.p',unknown), []).
 fof(13, axiom, (difference(empty_set,dollar_c1) != empty_set), file('SET604+3.p',unknown), []).
-fof(16, axiom, (! [A]: (~ (subset(empty_set,A)))), file('SET604+3.p',unknown), []).
-fof(20, plain, (! [A]: ((difference(empty_set,A) = empty_set))), inference(hyper,[status(thm)],[16,2]), [iquote('hyper,16,2')]).
+fof(16, axiom, (! [A]: (subset(empty_set,A))), file('SET604+3.p',unknown), []).
+fof(20, plain, (! [A]: (~ ((difference(empty_set,A) = empty_set)))), inference(hyper,[status(thm)],[16,2]), [iquote('hyper,16,2')]).
 fof(22, plain, $false, inference(binary,[status(thm)],[20,13]), [iquote('binary,20.1,13.1')]).

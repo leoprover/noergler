@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3681':
-%%%%%   Replaced (sdtpldt0(xm,xn) = sdtasdt0(xl,sdtpldt0(dollar_c1,dollar_c2)))
-%%%%%   With (sdtpldt0(xl,xn) = sdtasdt0(xl,sdtpldt0(dollar_c1,dollar_c2)))
+%%%%% Mutated formula '55':
+%%%%%   Replaced (! [A]: ((~ (aNaturalNumber0(A)) | (sdtpldt0(xm,xn) != sdtasdt0(xl,A)))))
+%%%%%   With (! [A]: ((~ (aNaturalNumber0(A)) | (sdtpldt0(xn,xn) != sdtasdt0(xl,A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM469+2 : TPTP v8.1.0. Released v4.0.0.
@@ -36,7 +36,7 @@
 fof(2, axiom, (! [A,B]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | aNaturalNumber0(sdtpldt0(A,B)))))), file('NUM469+2.p',unknown), []).
 fof(17, axiom, (! [A,B,C]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (~ (aNaturalNumber0(C)) | (sdtasdt0(A,sdtpldt0(B,C)) = sdtpldt0(sdtasdt0(A,B),sdtasdt0(A,C)))))))), file('NUM469+2.p',unknown), []).
 fof(18, plain, (! [A,B,C]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (~ (aNaturalNumber0(C)) | (sdtpldt0(sdtasdt0(A,B),sdtasdt0(A,C)) = sdtasdt0(A,sdtpldt0(B,C)))))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[17])]), [iquote('copy,17,flip.4')]).
-fof(55, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | (sdtpldt0(xm,xn) != sdtasdt0(xl,A))))), file('NUM469+2.p',unknown), []).
+fof(55, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | (sdtpldt0(xn,xn) != sdtasdt0(xl,A))))), file('NUM469+2.p',unknown), []).
 fof(131, axiom, (! [A]: ((A = A))), file('NUM469+2.p',unknown), []).
 fof(134, axiom, aNaturalNumber0(xl), file('NUM469+2.p',unknown), []).
 fof(137, axiom, aNaturalNumber0(dollar_c1), file('NUM469+2.p',unknown), []).
@@ -45,7 +45,7 @@ fof(140, plain, (sdtasdt0(xl,dollar_c1) = xm), inference(flip,[status(thm),theor
 fof(142, axiom, aNaturalNumber0(dollar_c2), file('NUM469+2.p',unknown), []).
 fof(143, axiom, (xn = sdtasdt0(xl,dollar_c2)), file('NUM469+2.p',unknown), []).
 fof(145, plain, (sdtasdt0(xl,dollar_c2) = xn), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[143])]), [iquote('copy,143,flip.1')]).
-fof(3681, plain, (sdtpldt0(xl,xn) = sdtasdt0(xl,sdtpldt0(dollar_c1,dollar_c2))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[142,18,134,137]),140,145]), [iquote('hyper,142,18,134,137,demod,140,145')]).
+fof(3681, plain, (sdtpldt0(xm,xn) = sdtasdt0(xl,sdtpldt0(dollar_c1,dollar_c2))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[142,18,134,137]),140,145]), [iquote('hyper,142,18,134,137,demod,140,145')]).
 fof(4154, plain, aNaturalNumber0(sdtpldt0(dollar_c1,dollar_c2)), inference(hyper,[status(thm)],[142,2,137]), [iquote('hyper,142,2,137')]).
 fof(4325, plain, (! [A]: ((~ (aNaturalNumber0(A)) | (sdtasdt0(xl,sdtpldt0(dollar_c1,dollar_c2)) != sdtasdt0(xl,A))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[55]),3681]), [iquote('back_demod,55,demod,3681')]).
 fof(6011, plain, $false, inference(hyper,[status(thm)],[4325,4154,131]), [iquote('hyper,4325,4154,131')]).

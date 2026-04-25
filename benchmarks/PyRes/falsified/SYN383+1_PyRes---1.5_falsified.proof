@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c3':
-%%%%%   Replaced (! [X2]: ((big_p(X2) & (big_q(skolem0001(X2)) & (~ (big_q(X2)) & ~ (big_p(skolem0001(X2))))))))
-%%%%%   With (! [X2]: ((big_p(X2) | (big_q(skolem0001(X2)) & (~ (big_q(X2)) & ~ (big_p(skolem0001(X2))))))))
+%%%%% Mutated formula 'c5':
+%%%%%   Replaced (! [X6]: (big_q(skolem0001(X6))))
+%%%%%   With (! [X6]: (~ (big_q(skolem0001(X6)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN383+1 : TPTP v8.1.2. Released v2.0.0.
@@ -40,7 +40,7 @@ fof(x2135, conjecture, (? [X]: ((! [Y]: (((big_p(X) & big_q(Y)) => (big_q(X) | b
 fof(c0, negated_conjecture, ~ ((? [X]: ((! [Y]: (((big_p(X) & big_q(Y)) => (big_q(X) | big_p(Y)))))))), inference(assume_negation,[status(cth)],[x2135])).
 fof(c1, negated_conjecture, (! [X]: ((? [Y]: ((big_p(X) & (big_q(Y) & (~ (big_q(X)) & ~ (big_p(Y))))))))), inference(fof_nnf,[status(thm)],[c0])).
 fof(c2, negated_conjecture, (! [X2]: ((? [X3]: ((big_p(X2) & (big_q(X3) & (~ (big_q(X2)) & ~ (big_p(X3))))))))), inference(variable_rename,[status(thm)],[c1])).
-fof(c3, negated_conjecture, (! [X2]: ((big_p(X2) | (big_q(skolem0001(X2)) & (~ (big_q(X2)) & ~ (big_p(skolem0001(X2)))))))), inference(skolemize,[status(esa)],[c2])).
+fof(c3, negated_conjecture, (! [X2]: ((big_p(X2) & (big_q(skolem0001(X2)) & (~ (big_q(X2)) & ~ (big_p(skolem0001(X2)))))))), inference(skolemize,[status(esa)],[c2])).
 fof(c6, negated_conjecture, (! [X5]: (~ (big_q(X5)))), inference(split_conjunct,[status(thm)],[c3])).
-fof(c5, negated_conjecture, (! [X6]: (big_q(skolem0001(X6)))), inference(split_conjunct,[status(thm)],[c3])).
+fof(c5, negated_conjecture, (! [X6]: (~ (big_q(skolem0001(X6))))), inference(split_conjunct,[status(thm)],[c3])).
 fof(c8, plain, $false, inference(resolution,[status(thm)],[c5,c6])).

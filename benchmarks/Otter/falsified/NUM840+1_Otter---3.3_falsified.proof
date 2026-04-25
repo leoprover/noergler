@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '55':
-%%%%%   Replaced (! [A,B,C]: ((vplus(vplus(A,B),C) = vplus(A,vplus(B,C)))))
-%%%%%   With (! [A,B,C]: (~ ((vplus(vplus(A,B),C) = vplus(A,vplus(B,C))))))
+%%%%% Mutated formula '165':
+%%%%%   Replaced ((vd329 = vd328) | greater(vd328,vd329))
+%%%%%   With ((vd329 = vd328) & greater(vd328,vd329))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM840+1 : TPTP v8.1.0. Released v4.1.0.
@@ -45,10 +45,10 @@ fof(42, axiom, less(vplus(vd328,vd330),vplus(vd329,vd330)), file('NUM840+1.p',un
 fof(44, axiom, (! [A,B]: (((A = B) | (greater(A,B) | less(A,B))))), file('NUM840+1.p',unknown), []).
 fof(45, axiom, (! [A,B]: (((A = B) | ((A = vplus(B,dollar_f3(A,B))) | (B = vplus(A,dollar_f4(A,B))))))), file('NUM840+1.p',unknown), []).
 fof(46, plain, (! [A,B]: (((A = B) | ((vplus(B,dollar_f3(A,B)) = A) | (vplus(A,dollar_f4(A,B)) = B))))), inference(flip,[status(thm),theory(equality)],[inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[45])])]), [iquote('copy,45,flip.2,flip.3')]).
-fof(55, axiom, (! [A,B,C]: (~ ((vplus(vplus(A,B),C) = vplus(A,vplus(B,C)))))), file('NUM840+1.p',unknown), []).
+fof(55, axiom, (! [A,B,C]: ((vplus(vplus(A,B),C) = vplus(A,vplus(B,C))))), file('NUM840+1.p',unknown), []).
 fof(82, plain, greater(vplus(vd329,vd330),vplus(vd328,vd330)), inference(hyper,[status(thm)],[42,20]), [iquote('hyper,42,20')]).
 fof(164, plain, (! [A,B,C]: (((A = B) | (greater(A,B) | less(vplus(A,C),vplus(B,C)))))), inference(hyper,[status(thm)],[44,5]), [iquote('hyper,44,5')]).
-fof(165, plain, ((vd329 = vd328) | greater(vd328,vd329)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[44,1])]), [iquote('hyper,44,1,flip.1')]).
+fof(165, plain, ((vd329 = vd328) & greater(vd328,vd329)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[44,1])]), [iquote('hyper,44,1,flip.1')]).
 fof(277, plain, ((vplus(vd329,vplus(vd330,dollar_f3(vplus(vd328,vd330),vplus(vd329,vd330)))) = vplus(vd328,vd330)) | (vplus(vd328,vplus(vd330,dollar_f4(vplus(vd328,vd330),vplus(vd329,vd330)))) = vplus(vd329,vd330))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[46,22,42]),55,55]), [iquote('hyper,46,22,42,demod,55,55')]).
 fof(397, plain, ((vd329 = vd328) | less(vd329,vd328)), inference(hyper,[status(thm)],[165,21]), [iquote('hyper,165,21')]).
 fof(573, plain, (! [A,B,C]: ((vplus(A,vplus(B,C)) != vplus(A,B)))), inference(para_from,[status(thm),theory(equality)],[55,40]), [iquote('para_from,54.1.1,40.1.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '751':
-%%%%%   Replaced in(dollar_f1(dollar_c5,set_intersection2(dollar_c4,dollar_c3)),dollar_c3)
-%%%%%   With ~ (in(dollar_f1(dollar_c5,set_intersection2(dollar_c4,dollar_c3)),dollar_c3))
+%%%%% Mutated formula '30':
+%%%%%   Replaced subset(dollar_c5,dollar_c4)
+%%%%%   With subset(dollar_c3,dollar_c4)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU128+1 : TPTP v8.1.0. Released v3.3.0.
@@ -39,10 +39,10 @@ fof(6, axiom, (! [A,B,C,D]: (((A != set_intersection2(B,C)) | (in(D,A) | (~ (in(
 fof(9, axiom, ~ (subset(dollar_c5,set_intersection2(dollar_c4,dollar_c3))), file('SEU128+1.p',unknown), []).
 fof(21, axiom, (! [A,B]: ((set_intersection2(A,B) = set_intersection2(B,A)))), file('SEU128+1.p',unknown), []).
 fof(22, axiom, (! [A,B]: ((subset(A,B) | in(dollar_f1(A,B),A)))), file('SEU128+1.p',unknown), []).
-fof(30, axiom, subset(dollar_c5,dollar_c4), file('SEU128+1.p',unknown), []).
+fof(30, axiom, subset(dollar_c3,dollar_c4), file('SEU128+1.p',unknown), []).
 fof(31, axiom, subset(dollar_c5,dollar_c3), file('SEU128+1.p',unknown), []).
 fof(88, plain, in(dollar_f1(dollar_c5,set_intersection2(dollar_c4,dollar_c3)),dollar_c5), inference(hyper,[status(thm)],[22,9]), [iquote('hyper,22,9')]).
-fof(751, plain, ~ (in(dollar_f1(dollar_c5,set_intersection2(dollar_c4,dollar_c3)),dollar_c3)), inference(hyper,[status(thm)],[88,2,31]), [iquote('hyper,88,2,31')]).
+fof(751, plain, in(dollar_f1(dollar_c5,set_intersection2(dollar_c4,dollar_c3)),dollar_c3), inference(hyper,[status(thm)],[88,2,31]), [iquote('hyper,88,2,31')]).
 fof(752, plain, in(dollar_f1(dollar_c5,set_intersection2(dollar_c4,dollar_c3)),dollar_c4), inference(hyper,[status(thm)],[88,2,30]), [iquote('hyper,88,2,30')]).
 fof(1230, plain, in(dollar_f1(dollar_c5,set_intersection2(dollar_c4,dollar_c3)),set_intersection2(dollar_c4,dollar_c3)), inference(hyper,[status(thm)],[752,6,21,751]), [iquote('hyper,752,6,21,751')]).
 fof(3751, plain, subset(dollar_c5,set_intersection2(dollar_c4,dollar_c3)), inference(hyper,[status(thm)],[1230,3]), [iquote('hyper,1230,3')]).

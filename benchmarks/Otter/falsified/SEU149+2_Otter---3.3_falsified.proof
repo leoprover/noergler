@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '184':
-%%%%%   Replaced (! [A,B]: (in(A,unordered_pair(A,B))))
-%%%%%   With (! [A,B]: (~ (in(A,unordered_pair(A,B)))))
+%%%%% Mutated formula '73':
+%%%%%   Replaced (dollar_c5 != dollar_c4)
+%%%%%   With ~ ((dollar_c5 != dollar_c4))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU149+2 : TPTP v8.1.0. Released v3.3.0.
@@ -35,14 +35,14 @@
 %%% Generated on Tue Apr 14 19:20:18 CEST 2026 using command 'transform(fof)'.
 fof(13, axiom, (! [A,B,C,D]: (((A != unordered_pair(B,C)) | (~ (in(D,A)) | ((D = B) | (D = C)))))), file('SEU149+2.p',unknown), []).
 fof(14, axiom, (! [A,B,C,D]: (((A != unordered_pair(B,C)) | (in(D,A) | (D != B))))), file('SEU149+2.p',unknown), []).
-fof(73, axiom, (dollar_c5 != dollar_c4), file('SEU149+2.p',unknown), []).
+fof(73, axiom, ~ ((dollar_c5 != dollar_c4)), file('SEU149+2.p',unknown), []).
 fof(76, plain, (! [A,B,C]: (((A != unordered_pair(B,B)) | (~ (in(C,A)) | (C = B))))), inference(factor,[status(thm)],[13]), [iquote('factor,13.3.4')]).
 fof(93, axiom, (! [A]: ((A = A))), file('SEU149+2.p',unknown), []).
 fof(139, axiom, (! [A]: ((unordered_pair(A,A) = singleton(A)))), file('SEU149+2.p',unknown), []).
 fof(141, plain, (! [A]: ((singleton(A) = unordered_pair(A,A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[139])]), [iquote('copy,139,flip.1')]).
 fof(143, axiom, (singleton(dollar_c5) = unordered_pair(dollar_c4,dollar_c3)), file('SEU149+2.p',unknown), []).
 fof(144, plain, (unordered_pair(dollar_c5,dollar_c5) = unordered_pair(dollar_c4,dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[143]),141]), [iquote('copy,143,demod,141')]).
-fof(184, plain, (! [A,B]: (~ (in(A,unordered_pair(A,B))))), inference(hyper,[status(thm)],[93,14,93]), [iquote('hyper,93,14,93')]).
+fof(184, plain, (! [A,B]: (in(A,unordered_pair(A,B)))), inference(hyper,[status(thm)],[93,14,93]), [iquote('hyper,93,14,93')]).
 fof(1632, plain, (dollar_c5 = dollar_c3), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[144,13,184]),73]), [iquote('hyper,144,13,184,unit_del,73')]).
 fof(1655, plain, (unordered_pair(dollar_c4,dollar_c3) = unordered_pair(dollar_c3,dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[144]),1632,1632])]), [iquote('back_demod,144,demod,1632,1632,flip.1')]).
 fof(1657, plain, (dollar_c4 != dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[73]),1632])]), [iquote('back_demod,73,demod,1632,flip.1')]).

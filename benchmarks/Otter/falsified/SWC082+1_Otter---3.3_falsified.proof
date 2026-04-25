@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '457':
-%%%%%   Replaced ne_q(dollar_c4,nil)
-%%%%%   With ~ (ne_q(dollar_c4,nil))
+%%%%% Mutated formula '875':
+%%%%%   Replaced ne_q(dollar_c3,nil)
+%%%%%   With ~ (ne_q(dollar_c3,nil))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC082+1 : TPTP v8.1.0. Released v2.4.0.
@@ -41,10 +41,10 @@ fof(187, axiom, (segmentP(dollar_c5,dollar_c3) | ~ (ne_q(dollar_c4,nil))), file(
 fof(453, axiom, (dollar_c6 = dollar_c4), file('SWC082+1.p',unknown), []).
 fof(455, axiom, (dollar_c7 = dollar_c5), file('SWC082+1.p',unknown), []).
 fof(456, axiom, ne_q(dollar_c6,nil), file('SWC082+1.p',unknown), []).
-fof(457, plain, ~ (ne_q(dollar_c4,nil)), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[456]),453]), [iquote('copy,456,demod,453')]).
+fof(457, plain, ne_q(dollar_c4,nil), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[456]),453]), [iquote('copy,456,demod,453')]).
 fof(458, plain, (! [A]: ((~ (ssList(A)) | (~ (ne_q(A,nil)) | (~ (segmentP(dollar_c4,A)) | ~ (segmentP(dollar_c5,A))))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),453,455]), [iquote('back_demod,182,demod,453,455')]).
 fof(873, plain, segmentP(dollar_c5,dollar_c3), inference(hyper,[status(thm)],[457,187]), [iquote('hyper,457,187')]).
 fof(874, plain, segmentP(dollar_c4,dollar_c3), inference(hyper,[status(thm)],[457,186]), [iquote('hyper,457,186')]).
-fof(875, plain, ne_q(dollar_c3,nil), inference(hyper,[status(thm)],[457,185]), [iquote('hyper,457,185')]).
+fof(875, plain, ~ (ne_q(dollar_c3,nil)), inference(hyper,[status(thm)],[457,185]), [iquote('hyper,457,185')]).
 fof(876, plain, ssList(dollar_c3), inference(hyper,[status(thm)],[457,184]), [iquote('hyper,457,184')]).
 fof(916, plain, $false, inference(hyper,[status(thm)],[875,458,876,874,873]), [iquote('hyper,875,458,876,874,873')]).

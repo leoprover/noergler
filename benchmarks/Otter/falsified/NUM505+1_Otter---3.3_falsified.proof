@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '180':
-%%%%%   Replaced doDivides0(xp,sdtasdt0(xn,xm))
-%%%%%   With doDivides0(xk,sdtasdt0(xn,xm))
+%%%%% Mutated formula '9':
+%%%%%   Replaced (! [A,B]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (sdtasdt0(A,B) = sdtasdt0(B,A))))))
+%%%%%   With (! [A,B]: ((aNaturalNumber0(A) | (~ (aNaturalNumber0(B)) | (sdtasdt0(A,B) = sdtasdt0(B,A))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM505+1 : TPTP v8.1.0. Released v4.0.0.
@@ -36,7 +36,7 @@
 fof(3, axiom, (! [A,B]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | aNaturalNumber0(sdtasdt0(A,B)))))), file('NUM505+1.p',unknown), []).
 fof(7, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | (A = sdtpldt0(sz00,A))))), file('NUM505+1.p',unknown), []).
 fof(8, plain, (! [A]: ((~ (aNaturalNumber0(A)) | (sdtpldt0(sz00,A) = A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[7])]), [iquote('copy,7,flip.2')]).
-fof(9, axiom, (! [A,B]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (sdtasdt0(A,B) = sdtasdt0(B,A)))))), file('NUM505+1.p',unknown), []).
+fof(9, axiom, (! [A,B]: ((aNaturalNumber0(A) | (~ (aNaturalNumber0(B)) | (sdtasdt0(A,B) = sdtasdt0(B,A)))))), file('NUM505+1.p',unknown), []).
 fof(30, axiom, (! [A,B,C]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (sdtlse_qdt0(A,B) | (~ (aNaturalNumber0(C)) | (sdtpldt0(A,C) != B))))))), file('NUM505+1.p',unknown), []).
 fof(38, axiom, (! [A,B]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | (sdtlse_qdt0(A,B) | sdtlse_qdt0(B,A)))))), file('NUM505+1.p',unknown), []).
 fof(51, axiom, (! [A,B,C]: ((~ (aNaturalNumber0(A)) | (~ (aNaturalNumber0(B)) | ((A = sz00) | (~ (doDivides0(A,B)) | ((C != sdtsldt0(B,A)) | aNaturalNumber0(C)))))))), file('NUM505+1.p',unknown), []).
@@ -50,7 +50,7 @@ fof(174, axiom, aNaturalNumber0(sz00), file('NUM505+1.p',unknown), []).
 fof(176, axiom, aNaturalNumber0(xn), file('NUM505+1.p',unknown), []).
 fof(177, axiom, aNaturalNumber0(xm), file('NUM505+1.p',unknown), []).
 fof(178, axiom, aNaturalNumber0(xp), file('NUM505+1.p',unknown), []).
-fof(180, axiom, doDivides0(xk,sdtasdt0(xn,xm)), file('NUM505+1.p',unknown), []).
+fof(180, axiom, doDivides0(xp,sdtasdt0(xn,xm)), file('NUM505+1.p',unknown), []).
 fof(183, axiom, (xk = sdtsldt0(sdtasdt0(xn,xm),xp)), file('NUM505+1.p',unknown), []).
 fof(184, plain, (sdtsldt0(sdtasdt0(xn,xm),xp) = xk), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[183])]), [iquote('copy,183,flip.1')]).
 fof(795, plain, (sdtasdt0(xn,xm) = sdtasdt0(xm,xn)), inference(hyper,[status(thm)],[177,9,176]), [iquote('hyper,177,9,176')]).

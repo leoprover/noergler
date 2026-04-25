@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c94637':
-%%%%%   Replaced (! [X7882]: ((relation_restriction(skolem0002,X7882) = relation_rng_restriction(X7882,relation_dom_restriction(skolem0002,X7882)))))
-%%%%%   With (! [X7882]: ((relation_restriction(skolem0001,X7882) = relation_rng_restriction(X7882,relation_dom_restriction(skolem0002,X7882)))))
+%%%%% Mutated formula 'c15':
+%%%%%   Replaced (! [A,B,C]: ((~ (relation(C)) | (relation_dom_restriction(relation_rng_restriction(A,C),B) = relation_rng_restriction(A,relation_dom_restriction(C,B))))))
+%%%%%   With (! [A,B,C]: ((~ (relation(C)) & (relation_dom_restriction(relation_rng_restriction(A,C),B) = relation_rng_restriction(A,relation_dom_restriction(C,B))))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SEU247+1 : TPTP v8.1.2. Released v3.3.0.
@@ -45,7 +45,7 @@ fof(c11, negated_conjecture, (relation_restriction(skolem0002,skolem0001) != rel
 fof(symmetry, axiom, (! [X23,X22]: (((X23 != X22) | (X22 = X23)))), theory(equality)).
 fof(c10, negated_conjecture, relation(skolem0002), inference(split_conjunct,[status(thm)],[c9])).
 fof(t140_relat_1, axiom, (! [A,B,C]: ((relation(C) => (relation_dom_restriction(relation_rng_restriction(A,C),B) = relation_rng_restriction(A,relation_dom_restriction(C,B)))))), file('SEU247+1.p',t140_relat_1)).
-fof(c15, plain, (! [A,B,C]: ((~ (relation(C)) | (relation_dom_restriction(relation_rng_restriction(A,C),B) = relation_rng_restriction(A,relation_dom_restriction(C,B)))))), inference(fof_nnf,[status(thm)],[t140_relat_1])).
+fof(c15, plain, (! [A,B,C]: ((~ (relation(C)) & (relation_dom_restriction(relation_rng_restriction(A,C),B) = relation_rng_restriction(A,relation_dom_restriction(C,B)))))), inference(fof_nnf,[status(thm)],[t140_relat_1])).
 fof(c16, plain, (! [X6,X7,X8]: ((~ (relation(X8)) | (relation_dom_restriction(relation_rng_restriction(X6,X8),X7) = relation_rng_restriction(X6,relation_dom_restriction(X8,X7)))))), inference(variable_rename,[status(thm)],[c15])).
 fof(c17, plain, (! [X122,X120,X121]: ((~ (relation(X122)) | (relation_dom_restriction(relation_rng_restriction(X120,X122),X121) = relation_rng_restriction(X120,relation_dom_restriction(X122,X121)))))), inference(split_conjunct,[status(thm)],[c16])).
 fof(c215, plain, (! [X1258,X1259]: ((relation_dom_restriction(relation_rng_restriction(X1258,skolem0002),X1259) = relation_rng_restriction(X1258,relation_dom_restriction(skolem0002,X1259))))), inference(resolution,[status(thm)],[c17,c10])).
@@ -59,5 +59,5 @@ fof(c169, plain, (! [X504]: ((relation_restriction(skolem0002,X504) = relation_d
 fof(c1962, plain, (! [X787]: ((relation_dom_restriction(relation_rng_restriction(X787,skolem0002),X787) = relation_restriction(skolem0002,X787)))), inference(resolution,[status(thm)],[c169,symmetry])).
 fof(c3175, plain, (! [X7869,X7868]: (((X7869 != relation_dom_restriction(relation_rng_restriction(X7868,skolem0002),X7868)) | (X7869 = relation_restriction(skolem0002,X7868))))), inference(resolution,[status(thm)],[c1962,transitivity])).
 fof(c94398, plain, (! [X7876]: ((relation_rng_restriction(X7876,relation_dom_restriction(skolem0002,X7876)) = relation_restriction(skolem0002,X7876)))), inference(resolution,[status(thm)],[c3175,c6057])).
-fof(c94637, plain, (! [X7882]: ((relation_restriction(skolem0001,X7882) = relation_rng_restriction(X7882,relation_dom_restriction(skolem0002,X7882))))), inference(resolution,[status(thm)],[c94398,symmetry])).
+fof(c94637, plain, (! [X7882]: ((relation_restriction(skolem0002,X7882) = relation_rng_restriction(X7882,relation_dom_restriction(skolem0002,X7882))))), inference(resolution,[status(thm)],[c94398,symmetry])).
 fof(c94869, plain, $false, inference(resolution,[status(thm)],[c94637,c11])).

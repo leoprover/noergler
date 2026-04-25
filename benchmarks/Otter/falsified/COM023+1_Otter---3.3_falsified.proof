@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1022':
-%%%%%   Replaced isConfluent0(xR)
-%%%%%   With ~ (isConfluent0(xR))
+%%%%% Mutated formula '42':
+%%%%%   Replaced (! [A,B,C]: ((~ (aElement0(A)) | (~ (aElement0(B)) | (~ (aElement0(C)) | (~ (sdtmndtasgtdt0(A,xR,B)) | (~ (sdtmndtasgtdt0(A,xR,C)) | sdtmndtasgtdt0(C,xR,dollar_f14(A,B,C)))))))))
+%%%%%   With (! [A,B,C]: ((aElement0(A) | (~ (aElement0(B)) | (~ (aElement0(C)) | (~ (sdtmndtasgtdt0(A,xR,B)) | (~ (sdtmndtasgtdt0(A,xR,C)) | sdtmndtasgtdt0(C,xR,dollar_f14(A,B,C)))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : COM023+1 : TPTP v8.1.0. Released v4.0.0.
@@ -41,7 +41,7 @@ fof(19, axiom, (! [A]: ((~ (aRewritingSystem0(A)) | (isConfluent0(A) | sdtmndtas
 fof(20, axiom, (! [A,B]: ((~ (aRewritingSystem0(A)) | (isConfluent0(A) | (~ (aElement0(B)) | (~ (sdtmndtasgtdt0(dollar_f4(A),A,B)) | ~ (sdtmndtasgtdt0(dollar_f3(A),A,B)))))))), file('COM023+1.p',unknown), []).
 fof(40, axiom, (! [A,B,C]: ((~ (aElement0(A)) | (~ (aElement0(B)) | (~ (aElement0(C)) | (~ (sdtmndtasgtdt0(A,xR,B)) | (~ (sdtmndtasgtdt0(A,xR,C)) | aElement0(dollar_f14(A,B,C))))))))), file('COM023+1.p',unknown), []).
 fof(41, axiom, (! [A,B,C]: ((~ (aElement0(A)) | (~ (aElement0(B)) | (~ (aElement0(C)) | (~ (sdtmndtasgtdt0(A,xR,B)) | (~ (sdtmndtasgtdt0(A,xR,C)) | sdtmndtasgtdt0(B,xR,dollar_f14(A,B,C))))))))), file('COM023+1.p',unknown), []).
-fof(42, axiom, (! [A,B,C]: ((~ (aElement0(A)) | (~ (aElement0(B)) | (~ (aElement0(C)) | (~ (sdtmndtasgtdt0(A,xR,B)) | (~ (sdtmndtasgtdt0(A,xR,C)) | sdtmndtasgtdt0(C,xR,dollar_f14(A,B,C))))))))), file('COM023+1.p',unknown), []).
+fof(42, axiom, (! [A,B,C]: ((aElement0(A) | (~ (aElement0(B)) | (~ (aElement0(C)) | (~ (sdtmndtasgtdt0(A,xR,B)) | (~ (sdtmndtasgtdt0(A,xR,C)) | sdtmndtasgtdt0(C,xR,dollar_f14(A,B,C))))))))), file('COM023+1.p',unknown), []).
 fof(43, axiom, ~ (isConfluent0(xR)), file('COM023+1.p',unknown), []).
 fof(87, axiom, aRewritingSystem0(xR), file('COM023+1.p',unknown), []).
 fof(90, plain, sdtmndtasgtdt0(dollar_f5(xR),xR,dollar_f3(xR)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[87,19]),43]), [iquote('hyper,87,19,unit_del,43')]).
@@ -52,5 +52,5 @@ fof(94, plain, aElement0(dollar_f5(xR)), inference(unit_del,[status(thm)],[infer
 fof(118, plain, sdtmndtasgtdt0(dollar_f4(xR),xR,dollar_f14(dollar_f5(xR),dollar_f3(xR),dollar_f4(xR))), inference(hyper,[status(thm)],[91,42,94,92,93,90]), [iquote('hyper,91,42,94,92,93,90')]).
 fof(120, plain, sdtmndtasgtdt0(dollar_f3(xR),xR,dollar_f14(dollar_f5(xR),dollar_f3(xR),dollar_f4(xR))), inference(hyper,[status(thm)],[91,41,94,92,93,90]), [iquote('hyper,91,41,94,92,93,90')]).
 fof(122, plain, aElement0(dollar_f14(dollar_f5(xR),dollar_f3(xR),dollar_f4(xR))), inference(hyper,[status(thm)],[91,40,94,92,93,90]), [iquote('hyper,91,40,94,92,93,90')]).
-fof(1022, plain, ~ (isConfluent0(xR)), inference(hyper,[status(thm)],[120,20,87,122,118]), [iquote('hyper,120,20,87,122,118')]).
+fof(1022, plain, isConfluent0(xR), inference(hyper,[status(thm)],[120,20,87,122,118]), [iquote('hyper,120,20,87,122,118')]).
 fof(1023, plain, $false, inference(binary,[status(thm)],[1022,43]), [iquote('binary,1022.1,43.1')]).

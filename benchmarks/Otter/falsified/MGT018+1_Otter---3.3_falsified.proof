@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '27':
-%%%%%   Replaced greater(dollar_f1(dollar_c8,dollar_c3),dollar_f1(dollar_c9,dollar_c3))
-%%%%%   With ~ (greater(dollar_f1(dollar_c8,dollar_c3),dollar_f1(dollar_c9,dollar_c3)))
+%%%%% Mutated formula '14':
+%%%%%   Replaced organization(dollar_c9,dollar_c3)
+%%%%%   With ~ (organization(dollar_c9,dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT018+1 : TPTP v8.1.0. Released v2.0.0.
@@ -38,7 +38,7 @@ fof(2, axiom, (! [E,F,A,I,G,B,C,H,D]: ((~ (organization(A,B)) | (~ (organization
 fof(3, axiom, (! [E,F,A,I,G,B,C,H,D]: ((~ (organization(A,B)) | (~ (organization(C,B)) | (organization(C,D) | (~ (class(A,E,B)) | (~ (class(C,E,B)) | (~ (reorganization(A,B,F)) | (~ (reorganization(C,B,D)) | (~ (reorganization_type(A,G,B)) | (~ (reorganization_type(C,G,B)) | (~ (inertia(A,H,B)) | (~ (inertia(C,I,B)) | (~ (greater(I,H)) | greater(F,D))))))))))))))), file('MGT018+1.p',unknown), []).
 fof(4, axiom, ~ (organization(dollar_c8,dollar_c1)), file('MGT018+1.p',unknown), []).
 fof(5, axiom, ~ (greater(dollar_c2,dollar_c1)), file('MGT018+1.p',unknown), []).
-fof(14, axiom, organization(dollar_c9,dollar_c3), file('MGT018+1.p',unknown), []).
+fof(14, axiom, ~ (organization(dollar_c9,dollar_c3)), file('MGT018+1.p',unknown), []).
 fof(15, axiom, organization(dollar_c8,dollar_c3), file('MGT018+1.p',unknown), []).
 fof(16, axiom, class(dollar_c9,dollar_c6,dollar_c3), file('MGT018+1.p',unknown), []).
 fof(17, axiom, class(dollar_c8,dollar_c6,dollar_c3), file('MGT018+1.p',unknown), []).
@@ -51,5 +51,5 @@ fof(23, axiom, size(dollar_c8,dollar_c4,dollar_c3), file('MGT018+1.p',unknown), 
 fof(24, axiom, greater(dollar_c4,dollar_c5), file('MGT018+1.p',unknown), []).
 fof(25, plain, inertia(dollar_c9,dollar_f1(dollar_c9,dollar_c3),dollar_c3), inference(hyper,[status(thm)],[14,1]), [iquote('hyper,14,1')]).
 fof(26, plain, inertia(dollar_c8,dollar_f1(dollar_c8,dollar_c3),dollar_c3), inference(hyper,[status(thm)],[15,1]), [iquote('hyper,15,1')]).
-fof(27, plain, ~ (greater(dollar_f1(dollar_c8,dollar_c3),dollar_f1(dollar_c9,dollar_c3))), inference(hyper,[status(thm)],[26,2,14,15,16,17,22,23,25,24]), [iquote('hyper,26,2,14,15,16,17,22,23,25,24')]).
+fof(27, plain, greater(dollar_f1(dollar_c8,dollar_c3),dollar_f1(dollar_c9,dollar_c3)), inference(hyper,[status(thm)],[26,2,14,15,16,17,22,23,25,24]), [iquote('hyper,26,2,14,15,16,17,22,23,25,24')]).
 fof(28, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[27,3,14,15,16,17,18,19,20,21,25,26]),4,5]), [iquote('hyper,27,3,14,15,16,17,18,19,20,21,25,26,unit_del,4,5')]).

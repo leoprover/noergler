@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '81':
-%%%%%   Replaced reflexive_rewrite(b,c)
-%%%%%   With reflexive_rewrite(c,c)
+%%%%% Mutated formula '11':
+%%%%%   Replaced reflexive_rewrite(a,b)
+%%%%%   With reflexive_rewrite(b,b)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : COM007+1 : TPTP v8.1.0. Released v3.2.0.
@@ -42,7 +42,7 @@ fof(6, axiom, (! [A,B]: ((~ (reflexive_rewrite(A,B)) | (e_qualish(A,B) | rewrite
 fof(7, axiom, (! [A,B,C]: ((~ (rewrite(A,B)) | (~ (rewrite(A,C)) | rewrite(B,dollar_f1(A,B,C)))))), file('COM007+1.p',unknown), []).
 fof(8, axiom, (! [A,B,C]: ((~ (rewrite(A,B)) | (~ (rewrite(A,C)) | rewrite(C,dollar_f1(A,B,C)))))), file('COM007+1.p',unknown), []).
 fof(9, axiom, ~ (goal), file('COM007+1.p',unknown), []).
-fof(11, axiom, reflexive_rewrite(a,b), file('COM007+1.p',unknown), []).
+fof(11, axiom, reflexive_rewrite(b,b), file('COM007+1.p',unknown), []).
 fof(12, axiom, reflexive_rewrite(a,c), file('COM007+1.p',unknown), []).
 fof(13, axiom, (! [A]: (e_qualish(A,A))), file('COM007+1.p',unknown), []).
 fof(14, plain, (e_qualish(a,b) | rewrite(a,b)), inference(hyper,[status(thm)],[11,6]), [iquote('hyper,11,6')]).
@@ -57,6 +57,6 @@ fof(62, plain, (e_qualish(a,b) | e_qualish(c,a)), inference(hyper,[status(thm)],
 fof(66, plain, (e_qualish(a,b) | reflexive_rewrite(c,b)), inference(hyper,[status(thm)],[62,3,11]), [iquote('hyper,62,3,11')]).
 fof(76, plain, e_qualish(a,b), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[66,1,16]),9]), [iquote('hyper,66,1,16,unit_del,9')]).
 fof(79, plain, e_qualish(b,a), inference(hyper,[status(thm)],[76,2]), [iquote('hyper,76,2')]).
-fof(81, plain, reflexive_rewrite(c,c), inference(hyper,[status(thm)],[79,3,12]), [iquote('hyper,79,3,12')]).
+fof(81, plain, reflexive_rewrite(b,c), inference(hyper,[status(thm)],[79,3,12]), [iquote('hyper,79,3,12')]).
 fof(83, plain, goal, inference(hyper,[status(thm)],[81,1,16]), [iquote('hyper,81,1,16')]).
 fof(84, plain, $false, inference(binary,[status(thm)],[83,9]), [iquote('binary,83.1,9.1')]).

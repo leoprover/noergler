@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '164':
-%%%%%   Replaced iLess0(dollar_f15(dollar_c1),dollar_c1)
-%%%%%   With ~ (iLess0(dollar_f15(dollar_c1),dollar_c1))
+%%%%% Mutated formula '54':
+%%%%%   Replaced (! [A]: ((~ (aElement0(A)) | ((dollar_c1 != A) | aReductOfIn0(dollar_f15(A),A,xR)))))
+%%%%%   With (! [A]: ((~ (aElement0(A)) | ((xR != A) | aReductOfIn0(dollar_f15(A),A,xR)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : COM013+4 : TPTP v8.1.0. Released v4.0.0.
@@ -41,14 +41,14 @@ fof(39, axiom, (! [A,B]: ((~ (aElement0(A)) | (~ (aElement0(B)) | (~ (aReductOfI
 fof(42, axiom, (! [A]: ((~ (aElement0(A)) | (~ (iLess0(A,dollar_c1)) | aElement0(dollar_f14(A)))))), file('COM013+4.p',unknown), []).
 fof(51, axiom, (! [A]: ((~ (aElement0(A)) | (~ (iLess0(A,dollar_c1)) | sdtmndtasgtdt0(A,xR,dollar_f14(A)))))), file('COM013+4.p',unknown), []).
 fof(52, axiom, (! [A,B]: ((~ (aElement0(A)) | (~ (iLess0(A,dollar_c1)) | ~ (aReductOfIn0(B,dollar_f14(A),xR)))))), file('COM013+4.p',unknown), []).
-fof(54, axiom, (! [A]: ((~ (aElement0(A)) | ((dollar_c1 != A) | aReductOfIn0(dollar_f15(A),A,xR))))), file('COM013+4.p',unknown), []).
+fof(54, axiom, (! [A]: ((~ (aElement0(A)) | ((xR != A) | aReductOfIn0(dollar_f15(A),A,xR))))), file('COM013+4.p',unknown), []).
 fof(58, axiom, (! [A]: ((~ (aElement0(A)) | (~ (sdtmndtasgtdt0(dollar_c1,xR,A)) | aReductOfIn0(dollar_f15(A),A,xR))))), file('COM013+4.p',unknown), []).
 fof(95, axiom, (! [A]: ((A = A))), file('COM013+4.p',unknown), []).
 fof(96, axiom, aRewritingSystem0(xR), file('COM013+4.p',unknown), []).
 fof(98, axiom, aElement0(dollar_c1), file('COM013+4.p',unknown), []).
 fof(112, plain, aReductOfIn0(dollar_f15(dollar_c1),dollar_c1,xR), inference(hyper,[status(thm)],[98,54,95]), [iquote('hyper,98,54,95')]).
 fof(147, plain, aElement0(dollar_f15(dollar_c1)), inference(hyper,[status(thm)],[112,1,98,96]), [iquote('hyper,112,1,98,96')]).
-fof(164, plain, ~ (iLess0(dollar_f15(dollar_c1),dollar_c1)), inference(hyper,[status(thm)],[147,39,98,112]), [iquote('hyper,147,39,98,112')]).
+fof(164, plain, iLess0(dollar_f15(dollar_c1),dollar_c1), inference(hyper,[status(thm)],[147,39,98,112]), [iquote('hyper,147,39,98,112')]).
 fof(165, plain, sdtmndtplgtdt0(dollar_c1,xR,dollar_f15(dollar_c1)), inference(hyper,[status(thm)],[147,5,98,96,112]), [iquote('hyper,147,5,98,96,112')]).
 fof(176, plain, sdtmndtasgtdt0(dollar_f15(dollar_c1),xR,dollar_f14(dollar_f15(dollar_c1))), inference(hyper,[status(thm)],[164,51,147]), [iquote('hyper,164,51,147')]).
 fof(181, plain, aElement0(dollar_f14(dollar_f15(dollar_c1))), inference(hyper,[status(thm)],[164,42,147]), [iquote('hyper,164,42,147')]).

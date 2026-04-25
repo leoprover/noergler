@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c3':
-%%%%%   Replaced ~ (q)
-%%%%%   With q
+%%%%% Mutated formula 'c1':
+%%%%%   Replaced (p & (~ (q) & (q & ~ (p))))
+%%%%%   With (p | (~ (q) & (q & ~ (p))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN041+1 : TPTP v8.1.2. Released v2.0.0.
@@ -38,7 +38,7 @@
 %%% Generated on Tue Apr 14 15:06:33 CEST 2026 using command 'transform(fof)'.
 fof(pel3, conjecture, (~ ((p => q)) => (q => p)), file('SYN041+1.p',pel3)).
 fof(c0, negated_conjecture, ~ ((~ ((p => q)) => (q => p))), inference(assume_negation,[status(cth)],[pel3])).
-fof(c1, negated_conjecture, (p & (~ (q) & (q & ~ (p)))), inference(fof_nnf,[status(thm)],[c0])).
-fof(c3, negated_conjecture, q, inference(split_conjunct,[status(thm)],[c1])).
+fof(c1, negated_conjecture, (p | (~ (q) & (q & ~ (p)))), inference(fof_nnf,[status(thm)],[c0])).
+fof(c3, negated_conjecture, ~ (q), inference(split_conjunct,[status(thm)],[c1])).
 fof(c4, negated_conjecture, q, inference(split_conjunct,[status(thm)],[c1])).
 fof(c6, plain, $false, inference(resolution,[status(thm)],[c4,c3])).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '108':
-%%%%%   Replaced aElementOf0(szmzizndt0(xS),xS)
-%%%%%   With aElementOf0(szmzizndt0(xT),xS)
+%%%%% Mutated formula '80':
+%%%%%   Replaced (! [A]: ((~ (aElementOf0(A,xT)) | sdtlse_qdt0(szmzizndt0(xT),A))))
+%%%%%   With (! [A]: ((aElementOf0(A,xT) | sdtlse_qdt0(szmzizndt0(xT),A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM539+2 : TPTP v8.1.0. Released v4.0.0.
@@ -37,9 +37,9 @@ fof(54, axiom, (! [A,B,C]: ((~ (aElementOf0(A,szNzAzT0)) | (~ (aElementOf0(B,szN
 fof(75, axiom, (! [A]: ((~ (aElementOf0(A,xS)) | aElementOf0(A,szNzAzT0)))), file('NUM539+2.p',unknown), []).
 fof(76, axiom, (! [A]: ((~ (aElementOf0(A,xT)) | aElementOf0(A,szNzAzT0)))), file('NUM539+2.p',unknown), []).
 fof(79, axiom, (! [A]: ((~ (aElementOf0(A,xS)) | sdtlse_qdt0(szmzizndt0(xS),A)))), file('NUM539+2.p',unknown), []).
-fof(80, axiom, (! [A]: ((~ (aElementOf0(A,xT)) | sdtlse_qdt0(szmzizndt0(xT),A)))), file('NUM539+2.p',unknown), []).
+fof(80, axiom, (! [A]: ((aElementOf0(A,xT) | sdtlse_qdt0(szmzizndt0(xT),A)))), file('NUM539+2.p',unknown), []).
 fof(81, axiom, ~ (sdtlse_qdt0(szmzizndt0(xS),dollar_c3)), file('NUM539+2.p',unknown), []).
-fof(108, axiom, aElementOf0(szmzizndt0(xT),xS), file('NUM539+2.p',unknown), []).
+fof(108, axiom, aElementOf0(szmzizndt0(xS),xS), file('NUM539+2.p',unknown), []).
 fof(110, axiom, aElementOf0(szmzizndt0(xT),xT), file('NUM539+2.p',unknown), []).
 fof(111, axiom, aElementOf0(szmzizndt0(xT),xS), file('NUM539+2.p',unknown), []).
 fof(112, axiom, aElementOf0(dollar_c3,xT), file('NUM539+2.p',unknown), []).

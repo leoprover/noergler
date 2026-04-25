@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3942':
-%%%%%   Replaced isPrime0(dollar_f5(dollar_c2))
-%%%%%   With ~ (isPrime0(dollar_f5(dollar_c2)))
+%%%%% Mutated formula '1354':
+%%%%%   Replaced (sdtasdt0(dollar_c1,sz00) = sz00)
+%%%%%   With ~ ((sdtasdt0(dollar_c1,sz00) = sz00))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM483+3 : TPTP v8.1.0. Released v4.0.0.
@@ -53,11 +53,11 @@ fof(210, axiom, aNaturalNumber0(dollar_c1), file('NUM483+3.p',unknown), []).
 fof(211, axiom, (xk = sdtasdt0(dollar_c2,dollar_c1)), file('NUM483+3.p',unknown), []).
 fof(213, plain, (sdtasdt0(dollar_c2,dollar_c1) = xk), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[211])]), [iquote('copy,211,flip.1')]).
 fof(214, axiom, doDivides0(dollar_c2,xk), file('NUM483+3.p',unknown), []).
-fof(1354, plain, (sdtasdt0(dollar_c1,sz00) = sz00), inference(hyper,[status(thm)],[210,14]), [iquote('hyper,210,14')]).
+fof(1354, plain, ~ ((sdtasdt0(dollar_c1,sz00) = sz00)), inference(hyper,[status(thm)],[210,14]), [iquote('hyper,210,14')]).
 fof(1401, plain, (sdtasdt0(dollar_c1,dollar_c2) = xk), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[210,9,209]),213])]), [iquote('hyper,210,9,209,demod,213,flip.1')]).
 fof(1896, plain, sdtlse_qdt0(dollar_c2,xk), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[214,57,209,208]),77]), [iquote('hyper,214,57,209,208,unit_del,77')]).
 fof(3667, plain, iLess0(dollar_c2,xk), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[1896,46,209,208]),82]), [iquote('hyper,1896,46,209,208,unit_del,82')]).
-fof(3942, plain, ~ (isPrime0(dollar_f5(dollar_c2))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[1401,76]),1354]),77,209,80,3667]), [iquote('para_into,1401.1.1.2,76.2.1,demod,1354,unit_del,77,209,80,3667')]).
+fof(3942, plain, isPrime0(dollar_f5(dollar_c2)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[1401,76]),1354]),77,209,80,3667]), [iquote('para_into,1401.1.1.2,76.2.1,demod,1354,unit_del,77,209,80,3667')]).
 fof(3945, plain, doDivides0(dollar_f5(dollar_c2),dollar_c2), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[1401,71]),1354]),77,209,80,3667]), [iquote('para_into,1401.1.1.2,71.2.1,demod,1354,unit_del,77,209,80,3667')]).
 fof(3947, plain, aNaturalNumber0(dollar_f5(dollar_c2)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[1401,67]),1354]),77,209,80,3667]), [iquote('para_into,1401.1.1.2,67.2.1,demod,1354,unit_del,77,209,80,3667')]).
 fof(4017, plain, doDivides0(dollar_f5(dollar_c2),xk), inference(hyper,[status(thm)],[3945,54,3947,209,208,214]), [iquote('hyper,3945,54,3947,209,208,214')]).

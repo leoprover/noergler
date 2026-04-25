@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '4457':
-%%%%%   Replaced (! [A]: (d(product(dollar_c2,A),product(A,dollar_f1(dollar_c2,dollar_c1)))))
-%%%%%   With (! [A]: (~ (d(product(dollar_c2,A),product(A,dollar_f1(dollar_c2,dollar_c1))))))
+%%%%% Mutated formula '12':
+%%%%%   Replaced (! [A]: ((r(A,A) | (product(A,A) != A))))
+%%%%%   With (! [A]: ((r(A,A) & (product(A,A) != A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GRP775+1 : TPTP v8.1.0. Released v4.1.0.
@@ -44,7 +44,7 @@ fof(8, axiom, (! [A,B]: ((~ (d(A,B)) | l(dollar_f1(A,B),B)))), file('GRP775+1.p'
 fof(9, axiom, (! [A,B,C]: ((d(A,B) | (~ (r(A,C)) | ~ (l(C,B)))))), file('GRP775+1.p',unknown), []).
 fof(10, axiom, (~ (d(dollar_c2,dollar_c1)) | ((product(dollar_c2,product(dollar_c1,dollar_c2)) != dollar_c2) | (product(dollar_c1,product(dollar_c2,dollar_c1)) != dollar_c1))), file('GRP775+1.p',unknown), []).
 fof(11, plain, (! [A]: ((l(A,A) | (product(A,A) != A)))), inference(factor,[status(thm)],[3]), [iquote('factor,3.2.3')]).
-fof(12, plain, (! [A]: ((r(A,A) | (product(A,A) != A)))), inference(factor,[status(thm)],[6]), [iquote('factor,6.2.3')]).
+fof(12, plain, (! [A]: ((r(A,A) & (product(A,A) != A)))), inference(factor,[status(thm)],[6]), [iquote('factor,6.2.3')]).
 fof(13, axiom, (! [A]: ((A = A))), file('GRP775+1.p',unknown), []).
 fof(15, axiom, (! [A,B,C]: ((product(product(A,B),C) = product(A,product(B,C))))), file('GRP775+1.p',unknown), []).
 fof(17, axiom, (! [A]: ((product(A,A) = A))), file('GRP775+1.p',unknown), []).
@@ -91,7 +91,7 @@ fof(4185, plain, (! [A,B]: (l(product(A,B),product(B,product(A,B))))), inference
 fof(4196, plain, (! [A,B]: (d(product(A,B),product(B,A)))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[4185,9,1279]),15,26,32]), [iquote('hyper,4185,9,1279,demod,15,26,32')]).
 fof(4211, plain, (! [A,B]: ((d(A,product(B,A)) | ~ (l(A,B))))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[4196,3910]),15,17]), [iquote('para_into,4196.1.1,3910.1.1,demod,15,17')]).
 fof(4243, plain, (! [A,B]: ((d(A,B) | ~ (l(A,B))))), inference(factor_simp,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[4211,2])]), [iquote('para_into,4211.1.2,2.2.1,factor_simp')]).
-fof(4457, plain, (! [A]: (~ (d(product(dollar_c2,A),product(A,dollar_f1(dollar_c2,dollar_c1)))))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[3759,9,4185]),15,966,1664]), [iquote('hyper,3759,9,4185,demod,15,966,1664')]).
+fof(4457, plain, (! [A]: (d(product(dollar_c2,A),product(A,dollar_f1(dollar_c2,dollar_c1))))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[3759,9,4185]),15,966,1664]), [iquote('hyper,3759,9,4185,demod,15,966,1664')]).
 fof(4466, plain, d(product(dollar_c2,dollar_c1),dollar_c1), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[4457,3721]),21]), [iquote('para_into,4457.1.2,3721.1.1,unit_del,21')]).
 fof(4469, plain, l(dollar_f1(product(dollar_c2,dollar_c1),dollar_c1),dollar_c1), inference(hyper,[status(thm)],[4466,8]), [iquote('hyper,4466,8')]).
 fof(4470, plain, r(product(dollar_c2,dollar_c1),dollar_f1(product(dollar_c2,dollar_c1),dollar_c1)), inference(hyper,[status(thm)],[4466,7]), [iquote('hyper,4466,7')]).

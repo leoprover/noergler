@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '23':
-%%%%%   Replaced well_founded_relation(inclusion_relation(dollar_c2))
-%%%%%   With ~ (well_founded_relation(inclusion_relation(dollar_c2)))
+%%%%% Mutated formula '19':
+%%%%%   Replaced (! [A]: (antisymmetric(inclusion_relation(A))))
+%%%%%   With (! [A]: (~ (antisymmetric(inclusion_relation(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU275+1 : TPTP v8.1.0. Released v3.3.0.
@@ -40,9 +40,9 @@ fof(12, axiom, ~ (well_ordering(inclusion_relation(dollar_c2))), file('SEU275+1.
 fof(13, axiom, (! [A]: (relation(inclusion_relation(A)))), file('SEU275+1.p',unknown), []).
 fof(17, axiom, (! [A]: (reflexive(inclusion_relation(A)))), file('SEU275+1.p',unknown), []).
 fof(18, axiom, (! [A]: (transitive(inclusion_relation(A)))), file('SEU275+1.p',unknown), []).
-fof(19, axiom, (! [A]: (antisymmetric(inclusion_relation(A)))), file('SEU275+1.p',unknown), []).
+fof(19, axiom, (! [A]: (~ (antisymmetric(inclusion_relation(A))))), file('SEU275+1.p',unknown), []).
 fof(20, axiom, ordinal(dollar_c2), file('SEU275+1.p',unknown), []).
-fof(23, plain, ~ (well_founded_relation(inclusion_relation(dollar_c2))), inference(hyper,[status(thm)],[20,11]), [iquote('hyper,20,11')]).
+fof(23, plain, well_founded_relation(inclusion_relation(dollar_c2)), inference(hyper,[status(thm)],[20,11]), [iquote('hyper,20,11')]).
 fof(24, plain, connected(inclusion_relation(dollar_c2)), inference(hyper,[status(thm)],[20,10]), [iquote('hyper,20,10')]).
 fof(28, plain, well_ordering(inclusion_relation(dollar_c2)), inference(hyper,[status(thm)],[24,9,13,17,18,19,23]), [iquote('hyper,24,9,13,17,18,19,23')]).
 fof(29, plain, $false, inference(binary,[status(thm)],[28,12]), [iquote('binary,28.1,12.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '19':
-%%%%%   Replaced distinct_lines(dollar_c2,line_connecting(dollar_c4,dollar_c3))
-%%%%%   With distinct_lines(dollar_c3,line_connecting(dollar_c4,dollar_c3))
+%%%%% Mutated formula '17':
+%%%%%   Replaced distinct_points(dollar_c4,dollar_c3)
+%%%%%   With ~ (distinct_points(dollar_c4,dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO184+1 : TPTP v8.1.0. Released v3.3.0.
@@ -40,8 +40,8 @@ fof(8, axiom, (! [A,B]: ((~ (distinct_points(A,B)) | ~ (apart_point_and_line(B,l
 fof(11, axiom, (! [A,B,C,D]: ((~ (distinct_points(A,B)) | (~ (distinct_lines(C,D)) | (apart_point_and_line(A,C) | (apart_point_and_line(A,D) | (apart_point_and_line(B,C) | apart_point_and_line(B,D)))))))), file('GEO184+1.p',unknown), []).
 fof(15, axiom, ~ (apart_point_and_line(dollar_c4,dollar_c2)), file('GEO184+1.p',unknown), []).
 fof(16, axiom, ~ (apart_point_and_line(dollar_c3,dollar_c2)), file('GEO184+1.p',unknown), []).
-fof(17, axiom, distinct_points(dollar_c4,dollar_c3), file('GEO184+1.p',unknown), []).
-fof(19, axiom, distinct_lines(dollar_c3,line_connecting(dollar_c4,dollar_c3)), file('GEO184+1.p',unknown), []).
+fof(17, axiom, ~ (distinct_points(dollar_c4,dollar_c3)), file('GEO184+1.p',unknown), []).
+fof(19, axiom, distinct_lines(dollar_c2,line_connecting(dollar_c4,dollar_c3)), file('GEO184+1.p',unknown), []).
 fof(20, plain, (! [A]: ((distinct_points(dollar_c4,A) | distinct_points(dollar_c3,A)))), inference(hyper,[status(thm)],[17,4]), [iquote('hyper,17,4')]).
 fof(23, plain, (apart_point_and_line(dollar_c4,line_connecting(dollar_c4,dollar_c3)) | apart_point_and_line(dollar_c3,line_connecting(dollar_c4,dollar_c3))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[19,11,17]),15,16]), [iquote('hyper,19,11,17,unit_del,15,16')]).
 fof(54, plain, apart_point_and_line(dollar_c3,line_connecting(dollar_c4,dollar_c3)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[23,7,20]),1]), [iquote('hyper,23,7,20,unit_del,1')]).

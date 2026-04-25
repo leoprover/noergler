@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1925':
-%%%%%   Replaced incident_o(dollar_c3,dollar_f25(dollar_c2))
-%%%%%   With incident_o(dollar_c1,dollar_f25(dollar_c2))
+%%%%% Mutated formula '94':
+%%%%%   Replaced (~ (incident_o(dollar_c3,trajectory_of(dollar_c2))) | ~ (incident_o(dollar_c3,trajectory_of(dollar_c1))))
+%%%%%   With (~ (incident_o(dollar_c1,trajectory_of(dollar_c2))) | ~ (incident_o(dollar_c3,trajectory_of(dollar_c1))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO147+1 : TPTP v8.1.0. Released v2.4.0.
@@ -37,7 +37,7 @@ fof(82, axiom, (! [A,B,C]: ((~ (connect(A,B,C)) | once(at_the_same_time(at(A,C),
 fof(88, axiom, (! [A,B]: ((~ (once(at_the_same_time(A,B))) | once(A)))), file('GEO147+1.p',unknown), []).
 fof(89, axiom, (! [A,B]: ((~ (once(at_the_same_time(A,B))) | once(B)))), file('GEO147+1.p',unknown), []).
 fof(90, axiom, (! [A,B]: ((~ (once(at(A,B))) | incident_o(B,trajectory_of(A))))), file('GEO147+1.p',unknown), []).
-fof(94, axiom, (~ (incident_o(dollar_c3,trajectory_of(dollar_c2))) | ~ (incident_o(dollar_c3,trajectory_of(dollar_c1)))), file('GEO147+1.p',unknown), []).
+fof(94, axiom, (~ (incident_o(dollar_c1,trajectory_of(dollar_c2))) | ~ (incident_o(dollar_c3,trajectory_of(dollar_c1)))), file('GEO147+1.p',unknown), []).
 fof(131, axiom, (! [A]: ((trajectory_of(A) = dollar_f25(A)))), file('GEO147+1.p',unknown), []).
 fof(132, axiom, connect(dollar_c2,dollar_c1,dollar_c3), file('GEO147+1.p',unknown), []).
 fof(139, plain, (~ (incident_o(dollar_c3,dollar_f25(dollar_c2))) | ~ (incident_o(dollar_c3,dollar_f25(dollar_c1)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[94]),131,131]), [iquote('back_demod,94,demod,131,131')]).
@@ -46,5 +46,5 @@ fof(206, plain, once(at_the_same_time(at(dollar_c2,dollar_c3),at(dollar_c1,dolla
 fof(1916, plain, once(at(dollar_c1,dollar_c3)), inference(hyper,[status(thm)],[206,89]), [iquote('hyper,206,89')]).
 fof(1917, plain, once(at(dollar_c2,dollar_c3)), inference(hyper,[status(thm)],[206,88]), [iquote('hyper,206,88')]).
 fof(1919, plain, incident_o(dollar_c3,dollar_f25(dollar_c1)), inference(hyper,[status(thm)],[1916,142]), [iquote('hyper,1916,142')]).
-fof(1925, plain, incident_o(dollar_c1,dollar_f25(dollar_c2)), inference(hyper,[status(thm)],[1917,142]), [iquote('hyper,1917,142')]).
+fof(1925, plain, incident_o(dollar_c3,dollar_f25(dollar_c2)), inference(hyper,[status(thm)],[1917,142]), [iquote('hyper,1917,142')]).
 fof(1939, plain, $false, inference(hyper,[status(thm)],[1925,139,1919]), [iquote('hyper,1925,139,1919')]).

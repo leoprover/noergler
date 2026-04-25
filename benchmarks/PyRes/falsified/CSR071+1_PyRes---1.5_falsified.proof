@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c340':
-%%%%%   Replaced militaryperson(c_tptpnavypersonnel_3)
-%%%%%   With ~ (militaryperson(c_tptpnavypersonnel_3))
+%%%%% Mutated formula 'just2':
+%%%%%   Replaced (! [OBJ]: ((navypersonnel(OBJ) => militaryperson(OBJ))))
+%%%%%   With (! [OBJ]: ((~ (navypersonnel(OBJ)) => militaryperson(OBJ))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR071+1 : TPTP v8.1.2. Released v3.4.0.
@@ -49,7 +49,7 @@ fof(c74, plain, (! [X38,X39]: ((~ (mtvisible(X38)) | (~ (genlmt(X38,X39)) | mtvi
 fof(c75, plain, (! [X151,X150]: ((~ (mtvisible(X151)) | (~ (genlmt(X151,X150)) | mtvisible(X150))))), inference(split_conjunct,[status(thm)],[c74])).
 fof(c287, plain, (~ (mtvisible(c_tptp_spindlecollectormt)) | mtvisible(c_tptp_member698_mt)), inference(resolution,[status(thm)],[c75,c201])).
 fof(c331, plain, mtvisible(c_tptp_member698_mt), inference(resolution,[status(thm)],[c287,c2])).
-fof(just2, axiom, (! [OBJ]: ((navypersonnel(OBJ) => militaryperson(OBJ)))), file('CSR071+1.p',just2)).
+fof(just2, axiom, (! [OBJ]: ((~ (navypersonnel(OBJ)) => militaryperson(OBJ)))), file('CSR071+1.p',just2)).
 fof(c208, plain, (! [OBJ]: ((~ (navypersonnel(OBJ)) | militaryperson(OBJ)))), inference(fof_nnf,[status(thm)],[just2])).
 fof(c209, plain, (! [X111]: ((~ (navypersonnel(X111)) | militaryperson(X111)))), inference(variable_rename,[status(thm)],[c208])).
 fof(c210, plain, (! [X116]: ((~ (navypersonnel(X116)) | militaryperson(X116)))), inference(split_conjunct,[status(thm)],[c209])).
@@ -61,7 +61,7 @@ fof(c200, plain, genlmt(c_tptp_spindlecollectormt,c_tptp_member1672_mt), inferen
 fof(c296, plain, (~ (mtvisible(c_tptp_spindlecollectormt)) | mtvisible(c_tptp_member1672_mt)), inference(resolution,[status(thm)],[c75,c200])).
 fof(c337, plain, mtvisible(c_tptp_member1672_mt), inference(resolution,[status(thm)],[c296,c2])).
 fof(c338, plain, navypersonnel(c_tptpnavypersonnel_3), inference(resolution,[status(thm)],[c337,c192])).
-fof(c340, plain, ~ (militaryperson(c_tptpnavypersonnel_3)), inference(resolution,[status(thm)],[c338,c210])).
+fof(c340, plain, militaryperson(c_tptpnavypersonnel_3), inference(resolution,[status(thm)],[c338,c210])).
 fof(just13, axiom, (! [INS]: (((mtvisible(c_tptp_member698_mt) & militaryperson(INS)) => tptpofobject(INS,f_tptpquantityfn_6(n_414))))), file('CSR071+1.p',just13)).
 fof(c195, plain, (! [INS]: ((~ (mtvisible(c_tptp_member698_mt)) | (~ (militaryperson(INS)) | tptpofobject(INS,f_tptpquantityfn_6(n_414)))))), inference(fof_nnf,[status(thm)],[just13])).
 fof(c196, plain, (! [X110]: ((~ (mtvisible(c_tptp_member698_mt)) | (~ (militaryperson(X110)) | tptpofobject(X110,f_tptpquantityfn_6(n_414)))))), inference(variable_rename,[status(thm)],[c195])).

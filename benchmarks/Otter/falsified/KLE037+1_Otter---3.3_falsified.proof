@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '10':
-%%%%%   Replaced (! [A,B,C]: ((addition(addition(A,B),C) = addition(A,addition(B,C)))))
-%%%%%   With (! [A,B,C]: (~ ((addition(addition(A,B),C) = addition(A,addition(B,C))))))
+%%%%% Mutated formula '8':
+%%%%%   Replaced (! [A,B,C]: ((addition(A,addition(B,C)) = addition(addition(A,B),C))))
+%%%%%   With (! [A,B,C]: (~ ((addition(A,addition(B,C)) = addition(addition(A,B),C)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE037+1 : TPTP v8.1.0. Released v4.0.0.
@@ -37,8 +37,8 @@ fof(1, axiom, (! [A,B]: ((~ (le_q(A,B)) | (addition(A,B) = B)))), file('KLE037+1
 fof(2, axiom, (! [A,B]: ((le_q(A,B) | (addition(A,B) != B)))), file('KLE037+1.p',unknown), []).
 fof(5, axiom, ~ (le_q(one,star(dollar_c1))), file('KLE037+1.p',unknown), []).
 fof(7, axiom, (! [A,B]: ((addition(A,B) = addition(B,A)))), file('KLE037+1.p',unknown), []).
-fof(8, axiom, (! [A,B,C]: ((addition(A,addition(B,C)) = addition(addition(A,B),C)))), file('KLE037+1.p',unknown), []).
-fof(10, plain, (! [A,B,C]: (~ ((addition(addition(A,B),C) = addition(A,addition(B,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[8])]), [iquote('copy,8,flip.1')]).
+fof(8, axiom, (! [A,B,C]: (~ ((addition(A,addition(B,C)) = addition(addition(A,B),C))))), file('KLE037+1.p',unknown), []).
+fof(10, plain, (! [A,B,C]: ((addition(addition(A,B),C) = addition(A,addition(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[8])]), [iquote('copy,8,flip.1')]).
 fof(13, axiom, (! [A]: ((addition(A,A) = A))), file('KLE037+1.p',unknown), []).
 fof(31, axiom, (! [A]: (le_q(addition(one,multiplication(star(A),A)),star(A)))), file('KLE037+1.p',unknown), []).
 fof(43, plain, (! [A,B]: (((addition(A,B) = A) | ~ (le_q(B,A))))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[7,1])]), [iquote('para_into,7.1.1,1.2.1,flip.1')]).

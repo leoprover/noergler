@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '150':
-%%%%%   Replaced member(dollar_c3,dollar_c7)
-%%%%%   With ~ (member(dollar_c3,dollar_c7))
+%%%%% Mutated formula '155':
+%%%%%   Replaced apply(dollar_c6,dollar_c4,dollar_c3)
+%%%%%   With ~ (apply(dollar_c6,dollar_c4,dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET776+4 : TPTP v8.1.0. Released v2.2.0.
@@ -39,12 +39,12 @@ fof(102, axiom, (! [A,B]: ((~ (member(A,dollar_c7)) | (~ (member(B,dollar_c7)) |
 fof(104, axiom, ~ (apply(dollar_c6,dollar_c2,dollar_c1)), file('SET776+4.p',unknown), []).
 fof(148, axiom, pre_order(dollar_c6,dollar_c7), file('SET776+4.p',unknown), []).
 fof(149, axiom, member(dollar_c4,dollar_c7), file('SET776+4.p',unknown), []).
-fof(150, axiom, ~ (member(dollar_c3,dollar_c7)), file('SET776+4.p',unknown), []).
+fof(150, axiom, member(dollar_c3,dollar_c7), file('SET776+4.p',unknown), []).
 fof(151, axiom, member(dollar_c2,dollar_c7), file('SET776+4.p',unknown), []).
 fof(152, axiom, member(dollar_c1,dollar_c7), file('SET776+4.p',unknown), []).
 fof(153, axiom, apply(dollar_c5,dollar_c4,dollar_c2), file('SET776+4.p',unknown), []).
 fof(154, axiom, apply(dollar_c5,dollar_c3,dollar_c1), file('SET776+4.p',unknown), []).
-fof(155, axiom, apply(dollar_c6,dollar_c4,dollar_c3), file('SET776+4.p',unknown), []).
+fof(155, axiom, ~ (apply(dollar_c6,dollar_c4,dollar_c3)), file('SET776+4.p',unknown), []).
 fof(289, plain, apply(dollar_c6,dollar_c2,dollar_c4), inference(hyper,[status(thm)],[153,102,149,151]), [iquote('hyper,153,102,149,151')]).
 fof(320, plain, apply(dollar_c6,dollar_c3,dollar_c1), inference(hyper,[status(thm)],[154,101,150,152]), [iquote('hyper,154,101,150,152')]).
 fof(706, plain, apply(dollar_c6,dollar_c2,dollar_c3), inference(hyper,[status(thm)],[289,93,148,151,149,150,155]), [iquote('hyper,289,93,148,151,149,150,155')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c20':
-%%%%%   Replaced (! [X17,X18,X19]: ((~ (relation_of2_as_subset(X19,X17,X18)) | (subset(relation_dom(X19),X17) & subset(relation_rng(X19),X18)))))
-%%%%%   With (! [X17,X18,X19]: ((~ (relation_of2_as_subset(X19,X17,X18)) & (subset(relation_dom(X19),X17) & subset(relation_rng(X19),X18)))))
+%%%%% Mutated formula 'c17':
+%%%%%   Replaced (! [X13,X14,X15,X16]: ((~ (relation_of2_as_subset(X16,X15,X13)) | (~ (subset(relation_rng(X16),X14)) | relation_of2_as_subset(X16,X15,X14)))))
+%%%%%   With (! [X13,X14,X15,X16]: ((~ (relation_of2_as_subset(X16,X15,X13)) & (~ (subset(relation_rng(X16),X14)) | relation_of2_as_subset(X16,X15,X14)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SEU264+1 : TPTP v8.1.2. Released v3.3.0.
@@ -45,11 +45,11 @@ fof(c15, negated_conjecture, ~ (relation_of2_as_subset(skolem0004,skolem0003,sko
 fof(c13, negated_conjecture, relation_of2_as_subset(skolem0004,skolem0003,skolem0001), inference(split_conjunct,[status(thm)],[c12])).
 fof(t14_relset_1, axiom, (! [A,B,C,D]: ((relation_of2_as_subset(D,C,A) => (subset(relation_rng(D),B) => relation_of2_as_subset(D,C,B))))), file('SEU264+1.p',t14_relset_1)).
 fof(c16, plain, (! [A,B,C,D]: ((~ (relation_of2_as_subset(D,C,A)) | (~ (subset(relation_rng(D),B)) | relation_of2_as_subset(D,C,B))))), inference(fof_nnf,[status(thm)],[t14_relset_1])).
-fof(c17, plain, (! [X13,X14,X15,X16]: ((~ (relation_of2_as_subset(X16,X15,X13)) | (~ (subset(relation_rng(X16),X14)) | relation_of2_as_subset(X16,X15,X14))))), inference(variable_rename,[status(thm)],[c16])).
+fof(c17, plain, (! [X13,X14,X15,X16]: ((~ (relation_of2_as_subset(X16,X15,X13)) & (~ (subset(relation_rng(X16),X14)) | relation_of2_as_subset(X16,X15,X14))))), inference(variable_rename,[status(thm)],[c16])).
 fof(c18, plain, (! [X60,X61,X63,X62]: ((~ (relation_of2_as_subset(X60,X61,X63)) | (~ (subset(relation_rng(X60),X62)) | relation_of2_as_subset(X60,X61,X62))))), inference(split_conjunct,[status(thm)],[c17])).
 fof(t12_relset_1, axiom, (! [A,B,C]: ((relation_of2_as_subset(C,A,B) => (subset(relation_dom(C),A) & subset(relation_rng(C),B))))), file('SEU264+1.p',t12_relset_1)).
 fof(c19, plain, (! [A,B,C]: ((~ (relation_of2_as_subset(C,A,B)) | (subset(relation_dom(C),A) & subset(relation_rng(C),B))))), inference(fof_nnf,[status(thm)],[t12_relset_1])).
-fof(c20, plain, (! [X17,X18,X19]: ((~ (relation_of2_as_subset(X19,X17,X18)) & (subset(relation_dom(X19),X17) & subset(relation_rng(X19),X18))))), inference(variable_rename,[status(thm)],[c19])).
+fof(c20, plain, (! [X17,X18,X19]: ((~ (relation_of2_as_subset(X19,X17,X18)) | (subset(relation_dom(X19),X17) & subset(relation_rng(X19),X18))))), inference(variable_rename,[status(thm)],[c19])).
 fof(c21, plain, (! [X17,X18,X19]: (((~ (relation_of2_as_subset(X19,X17,X18)) | subset(relation_dom(X19),X17)) & (~ (relation_of2_as_subset(X19,X17,X18)) | subset(relation_rng(X19),X18))))), inference(distribute,[status(thm)],[c20])).
 fof(c23, plain, (! [X84,X85,X83]: ((~ (relation_of2_as_subset(X84,X85,X83)) | subset(relation_rng(X84),X83)))), inference(split_conjunct,[status(thm)],[c21])).
 fof(c78, plain, subset(relation_rng(skolem0004),skolem0001), inference(resolution,[status(thm)],[c23,c13])).

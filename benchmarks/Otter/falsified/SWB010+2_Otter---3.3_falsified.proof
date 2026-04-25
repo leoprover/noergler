@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '60':
-%%%%%   Replaced (! [A,B]: ((iext(uri_ex_p,A,B) | iext(uri_owl_sourceIndividual,dollar_f3(uri_ex_p,A,B),A))))
-%%%%%   With (! [A,B]: ((iext(dollar_c4,A,B) | iext(uri_owl_sourceIndividual,dollar_f3(uri_ex_p,A,B),A))))
+%%%%% Mutated formula '3866':
+%%%%%   Replaced iext(uri_owl_sourceIndividual,dollar_f3(uri_ex_p,uri_ex_s,uri_ex_o),uri_ex_s)
+%%%%%   With iext(dollar_c4,dollar_f3(uri_ex_p,uri_ex_s,uri_ex_o),uri_ex_s)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWB010+2 : TPTP v8.1.0. Released v5.2.0.
@@ -57,14 +57,14 @@ fof(46, plain, icext(dollar_c4,uri_ex_s), inference(hyper,[status(thm)],[33,1]),
 fof(50, plain, ip(uri_ex_p), inference(hyper,[status(thm)],[34,6]), [iquote('hyper,34,6')]).
 fof(58, plain, (! [A,B]: ((iext(uri_ex_p,A,B) | iext(uri_owl_targetIndividual,dollar_f3(uri_ex_p,A,B),B)))), inference(hyper,[status(thm)],[50,21,31,31]), [iquote('hyper,50,21,31,31')]).
 fof(59, plain, (! [A,B]: ((iext(uri_ex_p,A,B) | iext(uri_owl_assertionProperty,dollar_f3(uri_ex_p,A,B),uri_ex_p)))), inference(hyper,[status(thm)],[50,20,31,31]), [iquote('hyper,50,20,31,31')]).
-fof(60, plain, (! [A,B]: ((iext(dollar_c4,A,B) | iext(uri_owl_sourceIndividual,dollar_f3(uri_ex_p,A,B),A)))), inference(hyper,[status(thm)],[50,19,31,31]), [iquote('hyper,50,19,31,31')]).
+fof(60, plain, (! [A,B]: ((iext(uri_ex_p,A,B) | iext(uri_owl_sourceIndividual,dollar_f3(uri_ex_p,A,B),A)))), inference(hyper,[status(thm)],[50,19,31,31]), [iquote('hyper,50,19,31,31')]).
 fof(86, plain, icext(dollar_c2,uri_ex_o), inference(hyper,[status(thm)],[39,13,38,37,30]), [iquote('hyper,39,13,38,37,30')]).
 fof(1236, plain, (! [A]: ((iext(uri_owl_targetIndividual,dollar_f3(uri_ex_p,uri_ex_s,A),A) | icext(dollar_c3,A)))), inference(hyper,[status(thm)],[58,16,35,34,46]), [iquote('hyper,58,16,35,34,46')]).
 fof(1286, plain, (! [A]: ((iext(uri_owl_assertionProperty,dollar_f3(uri_ex_p,uri_ex_s,A),uri_ex_p) | icext(dollar_c3,A)))), inference(hyper,[status(thm)],[59,16,35,34,46]), [iquote('hyper,59,16,35,34,46')]).
 fof(1345, plain, (! [A]: ((iext(uri_owl_sourceIndividual,dollar_f3(uri_ex_p,uri_ex_s,A),uri_ex_s) | icext(dollar_c3,A)))), inference(hyper,[status(thm)],[60,16,35,34,46]), [iquote('hyper,60,16,35,34,46')]).
 fof(3848, plain, iext(uri_owl_targetIndividual,dollar_f3(uri_ex_p,uri_ex_s,uri_ex_o),uri_ex_o), inference(hyper,[status(thm)],[1236,9,36,86]), [iquote('hyper,1236,9,36,86')]).
 fof(3859, plain, iext(uri_owl_assertionProperty,dollar_f3(uri_ex_p,uri_ex_s,uri_ex_o),uri_ex_p), inference(hyper,[status(thm)],[1286,9,36,86]), [iquote('hyper,1286,9,36,86')]).
-fof(3866, plain, iext(uri_owl_sourceIndividual,dollar_f3(uri_ex_p,uri_ex_s,uri_ex_o),uri_ex_s), inference(hyper,[status(thm)],[1345,9,36,86]), [iquote('hyper,1345,9,36,86')]).
+fof(3866, plain, iext(dollar_c4,dollar_f3(uri_ex_p,uri_ex_s,uri_ex_o),uri_ex_s), inference(hyper,[status(thm)],[1345,9,36,86]), [iquote('hyper,1345,9,36,86')]).
 fof(3868, plain, icext(uri_owl_NegativePropertyAssertion,dollar_f3(uri_ex_p,uri_ex_s,uri_ex_o)), inference(hyper,[status(thm)],[3866,3]), [iquote('hyper,3866,3')]).
 fof(3875, plain, iext(uri_rdf_type,dollar_f3(uri_ex_p,uri_ex_s,uri_ex_o),uri_owl_NegativePropertyAssertion), inference(hyper,[status(thm)],[3868,2]), [iquote('hyper,3868,2')]).
 fof(3884, plain, $false, inference(hyper,[status(thm)],[3875,22,3866,3859,3848]), [iquote('hyper,3875,22,3866,3859,3848')]).

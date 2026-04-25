@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '455':
-%%%%%   Replaced ssList(dollar_c5)
-%%%%%   With ~ (ssList(dollar_c5))
+%%%%% Mutated formula '456':
+%%%%%   Replaced ssList(dollar_c4)
+%%%%%   With ~ (ssList(dollar_c4))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC006+1 : TPTP v8.1.0. Released v2.4.0.
@@ -36,8 +36,8 @@
 fof(182, axiom, (! [A,B,C]: ((~ (ssList(A)) | (~ (ssList(B)) | (~ (ssList(C)) | ((app(app(A,B),C) != dollar_c8) | (app(A,C) != dollar_c9))))))), file('SWC006+1.p',unknown), []).
 fof(452, axiom, (dollar_c8 = dollar_c6), file('SWC006+1.p',unknown), []).
 fof(454, axiom, (dollar_c9 = dollar_c7), file('SWC006+1.p',unknown), []).
-fof(455, axiom, ~ (ssList(dollar_c5)), file('SWC006+1.p',unknown), []).
-fof(456, axiom, ssList(dollar_c4), file('SWC006+1.p',unknown), []).
+fof(455, axiom, ssList(dollar_c5), file('SWC006+1.p',unknown), []).
+fof(456, axiom, ~ (ssList(dollar_c4)), file('SWC006+1.p',unknown), []).
 fof(457, axiom, ssList(dollar_c3), file('SWC006+1.p',unknown), []).
 fof(458, axiom, (app(app(dollar_c5,dollar_c4),dollar_c3) = dollar_c6), file('SWC006+1.p',unknown), []).
 fof(460, axiom, (app(dollar_c5,dollar_c3) = dollar_c7), file('SWC006+1.p',unknown), []).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '926':
-%%%%%   Replaced ~ (singletonP(dollar_c4))
-%%%%%   With singletonP(dollar_c4)
+%%%%% Mutated formula '446':
+%%%%%   Replaced ssList(dollar_c4)
+%%%%%   With ssList(dollar_c5)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC127+1 : TPTP v8.1.0. Released v2.4.0.
@@ -38,7 +38,7 @@ fof(113, axiom, ~ (singletonP(nil)), file('SWC127+1.p',unknown), []).
 fof(182, axiom, (singletonP(dollar_c4) | ~ (ne_q(dollar_c3,nil))), file('SWC127+1.p',unknown), []).
 fof(183, axiom, (~ (ne_q(dollar_c6,nil)) | ~ (segmentP(dollar_c5,dollar_c6))), file('SWC127+1.p',unknown), []).
 fof(436, axiom, ssList(nil), file('SWC127+1.p',unknown), []).
-fof(446, axiom, ssList(dollar_c4), file('SWC127+1.p',unknown), []).
+fof(446, axiom, ssList(dollar_c5), file('SWC127+1.p',unknown), []).
 fof(449, axiom, (dollar_c5 = dollar_c3), file('SWC127+1.p',unknown), []).
 fof(451, axiom, (dollar_c6 = dollar_c4), file('SWC127+1.p',unknown), []).
 fof(452, axiom, ne_q(dollar_c5,nil), file('SWC127+1.p',unknown), []).
@@ -48,5 +48,5 @@ fof(455, plain, ~ (ne_q(dollar_c4,nil)), inference(unit_del,[status(thm)],[infer
 fof(901, plain, (nil = dollar_c4), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[446,80,436]),455])]), [iquote('hyper,446,80,436,unit_del,455,flip.1')]).
 fof(917, plain, ne_q(dollar_c3,dollar_c4), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[453]),901]), [iquote('back_demod,453,demod,901')]).
 fof(925, plain, singletonP(dollar_c4), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),901]),917]), [iquote('back_demod,182,demod,901,unit_del,917')]).
-fof(926, plain, singletonP(dollar_c4), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[113]),901]), [iquote('back_demod,113,demod,901')]).
+fof(926, plain, ~ (singletonP(dollar_c4)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[113]),901]), [iquote('back_demod,113,demod,901')]).
 fof(927, plain, $false, inference(binary,[status(thm)],[926,925]), [iquote('binary,926.1,925.1')]).

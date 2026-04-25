@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1722':
-%%%%%   Replaced le_q(n0,tptp_minus_1)
-%%%%%   With le_q(dollar_c2,tptp_minus_1)
+%%%%% Mutated formula '1732':
+%%%%%   Replaced le_q(tptp_minus_1,n0)
+%%%%%   With ~ (le_q(tptp_minus_1,n0))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV189+1 : TPTP v8.1.0. Bugfixed v3.3.0.
@@ -40,6 +40,6 @@ fof(244, axiom, (! [A]: ((~ (le_q(n0,A)) | (~ (le_q(A,n0)) | (A = n0))))), file(
 fof(1663, axiom, le_q(n0,dollar_c2), file('SWV189+1.p',unknown), []).
 fof(1664, axiom, le_q(dollar_c2,tptp_minus_1), file('SWV189+1.p',unknown), []).
 fof(1670, axiom, gt(n0,tptp_minus_1), file('SWV189+1.p',unknown), []).
-fof(1722, plain, le_q(dollar_c2,tptp_minus_1), inference(hyper,[status(thm)],[1664,3,1663]), [iquote('hyper,1664,3,1663')]).
-fof(1732, plain, le_q(tptp_minus_1,n0), inference(hyper,[status(thm)],[1670,8]), [iquote('hyper,1670,8')]).
+fof(1722, plain, le_q(n0,tptp_minus_1), inference(hyper,[status(thm)],[1664,3,1663]), [iquote('hyper,1664,3,1663')]).
+fof(1732, plain, ~ (le_q(tptp_minus_1,n0)), inference(hyper,[status(thm)],[1670,8]), [iquote('hyper,1670,8')]).
 fof(1734, plain, $false, inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[1670,244]),2,1722,1732]), [iquote('para_into,1670.1.2,244.3.1,unit_del,2,1722,1732')]).

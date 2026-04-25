@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '136':
 %%%%%   Replaced subset(dollar_c23,relation_rng(dollar_c22))
-%%%%%   With subset(dollar_c22,relation_rng(dollar_c22))
+%%%%%   With ~ (subset(dollar_c23,relation_rng(dollar_c22)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU096+1 : TPTP v8.1.0. Released v3.2.0.
@@ -38,7 +38,7 @@ fof(33, axiom, (! [A,B]: ((~ (relation(A)) | (~ (function(A)) | (~ (subset(B,rel
 fof(35, axiom, ~ (finite(dollar_c23)), file('SEU096+1.p',unknown), []).
 fof(134, axiom, relation(dollar_c22), file('SEU096+1.p',unknown), []).
 fof(135, axiom, function(dollar_c22), file('SEU096+1.p',unknown), []).
-fof(136, axiom, subset(dollar_c22,relation_rng(dollar_c22)), file('SEU096+1.p',unknown), []).
+fof(136, axiom, ~ (subset(dollar_c23,relation_rng(dollar_c22))), file('SEU096+1.p',unknown), []).
 fof(137, axiom, finite(relation_inverse_image(dollar_c22,dollar_c23)), file('SEU096+1.p',unknown), []).
 fof(363, plain, (relation_image(dollar_c22,relation_inverse_image(dollar_c22,dollar_c23)) = dollar_c23), inference(hyper,[status(thm)],[136,33,134,135]), [iquote('hyper,136,33,134,135')]).
 fof(371, plain, finite(dollar_c23), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[137,18,134,135]),363]), [iquote('hyper,137,18,134,135,demod,363')]).

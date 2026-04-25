@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1368':
-%%%%%   Replaced artifact(dollar_c6,dollar_f4(dollar_f1(dollar_c6,dollar_c1)))
-%%%%%   With artifact(dollar_c1,dollar_f4(dollar_f1(dollar_c6,dollar_c1)))
+%%%%% Mutated formula '16':
+%%%%%   Replaced (! [A,B]: ((~ (object(A,B)) | unisex(A,B))))
+%%%%%   With (! [A,B]: ((object(A,B) | unisex(A,B))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NLP143+1 : TPTP v8.1.0. Released v2.4.0.
@@ -36,7 +36,7 @@
 fof(1, axiom, (! [A,B]: ((~ (furniture(A,B)) | instrumentality(A,B)))), file('NLP143+1.p',unknown), []).
 fof(2, axiom, (! [A,B]: ((~ (seat(A,B)) | furniture(A,B)))), file('NLP143+1.p',unknown), []).
 fof(3, axiom, (! [A,B]: ((~ (frontseat(A,B)) | seat(A,B)))), file('NLP143+1.p',unknown), []).
-fof(16, axiom, (! [A,B]: ((~ (object(A,B)) | unisex(A,B)))), file('NLP143+1.p',unknown), []).
+fof(16, axiom, (! [A,B]: ((object(A,B) | unisex(A,B)))), file('NLP143+1.p',unknown), []).
 fof(20, axiom, (! [A,B]: ((~ (artifact(A,B)) | object(A,B)))), file('NLP143+1.p',unknown), []).
 fof(21, axiom, (! [A,B]: ((~ (instrumentality(A,B)) | artifact(A,B)))), file('NLP143+1.p',unknown), []).
 fof(37, axiom, (! [A,B]: ((~ (man(A,B)) | male(A,B)))), file('NLP143+1.p',unknown), []).
@@ -57,7 +57,7 @@ fof(1320, plain, male(dollar_c6,dollar_f1(dollar_c6,dollar_c1)), inference(hyper
 fof(1350, plain, seat(dollar_c6,dollar_f4(dollar_f1(dollar_c6,dollar_c1))), inference(hyper,[status(thm)],[1282,3]), [iquote('hyper,1282,3')]).
 fof(1358, plain, furniture(dollar_c6,dollar_f4(dollar_f1(dollar_c6,dollar_c1))), inference(hyper,[status(thm)],[1350,2]), [iquote('hyper,1350,2')]).
 fof(1365, plain, instrumentality(dollar_c6,dollar_f4(dollar_f1(dollar_c6,dollar_c1))), inference(hyper,[status(thm)],[1358,1]), [iquote('hyper,1358,1')]).
-fof(1368, plain, artifact(dollar_c1,dollar_f4(dollar_f1(dollar_c6,dollar_c1))), inference(hyper,[status(thm)],[1365,21]), [iquote('hyper,1365,21')]).
+fof(1368, plain, artifact(dollar_c6,dollar_f4(dollar_f1(dollar_c6,dollar_c1))), inference(hyper,[status(thm)],[1365,21]), [iquote('hyper,1365,21')]).
 fof(1370, plain, object(dollar_c6,dollar_f4(dollar_f1(dollar_c6,dollar_c1))), inference(hyper,[status(thm)],[1368,20]), [iquote('hyper,1368,20')]).
 fof(1375, plain, unisex(dollar_c6,dollar_f4(dollar_f1(dollar_c6,dollar_c1))), inference(hyper,[status(thm)],[1370,16]), [iquote('hyper,1370,16')]).
 fof(1390, plain, (dollar_f4(dollar_f1(dollar_c6,dollar_c1)) = dollar_f1(dollar_c6,dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[1280,59])]), [iquote('hyper,1280,59,flip.1')]).

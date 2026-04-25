@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '103':
-%%%%%   Replaced (slbdtsldtrb0(xS,xk) != slcrc0)
-%%%%%   With ~ ((slbdtsldtrb0(xS,xk) != slcrc0))
+%%%%% Mutated formula '139':
+%%%%%   Replaced aElementOf0(xk,szNzAzT0)
+%%%%%   With ~ (aElementOf0(xk,szNzAzT0))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM547+1 : TPTP v8.1.0. Released v4.0.0.
@@ -35,10 +35,10 @@
 %%% Generated on Tue Apr 14 19:16:38 CEST 2026 using command 'transform(fof)'.
 fof(4, axiom, (! [A]: (((A = slcrc0) | (~ (aSet0(A)) | aElementOf0(dollar_f1(A),A))))), file('NUM547+1.p',unknown), []).
 fof(92, axiom, (! [A,B,C]: ((~ (aSet0(A)) | (~ (aElementOf0(B,szNzAzT0)) | ((C != slbdtsldtrb0(A,B)) | aSet0(C)))))), file('NUM547+1.p',unknown), []).
-fof(103, axiom, ~ ((slbdtsldtrb0(xS,xk) != slcrc0)), file('NUM547+1.p',unknown), []).
+fof(103, axiom, (slbdtsldtrb0(xS,xk) != slcrc0), file('NUM547+1.p',unknown), []).
 fof(104, axiom, (! [A]: (~ (aElementOf0(A,slbdtsldtrb0(xS,xk))))), file('NUM547+1.p',unknown), []).
 fof(132, axiom, (! [A]: ((A = A))), file('NUM547+1.p',unknown), []).
-fof(139, axiom, aElementOf0(xk,szNzAzT0), file('NUM547+1.p',unknown), []).
+fof(139, axiom, ~ (aElementOf0(xk,szNzAzT0)), file('NUM547+1.p',unknown), []).
 fof(140, axiom, aSet0(xS), file('NUM547+1.p',unknown), []).
 fof(659, plain, aSet0(slbdtsldtrb0(xS,xk)), inference(hyper,[status(thm)],[139,92,140,132]), [iquote('hyper,139,92,140,132')]).
 fof(1376, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[659,4]),103,104]), [iquote('hyper,659,4,unit_del,103,104')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '11':
-%%%%%   Replaced ~ (le_q(multiplication(dollar_c2,dollar_c3),multiplication(dollar_c3,dollar_c1)))
-%%%%%   With le_q(multiplication(dollar_c2,dollar_c3),multiplication(dollar_c3,dollar_c1))
+%%%%% Mutated formula '40':
+%%%%%   Replaced (multiplication(dollar_c2,dollar_c3) = multiplication(multiplication(dollar_c2,dollar_c3),dollar_c1))
+%%%%%   With ~ ((multiplication(dollar_c2,dollar_c3) = multiplication(multiplication(dollar_c2,dollar_c3),dollar_c1)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE026+1 : TPTP v8.1.0. Released v4.0.0.
@@ -36,7 +36,7 @@
 fof(2, axiom, (! [A,B]: ((le_q(A,B) | (addition(A,B) != B)))), file('KLE026+1.p',unknown), []).
 fof(3, axiom, (! [A]: ((~ (test(A)) | complement(dollar_f1(A),A)))), file('KLE026+1.p',unknown), []).
 fof(7, axiom, (! [A,B]: ((~ (complement(A,B)) | (addition(B,A) = one)))), file('KLE026+1.p',unknown), []).
-fof(11, axiom, le_q(multiplication(dollar_c2,dollar_c3),multiplication(dollar_c3,dollar_c1)), file('KLE026+1.p',unknown), []).
+fof(11, axiom, ~ (le_q(multiplication(dollar_c2,dollar_c3),multiplication(dollar_c3,dollar_c1))), file('KLE026+1.p',unknown), []).
 fof(15, axiom, (! [A,B,C]: ((addition(A,addition(B,C)) = addition(addition(A,B),C)))), file('KLE026+1.p',unknown), []).
 fof(16, plain, (! [A,B,C]: ((addition(addition(A,B),C) = addition(A,addition(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[15])]), [iquote('copy,15,flip.1')]).
 fof(20, axiom, (! [A]: ((addition(A,A) = A))), file('KLE026+1.p',unknown), []).
@@ -45,7 +45,7 @@ fof(24, plain, (! [A,B,C]: ((multiplication(multiplication(A,B),C) = multiplicat
 fof(28, axiom, (! [A]: ((multiplication(one,A) = A))), file('KLE026+1.p',unknown), []).
 fof(31, axiom, (! [A,B,C]: ((multiplication(addition(A,B),C) = addition(multiplication(A,C),multiplication(B,C))))), file('KLE026+1.p',unknown), []).
 fof(38, axiom, test(dollar_c2), file('KLE026+1.p',unknown), []).
-fof(40, axiom, (multiplication(dollar_c2,dollar_c3) = multiplication(multiplication(dollar_c2,dollar_c3),dollar_c1)), file('KLE026+1.p',unknown), []).
+fof(40, axiom, ~ ((multiplication(dollar_c2,dollar_c3) = multiplication(multiplication(dollar_c2,dollar_c3),dollar_c1))), file('KLE026+1.p',unknown), []).
 fof(41, plain, (multiplication(dollar_c2,multiplication(dollar_c3,dollar_c1)) = multiplication(dollar_c2,dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[40]),24])]), [iquote('copy,40,demod,24,flip.1')]).
 fof(45, plain, complement(dollar_f1(dollar_c2),dollar_c2), inference(hyper,[status(thm)],[38,3]), [iquote('hyper,38,3')]).
 fof(61, plain, (addition(dollar_c2,dollar_f1(dollar_c2)) = one), inference(hyper,[status(thm)],[45,7]), [iquote('hyper,45,7')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3080':
-%%%%%   Replaced le_q(multiplication(dollar_c2,star(dollar_c1)),star(dollar_c1))
-%%%%%   With ~ (le_q(multiplication(dollar_c2,star(dollar_c1)),star(dollar_c1)))
+%%%%% Mutated formula '769':
+%%%%%   Replaced (! [A]: (le_q(multiplication(A,star(A)),star(A))))
+%%%%%   With (! [A]: (~ (le_q(multiplication(A,star(A)),star(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE041+1 : TPTP v8.1.0. Released v4.0.0.
@@ -66,14 +66,14 @@ fof(537, plain, (! [A,B,C]: ((le_q(A,addition(B,C)) | ~ (le_q(A,C))))), inferenc
 fof(541, plain, (! [A,B,C]: ((le_q(A,B) | ~ (le_q(addition(C,A),B))))), inference(para_into,[status(thm),theory(equality)],[529,46]), [iquote('para_into,529.1.2,46.1.1')]).
 fof(731, plain, (! [A,B,C]: ((le_q(A,B) | (~ (le_q(A,C)) | ~ (le_q(C,B)))))), inference(para_into,[status(thm),theory(equality)],[537,46]), [iquote('para_into,537.1.2,46.1.1')]).
 fof(768, plain, (! [A]: (le_q(multiplication(star(A),A),star(A)))), inference(hyper,[status(thm)],[541,31]), [iquote('hyper,541,31')]).
-fof(769, plain, (! [A]: (le_q(multiplication(A,star(A)),star(A)))), inference(hyper,[status(thm)],[541,30]), [iquote('hyper,541,30')]).
+fof(769, plain, (! [A]: (~ (le_q(multiplication(A,star(A)),star(A))))), inference(hyper,[status(thm)],[541,30]), [iquote('hyper,541,30')]).
 fof(782, plain, (! [A]: ((addition(multiplication(star(A),A),star(A)) = star(A)))), inference(hyper,[status(thm)],[768,1]), [iquote('hyper,768,1')]).
 fof(785, plain, (! [A]: ((addition(one,star(A)) = star(A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[166]),782]), [iquote('back_demod,166,demod,782')]).
 fof(801, plain, (! [A]: (le_q(one,star(A)))), inference(hyper,[status(thm)],[785,2]), [iquote('hyper,785,2')]).
 fof(819, plain, (! [A,B]: ((addition(A,multiplication(star(B),A)) = multiplication(star(B),A)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[785,24]),21])]), [iquote('para_from,785.1.1,24.1.1.1,demod,21,flip.1')]).
 fof(2543, plain, (! [A,B,C]: ((le_q(multiplication(A,B),multiplication(A,C)) | ~ (le_q(B,C))))), inference(para_from,[status(thm),theory(equality)],[112,509]), [iquote('para_from,112.1.1,509.1.2')]).
 fof(2963, plain, (! [A]: (le_q(multiplication(dollar_c2,A),multiplication(dollar_c1,A)))), inference(hyper,[status(thm)],[122,49]), [iquote('hyper,122,49')]).
-fof(3080, plain, ~ (le_q(multiplication(dollar_c2,star(dollar_c1)),star(dollar_c1))), inference(hyper,[status(thm)],[731,2963,769]), [iquote('hyper,731,2963,769')]).
+fof(3080, plain, le_q(multiplication(dollar_c2,star(dollar_c1)),star(dollar_c1)), inference(hyper,[status(thm)],[731,2963,769]), [iquote('hyper,731,2963,769')]).
 fof(3492, plain, le_q(multiplication(star(dollar_c2),star(dollar_c1)),star(dollar_c1)), inference(hyper,[status(thm)],[300,41,3080]), [iquote('hyper,300,41,3080')]).
 fof(3498, plain, (multiplication(star(dollar_c2),star(dollar_c1)) = star(dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[3492,46]),819]), [iquote('hyper,3492,46,demod,819')]).
 fof(3557, plain, (! [A,B]: (le_q(A,multiplication(A,star(B))))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[2543,801]),19]), [iquote('hyper,2543,801,demod,19')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c5':
-%%%%%   Replaced (? [B,C]: ((subset(B,C) & ((intersection(C,B) = empty_set) & (B != empty_set)))))
-%%%%%   With (? [B,C]: ((subset(B,C) | ((intersection(C,B) = empty_set) & (B != empty_set)))))
+%%%%% Mutated formula 'c64':
+%%%%%   Replaced (! [X110,X111]: ((~ (subset(X110,X111)) | (intersection(X110,X111) = X110))))
+%%%%%   With (! [X110,X111]: ((subset(X110,X111) | (intersection(X110,X111) = X110))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SET639+3 : TPTP v8.1.2. Released v2.2.0.
@@ -38,7 +38,7 @@
 %%% Generated on Tue Apr 14 15:06:14 CEST 2026 using command 'transform(fof)'.
 fof(prove_th121, conjecture, (! [B,C]: (((subset(B,C) & (intersection(C,B) = empty_set)) => (B = empty_set)))), file('SET639+3.p',prove_th121)).
 fof(c4, negated_conjecture, ~ ((! [B,C]: (((subset(B,C) & (intersection(C,B) = empty_set)) => (B = empty_set))))), inference(assume_negation,[status(cth)],[prove_th121])).
-fof(c5, negated_conjecture, (? [B,C]: ((subset(B,C) | ((intersection(C,B) = empty_set) & (B != empty_set))))), inference(fof_nnf,[status(thm)],[c4])).
+fof(c5, negated_conjecture, (? [B,C]: ((subset(B,C) & ((intersection(C,B) = empty_set) & (B != empty_set))))), inference(fof_nnf,[status(thm)],[c4])).
 fof(c6, negated_conjecture, (? [B]: (((? [C]: ((subset(B,C) & (intersection(C,B) = empty_set)))) & (B != empty_set)))), inference(shift_quantors,[status(thm)],[c5])).
 fof(c7, negated_conjecture, (? [X2]: (((? [X3]: ((subset(X2,X3) & (intersection(X3,X2) = empty_set)))) & (X2 != empty_set)))), inference(variable_rename,[status(thm)],[c6])).
 fof(c8, negated_conjecture, (subset(skolem0001,skolem0002) & ((intersection(skolem0002,skolem0001) = empty_set) & (skolem0001 != empty_set))), inference(skolemize,[status(esa)],[c7])).
@@ -51,7 +51,7 @@ fof(c9, negated_conjecture, subset(skolem0001,skolem0002), inference(split_conju
 fof(subset_intersection, axiom, (! [B,C]: ((subset(B,C) => (intersection(B,C) = B)))), file('SET639+3.p',subset_intersection)).
 fof(c62, plain, (! [B,C]: ((~ (subset(B,C)) | (intersection(B,C) = B)))), inference(fof_nnf,[status(thm)],[subset_intersection])).
 fof(c63, plain, (! [X35,X36]: ((~ (subset(X35,X36)) | (intersection(X35,X36) = X35)))), inference(variable_rename,[status(thm)],[c62])).
-fof(c64, plain, (! [X110,X111]: ((~ (subset(X110,X111)) | (intersection(X110,X111) = X110)))), inference(split_conjunct,[status(thm)],[c63])).
+fof(c64, plain, (! [X110,X111]: ((subset(X110,X111) | (intersection(X110,X111) = X110)))), inference(split_conjunct,[status(thm)],[c63])).
 fof(c125, plain, (intersection(skolem0001,skolem0002) = skolem0001), inference(resolution,[status(thm)],[c64,c9])).
 fof(c217, plain, (skolem0001 = intersection(skolem0001,skolem0002)), inference(resolution,[status(thm)],[c125,symmetry])).
 fof(commutativity_of_intersection, axiom, (! [B,C]: ((intersection(B,C) = intersection(C,B)))), file('SET639+3.p',commutativity_of_intersection)).

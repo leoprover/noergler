@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '63':
-%%%%%   Replaced (! [A,B]: (less(A,vplus(A,B))))
-%%%%%   With (! [A,B]: (~ (less(A,vplus(A,B)))))
+%%%%% Mutated formula '938':
+%%%%%   Replaced (! [A]: (less(vd348,vplus(A,vd347))))
+%%%%%   With (! [A]: (less(vd345,vplus(A,vd347))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM841+2 : TPTP v8.1.0. Released v4.1.0.
@@ -49,14 +49,14 @@ fof(28, axiom, (! [A,B]: ((vplus(A,B) = vplus(B,A)))), file('NUM841+2.p',unknown
 fof(36, axiom, (! [A,B,C]: ((vplus(vplus(A,B),C) = vplus(A,vplus(B,C))))), file('NUM841+2.p',unknown), []).
 fof(43, plain, (vplus(vd348,dollar_f1(vd348,vd347)) = vd347), inference(hyper,[status(thm)],[24,12]), [iquote('hyper,24,12')]).
 fof(49, plain, (vplus(vd345,dollar_f1(vd345,vd344)) = vd344), inference(hyper,[status(thm)],[25,12]), [iquote('hyper,25,12')]).
-fof(63, plain, (! [A,B]: (~ (less(A,vplus(A,B))))), inference(hyper,[status(thm)],[26,9]), [iquote('hyper,26,9')]).
+fof(63, plain, (! [A,B]: (less(A,vplus(A,B)))), inference(hyper,[status(thm)],[26,9]), [iquote('hyper,26,9')]).
 fof(83, plain, (! [A,B]: (less(A,vplus(B,A)))), inference(para_from,[status(thm),theory(equality)],[28,63]), [iquote('para_from,28.1.1,63.1.2')]).
 fof(87, plain, ~ (greater(vplus(vd347,vd344),vplus(vd345,vd348))), inference(para_from,[status(thm),theory(equality)],[28,1]), [iquote('para_from,28.1.1,1.1.1')]).
 fof(92, plain, (! [A,B]: (((A = B) | (greater(A,B) | greater(B,A))))), inference(hyper,[status(thm)],[27,8]), [iquote('hyper,27,8')]).
 fof(157, plain, (vplus(dollar_f1(vd348,vd347),vd348) = vd347), inference(para_into,[status(thm),theory(equality)],[43,28]), [iquote('para_into,43.1.1,28.1.1')]).
 fof(194, plain, (! [A,B,C]: (less(A,vplus(B,vplus(C,A))))), inference(para_from,[status(thm),theory(equality)],[36,83]), [iquote('para_from,35.1.1,83.1.2')]).
 fof(243, plain, (vplus(dollar_f1(vd345,vd344),vd345) = vd344), inference(para_into,[status(thm),theory(equality)],[49,28]), [iquote('para_into,49.1.1,28.1.1')]).
-fof(938, plain, (! [A]: (less(vd348,vplus(A,vd347)))), inference(para_into,[status(thm),theory(equality)],[194,157]), [iquote('para_into,194.1.2.2,157.1.1')]).
+fof(938, plain, (! [A]: (less(vd345,vplus(A,vd347)))), inference(para_into,[status(thm),theory(equality)],[194,157]), [iquote('para_into,194.1.2.2,157.1.1')]).
 fof(967, plain, (! [A]: (less(vd348,vplus(vd347,A)))), inference(para_into,[status(thm),theory(equality)],[938,28]), [iquote('para_into,938.1.2,28.1.1')]).
 fof(1000, plain, (! [A,B]: (less(vplus(vd348,A),vplus(vd347,vplus(B,A))))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[967,5]),36]), [iquote('hyper,967,5,demod,36')]).
 fof(4648, plain, less(vplus(vd345,vd348),vplus(vd347,vd344)), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[1000,243]),17]), [iquote('para_into,1000.1.2.2,243.1.1,demod,17')]).

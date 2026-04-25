@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '26':
 %%%%%   Replaced mtvisible(c_tptpgeo_member1_mt)
-%%%%%   With ~ (mtvisible(c_tptpgeo_member1_mt))
+%%%%%   With mtvisible(c_georegion_l3_x11_y2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR053+1 : TPTP v8.1.0. Released v3.4.0.
@@ -35,6 +35,6 @@
 %%% Generated on Tue Apr 14 19:11:10 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (~ (mtvisible(c_tptpgeo_member1_mt)) | geographicalsubregions(c_georegion_l3_x11_y2,c_georegion_l4_x35_y7)), file('CSR053+1.p',unknown), []).
 fof(24, axiom, ~ (geographicalsubregions(c_georegion_l3_x11_y2,c_georegion_l4_x35_y7)), file('CSR053+1.p',unknown), []).
-fof(26, axiom, ~ (mtvisible(c_tptpgeo_member1_mt)), file('CSR053+1.p',unknown), []).
+fof(26, axiom, mtvisible(c_georegion_l3_x11_y2), file('CSR053+1.p',unknown), []).
 fof(27, plain, geographicalsubregions(c_georegion_l3_x11_y2,c_georegion_l4_x35_y7), inference(hyper,[status(thm)],[26,1]), [iquote('hyper,26,1')]).
 fof(28, plain, $false, inference(binary,[status(thm)],[27,24]), [iquote('binary,27.1,24.1')]).

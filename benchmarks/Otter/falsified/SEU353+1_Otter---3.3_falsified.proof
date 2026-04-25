@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '48':
-%%%%%   Replaced (! [A]: (v1_partfun1(identity_as_relation_of(A),A,A)))
-%%%%%   With (! [A]: (~ (v1_partfun1(identity_as_relation_of(A),A,A))))
+%%%%% Mutated formula '154':
+%%%%%   Replaced (! [A]: ((empty(A) | in(dollar_f2(A),A))))
+%%%%%   With (! [A]: ((empty(A) & in(dollar_f2(A),A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU353+1 : TPTP v8.1.0. Released v3.3.0.
@@ -44,7 +44,7 @@ fof(33, axiom, (! [A,B]: ((~ (in(A,B)) | (apply(identity_relation(B),A) = A)))),
 fof(39, axiom, (! [A,B]: ((~ (in(A,B)) | ~ (empty(B))))), file('SEU353+1.p',unknown), []).
 fof(41, axiom, ~ (empty_carrier(dollar_c7)), file('SEU353+1.p',unknown), []).
 fof(42, axiom, (apply_as_element(the_carrier(dollar_c7),the_carrier(dollar_c7),identity_on_carrier(dollar_c7),dollar_c6) != dollar_c6), file('SEU353+1.p',unknown), []).
-fof(48, axiom, (! [A]: (~ (v1_partfun1(identity_as_relation_of(A),A,A)))), file('SEU353+1.p',unknown), []).
+fof(48, axiom, (! [A]: (v1_partfun1(identity_as_relation_of(A),A,A))), file('SEU353+1.p',unknown), []).
 fof(49, axiom, (! [A]: (relation_of2_as_subset(identity_as_relation_of(A),A,A))), file('SEU353+1.p',unknown), []).
 fof(53, axiom, (! [A]: (element(dollar_f2(A),A))), file('SEU353+1.p',unknown), []).
 fof(56, axiom, (! [A]: (function(identity_relation(A)))), file('SEU353+1.p',unknown), []).
@@ -56,7 +56,7 @@ fof(101, plain, (! [A]: (function(identity_as_relation_of(A)))), inference(demod
 fof(103, plain, (! [A,B]: ((~ (in(A,B)) | (apply(identity_as_relation_of(B),A) = A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[33]),93]), [iquote('back_demod,33,demod,93')]).
 fof(135, plain, (! [A]: (relation_of2(identity_as_relation_of(A),A,A))), inference(hyper,[status(thm)],[49,29]), [iquote('hyper,49,29')]).
 fof(143, plain, (identity_as_relation_of(the_carrier(dollar_c7)) = identity_on_carrier(dollar_c7)), inference(hyper,[status(thm)],[95,14]), [iquote('hyper,95,14')]).
-fof(154, plain, (! [A]: ((empty(A) | in(dollar_f2(A),A)))), inference(hyper,[status(thm)],[53,32]), [iquote('hyper,53,32')]).
+fof(154, plain, (! [A]: ((empty(A) & in(dollar_f2(A),A)))), inference(hyper,[status(thm)],[53,32]), [iquote('hyper,53,32')]).
 fof(181, plain, (empty(the_carrier(dollar_c7)) | in(dollar_c6,the_carrier(dollar_c7))), inference(hyper,[status(thm)],[96,32]), [iquote('hyper,96,32')]).
 fof(306, plain, (! [A]: (quasi_total(identity_as_relation_of(A),A,A))), inference(hyper,[status(thm)],[135,2,101,48]), [iquote('hyper,135,2,101,48')]).
 fof(503, plain, (empty(the_carrier(dollar_c7)) | (apply_as_element(the_carrier(dollar_c7),the_carrier(dollar_c7),identity_on_carrier(dollar_c7),dollar_c6) = apply(identity_on_carrier(dollar_c7),dollar_c6))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[306,28,101,135,96]),143,143]), [iquote('hyper,306,28,101,135,96,demod,143,143')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c75057':
-%%%%%   Replaced (e0 = op(e4,op(e4,e1)))
-%%%%%   With (e3 = op(e4,op(e4,e1)))
+%%%%% Mutated formula 'c342':
+%%%%%   Replaced (! [X51]: (((X51 != op(e4,op(e4,e1))) | (X51 = e1))))
+%%%%%   With (! [X51]: (((X51 != op(e2,op(e4,e1))) | (X51 = e1))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : ALG175+1 : TPTP v8.1.2. Released v2.7.0.
@@ -43,7 +43,7 @@ fof(co1, conjecture, ~ (((op(e0,op(e0,e0)) = e0) & ((op(e0,op(e0,e1)) = e1) & ((
 fof(c1, negated_conjecture, ~ (~ (((op(e0,op(e0,e0)) = e0) & ((op(e0,op(e0,e1)) = e1) & ((op(e0,op(e0,e2)) = e2) & ((op(e0,op(e0,e3)) = e3) & ((op(e0,op(e0,e4)) = e4) & ((op(e1,op(e1,e0)) = e0) & ((op(e1,op(e1,e1)) = e1) & ((op(e1,op(e1,e2)) = e2) & ((op(e1,op(e1,e3)) = e3) & ((op(e1,op(e1,e4)) = e4) & ((op(e2,op(e2,e0)) = e0) & ((op(e2,op(e2,e1)) = e1) & ((op(e2,op(e2,e2)) = e2) & ((op(e2,op(e2,e3)) = e3) & ((op(e2,op(e2,e4)) = e4) & ((op(e3,op(e3,e0)) = e0) & ((op(e3,op(e3,e1)) = e1) & ((op(e3,op(e3,e2)) = e2) & ((op(e3,op(e3,e3)) = e3) & ((op(e3,op(e3,e4)) = e4) & ((op(e4,op(e4,e0)) = e0) & ((op(e4,op(e4,e1)) = e1) & ((op(e4,op(e4,e2)) = e2) & ((op(e4,op(e4,e3)) = e3) & ((op(e4,op(e4,e4)) = e4) & ((op(op(e0,e0),e0) = e0) & ((op(op(e0,e1),e1) = e0) & ((op(op(e0,e2),e2) = e0) & ((op(op(e0,e3),e3) = e0) & ((op(op(e0,e4),e4) = e0) & ((op(op(e1,e0),e0) = e1) & ((op(op(e1,e1),e1) = e1) & ((op(op(e1,e2),e2) = e1) & ((op(op(e1,e3),e3) = e1) & ((op(op(e1,e4),e4) = e1) & ((op(op(e2,e0),e0) = e2) & ((op(op(e2,e1),e1) = e2) & ((op(op(e2,e2),e2) = e2) & ((op(op(e2,e3),e3) = e2) & ((op(op(e2,e4),e4) = e2) & ((op(op(e3,e0),e0) = e3) & ((op(op(e3,e1),e1) = e3) & ((op(op(e3,e2),e2) = e3) & ((op(op(e3,e3),e3) = e3) & ((op(op(e3,e4),e4) = e3) & ((op(op(e4,e0),e0) = e4) & ((op(op(e4,e1),e1) = e4) & ((op(op(e4,e2),e2) = e4) & ((op(op(e4,e3),e3) = e4) & (op(op(e4,e4),e4) = e4)))))))))))))))))))))))))))))))))))))))))))))))))))), inference(assume_negation,[status(cth)],[co1])).
 fof(c2, negated_conjecture, ((op(e0,op(e0,e0)) = e0) & ((op(e0,op(e0,e1)) = e1) & ((op(e0,op(e0,e2)) = e2) & ((op(e0,op(e0,e3)) = e3) & ((op(e0,op(e0,e4)) = e4) & ((op(e1,op(e1,e0)) = e0) & ((op(e1,op(e1,e1)) = e1) & ((op(e1,op(e1,e2)) = e2) & ((op(e1,op(e1,e3)) = e3) & ((op(e1,op(e1,e4)) = e4) & ((op(e2,op(e2,e0)) = e0) & ((op(e2,op(e2,e1)) = e1) & ((op(e2,op(e2,e2)) = e2) & ((op(e2,op(e2,e3)) = e3) & ((op(e2,op(e2,e4)) = e4) & ((op(e3,op(e3,e0)) = e0) & ((op(e3,op(e3,e1)) = e1) & ((op(e3,op(e3,e2)) = e2) & ((op(e3,op(e3,e3)) = e3) & ((op(e3,op(e3,e4)) = e4) & ((op(e4,op(e4,e0)) = e0) & ((op(e4,op(e4,e1)) = e1) & ((op(e4,op(e4,e2)) = e2) & ((op(e4,op(e4,e3)) = e3) & ((op(e4,op(e4,e4)) = e4) & ((op(op(e0,e0),e0) = e0) & ((op(op(e0,e1),e1) = e0) & ((op(op(e0,e2),e2) = e0) & ((op(op(e0,e3),e3) = e0) & ((op(op(e0,e4),e4) = e0) & ((op(op(e1,e0),e0) = e1) & ((op(op(e1,e1),e1) = e1) & ((op(op(e1,e2),e2) = e1) & ((op(op(e1,e3),e3) = e1) & ((op(op(e1,e4),e4) = e1) & ((op(op(e2,e0),e0) = e2) & ((op(op(e2,e1),e1) = e2) & ((op(op(e2,e2),e2) = e2) & ((op(op(e2,e3),e3) = e2) & ((op(op(e2,e4),e4) = e2) & ((op(op(e3,e0),e0) = e3) & ((op(op(e3,e1),e1) = e3) & ((op(op(e3,e2),e2) = e3) & ((op(op(e3,e3),e3) = e3) & ((op(op(e3,e4),e4) = e3) & ((op(op(e4,e0),e0) = e4) & ((op(op(e4,e1),e1) = e4) & ((op(op(e4,e2),e2) = e4) & ((op(op(e4,e3),e3) = e4) & (op(op(e4,e4),e4) = e4)))))))))))))))))))))))))))))))))))))))))))))))))), inference(fof_nnf,[status(thm)],[c1])).
 fof(c24, negated_conjecture, (op(e4,op(e4,e1)) = e1), inference(split_conjunct,[status(thm)],[c2])).
-fof(c342, plain, (! [X51]: (((X51 != op(e4,op(e4,e1))) | (X51 = e1)))), inference(resolution,[status(thm)],[c24,transitivity])).
+fof(c342, plain, (! [X51]: (((X51 != op(e2,op(e4,e1))) | (X51 = e1)))), inference(resolution,[status(thm)],[c24,transitivity])).
 fof(symmetry, axiom, (! [X4,X3]: (((X4 != X3) | (X3 = X4)))), theory(equality)).
 fof(ax6, axiom, ((e0 = op(op(e3,e1),e3)) & ((e2 = op(e3,op(op(e3,e1),e3))) & (e4 = op(e3,e1)))), file('ALG175+1.p',ax6)).
 fof(c55, plain, (e4 = op(e3,e1)), inference(split_conjunct,[status(thm)],[ax6])).
@@ -62,6 +62,6 @@ fof(c1630, plain, (op(e4,e1) = e3), inference(resolution,[status(thm)],[c402,c52
 fof(c1657, plain, (! [X426,X425]: (((X426 != X425) | (op(X426,op(e4,e1)) = op(X425,e3))))), inference(resolution,[status(thm)],[c1630,c0])).
 fof(c74683, plain, (! [X427]: ((op(X427,op(e4,e1)) = op(X427,e3)))), inference(resolution,[status(thm)],[c1657,reflexivity])).
 fof(c74949, plain, (op(e4,op(e4,e1)) = e0), inference(resolution,[status(thm)],[c74683,c6484])).
-fof(c75057, plain, (e3 = op(e4,op(e4,e1))), inference(resolution,[status(thm)],[c74949,symmetry])).
+fof(c75057, plain, (e0 = op(e4,op(e4,e1))), inference(resolution,[status(thm)],[c74949,symmetry])).
 fof(c75215, plain, (e0 = e1), inference(resolution,[status(thm)],[c75057,c342])).
 fof(c75310, plain, $false, inference(resolution,[status(thm)],[c75215,c56])).

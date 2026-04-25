@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '16':
-%%%%%   Replaced (! [E,F,A,B,C,D]: (((A != ordered_pair(B,C)) | ((D != pair_second(A)) | ((A != ordered_pair(E,F)) | (D = F))))))
-%%%%%   With (! [E,F,A,B,C,D]: ((~ ((A != ordered_pair(B,C))) | ((D != pair_second(A)) | ((A != ordered_pair(E,F)) | (D = F))))))
+%%%%% Mutated formula '11':
+%%%%%   Replaced (! [A,B,C,D]: (((A != ordered_pair(B,C)) | ((D != pair_first(A)) | (D = B)))))
+%%%%%   With (! [A,B,C,D]: (((A != ordered_pair(B,C)) & ((D != pair_first(A)) | (D = B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU267+1 : TPTP v8.1.0. Released v3.3.0.
@@ -35,8 +35,8 @@
 %%% Generated on Tue Apr 14 19:20:50 CEST 2026 using command 'transform(fof)'.
 fof(9, axiom, ((pair_first(ordered_pair(dollar_c4,dollar_c3)) != dollar_c4) | (pair_second(ordered_pair(dollar_c4,dollar_c3)) != dollar_c3)), file('SEU267+1.p',unknown), []).
 fof(10, axiom, (! [E,F,A,B,C,D]: (((A != ordered_pair(B,C)) | ((D != pair_first(A)) | ((A != ordered_pair(E,F)) | (D = E)))))), file('SEU267+1.p',unknown), []).
-fof(11, plain, (! [A,B,C,D]: (((A != ordered_pair(B,C)) | ((D != pair_first(A)) | (D = B))))), inference(factor_simp,[status(thm)],[inference(copy,[status(thm)],[10])]), [iquote('copy,10,factor_simp')]).
-fof(16, axiom, (! [E,F,A,B,C,D]: ((~ ((A != ordered_pair(B,C))) | ((D != pair_second(A)) | ((A != ordered_pair(E,F)) | (D = F)))))), file('SEU267+1.p',unknown), []).
+fof(11, plain, (! [A,B,C,D]: (((A != ordered_pair(B,C)) & ((D != pair_first(A)) | (D = B))))), inference(factor_simp,[status(thm)],[inference(copy,[status(thm)],[10])]), [iquote('copy,10,factor_simp')]).
+fof(16, axiom, (! [E,F,A,B,C,D]: (((A != ordered_pair(B,C)) | ((D != pair_second(A)) | ((A != ordered_pair(E,F)) | (D = F)))))), file('SEU267+1.p',unknown), []).
 fof(17, plain, (! [A,B,C,D]: (((A != ordered_pair(B,C)) | ((D != pair_second(A)) | (D = C))))), inference(factor_simp,[status(thm)],[inference(copy,[status(thm)],[16])]), [iquote('copy,16,factor_simp')]).
 fof(24, axiom, (! [A]: ((A = A))), file('SEU267+1.p',unknown), []).
 fof(30, plain, (! [A,B]: ((pair_second(ordered_pair(A,B)) = B))), inference(hyper,[status(thm)],[24,17,24]), [iquote('hyper,24,17,24')]).

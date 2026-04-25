@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '79':
-%%%%%   Replaced aInteger0(dollar_c1)
-%%%%%   With aInteger0(xq)
+%%%%% Mutated formula '75':
+%%%%%   Replaced aInteger0(sz10)
+%%%%%   With ~ (aInteger0(sz10))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM427+3 : TPTP v8.1.0. Released v4.0.0.
@@ -43,10 +43,10 @@ fof(33, axiom, (! [A,B,C]: ((~ (aInteger0(A)) | (aDivisorOf0(B,A) | (~ (aInteger
 fof(37, axiom, (xq != sz00), file('NUM427+3.p',unknown), []).
 fof(39, axiom, ~ (aDivisorOf0(xq,sdtpldt0(xb,smndt0(xa)))), file('NUM427+3.p',unknown), []).
 fof(73, axiom, (! [A]: ((A = A))), file('NUM427+3.p',unknown), []).
-fof(75, axiom, aInteger0(sz10), file('NUM427+3.p',unknown), []).
+fof(75, axiom, ~ (aInteger0(sz10)), file('NUM427+3.p',unknown), []).
 fof(76, axiom, aInteger0(xa), file('NUM427+3.p',unknown), []).
 fof(78, axiom, aInteger0(xq), file('NUM427+3.p',unknown), []).
-fof(79, axiom, aInteger0(xq), file('NUM427+3.p',unknown), []).
+fof(79, axiom, aInteger0(dollar_c1), file('NUM427+3.p',unknown), []).
 fof(80, axiom, (sdtasdt0(xq,dollar_c1) = sdtpldt0(xa,smndt0(xb))), file('NUM427+3.p',unknown), []).
 fof(82, plain, (sdtpldt0(xa,smndt0(xb)) = sdtasdt0(xq,dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[80])]), [iquote('copy,80,flip.1')]).
 fof(86, axiom, aInteger0(xn), file('NUM427+3.p',unknown), []).

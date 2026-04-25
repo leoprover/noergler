@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '12':
-%%%%%   Replaced (~ (iext(uri_rdf_type,uri_ex_w,uri_ex_c1)) | (~ (iext(uri_rdfs_subClassOf,uri_ex_c,uri_ex_c1)) | ~ (iext(uri_rdfs_range,uri_ex_p,uri_ex_c1))))
-%%%%%   With (~ (iext(uri_owl_sameAs,uri_ex_w,uri_ex_c1)) | (~ (iext(uri_rdfs_subClassOf,uri_ex_c,uri_ex_c1)) | ~ (iext(uri_rdfs_range,uri_ex_p,uri_ex_c1))))
+%%%%% Mutated formula '7':
+%%%%%   Replaced iext(uri_rdfs_subClassOf,uri_ex_c,uri_ex_c1)
+%%%%%   With ~ (iext(uri_rdfs_subClassOf,uri_ex_c,uri_ex_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWB007+2 : TPTP v8.1.0. Released v5.2.0.
@@ -37,8 +37,8 @@ fof(1, axiom, (! [A,B]: ((~ (iext(uri_owl_sameAs,A,B)) | (A = B)))), file('SWB00
 fof(3, axiom, (~ (iext(uri_rdf_type,uri_ex_w,uri_ex_c2)) | (~ (iext(uri_rdfs_subClassOf,uri_ex_c,uri_ex_c2)) | ~ (iext(uri_rdfs_range,uri_ex_p,uri_ex_c2)))), file('SWB007+2.p',unknown), []).
 fof(5, axiom, iext(uri_owl_sameAs,uri_ex_c1,uri_ex_c2), file('SWB007+2.p',unknown), []).
 fof(6, axiom, iext(uri_rdf_type,uri_ex_w,uri_ex_c1), file('SWB007+2.p',unknown), []).
-fof(7, axiom, iext(uri_rdfs_subClassOf,uri_ex_c,uri_ex_c1), file('SWB007+2.p',unknown), []).
+fof(7, axiom, ~ (iext(uri_rdfs_subClassOf,uri_ex_c,uri_ex_c1)), file('SWB007+2.p',unknown), []).
 fof(8, axiom, iext(uri_rdfs_range,uri_ex_p,uri_ex_c1), file('SWB007+2.p',unknown), []).
 fof(11, plain, (uri_ex_c2 = uri_ex_c1), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[5,1])]), [iquote('hyper,5,1,flip.1')]).
-fof(12, plain, (~ (iext(uri_owl_sameAs,uri_ex_w,uri_ex_c1)) | (~ (iext(uri_rdfs_subClassOf,uri_ex_c,uri_ex_c1)) | ~ (iext(uri_rdfs_range,uri_ex_p,uri_ex_c1)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[3]),11,11,11]), [iquote('back_demod,3,demod,11,11,11')]).
+fof(12, plain, (~ (iext(uri_rdf_type,uri_ex_w,uri_ex_c1)) | (~ (iext(uri_rdfs_subClassOf,uri_ex_c,uri_ex_c1)) | ~ (iext(uri_rdfs_range,uri_ex_p,uri_ex_c1)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[3]),11,11,11]), [iquote('back_demod,3,demod,11,11,11')]).
 fof(49, plain, $false, inference(hyper,[status(thm)],[12,6,7,8]), [iquote('hyper,12,6,7,8')]).

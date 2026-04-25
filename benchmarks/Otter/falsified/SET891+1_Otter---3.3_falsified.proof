@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '13':
-%%%%%   Replaced (! [A,B]: ((unordered_pair(A,B) = set_union2(singleton(A),singleton(B)))))
-%%%%%   With (! [A,B]: (~ ((unordered_pair(A,B) = set_union2(singleton(A),singleton(B))))))
+%%%%% Mutated formula '15':
+%%%%%   Replaced (! [A,B]: ((set_union2(singleton(A),singleton(B)) = unordered_pair(A,B))))
+%%%%%   With (! [A,B]: (~ ((set_union2(singleton(A),singleton(B)) = unordered_pair(A,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET891+1 : TPTP v8.1.0. Released v3.2.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:19:19 CEST 2026 using command 'transform(fof)'.
 fof(4, axiom, (union(unordered_pair(singleton(dollar_c4),singleton(dollar_c3))) != unordered_pair(dollar_c4,dollar_c3)), file('SET891+1.p',unknown), []).
 fof(11, axiom, (! [A,B]: ((union(unordered_pair(A,B)) = set_union2(A,B)))), file('SET891+1.p',unknown), []).
-fof(13, axiom, (! [A,B]: (~ ((unordered_pair(A,B) = set_union2(singleton(A),singleton(B)))))), file('SET891+1.p',unknown), []).
+fof(13, axiom, (! [A,B]: ((unordered_pair(A,B) = set_union2(singleton(A),singleton(B))))), file('SET891+1.p',unknown), []).
 fof(14, plain, (set_union2(singleton(dollar_c4),singleton(dollar_c3)) != unordered_pair(dollar_c4,dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[4]),11]), [iquote('back_demod,4,demod,11')]).
-fof(15, plain, (! [A,B]: ((set_union2(singleton(A),singleton(B)) = unordered_pair(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[13])]), [iquote('copy,13,flip.1')]).
+fof(15, plain, (! [A,B]: (~ ((set_union2(singleton(A),singleton(B)) = unordered_pair(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[13])]), [iquote('copy,13,flip.1')]).
 fof(16, plain, $false, inference(binary,[status(thm)],[15,14]), [iquote('binary,15.1,14.1')]).

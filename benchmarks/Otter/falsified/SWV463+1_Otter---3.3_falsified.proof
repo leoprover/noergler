@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '77':
-%%%%%   Replaced (! [A]: (~ (le_q(s(A),A))))
-%%%%%   With (! [A]: (le_q(s(A),A)))
+%%%%% Mutated formula '105':
+%%%%%   Replaced (! [A,B,C,D]: ((~ (setIn(A,alive)) | (~ (elem(m_Down(B),queue(host(A)))) | (~ (elem(m_Ack(A,C),queue(host(A)))) | (~ (le_q(nbr_proc,s(index(pendack,host(A))))) | ((index(status,host(A)) != elec_2) | ((host(C) != index(pendack,host(A))) | ((host(B) != s(index(pendack,host(A)))) | (~ (setIn(D,alive)) | ((index(ldr,host(D)) != host(D)) | (index(status,host(D)) != norm))))))))))))
+%%%%%   With (! [A,B,C,D]: ((~ (setIn(A,nbr_proc)) | (~ (elem(m_Down(B),queue(host(A)))) | (~ (elem(m_Ack(A,C),queue(host(A)))) | (~ (le_q(nbr_proc,s(index(pendack,host(A))))) | ((index(status,host(A)) != elec_2) | ((host(C) != index(pendack,host(A))) | ((host(B) != s(index(pendack,host(A)))) | (~ (setIn(D,alive)) | ((index(ldr,host(D)) != host(D)) | (index(status,host(D)) != norm))))))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV463+1 : TPTP v8.1.0. Released v4.0.0.
@@ -37,10 +37,10 @@ fof(3, axiom, (! [A,B]: (((s(host(A)) != host(B)) | (host(A) != host(B))))), fil
 fof(19, axiom, (! [A,B,C]: ((m_Ack(A,B) != m_Ldr(C)))), file('SWV463+1.p',unknown), []).
 fof(23, axiom, (! [A,B]: ((m_Down(A) != m_Ldr(B)))), file('SWV463+1.p',unknown), []).
 fof(53, axiom, (! [A,B,C]: ((~ (elem(A,snoc(B,C))) | ((A = C) | elem(A,B))))), file('SWV463+1.p',unknown), []).
-fof(77, axiom, (! [A]: (le_q(s(A),A))), file('SWV463+1.p',unknown), []).
+fof(77, axiom, (! [A]: (~ (le_q(s(A),A)))), file('SWV463+1.p',unknown), []).
 fof(78, axiom, (! [A,B]: ((~ (le_q(A,B)) | (~ (le_q(B,A)) | (A = B))))), file('SWV463+1.p',unknown), []).
 fof(84, axiom, (! [A,B]: ((~ (le_q(A,s(B))) | ((A = s(B)) | le_q(A,B))))), file('SWV463+1.p',unknown), []).
-fof(105, axiom, (! [A,B,C,D]: ((~ (setIn(A,alive)) | (~ (elem(m_Down(B),queue(host(A)))) | (~ (elem(m_Ack(A,C),queue(host(A)))) | (~ (le_q(nbr_proc,s(index(pendack,host(A))))) | ((index(status,host(A)) != elec_2) | ((host(C) != index(pendack,host(A))) | ((host(B) != s(index(pendack,host(A)))) | (~ (setIn(D,alive)) | ((index(ldr,host(D)) != host(D)) | (index(status,host(D)) != norm)))))))))))), file('SWV463+1.p',unknown), []).
+fof(105, axiom, (! [A,B,C,D]: ((~ (setIn(A,nbr_proc)) | (~ (elem(m_Down(B),queue(host(A)))) | (~ (elem(m_Ack(A,C),queue(host(A)))) | (~ (le_q(nbr_proc,s(index(pendack,host(A))))) | ((index(status,host(A)) != elec_2) | ((host(C) != index(pendack,host(A))) | ((host(B) != s(index(pendack,host(A)))) | (~ (setIn(D,alive)) | ((index(ldr,host(D)) != host(D)) | (index(status,host(D)) != norm)))))))))))), file('SWV463+1.p',unknown), []).
 fof(111, plain, (! [A,B,C]: ((m_Ldr(A) != m_Ack(B,C)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[19])]), [iquote('copy,19,flip.1')]).
 fof(115, plain, (! [A,B]: ((m_Ldr(A) != m_Down(B)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[23])]), [iquote('copy,23,flip.1')]).
 fof(136, axiom, (! [A]: ((A = A))), file('SWV463+1.p',unknown), []).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '28':
-%%%%%   Replaced (! [A,B,C]: ((union(intersection(A,B),intersection(A,C)) = intersection(A,union(B,C)))))
-%%%%%   With (! [A,B,C]: (~ ((union(intersection(A,B),intersection(A,C)) = intersection(A,union(B,C))))))
+%%%%% Mutated formula '205':
+%%%%%   Replaced subset(dollar_c3,dollar_c2)
+%%%%%   With subset(dollar_c2,dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET638+3 : TPTP v8.1.0. Released v2.2.0.
@@ -38,7 +38,7 @@ fof(18, axiom, ~ (subset(dollar_c3,dollar_c2)), file('SET638+3.p',unknown), []).
 fof(24, axiom, (! [A,B]: (subset(intersection(A,B),A))), file('SET638+3.p',unknown), []).
 fof(26, axiom, (! [A]: ((union(A,empty_set) = A))), file('SET638+3.p',unknown), []).
 fof(27, axiom, (! [A,B,C]: ((intersection(A,union(B,C)) = union(intersection(A,B),intersection(A,C))))), file('SET638+3.p',unknown), []).
-fof(28, plain, (! [A,B,C]: (~ ((union(intersection(A,B),intersection(A,C)) = intersection(A,union(B,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[27])]), [iquote('copy,27,flip.1')]).
+fof(28, plain, (! [A,B,C]: ((union(intersection(A,B),intersection(A,C)) = intersection(A,union(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[27])]), [iquote('copy,27,flip.1')]).
 fof(32, axiom, (! [A,B]: ((intersection(A,B) = intersection(B,A)))), file('SET638+3.p',unknown), []).
 fof(36, axiom, subset(dollar_c3,union(dollar_c2,dollar_c1)), file('SET638+3.p',unknown), []).
 fof(37, axiom, (intersection(dollar_c3,dollar_c1) = empty_set), file('SET638+3.p',unknown), []).
@@ -46,5 +46,5 @@ fof(47, plain, (intersection(dollar_c3,union(dollar_c2,dollar_c1)) = dollar_c3),
 fof(73, plain, (! [A]: ((intersection(dollar_c3,union(A,dollar_c1)) = intersection(dollar_c3,A)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[37,28]),26])]), [iquote('para_from,37.1.1,28.1.1.2,demod,26,flip.1')]).
 fof(78, plain, (intersection(dollar_c3,dollar_c2) = dollar_c3), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[47]),73]), [iquote('back_demod,47,demod,73')]).
 fof(180, plain, (intersection(dollar_c2,dollar_c3) = dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[32,78])]), [iquote('para_into,32.1.1,78.1.1,flip.1')]).
-fof(205, plain, subset(dollar_c3,dollar_c2), inference(para_from,[status(thm),theory(equality)],[180,24]), [iquote('para_from,180.1.1,24.1.1')]).
+fof(205, plain, subset(dollar_c2,dollar_c2), inference(para_from,[status(thm),theory(equality)],[180,24]), [iquote('para_from,180.1.1,24.1.1')]).
 fof(206, plain, $false, inference(binary,[status(thm)],[205,18]), [iquote('binary,205.1,18.1')]).

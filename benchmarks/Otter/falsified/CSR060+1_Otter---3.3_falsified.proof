@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '147':
-%%%%%   Replaced tptpcol_16_27189(f_relationexistsallfn(c_tptpnsubcollectionofwithrelationtofnshipobjectfoundinlocationcityofbostonma_802,c_tptp_9_51,c_tptpcol_16_27189,f_subcollectionofwithrelationtofn(c_ship,c_objectfoundinlocation,c_cityofbostonma)))
-%%%%%   With ~ (tptpcol_16_27189(f_relationexistsallfn(c_tptpnsubcollectionofwithrelationtofnshipobjectfoundinlocationcityofbostonma_802,c_tptp_9_51,c_tptpcol_16_27189,f_subcollectionofwithrelationtofn(c_ship,c_objectfoundinlocation,c_cityofbostonma))))
+%%%%% Mutated formula '141':
+%%%%%   Replaced relationexistsall(c_tptp_9_51,c_tptpcol_16_27189,f_subcollectionofwithrelationtofn(c_ship,c_objectfoundinlocation,c_cityofbostonma))
+%%%%%   With relationexistsall(c_tptpcol_16_27189,c_tptpcol_16_27189,f_subcollectionofwithrelationtofn(c_ship,c_objectfoundinlocation,c_cityofbostonma))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR060+1 : TPTP v8.1.0. Released v3.4.0.
@@ -52,8 +52,8 @@ fof(111, plain, genlmt(c_ldscgeneralcollectormt,c_currentworlddatacollectormt_no
 fof(126, plain, genlmt(c_machinelearningspindleheadmt,c_currentworlddatacollectormt_nonhomocentric), inference(hyper,[status(thm)],[111,49,108]), [iquote('hyper,111,49,108')]).
 fof(134, plain, mtvisible(c_machinelearningspindleheadmt), inference(hyper,[status(thm)],[88,46,55]), [iquote('hyper,88,46,55')]).
 fof(135, plain, mtvisible(c_currentworlddatacollectormt_nonhomocentric), inference(hyper,[status(thm)],[134,46,126]), [iquote('hyper,134,46,126')]).
-fof(141, plain, relationexistsall(c_tptp_9_51,c_tptpcol_16_27189,f_subcollectionofwithrelationtofn(c_ship,c_objectfoundinlocation,c_cityofbostonma)), inference(hyper,[status(thm)],[135,3]), [iquote('hyper,135,3')]).
+fof(141, plain, relationexistsall(c_tptpcol_16_27189,c_tptpcol_16_27189,f_subcollectionofwithrelationtofn(c_ship,c_objectfoundinlocation,c_cityofbostonma)), inference(hyper,[status(thm)],[135,3]), [iquote('hyper,135,3')]).
 fof(142, plain, tptp_9_51(f_relationexistsallfn(c_tptpnsubcollectionofwithrelationtofnshipobjectfoundinlocationcityofbostonma_802,c_tptp_9_51,c_tptpcol_16_27189,f_subcollectionofwithrelationtofn(c_ship,c_objectfoundinlocation,c_cityofbostonma)),c_tptpnsubcollectionofwithrelationtofnshipobjectfoundinlocationcityofbostonma_802), inference(hyper,[status(thm)],[135,2,63]), [iquote('hyper,135,2,63')]).
 fof(145, plain, isa(f_relationexistsallfn(c_tptpnsubcollectionofwithrelationtofnshipobjectfoundinlocationcityofbostonma_802,c_tptp_9_51,c_tptpcol_16_27189,f_subcollectionofwithrelationtofn(c_ship,c_objectfoundinlocation,c_cityofbostonma)),c_tptpcol_16_27189), inference(hyper,[status(thm)],[141,1,63]), [iquote('hyper,141,1,63')]).
-fof(147, plain, ~ (tptpcol_16_27189(f_relationexistsallfn(c_tptpnsubcollectionofwithrelationtofnshipobjectfoundinlocationcityofbostonma_802,c_tptp_9_51,c_tptpcol_16_27189,f_subcollectionofwithrelationtofn(c_ship,c_objectfoundinlocation,c_cityofbostonma)))), inference(hyper,[status(thm)],[145,32]), [iquote('hyper,145,32')]).
+fof(147, plain, tptpcol_16_27189(f_relationexistsallfn(c_tptpnsubcollectionofwithrelationtofnshipobjectfoundinlocationcityofbostonma_802,c_tptp_9_51,c_tptpcol_16_27189,f_subcollectionofwithrelationtofn(c_ship,c_objectfoundinlocation,c_cityofbostonma))), inference(hyper,[status(thm)],[145,32]), [iquote('hyper,145,32')]).
 fof(148, plain, $false, inference(hyper,[status(thm)],[147,51,142]), [iquote('hyper,147,51,142')]).

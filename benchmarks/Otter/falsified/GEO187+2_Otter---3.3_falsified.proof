@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '4451':
-%%%%%   Replaced (! [E,A,B,C,D]: ((distinct_points(A,dollar_c4) | (distinct_points(B,C) | (distinct_points(C,D) | (distinct_points(D,dollar_c3) | (distinct_points(A,E) | distinct_points(B,E))))))))
-%%%%%   With (! [E,A,B,C,D]: ((distinct_points(A,dollar_c1) | (distinct_points(B,C) | (distinct_points(C,D) | (distinct_points(D,dollar_c3) | (distinct_points(A,E) | distinct_points(B,E))))))))
+%%%%% Mutated formula '18':
+%%%%%   Replaced distinct_points(dollar_c2,dollar_c1)
+%%%%%   With ~ (distinct_points(dollar_c2,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO187+2 : TPTP v8.1.0. Released v3.3.0.
@@ -42,7 +42,7 @@ fof(13, axiom, (! [A,B,C]: ((~ (apart_point_and_line(A,B)) | (distinct_lines(B,C
 fof(15, axiom, ~ (apart_point_and_line(dollar_c4,line_connecting(dollar_c2,dollar_c1))), file('GEO187+2.p',unknown), []).
 fof(16, axiom, ~ (apart_point_and_line(dollar_c3,line_connecting(dollar_c2,dollar_c1))), file('GEO187+2.p',unknown), []).
 fof(17, axiom, distinct_points(dollar_c4,dollar_c3), file('GEO187+2.p',unknown), []).
-fof(18, axiom, distinct_points(dollar_c2,dollar_c1), file('GEO187+2.p',unknown), []).
+fof(18, axiom, ~ (distinct_points(dollar_c2,dollar_c1)), file('GEO187+2.p',unknown), []).
 fof(19, axiom, (apart_point_and_line(dollar_c2,line_connecting(dollar_c4,dollar_c3)) | apart_point_and_line(dollar_c1,line_connecting(dollar_c4,dollar_c3))), file('GEO187+2.p',unknown), []).
 fof(20, plain, (! [A]: ((distinct_points(dollar_c4,A) | distinct_points(dollar_c3,A)))), inference(hyper,[status(thm)],[17,4]), [iquote('hyper,17,4')]).
 fof(22, plain, (! [A,B]: ((distinct_points(dollar_c3,A) | (distinct_points(dollar_c4,B) | distinct_points(A,B))))), inference(hyper,[status(thm)],[20,4]), [iquote('hyper,20,4')]).
@@ -61,7 +61,7 @@ fof(1953, plain, apart_point_and_line(dollar_c1,line_connecting(dollar_c4,dollar
 fof(1954, plain, (! [A]: ((distinct_lines(line_connecting(dollar_c4,dollar_c3),A) | apart_point_and_line(dollar_c1,A)))), inference(hyper,[status(thm)],[1953,13]), [iquote('hyper,1953,13')]).
 fof(2156, plain, (! [A]: ((apart_point_and_line(dollar_c1,A) | (apart_point_and_line(dollar_c3,line_connecting(dollar_c4,dollar_c3)) | (apart_point_and_line(dollar_c3,A) | (apart_point_and_line(dollar_c4,line_connecting(dollar_c4,dollar_c3)) | apart_point_and_line(dollar_c4,A))))))), inference(hyper,[status(thm)],[1954,11,23]), [iquote('hyper,1954,11,23')]).
 fof(4450, plain, (! [A,B,C,D]: ((distinct_points(A,dollar_c4) | (distinct_points(A,B) | (distinct_points(B,C) | (distinct_points(C,D) | distinct_points(D,dollar_c3))))))), inference(hyper,[status(thm)],[1339,1]), [iquote('hyper,1339,1')]).
-fof(4451, plain, (! [E,A,B,C,D]: ((distinct_points(A,dollar_c1) | (distinct_points(B,C) | (distinct_points(C,D) | (distinct_points(D,dollar_c3) | (distinct_points(A,E) | distinct_points(B,E)))))))), inference(hyper,[status(thm)],[4450,4]), [iquote('hyper,4450,4')]).
+fof(4451, plain, (! [E,A,B,C,D]: ((distinct_points(A,dollar_c4) | (distinct_points(B,C) | (distinct_points(C,D) | (distinct_points(D,dollar_c3) | (distinct_points(A,E) | distinct_points(B,E)))))))), inference(hyper,[status(thm)],[4450,4]), [iquote('hyper,4450,4')]).
 fof(4486, plain, (apart_point_and_line(dollar_c3,line_connecting(dollar_c4,dollar_c3)) | apart_point_and_line(dollar_c4,line_connecting(dollar_c4,dollar_c3))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[2156,8,18]),16,15,1]), [iquote('hyper,2156,8,18,unit_del,16,15,1')]).
 fof(4519, plain, apart_point_and_line(dollar_c4,line_connecting(dollar_c4,dollar_c3)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[4486,8,258]),1,1,1]), [iquote('hyper,4486,8,258,unit_del,1,1,1')]).
 fof(4552, plain, (! [A]: (distinct_points(A,dollar_c4))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[4519,7,4451]),1,1])])])]), [iquote('hyper,4519,7,4451,unit_del,1,1,factor_simp,factor_simp,factor_simp')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c1':
-%%%%%   Replaced (? [X]: ((! [Y1,Y2]: ((? [Z]: ((big_f(X,Z) & (big_f(Y1,Z) & (big_f(Y2,Z) & (big_f(Y1,X) & ~ (big_f(Z,Y2))))))))))))
-%%%%%   With (? [X]: ((! [Y1,Y2]: ((? [Z]: ((big_f(X,Z) | (big_f(Y1,Z) & (big_f(Y2,Z) & (big_f(Y1,X) & ~ (big_f(Z,Y2))))))))))))
+%%%%% Mutated formula 'c8':
+%%%%%   Replaced (! [X12,X11]: (~ (big_f(skolem0002(X12,X11),X11))))
+%%%%%   With (! [X12,X11]: (big_f(skolem0002(X12,X11),X11)))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN336+1 : TPTP v8.1.2. Released v2.0.0.
@@ -38,9 +38,9 @@
 %%% Generated on Tue Apr 14 15:06:43 CEST 2026 using command 'transform(fof)'.
 fof(church_46_15_1, conjecture, (! [X]: ((? [Y1,Y2]: ((! [Z]: ((big_f(X,Z) => (big_f(Y1,Z) => (big_f(Y2,Z) => (big_f(Y1,X) => big_f(Z,Y2))))))))))), file('SYN336+1.p',church_46_15_1)).
 fof(c0, negated_conjecture, ~ ((! [X]: ((? [Y1,Y2]: ((! [Z]: ((big_f(X,Z) => (big_f(Y1,Z) => (big_f(Y2,Z) => (big_f(Y1,X) => big_f(Z,Y2)))))))))))), inference(assume_negation,[status(cth)],[church_46_15_1])).
-fof(c1, negated_conjecture, (? [X]: ((! [Y1,Y2]: ((? [Z]: ((big_f(X,Z) | (big_f(Y1,Z) & (big_f(Y2,Z) & (big_f(Y1,X) & ~ (big_f(Z,Y2)))))))))))), inference(fof_nnf,[status(thm)],[c0])).
+fof(c1, negated_conjecture, (? [X]: ((! [Y1,Y2]: ((? [Z]: ((big_f(X,Z) & (big_f(Y1,Z) & (big_f(Y2,Z) & (big_f(Y1,X) & ~ (big_f(Z,Y2)))))))))))), inference(fof_nnf,[status(thm)],[c0])).
 fof(c2, negated_conjecture, (? [X2]: ((! [X3,X4]: ((? [X5]: ((big_f(X2,X5) & (big_f(X3,X5) & (big_f(X4,X5) & (big_f(X3,X2) & ~ (big_f(X5,X4)))))))))))), inference(variable_rename,[status(thm)],[c1])).
 fof(c3, negated_conjecture, (! [X3,X4]: ((big_f(skolem0001,skolem0002(X3,X4)) & (big_f(X3,skolem0002(X3,X4)) & (big_f(X4,skolem0002(X3,X4)) & (big_f(X3,skolem0001) & ~ (big_f(skolem0002(X3,X4),X4)))))))), inference(skolemize,[status(esa)],[c2])).
 fof(c7, negated_conjecture, (! [X6]: (big_f(X6,skolem0001))), inference(split_conjunct,[status(thm)],[c3])).
-fof(c8, negated_conjecture, (! [X12,X11]: (~ (big_f(skolem0002(X12,X11),X11)))), inference(split_conjunct,[status(thm)],[c3])).
+fof(c8, negated_conjecture, (! [X12,X11]: (big_f(skolem0002(X12,X11),X11))), inference(split_conjunct,[status(thm)],[c3])).
 fof(c9, plain, $false, inference(resolution,[status(thm)],[c8,c7])).

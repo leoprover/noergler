@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '144':
-%%%%%   Replaced doDivides0(xm,xn)
-%%%%%   With ~ (doDivides0(xm,xn))
+%%%%% Mutated formula '4132':
+%%%%%   Replaced (dollar_f2(xm,xn) = sz00)
+%%%%%   With (dollar_f2(sz00,xn) = sz00)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM477+1 : TPTP v8.1.0. Released v4.0.0.
@@ -42,10 +42,10 @@ fof(57, axiom, (xn != sz00), file('NUM477+1.p',unknown), []).
 fof(58, axiom, ~ (sdtlse_qdt0(xm,xn)), file('NUM477+1.p',unknown), []).
 fof(142, axiom, aNaturalNumber0(xm), file('NUM477+1.p',unknown), []).
 fof(143, axiom, aNaturalNumber0(xn), file('NUM477+1.p',unknown), []).
-fof(144, axiom, ~ (doDivides0(xm,xn)), file('NUM477+1.p',unknown), []).
+fof(144, axiom, doDivides0(xm,xn), file('NUM477+1.p',unknown), []).
 fof(378, plain, (sdtasdt0(xm,sz00) = sz00), inference(hyper,[status(thm)],[142,14]), [iquote('hyper,142,14')]).
 fof(931, plain, (sdtasdt0(xm,dollar_f2(xm,xn)) = xn), inference(hyper,[status(thm)],[144,49,142,143]), [iquote('hyper,144,49,142,143')]).
 fof(932, plain, aNaturalNumber0(dollar_f2(xm,xn)), inference(hyper,[status(thm)],[144,47,142,143]), [iquote('hyper,144,47,142,143')]).
-fof(4132, plain, (dollar_f2(xm,xn) = sz00), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[932,45,142]),931]),58]), [iquote('hyper,932,45,142,demod,931,unit_del,58')]).
+fof(4132, plain, (dollar_f2(sz00,xn) = sz00), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[932,45,142]),931]),58]), [iquote('hyper,932,45,142,demod,931,unit_del,58')]).
 fof(4133, plain, (xn = sz00), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[931]),4132,378])]), [iquote('back_demod,930,demod,4132,378,flip.1')]).
 fof(4135, plain, $false, inference(binary,[status(thm)],[4133,57]), [iquote('binary,4133.1,57.1')]).

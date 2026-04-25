@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '15':
-%%%%%   Replaced (~ (distinct_points(dollar_c1,dollar_c3)) | ~ (distinct_points(dollar_c1,dollar_c2)))
-%%%%%   With (distinct_points(dollar_c1,dollar_c3) | ~ (distinct_points(dollar_c1,dollar_c2)))
+%%%%% Mutated formula '21':
+%%%%%   Replaced distinct_points(dollar_c1,dollar_c2)
+%%%%%   With distinct_points(dollar_c3,dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO178+2 : TPTP v8.1.0. Released v3.3.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:11:41 CEST 2026 using command 'transform(fof)'.
 fof(7, axiom, (! [A,B,C]: ((~ (distinct_points(A,B)) | (~ (apart_point_and_line(C,line_connecting(A,B))) | distinct_points(C,A))))), file('GEO178+2.p',unknown), []).
 fof(8, axiom, (! [A,B,C]: ((~ (distinct_points(A,B)) | (~ (apart_point_and_line(C,line_connecting(A,B))) | distinct_points(C,B))))), file('GEO178+2.p',unknown), []).
-fof(15, axiom, (distinct_points(dollar_c1,dollar_c3) | ~ (distinct_points(dollar_c1,dollar_c2))), file('GEO178+2.p',unknown), []).
+fof(15, axiom, (~ (distinct_points(dollar_c1,dollar_c3)) | ~ (distinct_points(dollar_c1,dollar_c2))), file('GEO178+2.p',unknown), []).
 fof(16, axiom, distinct_points(dollar_c3,dollar_c2), file('GEO178+2.p',unknown), []).
 fof(17, axiom, apart_point_and_line(dollar_c1,line_connecting(dollar_c3,dollar_c2)), file('GEO178+2.p',unknown), []).
-fof(21, plain, distinct_points(dollar_c1,dollar_c2), inference(hyper,[status(thm)],[17,8,16]), [iquote('hyper,17,8,16')]).
+fof(21, plain, distinct_points(dollar_c3,dollar_c2), inference(hyper,[status(thm)],[17,8,16]), [iquote('hyper,17,8,16')]).
 fof(22, plain, distinct_points(dollar_c1,dollar_c3), inference(hyper,[status(thm)],[17,7,16]), [iquote('hyper,17,7,16')]).
 fof(24, plain, $false, inference(hyper,[status(thm)],[22,15,21]), [iquote('hyper,22,15,21')]).

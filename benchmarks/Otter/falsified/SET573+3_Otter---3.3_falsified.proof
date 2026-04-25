@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '10':
-%%%%%   Replaced member(dollar_c3,dollar_c1)
-%%%%%   With ~ (member(dollar_c3,dollar_c1))
+%%%%% Mutated formula '16':
+%%%%%   Replaced intersect(dollar_c2,dollar_c1)
+%%%%%   With intersect(dollar_c1,dollar_c1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET573+3 : TPTP v8.1.0. Released v2.2.0.
@@ -37,6 +37,6 @@ fof(3, axiom, (! [A,B,C]: ((intersect(A,B) | (~ (member(C,A)) | ~ (member(C,B)))
 fof(4, axiom, (! [A,B]: ((~ (disjoint(A,B)) | ~ (intersect(A,B))))), file('SET573+3.p',unknown), []).
 fof(8, axiom, member(dollar_c3,dollar_c2), file('SET573+3.p',unknown), []).
 fof(9, axiom, disjoint(dollar_c2,dollar_c1), file('SET573+3.p',unknown), []).
-fof(10, axiom, ~ (member(dollar_c3,dollar_c1)), file('SET573+3.p',unknown), []).
-fof(16, plain, intersect(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[10,3,8]), [iquote('hyper,10,3,8')]).
+fof(10, axiom, member(dollar_c3,dollar_c1), file('SET573+3.p',unknown), []).
+fof(16, plain, intersect(dollar_c1,dollar_c1), inference(hyper,[status(thm)],[10,3,8]), [iquote('hyper,10,3,8')]).
 fof(23, plain, $false, inference(hyper,[status(thm)],[16,4,9]), [iquote('hyper,16,4,9')]).

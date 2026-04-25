@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c96':
-%%%%%   Replaced finite(relation_rng(skolem0001))
-%%%%%   With ~ (finite(relation_rng(skolem0001)))
+%%%%% Mutated formula 'c43':
+%%%%%   Replaced (! [X51]: ((~ (relation(X51)) | (~ (function(X51)) | finite(relation_image(X51,relation_dom(skolem0001)))))))
+%%%%%   With (! [X51]: ((~ (relation(X51)) & (~ (function(X51)) | finite(relation_image(X51,relation_dom(skolem0001)))))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SEU303+1 : TPTP v8.1.2. Released v3.3.0.
@@ -49,7 +49,7 @@ fof(t17_finset_1, axiom, (! [A,B]: (((relation(B) & function(B)) => (finite(A) =
 fof(c14, plain, (! [A,B]: ((~ (relation(B)) | (~ (function(B)) | (~ (finite(A)) | finite(relation_image(B,A))))))), inference(fof_nnf,[status(thm)],[t17_finset_1])).
 fof(c15, plain, (! [X3,X4]: ((~ (relation(X4)) | (~ (function(X4)) | (~ (finite(X3)) | finite(relation_image(X4,X3))))))), inference(variable_rename,[status(thm)],[c14])).
 fof(c16, plain, (! [X42,X43]: ((~ (relation(X42)) | (~ (function(X42)) | (~ (finite(X43)) | finite(relation_image(X42,X43))))))), inference(split_conjunct,[status(thm)],[c15])).
-fof(c43, plain, (! [X51]: ((~ (relation(X51)) | (~ (function(X51)) | finite(relation_image(X51,relation_dom(skolem0001))))))), inference(resolution,[status(thm)],[c16,c12])).
+fof(c43, plain, (! [X51]: ((~ (relation(X51)) & (~ (function(X51)) | finite(relation_image(X51,relation_dom(skolem0001))))))), inference(resolution,[status(thm)],[c16,c12])).
 fof(c85, plain, (~ (relation(skolem0001)) | finite(relation_image(skolem0001,relation_dom(skolem0001)))), inference(resolution,[status(thm)],[c43,c11])).
 fof(c87, plain, finite(relation_image(skolem0001,relation_dom(skolem0001))), inference(resolution,[status(thm)],[c85,c10])).
 fof(c3, axiom, (! [X20,X19]: (((X20 != X19) | (~ (finite(X20)) | finite(X19))))), theory(equality)).
@@ -59,5 +59,5 @@ fof(c18, plain, (! [X5]: ((~ (relation(X5)) | (relation_image(X5,relation_dom(X5
 fof(c19, plain, (! [X38]: ((~ (relation(X38)) | (relation_image(X38,relation_dom(X38)) = relation_rng(X38))))), inference(split_conjunct,[status(thm)],[c18])).
 fof(c40, plain, (relation_image(skolem0001,relation_dom(skolem0001)) = relation_rng(skolem0001)), inference(resolution,[status(thm)],[c19,c10])).
 fof(c49, plain, (~ (finite(relation_image(skolem0001,relation_dom(skolem0001)))) | finite(relation_rng(skolem0001))), inference(resolution,[status(thm)],[c40,c3])).
-fof(c96, plain, ~ (finite(relation_rng(skolem0001))), inference(resolution,[status(thm)],[c49,c87])).
+fof(c96, plain, finite(relation_rng(skolem0001)), inference(resolution,[status(thm)],[c49,c87])).
 fof(c108, plain, $false, inference(resolution,[status(thm)],[c96,c13])).

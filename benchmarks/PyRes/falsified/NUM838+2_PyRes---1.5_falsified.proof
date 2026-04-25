@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c100':
-%%%%%   Replaced greater(vd301,vd302)
-%%%%%   With ~ (greater(vd301,vd302))
+%%%%% Mutated formula 'c437':
+%%%%%   Replaced (! [X346]: (greater(vplus(vd301,X346),vplus(vd302,X346))))
+%%%%%   With (! [X346]: (greater(vplus(vd303,X346),vplus(vd302,X346))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM838+2 : TPTP v8.1.2. Released v4.1.0.
@@ -41,10 +41,10 @@ fof(c101, negated_conjecture, ~ (greater(vplus(vd301,vd303),vplus(vd302,vd303)))
 fof(c102, negated_conjecture, ~ (greater(vplus(vd301,vd303),vplus(vd302,vd303))), inference(fof_simplification,[status(thm)],[c101])).
 fof(c103, negated_conjecture, ~ (greater(vplus(vd301,vd303),vplus(vd302,vd303))), inference(split_conjunct,[status(thm)],[c102])).
 fof('holds(antec(195), 304, 0)', axiom, greater(vd301,vd302), file('NUM838+2.p','holds(antec(195), 304, 0)')).
-fof(c100, plain, ~ (greater(vd301,vd302)), inference(split_conjunct,[status(thm)],['holds(antec(195), 304, 0)'])).
+fof(c100, plain, greater(vd301,vd302), inference(split_conjunct,[status(thm)],['holds(antec(195), 304, 0)'])).
 fof('ass(cond(proof(196), 0), 4)', axiom, (! [Vd310,Vd311,Vd312]: ((greater(Vd311,Vd312) => greater(vplus(Vd311,Vd310),vplus(Vd312,Vd310))))), file('NUM838+2.p','ass(cond(proof(196), 0), 4)')).
 fof(c84, plain, (! [Vd310,Vd311,Vd312]: ((~ (greater(Vd311,Vd312)) | greater(vplus(Vd311,Vd310),vplus(Vd312,Vd310))))), inference(fof_nnf,[status(thm)],['ass(cond(proof(196), 0), 4)'])).
 fof(c85, plain, (! [X69,X70,X71]: ((~ (greater(X70,X71)) | greater(vplus(X70,X69),vplus(X71,X69))))), inference(variable_rename,[status(thm)],[c84])).
 fof(c86, plain, (! [X304,X305,X303]: ((~ (greater(X304,X305)) | greater(vplus(X304,X303),vplus(X305,X303))))), inference(split_conjunct,[status(thm)],[c85])).
-fof(c437, plain, (! [X346]: (greater(vplus(vd301,X346),vplus(vd302,X346)))), inference(resolution,[status(thm)],[c86,c100])).
+fof(c437, plain, (! [X346]: (greater(vplus(vd303,X346),vplus(vd302,X346)))), inference(resolution,[status(thm)],[c86,c100])).
 fof(c491, plain, $false, inference(resolution,[status(thm)],[c437,c103])).

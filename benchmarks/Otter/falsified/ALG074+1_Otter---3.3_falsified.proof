@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '47':
-%%%%%   Replaced (j(op2(h(dollar_c2),h(dollar_c1))) = op1(dollar_c2,dollar_c1))
-%%%%%   With (j(op2(h(dollar_c1),h(dollar_c1))) = op1(dollar_c2,dollar_c1))
+%%%%% Mutated formula '48':
+%%%%%   Replaced (j(op2(h(dollar_c1),h(dollar_c2))) = op1(dollar_c1,dollar_c2))
+%%%%%   With ~ ((j(op2(h(dollar_c1),h(dollar_c2))) = op1(dollar_c1,dollar_c2)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG074+1 : TPTP v8.1.0. Released v2.7.0.
@@ -53,8 +53,8 @@ fof(32, plain, (j(h(dollar_c1)) = dollar_c1), inference(hyper,[status(thm)],[19,
 fof(34, plain, (h(op1(dollar_c2,dollar_c1)) = op2(h(dollar_c2),h(dollar_c1))), inference(hyper,[status(thm)],[19,9,18]), [iquote('hyper,19,9,18')]).
 fof(37, plain, sorti2(h(dollar_c1)), inference(hyper,[status(thm)],[19,7]), [iquote('hyper,19,7')]).
 fof(38, plain, sorti1(op1(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[19,1,18]), [iquote('hyper,19,1,18')]).
-fof(47, plain, (j(op2(h(dollar_c1),h(dollar_c1))) = op1(dollar_c2,dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[37,10,27]),26,32]), [iquote('hyper,37,10,27,demod,26,32')]).
-fof(48, plain, (j(op2(h(dollar_c1),h(dollar_c2))) = op1(dollar_c1,dollar_c2)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[37,10,27]),32,26]), [iquote('hyper,37,10,27,demod,32,26')]).
+fof(47, plain, (j(op2(h(dollar_c2),h(dollar_c1))) = op1(dollar_c2,dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[37,10,27]),26,32]), [iquote('hyper,37,10,27,demod,26,32')]).
+fof(48, plain, ~ ((j(op2(h(dollar_c1),h(dollar_c2))) = op1(dollar_c1,dollar_c2))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[37,10,27]),32,26]), [iquote('hyper,37,10,27,demod,32,26')]).
 fof(50, plain, sorti2(op2(h(dollar_c2),h(dollar_c1))), inference(hyper,[status(thm)],[37,2,27]), [iquote('hyper,37,2,27')]).
 fof(53, plain, (op2(op2(h(dollar_c2),h(dollar_c1)),h(dollar_c1)) = h(dollar_c2)), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[20,9]),34]),38,19])]), [iquote('para_from,20.1.1,9.3.1.1,demod,34,unit_del,38,19,flip.1')]).
 fof(198, plain, (j(op2(op2(h(dollar_c2),h(dollar_c1)),h(dollar_c2))) = op1(op1(dollar_c2,dollar_c1),dollar_c2)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[50,10,27]),47,26]), [iquote('hyper,50,10,27,demod,47,26')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'fc1_xboole_0':
-%%%%%   Replaced empty(empty_set)
-%%%%%   With ~ (empty(empty_set))
+%%%%% Mutated formula 'c19':
+%%%%%   Replaced (powerset(empty_set) = singleton(empty_set))
+%%%%%   With ~ ((powerset(empty_set) = singleton(empty_set)))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SEU115+1 : TPTP v8.1.2. Released v3.2.0.
@@ -42,9 +42,9 @@ fof(c24, negated_conjecture, (finite_subsets(empty_set) != singleton(empty_set))
 fof(c25, negated_conjecture, (finite_subsets(empty_set) != singleton(empty_set)), inference(split_conjunct,[status(thm)],[c24])).
 fof(transitivity, axiom, (! [X66,X65,X64]: (((X66 != X65) | ((X65 != X64) | (X66 = X64))))), theory(equality)).
 fof(t1_zfmisc_1, axiom, (powerset(empty_set) = singleton(empty_set)), file('SEU115+1.p',t1_zfmisc_1)).
-fof(c19, plain, (powerset(empty_set) = singleton(empty_set)), inference(split_conjunct,[status(thm)],[t1_zfmisc_1])).
+fof(c19, plain, ~ ((powerset(empty_set) = singleton(empty_set))), inference(split_conjunct,[status(thm)],[t1_zfmisc_1])).
 fof(c351, plain, (! [X490]: (((X490 != powerset(empty_set)) | (X490 = singleton(empty_set))))), inference(resolution,[status(thm)],[c19,transitivity])).
-fof(fc1_xboole_0, axiom, ~ (empty(empty_set)), file('SEU115+1.p',fc1_xboole_0)).
+fof(fc1_xboole_0, axiom, empty(empty_set), file('SEU115+1.p',fc1_xboole_0)).
 fof(c36, plain, empty(empty_set), inference(split_conjunct,[status(thm)],[fc1_xboole_0])).
 fof(cc1_finset_1, axiom, (! [A]: ((empty(A) => finite(A)))), file('SEU115+1.p',cc1_finset_1)).
 fof(c138, plain, (! [A]: ((~ (empty(A)) | finite(A)))), inference(fof_nnf,[status(thm)],[cc1_finset_1])).

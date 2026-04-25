@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '22':
-%%%%%   Replaced (! [A]: ((intersection(A,A) = A)))
-%%%%%   With (! [A]: (~ ((intersection(A,A) = A))))
+%%%%% Mutated formula '20':
+%%%%%   Replaced (! [A]: (subset(A,A)))
+%%%%%   With (! [A]: (~ (subset(A,A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET148+3 : TPTP v8.1.0. Released v2.2.0.
@@ -35,6 +35,6 @@
 %%% Generated on Tue Apr 14 19:18:23 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B]: ((~ (subset(A,B)) | (intersection(A,B) = A)))), file('SET148+3.p',unknown), []).
 fof(13, axiom, (intersection(dollar_c1,dollar_c1) != dollar_c1), file('SET148+3.p',unknown), []).
-fof(20, axiom, (! [A]: (subset(A,A))), file('SET148+3.p',unknown), []).
-fof(22, plain, (! [A]: (~ ((intersection(A,A) = A)))), inference(hyper,[status(thm)],[20,1]), [iquote('hyper,20,1')]).
+fof(20, axiom, (! [A]: (~ (subset(A,A)))), file('SET148+3.p',unknown), []).
+fof(22, plain, (! [A]: ((intersection(A,A) = A))), inference(hyper,[status(thm)],[20,1]), [iquote('hyper,20,1')]).
 fof(24, plain, $false, inference(binary,[status(thm)],[22,13]), [iquote('binary,22.1,13.1')]).

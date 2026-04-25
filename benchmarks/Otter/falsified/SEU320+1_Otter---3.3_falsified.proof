@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '41':
-%%%%%   Replaced open_subset(dollar_c3,dollar_c4)
-%%%%%   With ~ (open_subset(dollar_c3,dollar_c4))
+%%%%% Mutated formula '29':
+%%%%%   Replaced (subset_complement(the_carrier(dollar_c4),subset_complement(the_carrier(dollar_c4),dollar_c3)) = dollar_c3)
+%%%%%   With ~ ((subset_complement(the_carrier(dollar_c4),subset_complement(the_carrier(dollar_c4),dollar_c3)) = dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU320+1 : TPTP v8.1.0. Released v3.3.0.
@@ -41,9 +41,9 @@ fof(6, axiom, (~ (open_subset(dollar_c3,dollar_c4)) | ~ (closed_subset(subset_co
 fof(14, axiom, top_str(dollar_c4), file('SEU320+1.p',unknown), []).
 fof(15, axiom, element(dollar_c3,powerset(the_carrier(dollar_c4))), file('SEU320+1.p',unknown), []).
 fof(16, axiom, (open_subset(dollar_c3,dollar_c4) | closed_subset(subset_complement(the_carrier(dollar_c4),dollar_c3),dollar_c4)), file('SEU320+1.p',unknown), []).
-fof(29, plain, (subset_complement(the_carrier(dollar_c4),subset_complement(the_carrier(dollar_c4),dollar_c3)) = dollar_c3), inference(hyper,[status(thm)],[15,3]), [iquote('hyper,15,3')]).
+fof(29, plain, ~ ((subset_complement(the_carrier(dollar_c4),subset_complement(the_carrier(dollar_c4),dollar_c3)) = dollar_c3)), inference(hyper,[status(thm)],[15,3]), [iquote('hyper,15,3')]).
 fof(30, plain, element(subset_complement(the_carrier(dollar_c4),dollar_c3),powerset(the_carrier(dollar_c4))), inference(hyper,[status(thm)],[15,1]), [iquote('hyper,15,1')]).
 fof(38, plain, (closed_subset(subset_complement(the_carrier(dollar_c4),dollar_c3),dollar_c4) | ~ (open_subset(dollar_c3,dollar_c4))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[29,5]),14,30]), [iquote('para_from,28.1.1,5.4.1,unit_del,14,30')]).
 fof(40, plain, closed_subset(subset_complement(the_carrier(dollar_c4),dollar_c3),dollar_c4), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[38,16])]), [iquote('hyper,38,16,factor_simp')]).
-fof(41, plain, ~ (open_subset(dollar_c3,dollar_c4)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[40,4,14,30]),29]), [iquote('hyper,40,4,14,30,demod,29')]).
+fof(41, plain, open_subset(dollar_c3,dollar_c4), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[40,4,14,30]),29]), [iquote('hyper,40,4,14,30,demod,29')]).
 fof(42, plain, $false, inference(hyper,[status(thm)],[41,6,40]), [iquote('hyper,41,6,40')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '41':
-%%%%%   Replaced (! [A]: (subset(A,A)))
-%%%%%   With (! [A]: (~ (subset(A,A))))
+%%%%% Mutated formula '55':
+%%%%%   Replaced relation(dollar_c7)
+%%%%%   With ~ (relation(dollar_c7))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU010+1 : TPTP v8.1.0. Released v3.2.0.
@@ -37,8 +37,8 @@ fof(29, axiom, ((relation_composition(identity_relation(relation_dom(dollar_c7))
 fof(30, axiom, (! [A,B]: ((~ (relation(A)) | (~ (subset(relation_dom(A),B)) | (relation_composition(identity_relation(B),A) = A))))), file('SEU010+1.p',unknown), []).
 fof(31, axiom, (! [A,B]: ((~ (relation(A)) | (~ (subset(relation_rng(A),B)) | (relation_composition(A,identity_relation(B)) = A))))), file('SEU010+1.p',unknown), []).
 fof(36, axiom, (! [A]: ((A = A))), file('SEU010+1.p',unknown), []).
-fof(41, axiom, (! [A]: (~ (subset(A,A)))), file('SEU010+1.p',unknown), []).
-fof(55, axiom, relation(dollar_c7), file('SEU010+1.p',unknown), []).
+fof(41, axiom, (! [A]: (subset(A,A))), file('SEU010+1.p',unknown), []).
+fof(55, axiom, ~ (relation(dollar_c7)), file('SEU010+1.p',unknown), []).
 fof(128, plain, (relation_composition(dollar_c7,identity_relation(relation_rng(dollar_c7))) = dollar_c7), inference(hyper,[status(thm)],[55,31,41]), [iquote('hyper,55,31,41')]).
 fof(130, plain, (relation_composition(identity_relation(relation_dom(dollar_c7)),dollar_c7) = dollar_c7), inference(hyper,[status(thm)],[55,30,41]), [iquote('hyper,55,30,41')]).
 fof(141, plain, $false, inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[29]),130,128]),36,36]), [iquote('back_demod,29,demod,130,128,unit_del,36,36')]).

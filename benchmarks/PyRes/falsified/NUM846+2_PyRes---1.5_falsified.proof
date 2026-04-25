@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'holds(285, 440, 0)':
-%%%%%   Replaced (vmul(vd436,vplus(vd437,vd439)) = vplus(vmul(vd436,vd437),vmul(vd436,vd439)))
-%%%%%   With ~ ((vmul(vd436,vplus(vd437,vd439)) = vplus(vmul(vd436,vd437),vmul(vd436,vd439))))
+%%%%% Mutated formula 'c68':
+%%%%%   Replaced (! [X223,X221,X222]: (((X223 != X221) | (vplus(X223,X222) = vplus(X221,X222)))))
+%%%%%   With (! [X223,X221,X222]: (((X223 != X221) & (vplus(X223,X222) = vplus(X221,X222)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM846+2 : TPTP v8.1.2. Released v4.1.0.
@@ -40,10 +40,10 @@ fof('holds(286, 441, 2)', conjecture, (vplus(vmul(vd436,vplus(vd437,vd439)),vd43
 fof(c52, negated_conjecture, (vplus(vmul(vd436,vplus(vd437,vd439)),vd436) != vplus(vplus(vmul(vd436,vd437),vmul(vd436,vd439)),vd436)), inference(assume_negation,[status(cth)],['holds(286, 441, 2)'])).
 fof(c53, negated_conjecture, (vplus(vmul(vd436,vplus(vd437,vd439)),vd436) != vplus(vplus(vmul(vd436,vd437),vmul(vd436,vd439)),vd436)), inference(fof_simplification,[status(thm)],[c52])).
 fof(c54, negated_conjecture, (vplus(vmul(vd436,vplus(vd437,vd439)),vd436) != vplus(vplus(vmul(vd436,vd437),vmul(vd436,vd439)),vd436)), inference(split_conjunct,[status(thm)],[c53])).
-fof('holds(285, 440, 0)', axiom, ~ ((vmul(vd436,vplus(vd437,vd439)) = vplus(vmul(vd436,vd437),vmul(vd436,vd439)))), file('NUM846+2.p','holds(285, 440, 0)')).
+fof('holds(285, 440, 0)', axiom, (vmul(vd436,vplus(vd437,vd439)) = vplus(vmul(vd436,vd437),vmul(vd436,vd439))), file('NUM846+2.p','holds(285, 440, 0)')).
 fof(c49, plain, (vmul(vd436,vplus(vd437,vd439)) = vplus(vmul(vd436,vd437),vmul(vd436,vd439))), inference(split_conjunct,[status(thm)],['holds(285, 440, 0)'])).
 fof(reflexivity, axiom, (! [X28]: ((X28 = X28))), theory(equality)).
 fof(c0, axiom, (! [X43,X45,X46,X44]: (((X43 != X45) | ((X46 != X44) | (vplus(X43,X46) = vplus(X45,X44)))))), theory(equality)).
-fof(c68, plain, (! [X223,X221,X222]: (((X223 != X221) | (vplus(X223,X222) = vplus(X221,X222))))), inference(resolution,[status(thm)],[c0,reflexivity])).
+fof(c68, plain, (! [X223,X221,X222]: (((X223 != X221) & (vplus(X223,X222) = vplus(X221,X222))))), inference(resolution,[status(thm)],[c0,reflexivity])).
 fof(c755, plain, (! [X4165]: ((vplus(vmul(vd436,vplus(vd437,vd439)),X4165) = vplus(vplus(vmul(vd436,vd437),vmul(vd436,vd439)),X4165)))), inference(resolution,[status(thm)],[c68,c49])).
 fof(c116659, plain, $false, inference(resolution,[status(thm)],[c755,c54])).

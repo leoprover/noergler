@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '281':
-%%%%%   Replaced (! [A]: ((relation_dom(function_inverse(identity_relation(A))) = A)))
-%%%%%   With (! [A]: (~ ((relation_dom(function_inverse(identity_relation(A))) = A))))
+%%%%% Mutated formula '38':
+%%%%%   Replaced (function_inverse(identity_relation(dollar_c9)) != identity_relation(dollar_c9))
+%%%%%   With ~ ((function_inverse(identity_relation(dollar_c9)) != identity_relation(dollar_c9)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU034+1 : TPTP v8.1.0. Released v3.2.0.
@@ -40,7 +40,7 @@ fof(28, plain, (! [A,B]: ((~ (relation(A)) | (~ (function(A)) | (~ (relation(B))
 fof(30, axiom, (! [A]: ((~ (relation(A)) | (~ (function(A)) | (~ (one_to_one(A)) | (relation_rng(A) = relation_dom(function_inverse(A)))))))), file('SEU034+1.p',unknown), []).
 fof(34, axiom, (! [A]: ((~ (relation(A)) | (~ (function(A)) | (~ (one_to_one(A)) | (relation_composition(A,function_inverse(A)) = identity_relation(relation_dom(A)))))))), file('SEU034+1.p',unknown), []).
 fof(35, plain, (! [A]: ((~ (relation(A)) | (~ (function(A)) | (~ (one_to_one(A)) | (identity_relation(relation_dom(A)) = relation_composition(A,function_inverse(A)))))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[34])]), [iquote('copy,34,flip.4')]).
-fof(38, axiom, (function_inverse(identity_relation(dollar_c9)) != identity_relation(dollar_c9)), file('SEU034+1.p',unknown), []).
+fof(38, axiom, ~ ((function_inverse(identity_relation(dollar_c9)) != identity_relation(dollar_c9))), file('SEU034+1.p',unknown), []).
 fof(47, axiom, (! [A]: ((A = A))), file('SEU034+1.p',unknown), []).
 fof(48, axiom, (! [A]: (relation(identity_relation(A)))), file('SEU034+1.p',unknown), []).
 fof(53, axiom, (! [A]: (function(identity_relation(A)))), file('SEU034+1.p',unknown), []).
@@ -50,6 +50,6 @@ fof(76, axiom, (! [A]: ((relation_rng(identity_relation(A)) = A))), file('SEU034
 fof(162, plain, (! [A]: (function(function_inverse(identity_relation(A))))), inference(hyper,[status(thm)],[53,6,48]), [iquote('hyper,53,6,48')]).
 fof(163, plain, (! [A]: (relation(function_inverse(identity_relation(A))))), inference(hyper,[status(thm)],[53,5,48]), [iquote('hyper,53,5,48')]).
 fof(276, plain, (! [A]: ((relation_composition(identity_relation(A),function_inverse(identity_relation(A))) = identity_relation(A)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[72,35,48,53]),74])]), [iquote('hyper,72,35,48,53,demod,74,flip.1')]).
-fof(281, plain, (! [A]: (~ ((relation_dom(function_inverse(identity_relation(A))) = A)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[72,30,48,53]),76])]), [iquote('hyper,72,30,48,53,demod,76,flip.1')]).
+fof(281, plain, (! [A]: ((relation_dom(function_inverse(identity_relation(A))) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[72,30,48,53]),76])]), [iquote('hyper,72,30,48,53,demod,76,flip.1')]).
 fof(4520, plain, (! [A]: ((function_inverse(identity_relation(A)) = identity_relation(A)))), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[276,28]),76,281,281]),48,53,163,162,47,47])]), [iquote('para_from,276.1.1,28.6.1,demod,76,281,281,unit_del,48,53,163,162,47,47,flip.1')]).
 fof(4522, plain, $false, inference(binary,[status(thm)],[4520,38]), [iquote('binary,4520.1,38.1')]).

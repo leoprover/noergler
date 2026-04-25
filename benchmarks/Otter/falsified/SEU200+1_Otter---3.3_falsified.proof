@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '146':
-%%%%%   Replaced (! [A]: (subset(relation_rng(relation_rng_restriction(A,dollar_c5)),relation_rng(dollar_c5))))
-%%%%%   With (! [A]: (subset(relation_rng(relation_rng_restriction(A,dollar_c6)),relation_rng(dollar_c5))))
+%%%%% Mutated formula '66':
+%%%%%   Replaced (! [A]: (subset(relation_rng_restriction(A,dollar_c5),dollar_c5)))
+%%%%%   With (! [A]: (subset(relation_rng_restriction(A,dollar_c6),dollar_c5)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU200+1 : TPTP v8.1.0. Released v3.3.0.
@@ -38,7 +38,7 @@ fof(14, axiom, (! [A,B]: ((~ (relation(A)) | subset(relation_rng_restriction(B,A
 fof(15, axiom, ~ (subset(relation_rng(relation_rng_restriction(dollar_c6,dollar_c5)),relation_rng(dollar_c5))), file('SEU200+1.p',unknown), []).
 fof(18, axiom, (! [A,B]: ((~ (relation(A)) | (~ (relation(B)) | (~ (subset(A,B)) | subset(relation_rng(A),relation_rng(B))))))), file('SEU200+1.p',unknown), []).
 fof(43, axiom, relation(dollar_c5), file('SEU200+1.p',unknown), []).
-fof(66, plain, (! [A]: (subset(relation_rng_restriction(A,dollar_c5),dollar_c5))), inference(hyper,[status(thm)],[43,14]), [iquote('hyper,43,14')]).
+fof(66, plain, (! [A]: (subset(relation_rng_restriction(A,dollar_c6),dollar_c5))), inference(hyper,[status(thm)],[43,14]), [iquote('hyper,43,14')]).
 fof(67, plain, (! [A]: (relation(relation_rng_restriction(A,dollar_c5)))), inference(hyper,[status(thm)],[43,3]), [iquote('hyper,43,3')]).
-fof(146, plain, (! [A]: (subset(relation_rng(relation_rng_restriction(A,dollar_c6)),relation_rng(dollar_c5)))), inference(hyper,[status(thm)],[66,18,67,43]), [iquote('hyper,66,18,67,43')]).
+fof(146, plain, (! [A]: (subset(relation_rng(relation_rng_restriction(A,dollar_c5)),relation_rng(dollar_c5)))), inference(hyper,[status(thm)],[66,18,67,43]), [iquote('hyper,66,18,67,43')]).
 fof(147, plain, $false, inference(binary,[status(thm)],[146,15]), [iquote('binary,146.1,15.1')]).

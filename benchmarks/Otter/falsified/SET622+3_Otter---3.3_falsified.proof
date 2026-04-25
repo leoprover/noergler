@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '32':
-%%%%%   Replaced (! [A,B]: ((difference(union(A,B),intersection(A,B)) = symmetric_difference(A,B))))
-%%%%%   With (! [A,B]: (~ ((difference(union(A,B),intersection(A,B)) = symmetric_difference(A,B)))))
+%%%%% Mutated formula '42':
+%%%%%   Replaced (difference(dollar_c3,symmetric_difference(dollar_c2,dollar_c1)) != difference(dollar_c3,symmetric_difference(dollar_c2,dollar_c1)))
+%%%%%   With ~ ((difference(dollar_c3,symmetric_difference(dollar_c2,dollar_c1)) != difference(dollar_c3,symmetric_difference(dollar_c2,dollar_c1))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET622+3 : TPTP v8.1.0. Released v2.2.0.
@@ -40,6 +40,6 @@ fof(26, axiom, (! [A,B,C]: ((intersection(intersection(A,B),C) = intersection(A,
 fof(27, axiom, (! [A,B,C]: ((difference(A,difference(B,C)) = union(difference(A,B),intersection(A,C))))), file('SET622+3.p',unknown), []).
 fof(29, plain, (! [A,B,C]: ((union(difference(A,B),intersection(A,C)) = difference(A,difference(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[27])]), [iquote('copy,27,flip.1')]).
 fof(30, axiom, (! [A,B]: ((symmetric_difference(A,B) = difference(union(A,B),intersection(A,B))))), file('SET622+3.p',unknown), []).
-fof(32, plain, (! [A,B]: (~ ((difference(union(A,B),intersection(A,B)) = symmetric_difference(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[30])]), [iquote('copy,30,flip.1')]).
-fof(42, plain, (difference(dollar_c3,symmetric_difference(dollar_c2,dollar_c1)) != difference(dollar_c3,symmetric_difference(dollar_c2,dollar_c1))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[19]),26,29,32]), [iquote('back_demod,19,demod,26,29,32')]).
+fof(32, plain, (! [A,B]: ((difference(union(A,B),intersection(A,B)) = symmetric_difference(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[30])]), [iquote('copy,30,flip.1')]).
+fof(42, plain, ~ ((difference(dollar_c3,symmetric_difference(dollar_c2,dollar_c1)) != difference(dollar_c3,symmetric_difference(dollar_c2,dollar_c1)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[19]),26,29,32]), [iquote('back_demod,19,demod,26,29,32')]).
 fof(43, plain, $false, inference(binary,[status(thm)],[42,24]), [iquote('binary,42.1,24.1')]).

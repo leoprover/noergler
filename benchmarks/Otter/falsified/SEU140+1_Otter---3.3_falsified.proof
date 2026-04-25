@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '28':
-%%%%%   Replaced (! [A]: ((~ (subset(A,dollar_c1)) | (A = dollar_c1))))
-%%%%%   With (! [A]: ((~ (subset(A,dollar_c1)) & (A = dollar_c1))))
+%%%%% Mutated formula '7':
+%%%%%   Replaced (! [A]: ((~ (subset(A,empty_set)) | (A = empty_set))))
+%%%%%   With (! [A]: ((~ (subset(A,dollar_c5)) | (A = empty_set))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU140+1 : TPTP v8.1.0. Released v3.3.0.
@@ -36,7 +36,7 @@
 fof(2, axiom, (! [A,B]: ((~ (disjoint(A,B)) | (set_intersection2(A,B) = empty_set)))), file('SEU140+1.p',unknown), []).
 fof(3, axiom, (! [A,B]: ((disjoint(A,B) | (set_intersection2(A,B) != empty_set)))), file('SEU140+1.p',unknown), []).
 fof(6, axiom, (! [A,B,C]: ((~ (subset(A,B)) | subset(set_intersection2(A,C),set_intersection2(B,C))))), file('SEU140+1.p',unknown), []).
-fof(7, axiom, (! [A]: ((~ (subset(A,empty_set)) | (A = empty_set)))), file('SEU140+1.p',unknown), []).
+fof(7, axiom, (! [A]: ((~ (subset(A,dollar_c5)) | (A = empty_set)))), file('SEU140+1.p',unknown), []).
 fof(8, axiom, ~ (disjoint(dollar_c5,dollar_c3)), file('SEU140+1.p',unknown), []).
 fof(11, axiom, (! [A,B]: ((~ (empty(A)) | ((A = B) | ~ (empty(B)))))), file('SEU140+1.p',unknown), []).
 fof(14, axiom, empty(empty_set), file('SEU140+1.p',unknown), []).
@@ -44,7 +44,7 @@ fof(17, axiom, empty(dollar_c1), file('SEU140+1.p',unknown), []).
 fof(21, axiom, subset(dollar_c5,dollar_c4), file('SEU140+1.p',unknown), []).
 fof(22, axiom, disjoint(dollar_c4,dollar_c3), file('SEU140+1.p',unknown), []).
 fof(24, plain, (empty_set = dollar_c1), inference(hyper,[status(thm)],[17,11,14]), [iquote('hyper,17,11,14')]).
-fof(28, plain, (! [A]: ((~ (subset(A,dollar_c1)) & (A = dollar_c1)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[7]),24,24]), [iquote('back_demod,7,demod,24,24')]).
+fof(28, plain, (! [A]: ((~ (subset(A,dollar_c1)) | (A = dollar_c1)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[7]),24,24]), [iquote('back_demod,7,demod,24,24')]).
 fof(29, plain, (! [A,B]: ((disjoint(A,B) | (set_intersection2(A,B) != dollar_c1)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[3]),24]), [iquote('back_demod,3,demod,24')]).
 fof(30, plain, (! [A,B]: ((~ (disjoint(A,B)) | (set_intersection2(A,B) = dollar_c1)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[2]),24]), [iquote('back_demod,2,demod,24')]).
 fof(31, plain, (! [A]: (subset(set_intersection2(dollar_c5,A),set_intersection2(dollar_c4,A)))), inference(hyper,[status(thm)],[21,6]), [iquote('hyper,21,6')]).

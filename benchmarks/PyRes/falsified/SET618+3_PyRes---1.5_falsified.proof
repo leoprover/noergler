@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c57':
-%%%%%   Replaced (! [X31]: ((union(X31,X31) = X31)))
-%%%%%   With (! [X31]: (~ ((union(X31,X31) = X31))))
+%%%%% Mutated formula 'symmetric_difference_defn':
+%%%%%   Replaced (! [B,C]: ((symmetric_difference(B,C) = union(difference(B,C),difference(C,B)))))
+%%%%%   With (! [B,C]: (~ ((symmetric_difference(B,C) = union(difference(B,C),difference(C,B))))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SET618+3 : TPTP v8.1.2. Released v2.2.0.
@@ -43,11 +43,11 @@ fof(c8, negated_conjecture, (? [X2]: ((symmetric_difference(X2,X2) != empty_set)
 fof(c9, negated_conjecture, (symmetric_difference(skolem0001,skolem0001) != empty_set), inference(skolemize,[status(esa)],[c8])).
 fof(c10, negated_conjecture, (symmetric_difference(skolem0001,skolem0001) != empty_set), inference(split_conjunct,[status(thm)],[c9])).
 fof(idempotency_of_union, axiom, (! [B]: ((union(B,B) = B))), file('SET618+3.p',idempotency_of_union)).
-fof(c57, plain, (! [X31]: (~ ((union(X31,X31) = X31)))), inference(variable_rename,[status(thm)],[idempotency_of_union])).
+fof(c57, plain, (! [X31]: ((union(X31,X31) = X31))), inference(variable_rename,[status(thm)],[idempotency_of_union])).
 fof(c58, plain, (! [X39]: ((union(X39,X39) = X39))), inference(split_conjunct,[status(thm)],[c57])).
 fof(transitivity, axiom, (! [X48,X50,X49]: (((X48 != X50) | ((X50 != X49) | (X48 = X49))))), theory(equality)).
 fof(c69, plain, (! [X142,X141]: (((X142 != union(X141,X141)) | (X142 = X141)))), inference(resolution,[status(thm)],[transitivity,c58])).
-fof(symmetric_difference_defn, axiom, (! [B,C]: ((symmetric_difference(B,C) = union(difference(B,C),difference(C,B))))), file('SET618+3.p',symmetric_difference_defn)).
+fof(symmetric_difference_defn, axiom, (! [B,C]: (~ ((symmetric_difference(B,C) = union(difference(B,C),difference(C,B)))))), file('SET618+3.p',symmetric_difference_defn)).
 fof(c59, plain, (! [X32,X33]: ((symmetric_difference(X32,X33) = union(difference(X32,X33),difference(X33,X32))))), inference(variable_rename,[status(thm)],[symmetric_difference_defn])).
 fof(c60, plain, (! [X163,X162]: ((symmetric_difference(X163,X162) = union(difference(X163,X162),difference(X162,X163))))), inference(split_conjunct,[status(thm)],[c59])).
 fof(c241, plain, (! [X165]: ((symmetric_difference(X165,X165) = difference(X165,X165)))), inference(resolution,[status(thm)],[c60,c69])).

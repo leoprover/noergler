@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '35':
-%%%%%   Replaced ((join(dollar_c2,dollar_c1) = dollar_c1) | (join(converse(dollar_c2),converse(dollar_c1)) = converse(dollar_c1)))
-%%%%%   With (~ ((join(dollar_c2,dollar_c1) = dollar_c1)) | (join(converse(dollar_c2),converse(dollar_c1)) = converse(dollar_c1)))
+%%%%% Mutated formula '261':
+%%%%%   Replaced (join(dollar_c2,dollar_c1) = dollar_c1)
+%%%%%   With (join(dollar_c1,dollar_c1) = dollar_c1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : REL003+1 : TPTP v8.1.0. Released v4.0.0.
@@ -37,7 +37,7 @@ fof(1, axiom, ((join(converse(dollar_c2),converse(dollar_c1)) != converse(dollar
 fof(2, axiom, (! [A]: ((A = A))), file('REL003+1.p',unknown), []).
 fof(22, axiom, (! [A]: ((converse(converse(A)) = A))), file('REL003+1.p',unknown), []).
 fof(23, axiom, (! [A,B]: ((converse(join(A,B)) = join(converse(A),converse(B))))), file('REL003+1.p',unknown), []).
-fof(35, axiom, (~ ((join(dollar_c2,dollar_c1) = dollar_c1)) | (join(converse(dollar_c2),converse(dollar_c1)) = converse(dollar_c1))), file('REL003+1.p',unknown), []).
+fof(35, axiom, ((join(dollar_c2,dollar_c1) = dollar_c1) | (join(converse(dollar_c2),converse(dollar_c1)) = converse(dollar_c1))), file('REL003+1.p',unknown), []).
 fof(259, plain, (join(converse(dollar_c2),converse(dollar_c1)) = converse(dollar_c1)), inference(factor_simp,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[35,23])]), [iquote('para_from,35.1.1,23.1.1.1,factor_simp')]).
-fof(261, plain, (join(dollar_c2,dollar_c1) = dollar_c1), inference(factor_simp,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[35,23]),22,22,22])]), [iquote('para_from,35.2.1,23.1.1.1,demod,22,22,22,factor_simp')]).
+fof(261, plain, (join(dollar_c1,dollar_c1) = dollar_c1), inference(factor_simp,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[35,23]),22,22,22])]), [iquote('para_from,35.2.1,23.1.1.1,demod,22,22,22,factor_simp')]).
 fof(263, plain, $false, inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1]),259,261]),2,2]), [iquote('back_demod,1,demod,259,261,unit_del,2,2')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 't5_wellord2':
-%%%%%   Replaced (! [A]: (antisymmetric(inclusion_relation(A))))
-%%%%%   With (! [A]: (~ (antisymmetric(inclusion_relation(A)))))
+%%%%% Mutated formula 'c25':
+%%%%%   Replaced (! [A]: ((~ (relation(A)) | ((~ (well_ordering(A)) | (reflexive(A) & (transitive(A) & (antisymmetric(A) & (connected(A) & well_founded_relation(A)))))) & (~ (reflexive(A)) | (~ (transitive(A)) | (~ (antisymmetric(A)) | (~ (connected(A)) | (~ (well_founded_relation(A)) | well_ordering(A))))))))))
+%%%%%   With (! [A]: ((relation(A) | ((~ (well_ordering(A)) | (reflexive(A) & (transitive(A) & (antisymmetric(A) & (connected(A) & well_founded_relation(A)))))) & (~ (reflexive(A)) | (~ (transitive(A)) | (~ (antisymmetric(A)) | (~ (connected(A)) | (~ (well_founded_relation(A)) | well_ordering(A))))))))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SEU275+1 : TPTP v8.1.2. Released v3.3.0.
@@ -51,7 +51,7 @@ fof(c17, plain, (! [X15]: (reflexive(inclusion_relation(X15)))), inference(split
 fof(t3_wellord2, axiom, (! [A]: (transitive(inclusion_relation(A)))), file('SEU275+1.p',t3_wellord2)).
 fof(c14, plain, (! [X6]: (transitive(inclusion_relation(X6)))), inference(variable_rename,[status(thm)],[t3_wellord2])).
 fof(c15, plain, (! [X14]: (transitive(inclusion_relation(X14)))), inference(split_conjunct,[status(thm)],[c14])).
-fof(t5_wellord2, axiom, (! [A]: (~ (antisymmetric(inclusion_relation(A))))), file('SEU275+1.p',t5_wellord2)).
+fof(t5_wellord2, axiom, (! [A]: (antisymmetric(inclusion_relation(A)))), file('SEU275+1.p',t5_wellord2)).
 fof(c9, plain, (! [X4]: (antisymmetric(inclusion_relation(X4)))), inference(variable_rename,[status(thm)],[t5_wellord2])).
 fof(c10, plain, (! [X13]: (antisymmetric(inclusion_relation(X13)))), inference(split_conjunct,[status(thm)],[c9])).
 fof(c4, negated_conjecture, ordinal(skolem0001), inference(split_conjunct,[status(thm)],[c3])).
@@ -66,7 +66,7 @@ fof(c7, plain, (! [X3]: ((~ (ordinal(X3)) | well_founded_relation(inclusion_rela
 fof(c8, plain, (! [X18]: ((~ (ordinal(X18)) | well_founded_relation(inclusion_relation(X18))))), inference(split_conjunct,[status(thm)],[c7])).
 fof(c45, plain, well_founded_relation(inclusion_relation(skolem0001)), inference(resolution,[status(thm)],[c8,c4])).
 fof(d4_wellord1, axiom, (! [A]: ((relation(A) => (well_ordering(A) <=> (reflexive(A) & (transitive(A) & (antisymmetric(A) & (connected(A) & well_founded_relation(A))))))))), file('SEU275+1.p',d4_wellord1)).
-fof(c25, plain, (! [A]: ((~ (relation(A)) | ((~ (well_ordering(A)) | (reflexive(A) & (transitive(A) & (antisymmetric(A) & (connected(A) & well_founded_relation(A)))))) & (~ (reflexive(A)) | (~ (transitive(A)) | (~ (antisymmetric(A)) | (~ (connected(A)) | (~ (well_founded_relation(A)) | well_ordering(A)))))))))), inference(fof_nnf,[status(thm)],[d4_wellord1])).
+fof(c25, plain, (! [A]: ((relation(A) | ((~ (well_ordering(A)) | (reflexive(A) & (transitive(A) & (antisymmetric(A) & (connected(A) & well_founded_relation(A)))))) & (~ (reflexive(A)) | (~ (transitive(A)) | (~ (antisymmetric(A)) | (~ (connected(A)) | (~ (well_founded_relation(A)) | well_ordering(A)))))))))), inference(fof_nnf,[status(thm)],[d4_wellord1])).
 fof(c26, plain, (! [X10]: ((~ (relation(X10)) | ((~ (well_ordering(X10)) | (reflexive(X10) & (transitive(X10) & (antisymmetric(X10) & (connected(X10) & well_founded_relation(X10)))))) & (~ (reflexive(X10)) | (~ (transitive(X10)) | (~ (antisymmetric(X10)) | (~ (connected(X10)) | (~ (well_founded_relation(X10)) | well_ordering(X10)))))))))), inference(variable_rename,[status(thm)],[c25])).
 fof(c27, plain, (! [X10]: (((~ (relation(X10)) | (~ (well_ordering(X10)) | reflexive(X10))) & ((~ (relation(X10)) | (~ (well_ordering(X10)) | transitive(X10))) & ((~ (relation(X10)) | (~ (well_ordering(X10)) | antisymmetric(X10))) & ((~ (relation(X10)) | (~ (well_ordering(X10)) | connected(X10))) & ((~ (relation(X10)) | (~ (well_ordering(X10)) | well_founded_relation(X10))) & (~ (relation(X10)) | (~ (reflexive(X10)) | (~ (transitive(X10)) | (~ (antisymmetric(X10)) | (~ (connected(X10)) | (~ (well_founded_relation(X10)) | well_ordering(X10)))))))))))))), inference(distribute,[status(thm)],[c26])).
 fof(c33, plain, (! [X27]: ((~ (relation(X27)) | (~ (reflexive(X27)) | (~ (transitive(X27)) | (~ (antisymmetric(X27)) | (~ (connected(X27)) | (~ (well_founded_relation(X27)) | well_ordering(X27))))))))), inference(split_conjunct,[status(thm)],[c27])).

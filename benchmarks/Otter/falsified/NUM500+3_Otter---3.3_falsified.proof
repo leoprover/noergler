@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '288':
 %%%%%   Replaced (xk != sz10)
-%%%%%   With ~ ((xk != sz10))
+%%%%%   With (sz00 != sz10)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM500+3 : TPTP v8.1.0. Released v4.0.0.
@@ -37,7 +37,7 @@ fof(67, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | ((A = sz00) | ((A = sz10) | aN
 fof(68, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | ((A = sz00) | ((A = sz10) | doDivides0(dollar_f4(A),A)))))), file('NUM500+3.p',unknown), []).
 fof(69, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | ((A = sz00) | ((A = sz10) | isPrime0(dollar_f4(A))))))), file('NUM500+3.p',unknown), []).
 fof(287, axiom, (xk != sz00), file('NUM500+3.p',unknown), []).
-fof(288, axiom, ~ ((xk != sz10)), file('NUM500+3.p',unknown), []).
+fof(288, axiom, (sz00 != sz10), file('NUM500+3.p',unknown), []).
 fof(310, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | (~ (doDivides0(A,xk)) | ~ (isPrime0(A)))))), file('NUM500+3.p',unknown), []).
 fof(1420, axiom, aNaturalNumber0(xk), file('NUM500+3.p',unknown), []).
 fof(3429, plain, isPrime0(dollar_f4(xk)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[1420,69]),287,288]), [iquote('hyper,1420,69,unit_del,287,288')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '11':
-%%%%%   Replaced (! [A]: ((~ (tptpcol_7_108547(A)) | tptpcol_6_108546(A))))
-%%%%%   With (! [A]: ((tptpcol_7_108547(A) | tptpcol_6_108546(A))))
+%%%%% Mutated formula '7':
+%%%%%   Replaced (! [A]: ((~ (tptpcol_3_98305(A)) | tptpcol_2_98304(A))))
+%%%%%   With (! [A]: ((tptpcol_3_98305(A) | tptpcol_2_98304(A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR040+1 : TPTP v8.1.0. Released v3.4.0.
@@ -39,11 +39,11 @@ fof(3, axiom, (! [A]: ((~ (fixedordercollection(A)) | collection(A)))), file('CS
 fof(4, axiom, (! [A]: ((~ (tptpcol_0_0(A)) | individual(A)))), file('CSR040+1.p',unknown), []).
 fof(5, axiom, (! [A]: ((~ (tptpcol_1_65536(A)) | tptpcol_0_0(A)))), file('CSR040+1.p',unknown), []).
 fof(6, axiom, (! [A]: ((~ (tptpcol_2_98304(A)) | tptpcol_1_65536(A)))), file('CSR040+1.p',unknown), []).
-fof(7, axiom, (! [A]: ((~ (tptpcol_3_98305(A)) | tptpcol_2_98304(A)))), file('CSR040+1.p',unknown), []).
+fof(7, axiom, (! [A]: ((tptpcol_3_98305(A) | tptpcol_2_98304(A)))), file('CSR040+1.p',unknown), []).
 fof(8, axiom, (! [A]: ((~ (tptpcol_4_106497(A)) | tptpcol_3_98305(A)))), file('CSR040+1.p',unknown), []).
 fof(9, axiom, (! [A]: ((~ (tptpcol_5_106498(A)) | tptpcol_4_106497(A)))), file('CSR040+1.p',unknown), []).
 fof(10, axiom, (! [A]: ((~ (tptpcol_6_108546(A)) | tptpcol_5_106498(A)))), file('CSR040+1.p',unknown), []).
-fof(11, axiom, (! [A]: ((tptpcol_7_108547(A) | tptpcol_6_108546(A)))), file('CSR040+1.p',unknown), []).
+fof(11, axiom, (! [A]: ((~ (tptpcol_7_108547(A)) | tptpcol_6_108546(A)))), file('CSR040+1.p',unknown), []).
 fof(12, axiom, (! [A]: ((~ (tptpcol_8_109059(A)) | tptpcol_7_108547(A)))), file('CSR040+1.p',unknown), []).
 fof(13, axiom, (! [A]: ((~ (tptpcol_9_109060(A)) | tptpcol_8_109059(A)))), file('CSR040+1.p',unknown), []).
 fof(14, axiom, (! [A]: ((~ (tptpcol_10_109061(A)) | tptpcol_9_109060(A)))), file('CSR040+1.p',unknown), []).

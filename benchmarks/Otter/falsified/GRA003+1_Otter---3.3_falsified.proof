@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '99':
-%%%%%   Replaced path(dollar_c5,dollar_c4,dollar_c1)
-%%%%%   With path(dollar_c2,dollar_c4,dollar_c1)
+%%%%% Mutated formula '97':
+%%%%%   Replaced shortest_path(dollar_c5,dollar_c4,dollar_c1)
+%%%%%   With shortest_path(dollar_c3,dollar_c4,dollar_c1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GRA003+1 : TPTP v8.1.0. Bugfixed v3.2.0.
@@ -43,9 +43,9 @@ fof(53, axiom, (! [A,B,C]: ((~ (shortest_path(A,B,C)) | (A != B)))), file('GRA00
 fof(58, axiom, (! [E,A,B,C,D]: ((~ (shortest_path(A,B,C)) | (~ (precedes(D,E,C)) | ~ (precedes(E,D,C)))))), file('GRA003+1.p',unknown), []).
 fof(77, axiom, (~ (vertex(dollar_c5)) | (~ (vertex(dollar_c4)) | ((dollar_c5 = dollar_c4) | (~ (edge(dollar_c3)) | (~ (edge(dollar_c2)) | ((dollar_c3 = dollar_c2) | ~ (path(dollar_c5,dollar_c4,dollar_c1)))))))), file('GRA003+1.p',unknown), []).
 fof(89, plain, (! [A,B,C,D]: ((~ (shortest_path(A,B,C)) | ~ (precedes(D,D,C))))), inference(factor,[status(thm)],[58]), [iquote('factor,58.2.3')]).
-fof(97, axiom, shortest_path(dollar_c5,dollar_c4,dollar_c1), file('GRA003+1.p',unknown), []).
+fof(97, axiom, shortest_path(dollar_c3,dollar_c4,dollar_c1), file('GRA003+1.p',unknown), []).
 fof(98, axiom, precedes(dollar_c3,dollar_c2,dollar_c1), file('GRA003+1.p',unknown), []).
-fof(99, plain, path(dollar_c2,dollar_c4,dollar_c1), inference(hyper,[status(thm)],[97,52]), [iquote('hyper,97,52')]).
+fof(99, plain, path(dollar_c5,dollar_c4,dollar_c1), inference(hyper,[status(thm)],[97,52]), [iquote('hyper,97,52')]).
 fof(166, plain, on_path(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[99,48,98]), [iquote('hyper,99,48,98')]).
 fof(167, plain, on_path(dollar_c3,dollar_c1), inference(hyper,[status(thm)],[99,47,98]), [iquote('hyper,99,47,98')]).
 fof(175, plain, vertex(dollar_c4), inference(hyper,[status(thm)],[99,19]), [iquote('hyper,99,19')]).

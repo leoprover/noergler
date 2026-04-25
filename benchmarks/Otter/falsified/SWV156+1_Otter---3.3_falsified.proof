@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1659':
-%%%%%   Replaced (! [A]: ((plus(minus(A,n1),n1) = A)))
-%%%%%   With (! [A]: (~ ((plus(minus(A,n1),n1) = A))))
+%%%%% Mutated formula '1852':
+%%%%%   Replaced gt(dollar_c1,dollar_c1)
+%%%%%   With gt(n1,dollar_c1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV156+1 : TPTP v8.1.0. Bugfixed v3.3.0.
@@ -40,11 +40,11 @@ fof(1628, plain, (! [A]: ((succ(A) = plus(A,n1)))), inference(flip,[status(thm),
 fof(1651, axiom, (! [A]: ((minus(A,n1) = pred(A)))), file('SWV156+1.p',unknown), []).
 fof(1653, plain, (! [A]: ((pred(A) = minus(A,n1)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1651])]), [iquote('copy,1651,flip.1')]).
 fof(1657, axiom, (! [A]: ((succ(pred(A)) = A))), file('SWV156+1.p',unknown), []).
-fof(1659, plain, (! [A]: (~ ((plus(minus(A,n1),n1) = A)))), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1657]),1653,1628]), [iquote('copy,1657,demod,1653,1628')]).
+fof(1659, plain, (! [A]: ((plus(minus(A,n1),n1) = A))), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1657]),1653,1628]), [iquote('copy,1657,demod,1653,1628')]).
 fof(1673, axiom, le_q(dollar_c1,pred(pv10)), file('SWV156+1.p',unknown), []).
 fof(1674, plain, le_q(dollar_c1,minus(pv10,n1)), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1673]),1653]), [iquote('copy,1673,demod,1653')]).
 fof(1676, axiom, (pv10 = dollar_c1), file('SWV156+1.p',unknown), []).
 fof(1727, plain, (! [A,B]: ((~ (le_q(A,B)) | gt(plus(B,n1),A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[13]),1628]), [iquote('back_demod,13,demod,1628')]).
 fof(1738, plain, le_q(dollar_c1,minus(dollar_c1,n1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1674]),1676]), [iquote('back_demod,1674,demod,1676')]).
-fof(1852, plain, gt(dollar_c1,dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[1738,1727]),1659]), [iquote('hyper,1738,1727,demod,1659')]).
+fof(1852, plain, gt(n1,dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[1738,1727]),1659]), [iquote('hyper,1738,1727,demod,1659')]).
 fof(1853, plain, $false, inference(binary,[status(thm)],[1852,2]), [iquote('binary,1852.1,2.1')]).

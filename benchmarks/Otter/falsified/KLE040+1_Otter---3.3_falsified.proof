@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '485':
-%%%%%   Replaced (! [A,B]: (le_q(A,addition(A,B))))
-%%%%%   With (! [A,B]: (~ (le_q(A,addition(A,B)))))
+%%%%% Mutated formula '19':
+%%%%%   Replaced (! [A]: ((multiplication(A,one) = A)))
+%%%%%   With (! [A]: ((multiplication(A,dollar_c1) = A)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE040+1 : TPTP v8.1.0. Released v4.0.0.
@@ -41,7 +41,7 @@ fof(7, axiom, (! [A,B]: ((addition(A,B) = addition(B,A)))), file('KLE040+1.p',un
 fof(8, axiom, (! [A,B,C]: ((addition(A,addition(B,C)) = addition(addition(A,B),C)))), file('KLE040+1.p',unknown), []).
 fof(10, plain, (! [A,B,C]: ((addition(addition(A,B),C) = addition(A,addition(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[8])]), [iquote('copy,8,flip.1')]).
 fof(13, axiom, (! [A]: ((addition(A,A) = A))), file('KLE040+1.p',unknown), []).
-fof(19, axiom, (! [A]: ((multiplication(A,one) = A))), file('KLE040+1.p',unknown), []).
+fof(19, axiom, (! [A]: ((multiplication(A,dollar_c1) = A))), file('KLE040+1.p',unknown), []).
 fof(22, axiom, (! [A,B,C]: ((multiplication(A,addition(B,C)) = addition(multiplication(A,B),multiplication(A,C))))), file('KLE040+1.p',unknown), []).
 fof(31, axiom, (! [A]: (le_q(addition(one,multiplication(star(A),A)),star(A)))), file('KLE040+1.p',unknown), []).
 fof(38, plain, (! [A]: (le_q(A,A))), inference(hyper,[status(thm)],[13,2]), [iquote('hyper,13,2')]).
@@ -52,7 +52,7 @@ fof(102, plain, (! [A,B,C]: (((addition(multiplication(A,B),multiplication(A,C))
 fof(110, plain, (! [A,B]: (((A = B) | (~ (le_q(A,B)) | ~ (le_q(B,A)))))), inference(para_into,[status(thm),theory(equality)],[43,1]), [iquote('para_into,43.1.1,1.2.1')]).
 fof(189, plain, (! [A]: ((addition(one,addition(multiplication(star(A),A),star(A))) = star(A)))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[31,1]),10]), [iquote('hyper,31,1,demod,10')]).
 fof(292, plain, (! [A,B,C]: ((~ (le_q(A,B)) | (le_q(multiplication(A,star(C)),B) | ~ (le_q(multiplication(B,C),A)))))), inference(para_into,[status(thm),theory(equality)],[44,43]), [iquote('para_into,44.1.1,43.1.1')]).
-fof(485, plain, (! [A,B]: (~ (le_q(A,addition(A,B))))), inference(hyper,[status(thm)],[57,2]), [iquote('hyper,57,2')]).
+fof(485, plain, (! [A,B]: (le_q(A,addition(A,B)))), inference(hyper,[status(thm)],[57,2]), [iquote('hyper,57,2')]).
 fof(511, plain, (! [A,B]: (le_q(A,addition(B,A)))), inference(para_into,[status(thm),theory(equality)],[485,7]), [iquote('para_into,485.1.2,7.1.1')]).
 fof(513, plain, (! [A,B,C]: (le_q(A,addition(B,addition(C,A))))), inference(para_into,[status(thm),theory(equality)],[511,10]), [iquote('para_into,511.1.2,9.1.1')]).
 fof(524, plain, (! [A,B,C]: ((le_q(A,B) | ~ (le_q(addition(C,A),B))))), inference(para_into,[status(thm),theory(equality)],[513,43]), [iquote('para_into,513.1.2,43.1.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '6':
 %%%%%   Replaced (! [A]: (r(A,a)))
-%%%%%   With (! [A]: (~ (r(A,a))))
+%%%%%   With (! [A]: (r(A,b)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN721+1 : TPTP v8.1.0. Released v2.5.0.
@@ -38,5 +38,5 @@ fof(2, axiom, (! [A,B,C]: ((~ (q(A,B)) | r(C,B)))), file('SYN721+1.p',unknown), 
 fof(3, axiom, (! [A]: ((~ (r(b,A)) | ~ (q(A,a))))), file('SYN721+1.p',unknown), []).
 fof(4, axiom, r(a,b), file('SYN721+1.p',unknown), []).
 fof(5, plain, q(a,a), inference(hyper,[status(thm)],[4,1]), [iquote('hyper,4,1')]).
-fof(6, plain, (! [A]: (~ (r(A,a)))), inference(hyper,[status(thm)],[5,2]), [iquote('hyper,5,2')]).
+fof(6, plain, (! [A]: (r(A,b))), inference(hyper,[status(thm)],[5,2]), [iquote('hyper,5,2')]).
 fof(7, plain, $false, inference(hyper,[status(thm)],[6,3,5]), [iquote('hyper,6,3,5')]).

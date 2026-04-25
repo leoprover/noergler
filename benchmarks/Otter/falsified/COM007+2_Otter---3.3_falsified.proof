@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '134':
-%%%%%   Replaced rewrite(a,b)
-%%%%%   With rewrite(c,b)
+%%%%% Mutated formula '202':
+%%%%%   Replaced reflexive_rewrite(c,dollar_f1(a,b,c))
+%%%%%   With reflexive_rewrite(b,dollar_f1(a,b,c))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : COM007+2 : TPTP v8.1.0. Released v3.2.0.
@@ -48,11 +48,11 @@ fof(13, plain, ((b = a) | rewrite(a,b)), inference(flip,[status(thm),theory(equa
 fof(16, plain, ((c = a) | rewrite(a,c)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[11,4])]), [iquote('hyper,11,4,flip.1')]).
 fof(23, plain, (! [A]: ((~ (reflexive_rewrite(a,A)) | (~ (reflexive_rewrite(c,A)) | rewrite(a,b))))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[13,1]),7]), [iquote('para_from,13.1.1,1.1.1,unit_del,7')]).
 fof(38, plain, (! [A]: ((~ (reflexive_rewrite(b,A)) | (~ (reflexive_rewrite(a,A)) | rewrite(a,c))))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[16,1]),7]), [iquote('para_from,16.1.1,1.2.1,unit_del,7')]).
-fof(134, plain, rewrite(c,b), inference(hyper,[status(thm)],[23,11,12]), [iquote('hyper,23,11,12')]).
+fof(134, plain, rewrite(a,b), inference(hyper,[status(thm)],[23,11,12]), [iquote('hyper,23,11,12')]).
 fof(178, plain, rewrite(a,c), inference(hyper,[status(thm)],[38,12,10]), [iquote('hyper,38,12,10')]).
 fof(180, plain, rewrite(c,dollar_f1(a,b,c)), inference(hyper,[status(thm)],[178,6,134]), [iquote('hyper,178,6,134')]).
 fof(182, plain, rewrite(b,dollar_f1(a,b,c)), inference(hyper,[status(thm)],[178,5,134]), [iquote('hyper,178,5,134')]).
-fof(202, plain, reflexive_rewrite(c,dollar_f1(a,b,c)), inference(hyper,[status(thm)],[180,3]), [iquote('hyper,180,3')]).
+fof(202, plain, reflexive_rewrite(b,dollar_f1(a,b,c)), inference(hyper,[status(thm)],[180,3]), [iquote('hyper,180,3')]).
 fof(228, plain, reflexive_rewrite(b,dollar_f1(a,b,c)), inference(hyper,[status(thm)],[182,3]), [iquote('hyper,182,3')]).
 fof(266, plain, goal, inference(hyper,[status(thm)],[228,1,202]), [iquote('hyper,228,1,202')]).
 fof(267, plain, $false, inference(binary,[status(thm)],[266,7]), [iquote('binary,266.1,7.1')]).

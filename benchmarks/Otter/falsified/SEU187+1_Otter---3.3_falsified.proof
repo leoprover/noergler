@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '654':
-%%%%%   Replaced ((relation_rng(dollar_c1) != dollar_c1) | ~ (empty(relation_dom(dollar_c1))))
-%%%%%   With (~ ((relation_rng(dollar_c1) != dollar_c1)) | ~ (empty(relation_dom(dollar_c1))))
+%%%%% Mutated formula '67':
+%%%%%   Replaced (! [A]: ((~ (empty(A)) | (A = dollar_c1))))
+%%%%%   With (! [A]: ((~ (empty(A)) | (A = empty_set))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU187+1 : TPTP v8.1.0. Released v3.3.0.
@@ -48,9 +48,9 @@ fof(47, plain, (! [A]: (((A = relation_dom(empty_set)) | (in(dollar_f3(empty_set
 fof(54, plain, (empty_set = dollar_c1), inference(hyper,[status(thm)],[36,24,34]), [iquote('hyper,36,24,34')]).
 fof(60, plain, (! [A]: (((A = relation_dom(dollar_c1)) | (in(dollar_f3(dollar_c1,A),A) | in(ordered_pair(dollar_f3(dollar_c1,A),dollar_f2(dollar_c1,A)),dollar_c1))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[47]),54,54,54,54,54]), [iquote('back_demod,47,demod,54,54,54,54,54')]).
 fof(61, plain, (! [A]: (((A = relation_rng(dollar_c1)) | (in(dollar_f6(dollar_c1,A),A) | in(ordered_pair(dollar_f5(dollar_c1,A),dollar_f6(dollar_c1,A)),dollar_c1))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[46]),54,54,54,54,54]), [iquote('back_demod,46,demod,54,54,54,54,54')]).
-fof(67, plain, (! [A]: ((~ (empty(A)) | (A = dollar_c1)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[22]),54]), [iquote('back_demod,22,demod,54')]).
+fof(67, plain, (! [A]: ((~ (empty(A)) | (A = empty_set)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[22]),54]), [iquote('back_demod,22,demod,54')]).
 fof(68, plain, ((relation_dom(dollar_c1) != dollar_c1) | (relation_rng(dollar_c1) != dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[21]),54,54,54,54]), [iquote('back_demod,21,demod,54,54,54,54')]).
-fof(654, plain, (~ ((relation_rng(dollar_c1) != dollar_c1)) | ~ (empty(relation_dom(dollar_c1)))), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[68,67]),28]), [iquote('para_into,68.1.1,67.2.1,unit_del,28')]).
+fof(654, plain, ((relation_rng(dollar_c1) != dollar_c1) | ~ (empty(relation_dom(dollar_c1)))), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[68,67]),28]), [iquote('para_into,68.1.1,67.2.1,unit_del,28')]).
 fof(658, plain, (! [A]: (((relation_rng(A) != dollar_c1) | (~ (empty(relation_dom(dollar_c1))) | ~ (empty(A)))))), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[654,24]),36]), [iquote('para_into,654.1.1.1,24.2.1,unit_del,36')]).
 fof(662, plain, ((relation_rng(relation_dom(dollar_c1)) != dollar_c1) | ~ (empty(relation_dom(dollar_c1)))), inference(factor,[status(thm)],[658]), [iquote('factor,658.2.3')]).
 fof(707, plain, (! [A]: (((A = relation_dom(dollar_c1)) | in(dollar_f3(dollar_c1,A),A)))), inference(hyper,[status(thm)],[60,23,36]), [iquote('hyper,60,23,36')]).

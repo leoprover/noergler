@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c5':
-%%%%%   Replaced ~ (b)
-%%%%%   With b
+%%%%% Mutated formula 'c6':
+%%%%%   Replaced b
+%%%%%   With ~ (b)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN977+1 : TPTP v8.1.2. Released v3.1.0.
@@ -39,8 +39,8 @@
 fof(prove_this, conjecture, ((a <=> b) | (a | b)), file('SYN977+1.p',prove_this)).
 fof(c0, negated_conjecture, ~ (((a <=> b) | (a | b))), inference(assume_negation,[status(cth)],[prove_this])).
 fof(c1, negated_conjecture, ((~ (a) | ~ (b)) & ((a | b) & (~ (a) & ~ (b)))), inference(fof_nnf,[status(thm)],[c0])).
-fof(c5, negated_conjecture, b, inference(split_conjunct,[status(thm)],[c1])).
+fof(c5, negated_conjecture, ~ (b), inference(split_conjunct,[status(thm)],[c1])).
 fof(c4, negated_conjecture, ~ (a), inference(split_conjunct,[status(thm)],[c1])).
 fof(c3, negated_conjecture, (a | b), inference(split_conjunct,[status(thm)],[c1])).
-fof(c6, plain, b, inference(resolution,[status(thm)],[c3,c4])).
+fof(c6, plain, ~ (b), inference(resolution,[status(thm)],[c3,c4])).
 fof(c8, plain, $false, inference(resolution,[status(thm)],[c6,c5])).

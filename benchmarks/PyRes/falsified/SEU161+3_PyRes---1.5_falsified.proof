@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c6':
-%%%%%   Replaced (! [X64,X65]: ((~ (in(X64,X65)) | (set_union2(singleton(X64),X65) = X65))))
-%%%%%   With (! [X64,X65]: ((in(X64,X65) | (set_union2(singleton(X64),X65) = X65))))
+%%%%% Mutated formula 'c5':
+%%%%%   Replaced (! [X2,X3]: ((~ (in(X2,X3)) | (set_union2(singleton(X2),X3) = X3))))
+%%%%%   With (! [X2,X3]: ((in(X2,X3) | (set_union2(singleton(X2),X3) = X3))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SEU161+3 : TPTP v8.1.2. Released v3.2.0.
@@ -45,7 +45,7 @@ fof(c12, negated_conjecture, (set_union2(singleton(skolem0001),skolem0002) != sk
 fof(c11, negated_conjecture, in(skolem0001,skolem0002), inference(split_conjunct,[status(thm)],[c10])).
 fof(l23_zfmisc_1, axiom, (! [A,B]: ((in(A,B) => (set_union2(singleton(A),B) = B)))), file('SEU161+3.p',l23_zfmisc_1)).
 fof(c4, plain, (! [A,B]: ((~ (in(A,B)) | (set_union2(singleton(A),B) = B)))), inference(fof_nnf,[status(thm)],[l23_zfmisc_1])).
-fof(c5, plain, (! [X2,X3]: ((~ (in(X2,X3)) | (set_union2(singleton(X2),X3) = X3)))), inference(variable_rename,[status(thm)],[c4])).
-fof(c6, plain, (! [X64,X65]: ((in(X64,X65) | (set_union2(singleton(X64),X65) = X65)))), inference(split_conjunct,[status(thm)],[c5])).
+fof(c5, plain, (! [X2,X3]: ((in(X2,X3) | (set_union2(singleton(X2),X3) = X3)))), inference(variable_rename,[status(thm)],[c4])).
+fof(c6, plain, (! [X64,X65]: ((~ (in(X64,X65)) | (set_union2(singleton(X64),X65) = X65)))), inference(split_conjunct,[status(thm)],[c5])).
 fof(c78, plain, (set_union2(singleton(skolem0001),skolem0002) = skolem0002), inference(resolution,[status(thm)],[c6,c11])).
 fof(c98, plain, $false, inference(resolution,[status(thm)],[c78,c12])).

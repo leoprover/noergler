@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '16':
-%%%%%   Replaced subset(dollar_c3,empty_set)
-%%%%%   With subset(empty_set,empty_set)
+%%%%% Mutated formula '21':
+%%%%%   Replaced subset(dollar_c3,dollar_c1)
+%%%%%   With ~ (subset(dollar_c3,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU123+1 : TPTP v8.1.0. Released v3.3.0.
@@ -40,9 +40,9 @@ fof(10, axiom, (! [A,B]: ((~ (empty(A)) | ((A = B) | ~ (empty(B)))))), file('SEU
 fof(12, axiom, empty(empty_set), file('SEU123+1.p',unknown), []).
 fof(13, axiom, empty(dollar_c1), file('SEU123+1.p',unknown), []).
 fof(15, axiom, (! [A]: (subset(empty_set,A))), file('SEU123+1.p',unknown), []).
-fof(16, axiom, subset(empty_set,empty_set), file('SEU123+1.p',unknown), []).
+fof(16, axiom, subset(dollar_c3,empty_set), file('SEU123+1.p',unknown), []).
 fof(19, plain, (empty_set = dollar_c1), inference(hyper,[status(thm)],[13,10,12]), [iquote('hyper,13,10,12')]).
-fof(21, plain, subset(dollar_c3,dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[16]),19]), [iquote('back_demod,16,demod,19')]).
+fof(21, plain, ~ (subset(dollar_c3,dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[16]),19]), [iquote('back_demod,16,demod,19')]).
 fof(22, plain, (! [A]: (subset(dollar_c1,A))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[15]),19]), [iquote('back_demod,15,demod,19')]).
 fof(24, plain, (dollar_c3 != dollar_c1), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[7]),19])]), [iquote('back_demod,7,demod,19,flip.1')]).
 fof(34, plain, (dollar_c3 = dollar_c1), inference(hyper,[status(thm)],[22,4,21]), [iquote('hyper,22,4,21')]).

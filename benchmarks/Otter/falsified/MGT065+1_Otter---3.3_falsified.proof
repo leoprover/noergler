@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '25':
-%%%%%   Replaced (! [A,B]: ((~ (organization(A)) | (~ (has_immunity(A,B)) | (hazard_of_mortality(A,B) = very_low)))))
-%%%%%   With (! [A,B]: ((organization(A) | (~ (has_immunity(A,B)) | (hazard_of_mortality(A,B) = very_low)))))
+%%%%% Mutated formula '55':
+%%%%%   Replaced greater(age(dollar_c4,dollar_c1),eta)
+%%%%%   With greater(age(eta,dollar_c1),eta)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT065+1 : TPTP v8.1.0. Released v2.4.0.
@@ -43,7 +43,7 @@ fof(13, axiom, (! [A,B]: ((~ (has_endowment(A)) | (~ (greater(age(A,B),eta)) | ~
 fof(19, axiom, (! [A,B,C]: ((~ (dissimilar(A,B,C)) | (~ (is_aligned(A,B)) | ~ (is_aligned(A,C)))))), file('MGT065+1.p',unknown), []).
 fof(22, axiom, (! [A,B]: ((~ (organization(A)) | ((age(A,B) != zero) | is_aligned(A,B))))), file('MGT065+1.p',unknown), []).
 fof(23, axiom, (! [A,B,C]: ((~ (organization(A)) | ((age(A,B) != zero) | (~ (greater(age(A,C),sigma)) | dissimilar(A,B,C)))))), file('MGT065+1.p',unknown), []).
-fof(25, axiom, (! [A,B]: ((organization(A) | (~ (has_immunity(A,B)) | (hazard_of_mortality(A,B) = very_low))))), file('MGT065+1.p',unknown), []).
+fof(25, axiom, (! [A,B]: ((~ (organization(A)) | (~ (has_immunity(A,B)) | (hazard_of_mortality(A,B) = very_low))))), file('MGT065+1.p',unknown), []).
 fof(27, axiom, (! [A,B]: ((~ (organization(A)) | (has_immunity(A,B) | (is_aligned(A,B) | (~ (positional_advantage(A,B)) | (hazard_of_mortality(A,B) = mod1))))))), file('MGT065+1.p',unknown), []).
 fof(29, axiom, (! [A,B]: ((~ (organization(A)) | (has_immunity(A,B) | (is_aligned(A,B) | (positional_advantage(A,B) | (hazard_of_mortality(A,B) = high))))))), file('MGT065+1.p',unknown), []).
 fof(30, axiom, (~ (greater(hazard_of_mortality(dollar_c4,dollar_c1),hazard_of_mortality(dollar_c4,dollar_c2))) | (hazard_of_mortality(dollar_c4,dollar_c2) != hazard_of_mortality(dollar_c4,dollar_c3))), file('MGT065+1.p',unknown), []).
@@ -60,7 +60,7 @@ fof(45, axiom, (age(dollar_c4,dollar_c3) = zero), file('MGT065+1.p',unknown), []
 fof(49, axiom, greater(eta,zero), file('MGT065+1.p',unknown), []).
 fof(52, axiom, smaller_or_e_qual(age(dollar_c4,dollar_c2),eta), file('MGT065+1.p',unknown), []).
 fof(53, axiom, greater(age(dollar_c4,dollar_c1),sigma), file('MGT065+1.p',unknown), []).
-fof(55, axiom, greater(age(dollar_c4,dollar_c1),eta), file('MGT065+1.p',unknown), []).
+fof(55, axiom, greater(age(eta,dollar_c1),eta), file('MGT065+1.p',unknown), []).
 fof(58, plain, (! [A]: ((has_immunity(dollar_c4,A) | (is_aligned(dollar_c4,A) | (positional_advantage(dollar_c4,A) | (hazard_of_mortality(dollar_c4,A) = high)))))), inference(hyper,[status(thm)],[42,29]), [iquote('hyper,42,29')]).
 fof(69, plain, greater(high,low), inference(hyper,[status(thm)],[38,10,37]), [iquote('hyper,38,10,37')]).
 fof(76, plain, (! [A,B]: (((A = B) | (greater(A,B) | greater(B,A))))), inference(hyper,[status(thm)],[36,7]), [iquote('hyper,36,7')]).

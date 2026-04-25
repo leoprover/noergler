@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '4880':
-%%%%%   Replaced mighta(e_qv,thm)
-%%%%%   With ~ (mighta(e_qv,thm))
+%%%%% Mutated formula '93':
+%%%%%   Replaced ~ (mighta(e_qv,thm))
+%%%%%   With mighta(e_qv,thm)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS258+1 : TPTP v8.1.0. Bugfixed v5.4.0.
@@ -37,10 +37,10 @@ fof(11, axiom, (! [A,B]: ((~ (model(dollar_f10(A,B),B)) | status(A,B,thm)))), fi
 fof(14, axiom, (! [A,B,C]: ((~ (model(A,B)) | (~ (model(dollar_f11(B,C),B)) | (~ (model(dollar_f11(B,C),C)) | status(B,C,e_qv)))))), file('KRS258+1.p',unknown), []).
 fof(15, plain, (! [A,B]: ((~ (model(dollar_f11(A,B),A)) | (~ (model(dollar_f11(A,B),B)) | status(A,B,e_qv))))), inference(factor_simp,[status(thm)],[inference(copy,[status(thm)],[14])]), [iquote('copy,14,factor_simp')]).
 fof(72, axiom, (! [A,B,C,D]: ((~ (status(A,B,C)) | (~ (status(A,B,D)) | mighta(C,D))))), file('KRS258+1.p',unknown), []).
-fof(93, axiom, ~ (mighta(e_qv,thm)), file('KRS258+1.p',unknown), []).
+fof(93, axiom, mighta(e_qv,thm), file('KRS258+1.p',unknown), []).
 fof(97, plain, (! [A]: ((~ (model(dollar_f11(A,A),A)) | status(A,A,e_qv)))), inference(factor,[status(thm)],[15]), [iquote('factor,15.1.2')]).
 fof(120, axiom, (! [A]: (model(A,dollar_c1))), file('KRS258+1.p',unknown), []).
 fof(149, plain, status(dollar_c1,dollar_c1,e_qv), inference(hyper,[status(thm)],[120,97]), [iquote('hyper,120,97')]).
 fof(160, plain, (! [A]: (status(A,dollar_c1,thm))), inference(hyper,[status(thm)],[120,11]), [iquote('hyper,120,11')]).
-fof(4880, plain, ~ (mighta(e_qv,thm)), inference(hyper,[status(thm)],[160,72,149]), [iquote('hyper,160,72,149')]).
+fof(4880, plain, mighta(e_qv,thm), inference(hyper,[status(thm)],[160,72,149]), [iquote('hyper,160,72,149')]).
 fof(4881, plain, $false, inference(binary,[status(thm)],[4880,93]), [iquote('binary,4880.1,93.1')]).

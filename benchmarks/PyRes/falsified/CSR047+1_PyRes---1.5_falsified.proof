@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c9':
-%%%%%   Replaced (! [X64,X65]: ((~ (borderson(X64,X65)) | borderson(X65,X64))))
-%%%%%   With (! [X64,X65]: ((borderson(X64,X65) | borderson(X65,X64))))
+%%%%% Mutated formula 'c7':
+%%%%%   Replaced (! [X,Y]: ((~ (borderson(X,Y)) | borderson(Y,X))))
+%%%%%   With (! [X,Y]: ((~ (borderson(X,Y)) & borderson(Y,X))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR047+1 : TPTP v8.1.2. Released v3.4.0.
@@ -41,9 +41,9 @@ fof(c0, negated_conjecture, ~ ((mtvisible(c_tptpgeo_member4_mt) => borderson(c_g
 fof(c1, negated_conjecture, (mtvisible(c_tptpgeo_member4_mt) & ~ (borderson(c_georegion_l4_x37_y50,c_georegion_l4_x36_y50))), inference(fof_nnf,[status(thm)],[c0])).
 fof(c3, negated_conjecture, ~ (borderson(c_georegion_l4_x37_y50,c_georegion_l4_x36_y50)), inference(split_conjunct,[status(thm)],[c1])).
 fof(just28, axiom, (! [X,Y]: ((borderson(X,Y) => borderson(Y,X)))), file('CSR047+1.p',just28)).
-fof(c7, plain, (! [X,Y]: ((~ (borderson(X,Y)) | borderson(Y,X)))), inference(fof_nnf,[status(thm)],[just28])).
+fof(c7, plain, (! [X,Y]: ((~ (borderson(X,Y)) & borderson(Y,X)))), inference(fof_nnf,[status(thm)],[just28])).
 fof(c8, plain, (! [X3,X4]: ((~ (borderson(X3,X4)) | borderson(X4,X3)))), inference(variable_rename,[status(thm)],[c7])).
-fof(c9, plain, (! [X64,X65]: ((borderson(X64,X65) | borderson(X65,X64)))), inference(split_conjunct,[status(thm)],[c8])).
+fof(c9, plain, (! [X64,X65]: ((~ (borderson(X64,X65)) | borderson(X65,X64)))), inference(split_conjunct,[status(thm)],[c8])).
 fof(c2, negated_conjecture, mtvisible(c_tptpgeo_member4_mt), inference(split_conjunct,[status(thm)],[c1])).
 fof(just1, axiom, (mtvisible(c_tptpgeo_member4_mt) => borderson(c_georegion_l4_x36_y50,c_georegion_l4_x37_y50)), file('CSR047+1.p',just1)).
 fof(c100, plain, (~ (mtvisible(c_tptpgeo_member4_mt)) | borderson(c_georegion_l4_x36_y50,c_georegion_l4_x37_y50)), inference(fof_nnf,[status(thm)],[just1])).

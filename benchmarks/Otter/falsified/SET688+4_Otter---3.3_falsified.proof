@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '36':
-%%%%%   Replaced (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A))))
-%%%%%   With (! [A,B]: ((~ (subset(A,B)) | member(dollar_f1(A,B),A))))
+%%%%% Mutated formula '5':
+%%%%%   Replaced (! [A,B]: ((e_qual_set(A,B) | (~ (subset(A,B)) | ~ (subset(B,A))))))
+%%%%%   With (! [A,B]: ((~ (e_qual_set(A,B)) | (~ (subset(A,B)) | ~ (subset(B,A))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET688+4 : TPTP v8.1.0. Released v2.2.0.
@@ -36,9 +36,9 @@
 fof(1, axiom, (! [A,B,C]: ((~ (subset(A,B)) | (~ (member(C,A)) | member(C,B))))), file('SET688+4.p',unknown), []).
 fof(2, axiom, (! [A,B]: ((subset(A,B) | ~ (member(dollar_f1(A,B),B))))), file('SET688+4.p',unknown), []).
 fof(4, axiom, (! [A,B]: ((~ (e_qual_set(A,B)) | subset(B,A)))), file('SET688+4.p',unknown), []).
-fof(5, axiom, (! [A,B]: ((e_qual_set(A,B) | (~ (subset(A,B)) | ~ (subset(B,A)))))), file('SET688+4.p',unknown), []).
+fof(5, axiom, (! [A,B]: ((~ (e_qual_set(A,B)) | (~ (subset(A,B)) | ~ (subset(B,A)))))), file('SET688+4.p',unknown), []).
 fof(29, axiom, ~ (e_qual_set(dollar_c2,dollar_c1)), file('SET688+4.p',unknown), []).
-fof(36, axiom, (! [A,B]: ((~ (subset(A,B)) | member(dollar_f1(A,B),A)))), file('SET688+4.p',unknown), []).
+fof(36, axiom, (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A)))), file('SET688+4.p',unknown), []).
 fof(38, axiom, subset(dollar_c3,dollar_c2), file('SET688+4.p',unknown), []).
 fof(39, axiom, subset(dollar_c2,dollar_c1), file('SET688+4.p',unknown), []).
 fof(40, axiom, e_qual_set(dollar_c3,dollar_c1), file('SET688+4.p',unknown), []).

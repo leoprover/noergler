@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '423':
-%%%%%   Replaced (iext(uri_owl_disjointWith,uri_ex_d,uri_ex_c2) | icext(uri_ex_d,dollar_f4(uri_ex_d,uri_ex_c2)))
-%%%%%   With (iext(uri_owl_disjointWith,uri_ex_d,uri_ex_c2) & icext(uri_ex_d,dollar_f4(uri_ex_d,uri_ex_c2)))
+%%%%% Mutated formula '349':
+%%%%%   Replaced iext(uri_rdf_rest,dollar_c1,uri_rdf_nil)
+%%%%%   With ~ (iext(uri_rdf_rest,dollar_c1,uri_rdf_nil))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWB020+2 : TPTP v8.1.0. Released v5.2.0.
@@ -62,13 +62,13 @@ fof(345, axiom, iext(uri_owl_intersectionOf,dollar_c7,dollar_c2), file('SWB020+2
 fof(346, axiom, iext(uri_rdf_first,dollar_c2,uri_ex_c), file('SWB020+2.p',unknown), []).
 fof(347, axiom, iext(uri_rdf_rest,dollar_c2,dollar_c1), file('SWB020+2.p',unknown), []).
 fof(348, axiom, iext(uri_rdf_first,dollar_c1,dollar_c6), file('SWB020+2.p',unknown), []).
-fof(349, axiom, iext(uri_rdf_rest,dollar_c1,uri_rdf_nil), file('SWB020+2.p',unknown), []).
+fof(349, axiom, ~ (iext(uri_rdf_rest,dollar_c1,uri_rdf_nil)), file('SWB020+2.p',unknown), []).
 fof(350, axiom, iext(uri_owl_complementOf,dollar_c6,uri_ex_c2), file('SWB020+2.p',unknown), []).
 fof(351, plain, ic(uri_ex_c3), inference(hyper,[status(thm)],[342,19,337,338,339,340,341,336]), [iquote('hyper,342,19,337,338,339,340,341,336')]).
 fof(352, plain, ic(uri_ex_c2), inference(hyper,[status(thm)],[342,18,337,338,339,340,341,336]), [iquote('hyper,342,18,337,338,339,340,341,336')]).
 fof(386, plain, ic(uri_ex_d), inference(hyper,[status(thm)],[343,1]), [iquote('hyper,343,1')]).
 fof(416, plain, (iext(uri_owl_disjointWith,uri_ex_d,uri_ex_c2) | icext(uri_ex_c2,dollar_f4(uri_ex_d,uri_ex_c2))), inference(hyper,[status(thm)],[386,35,352]), [iquote('hyper,386,35,352')]).
-fof(423, plain, (iext(uri_owl_disjointWith,uri_ex_d,uri_ex_c2) & icext(uri_ex_d,dollar_f4(uri_ex_d,uri_ex_c2))), inference(hyper,[status(thm)],[386,34,352]), [iquote('hyper,386,34,352')]).
+fof(423, plain, (iext(uri_owl_disjointWith,uri_ex_d,uri_ex_c2) | icext(uri_ex_d,dollar_f4(uri_ex_d,uri_ex_c2))), inference(hyper,[status(thm)],[386,34,352]), [iquote('hyper,386,34,352')]).
 fof(432, plain, icext(uri_ex_d,dollar_f3(uri_ex_d,uri_ex_c3)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[386,31,351]),36]), [iquote('hyper,386,31,351,unit_del,36')]).
 fof(436, plain, ic(dollar_c7), inference(hyper,[status(thm)],[344,29]), [iquote('hyper,344,29')]).
 fof(442, plain, (iext(uri_owl_disjointWith,uri_ex_c2,dollar_c7) | icext(dollar_c7,dollar_f4(uri_ex_c2,dollar_c7))), inference(hyper,[status(thm)],[436,35,352]), [iquote('hyper,436,35,352')]).

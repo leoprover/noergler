@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '13':
-%%%%%   Replaced (! [A]: (subset(A,A)))
-%%%%%   With (! [A]: (~ (subset(A,A))))
+%%%%% Mutated formula '8':
+%%%%%   Replaced ~ (subset(singleton(dollar_c3),powerset(dollar_c3)))
+%%%%%   With subset(singleton(dollar_c3),powerset(dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET933+1 : TPTP v8.1.0. Released v3.2.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:19:33 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, (! [A,B,C]: (((A != powerset(B)) | (in(C,A) | ~ (subset(C,B)))))), file('SET933+1.p',unknown), []).
 fof(6, axiom, (! [A,B]: ((subset(singleton(A),B) | ~ (in(A,B))))), file('SET933+1.p',unknown), []).
-fof(8, axiom, ~ (subset(singleton(dollar_c3),powerset(dollar_c3))), file('SET933+1.p',unknown), []).
+fof(8, axiom, subset(singleton(dollar_c3),powerset(dollar_c3)), file('SET933+1.p',unknown), []).
 fof(10, axiom, (! [A]: ((A = A))), file('SET933+1.p',unknown), []).
-fof(13, axiom, (! [A]: (~ (subset(A,A)))), file('SET933+1.p',unknown), []).
+fof(13, axiom, (! [A]: (subset(A,A))), file('SET933+1.p',unknown), []).
 fof(16, plain, (! [A]: (in(A,powerset(A)))), inference(hyper,[status(thm)],[13,3,10]), [iquote('hyper,13,3,10')]).
 fof(18, plain, (! [A]: (subset(singleton(A),powerset(A)))), inference(hyper,[status(thm)],[16,6]), [iquote('hyper,16,6')]).
 fof(19, plain, $false, inference(binary,[status(thm)],[18,8]), [iquote('binary,18.1,8.1')]).

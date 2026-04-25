@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c12':
-%%%%%   Replaced aInteger0(skolem0001)
-%%%%%   With aInteger0(xb)
+%%%%% Mutated formula 'c13':
+%%%%%   Replaced (sdtasdt0(xq,skolem0001) = sdtpldt0(xa,smndt0(xb)))
+%%%%%   With ~ ((sdtasdt0(xq,skolem0001) = sdtpldt0(xa,smndt0(xb))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM425+3 : TPTP v8.1.2. Released v4.0.0.
@@ -39,12 +39,12 @@
 fof(m__724, plain, ((? [W0]: ((aInteger0(W0) & (sdtasdt0(xq,W0) = sdtpldt0(xa,smndt0(xb)))))) & (aDivisorOf0(xq,sdtpldt0(xa,smndt0(xb))) & sdteqdtlpzmzozddtrp0(xa,xb,xq))), file('NUM425+3.p',m__724)).
 fof(c10, plain, ((? [X3]: ((aInteger0(X3) & (sdtasdt0(xq,X3) = sdtpldt0(xa,smndt0(xb)))))) & (aDivisorOf0(xq,sdtpldt0(xa,smndt0(xb))) & sdteqdtlpzmzozddtrp0(xa,xb,xq))), inference(variable_rename,[status(thm)],[m__724])).
 fof(c11, plain, (aInteger0(skolem0001) & ((sdtasdt0(xq,skolem0001) = sdtpldt0(xa,smndt0(xb))) & (aDivisorOf0(xq,sdtpldt0(xa,smndt0(xb))) & sdteqdtlpzmzozddtrp0(xa,xb,xq)))), inference(skolemize,[status(esa)],[c10])).
-fof(c12, plain, aInteger0(xb), inference(split_conjunct,[status(thm)],[c11])).
+fof(c12, plain, aInteger0(skolem0001), inference(split_conjunct,[status(thm)],[c11])).
 fof(m__, conjecture, (? [W0]: ((aInteger0(W0) & (sdtasdt0(xq,W0) = sdtpldt0(xa,smndt0(xb)))))), file('NUM425+3.p',m__)).
 fof(c6, negated_conjecture, ~ ((? [W0]: ((aInteger0(W0) & (sdtasdt0(xq,W0) = sdtpldt0(xa,smndt0(xb))))))), inference(assume_negation,[status(cth)],[m__])).
 fof(c7, negated_conjecture, (! [W0]: ((~ (aInteger0(W0)) | (sdtasdt0(xq,W0) != sdtpldt0(xa,smndt0(xb)))))), inference(fof_nnf,[status(thm)],[c6])).
 fof(c8, negated_conjecture, (! [X2]: ((~ (aInteger0(X2)) | (sdtasdt0(xq,X2) != sdtpldt0(xa,smndt0(xb)))))), inference(variable_rename,[status(thm)],[c7])).
 fof(c9, negated_conjecture, (! [X77]: ((~ (aInteger0(X77)) | (sdtasdt0(xq,X77) != sdtpldt0(xa,smndt0(xb)))))), inference(split_conjunct,[status(thm)],[c8])).
-fof(c13, plain, (sdtasdt0(xq,skolem0001) = sdtpldt0(xa,smndt0(xb))), inference(split_conjunct,[status(thm)],[c11])).
+fof(c13, plain, ~ ((sdtasdt0(xq,skolem0001) = sdtpldt0(xa,smndt0(xb)))), inference(split_conjunct,[status(thm)],[c11])).
 fof(c209, plain, ~ (aInteger0(skolem0001)), inference(resolution,[status(thm)],[c13,c9])).
 fof(c210, plain, $false, inference(resolution,[status(thm)],[c209,c12])).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '4':
-%%%%%   Replaced ~ (subset(cartesian_product2(dollar_c6,dollar_c4),cartesian_product2(dollar_c5,dollar_c3)))
-%%%%%   With subset(cartesian_product2(dollar_c6,dollar_c4),cartesian_product2(dollar_c5,dollar_c3))
+%%%%% Mutated formula '8':
+%%%%%   Replaced subset(dollar_c6,dollar_c5)
+%%%%%   With ~ (subset(dollar_c6,dollar_c5))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU167+3 : TPTP v8.1.0. Released v3.2.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:20:33 CEST 2026 using command 'transform(fof)'.
 fof(2, axiom, (! [A,B,C]: ((~ (subset(A,B)) | subset(cartesian_product2(A,C),cartesian_product2(B,C))))), file('SEU167+3.p',unknown), []).
 fof(3, axiom, (! [A,B,C]: ((~ (subset(A,B)) | subset(cartesian_product2(C,A),cartesian_product2(C,B))))), file('SEU167+3.p',unknown), []).
-fof(4, axiom, subset(cartesian_product2(dollar_c6,dollar_c4),cartesian_product2(dollar_c5,dollar_c3)), file('SEU167+3.p',unknown), []).
+fof(4, axiom, ~ (subset(cartesian_product2(dollar_c6,dollar_c4),cartesian_product2(dollar_c5,dollar_c3))), file('SEU167+3.p',unknown), []).
 fof(5, axiom, (! [A,B,C]: ((~ (subset(A,B)) | (~ (subset(B,C)) | subset(A,C))))), file('SEU167+3.p',unknown), []).
-fof(8, axiom, subset(dollar_c6,dollar_c5), file('SEU167+3.p',unknown), []).
+fof(8, axiom, ~ (subset(dollar_c6,dollar_c5)), file('SEU167+3.p',unknown), []).
 fof(9, axiom, subset(dollar_c4,dollar_c3), file('SEU167+3.p',unknown), []).
 fof(11, plain, (! [A]: (subset(cartesian_product2(dollar_c6,A),cartesian_product2(dollar_c5,A)))), inference(hyper,[status(thm)],[8,2]), [iquote('hyper,8,2')]).
 fof(12, plain, (! [A]: (subset(cartesian_product2(A,dollar_c4),cartesian_product2(A,dollar_c3)))), inference(hyper,[status(thm)],[9,3]), [iquote('hyper,9,3')]).

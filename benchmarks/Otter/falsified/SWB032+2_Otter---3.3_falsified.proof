@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '11':
-%%%%%   Replaced (! [A,B]: ((iext(uri_rdfs_subClassOf,A,B) | (~ (ic(A)) | (~ (ic(B)) | ~ (icext(B,dollar_f1(A,B))))))))
-%%%%%   With (! [A,B]: ((~ (iext(uri_rdfs_subClassOf,A,B)) | (~ (ic(A)) | (~ (ic(B)) | ~ (icext(B,dollar_f1(A,B))))))))
+%%%%% Mutated formula '10':
+%%%%%   Replaced (! [A,B]: ((iext(uri_rdfs_subClassOf,A,B) | (~ (ic(A)) | (~ (ic(B)) | icext(A,dollar_f1(A,B)))))))
+%%%%%   With (! [A,B]: ((~ (iext(uri_rdfs_subClassOf,A,B)) | (~ (ic(A)) | (~ (ic(B)) | icext(A,dollar_f1(A,B)))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWB032+2 : TPTP v8.1.0. Released v5.2.0.
@@ -39,8 +39,8 @@ fof(3, axiom, (! [A]: ((~ (icext(uri_owl_rational,A)) | icext(uri_owl_real,A))))
 fof(4, axiom, (! [A]: ((~ (icext(uri_xsd_decimal,A)) | icext(uri_owl_rational,A)))), file('SWB032+2.p',unknown), []).
 fof(5, axiom, (! [A]: ((~ (icext(uri_xsd_integer,A)) | icext(uri_xsd_decimal,A)))), file('SWB032+2.p',unknown), []).
 fof(6, axiom, (! [A]: ((~ (idc(A)) | ic(A)))), file('SWB032+2.p',unknown), []).
-fof(10, axiom, (! [A,B]: ((iext(uri_rdfs_subClassOf,A,B) | (~ (ic(A)) | (~ (ic(B)) | icext(A,dollar_f1(A,B))))))), file('SWB032+2.p',unknown), []).
-fof(11, axiom, (! [A,B]: ((~ (iext(uri_rdfs_subClassOf,A,B)) | (~ (ic(A)) | (~ (ic(B)) | ~ (icext(B,dollar_f1(A,B)))))))), file('SWB032+2.p',unknown), []).
+fof(10, axiom, (! [A,B]: ((~ (iext(uri_rdfs_subClassOf,A,B)) | (~ (ic(A)) | (~ (ic(B)) | icext(A,dollar_f1(A,B))))))), file('SWB032+2.p',unknown), []).
+fof(11, axiom, (! [A,B]: ((iext(uri_rdfs_subClassOf,A,B) | (~ (ic(A)) | (~ (ic(B)) | ~ (icext(B,dollar_f1(A,B)))))))), file('SWB032+2.p',unknown), []).
 fof(15, axiom, (! [A,B]: ((iext(uri_owl_disjointWith,A,B) | (~ (ic(A)) | (~ (ic(B)) | icext(A,dollar_f2(A,B))))))), file('SWB032+2.p',unknown), []).
 fof(16, axiom, (! [A,B]: ((iext(uri_owl_disjointWith,A,B) | (~ (ic(A)) | (~ (ic(B)) | icext(B,dollar_f2(A,B))))))), file('SWB032+2.p',unknown), []).
 fof(17, axiom, (~ (iext(uri_owl_disjointWith,uri_xsd_decimal,uri_xsd_string)) | ~ (iext(uri_rdfs_subClassOf,uri_xsd_integer,uri_xsd_decimal))), file('SWB032+2.p',unknown), []).

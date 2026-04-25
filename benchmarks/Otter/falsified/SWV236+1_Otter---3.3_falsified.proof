@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '2721':
-%%%%%   Replaced p(crypt(xor(exp,km),eurk))
-%%%%%   With p(crypt(xor(data,km),eurk))
+%%%%% Mutated formula '12520':
+%%%%%   Replaced p(eurk)
+%%%%%   With ~ (p(eurk))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV236+1 : TPTP v8.1.0. Released v3.2.0.
@@ -43,8 +43,8 @@ fof(27, axiom, p(data), file('SWV236+1.p',unknown), []).
 fof(31, axiom, p(crypt(xor(km,exp),eurk)), file('SWV236+1.p',unknown), []).
 fof(32, axiom, p(crypt(xor(km,data),eurk)), file('SWV236+1.p',unknown), []).
 fof(93, plain, (! [A]: ((~ (p(crypt(xor(exp,km),A))) | ~ (p(A))))), inference(para_from,[status(thm),theory(equality)],[15,13]), [iquote('para_from,15.1.1,13.1.1.1')]).
-fof(2721, plain, p(crypt(xor(data,km),eurk)), inference(para_into,[status(thm),theory(equality)],[31,15]), [iquote('para_into,31.1.1.1,15.1.1')]).
+fof(2721, plain, p(crypt(xor(exp,km),eurk)), inference(para_into,[status(thm),theory(equality)],[31,15]), [iquote('para_into,31.1.1.1,15.1.1')]).
 fof(3753, plain, p(crypt(xor(eurk,data),eurk)), inference(hyper,[status(thm)],[32,2,27,31]), [iquote('hyper,32,2,27,31')]).
 fof(12485, plain, p(crypt(eurk,eurk)), inference(hyper,[status(thm)],[3753,12]), [iquote('hyper,3753,12')]).
-fof(12520, plain, p(eurk), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[12485,7,32]),20]), [iquote('hyper,12485,7,32,demod,20')]).
+fof(12520, plain, ~ (p(eurk)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[12485,7,32]),20]), [iquote('hyper,12485,7,32,demod,20')]).
 fof(12556, plain, $false, inference(hyper,[status(thm)],[12520,93,2721]), [iquote('hyper,12520,93,2721')]).

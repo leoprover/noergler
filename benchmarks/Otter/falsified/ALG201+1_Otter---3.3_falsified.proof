@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '11':
-%%%%%   Replaced sorti2(dollar_c1)
-%%%%%   With ~ (sorti2(dollar_c1))
+%%%%% Mutated formula '13':
+%%%%%   Replaced (op2(dollar_c1,dollar_c1) = dollar_c1)
+%%%%%   With ~ ((op2(dollar_c1,dollar_c1) = dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG201+1 : TPTP v8.1.0. Released v2.7.0.
@@ -36,8 +36,8 @@
 fof(3, axiom, (! [A]: ((~ (sorti1(A)) | (op1(A,A) != A)))), file('ALG201+1.p',unknown), []).
 fof(5, axiom, (! [A]: ((~ (sorti2(A)) | sorti1(j(A))))), file('ALG201+1.p',unknown), []).
 fof(7, axiom, (! [A,B]: ((~ (sorti2(A)) | (~ (sorti2(B)) | (j(op2(A,B)) = op1(j(A),j(B))))))), file('ALG201+1.p',unknown), []).
-fof(11, axiom, ~ (sorti2(dollar_c1)), file('ALG201+1.p',unknown), []).
-fof(13, axiom, (op2(dollar_c1,dollar_c1) = dollar_c1), file('ALG201+1.p',unknown), []).
+fof(11, axiom, sorti2(dollar_c1), file('ALG201+1.p',unknown), []).
+fof(13, axiom, ~ ((op2(dollar_c1,dollar_c1) = dollar_c1)), file('ALG201+1.p',unknown), []).
 fof(16, plain, (op1(j(dollar_c1),j(dollar_c1)) = j(dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[11,7,11]),13])]), [iquote('hyper,11,7,11,demod,13,flip.1')]).
 fof(18, plain, sorti1(j(dollar_c1)), inference(hyper,[status(thm)],[11,5]), [iquote('hyper,11,5')]).
 fof(19, plain, $false, inference(hyper,[status(thm)],[16,3,18]), [iquote('hyper,16,3,18')]).

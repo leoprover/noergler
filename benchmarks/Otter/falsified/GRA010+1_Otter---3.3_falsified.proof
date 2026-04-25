@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '72':
-%%%%%   Replaced (! [A,B,C]: ((~ (path(A,B,C)) | (on_path(dollar_f7(C,A,B),C) | (number_of_in(triangles,C) = number_of_in(se_quential_pairs,C))))))
-%%%%%   With (! [A,B,C]: ((~ (path(A,B,C)) & (on_path(dollar_f7(C,A,B),C) | (number_of_in(triangles,C) = number_of_in(se_quential_pairs,C))))))
+%%%%% Mutated formula '78':
+%%%%%   Replaced (number_of_in(se_quential_pairs,dollar_c3) != number_of_in(triangles,dollar_c3))
+%%%%%   With ~ ((number_of_in(se_quential_pairs,dollar_c3) != number_of_in(triangles,dollar_c3)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GRA010+1 : TPTP v8.1.0. Bugfixed v3.2.0.
@@ -39,13 +39,13 @@ fof(68, plain, (! [A,B,C]: ((~ (path(A,B,C)) | (minus(length_of(C),n1) = number_
 fof(69, axiom, (! [A,B,C]: ((~ (path(A,B,C)) | (on_path(dollar_f8(C,A,B),C) | (number_of_in(se_quential_pairs,C) = number_of_in(triangles,C)))))), file('GRA010+1.p',unknown), []).
 fof(70, plain, (! [A,B,C]: ((~ (path(A,B,C)) | (on_path(dollar_f8(C,A,B),C) | (number_of_in(triangles,C) = number_of_in(se_quential_pairs,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[69])]), [iquote('copy,69,flip.3')]).
 fof(71, axiom, (! [A,B,C]: ((~ (path(A,B,C)) | (on_path(dollar_f7(C,A,B),C) | (number_of_in(se_quential_pairs,C) = number_of_in(triangles,C)))))), file('GRA010+1.p',unknown), []).
-fof(72, plain, (! [A,B,C]: ((~ (path(A,B,C)) & (on_path(dollar_f7(C,A,B),C) | (number_of_in(triangles,C) = number_of_in(se_quential_pairs,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[71])]), [iquote('copy,71,flip.3')]).
+fof(72, plain, (! [A,B,C]: ((~ (path(A,B,C)) | (on_path(dollar_f7(C,A,B),C) | (number_of_in(triangles,C) = number_of_in(se_quential_pairs,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[71])]), [iquote('copy,71,flip.3')]).
 fof(73, axiom, (! [A,B,C]: ((~ (path(A,B,C)) | (se_quential(dollar_f8(C,A,B),dollar_f7(C,A,B)) | (number_of_in(se_quential_pairs,C) = number_of_in(triangles,C)))))), file('GRA010+1.p',unknown), []).
 fof(74, plain, (! [A,B,C]: ((~ (path(A,B,C)) | (se_quential(dollar_f8(C,A,B),dollar_f7(C,A,B)) | (number_of_in(triangles,C) = number_of_in(se_quential_pairs,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[73])]), [iquote('copy,73,flip.3')]).
 fof(75, axiom, (! [A,B,C,D]: ((~ (path(A,B,C)) | (~ (triangle(dollar_f8(C,A,B),dollar_f7(C,A,B),D)) | (number_of_in(se_quential_pairs,C) = number_of_in(triangles,C)))))), file('GRA010+1.p',unknown), []).
 fof(76, plain, (! [A,B,C,D]: ((~ (path(A,B,C)) | (~ (triangle(dollar_f8(C,A,B),dollar_f7(C,A,B),D)) | (number_of_in(triangles,C) = number_of_in(se_quential_pairs,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[75])]), [iquote('copy,75,flip.3')]).
 fof(77, axiom, (! [A,B]: ((~ (on_path(A,dollar_c3)) | (~ (on_path(B,dollar_c3)) | (~ (se_quential(A,B)) | triangle(A,B,dollar_f9(A,B))))))), file('GRA010+1.p',unknown), []).
-fof(78, axiom, (number_of_in(se_quential_pairs,dollar_c3) != number_of_in(triangles,dollar_c3)), file('GRA010+1.p',unknown), []).
+fof(78, axiom, ~ ((number_of_in(se_quential_pairs,dollar_c3) != number_of_in(triangles,dollar_c3))), file('GRA010+1.p',unknown), []).
 fof(79, plain, (number_of_in(triangles,dollar_c3) != number_of_in(se_quential_pairs,dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[78])]), [iquote('copy,78,flip.1')]).
 fof(98, axiom, (! [A]: ((A = A))), file('GRA010+1.p',unknown), []).
 fof(101, axiom, path(dollar_c2,dollar_c1,dollar_c3), file('GRA010+1.p',unknown), []).

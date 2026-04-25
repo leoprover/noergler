@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '130':
-%%%%%   Replaced sdtlse_qdt0(sz00,sz00)
-%%%%%   With sdtlse_qdt0(xm,sz00)
+%%%%% Mutated formula '691':
+%%%%%   Replaced (sdtasdt0(xn,xm) = sdtasdt0(xm,xn))
+%%%%%   With ~ ((sdtasdt0(xn,xm) = sdtasdt0(xm,xn)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM465+2 : TPTP v8.1.0. Released v4.0.0.
@@ -48,11 +48,11 @@ fof(111, axiom, aNaturalNumber0(xm), file('NUM465+2.p',unknown), []).
 fof(112, axiom, aNaturalNumber0(xn), file('NUM465+2.p',unknown), []).
 fof(118, axiom, ((xm = sz00) | sdtlse_qdt0(sz10,xm)), file('NUM465+2.p',unknown), []).
 fof(119, plain, sdtlse_qdt0(sz10,xm), inference(unit_del,[status(thm)],[inference(copy,[status(thm)],[118]),45]), [iquote('copy,118,unit_del,45')]).
-fof(130, plain, sdtlse_qdt0(xm,sz00), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[109,38,109])]), [iquote('hyper,109,38,109,factor_simp')]).
+fof(130, plain, sdtlse_qdt0(sz00,sz00), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[109,38,109])]), [iquote('hyper,109,38,109,factor_simp')]).
 fof(340, plain, (sdtasdt0(xm,sz00) = sz00), inference(hyper,[status(thm)],[111,14]), [iquote('hyper,111,14')]).
 fof(586, plain, sdtlse_qdt0(xn,xn), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[112,38,112])]), [iquote('hyper,112,38,112,factor_simp')]).
 fof(667, plain, (sdtasdt0(sz10,xn) = xn), inference(hyper,[status(thm)],[112,13]), [iquote('hyper,112,13')]).
-fof(691, plain, (sdtasdt0(xn,xm) = sdtasdt0(xm,xn)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[112,9,111])]), [iquote('hyper,112,9,111,flip.1')]).
+fof(691, plain, ~ ((sdtasdt0(xn,xm) = sdtasdt0(xm,xn))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[112,9,111])]), [iquote('hyper,112,9,111,flip.1')]).
 fof(787, plain, ~ (sdtlse_qdt0(xn,sdtasdt0(xm,xn))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[47]),691]), [iquote('back_demod,47,demod,691')]).
 fof(1713, plain, ((xn = sz00) | (xm = sz10)), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[119,42,112,110,111]),667]),787])]), [iquote('hyper,119,42,112,110,111,demod,667,unit_del,787,flip.2')]).
 fof(5981, plain, (xm != sz10), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[787,43]),667]),586,111,45])]), [iquote('para_into,787.1.2.1,43.3.1,demod,667,unit_del,586,111,45,flip.1')]).

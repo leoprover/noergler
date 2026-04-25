@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '213':
-%%%%%   Replaced (! [A]: (big_f(A,A)))
-%%%%%   With (! [A]: (~ (big_f(A,A))))
+%%%%% Mutated formula '32':
+%%%%%   Replaced (! [A,B]: ((big_f(A,B) | big_f(dollar_f1(A,B),A))))
+%%%%%   With (! [A,B]: ((big_f(A,B) & big_f(dollar_f1(A,B),A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN332+1 : TPTP v8.1.0. Released v2.0.0.
@@ -42,8 +42,8 @@ fof(13, plain, (! [A]: ((big_f(A,A) | ~ (big_f(dollar_f1(A,A),A))))), inference(
 fof(14, plain, (! [A]: ((~ (big_f(A,A)) | ~ (big_f(dollar_f1(A,A),A))))), inference(factor,[status(thm)],[11]), [iquote('factor,11.1.2')]).
 fof(15, axiom, (! [A,B]: ((big_f(A,B) | big_f(A,dollar_f1(A,B))))), file('SYN332+1.p',unknown), []).
 fof(31, plain, (! [A,B]: ((big_f(A,B) | big_f(B,dollar_f1(A,B))))), inference(hyper,[status(thm)],[15,4]), [iquote('hyper,15,4')]).
-fof(32, plain, (! [A,B]: ((big_f(A,B) | big_f(dollar_f1(A,B),A)))), inference(hyper,[status(thm)],[15,2]), [iquote('hyper,15,2')]).
-fof(213, plain, (! [A]: (~ (big_f(A,A)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[32,13])]), [iquote('hyper,32,13,factor_simp')]).
+fof(32, plain, (! [A,B]: ((big_f(A,B) & big_f(dollar_f1(A,B),A)))), inference(hyper,[status(thm)],[15,2]), [iquote('hyper,15,2')]).
+fof(213, plain, (! [A]: (big_f(A,A))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[32,13])]), [iquote('hyper,32,13,factor_simp')]).
 fof(250, plain, (! [A,B]: ((big_f(dollar_f1(A,B),B) | big_f(A,B)))), inference(hyper,[status(thm)],[213,7,31]), [iquote('hyper,213,7,31')]).
 fof(798, plain, (! [A,B]: ((big_f(A,B) | big_f(B,A)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[250,10])]), [iquote('hyper,250,10,factor_simp')]).
 fof(1057, plain, (! [A,B]: (big_f(A,B))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[798,7,213])]), [iquote('hyper,798,7,213,factor_simp')]).

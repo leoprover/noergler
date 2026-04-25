@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '429':
-%%%%%   Replaced cC76(iV16453)
-%%%%%   With ~ (cC76(iV16453))
+%%%%% Mutated formula '340':
+%%%%%   Replaced cC80(iV16440)
+%%%%%   With cC80(dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS153+1 : TPTP v8.1.0. Released v3.1.0.
@@ -109,7 +109,7 @@ fof(317, plain, cC28(iV16439), inference(hyper,[status(thm)],[308,15]), [iquote(
 fof(318, plain, cC104(iV16439), inference(hyper,[status(thm)],[316,13]), [iquote('hyper,316,13')]).
 fof(322, plain, cC98(iV16440), inference(hyper,[status(thm)],[290,168]), [iquote('hyper,290,168')]).
 fof(335, plain, cC82(iV16440), inference(hyper,[status(thm)],[322,163]), [iquote('hyper,322,163')]).
-fof(340, plain, cC80(iV16440), inference(hyper,[status(thm)],[335,141]), [iquote('hyper,335,141')]).
+fof(340, plain, cC80(dollar_c2), inference(hyper,[status(thm)],[335,141]), [iquote('hyper,335,141')]).
 fof(380, plain, cC76(iV16463), inference(hyper,[status(thm)],[293,170]), [iquote('hyper,293,170')]).
 fof(393, plain, cC62(iV16463), inference(hyper,[status(thm)],[380,132]), [iquote('hyper,380,132')]).
 fof(394, plain, cC60(iV16463), inference(hyper,[status(thm)],[393,112]), [iquote('hyper,393,112')]).
@@ -118,7 +118,7 @@ fof(416, plain, cC60(iV16453), inference(unit_del,[status(thm)],[inference(hyper
 fof(425, plain, cC44(iV16461), inference(hyper,[status(thm)],[411,100]), [iquote('hyper,411,100')]).
 fof(426, plain, cC62(iV16453), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[416,114]),186]), [iquote('hyper,416,114,unit_del,186')]).
 fof(428, plain, cC42(iV16461), inference(hyper,[status(thm)],[425,85]), [iquote('hyper,425,85')]).
-fof(429, plain, ~ (cC76(iV16453)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[426,133]),187]), [iquote('hyper,426,133,unit_del,187')]).
+fof(429, plain, cC76(iV16453), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[426,133]),187]), [iquote('hyper,426,133,unit_del,187')]).
 fof(437, plain, cC42(iV16455), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[297,83]),226]), [iquote('hyper,297,83,unit_del,226')]).
 fof(446, plain, cC44(iV16455), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[437,86]),191]), [iquote('hyper,437,86,unit_del,191')]).
 fof(450, plain, cC56(iV16455), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[446,102]),196]), [iquote('hyper,446,102,unit_del,196')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '544':
-%%%%%   Replaced aElementOf0(sdtasdt0(xa,sz10),slsdtgt0(xa))
-%%%%%   With aElementOf0(sdtasdt0(sz10,sz10),slsdtgt0(xa))
+%%%%% Mutated formula '912':
+%%%%%   Replaced aElementOf0(sdtasdt0(xb,sz10),slsdtgt0(xb))
+%%%%%   With ~ (aElementOf0(sdtasdt0(xb,sz10),slsdtgt0(xb)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : RNG108+1 : TPTP v8.1.0. Released v4.0.0.
@@ -42,13 +42,13 @@ fof(209, axiom, aElement0(sz00), file('RNG108+1.p',unknown), []).
 fof(210, axiom, aElement0(sz10), file('RNG108+1.p',unknown), []).
 fof(211, axiom, aElement0(xa), file('RNG108+1.p',unknown), []).
 fof(212, axiom, aElement0(xb), file('RNG108+1.p',unknown), []).
-fof(544, plain, aElementOf0(sdtasdt0(sz10,sz10),slsdtgt0(xa)), inference(hyper,[status(thm)],[211,90,208,210,208]), [iquote('hyper,211,90,208,210,208')]).
+fof(544, plain, aElementOf0(sdtasdt0(xa,sz10),slsdtgt0(xa)), inference(hyper,[status(thm)],[211,90,208,210,208]), [iquote('hyper,211,90,208,210,208')]).
 fof(545, plain, aElementOf0(sdtasdt0(xa,sz00),slsdtgt0(xa)), inference(hyper,[status(thm)],[211,90,208,209,208]), [iquote('hyper,211,90,208,209,208')]).
 fof(564, plain, (sdtasdt0(xa,sz00) = sz00), inference(hyper,[status(thm)],[211,23]), [iquote('hyper,211,23')]).
 fof(612, plain, (sdtasdt0(xa,sz10) = xa), inference(hyper,[status(thm)],[211,14]), [iquote('hyper,211,14')]).
 fof(647, plain, aElementOf0(sz00,slsdtgt0(xa)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[545]),564]), [iquote('back_demod,545,demod,564')]).
 fof(663, plain, aElementOf0(xa,slsdtgt0(xa)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[544]),612]), [iquote('back_demod,544,demod,612')]).
-fof(912, plain, aElementOf0(sdtasdt0(xb,sz10),slsdtgt0(xb)), inference(hyper,[status(thm)],[212,90,208,210,208]), [iquote('hyper,212,90,208,210,208')]).
+fof(912, plain, ~ (aElementOf0(sdtasdt0(xb,sz10),slsdtgt0(xb))), inference(hyper,[status(thm)],[212,90,208,210,208]), [iquote('hyper,212,90,208,210,208')]).
 fof(913, plain, aElementOf0(sdtasdt0(xb,sz00),slsdtgt0(xb)), inference(hyper,[status(thm)],[212,90,208,209,208]), [iquote('hyper,212,90,208,209,208')]).
 fof(940, plain, (sdtasdt0(xb,sz00) = sz00), inference(hyper,[status(thm)],[212,23]), [iquote('hyper,212,23')]).
 fof(1036, plain, (sdtasdt0(xb,sz10) = xb), inference(hyper,[status(thm)],[212,14]), [iquote('hyper,212,14')]).

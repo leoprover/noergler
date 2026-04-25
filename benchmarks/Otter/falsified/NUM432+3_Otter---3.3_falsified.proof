@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '8067':
-%%%%%   Replaced aInteger0(sdtpldt0(xn,xm))
-%%%%%   With ~ (aInteger0(sdtpldt0(xn,xm)))
+%%%%% Mutated formula '105':
+%%%%%   Replaced (sdtasdt0(xq,sdtpldt0(xn,xm)) = sdtpldt0(xa,smndt0(xc)))
+%%%%%   With ~ ((sdtasdt0(xq,sdtpldt0(xn,xm)) = sdtpldt0(xa,smndt0(xc))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM432+3 : TPTP v8.1.0. Released v4.0.0.
@@ -38,8 +38,8 @@ fof(39, axiom, (! [A]: ((~ (aInteger0(A)) | (sdtasdt0(xq,A) != sdtpldt0(xa,smndt
 fof(76, axiom, (! [A]: ((A = A))), file('NUM432+3.p',unknown), []).
 fof(97, axiom, aInteger0(xn), file('NUM432+3.p',unknown), []).
 fof(101, axiom, aInteger0(xm), file('NUM432+3.p',unknown), []).
-fof(105, axiom, (sdtasdt0(xq,sdtpldt0(xn,xm)) = sdtpldt0(xa,smndt0(xc))), file('NUM432+3.p',unknown), []).
+fof(105, axiom, ~ ((sdtasdt0(xq,sdtpldt0(xn,xm)) = sdtpldt0(xa,smndt0(xc)))), file('NUM432+3.p',unknown), []).
 fof(107, plain, (sdtpldt0(xa,smndt0(xc)) = sdtasdt0(xq,sdtpldt0(xn,xm))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[105])]), [iquote('copy,105,flip.1')]).
 fof(109, plain, (! [A]: ((~ (aInteger0(A)) | (sdtasdt0(xq,A) != sdtasdt0(xq,sdtpldt0(xn,xm)))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[39]),107]), [iquote('back_demod,39,demod,107')]).
-fof(8067, plain, ~ (aInteger0(sdtpldt0(xn,xm))), inference(hyper,[status(thm)],[101,2,97]), [iquote('hyper,101,2,97')]).
+fof(8067, plain, aInteger0(sdtpldt0(xn,xm)), inference(hyper,[status(thm)],[101,2,97]), [iquote('hyper,101,2,97')]).
 fof(8309, plain, $false, inference(hyper,[status(thm)],[8067,109,76]), [iquote('hyper,8067,109,76')]).

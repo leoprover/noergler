@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '21':
-%%%%%   Replaced inertia(dollar_c5,dollar_f1(dollar_c5,dollar_c1),dollar_c1)
-%%%%%   With inertia(dollar_c3,dollar_f1(dollar_c5,dollar_c1),dollar_c1)
+%%%%% Mutated formula '15':
+%%%%%   Replaced greater(dollar_c4,dollar_c3)
+%%%%%   With greater(dollar_c2,dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT011+1 : TPTP v8.1.0. Released v2.0.0.
@@ -45,11 +45,11 @@ fof(11, axiom, reorganization_free(dollar_c5,dollar_c2,dollar_c1), file('MGT011+
 fof(12, axiom, size(dollar_c5,dollar_c4,dollar_c2), file('MGT011+1.p',unknown), []).
 fof(13, axiom, size(dollar_c5,dollar_c3,dollar_c1), file('MGT011+1.p',unknown), []).
 fof(14, axiom, greater(dollar_c1,dollar_c2), file('MGT011+1.p',unknown), []).
-fof(15, axiom, greater(dollar_c4,dollar_c3), file('MGT011+1.p',unknown), []).
+fof(15, axiom, greater(dollar_c2,dollar_c3), file('MGT011+1.p',unknown), []).
 fof(16, plain, class(dollar_c5,dollar_f2(dollar_c5,dollar_c2),dollar_c2), inference(hyper,[status(thm)],[9,4]), [iquote('hyper,9,4')]).
 fof(17, plain, inertia(dollar_c5,dollar_f1(dollar_c5,dollar_c2),dollar_c2), inference(hyper,[status(thm)],[9,1]), [iquote('hyper,9,1')]).
 fof(20, plain, class(dollar_c5,dollar_f2(dollar_c5,dollar_c1),dollar_c1), inference(hyper,[status(thm)],[10,4]), [iquote('hyper,10,4')]).
-fof(21, plain, inertia(dollar_c3,dollar_f1(dollar_c5,dollar_c1),dollar_c1), inference(hyper,[status(thm)],[10,1]), [iquote('hyper,10,1')]).
+fof(21, plain, inertia(dollar_c5,dollar_f1(dollar_c5,dollar_c1),dollar_c1), inference(hyper,[status(thm)],[10,1]), [iquote('hyper,10,1')]).
 fof(50, plain, (dollar_f2(dollar_c5,dollar_c2) = dollar_f2(dollar_c5,dollar_c1)), inference(hyper,[status(thm)],[20,5,9,10,11,16]), [iquote('hyper,20,5,9,10,11,16')]).
 fof(54, plain, class(dollar_c5,dollar_f2(dollar_c5,dollar_c1),dollar_c2), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[16]),50]), [iquote('back_demod,16,demod,50')]).
 fof(60, plain, greater(dollar_f1(dollar_c5,dollar_c1),dollar_f1(dollar_c5,dollar_c2)), inference(hyper,[status(thm)],[21,7,9,10,11,17,14]), [iquote('hyper,21,7,9,10,11,17,14')]).

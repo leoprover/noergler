@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '89':
-%%%%%   Replaced (! [A,B]: ((unordered_pair(unordered_pair(A,A),unordered_pair(A,unordered_pair(B,B))) = ordered_pair(A,B))))
-%%%%%   With (! [A,B]: (~ ((unordered_pair(unordered_pair(A,A),unordered_pair(A,unordered_pair(B,B))) = ordered_pair(A,B)))))
+%%%%% Mutated formula '88':
+%%%%%   Replaced (! [A,B]: ((ordered_pair(A,B) = unordered_pair(singleton(A),unordered_pair(A,singleton(B))))))
+%%%%%   With (! [A,B]: (~ ((ordered_pair(A,B) = unordered_pair(singleton(A),unordered_pair(A,singleton(B)))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET025+1 : TPTP v8.1.0. Bugfixed v5.4.0.
@@ -36,7 +36,7 @@
 fof(68, axiom, ~ (member(ordered_pair(dollar_c4,dollar_c3),universal_class)), file('SET025+1.p',unknown), []).
 fof(85, axiom, (! [A,B]: (member(unordered_pair(A,B),universal_class))), file('SET025+1.p',unknown), []).
 fof(87, axiom, (! [A]: ((singleton(A) = unordered_pair(A,A)))), file('SET025+1.p',unknown), []).
-fof(88, axiom, (! [A,B]: ((ordered_pair(A,B) = unordered_pair(singleton(A),unordered_pair(A,singleton(B)))))), file('SET025+1.p',unknown), []).
-fof(89, plain, (! [A,B]: (~ ((unordered_pair(unordered_pair(A,A),unordered_pair(A,unordered_pair(B,B))) = ordered_pair(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[88]),87,87])]), [iquote('copy,88,demod,87,87,flip.1')]).
+fof(88, axiom, (! [A,B]: (~ ((ordered_pair(A,B) = unordered_pair(singleton(A),unordered_pair(A,singleton(B))))))), file('SET025+1.p',unknown), []).
+fof(89, plain, (! [A,B]: ((unordered_pair(unordered_pair(A,A),unordered_pair(A,unordered_pair(B,B))) = ordered_pair(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[88]),87,87])]), [iquote('copy,88,demod,87,87,flip.1')]).
 fof(731, plain, (! [A,B]: (member(ordered_pair(A,B),universal_class))), inference(para_from,[status(thm),theory(equality)],[89,85]), [iquote('para_from,89.1.1,85.1.1')]).
 fof(732, plain, $false, inference(binary,[status(thm)],[731,68]), [iquote('binary,731.1,68.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '748':
-%%%%%   Replaced iext(uri_rdf_first,dollar_c3,dollar_c2)
-%%%%%   With iext(uri_rdf_nil,dollar_c3,dollar_c2)
+%%%%% Mutated formula '754':
+%%%%%   Replaced iext(uri_ex_name,uri_ex_alice,literal_plain(dat_str_alice))
+%%%%%   With ~ (iext(uri_ex_name,uri_ex_alice,literal_plain(dat_str_alice)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWB012+3 : TPTP v8.1.0. Released v5.2.0.
@@ -45,12 +45,12 @@ fof(744, axiom, iext(uri_rdf_first,dollar_c5,uri_owl_DatatypeProperty), file('SW
 fof(745, axiom, iext(uri_rdf_rest,dollar_c5,dollar_c4), file('SWB012+3.p',unknown), []).
 fof(746, axiom, iext(uri_rdf_first,dollar_c4,uri_owl_FunctionalProperty), file('SWB012+3.p',unknown), []).
 fof(747, axiom, iext(uri_rdf_rest,dollar_c4,dollar_c3), file('SWB012+3.p',unknown), []).
-fof(748, axiom, iext(uri_rdf_nil,dollar_c3,dollar_c2), file('SWB012+3.p',unknown), []).
+fof(748, axiom, iext(uri_rdf_first,dollar_c3,dollar_c2), file('SWB012+3.p',unknown), []).
 fof(749, axiom, iext(uri_rdf_rest,dollar_c3,uri_rdf_nil), file('SWB012+3.p',unknown), []).
 fof(751, axiom, iext(uri_owl_onProperty,dollar_c2,uri_rdfs_domain), file('SWB012+3.p',unknown), []).
 fof(752, axiom, iext(uri_owl_hasValue,dollar_c2,uri_foaf_Person), file('SWB012+3.p',unknown), []).
 fof(753, axiom, iext(uri_rdf_type,uri_ex_name,uri_ex_PersonAttribute), file('SWB012+3.p',unknown), []).
-fof(754, axiom, iext(uri_ex_name,uri_ex_alice,literal_plain(dat_str_alice)), file('SWB012+3.p',unknown), []).
+fof(754, axiom, ~ (iext(uri_ex_name,uri_ex_alice,literal_plain(dat_str_alice))), file('SWB012+3.p',unknown), []).
 fof(3062, plain, icext(uri_ex_PersonAttribute,uri_ex_name), inference(hyper,[status(thm)],[753,146]), [iquote('hyper,753,146')]).
 fof(3063, plain, icext(dollar_c2,uri_ex_name), inference(hyper,[status(thm)],[3062,31,744,745,746,747,748,749,743]), [iquote('hyper,3062,31,744,745,746,747,748,749,743')]).
 fof(3064, plain, icext(uri_owl_FunctionalProperty,uri_ex_name), inference(hyper,[status(thm)],[3062,30,744,745,746,747,748,749,743]), [iquote('hyper,3062,30,744,745,746,747,748,749,743')]).

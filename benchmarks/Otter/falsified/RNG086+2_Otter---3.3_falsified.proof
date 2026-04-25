@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '143':
-%%%%%   Replaced aElementOf0(dollar_c1,xJ)
-%%%%%   With aElementOf0(xx,xJ)
+%%%%% Mutated formula '144':
+%%%%%   Replaced (sdtpldt0(dollar_c2,dollar_c1) = xx)
+%%%%%   With ~ ((sdtpldt0(dollar_c2,dollar_c1) = xx))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : RNG086+2 : TPTP v8.1.0. Released v4.0.0.
@@ -36,6 +36,6 @@
 fof(61, axiom, (! [A,B]: ((~ (aElementOf0(A,xI)) | (~ (aElementOf0(B,xJ)) | (xx != sdtpldt0(A,B)))))), file('RNG086+2.p',unknown), []).
 fof(62, plain, (! [A,B]: ((~ (aElementOf0(A,xI)) | (~ (aElementOf0(B,xJ)) | (sdtpldt0(A,B) != xx))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[61])]), [iquote('copy,61,flip.3')]).
 fof(142, axiom, aElementOf0(dollar_c2,xI), file('RNG086+2.p',unknown), []).
-fof(143, axiom, aElementOf0(xx,xJ), file('RNG086+2.p',unknown), []).
-fof(144, axiom, (sdtpldt0(dollar_c2,dollar_c1) = xx), file('RNG086+2.p',unknown), []).
+fof(143, axiom, aElementOf0(dollar_c1,xJ), file('RNG086+2.p',unknown), []).
+fof(144, axiom, ~ ((sdtpldt0(dollar_c2,dollar_c1) = xx)), file('RNG086+2.p',unknown), []).
 fof(2943, plain, $false, inference(hyper,[status(thm)],[144,62,142,143]), [iquote('hyper,144,62,142,143')]).

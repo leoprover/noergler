@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '35':
-%%%%%   Replaced (! [A]: ((~ (program(A)) | (~ (program_halts2_halts2_outputs(A,dollar_f4(A),good)) | (~ (program_not_halts2_halts2_outputs(A,dollar_f4(A),bad)) | program(dollar_c3))))))
-%%%%%   With (! [A]: ((program(A) | (~ (program_halts2_halts2_outputs(A,dollar_f4(A),good)) | (~ (program_not_halts2_halts2_outputs(A,dollar_f4(A),bad)) | program(dollar_c3))))))
+%%%%% Mutated formula '216':
+%%%%%   Replaced halts2_outputs(dollar_c3,dollar_c3,good)
+%%%%%   With halts2_outputs(dollar_c1,dollar_c3,good)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : COM003+2 : TPTP v8.1.0. Bugfixed v2.2.0.
@@ -44,7 +44,7 @@ fof(31, axiom, (! [A,B,C]: ((~ (program_program_decides(A)) | program_not_halts2
 fof(32, axiom, (! [A]: ((~ (program(A)) | (~ (program_halts2_halts3_outputs(A,dollar_f3(A),dollar_f3(A),good)) | (~ (program_not_halts2_halts3_outputs(A,dollar_f3(A),dollar_f3(A),bad)) | program(dollar_c2)))))), file('COM003+2.p',unknown), []).
 fof(33, axiom, (! [A,B]: ((~ (program(A)) | (~ (program_halts2_halts3_outputs(A,dollar_f3(A),dollar_f3(A),good)) | (~ (program_not_halts2_halts3_outputs(A,dollar_f3(A),dollar_f3(A),bad)) | program_halts2_halts2_outputs(dollar_c2,B,good)))))), file('COM003+2.p',unknown), []).
 fof(34, axiom, (! [A,B]: ((~ (program(A)) | (~ (program_halts2_halts3_outputs(A,dollar_f3(A),dollar_f3(A),good)) | (~ (program_not_halts2_halts3_outputs(A,dollar_f3(A),dollar_f3(A),bad)) | program_not_halts2_halts2_outputs(dollar_c2,B,bad)))))), file('COM003+2.p',unknown), []).
-fof(35, axiom, (! [A]: ((program(A) | (~ (program_halts2_halts2_outputs(A,dollar_f4(A),good)) | (~ (program_not_halts2_halts2_outputs(A,dollar_f4(A),bad)) | program(dollar_c3)))))), file('COM003+2.p',unknown), []).
+fof(35, axiom, (! [A]: ((~ (program(A)) | (~ (program_halts2_halts2_outputs(A,dollar_f4(A),good)) | (~ (program_not_halts2_halts2_outputs(A,dollar_f4(A),bad)) | program(dollar_c3)))))), file('COM003+2.p',unknown), []).
 fof(36, axiom, (! [A,B]: ((~ (program(A)) | (~ (program_halts2_halts2_outputs(A,dollar_f4(A),good)) | (~ (program_not_halts2_halts2_outputs(A,dollar_f4(A),bad)) | (~ (program_halts2(B,B)) | ~ (halts2(dollar_c3,B)))))))), file('COM003+2.p',unknown), []).
 fof(37, axiom, (! [A,B]: ((~ (program(A)) | (~ (program_halts2_halts2_outputs(A,dollar_f4(A),good)) | (~ (program_not_halts2_halts2_outputs(A,dollar_f4(A),bad)) | program_not_halts2_halts2_outputs(dollar_c3,B,good)))))), file('COM003+2.p',unknown), []).
 fof(43, axiom, algorithm_program_decides(dollar_c4), file('COM003+2.p',unknown), []).
@@ -60,7 +60,7 @@ fof(73, plain, program(dollar_c3), inference(hyper,[status(thm)],[60,35,61,59]),
 fof(76, plain, (! [A]: ((program_not_halts2(dollar_c3,A) | halts2(dollar_c3,A)))), inference(hyper,[status(thm)],[73,17]), [iquote('hyper,73,17')]).
 fof(114, plain, (halts2(dollar_c3,dollar_c3) | halts2_outputs(dollar_c3,dollar_c3,good)), inference(hyper,[status(thm)],[76,27,72]), [iquote('hyper,76,27,72')]).
 fof(168, plain, (halts2_outputs(dollar_c3,dollar_c3,good) | program_halts2(dollar_c3,dollar_c3)), inference(hyper,[status(thm)],[114,11,73]), [iquote('hyper,114,11,73')]).
-fof(216, plain, halts2_outputs(dollar_c3,dollar_c3,good), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[168,36,61,60,59,114])]), [iquote('hyper,168,36,61,60,59,114,factor_simp')]).
+fof(216, plain, halts2_outputs(dollar_c1,dollar_c3,good), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[168,36,61,60,59,114])]), [iquote('hyper,168,36,61,60,59,114,factor_simp')]).
 fof(218, plain, halts2(dollar_c3,dollar_c3), inference(hyper,[status(thm)],[216,18]), [iquote('hyper,216,18')]).
 fof(222, plain, program_halts2(dollar_c3,dollar_c3), inference(hyper,[status(thm)],[218,11,73]), [iquote('hyper,218,11,73')]).
 fof(233, plain, $false, inference(hyper,[status(thm)],[222,36,61,60,59,218]), [iquote('hyper,222,36,61,60,59,218')]).

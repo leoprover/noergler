@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '4':
-%%%%%   Replaced (! [A]: ((big_f(dollar_f1(A)) | p)))
-%%%%%   With (! [A]: ((~ (big_f(dollar_f1(A))) | p)))
+%%%%% Mutated formula '5':
+%%%%%   Replaced p
+%%%%%   With ~ (p)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN315+1 : TPTP v8.1.0. Released v2.0.0.
@@ -36,7 +36,7 @@
 fof(1, axiom, (! [A]: ((~ (big_f(A)) | p))), file('SYN315+1.p',unknown), []).
 fof(2, axiom, (! [A]: ((big_f(A) | ~ (p)))), file('SYN315+1.p',unknown), []).
 fof(3, axiom, (! [A]: ((~ (big_f(dollar_f1(A))) | ~ (p)))), file('SYN315+1.p',unknown), []).
-fof(4, axiom, (! [A]: ((~ (big_f(dollar_f1(A))) | p))), file('SYN315+1.p',unknown), []).
-fof(5, plain, p, inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[4,1])]), [iquote('hyper,4,1,factor_simp')]).
+fof(4, axiom, (! [A]: ((big_f(dollar_f1(A)) | p))), file('SYN315+1.p',unknown), []).
+fof(5, plain, ~ (p), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[4,1])]), [iquote('hyper,4,1,factor_simp')]).
 fof(6, plain, (! [A]: (big_f(A))), inference(hyper,[status(thm)],[5,2]), [iquote('hyper,5,2')]).
 fof(7, plain, $false, inference(hyper,[status(thm)],[6,3,5]), [iquote('hyper,6,3,5')]).

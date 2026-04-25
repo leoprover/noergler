@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '9':
-%%%%%   Replaced (! [A]: ((~ (dive(A)) | ~ (greater(depth(A),depth_limit)))))
-%%%%%   With (! [A]: ((dive(A) | ~ (greater(depth(A),depth_limit)))))
+%%%%% Mutated formula '26':
+%%%%%   Replaced (greater(depth(dollar_c2),depth_limit) | greater(time(dollar_c2),time_limit))
+%%%%%   With (greater(depth(dollar_c2),depth_limit) & greater(time(dollar_c2),time_limit))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MSC017+1 : TPTP v8.1.0. Released v4.0.0.
@@ -36,7 +36,7 @@
 fof(5, axiom, (! [A]: ((~ (dive(A)) | (greater(depth(A),depth_limit) | (greater(time(A),time_limit) | ~ (greater(nitrogen(A),nitrogen_limit))))))), file('MSC017+1.p',unknown), []).
 fof(7, axiom, (! [A]: ((~ (dive(A)) | (greater(nitrogen(A),nitrogen_limit) | ~ (outcome(A,dci)))))), file('MSC017+1.p',unknown), []).
 fof(8, axiom, (! [A,B]: ((~ (dive(A)) | (~ (outcome(A,B)) | (~ (bad(B)) | (B = dci)))))), file('MSC017+1.p',unknown), []).
-fof(9, axiom, (! [A]: ((dive(A) | ~ (greater(depth(A),depth_limit))))), file('MSC017+1.p',unknown), []).
+fof(9, axiom, (! [A]: ((~ (dive(A)) | ~ (greater(depth(A),depth_limit))))), file('MSC017+1.p',unknown), []).
 fof(10, axiom, (! [A]: ((~ (dive(A)) | ~ (greater(time(A),time_limit))))), file('MSC017+1.p',unknown), []).
 fof(13, axiom, dive(dollar_c2), file('MSC017+1.p',unknown), []).
 fof(14, axiom, outcome(dollar_c2,dollar_c1), file('MSC017+1.p',unknown), []).
@@ -44,6 +44,6 @@ fof(15, axiom, bad(dollar_c1), file('MSC017+1.p',unknown), []).
 fof(20, plain, (dci = dollar_c1), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[14,8,13,15])]), [iquote('hyper,14,8,13,15,flip.1')]).
 fof(23, plain, (! [A]: ((~ (dive(A)) | (greater(nitrogen(A),nitrogen_limit) | ~ (outcome(A,dollar_c1)))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[7]),20]), [iquote('back_demod,7,demod,20')]).
 fof(25, plain, greater(nitrogen(dollar_c2),nitrogen_limit), inference(hyper,[status(thm)],[23,13,14]), [iquote('hyper,23,13,14')]).
-fof(26, plain, (greater(depth(dollar_c2),depth_limit) | greater(time(dollar_c2),time_limit)), inference(hyper,[status(thm)],[25,5,13]), [iquote('hyper,25,5,13')]).
+fof(26, plain, (greater(depth(dollar_c2),depth_limit) & greater(time(dollar_c2),time_limit)), inference(hyper,[status(thm)],[25,5,13]), [iquote('hyper,25,5,13')]).
 fof(65, plain, greater(time(dollar_c2),time_limit), inference(hyper,[status(thm)],[26,9,13]), [iquote('hyper,26,9,13')]).
 fof(67, plain, $false, inference(hyper,[status(thm)],[65,10,13]), [iquote('hyper,65,10,13')]).

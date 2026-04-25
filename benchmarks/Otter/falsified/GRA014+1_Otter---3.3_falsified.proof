@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '49':
-%%%%%   Replaced (green(n3,n6) | (green(n3,n5) | green(n5,n6)))
-%%%%%   With (green(n3,n6) & (green(n3,n5) | green(n5,n6)))
+%%%%% Mutated formula '128':
+%%%%%   Replaced (green(n3,n6) | (green(n4,n6) | green(n5,n6)))
+%%%%%   With (green(n3,n6) & (green(n4,n6) | green(n5,n6)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GRA014+1 : TPTP v8.1.0. Released v3.2.0.
@@ -79,7 +79,7 @@ fof(45, plain, (green(n2,n5) | (green(n2,n3) | green(n3,n5))), inference(unit_de
 fof(46, plain, (green(n1,n5) | (green(n1,n4) | green(n4,n5))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[34,1,31,18]),5]), [iquote('hyper,34,1,31,18,unit_del,5')]).
 fof(47, plain, (green(n1,n5) | (green(n1,n3) | green(n3,n5))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[34,1,22,26]),5]), [iquote('hyper,34,1,22,26,unit_del,5')]).
 fof(48, plain, (green(n1,n5) | (green(n1,n2) | green(n2,n5))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[34,1,13,33]),5]), [iquote('hyper,34,1,13,33,unit_del,5')]).
-fof(49, plain, (green(n3,n6) & (green(n3,n5) | green(n5,n6))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[35,1,26,20]),5]), [iquote('hyper,35,1,26,20,unit_del,5')]).
+fof(49, plain, (green(n3,n6) | (green(n3,n5) | green(n5,n6))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[35,1,26,20]),5]), [iquote('hyper,35,1,26,20,unit_del,5')]).
 fof(50, plain, (green(n3,n6) | (green(n3,n4) | green(n4,n6))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[35,1,16,29]),5]), [iquote('hyper,35,1,16,29,unit_del,5')]).
 fof(51, plain, (green(n2,n6) | (green(n2,n5) | green(n5,n6))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[36,1,33,20]),5]), [iquote('hyper,36,1,33,20,unit_del,5')]).
 fof(52, plain, (green(n2,n6) | (green(n2,n4) | green(n4,n6))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[36,1,24,29]),5]), [iquote('hyper,36,1,24,29,unit_del,5')]).
@@ -101,7 +101,7 @@ fof(101, plain, (green(n1,n5) | (green(n2,n5) | green(n3,n5))), inference(factor
 fof(102, plain, (green(n1,n5) | (green(n2,n5) | green(n4,n5))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[48,2,44,46]),5])])])]), [iquote('hyper,48,2,44,46,unit_del,5,factor_simp,factor_simp,factor_simp')]).
 fof(103, plain, (green(n1,n5) | (green(n1,n2) | green(n1,n4))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[48,2,43,46]),5])])])]), [iquote('hyper,48,2,43,46,unit_del,5,factor_simp,factor_simp,factor_simp')]).
 fof(119, plain, (green(n3,n4) | (green(n4,n6) | green(n4,n5))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[50,2,40,41]),5])])])]), [iquote('hyper,50,2,40,41,unit_del,5,factor_simp,factor_simp,factor_simp')]).
-fof(128, plain, (green(n3,n6) | (green(n4,n6) | green(n5,n6))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[50,2,41,49]),5])])])]), [iquote('hyper,50,2,41,49,unit_del,5,factor_simp,factor_simp,factor_simp')]).
+fof(128, plain, (green(n3,n6) & (green(n4,n6) | green(n5,n6))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[50,2,41,49]),5])])])]), [iquote('hyper,50,2,41,49,unit_del,5,factor_simp,factor_simp,factor_simp')]).
 fof(131, plain, (green(n3,n6) | (green(n3,n4) | green(n3,n5))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[50,2,40,49]),5])])])]), [iquote('hyper,50,2,40,49,unit_del,5,factor_simp,factor_simp,factor_simp')]).
 fof(157, plain, (green(n2,n4) | (green(n4,n6) | green(n4,n5))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[52,2,44,41]),5])])])]), [iquote('hyper,52,2,44,41,unit_del,5,factor_simp,factor_simp,factor_simp')]).
 fof(158, plain, (green(n2,n4) | (green(n4,n6) | green(n3,n4))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[52,2,39,50]),5])])])]), [iquote('hyper,52,2,39,50,unit_del,5,factor_simp,factor_simp,factor_simp')]).

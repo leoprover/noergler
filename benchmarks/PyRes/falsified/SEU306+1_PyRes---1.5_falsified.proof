@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c19':
-%%%%%   Replaced (? [A]: ((one_sorted_str(A) & (cast_as_carrier_subset(A) != the_carrier(A)))))
-%%%%%   With (? [A]: ((~ (one_sorted_str(A)) & (cast_as_carrier_subset(A) != the_carrier(A)))))
+%%%%% Mutated formula 'c26':
+%%%%%   Replaced (! [X190]: ((~ (one_sorted_str(X190)) | (cast_as_carrier_subset(X190) = the_carrier(X190)))))
+%%%%%   With (! [X190]: ((~ (one_sorted_str(X190)) & (cast_as_carrier_subset(X190) = the_carrier(X190)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SEU306+1 : TPTP v8.1.2. Released v3.3.0.
@@ -38,7 +38,7 @@
 %%% Generated on Tue Apr 14 15:06:28 CEST 2026 using command 'transform(fof)'.
 fof(t12_pre_topc, conjecture, (! [A]: ((one_sorted_str(A) => (cast_as_carrier_subset(A) = the_carrier(A))))), file('SEU306+1.p',t12_pre_topc)).
 fof(c18, negated_conjecture, ~ ((! [A]: ((one_sorted_str(A) => (cast_as_carrier_subset(A) = the_carrier(A)))))), inference(assume_negation,[status(cth)],[t12_pre_topc])).
-fof(c19, negated_conjecture, (? [A]: ((~ (one_sorted_str(A)) & (cast_as_carrier_subset(A) != the_carrier(A))))), inference(fof_nnf,[status(thm)],[c18])).
+fof(c19, negated_conjecture, (? [A]: ((one_sorted_str(A) & (cast_as_carrier_subset(A) != the_carrier(A))))), inference(fof_nnf,[status(thm)],[c18])).
 fof(c20, negated_conjecture, (? [X2]: ((one_sorted_str(X2) & (cast_as_carrier_subset(X2) != the_carrier(X2))))), inference(variable_rename,[status(thm)],[c19])).
 fof(c21, negated_conjecture, (one_sorted_str(skolem0001) & (cast_as_carrier_subset(skolem0001) != the_carrier(skolem0001))), inference(skolemize,[status(esa)],[c20])).
 fof(c23, negated_conjecture, (cast_as_carrier_subset(skolem0001) != the_carrier(skolem0001)), inference(split_conjunct,[status(thm)],[c21])).
@@ -46,6 +46,6 @@ fof(c22, negated_conjecture, one_sorted_str(skolem0001), inference(split_conjunc
 fof(d3_pre_topc, axiom, (! [A]: ((one_sorted_str(A) => (cast_as_carrier_subset(A) = the_carrier(A))))), file('SEU306+1.p',d3_pre_topc)).
 fof(c24, plain, (! [A]: ((~ (one_sorted_str(A)) | (cast_as_carrier_subset(A) = the_carrier(A))))), inference(fof_nnf,[status(thm)],[d3_pre_topc])).
 fof(c25, plain, (! [X3]: ((~ (one_sorted_str(X3)) | (cast_as_carrier_subset(X3) = the_carrier(X3))))), inference(variable_rename,[status(thm)],[c24])).
-fof(c26, plain, (! [X190]: ((~ (one_sorted_str(X190)) | (cast_as_carrier_subset(X190) = the_carrier(X190))))), inference(split_conjunct,[status(thm)],[c25])).
+fof(c26, plain, (! [X190]: ((~ (one_sorted_str(X190)) & (cast_as_carrier_subset(X190) = the_carrier(X190))))), inference(split_conjunct,[status(thm)],[c25])).
 fof(c275, plain, (cast_as_carrier_subset(skolem0001) = the_carrier(skolem0001)), inference(resolution,[status(thm)],[c26,c22])).
 fof(c744, plain, $false, inference(resolution,[status(thm)],[c275,c23])).

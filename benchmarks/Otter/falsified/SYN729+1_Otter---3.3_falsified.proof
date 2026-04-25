@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '10':
-%%%%%   Replaced l(dollar_c1,g(h(dollar_f1(dollar_c1))))
-%%%%%   With ~ (l(dollar_c1,g(h(dollar_f1(dollar_c1)))))
+%%%%% Mutated formula '3':
+%%%%%   Replaced (! [A]: ((~ (p(A)) | p(g(A)))))
+%%%%%   With (! [A]: ((p(A) | p(g(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN729+1 : TPTP v8.1.0. Released v2.5.0.
@@ -35,12 +35,12 @@
 %%% Generated on Tue Apr 14 19:24:11 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A]: ((~ (p(A)) | l(A,g(h(dollar_f1(A))))))), file('SYN729+1.p',unknown), []).
 fof(2, axiom, (! [A]: ((~ (p(A)) | p(dollar_f1(A))))), file('SYN729+1.p',unknown), []).
-fof(3, axiom, (! [A]: ((~ (p(A)) | p(g(A))))), file('SYN729+1.p',unknown), []).
+fof(3, axiom, (! [A]: ((p(A) | p(g(A))))), file('SYN729+1.p',unknown), []).
 fof(4, axiom, (! [A]: ((~ (p(A)) | p(h(A))))), file('SYN729+1.p',unknown), []).
 fof(5, axiom, (! [A]: ((~ (l(dollar_c1,A)) | ~ (p(A))))), file('SYN729+1.p',unknown), []).
 fof(6, axiom, p(dollar_c1), file('SYN729+1.p',unknown), []).
 fof(9, plain, p(dollar_f1(dollar_c1)), inference(hyper,[status(thm)],[6,2]), [iquote('hyper,6,2')]).
-fof(10, plain, ~ (l(dollar_c1,g(h(dollar_f1(dollar_c1))))), inference(hyper,[status(thm)],[6,1]), [iquote('hyper,6,1')]).
+fof(10, plain, l(dollar_c1,g(h(dollar_f1(dollar_c1)))), inference(hyper,[status(thm)],[6,1]), [iquote('hyper,6,1')]).
 fof(19, plain, p(h(dollar_f1(dollar_c1))), inference(hyper,[status(thm)],[9,4]), [iquote('hyper,9,4')]).
 fof(48, plain, p(g(h(dollar_f1(dollar_c1)))), inference(hyper,[status(thm)],[19,3]), [iquote('hyper,19,3')]).
 fof(135, plain, $false, inference(hyper,[status(thm)],[48,5,10]), [iquote('hyper,48,5,10')]).

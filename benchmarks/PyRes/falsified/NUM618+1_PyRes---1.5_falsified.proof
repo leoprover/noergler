@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c25':
-%%%%%   Replaced (! [X2]: ((~ (aElementOf0(X2,szNzAzT0)) | (xx != sdtlpdtrp0(xe,X2)))))
-%%%%%   With (! [X2]: ((~ (aElementOf0(X2,xd)) | (xx != sdtlpdtrp0(xe,X2)))))
+%%%%% Mutated formula 'c55':
+%%%%%   Replaced (! [X300]: ((~ (aElementOf0(X300,xO)) | (sdtlpdtrp0(xe,skolem0001(X300)) = X300))))
+%%%%%   With (! [X300]: ((~ (aElementOf0(X300,xO)) & (sdtlpdtrp0(xe,skolem0001(X300)) = X300))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM618+1 : TPTP v8.1.2. Released v4.0.0.
@@ -48,10 +48,10 @@ fof(c1060, plain, aElementOf0(skolem0001(xx),szNzAzT0), inference(resolution,[st
 fof(m__, conjecture, (? [W0]: ((aElementOf0(W0,szNzAzT0) & (xx = sdtlpdtrp0(xe,W0))))), file('NUM618+1.p',m__)).
 fof(c23, negated_conjecture, ~ ((? [W0]: ((aElementOf0(W0,szNzAzT0) & (xx = sdtlpdtrp0(xe,W0)))))), inference(assume_negation,[status(cth)],[m__])).
 fof(c24, negated_conjecture, (! [W0]: ((~ (aElementOf0(W0,szNzAzT0)) | (xx != sdtlpdtrp0(xe,W0))))), inference(fof_nnf,[status(thm)],[c23])).
-fof(c25, negated_conjecture, (! [X2]: ((~ (aElementOf0(X2,xd)) | (xx != sdtlpdtrp0(xe,X2))))), inference(variable_rename,[status(thm)],[c24])).
+fof(c25, negated_conjecture, (! [X2]: ((~ (aElementOf0(X2,szNzAzT0)) | (xx != sdtlpdtrp0(xe,X2))))), inference(variable_rename,[status(thm)],[c24])).
 fof(c26, negated_conjecture, (! [X294]: ((~ (aElementOf0(X294,szNzAzT0)) | (xx != sdtlpdtrp0(xe,X294))))), inference(split_conjunct,[status(thm)],[c25])).
 fof(symmetry, axiom, (! [X197,X198]: (((X197 != X198) | (X198 = X197)))), theory(equality)).
-fof(c55, plain, (! [X300]: ((~ (aElementOf0(X300,xO)) | (sdtlpdtrp0(xe,skolem0001(X300)) = X300)))), inference(split_conjunct,[status(thm)],[c52])).
+fof(c55, plain, (! [X300]: ((~ (aElementOf0(X300,xO)) & (sdtlpdtrp0(xe,skolem0001(X300)) = X300)))), inference(split_conjunct,[status(thm)],[c52])).
 fof(c1081, plain, (sdtlpdtrp0(xe,skolem0001(xx)) = xx), inference(resolution,[status(thm)],[c55,c28])).
 fof(c6171, plain, (xx = sdtlpdtrp0(xe,skolem0001(xx))), inference(resolution,[status(thm)],[c1081,symmetry])).
 fof(c36609, plain, ~ (aElementOf0(skolem0001(xx),szNzAzT0)), inference(resolution,[status(thm)],[c6171,c26])).

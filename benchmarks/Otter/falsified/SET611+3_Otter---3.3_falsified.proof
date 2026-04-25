@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '138':
-%%%%%   Replaced (! [A,B]: (((intersection(A,B) = empty_set) | member(dollar_f4(intersection(A,B)),B))))
-%%%%%   With (! [A,B]: (((intersection(A,B) = dollar_c1) | member(dollar_f4(intersection(A,B)),B))))
+%%%%% Mutated formula '2530':
+%%%%%   Replaced (! [A]: ((~ (member(A,dollar_c2)) | (~ (member(A,dollar_c1)) | (intersection(dollar_c1,dollar_c2) != empty_set)))))
+%%%%%   With (! [A]: ((~ (member(A,dollar_c2)) & (~ (member(A,dollar_c1)) | (intersection(dollar_c1,dollar_c2) != empty_set)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET611+3 : TPTP v8.1.0. Released v2.2.0.
@@ -56,12 +56,12 @@ fof(59, plain, (! [A,B,C]: ((member(dollar_f1(A,difference(B,C)),A) | ((A = diff
 fof(63, plain, (! [A,B]: ((member(dollar_f1(A,difference(A,B)),difference(A,B)) | ((difference(A,B) = A) | member(dollar_f1(A,difference(A,B)),B))))), inference(flip,[status(thm),theory(equality)],[inference(factor,[status(thm)],[49])]), [iquote('factor,49.1.3,flip.2')]).
 fof(71, plain, (! [A,B]: ((member(dollar_f1(A,difference(A,B)),A) | (difference(A,B) = A)))), inference(flip,[status(thm),theory(equality)],[inference(factor,[status(thm)],[59])]), [iquote('factor,59.1.3,flip.2')]).
 fof(117, plain, (! [A]: (((empty_set = A) | member(dollar_f4(A),A)))), inference(hyper,[status(thm)],[48,17,29]), [iquote('hyper,48,17,29')]).
-fof(138, plain, (! [A,B]: (((intersection(A,B) = dollar_c1) | member(dollar_f4(intersection(A,B)),B)))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[117,3])]), [iquote('hyper,117,3,flip.1')]).
+fof(138, plain, (! [A,B]: (((intersection(A,B) = empty_set) | member(dollar_f4(intersection(A,B)),B)))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[117,3])]), [iquote('hyper,117,3,flip.1')]).
 fof(139, plain, (! [A,B]: (((intersection(A,B) = empty_set) | member(dollar_f4(intersection(A,B)),A)))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[117,2])]), [iquote('hyper,117,2,flip.1')]).
 fof(386, plain, ((intersection(dollar_c1,dollar_c2) = empty_set) | (difference(dollar_c2,dollar_c1) = dollar_c2)), inference(para_into,[status(thm),theory(equality)],[30,25]), [iquote('para_into,30.1.1,25.1.1')]).
 fof(807, plain, ((difference(dollar_c2,dollar_c1) != dollar_c2) | member(dollar_f1(intersection(dollar_c1,dollar_c2),empty_set),intersection(dollar_c1,dollar_c2))), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[38,57]),23]), [iquote('para_into,38.1.1,57.2.1,unit_del,23')]).
 fof(841, plain, ((intersection(dollar_c1,dollar_c2) != empty_set) | (intersection(dollar_c2,dollar_c1) = empty_set)), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[38,30]),23]), [iquote('para_into,38.2.1,30.2.1,unit_del,23')]).
-fof(2530, plain, (! [A]: ((~ (member(A,dollar_c2)) | (~ (member(A,dollar_c1)) | (intersection(dollar_c1,dollar_c2) != empty_set))))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[841,4]),8]), [iquote('para_from,841.2.1,4.1.2,unit_del,8')]).
+fof(2530, plain, (! [A]: ((~ (member(A,dollar_c2)) & (~ (member(A,dollar_c1)) | (intersection(dollar_c1,dollar_c2) != empty_set))))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[841,4]),8]), [iquote('para_from,841.2.1,4.1.2,unit_del,8')]).
 fof(3595, plain, (! [A,B]: ((intersection(A,difference(B,A)) = empty_set))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[139,6,138])]), [iquote('hyper,139,6,138,factor_simp')]).
 fof(3602, plain, (intersection(dollar_c1,dollar_c2) = empty_set), inference(factor_simp,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[3595,386])]), [iquote('para_into,3595.1.1.2,386.2.1,factor_simp')]).
 fof(3604, plain, (! [A]: ((~ (member(A,dollar_c2)) | ~ (member(A,dollar_c1))))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[2530]),3602]),23]), [iquote('back_demod,2530,demod,3602,unit_del,23')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '492':
-%%%%%   Replaced ~ (in_environment(dollar_c1,dollar_f2(dollar_c1)))
-%%%%%   With ~ (in_environment(first_movers,dollar_f2(dollar_c1)))
+%%%%% Mutated formula '459':
+%%%%%   Replaced (greater(growth_rate(efficient_producers,dollar_f2(dollar_c1)),growth_rate(first_movers,dollar_f2(dollar_c1))) | (critical_point(dollar_c1) = dollar_f2(dollar_c1)))
+%%%%%   With (greater(growth_rate(efficient_producers,dollar_f2(dollar_c1)),growth_rate(first_movers,dollar_f2(dollar_c1))) & (critical_point(dollar_c1) = dollar_f2(dollar_c1)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT023+1 : TPTP v8.1.0. Released v2.0.0.
@@ -50,7 +50,7 @@ fof(213, plain, greater(dollar_f1(dollar_c1,dollar_f2(dollar_c1)),dollar_f2(doll
 fof(334, plain, (subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f1(dollar_c1,dollar_f2(dollar_c1))) | (critical_point(dollar_c1) = dollar_f2(dollar_c1))), inference(hyper,[status(thm)],[19,5,9,10]), [iquote('hyper,19,5,9,10')]).
 fof(367, plain, subpopulations(first_movers,efficient_producers,dollar_c1,dollar_f1(dollar_c1,dollar_f2(dollar_c1))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[334,7]),14]), [iquote('para_from,334.2.1,7.1.2,unit_del,14')]).
 fof(368, plain, greater(growth_rate(efficient_producers,dollar_f1(dollar_c1,dollar_f2(dollar_c1))),growth_rate(first_movers,dollar_f1(dollar_c1,dollar_f2(dollar_c1)))), inference(hyper,[status(thm)],[367,6,9,10,213]), [iquote('hyper,367,6,9,10,213')]).
-fof(459, plain, (greater(growth_rate(efficient_producers,dollar_f2(dollar_c1)),growth_rate(first_movers,dollar_f2(dollar_c1))) | (critical_point(dollar_c1) = dollar_f2(dollar_c1))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[368,3,9,14])]), [iquote('hyper,368,3,9,14,flip.2')]).
+fof(459, plain, (greater(growth_rate(efficient_producers,dollar_f2(dollar_c1)),growth_rate(first_movers,dollar_f2(dollar_c1))) & (critical_point(dollar_c1) = dollar_f2(dollar_c1))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[368,3,9,14])]), [iquote('hyper,368,3,9,14,flip.2')]).
 fof(491, plain, (critical_point(dollar_c1) = dollar_f2(dollar_c1)), inference(hyper,[status(thm)],[459,5,9,10]), [iquote('hyper,459,5,9,10')]).
-fof(492, plain, ~ (in_environment(first_movers,dollar_f2(dollar_c1))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[7]),491]), [iquote('back_demod,7,demod,491')]).
+fof(492, plain, ~ (in_environment(dollar_c1,dollar_f2(dollar_c1))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[7]),491]), [iquote('back_demod,7,demod,491')]).
 fof(493, plain, $false, inference(binary,[status(thm)],[492,14]), [iquote('binary,492.1,14.1')]).

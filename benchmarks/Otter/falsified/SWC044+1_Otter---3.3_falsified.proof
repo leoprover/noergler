@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '711':
-%%%%%   Replaced rearsegP(dollar_c4,dollar_c3)
-%%%%%   With rearsegP(nil,dollar_c3)
+%%%%% Mutated formula '450':
+%%%%%   Replaced (dollar_c5 = dollar_c3)
+%%%%%   With (dollar_c3 = dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC044+1 : TPTP v8.1.0. Released v2.4.0.
@@ -39,11 +39,11 @@ fof(182, axiom, (nil != dollar_c6), file('SWC044+1.p',unknown), []).
 fof(445, axiom, ssList(dollar_c4), file('SWC044+1.p',unknown), []).
 fof(446, axiom, ssList(dollar_c3), file('SWC044+1.p',unknown), []).
 fof(448, axiom, (nil = dollar_c5), file('SWC044+1.p',unknown), []).
-fof(450, axiom, (dollar_c5 = dollar_c3), file('SWC044+1.p',unknown), []).
+fof(450, axiom, (dollar_c3 = dollar_c3), file('SWC044+1.p',unknown), []).
 fof(452, axiom, (dollar_c6 = dollar_c4), file('SWC044+1.p',unknown), []).
 fof(453, axiom, rearsegP(dollar_c3,dollar_c4), file('SWC044+1.p',unknown), []).
 fof(465, plain, (dollar_c4 != dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),448,450,452])]), [iquote('back_demod,182,demod,448,450,452,flip.1')]).
 fof(499, plain, (! [A]: ((~ (ssList(A)) | rearsegP(A,dollar_c3)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[128]),448,450]), [iquote('back_demod,128,demod,448,450')]).
-fof(711, plain, rearsegP(nil,dollar_c3), inference(hyper,[status(thm)],[499,445]), [iquote('hyper,499,445')]).
+fof(711, plain, rearsegP(dollar_c4,dollar_c3), inference(hyper,[status(thm)],[499,445]), [iquote('hyper,499,445')]).
 fof(712, plain, (dollar_c4 = dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[711,125,446,445,453])]), [iquote('hyper,711,125,446,445,453,flip.1')]).
 fof(714, plain, $false, inference(binary,[status(thm)],[712,465]), [iquote('binary,712.1,465.1')]).

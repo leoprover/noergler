@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '137':
-%%%%%   Replaced apply(dollar_c3,dollar_c1,dollar_c1)
-%%%%%   With ~ (apply(dollar_c3,dollar_c1,dollar_c1))
+%%%%% Mutated formula '113':
+%%%%%   Replaced min(dollar_c1,dollar_c3,dollar_c2)
+%%%%%   With ~ (min(dollar_c1,dollar_c3,dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET794+4 : TPTP v8.1.0. Released v3.2.0.
@@ -41,9 +41,9 @@ fof(69, axiom, (! [A,B,C,D]: ((~ (min(A,B,C)) | (~ (member(D,C)) | (~ (apply(B,D
 fof(86, axiom, ~ (least(dollar_c1,dollar_c3,dollar_c2)), file('SET794+4.p',unknown), []).
 fof(88, plain, (! [A,B,C]: ((~ (total_order(A,B)) | (~ (member(C,B)) | apply(A,C,C))))), inference(factor_simp,[status(thm)],[inference(factor,[status(thm)],[45])]), [iquote('factor,45.2.3,factor_simp')]).
 fof(112, axiom, total_order(dollar_c3,dollar_c2), file('SET794+4.p',unknown), []).
-fof(113, axiom, min(dollar_c1,dollar_c3,dollar_c2), file('SET794+4.p',unknown), []).
+fof(113, axiom, ~ (min(dollar_c1,dollar_c3,dollar_c2)), file('SET794+4.p',unknown), []).
 fof(127, plain, member(dollar_c1,dollar_c2), inference(hyper,[status(thm)],[113,68]), [iquote('hyper,113,68')]).
-fof(137, plain, ~ (apply(dollar_c3,dollar_c1,dollar_c1)), inference(hyper,[status(thm)],[127,88,112]), [iquote('hyper,127,88,112')]).
+fof(137, plain, apply(dollar_c3,dollar_c1,dollar_c1), inference(hyper,[status(thm)],[127,88,112]), [iquote('hyper,127,88,112')]).
 fof(142, plain, (! [A]: ((least(dollar_c1,A,dollar_c2) | member(dollar_f12(A,dollar_c2,dollar_c1),dollar_c2)))), inference(hyper,[status(thm)],[127,60]), [iquote('hyper,127,60')]).
 fof(321, plain, (! [A]: ((least(dollar_c1,A,dollar_c2) | (apply(dollar_c3,dollar_c1,dollar_f12(A,dollar_c2,dollar_c1)) | apply(dollar_c3,dollar_f12(A,dollar_c2,dollar_c1),dollar_c1))))), inference(hyper,[status(thm)],[142,45,112,127]), [iquote('hyper,142,45,112,127')]).
 fof(1136, plain, (apply(dollar_c3,dollar_c1,dollar_f12(dollar_c3,dollar_c2,dollar_c1)) | apply(dollar_c3,dollar_f12(dollar_c3,dollar_c2,dollar_c1),dollar_c1)), inference(hyper,[status(thm)],[321,86]), [iquote('hyper,321,86')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '93':
-%%%%%   Replaced in(dollar_c2,empty_set)
-%%%%%   With ~ (in(dollar_c2,empty_set))
+%%%%% Mutated formula '63':
+%%%%%   Replaced (set_intersection2(singleton(dollar_c2),dollar_c1) = empty_set)
+%%%%%   With ~ ((set_intersection2(singleton(dollar_c2),dollar_c1) = empty_set))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU153+1 : TPTP v8.1.0. Released v3.3.0.
@@ -42,6 +42,6 @@ fof(21, axiom, (! [A,B]: ((set_intersection2(A,B) = set_intersection2(B,A)))), f
 fof(29, axiom, disjoint(singleton(dollar_c2),dollar_c1), file('SEU153+1.p',unknown), []).
 fof(30, axiom, in(dollar_c2,dollar_c1), file('SEU153+1.p',unknown), []).
 fof(36, plain, (! [A]: (in(A,singleton(A)))), inference(hyper,[status(thm)],[20,3,20]), [iquote('hyper,20,3,20')]).
-fof(63, plain, (set_intersection2(singleton(dollar_c2),dollar_c1) = empty_set), inference(hyper,[status(thm)],[29,10]), [iquote('hyper,29,10')]).
-fof(93, plain, ~ (in(dollar_c2,empty_set)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[36,8,21,30]),63]), [iquote('hyper,36,8,21,30,demod,63')]).
+fof(63, plain, ~ ((set_intersection2(singleton(dollar_c2),dollar_c1) = empty_set)), inference(hyper,[status(thm)],[29,10]), [iquote('hyper,29,10')]).
+fof(93, plain, in(dollar_c2,empty_set), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[36,8,21,30]),63]), [iquote('hyper,36,8,21,30,demod,63')]).
 fof(105, plain, $false, inference(hyper,[status(thm)],[93,5,20]), [iquote('hyper,93,5,20')]).

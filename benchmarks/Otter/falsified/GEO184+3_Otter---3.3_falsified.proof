@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '4251':
-%%%%%   Replaced (! [A]: ((distinct_points(A,dollar_c4) | distinct_points(A,dollar_c3))))
-%%%%%   With (! [A]: ((~ (distinct_points(A,dollar_c4)) | distinct_points(A,dollar_c3))))
+%%%%% Mutated formula '47':
+%%%%%   Replaced incident_point_and_line(dollar_c4,dollar_c2)
+%%%%%   With ~ (incident_point_and_line(dollar_c4,dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO184+3 : TPTP v8.1.0. Released v4.0.0.
@@ -42,7 +42,7 @@ fof(36, axiom, (! [A,B]: ((~ (incident_point_and_line(A,B)) | ~ (apart_point_and
 fof(38, axiom, ~ (e_qual_lines(dollar_c2,line_connecting(dollar_c4,dollar_c3))), file('GEO184+3.p',unknown), []).
 fof(41, axiom, (! [A,B]: ((e_qual_lines(A,B) | distinct_lines(A,B)))), file('GEO184+3.p',unknown), []).
 fof(45, axiom, distinct_points(dollar_c4,dollar_c3), file('GEO184+3.p',unknown), []).
-fof(47, axiom, incident_point_and_line(dollar_c4,dollar_c2), file('GEO184+3.p',unknown), []).
+fof(47, axiom, ~ (incident_point_and_line(dollar_c4,dollar_c2)), file('GEO184+3.p',unknown), []).
 fof(48, axiom, incident_point_and_line(dollar_c3,dollar_c2), file('GEO184+3.p',unknown), []).
 fof(50, plain, (! [A]: ((distinct_points(dollar_c4,A) | distinct_points(dollar_c3,A)))), inference(hyper,[status(thm)],[45,4]), [iquote('hyper,45,4')]).
 fof(57, plain, distinct_lines(dollar_c2,line_connecting(dollar_c4,dollar_c3)), inference(hyper,[status(thm)],[41,38]), [iquote('hyper,41,38')]).
@@ -51,7 +51,7 @@ fof(82, plain, (! [A,B]: ((distinct_points(dollar_c3,A) | (distinct_points(dolla
 fof(428, plain, (apart_point_and_line(dollar_c4,dollar_c2) | (apart_point_and_line(dollar_c3,dollar_c2) | apart_point_and_line(dollar_c3,line_connecting(dollar_c4,dollar_c3)))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[60,7,50]),1]), [iquote('hyper,60,7,50,unit_del,1')]).
 fof(898, plain, (! [A]: ((distinct_points(dollar_c3,A) | distinct_points(A,dollar_c4)))), inference(hyper,[status(thm)],[82,1]), [iquote('hyper,82,1')]).
 fof(940, plain, (! [A,B]: ((distinct_points(A,dollar_c4) | (distinct_points(dollar_c3,B) | distinct_points(A,B))))), inference(hyper,[status(thm)],[898,4]), [iquote('hyper,898,4')]).
-fof(4251, plain, (! [A]: ((~ (distinct_points(A,dollar_c4)) | distinct_points(A,dollar_c3)))), inference(hyper,[status(thm)],[940,1]), [iquote('hyper,940,1')]).
+fof(4251, plain, (! [A]: ((distinct_points(A,dollar_c4) | distinct_points(A,dollar_c3)))), inference(hyper,[status(thm)],[940,1]), [iquote('hyper,940,1')]).
 fof(5266, plain, (apart_point_and_line(dollar_c4,dollar_c2) | apart_point_and_line(dollar_c3,dollar_c2)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[428,8,4251]),1]), [iquote('hyper,428,8,4251,unit_del,1')]).
 fof(5267, plain, apart_point_and_line(dollar_c3,dollar_c2), inference(hyper,[status(thm)],[5266,36,47]), [iquote('hyper,5266,36,47')]).
 fof(5269, plain, $false, inference(hyper,[status(thm)],[5267,36,48]), [iquote('hyper,5267,36,48')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '26':
-%%%%%   Replaced (greater(e_quilibrium(dollar_c2),dollar_c1) | constant(number_of_organizations(dollar_c2,dollar_c1)))
-%%%%%   With (~ (greater(e_quilibrium(dollar_c2),dollar_c1)) | constant(number_of_organizations(dollar_c2,dollar_c1)))
+%%%%% Mutated formula '28':
+%%%%%   Replaced (greater(e_quilibrium(dollar_c2),dollar_c1) | ((growth_rate(efficient_producers,dollar_c1) = zero) | (greater(zero,growth_rate(efficient_producers,dollar_c1)) | greater(growth_rate(efficient_producers,dollar_c1),zero))))
+%%%%%   With (greater(e_quilibrium(efficient_producers),dollar_c1) | ((growth_rate(efficient_producers,dollar_c1) = zero) | (greater(zero,growth_rate(efficient_producers,dollar_c1)) | greater(growth_rate(efficient_producers,dollar_c1),zero))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT024+1 : TPTP v8.1.0. Released v2.0.0.
@@ -54,9 +54,9 @@ fof(22, axiom, greater_or_e_qual(dollar_c1,e_quilibrium(dollar_c2)), file('MGT02
 fof(23, plain, greater(number_of_organizations(dollar_c2,dollar_c1),zero), inference(hyper,[status(thm)],[21,2,20]), [iquote('hyper,21,2,20')]).
 fof(24, plain, in_environment(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[21,1,20]), [iquote('hyper,21,1,20')]).
 fof(25, plain, (greater(e_quilibrium(dollar_c2),dollar_c1) | constant(resources(dollar_c2,dollar_c1))), inference(hyper,[status(thm)],[23,5,20,24]), [iquote('hyper,23,5,20,24')]).
-fof(26, plain, (~ (greater(e_quilibrium(dollar_c2),dollar_c1)) | constant(number_of_organizations(dollar_c2,dollar_c1))), inference(hyper,[status(thm)],[25,7,20,24]), [iquote('hyper,25,7,20,24')]).
+fof(26, plain, (greater(e_quilibrium(dollar_c2),dollar_c1) | constant(number_of_organizations(dollar_c2,dollar_c1))), inference(hyper,[status(thm)],[25,7,20,24]), [iquote('hyper,25,7,20,24')]).
 fof(27, plain, (greater(e_quilibrium(dollar_c2),dollar_c1) | ((growth_rate(efficient_producers,dollar_c1) = zero) | (greater(zero,growth_rate(efficient_producers,dollar_c1)) | greater(zero,growth_rate(first_movers,dollar_c1))))), inference(hyper,[status(thm)],[26,15,20,21]), [iquote('hyper,26,15,20,21')]).
-fof(28, plain, (greater(e_quilibrium(dollar_c2),dollar_c1) | ((growth_rate(efficient_producers,dollar_c1) = zero) | (greater(zero,growth_rate(efficient_producers,dollar_c1)) | greater(growth_rate(efficient_producers,dollar_c1),zero)))), inference(hyper,[status(thm)],[26,14,20,21]), [iquote('hyper,26,14,20,21')]).
+fof(28, plain, (greater(e_quilibrium(efficient_producers),dollar_c1) | ((growth_rate(efficient_producers,dollar_c1) = zero) | (greater(zero,growth_rate(efficient_producers,dollar_c1)) | greater(growth_rate(efficient_producers,dollar_c1),zero)))), inference(hyper,[status(thm)],[26,14,20,21]), [iquote('hyper,26,14,20,21')]).
 fof(29, plain, (greater(e_quilibrium(dollar_c2),dollar_c1) | ((growth_rate(efficient_producers,dollar_c1) = zero) | (greater(growth_rate(first_movers,dollar_c1),zero) | greater(zero,growth_rate(first_movers,dollar_c1))))), inference(hyper,[status(thm)],[26,13,20,21]), [iquote('hyper,26,13,20,21')]).
 fof(30, plain, (greater(e_quilibrium(dollar_c2),dollar_c1) | ((growth_rate(efficient_producers,dollar_c1) = zero) | (greater(growth_rate(first_movers,dollar_c1),zero) | greater(growth_rate(efficient_producers,dollar_c1),zero)))), inference(hyper,[status(thm)],[26,12,20,21]), [iquote('hyper,26,12,20,21')]).
 fof(33, plain, (greater(e_quilibrium(dollar_c2),dollar_c1) | ((growth_rate(first_movers,dollar_c1) = zero) | (greater(growth_rate(first_movers,dollar_c1),zero) | greater(zero,growth_rate(first_movers,dollar_c1))))), inference(hyper,[status(thm)],[26,9,20,21]), [iquote('hyper,26,9,20,21')]).

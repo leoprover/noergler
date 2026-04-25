@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '21':
-%%%%%   Replaced greater(high,mod1)
-%%%%%   With greater(mod2,mod1)
+%%%%% Mutated formula '17':
+%%%%%   Replaced ~ (greater(hazard_of_mortality(dollar_c3,dollar_c1),hazard_of_mortality(dollar_c3,dollar_c2)))
+%%%%%   With ~ (greater(hazard_of_mortality(high,dollar_c1),hazard_of_mortality(dollar_c3,dollar_c2)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT060+1 : TPTP v8.1.0. Released v2.4.0.
@@ -40,8 +40,8 @@ fof(13, axiom, (! [A,B]: ((~ (organization(A)) | (has_immunity(A,B) | (is_aligne
 fof(14, axiom, (! [A,B]: ((~ (organization(A)) | (has_immunity(A,B) | (~ (is_aligned(A,B)) | (positional_advantage(A,B) | (hazard_of_mortality(A,B) = mod2))))))), file('MGT060+1.p',unknown), []).
 fof(15, axiom, (! [A,B]: ((~ (organization(A)) | (has_immunity(A,B) | (is_aligned(A,B) | (positional_advantage(A,B) | (hazard_of_mortality(A,B) = high))))))), file('MGT060+1.p',unknown), []).
 fof(16, axiom, ~ (has_immunity(dollar_c3,dollar_c1)), file('MGT060+1.p',unknown), []).
-fof(17, axiom, ~ (greater(hazard_of_mortality(dollar_c3,dollar_c1),hazard_of_mortality(dollar_c3,dollar_c2))), file('MGT060+1.p',unknown), []).
-fof(21, axiom, greater(mod2,mod1), file('MGT060+1.p',unknown), []).
+fof(17, axiom, ~ (greater(hazard_of_mortality(high,dollar_c1),hazard_of_mortality(dollar_c3,dollar_c2))), file('MGT060+1.p',unknown), []).
+fof(21, axiom, greater(high,mod1), file('MGT060+1.p',unknown), []).
 fof(22, axiom, greater(mod1,low), file('MGT060+1.p',unknown), []).
 fof(23, axiom, greater(low,very_low), file('MGT060+1.p',unknown), []).
 fof(25, axiom, greater(mod2,low), file('MGT060+1.p',unknown), []).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '140':
-%%%%%   Replaced r3_lattices(dollar_c3,dollar_c2,dollar_c2)
-%%%%%   With ~ (r3_lattices(dollar_c3,dollar_c2,dollar_c2))
+%%%%% Mutated formula '78':
+%%%%%   Replaced v9_lattices(dollar_c3)
+%%%%%   With ~ (v9_lattices(dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LAT327+1 : TPTP v8.1.0. Released v3.4.0.
@@ -48,11 +48,11 @@ fof(60, axiom, l3_lattices(dollar_c3), file('LAT327+1.p',unknown), []).
 fof(61, axiom, m1_subset_1(dollar_c2,u1_struct_0(dollar_c3)), file('LAT327+1.p',unknown), []).
 fof(62, axiom, m1_subset_1(dollar_c1,u1_struct_0(dollar_c3)), file('LAT327+1.p',unknown), []).
 fof(63, axiom, r3_lattices(dollar_c3,dollar_c2,dollar_c1), file('LAT327+1.p',unknown), []).
-fof(78, plain, v9_lattices(dollar_c3), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[60,39,59]),1]), [iquote('hyper,60,39,59,unit_del,1')]).
+fof(78, plain, ~ (v9_lattices(dollar_c3)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[60,39,59]),1]), [iquote('hyper,60,39,59,unit_del,1')]).
 fof(79, plain, v8_lattices(dollar_c3), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[60,38,59]),1]), [iquote('hyper,60,38,59,unit_del,1')]).
 fof(81, plain, v6_lattices(dollar_c3), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[60,36,59]),1]), [iquote('hyper,60,36,59,unit_del,1')]).
 fof(139, plain, r3_lattices(dollar_c3,dollar_c1,dollar_c1), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[81,27,79,78,60,62]),1]), [iquote('hyper,81,27,79,78,60,62,unit_del,1')]).
-fof(140, plain, ~ (r3_lattices(dollar_c3,dollar_c2,dollar_c2)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[81,27,79,78,60,61]),1]), [iquote('hyper,81,27,79,78,60,61,unit_del,1')]).
+fof(140, plain, r3_lattices(dollar_c3,dollar_c2,dollar_c2), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[81,27,79,78,60,61]),1]), [iquote('hyper,81,27,79,78,60,61,unit_del,1')]).
 fof(227, plain, r2_hidden(dollar_c1,k22_filter_2(dollar_c3,dollar_c2,dollar_c1)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[139,56,59,60,61,62,63]),1]), [iquote('hyper,139,56,59,60,61,62,63,unit_del,1')]).
 fof(233, plain, r2_hidden(dollar_c2,k22_filter_2(dollar_c3,dollar_c2,dollar_c1)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[140,55,59,60,61,62,63]),1]), [iquote('hyper,140,55,59,60,61,62,63,unit_del,1')]).
 fof(797, plain, $false, inference(hyper,[status(thm)],[233,2,227]), [iquote('hyper,233,2,227')]).

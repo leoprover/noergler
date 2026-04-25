@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '154':
-%%%%%   Replaced (! [A,B]: (aspatialthing(f_contentmtofcdafromeventfn(A,B))))
-%%%%%   With (! [A,B]: (~ (aspatialthing(f_contentmtofcdafromeventfn(A,B)))))
+%%%%% Mutated formula '59':
+%%%%%   Replaced (! [A,B]: (microtheory(f_contentmtofcdafromeventfn(A,B))))
+%%%%%   With (! [A,B]: (~ (microtheory(f_contentmtofcdafromeventfn(A,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR041+1 : TPTP v8.1.0. Released v3.4.0.
@@ -36,7 +36,7 @@
 fof(1, axiom, (! [A]: ((~ (aspatialinformationstore(A)) | aspatialthing(A)))), file('CSR041+1.p',unknown), []).
 fof(2, axiom, (! [A]: ((~ (microtheory(A)) | aspatialinformationstore(A)))), file('CSR041+1.p',unknown), []).
 fof(38, axiom, ~ (aspatialthing(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_wwwinformationblastcomtechnical_university_of_munichhtml)),c_translation_3))), file('CSR041+1.p',unknown), []).
-fof(59, axiom, (! [A,B]: (microtheory(f_contentmtofcdafromeventfn(A,B)))), file('CSR041+1.p',unknown), []).
+fof(59, axiom, (! [A,B]: (~ (microtheory(f_contentmtofcdafromeventfn(A,B))))), file('CSR041+1.p',unknown), []).
 fof(139, plain, (! [A,B]: (aspatialinformationstore(f_contentmtofcdafromeventfn(A,B)))), inference(hyper,[status(thm)],[59,2]), [iquote('hyper,59,2')]).
-fof(154, plain, (! [A,B]: (~ (aspatialthing(f_contentmtofcdafromeventfn(A,B))))), inference(hyper,[status(thm)],[139,1]), [iquote('hyper,139,1')]).
+fof(154, plain, (! [A,B]: (aspatialthing(f_contentmtofcdafromeventfn(A,B)))), inference(hyper,[status(thm)],[139,1]), [iquote('hyper,139,1')]).
 fof(155, plain, $false, inference(binary,[status(thm)],[154,38]), [iquote('binary,154.1,38.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '73':
-%%%%%   Replaced (! [A]: ((~ (occurrence_of(A,tptp0)) | leaf_occ(dollar_f16(A),A))))
-%%%%%   With (! [A]: ((~ (occurrence_of(A,dollar_c1)) | leaf_occ(dollar_f16(A),A))))
+%%%%% Mutated formula '114':
+%%%%%   Replaced occurrence_of(dollar_c1,tptp0)
+%%%%%   With ~ (occurrence_of(dollar_c1,tptp0))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PRO011+1 : TPTP v8.1.0. Released v4.0.0.
@@ -37,9 +37,9 @@ fof(5, axiom, (! [A,B,C]: ((~ (occurrence_of(A,B)) | (~ (occurrence_of(A,C)) | (
 fof(33, axiom, (! [A,B,C]: ((~ (leaf(A,B)) | ~ (min_precedes(A,C,B))))), file('PRO011+1.p',unknown), []).
 fof(63, axiom, (! [A,B]: ((~ (leaf_occ(A,B)) | occurrence_of(B,dollar_f15(A,B))))), file('PRO011+1.p',unknown), []).
 fof(65, axiom, (! [A,B]: ((~ (leaf_occ(A,B)) | leaf(A,dollar_f15(A,B))))), file('PRO011+1.p',unknown), []).
-fof(73, axiom, (! [A]: ((~ (occurrence_of(A,dollar_c1)) | leaf_occ(dollar_f16(A),A)))), file('PRO011+1.p',unknown), []).
+fof(73, axiom, (! [A]: ((~ (occurrence_of(A,tptp0)) | leaf_occ(dollar_f16(A),A)))), file('PRO011+1.p',unknown), []).
 fof(97, axiom, (! [A,B]: ((~ (leaf_occ(A,dollar_c1)) | (min_precedes(B,dollar_f19(B,A),tptp0) | min_precedes(B,dollar_f20(B,A),tptp0))))), file('PRO011+1.p',unknown), []).
-fof(114, axiom, occurrence_of(dollar_c1,tptp0), file('PRO011+1.p',unknown), []).
+fof(114, axiom, ~ (occurrence_of(dollar_c1,tptp0)), file('PRO011+1.p',unknown), []).
 fof(130, plain, leaf_occ(dollar_f16(dollar_c1),dollar_c1), inference(hyper,[status(thm)],[114,73]), [iquote('hyper,114,73')]).
 fof(186, plain, (! [A]: ((min_precedes(A,dollar_f19(A,dollar_f16(dollar_c1)),tptp0) | min_precedes(A,dollar_f20(A,dollar_f16(dollar_c1)),tptp0)))), inference(hyper,[status(thm)],[130,97]), [iquote('hyper,130,97')]).
 fof(201, plain, leaf(dollar_f16(dollar_c1),dollar_f15(dollar_f16(dollar_c1),dollar_c1)), inference(hyper,[status(thm)],[130,65]), [iquote('hyper,130,65')]).

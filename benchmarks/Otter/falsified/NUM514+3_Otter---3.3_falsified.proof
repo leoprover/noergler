@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1469':
-%%%%%   Replaced (sdtasdt0(xp,sdtsldt0(xk,xr)) = sdtasdt0(sdtsldt0(xn,xr),xm))
-%%%%%   With ~ ((sdtasdt0(xp,sdtsldt0(xk,xr)) = sdtasdt0(sdtsldt0(xn,xr),xm)))
+%%%%% Mutated formula '1471':
+%%%%%   Replaced (sdtasdt0(sdtsldt0(xn,xr),xm) = sdtasdt0(xp,sdtsldt0(xk,xr)))
+%%%%%   With ~ ((sdtasdt0(sdtsldt0(xn,xr),xm) = sdtasdt0(xp,sdtsldt0(xk,xr))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM514+3 : TPTP v8.1.0. Released v4.0.0.
@@ -36,7 +36,7 @@
 fof(297, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | (sdtasdt0(sdtsldt0(xn,xr),xm) != sdtasdt0(xp,A))))), file('NUM514+3.p',unknown), []).
 fof(1382, axiom, (! [A]: ((A = A))), file('NUM514+3.p',unknown), []).
 fof(1465, axiom, aNaturalNumber0(sdtsldt0(xk,xr)), file('NUM514+3.p',unknown), []).
-fof(1469, axiom, ~ ((sdtasdt0(xp,sdtsldt0(xk,xr)) = sdtasdt0(sdtsldt0(xn,xr),xm))), file('NUM514+3.p',unknown), []).
-fof(1471, plain, (sdtasdt0(sdtsldt0(xn,xr),xm) = sdtasdt0(xp,sdtsldt0(xk,xr))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1469])]), [iquote('copy,1469,flip.1')]).
+fof(1469, axiom, (sdtasdt0(xp,sdtsldt0(xk,xr)) = sdtasdt0(sdtsldt0(xn,xr),xm)), file('NUM514+3.p',unknown), []).
+fof(1471, plain, ~ ((sdtasdt0(sdtsldt0(xn,xr),xm) = sdtasdt0(xp,sdtsldt0(xk,xr)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1469])]), [iquote('copy,1469,flip.1')]).
 fof(1475, plain, (! [A]: ((~ (aNaturalNumber0(A)) | (sdtasdt0(xp,sdtsldt0(xk,xr)) != sdtasdt0(xp,A))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[297]),1471]), [iquote('back_demod,297,demod,1471')]).
 fof(3816, plain, $false, inference(hyper,[status(thm)],[1475,1465,1382]), [iquote('hyper,1475,1465,1382')]).

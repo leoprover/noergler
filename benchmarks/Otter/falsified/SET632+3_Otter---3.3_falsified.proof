@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '36':
-%%%%%   Replaced (! [A,B]: ((disjoint(A,B) | member(dollar_f2(A,B),B))))
-%%%%%   With (! [A,B]: ((disjoint(A,B) & member(dollar_f2(A,B),B))))
+%%%%% Mutated formula '21':
+%%%%%   Replaced (! [A]: ((empty(A) | member(dollar_f3(A),A))))
+%%%%%   With (! [A]: ((~ (empty(A)) | member(dollar_f3(A),A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET632+3 : TPTP v8.1.0. Released v2.2.0.
@@ -45,13 +45,13 @@ fof(13, axiom, (dollar_c3 != empty_set), file('SET632+3.p',unknown), []).
 fof(14, plain, (empty_set != dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[13])]), [iquote('copy,13,flip.1')]).
 fof(18, axiom, (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A)))), file('SET632+3.p',unknown), []).
 fof(19, axiom, (! [A,B]: ((disjoint(A,B) | intersect(A,B)))), file('SET632+3.p',unknown), []).
-fof(21, axiom, (! [A]: ((empty(A) | member(dollar_f3(A),A)))), file('SET632+3.p',unknown), []).
+fof(21, axiom, (! [A]: ((~ (empty(A)) | member(dollar_f3(A),A)))), file('SET632+3.p',unknown), []).
 fof(22, axiom, subset(dollar_c3,dollar_c2), file('SET632+3.p',unknown), []).
 fof(23, axiom, subset(dollar_c3,dollar_c1), file('SET632+3.p',unknown), []).
 fof(24, axiom, disjoint(dollar_c2,dollar_c1), file('SET632+3.p',unknown), []).
 fof(33, plain, (! [A,B]: ((member(dollar_f1(A,B),A) | ((B = A) | member(dollar_f1(B,A),B))))), inference(hyper,[status(thm)],[18,10,18]), [iquote('hyper,18,10,18')]).
 fof(35, plain, (! [A,B]: ((disjoint(A,B) | intersect(B,A)))), inference(hyper,[status(thm)],[19,11]), [iquote('hyper,19,11')]).
-fof(36, plain, (! [A,B]: ((disjoint(A,B) & member(dollar_f2(A,B),B)))), inference(hyper,[status(thm)],[19,4]), [iquote('hyper,19,4')]).
+fof(36, plain, (! [A,B]: ((disjoint(A,B) | member(dollar_f2(A,B),B)))), inference(hyper,[status(thm)],[19,4]), [iquote('hyper,19,4')]).
 fof(39, plain, disjoint(dollar_c1,dollar_c2), inference(hyper,[status(thm)],[35,7,24]), [iquote('hyper,35,7,24')]).
 fof(152, plain, (! [A,B]: ((disjoint(A,B) | member(dollar_f3(B),B)))), inference(hyper,[status(thm)],[36,12,21]), [iquote('hyper,36,12,21')]).
 fof(166, plain, (! [A]: ((disjoint(A,dollar_c3) | member(dollar_f3(dollar_c3),dollar_c1)))), inference(hyper,[status(thm)],[152,1,23]), [iquote('hyper,152,1,23')]).

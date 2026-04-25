@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '17':
-%%%%%   Replaced (! [A]: ((multiplication(A,one) = A)))
-%%%%%   With (! [A]: ((multiplication(A,dollar_c2) = A)))
+%%%%% Mutated formula '22':
+%%%%%   Replaced (! [A,B,C]: ((multiplication(addition(A,B),C) = addition(multiplication(A,C),multiplication(B,C)))))
+%%%%%   With (! [A,B,C]: (~ ((multiplication(addition(A,B),C) = addition(multiplication(A,C),multiplication(B,C))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE069+1 : TPTP v8.1.0. Released v4.0.0.
@@ -36,10 +36,10 @@
 fof(3, axiom, (multiplication(domain(dollar_c2),addition(domain(dollar_c2),domain(dollar_c1))) != domain(dollar_c2)), file('KLE069+1.p',unknown), []).
 fof(4, axiom, (! [A]: ((A = A))), file('KLE069+1.p',unknown), []).
 fof(5, axiom, (! [A,B]: ((addition(A,B) = addition(B,A)))), file('KLE069+1.p',unknown), []).
-fof(17, axiom, (! [A]: ((multiplication(A,dollar_c2) = A))), file('KLE069+1.p',unknown), []).
+fof(17, axiom, (! [A]: ((multiplication(A,one) = A))), file('KLE069+1.p',unknown), []).
 fof(19, axiom, (! [A]: ((multiplication(one,A) = A))), file('KLE069+1.p',unknown), []).
 fof(21, axiom, (! [A,B,C]: ((multiplication(A,addition(B,C)) = addition(multiplication(A,B),multiplication(A,C))))), file('KLE069+1.p',unknown), []).
-fof(22, axiom, (! [A,B,C]: ((multiplication(addition(A,B),C) = addition(multiplication(A,C),multiplication(B,C))))), file('KLE069+1.p',unknown), []).
+fof(22, axiom, (! [A,B,C]: (~ ((multiplication(addition(A,B),C) = addition(multiplication(A,C),multiplication(B,C)))))), file('KLE069+1.p',unknown), []).
 fof(28, axiom, (! [A]: ((addition(A,multiplication(domain(A),A)) = multiplication(domain(A),A)))), file('KLE069+1.p',unknown), []).
 fof(30, axiom, (! [A,B]: ((domain(multiplication(A,B)) = domain(multiplication(A,domain(B)))))), file('KLE069+1.p',unknown), []).
 fof(31, plain, (! [A,B]: ((domain(multiplication(A,domain(B))) = domain(multiplication(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[30])]), [iquote('copy,30,flip.1')]).

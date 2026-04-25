@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '19':
-%%%%%   Replaced (~ (greater(hazard_of_mortality(dollar_c4,dollar_c1),hazard_of_mortality(dollar_c4,dollar_c2))) | (hazard_of_mortality(dollar_c4,dollar_c2) != hazard_of_mortality(dollar_c4,dollar_c3)))
-%%%%%   With (~ (greater(hazard_of_mortality(dollar_c2,dollar_c1),hazard_of_mortality(dollar_c4,dollar_c2))) | (hazard_of_mortality(dollar_c4,dollar_c2) != hazard_of_mortality(dollar_c4,dollar_c3)))
+%%%%% Mutated formula '26':
+%%%%%   Replaced has_endowment(dollar_c4)
+%%%%%   With has_endowment(eta)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT057+1 : TPTP v8.1.0. Released v2.4.0.
@@ -41,13 +41,13 @@ fof(12, axiom, (! [A,B]: ((~ (has_endowment(A)) | (~ (smaller_or_e_qual(age(A,B)
 fof(13, axiom, (! [A,B]: ((~ (has_endowment(A)) | (~ (greater(age(A,B),eta)) | ~ (has_immunity(A,B)))))), file('MGT057+1.p',unknown), []).
 fof(17, axiom, (! [A,B,C]: ((~ (organization(A)) | (~ (has_immunity(A,B)) | (~ (has_immunity(A,C)) | (hazard_of_mortality(A,B) = hazard_of_mortality(A,C))))))), file('MGT057+1.p',unknown), []).
 fof(18, axiom, (! [A,B,C]: ((~ (organization(A)) | (~ (has_immunity(A,B)) | (has_immunity(A,C) | greater(hazard_of_mortality(A,C),hazard_of_mortality(A,B))))))), file('MGT057+1.p',unknown), []).
-fof(19, axiom, (~ (greater(hazard_of_mortality(dollar_c2,dollar_c1),hazard_of_mortality(dollar_c4,dollar_c2))) | (hazard_of_mortality(dollar_c4,dollar_c2) != hazard_of_mortality(dollar_c4,dollar_c3))), file('MGT057+1.p',unknown), []).
+fof(19, axiom, (~ (greater(hazard_of_mortality(dollar_c4,dollar_c1),hazard_of_mortality(dollar_c4,dollar_c2))) | (hazard_of_mortality(dollar_c4,dollar_c2) != hazard_of_mortality(dollar_c4,dollar_c3))), file('MGT057+1.p',unknown), []).
 fof(20, plain, (~ (greater(hazard_of_mortality(dollar_c4,dollar_c1),hazard_of_mortality(dollar_c4,dollar_c2))) | (hazard_of_mortality(dollar_c4,dollar_c3) != hazard_of_mortality(dollar_c4,dollar_c2))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[19])]), [iquote('copy,19,flip.2')]).
 fof(21, plain, (! [A]: (~ (greater(A,A)))), inference(factor,[status(thm)],[9]), [iquote('factor,9.1.2')]).
 fof(23, axiom, (! [A]: ((A = A))), file('MGT057+1.p',unknown), []).
 fof(24, axiom, (! [A,B]: ((smaller(A,B) | ((A = B) | greater(A,B))))), file('MGT057+1.p',unknown), []).
 fof(25, axiom, organization(dollar_c4), file('MGT057+1.p',unknown), []).
-fof(26, axiom, has_endowment(dollar_c4), file('MGT057+1.p',unknown), []).
+fof(26, axiom, has_endowment(eta), file('MGT057+1.p',unknown), []).
 fof(27, axiom, (age(dollar_c4,dollar_c3) = zero), file('MGT057+1.p',unknown), []).
 fof(29, axiom, smaller_or_e_qual(age(dollar_c4,dollar_c2),eta), file('MGT057+1.p',unknown), []).
 fof(30, axiom, greater(age(dollar_c4,dollar_c1),eta), file('MGT057+1.p',unknown), []).

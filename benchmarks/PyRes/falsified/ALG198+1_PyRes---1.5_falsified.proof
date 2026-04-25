@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c10':
-%%%%%   Replaced (op(e0,e0) = e0)
-%%%%%   With (op(e1,e0) = e0)
+%%%%% Mutated formula 'c3':
+%%%%%   Replaced (op(e0,e0) != e0)
+%%%%%   With ~ ((op(e0,e0) != e0))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : ALG198+1 : TPTP v8.1.2. Released v2.7.0.
@@ -39,6 +39,6 @@
 fof(co1, conjecture, ~ (((op(e0,e0) != e0) & ((op(e1,e1) != e1) & ((op(e2,e2) != e2) & ((op(e3,e3) != e3) & ((op(e4,e4) != e4) & ((op(e5,e5) != e5) & ((op(e6,e6) != e6) & ((op(e0,e0) = e0) & ((op(e1,e1) = e1) & ((op(e2,e2) = e2) & ((op(e3,e3) = e3) & ((op(e4,e4) = e4) & ((op(e5,e5) = e5) & (op(e6,e6) = e6))))))))))))))), file('ALG198+1.p',co1)).
 fof(c1, negated_conjecture, ~ (~ (((op(e0,e0) != e0) & ((op(e1,e1) != e1) & ((op(e2,e2) != e2) & ((op(e3,e3) != e3) & ((op(e4,e4) != e4) & ((op(e5,e5) != e5) & ((op(e6,e6) != e6) & ((op(e0,e0) = e0) & ((op(e1,e1) = e1) & ((op(e2,e2) = e2) & ((op(e3,e3) = e3) & ((op(e4,e4) = e4) & ((op(e5,e5) = e5) & (op(e6,e6) = e6)))))))))))))))), inference(assume_negation,[status(cth)],[co1])).
 fof(c2, negated_conjecture, ((op(e0,e0) != e0) & ((op(e1,e1) != e1) & ((op(e2,e2) != e2) & ((op(e3,e3) != e3) & ((op(e4,e4) != e4) & ((op(e5,e5) != e5) & ((op(e6,e6) != e6) & ((op(e0,e0) = e0) & ((op(e1,e1) = e1) & ((op(e2,e2) = e2) & ((op(e3,e3) = e3) & ((op(e4,e4) = e4) & ((op(e5,e5) = e5) & (op(e6,e6) = e6)))))))))))))), inference(fof_nnf,[status(thm)],[c1])).
-fof(c3, negated_conjecture, (op(e0,e0) != e0), inference(split_conjunct,[status(thm)],[c2])).
-fof(c10, negated_conjecture, (op(e1,e0) = e0), inference(split_conjunct,[status(thm)],[c2])).
+fof(c3, negated_conjecture, ~ ((op(e0,e0) != e0)), inference(split_conjunct,[status(thm)],[c2])).
+fof(c10, negated_conjecture, (op(e0,e0) = e0), inference(split_conjunct,[status(thm)],[c2])).
 fof(c542, plain, $false, inference(resolution,[status(thm)],[c10,c3])).

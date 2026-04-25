@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '5':
-%%%%%   Replaced (! [A,B]: ((~ (group_member(A,f)) | (~ (group_member(B,f)) | (phi(multiply(f,A,B)) = multiply(h,phi(A),phi(B)))))))
-%%%%%   With (! [A,B]: ((~ (group_member(A,f_left_zero)) | (~ (group_member(B,f)) | (phi(multiply(f,A,B)) = multiply(h,phi(A),phi(B)))))))
+%%%%% Mutated formula '7':
+%%%%%   Replaced (! [A]: ((~ (group_member(A,h)) | (phi(dollar_f1(A)) = A))))
+%%%%%   With (! [A]: ((~ (group_member(A,f)) | (phi(dollar_f1(A)) = A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GRP194+1 : TPTP v8.1.0. Released v2.0.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:13:32 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, (! [A]: ((~ (group_member(A,f)) | group_member(phi(A),h)))), file('GRP194+1.p',unknown), []).
 fof(4, axiom, (! [A,B]: ((~ (group_member(A,f)) | (~ (group_member(B,f)) | (multiply(h,phi(A),phi(B)) = phi(multiply(f,A,B))))))), file('GRP194+1.p',unknown), []).
-fof(5, plain, (! [A,B]: ((~ (group_member(A,f_left_zero)) | (~ (group_member(B,f)) | (phi(multiply(f,A,B)) = multiply(h,phi(A),phi(B))))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[4])]), [iquote('copy,4,flip.3')]).
+fof(5, plain, (! [A,B]: ((~ (group_member(A,f)) | (~ (group_member(B,f)) | (phi(multiply(f,A,B)) = multiply(h,phi(A),phi(B))))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[4])]), [iquote('copy,4,flip.3')]).
 fof(6, axiom, (! [A]: ((~ (group_member(A,h)) | group_member(dollar_f1(A),f)))), file('GRP194+1.p',unknown), []).
-fof(7, axiom, (! [A]: ((~ (group_member(A,h)) | (phi(dollar_f1(A)) = A)))), file('GRP194+1.p',unknown), []).
+fof(7, axiom, (! [A]: ((~ (group_member(A,f)) | (phi(dollar_f1(A)) = A)))), file('GRP194+1.p',unknown), []).
 fof(8, axiom, (! [A,B]: ((~ (left_zero(A,B)) | group_member(B,A)))), file('GRP194+1.p',unknown), []).
 fof(9, axiom, (! [A,B,C]: ((~ (left_zero(A,B)) | (~ (group_member(C,A)) | (multiply(A,B,C) = B))))), file('GRP194+1.p',unknown), []).
 fof(10, axiom, (! [A,B]: ((left_zero(A,B) | (~ (group_member(B,A)) | group_member(dollar_f2(A,B),A))))), file('GRP194+1.p',unknown), []).

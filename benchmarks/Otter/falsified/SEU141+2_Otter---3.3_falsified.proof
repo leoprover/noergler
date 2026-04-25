@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '148':
-%%%%%   Replaced (empty_set = dollar_c1)
-%%%%%   With (dollar_c3 = dollar_c1)
+%%%%% Mutated formula '166':
+%%%%%   Replaced (! [A]: (subset(dollar_c1,A)))
+%%%%%   With (! [A]: (~ (subset(dollar_c1,A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU141+2 : TPTP v8.1.0. Released v3.3.0.
@@ -52,8 +52,8 @@ fof(104, axiom, (! [A,B]: ((set_difference(A,set_difference(A,B)) = set_intersec
 fof(106, plain, (! [A,B]: ((set_intersection2(A,B) = set_difference(A,set_difference(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[104])]), [iquote('copy,104,flip.1')]).
 fof(112, axiom, (disjoint(dollar_c4,dollar_c3) | (set_difference(dollar_c4,dollar_c3) = dollar_c4)), file('SEU141+2.p',unknown), []).
 fof(129, plain, (! [A,B,C]: ((~ (in(A,set_difference(B,set_difference(B,C)))) | ~ (disjoint(B,C))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[46]),106]), [iquote('back_demod,46,demod,106')]).
-fof(148, plain, (dollar_c3 = dollar_c1), inference(hyper,[status(thm)],[86,52,81]), [iquote('hyper,86,52,81')]).
-fof(166, plain, (! [A]: (subset(dollar_c1,A))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[94]),148]), [iquote('back_demod,94,demod,148')]).
+fof(148, plain, (empty_set = dollar_c1), inference(hyper,[status(thm)],[86,52,81]), [iquote('hyper,86,52,81')]).
+fof(166, plain, (! [A]: (~ (subset(dollar_c1,A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[94]),148]), [iquote('back_demod,94,demod,148')]).
 fof(168, plain, (! [A]: ((set_union2(A,dollar_c1) = A))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[89]),148]), [iquote('back_demod,89,demod,148')]).
 fof(169, plain, (! [A]: (((A = dollar_c1) | in(dollar_f1(A),A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[75]),148]), [iquote('back_demod,75,demod,148')]).
 fof(199, plain, (! [A]: ((set_union2(dollar_c1,A) = A))), inference(hyper,[status(thm)],[166,35]), [iquote('hyper,166,35')]).

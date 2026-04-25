@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '135':
-%%%%%   Replaced human_person(dollar_c12,dollar_c11)
-%%%%%   With ~ (human_person(dollar_c12,dollar_c11))
+%%%%% Mutated formula '586':
+%%%%%   Replaced organism(dollar_c12,dollar_c11)
+%%%%%   With ~ (organism(dollar_c12,dollar_c11))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NLP204+1 : TPTP v8.1.0. Released v2.4.0.
@@ -46,9 +46,9 @@ fof(78, axiom, (! [A,B,C,D]: ((~ (be(A,B,C,D)) | (C = D)))), file('NLP204+1.p',u
 fof(100, axiom, man(dollar_c12,dollar_c11), file('NLP204+1.p',unknown), []).
 fof(123, axiom, wheel(dollar_c12,dollar_c1), file('NLP204+1.p',unknown), []).
 fof(125, axiom, be(dollar_c12,dollar_c2,dollar_c11,dollar_c1), file('NLP204+1.p',unknown), []).
-fof(135, plain, ~ (human_person(dollar_c12,dollar_c11)), inference(hyper,[status(thm)],[100,31]), [iquote('hyper,100,31')]).
+fof(135, plain, human_person(dollar_c12,dollar_c11), inference(hyper,[status(thm)],[100,31]), [iquote('hyper,100,31')]).
 fof(527, plain, device(dollar_c12,dollar_c1), inference(hyper,[status(thm)],[123,48]), [iquote('hyper,123,48')]).
-fof(586, plain, organism(dollar_c12,dollar_c11), inference(hyper,[status(thm)],[135,30]), [iquote('hyper,135,30')]).
+fof(586, plain, ~ (organism(dollar_c12,dollar_c11)), inference(hyper,[status(thm)],[135,30]), [iquote('hyper,135,30')]).
 fof(731, plain, (dollar_c11 = dollar_c1), inference(hyper,[status(thm)],[125,78]), [iquote('hyper,125,78')]).
 fof(766, plain, organism(dollar_c12,dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[586]),731]), [iquote('back_demod,586,demod,731')]).
 fof(907, plain, instrumentality(dollar_c12,dollar_c1), inference(hyper,[status(thm)],[527,47]), [iquote('hyper,527,47')]).

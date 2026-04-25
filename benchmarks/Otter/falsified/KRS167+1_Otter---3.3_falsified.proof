@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '75':
-%%%%%   Replaced (rp(dollar_c3,dollar_f4(dollar_c3)) | (cc2(dollar_c3) | rp(dollar_c3,dollar_f6(dollar_c3))))
-%%%%%   With (rp(dollar_c2,dollar_f4(dollar_c3)) | (cc2(dollar_c3) | rp(dollar_c3,dollar_f6(dollar_c3))))
+%%%%% Mutated formula '1038':
+%%%%%   Replaced (dollar_f5(dollar_c3) = dollar_f3(dollar_c3))
+%%%%%   With (dollar_f5(dollar_c1) = dollar_f3(dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS167+1 : TPTP v8.1.0. Released v3.1.0.
@@ -64,7 +64,7 @@ fof(61, plain, (rp(dollar_c3,dollar_f4(dollar_c3)) | rp(dollar_c3,dollar_f1(doll
 fof(72, plain, (rp(dollar_c3,dollar_f1(dollar_c3)) | (cc1(dollar_c3) | rp(dollar_c3,dollar_f2(dollar_c3)))), inference(hyper,[status(thm)],[61,14]), [iquote('hyper,61,14')]).
 fof(73, plain, (rp(dollar_c3,dollar_f1(dollar_c3)) | (cc1(dollar_c3) | rp(dollar_c3,dollar_f3(dollar_c3)))), inference(hyper,[status(thm)],[61,13]), [iquote('hyper,61,13')]).
 fof(74, plain, (rp(dollar_c3,dollar_f4(dollar_c3)) | (cc2(dollar_c3) | rp(dollar_c3,dollar_f5(dollar_c3)))), inference(hyper,[status(thm)],[61,19]), [iquote('hyper,61,19')]).
-fof(75, plain, (rp(dollar_c2,dollar_f4(dollar_c3)) | (cc2(dollar_c3) | rp(dollar_c3,dollar_f6(dollar_c3)))), inference(hyper,[status(thm)],[61,18]), [iquote('hyper,61,18')]).
+fof(75, plain, (rp(dollar_c3,dollar_f4(dollar_c3)) | (cc2(dollar_c3) | rp(dollar_c3,dollar_f6(dollar_c3)))), inference(hyper,[status(thm)],[61,18]), [iquote('hyper,61,18')]).
 fof(172, plain, (rp(dollar_c3,dollar_f1(dollar_c3)) | rp(dollar_c3,dollar_f2(dollar_c3))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[72,11])]), [iquote('hyper,72,11,factor_simp')]).
 fof(175, plain, (rp(dollar_c3,dollar_f2(dollar_c3)) | cc1(dollar_c3)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[172,14])]), [iquote('hyper,172,14,factor_simp')]).
 fof(231, plain, (rp(dollar_c3,dollar_f1(dollar_c3)) | rp(dollar_c3,dollar_f3(dollar_c3))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[73,11])]), [iquote('hyper,73,11,factor_simp')]).
@@ -104,7 +104,7 @@ fof(985, plain, (rp(dollar_c3,dollar_f3(dollar_c3)) | xsd_string(dollar_c2)), in
 fof(994, plain, rp(dollar_c3,dollar_f3(dollar_c3)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[985,10,976])]), [iquote('hyper,985,10,976,factor_simp')]).
 fof(1021, plain, ((dollar_f4(dollar_c3) = dollar_f3(dollar_c3)) | cc1(dollar_c3)), inference(hyper,[status(thm)],[994,17,42,421]), [iquote('hyper,994,17,42,421')]).
 fof(1034, plain, (dollar_f4(dollar_c3) = dollar_f3(dollar_c3)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[1021,12,994,421])]), [iquote('hyper,1021,12,994,421,factor_simp')]).
-fof(1038, plain, (dollar_f5(dollar_c3) = dollar_f3(dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[820]),1034]), [iquote('back_demod,819,demod,1034')]).
+fof(1038, plain, (dollar_f5(dollar_c1) = dollar_f3(dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[820]),1034]), [iquote('back_demod,819,demod,1034')]).
 fof(1058, plain, (rp(dollar_c3,dollar_f6(dollar_c3)) | rp(dollar_c3,dollar_f2(dollar_c3))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[524,10,378])])]), [iquote('hyper,524,10,378,factor_simp,factor_simp')]).
 fof(1059, plain, (rp(dollar_c3,dollar_f2(dollar_c3)) | (dollar_f6(dollar_c3) = dollar_f3(dollar_c3))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[1058,12,175,994])]), [iquote('hyper,1058,12,175,994,factor_simp')]).
 fof(1089, plain, (! [A]: ((cc2(dollar_c3) | (~ (rp(dollar_c3,A)) | rp(dollar_c3,dollar_f2(dollar_c3)))))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[1059,20]),1038]),31]), [iquote('para_from,1059.2.1,20.3.1,demod,1038,unit_del,31')]).

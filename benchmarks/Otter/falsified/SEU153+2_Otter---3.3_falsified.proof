@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '115':
-%%%%%   Replaced disjoint(singleton(dollar_c2),dollar_c1)
-%%%%%   With disjoint(singleton(dollar_c1),dollar_c1)
+%%%%% Mutated formula '190':
+%%%%%   Replaced (! [A,B]: (in(A,unordered_pair(B,A))))
+%%%%%   With (! [A,B]: (~ (in(A,unordered_pair(B,A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU153+2 : TPTP v8.1.0. Released v3.3.0.
@@ -36,10 +36,10 @@
 fof(15, axiom, (! [A,B,C,D]: (((A != unordered_pair(B,C)) | (in(D,A) | (D != C))))), file('SEU153+2.p',unknown), []).
 fof(61, axiom, (! [A,B,C]: ((~ (in(A,B)) | (~ (in(A,C)) | ~ (disjoint(B,C)))))), file('SEU153+2.p',unknown), []).
 fof(97, axiom, (! [A]: ((A = A))), file('SEU153+2.p',unknown), []).
-fof(115, axiom, disjoint(singleton(dollar_c1),dollar_c1), file('SEU153+2.p',unknown), []).
+fof(115, axiom, disjoint(singleton(dollar_c2),dollar_c1), file('SEU153+2.p',unknown), []).
 fof(116, axiom, in(dollar_c2,dollar_c1), file('SEU153+2.p',unknown), []).
 fof(145, axiom, (! [A]: ((unordered_pair(A,A) = singleton(A)))), file('SEU153+2.p',unknown), []).
 fof(147, plain, (! [A]: ((singleton(A) = unordered_pair(A,A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[145])]), [iquote('copy,145,flip.1')]).
 fof(177, plain, disjoint(unordered_pair(dollar_c2,dollar_c2),dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[115]),147]), [iquote('back_demod,115,demod,147')]).
-fof(190, plain, (! [A,B]: (in(A,unordered_pair(B,A)))), inference(hyper,[status(thm)],[97,15,97]), [iquote('hyper,97,15,97')]).
+fof(190, plain, (! [A,B]: (~ (in(A,unordered_pair(B,A))))), inference(hyper,[status(thm)],[97,15,97]), [iquote('hyper,97,15,97')]).
 fof(843, plain, $false, inference(hyper,[status(thm)],[190,61,116,177]), [iquote('hyper,190,61,116,177')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c19':
-%%%%%   Replaced ((relation_dom(skolem0001) = empty_set) | (relation_rng(skolem0001) = empty_set))
-%%%%%   With ((relation_dom(empty_set) = empty_set) | (relation_rng(skolem0001) = empty_set))
+%%%%% Mutated formula 'c6':
+%%%%%   Replaced (! [A]: ((~ (relation(A)) | (((relation_dom(A) != empty_set) & (relation_rng(A) != empty_set)) | (A = empty_set)))))
+%%%%%   With (! [A]: ((~ (relation(A)) & (((relation_dom(A) != empty_set) & (relation_rng(A) != empty_set)) | (A = empty_set)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SEU189+1 : TPTP v8.1.2. Released v3.3.0.
@@ -56,12 +56,12 @@ fof(c15, negated_conjecture, (? [X3]: ((relation(X3) & (((relation_dom(X3) != em
 fof(c16, negated_conjecture, (relation(skolem0001) & (((relation_dom(skolem0001) != empty_set) | (relation_rng(skolem0001) != empty_set)) & ((relation_dom(skolem0001) = empty_set) | (relation_rng(skolem0001) = empty_set)))), inference(skolemize,[status(esa)],[c15])).
 fof(c17, negated_conjecture, relation(skolem0001), inference(split_conjunct,[status(thm)],[c16])).
 fof(t64_relat_1, axiom, (! [A]: ((relation(A) => (((relation_dom(A) = empty_set) | (relation_rng(A) = empty_set)) => (A = empty_set))))), file('SEU189+1.p',t64_relat_1)).
-fof(c6, plain, (! [A]: ((~ (relation(A)) | (((relation_dom(A) != empty_set) & (relation_rng(A) != empty_set)) | (A = empty_set))))), inference(fof_nnf,[status(thm)],[t64_relat_1])).
+fof(c6, plain, (! [A]: ((~ (relation(A)) & (((relation_dom(A) != empty_set) & (relation_rng(A) != empty_set)) | (A = empty_set))))), inference(fof_nnf,[status(thm)],[t64_relat_1])).
 fof(c7, plain, (! [X2]: ((~ (relation(X2)) | (((relation_dom(X2) != empty_set) & (relation_rng(X2) != empty_set)) | (X2 = empty_set))))), inference(variable_rename,[status(thm)],[c6])).
 fof(c8, plain, (! [X2]: (((~ (relation(X2)) | ((relation_dom(X2) != empty_set) | (X2 = empty_set))) & (~ (relation(X2)) | ((relation_rng(X2) != empty_set) | (X2 = empty_set)))))), inference(distribute,[status(thm)],[c7])).
 fof(c10, plain, (! [X60]: ((~ (relation(X60)) | ((relation_rng(X60) != empty_set) | (X60 = empty_set))))), inference(split_conjunct,[status(thm)],[c8])).
 fof(c9, plain, (! [X58]: ((~ (relation(X58)) | ((relation_dom(X58) != empty_set) | (X58 = empty_set))))), inference(split_conjunct,[status(thm)],[c8])).
-fof(c19, negated_conjecture, ((relation_dom(empty_set) = empty_set) | (relation_rng(skolem0001) = empty_set)), inference(split_conjunct,[status(thm)],[c16])).
+fof(c19, negated_conjecture, ((relation_dom(skolem0001) = empty_set) | (relation_rng(skolem0001) = empty_set)), inference(split_conjunct,[status(thm)],[c16])).
 fof(c189, plain, ((relation_rng(skolem0001) = empty_set) | (~ (relation(skolem0001)) | (skolem0001 = empty_set))), inference(resolution,[status(thm)],[c19,c9])).
 fof(c739, plain, ((relation_rng(skolem0001) = empty_set) | (skolem0001 = empty_set)), inference(resolution,[status(thm)],[c189,c17])).
 fof(c5373, plain, ((skolem0001 = empty_set) | ~ (relation(skolem0001))), inference(resolution,[status(thm)],[c739,c10])).

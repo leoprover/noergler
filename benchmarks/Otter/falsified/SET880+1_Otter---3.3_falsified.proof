@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '25':
-%%%%%   Replaced in(dollar_c4,singleton(dollar_c3))
-%%%%%   With ~ (in(dollar_c4,singleton(dollar_c3)))
+%%%%% Mutated formula '14':
+%%%%%   Replaced (set_difference(singleton(dollar_c4),singleton(dollar_c3)) = empty_set)
+%%%%%   With ~ ((set_difference(singleton(dollar_c4),singleton(dollar_c3)) = empty_set))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET880+1 : TPTP v8.1.0. Released v3.2.0.
@@ -37,7 +37,7 @@ fof(2, axiom, (! [A,B,C]: (((A != singleton(B)) | (~ (in(C,A)) | (C = B))))), fi
 fof(5, axiom, (! [A,B]: (((set_difference(singleton(A),B) != empty_set) | in(A,B)))), file('SET880+1.p',unknown), []).
 fof(8, axiom, (dollar_c4 != dollar_c3), file('SET880+1.p',unknown), []).
 fof(10, axiom, (! [A]: ((A = A))), file('SET880+1.p',unknown), []).
-fof(14, axiom, (set_difference(singleton(dollar_c4),singleton(dollar_c3)) = empty_set), file('SET880+1.p',unknown), []).
-fof(25, plain, ~ (in(dollar_c4,singleton(dollar_c3))), inference(hyper,[status(thm)],[14,5]), [iquote('hyper,14,5')]).
+fof(14, axiom, ~ ((set_difference(singleton(dollar_c4),singleton(dollar_c3)) = empty_set)), file('SET880+1.p',unknown), []).
+fof(25, plain, in(dollar_c4,singleton(dollar_c3)), inference(hyper,[status(thm)],[14,5]), [iquote('hyper,14,5')]).
 fof(61, plain, (dollar_c4 = dollar_c3), inference(hyper,[status(thm)],[25,2,10]), [iquote('hyper,25,2,10')]).
 fof(63, plain, $false, inference(binary,[status(thm)],[61,8]), [iquote('binary,61.1,8.1')]).

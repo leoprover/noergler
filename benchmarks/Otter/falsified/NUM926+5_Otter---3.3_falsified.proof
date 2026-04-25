@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '163':
-%%%%%   Replaced (plus_plus(nat,one_one(nat),one_one(nat)) = number_number_of(nat,bit0(bit1(pls))))
-%%%%%   With ~ ((plus_plus(nat,one_one(nat),one_one(nat)) = number_number_of(nat,bit0(bit1(pls)))))
+%%%%% Mutated formula '217':
+%%%%%   Replaced ~ (ord_less(int,one_one(int),t))
+%%%%%   With ord_less(int,one_one(int),t)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM926+5 : TPTP v8.1.0. Released v5.3.0.
@@ -41,12 +41,12 @@ fof(40, axiom, (! [A,B]: ((ord_less(int,A,B) | (~ (ord_less_e_q(int,A,B)) | (A =
 fof(115, axiom, (! [A,B]: ((plus_plus(int,power_power(int,A,number_number_of(nat,bit0(bit1(pls)))),power_power(int,B,number_number_of(nat,bit0(bit1(pls))))) != plus_plus(int,times_times(int,number_number_of(int,bit0(bit0(bit1(pls)))),m),one_one(int))))), file('NUM926+5.p',unknown), []).
 fof(118, plain, (! [A,B]: ((plus_plus(int,times_times(int,number_number_of(int,bit0(bit0(bit1(pls)))),m),one_one(int)) != plus_plus(int,power_power(int,A,number_number_of(nat,bit0(bit1(pls)))),power_power(int,B,number_number_of(nat,bit0(bit1(pls)))))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[115])]), [iquote('copy,115,flip.1')]).
 fof(138, axiom, ord_less_e_q(int,one_one(int),t), file('NUM926+5.p',unknown), []).
-fof(163, axiom, ~ ((plus_plus(nat,one_one(nat),one_one(nat)) = number_number_of(nat,bit0(bit1(pls))))), file('NUM926+5.p',unknown), []).
+fof(163, axiom, (plus_plus(nat,one_one(nat),one_one(nat)) = number_number_of(nat,bit0(bit1(pls)))), file('NUM926+5.p',unknown), []).
 fof(167, axiom, (number_number_of(nat,bit1(pls)) = one_one(nat)), file('NUM926+5.p',unknown), []).
 fof(169, plain, (one_one(nat) = number_number_of(nat,bit1(pls))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[167])]), [iquote('copy,167,flip.1')]).
 fof(175, axiom, (! [A]: ((number_number_of(int,A) = A))), file('NUM926+5.p',unknown), []).
 fof(203, plain, (number_number_of(nat,bit0(bit1(pls))) = plus_plus(nat,number_number_of(nat,bit1(pls)),number_number_of(nat,bit1(pls)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[163]),169,169])]), [iquote('back_demod,163,demod,169,169,flip.1')]).
 fof(215, plain, (! [A,B]: ((plus_plus(int,times_times(int,bit0(bit0(bit1(pls))),m),one_one(int)) != plus_plus(int,power_power(int,A,plus_plus(nat,number_number_of(nat,bit1(pls)),number_number_of(nat,bit1(pls)))),power_power(int,B,plus_plus(nat,number_number_of(nat,bit1(pls)),number_number_of(nat,bit1(pls)))))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[118]),175,203,203]), [iquote('back_demod,118,demod,175,203,203')]).
-fof(217, plain, ~ (ord_less(int,one_one(int),t)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[28]),175,203,203]),215]), [iquote('back_demod,28,demod,175,203,203,unit_del,215')]).
+fof(217, plain, ord_less(int,one_one(int),t), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[28]),175,203,203]),215]), [iquote('back_demod,28,demod,175,203,203,unit_del,215')]).
 fof(218, plain, (one_one(int) != t), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[26]),175,203,203]),215]), [iquote('back_demod,26,demod,175,203,203,unit_del,215')]).
 fof(231, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[138,40]),217,218]), [iquote('hyper,138,40,unit_del,217,218')]).

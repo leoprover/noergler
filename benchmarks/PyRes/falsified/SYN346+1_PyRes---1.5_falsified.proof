@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c10':
-%%%%%   Replaced (! [X13]: (~ (big_f(X13,skolem0002(X13,X13)))))
-%%%%%   With (! [X13]: (big_f(X13,skolem0002(X13,X13))))
+%%%%% Mutated formula 'c6':
+%%%%%   Replaced (! [X9,X10]: (big_f(skolem0001,skolem0002(X9,X10))))
+%%%%%   With (! [X9,X10]: (~ (big_f(skolem0001,skolem0002(X9,X10)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN346+1 : TPTP v8.1.2. Released v2.0.0.
@@ -43,7 +43,7 @@ fof(c2, negated_conjecture, (? [X2]: ((! [Y1,Y2]: ((? [Z1,Z2]: ((big_f(X2,Z1) & 
 fof(c3, negated_conjecture, (? [X2]: ((! [Y1,Y2]: ((? [Z1]: ((big_f(X2,Z1) & (? [Z2]: ((big_f(Y1,Z2) & ((~ (big_f(Y1,Z1)) | ~ (big_f(Y2,Z1))) & (~ (big_f(X2,Z2)) | ~ (big_f(Y2,Z2)))))))))))))), inference(shift_quantors,[status(thm)],[c2])).
 fof(c4, negated_conjecture, (? [X2]: ((! [X3,X4]: ((? [X5]: ((big_f(X2,X5) & (? [X6]: ((big_f(X3,X6) & ((~ (big_f(X3,X5)) | ~ (big_f(X4,X5))) & (~ (big_f(X2,X6)) | ~ (big_f(X4,X6)))))))))))))), inference(variable_rename,[status(thm)],[c3])).
 fof(c5, negated_conjecture, (! [X3,X4]: ((big_f(skolem0001,skolem0002(X3,X4)) & (big_f(X3,skolem0003(X3,X4)) & ((~ (big_f(X3,skolem0002(X3,X4))) | ~ (big_f(X4,skolem0002(X3,X4)))) & (~ (big_f(skolem0001,skolem0003(X3,X4))) | ~ (big_f(X4,skolem0003(X3,X4))))))))), inference(skolemize,[status(esa)],[c4])).
-fof(c6, negated_conjecture, (! [X9,X10]: (big_f(skolem0001,skolem0002(X9,X10)))), inference(split_conjunct,[status(thm)],[c5])).
+fof(c6, negated_conjecture, (! [X9,X10]: (~ (big_f(skolem0001,skolem0002(X9,X10))))), inference(split_conjunct,[status(thm)],[c5])).
 fof(c8, negated_conjecture, (! [X11,X12]: ((~ (big_f(X11,skolem0002(X11,X12))) | ~ (big_f(X12,skolem0002(X11,X12)))))), inference(split_conjunct,[status(thm)],[c5])).
-fof(c10, plain, (! [X13]: (big_f(X13,skolem0002(X13,X13)))), inference(factor,[status(thm)],[c8])).
+fof(c10, plain, (! [X13]: (~ (big_f(X13,skolem0002(X13,X13))))), inference(factor,[status(thm)],[c8])).
 fof(c12, plain, $false, inference(resolution,[status(thm)],[c10,c6])).

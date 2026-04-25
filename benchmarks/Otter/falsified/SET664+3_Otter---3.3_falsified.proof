@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '596':
-%%%%%   Replaced (range(dollar_c3,dollar_c4,dollar_c2) = empty_set)
-%%%%%   With (range(dollar_c2,dollar_c4,dollar_c2) = empty_set)
+%%%%% Mutated formula '98':
+%%%%%   Replaced ilf_type(dollar_c2,relation_type(dollar_c3,dollar_c4))
+%%%%%   With ~ (ilf_type(dollar_c2,relation_type(dollar_c3,dollar_c4)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET664+3 : TPTP v8.1.0. Released v2.2.0.
@@ -43,14 +43,14 @@ fof(55, axiom, (! [A,B,C]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,set_type)
 fof(57, axiom, (dollar_c2 != empty_set), file('SET664+3.p',unknown), []).
 fof(58, plain, (empty_set != dollar_c2), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[57])]), [iquote('copy,57,flip.1')]).
 fof(97, axiom, (! [A]: (ilf_type(A,set_type))), file('SET664+3.p',unknown), []).
-fof(98, axiom, ilf_type(dollar_c2,relation_type(dollar_c3,dollar_c4)), file('SET664+3.p',unknown), []).
+fof(98, axiom, ~ (ilf_type(dollar_c2,relation_type(dollar_c3,dollar_c4))), file('SET664+3.p',unknown), []).
 fof(99, axiom, ilf_type(dollar_c2,relation_type(dollar_c3,empty_set)), file('SET664+3.p',unknown), []).
 fof(141, plain, (range_of(dollar_c2) = range(dollar_c3,dollar_c4,dollar_c2)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[98,55,97,97])]), [iquote('hyper,98,55,97,97,flip.1')]).
 fof(145, plain, ilf_type(dollar_c2,subset_type(cross_product(dollar_c3,dollar_c4))), inference(hyper,[status(thm)],[98,8,97,97]), [iquote('hyper,98,8,97,97')]).
 fof(191, plain, subset(range(dollar_c3,dollar_c4,dollar_c2),empty_set), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[99,5,97,97]),141]), [iquote('hyper,99,5,97,97,demod,141')]).
 fof(299, plain, relation_like(dollar_c2), inference(hyper,[status(thm)],[145,52,97,97]), [iquote('hyper,145,52,97,97')]).
 fof(405, plain, ilf_type(dollar_c2,binary_relation_type), inference(hyper,[status(thm)],[299,21,97]), [iquote('hyper,299,21,97')]).
-fof(596, plain, (range(dollar_c2,dollar_c4,dollar_c2) = empty_set), inference(hyper,[status(thm)],[191,1,97]), [iquote('hyper,191,1,97')]).
+fof(596, plain, (range(dollar_c3,dollar_c4,dollar_c2) = empty_set), inference(hyper,[status(thm)],[191,1,97]), [iquote('hyper,191,1,97')]).
 fof(606, plain, (range_of(dollar_c2) = empty_set), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[141]),596]), [iquote('back_demod,140,demod,596')]).
 fof(647, plain, (empty_set = dollar_c2), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[606,3,405])]), [iquote('hyper,606,3,405,flip.1')]).
 fof(649, plain, $false, inference(binary,[status(thm)],[647,58]), [iquote('binary,647.1,58.1')]).

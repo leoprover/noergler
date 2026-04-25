@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '14':
-%%%%%   Replaced ((mult(dollar_c3,dollar_c2) = mult(dollar_c3,dollar_c1)) | (mult(dollar_c2,dollar_c3) = mult(dollar_c1,dollar_c3)))
-%%%%%   With (~ ((mult(dollar_c3,dollar_c2) = mult(dollar_c3,dollar_c1))) | (mult(dollar_c2,dollar_c3) = mult(dollar_c1,dollar_c3)))
+%%%%% Mutated formula '59':
+%%%%%   Replaced (! [A]: ((mult(i(A),i(mult(i(A),i(A)))) = A)))
+%%%%%   With (! [A]: (~ ((mult(i(A),i(mult(i(A),i(A)))) = A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GRP711+1 : TPTP v8.1.0. Released v4.0.0.
@@ -40,7 +40,7 @@ fof(7, axiom, (! [A,B,C]: ((mult(A,mult(B,mult(B,C))) = mult(mult(mult(A,B),B),C
 fof(9, plain, (! [A,B,C]: ((mult(mult(mult(A,B),B),C) = mult(A,mult(B,mult(B,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[7])]), [iquote('copy,7,flip.1')]).
 fof(11, axiom, (! [A]: ((mult(A,i(A)) = unit))), file('GRP711+1.p',unknown), []).
 fof(12, axiom, (! [A]: ((mult(i(A),A) = unit))), file('GRP711+1.p',unknown), []).
-fof(14, axiom, (~ ((mult(dollar_c3,dollar_c2) = mult(dollar_c3,dollar_c1))) | (mult(dollar_c2,dollar_c3) = mult(dollar_c1,dollar_c3))), file('GRP711+1.p',unknown), []).
+fof(14, axiom, ((mult(dollar_c3,dollar_c2) = mult(dollar_c3,dollar_c1)) | (mult(dollar_c2,dollar_c3) = mult(dollar_c1,dollar_c3))), file('GRP711+1.p',unknown), []).
 fof(17, plain, (! [A,B]: ((mult(A,mult(i(A),mult(i(A),B))) = mult(i(A),B)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[9,11]),6])]), [iquote('para_into,8.1.1.1.1,10.1.1,demod,6,flip.1')]).
 fof(19, plain, (! [A,B,C,D]: ((mult(mult(mult(A,mult(B,mult(B,C))),C),D) = mult(A,mult(B,mult(B,mult(C,mult(C,D)))))))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[9,9]),9]), [iquote('para_into,8.1.1.1.1,8.1.1,demod,9')]).
 fof(22, plain, (! [A,B]: ((mult(mult(A,A),B) = mult(A,mult(A,B))))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[9,6]),6]), [iquote('para_into,8.1.1.1.1,5.1.1,demod,6')]).
@@ -51,7 +51,7 @@ fof(46, plain, (! [A]: ((mult(A,mult(i(A),i(A))) = i(A)))), inference(flip,[stat
 fof(53, plain, (! [A]: ((mult(A,mult(A,mult(i(mult(A,A)),i(mult(A,A))))) = i(mult(A,A))))), inference(para_into,[status(thm),theory(equality)],[46,22]), [iquote('para_into,45.1.1,21.1.1')]).
 fof(56, plain, (! [A]: ((i(i(A)) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[17,46]),11,4,46])]), [iquote('para_into,17.1.1.2.2,45.1.1,demod,11,4,46,flip.1')]).
 fof(58, plain, (! [A,B]: ((mult(i(A),mult(A,mult(A,B))) = mult(A,mult(i(A),mult(A,B)))))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[17,17]),56,56,56])]), [iquote('para_into,17.1.1.2.2,17.1.1,demod,56,56,56,flip.1')]).
-fof(59, plain, (! [A]: ((mult(i(A),i(mult(i(A),i(A)))) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[17,33]),4])]), [iquote('para_into,17.1.1.2,33.1.1,demod,4,flip.1')]).
+fof(59, plain, (! [A]: (~ ((mult(i(A),i(mult(i(A),i(A)))) = A)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[17,33]),4])]), [iquote('para_into,17.1.1.2,33.1.1,demod,4,flip.1')]).
 fof(66, plain, (! [A,B]: ((mult(A,mult(i(A),mult(A,B))) = mult(A,B)))), inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[56,17]),56,58,56]), [iquote('para_from,55.1.1,17.1.1.2.1,demod,56,58,56')]).
 fof(68, plain, (! [A,B]: ((mult(i(A),mult(A,mult(A,B))) = mult(A,B)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[58]),66]), [iquote('back_demod,57,demod,66')]).
 fof(81, plain, (! [A,B,C]: ((mult(mult(mult(A,i(B)),B),C) = mult(A,mult(i(B),mult(B,C)))))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[19,12]),4,68]), [iquote('para_into,19.1.1.1.1.2.2,12.1.1,demod,4,68')]).

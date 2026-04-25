@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '30':
-%%%%%   Replaced (! [A,B]: ((domain(multiplication(A,B)) = domain(multiplication(A,domain(B))))))
-%%%%%   With (! [A,B]: (~ ((domain(multiplication(A,B)) = domain(multiplication(A,domain(B)))))))
+%%%%% Mutated formula '23':
+%%%%%   Replaced (! [A,B,C]: ((multiplication(addition(A,B),C) = addition(multiplication(A,C),multiplication(B,C)))))
+%%%%%   With (! [A,B,C]: (~ ((multiplication(addition(A,B),C) = addition(multiplication(A,C),multiplication(B,C))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE072+1 : TPTP v8.1.0. Released v4.0.0.
@@ -35,8 +35,8 @@
 %%% Generated on Tue Apr 14 19:14:13 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, (domain(multiplication(addition(dollar_c3,dollar_c2),domain(dollar_c1))) != addition(domain(multiplication(dollar_c3,domain(dollar_c1))),domain(multiplication(dollar_c2,domain(dollar_c1))))), file('KLE072+1.p',unknown), []).
 fof(4, axiom, (! [A]: ((A = A))), file('KLE072+1.p',unknown), []).
-fof(23, axiom, (! [A,B,C]: ((multiplication(addition(A,B),C) = addition(multiplication(A,C),multiplication(B,C))))), file('KLE072+1.p',unknown), []).
-fof(30, axiom, (! [A,B]: (~ ((domain(multiplication(A,B)) = domain(multiplication(A,domain(B))))))), file('KLE072+1.p',unknown), []).
+fof(23, axiom, (! [A,B,C]: (~ ((multiplication(addition(A,B),C) = addition(multiplication(A,C),multiplication(B,C)))))), file('KLE072+1.p',unknown), []).
+fof(30, axiom, (! [A,B]: ((domain(multiplication(A,B)) = domain(multiplication(A,domain(B)))))), file('KLE072+1.p',unknown), []).
 fof(32, plain, (! [A,B]: ((domain(multiplication(A,domain(B))) = domain(multiplication(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[30])]), [iquote('copy,30,flip.1')]).
 fof(38, axiom, (! [A,B]: ((domain(addition(A,B)) = addition(domain(A),domain(B))))), file('KLE072+1.p',unknown), []).
 fof(39, plain, (addition(domain(multiplication(dollar_c3,dollar_c1)),domain(multiplication(dollar_c2,dollar_c1))) != addition(domain(multiplication(dollar_c3,dollar_c1)),domain(multiplication(dollar_c2,dollar_c1)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[3]),23,38,32,32,32,32]), [iquote('back_demod,3,demod,23,38,32,32,32,32')]).

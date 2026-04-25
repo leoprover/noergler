@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '18':
-%%%%%   Replaced exemplifies_property(conceivable,dollar_f2(god))
-%%%%%   With ~ (exemplifies_property(conceivable,dollar_f2(god)))
+%%%%% Mutated formula '16':
+%%%%%   Replaced object(god)
+%%%%%   With ~ (object(god))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PHI014+1 : TPTP v8.1.0. Released v7.2.0.
@@ -43,9 +43,9 @@ fof(11, axiom, (! [A]: ((~ (object(A)) | (~ (is_the(A,none_greater)) | (exemplif
 fof(12, axiom, (! [A]: ((~ (object(A)) | (~ (is_the(A,none_greater)) | (exemplifies_property(existence,A) | exemplifies_property(conceivable,dollar_f2(A))))))), file('PHI014+1.p',unknown), []).
 fof(13, axiom, ~ (exemplifies_property(existence,god)), file('PHI014+1.p',unknown), []).
 fof(15, axiom, is_the(god,none_greater), file('PHI014+1.p',unknown), []).
-fof(16, plain, object(god), inference(hyper,[status(thm)],[15,4]), [iquote('hyper,15,4')]).
+fof(16, plain, ~ (object(god)), inference(hyper,[status(thm)],[15,4]), [iquote('hyper,15,4')]).
 fof(17, plain, property(none_greater), inference(hyper,[status(thm)],[15,3]), [iquote('hyper,15,3')]).
-fof(18, plain, ~ (exemplifies_property(conceivable,dollar_f2(god))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[16,12,15]),13]), [iquote('hyper,16,12,15,unit_del,13')]).
+fof(18, plain, exemplifies_property(conceivable,dollar_f2(god)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[16,12,15]),13]), [iquote('hyper,16,12,15,unit_del,13')]).
 fof(19, plain, exemplifies_relation(greater_than,dollar_f2(god),god), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[16,11,15]),13]), [iquote('hyper,16,11,15,unit_del,13')]).
 fof(20, plain, object(dollar_f2(god)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[16,10,15]),13]), [iquote('hyper,16,10,15,unit_del,13')]).
 fof(21, plain, exemplifies_property(none_greater,god), inference(hyper,[status(thm)],[17,2,16,15]), [iquote('hyper,17,2,16,15')]).

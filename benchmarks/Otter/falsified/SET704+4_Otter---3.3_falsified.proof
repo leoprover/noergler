@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '35':
-%%%%%   Replaced (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A))))
-%%%%%   With (! [A,B]: ((~ (subset(A,B)) | member(dollar_f1(A,B),A))))
+%%%%% Mutated formula '979':
+%%%%%   Replaced member(dollar_f1(product(dollar_c2),dollar_c1),dollar_c1)
+%%%%%   With member(dollar_f1(product(dollar_c1),dollar_c1),dollar_c1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET704+4 : TPTP v8.1.0. Released v2.2.0.
@@ -36,9 +36,9 @@
 fof(2, axiom, (! [A,B]: ((subset(A,B) | ~ (member(dollar_f1(A,B),B))))), file('SET704+4.p',unknown), []).
 fof(26, axiom, (! [A,B,C]: ((~ (member(A,product(B))) | (~ (member(C,B)) | member(A,C))))), file('SET704+4.p',unknown), []).
 fof(28, axiom, ~ (subset(product(dollar_c2),dollar_c1)), file('SET704+4.p',unknown), []).
-fof(35, axiom, (! [A,B]: ((~ (subset(A,B)) | member(dollar_f1(A,B),A)))), file('SET704+4.p',unknown), []).
+fof(35, axiom, (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A)))), file('SET704+4.p',unknown), []).
 fof(37, axiom, member(dollar_c1,dollar_c2), file('SET704+4.p',unknown), []).
 fof(104, plain, member(dollar_f1(product(dollar_c2),dollar_c1),product(dollar_c2)), inference(hyper,[status(thm)],[35,28]), [iquote('hyper,35,28')]).
-fof(979, plain, member(dollar_f1(product(dollar_c2),dollar_c1),dollar_c1), inference(hyper,[status(thm)],[104,26,37]), [iquote('hyper,104,26,37')]).
+fof(979, plain, member(dollar_f1(product(dollar_c1),dollar_c1),dollar_c1), inference(hyper,[status(thm)],[104,26,37]), [iquote('hyper,104,26,37')]).
 fof(981, plain, subset(product(dollar_c2),dollar_c1), inference(hyper,[status(thm)],[979,2]), [iquote('hyper,979,2')]).
 fof(982, plain, $false, inference(binary,[status(thm)],[981,28]), [iquote('binary,981.1,28.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '15':
-%%%%%   Replaced (~ (distinct_lines(line_connecting(dollar_c3,dollar_c2),line_connecting(dollar_c1,dollar_c3))) | ~ (distinct_lines(line_connecting(dollar_c3,dollar_c2),line_connecting(dollar_c1,dollar_c2))))
-%%%%%   With (distinct_lines(line_connecting(dollar_c3,dollar_c2),line_connecting(dollar_c1,dollar_c3)) | ~ (distinct_lines(line_connecting(dollar_c3,dollar_c2),line_connecting(dollar_c1,dollar_c2))))
+%%%%% Mutated formula '17':
+%%%%%   Replaced apart_point_and_line(dollar_c1,line_connecting(dollar_c3,dollar_c2))
+%%%%%   With apart_point_and_line(dollar_c3,line_connecting(dollar_c3,dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO179+1 : TPTP v8.1.0. Released v3.3.0.
@@ -39,9 +39,9 @@ fof(7, axiom, (! [A,B]: ((~ (distinct_points(A,B)) | ~ (apart_point_and_line(A,l
 fof(8, axiom, (! [A,B]: ((~ (distinct_points(A,B)) | ~ (apart_point_and_line(B,line_connecting(A,B)))))), file('GEO179+1.p',unknown), []).
 fof(12, axiom, (! [A,B,C]: ((~ (apart_point_and_line(A,B)) | (distinct_points(A,C) | apart_point_and_line(C,B))))), file('GEO179+1.p',unknown), []).
 fof(13, axiom, (! [A,B,C]: ((~ (apart_point_and_line(A,B)) | (distinct_lines(B,C) | apart_point_and_line(A,C))))), file('GEO179+1.p',unknown), []).
-fof(15, axiom, (distinct_lines(line_connecting(dollar_c3,dollar_c2),line_connecting(dollar_c1,dollar_c3)) | ~ (distinct_lines(line_connecting(dollar_c3,dollar_c2),line_connecting(dollar_c1,dollar_c2)))), file('GEO179+1.p',unknown), []).
+fof(15, axiom, (~ (distinct_lines(line_connecting(dollar_c3,dollar_c2),line_connecting(dollar_c1,dollar_c3))) | ~ (distinct_lines(line_connecting(dollar_c3,dollar_c2),line_connecting(dollar_c1,dollar_c2)))), file('GEO179+1.p',unknown), []).
 fof(16, axiom, distinct_points(dollar_c3,dollar_c2), file('GEO179+1.p',unknown), []).
-fof(17, axiom, apart_point_and_line(dollar_c1,line_connecting(dollar_c3,dollar_c2)), file('GEO179+1.p',unknown), []).
+fof(17, axiom, apart_point_and_line(dollar_c3,line_connecting(dollar_c3,dollar_c2)), file('GEO179+1.p',unknown), []).
 fof(18, plain, (! [A]: ((distinct_points(dollar_c3,A) | distinct_points(dollar_c2,A)))), inference(hyper,[status(thm)],[16,4]), [iquote('hyper,16,4')]).
 fof(19, plain, (! [A]: ((distinct_lines(line_connecting(dollar_c3,dollar_c2),A) | apart_point_and_line(dollar_c1,A)))), inference(hyper,[status(thm)],[17,13]), [iquote('hyper,17,13')]).
 fof(20, plain, (! [A]: ((distinct_points(dollar_c1,A) | apart_point_and_line(A,line_connecting(dollar_c3,dollar_c2))))), inference(hyper,[status(thm)],[17,12]), [iquote('hyper,17,12')]).

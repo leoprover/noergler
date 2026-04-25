@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '72':
-%%%%%   Replaced in(dollar_f1(dollar_c4,dollar_c3),dollar_c3)
-%%%%%   With in(dollar_f1(dollar_c3,dollar_c3),dollar_c3)
+%%%%% Mutated formula '9':
+%%%%%   Replaced ~ (subset(dollar_c4,dollar_c3))
+%%%%%   With subset(dollar_c4,dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET958+1 : TPTP v8.1.0. Released v3.2.0.
@@ -37,10 +37,10 @@ fof(3, axiom, (! [A,B]: ((subset(A,B) | ~ (in(dollar_f1(A,B),B))))), file('SET95
 fof(6, axiom, (! [A]: ((~ (in(A,dollar_c4)) | (A = ordered_pair(dollar_f3(A),dollar_f2(A)))))), file('SET958+1.p',unknown), []).
 fof(7, plain, (! [A]: ((~ (in(A,dollar_c4)) | (ordered_pair(dollar_f3(A),dollar_f2(A)) = A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[6])]), [iquote('copy,6,flip.2')]).
 fof(8, axiom, (! [A,B]: ((~ (in(ordered_pair(A,B),dollar_c4)) | in(ordered_pair(A,B),dollar_c3)))), file('SET958+1.p',unknown), []).
-fof(9, axiom, ~ (subset(dollar_c4,dollar_c3)), file('SET958+1.p',unknown), []).
+fof(9, axiom, subset(dollar_c4,dollar_c3), file('SET958+1.p',unknown), []).
 fof(13, axiom, (! [A,B]: ((subset(A,B) | in(dollar_f1(A,B),A)))), file('SET958+1.p',unknown), []).
 fof(19, plain, in(dollar_f1(dollar_c4,dollar_c3),dollar_c4), inference(hyper,[status(thm)],[13,9]), [iquote('hyper,13,9')]).
 fof(27, plain, (ordered_pair(dollar_f3(dollar_f1(dollar_c4,dollar_c3)),dollar_f2(dollar_f1(dollar_c4,dollar_c3))) = dollar_f1(dollar_c4,dollar_c3)), inference(hyper,[status(thm)],[19,7]), [iquote('hyper,19,7')]).
-fof(72, plain, in(dollar_f1(dollar_c3,dollar_c3),dollar_c3), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[27,8]),27]),19]), [iquote('para_from,26.1.1,8.2.1,demod,27,unit_del,19')]).
+fof(72, plain, in(dollar_f1(dollar_c4,dollar_c3),dollar_c3), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[27,8]),27]),19]), [iquote('para_from,26.1.1,8.2.1,demod,27,unit_del,19')]).
 fof(74, plain, subset(dollar_c4,dollar_c3), inference(hyper,[status(thm)],[72,3]), [iquote('hyper,72,3')]).
 fof(75, plain, $false, inference(binary,[status(thm)],[74,9]), [iquote('binary,74.1,9.1')]).

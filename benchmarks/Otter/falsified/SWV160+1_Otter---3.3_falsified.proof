@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1673':
-%%%%%   Replaced le_q(dollar_c1,pred(pv10))
-%%%%%   With le_q(pv10,pred(pv10))
+%%%%% Mutated formula '1676':
+%%%%%   Replaced (pv10 = dollar_c1)
+%%%%%   With ~ ((pv10 = dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV160+1 : TPTP v8.1.0. Bugfixed v3.3.0.
@@ -37,9 +37,9 @@ fof(2, axiom, (! [A]: (~ (gt(A,A)))), file('SWV160+1.p',unknown), []).
 fof(10, axiom, (! [A,B]: ((~ (le_q(A,pred(B))) | gt(B,A)))), file('SWV160+1.p',unknown), []).
 fof(1651, axiom, (! [A]: ((minus(A,n1) = pred(A)))), file('SWV160+1.p',unknown), []).
 fof(1653, plain, (! [A]: ((pred(A) = minus(A,n1)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1651])]), [iquote('copy,1651,flip.1')]).
-fof(1673, axiom, le_q(pv10,pred(pv10)), file('SWV160+1.p',unknown), []).
+fof(1673, axiom, le_q(dollar_c1,pred(pv10)), file('SWV160+1.p',unknown), []).
 fof(1674, plain, le_q(dollar_c1,minus(pv10,n1)), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1673]),1653]), [iquote('copy,1673,demod,1653')]).
-fof(1676, axiom, (pv10 = dollar_c1), file('SWV160+1.p',unknown), []).
+fof(1676, axiom, ~ ((pv10 = dollar_c1)), file('SWV160+1.p',unknown), []).
 fof(1745, plain, (! [A,B]: ((~ (le_q(A,minus(B,n1))) | gt(B,A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[10]),1653]), [iquote('back_demod,10,demod,1653')]).
 fof(1746, plain, le_q(dollar_c1,minus(dollar_c1,n1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1674]),1676]), [iquote('back_demod,1674,demod,1676')]).
 fof(1886, plain, gt(dollar_c1,dollar_c1), inference(hyper,[status(thm)],[1746,1745]), [iquote('hyper,1746,1745')]).

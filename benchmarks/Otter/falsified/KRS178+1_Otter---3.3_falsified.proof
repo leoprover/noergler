@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '27':
-%%%%%   Replaced (! [A,B]: ((status(dollar_f4(A,B),dollar_f3(A,B),A) | isa(A,B))))
-%%%%%   With (! [A,B]: ((~ (status(dollar_f4(A,B),dollar_f3(A,B),A)) | isa(A,B))))
+%%%%% Mutated formula '39':
+%%%%%   Replaced status(dollar_f4(dollar_c19,dollar_c19),dollar_f3(dollar_c19,dollar_c19),dollar_c19)
+%%%%%   With ~ (status(dollar_f4(dollar_c19,dollar_c19),dollar_f3(dollar_c19,dollar_c19),dollar_c19))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS178+1 : TPTP v8.1.0. Bugfixed v5.4.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:14:50 CEST 2026 using command 'transform(fof)'.
 fof(4, axiom, (! [A,B]: ((~ (status(dollar_f4(A,B),dollar_f3(A,B),B)) | isa(A,B)))), file('KRS178+1.p',unknown), []).
 fof(22, axiom, ~ (isa(dollar_c19,dollar_c19)), file('KRS178+1.p',unknown), []).
-fof(27, axiom, (! [A,B]: ((~ (status(dollar_f4(A,B),dollar_f3(A,B),A)) | isa(A,B)))), file('KRS178+1.p',unknown), []).
-fof(39, plain, status(dollar_f4(dollar_c19,dollar_c19),dollar_f3(dollar_c19,dollar_c19),dollar_c19), inference(hyper,[status(thm)],[27,22]), [iquote('hyper,27,22')]).
+fof(27, axiom, (! [A,B]: ((status(dollar_f4(A,B),dollar_f3(A,B),A) | isa(A,B)))), file('KRS178+1.p',unknown), []).
+fof(39, plain, ~ (status(dollar_f4(dollar_c19,dollar_c19),dollar_f3(dollar_c19,dollar_c19),dollar_c19)), inference(hyper,[status(thm)],[27,22]), [iquote('hyper,27,22')]).
 fof(64, plain, isa(dollar_c19,dollar_c19), inference(hyper,[status(thm)],[39,4]), [iquote('hyper,39,4')]).
 fof(65, plain, $false, inference(binary,[status(thm)],[64,22]), [iquote('binary,64.1,22.1')]).

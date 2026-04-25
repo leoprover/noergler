@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '7':
-%%%%%   Replaced (! [A,B]: ((subset(A,singleton(B)) | (A != empty_set))))
-%%%%%   With (! [A,B]: ((subset(A,singleton(B)) | (A != dollar_c3))))
+%%%%% Mutated formula '15':
+%%%%%   Replaced (! [A]: (subset(empty_set,singleton(A))))
+%%%%%   With (! [A]: (~ (subset(empty_set,singleton(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU160+3 : TPTP v8.1.0. Released v3.2.0.
@@ -38,12 +38,12 @@ fof(3, plain, (~ (subset(dollar_c4,singleton(dollar_c3))) | (empty_set != dollar
 fof(4, axiom, (~ (subset(dollar_c4,singleton(dollar_c3))) | (dollar_c4 != singleton(dollar_c3))), file('SEU160+3.p',unknown), []).
 fof(5, plain, (~ (subset(dollar_c4,singleton(dollar_c3))) | (singleton(dollar_c3) != dollar_c4)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[4])]), [iquote('copy,4,flip.2')]).
 fof(6, axiom, (! [A,B]: ((~ (subset(A,singleton(B))) | ((A = empty_set) | (A = singleton(B)))))), file('SEU160+3.p',unknown), []).
-fof(7, axiom, (! [A,B]: ((subset(A,singleton(B)) | (A != dollar_c3)))), file('SEU160+3.p',unknown), []).
+fof(7, axiom, (! [A,B]: ((subset(A,singleton(B)) | (A != empty_set)))), file('SEU160+3.p',unknown), []).
 fof(9, axiom, (! [A]: ((A = A))), file('SEU160+3.p',unknown), []).
 fof(10, axiom, (! [A]: (subset(A,A))), file('SEU160+3.p',unknown), []).
 fof(13, axiom, (subset(dollar_c4,singleton(dollar_c3)) | ((dollar_c4 = empty_set) | (dollar_c4 = singleton(dollar_c3)))), file('SEU160+3.p',unknown), []).
 fof(14, plain, (subset(dollar_c4,singleton(dollar_c3)) | ((empty_set = dollar_c4) | (singleton(dollar_c3) = dollar_c4))), inference(flip,[status(thm),theory(equality)],[inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[13])])]), [iquote('copy,13,flip.2,flip.3')]).
-fof(15, plain, (! [A]: (subset(empty_set,singleton(A)))), inference(hyper,[status(thm)],[9,7]), [iquote('hyper,9,7')]).
+fof(15, plain, (! [A]: (~ (subset(empty_set,singleton(A))))), inference(hyper,[status(thm)],[9,7]), [iquote('hyper,9,7')]).
 fof(17, plain, ((empty_set = dollar_c4) | (singleton(dollar_c3) = dollar_c4)), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[14,6])])]), [iquote('hyper,14,6,factor_simp,factor_simp')]).
 fof(29, plain, (~ (subset(dollar_c4,singleton(dollar_c3))) | (empty_set = dollar_c4)), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[17,5]),9]), [iquote('para_from,17.2.1,5.2.1,unit_del,9')]).
 fof(69, plain, (empty_set = dollar_c4), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[29,17]),10])]), [iquote('para_into,29.1.2,17.2.1,unit_del,10,factor_simp')]).

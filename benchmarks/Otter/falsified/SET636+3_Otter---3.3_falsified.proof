@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '7':
-%%%%%   Replaced (! [A]: (~ (member(A,empty_set))))
-%%%%%   With (! [A]: (~ (member(A,dollar_c2))))
+%%%%% Mutated formula '463':
+%%%%%   Replaced (! [A]: (((A = empty_set) | intersect(A,A))))
+%%%%%   With (! [A]: (((A = dollar_c1) | intersect(A,A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET636+3 : TPTP v8.1.0. Released v2.2.0.
@@ -38,7 +38,7 @@ fof(3, axiom, (! [A,B,C]: ((member(A,intersection(B,C)) | (~ (member(A,B)) | ~ (
 fof(4, axiom, (! [A,B]: ((~ (intersect(A,B)) | member(dollar_f1(A,B),A)))), file('SET636+3.p',unknown), []).
 fof(5, axiom, (! [A,B]: ((~ (intersect(A,B)) | member(dollar_f1(A,B),B)))), file('SET636+3.p',unknown), []).
 fof(6, axiom, (! [A,B,C]: ((intersect(A,B) | (~ (member(C,A)) | ~ (member(C,B)))))), file('SET636+3.p',unknown), []).
-fof(7, axiom, (! [A]: (~ (member(A,dollar_c2)))), file('SET636+3.p',unknown), []).
+fof(7, axiom, (! [A]: (~ (member(A,empty_set)))), file('SET636+3.p',unknown), []).
 fof(8, axiom, (! [A,B]: ((~ (disjoint(A,B)) | ~ (intersect(A,B))))), file('SET636+3.p',unknown), []).
 fof(11, axiom, (! [A,B]: (((A = B) | (~ (subset(A,B)) | ~ (subset(B,A)))))), file('SET636+3.p',unknown), []).
 fof(12, axiom, (! [A,B]: ((~ (intersect(A,B)) | intersect(B,A)))), file('SET636+3.p',unknown), []).
@@ -61,7 +61,7 @@ fof(64, plain, (! [A]: ((~ (member(A,dollar_c2)) | (~ (member(A,dollar_c1)) | di
 fof(71, plain, (! [A,B,C]: ((disjoint(A,intersection(B,C)) | member(dollar_f1(A,intersection(B,C)),C)))), inference(hyper,[status(thm)],[33,2]), [iquote('hyper,33,2')]).
 fof(88, plain, (! [A]: (((A = empty_set) | member(dollar_f4(A,empty_set),A)))), inference(hyper,[status(thm)],[30,7]), [iquote('hyper,30,7')]).
 fof(235, plain, (~ (disjoint(dollar_c2,dollar_c1)) | disjoint(dollar_c1,dollar_c2)), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[50,19]),24]), [iquote('para_from,50.1.1,19.2.1,unit_del,24')]).
-fof(463, plain, (! [A]: (((A = empty_set) | intersect(A,A)))), inference(hyper,[status(thm)],[88,21]), [iquote('hyper,88,21')]).
+fof(463, plain, (! [A]: (((A = dollar_c1) | intersect(A,A)))), inference(hyper,[status(thm)],[88,21]), [iquote('hyper,88,21')]).
 fof(1504, plain, (! [A]: (((A = empty_set) | member(dollar_f2(A,empty_set),A)))), inference(hyper,[status(thm)],[47,7]), [iquote('hyper,47,7')]).
 fof(2504, plain, (~ (disjoint(dollar_c2,dollar_c1)) | member(dollar_f2(intersection(dollar_c2,dollar_c1),empty_set),intersection(dollar_c2,dollar_c1))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[1504,19]),24]), [iquote('para_from,1504.1.1,19.2.1,unit_del,24')]).
 fof(2942, plain, disjoint(dollar_c2,dollar_c1), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[64,37,38])])]), [iquote('hyper,64,37,38,factor_simp,factor_simp')]).

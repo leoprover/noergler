@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '20':
-%%%%%   Replaced (! [A,B,C]: ((~ (convergent_lines(A,B)) | (~ (unorthogonal_lines(A,B)) | (unorthogonal_lines(A,C) | unorthogonal_lines(B,C))))))
-%%%%%   With (! [A,B,C]: ((convergent_lines(A,B) | (~ (unorthogonal_lines(A,B)) | (unorthogonal_lines(A,C) | unorthogonal_lines(B,C))))))
+%%%%% Mutated formula '48':
+%%%%%   Replaced (! [A,B,C]: ((convergent_lines(orthogonal_through_point(A,B),C) | convergent_lines(A,C))))
+%%%%%   With (! [A,B,C]: ((~ (convergent_lines(orthogonal_through_point(A,B),C)) | convergent_lines(A,C))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO222+3 : TPTP v8.1.0. Released v4.0.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:12:40 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, (! [A]: (~ (convergent_lines(A,A)))), file('GEO222+3.p',unknown), []).
 fof(6, axiom, (! [A,B,C]: ((~ (convergent_lines(A,B)) | (convergent_lines(A,C) | convergent_lines(B,C))))), file('GEO222+3.p',unknown), []).
-fof(20, axiom, (! [A,B,C]: ((convergent_lines(A,B) | (~ (unorthogonal_lines(A,B)) | (unorthogonal_lines(A,C) | unorthogonal_lines(B,C)))))), file('GEO222+3.p',unknown), []).
+fof(20, axiom, (! [A,B,C]: ((~ (convergent_lines(A,B)) | (~ (unorthogonal_lines(A,B)) | (unorthogonal_lines(A,C) | unorthogonal_lines(B,C)))))), file('GEO222+3.p',unknown), []).
 fof(21, axiom, (! [A,B]: (~ (unorthogonal_lines(orthogonal_through_point(A,B),A)))), file('GEO222+3.p',unknown), []).
 fof(26, axiom, (! [A,B,C]: ((unorthogonal_lines(A,B) | (convergent_lines(A,C) | (~ (convergent_lines(B,C)) | ~ (unorthogonal_lines(B,C))))))), file('GEO222+3.p',unknown), []).
 fof(28, axiom, (! [A,B,C]: ((unorthogonal_lines(A,B) | (unorthogonal_lines(A,C) | ~ (convergent_lines(B,C)))))), file('GEO222+3.p',unknown), []).
@@ -44,7 +44,7 @@ fof(39, axiom, (! [A,B]: ((convergent_lines(A,B) | unorthogonal_lines(A,B)))), f
 fof(42, axiom, (! [A,B]: ((parallel_lines(A,B) | convergent_lines(A,B)))), file('GEO222+3.p',unknown), []).
 fof(45, plain, (! [A,B]: (convergent_lines(orthogonal_through_point(A,B),A))), inference(hyper,[status(thm)],[39,21]), [iquote('hyper,39,21')]).
 fof(46, plain, (! [A,B,C]: ((unorthogonal_lines(A,orthogonal_through_point(B,C)) | unorthogonal_lines(A,B)))), inference(hyper,[status(thm)],[45,28]), [iquote('hyper,45,28')]).
-fof(48, plain, (! [A,B,C]: ((convergent_lines(orthogonal_through_point(A,B),C) | convergent_lines(A,C)))), inference(hyper,[status(thm)],[45,6]), [iquote('hyper,45,6')]).
+fof(48, plain, (! [A,B,C]: ((~ (convergent_lines(orthogonal_through_point(A,B),C)) | convergent_lines(A,C)))), inference(hyper,[status(thm)],[45,6]), [iquote('hyper,45,6')]).
 fof(49, plain, convergent_lines(dollar_c1,orthogonal_through_point(orthogonal_through_point(dollar_c1,dollar_c2),dollar_c2)), inference(hyper,[status(thm)],[42,38]), [iquote('hyper,42,38')]).
 fof(67, plain, (! [A]: ((unorthogonal_lines(dollar_c1,orthogonal_through_point(dollar_c1,dollar_c2)) | (unorthogonal_lines(dollar_c1,A) | unorthogonal_lines(orthogonal_through_point(orthogonal_through_point(dollar_c1,dollar_c2),dollar_c2),A))))), inference(hyper,[status(thm)],[46,20,49]), [iquote('hyper,46,20,49')]).
 fof(77, plain, unorthogonal_lines(dollar_c1,orthogonal_through_point(dollar_c1,dollar_c2)), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[67]),21]), [iquote('factor,67.1.2,unit_del,21')]).

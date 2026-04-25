@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '21':
-%%%%%   Replaced (! [A,B]: (~ (unorthogonal_lines(orthogonal_through_point(A,B),A))))
-%%%%%   With (! [A,B]: (unorthogonal_lines(orthogonal_through_point(A,B),A)))
+%%%%% Mutated formula '24':
+%%%%%   Replaced (! [A,B]: ((convergent_lines(A,B) | unorthogonal_lines(A,B))))
+%%%%%   With (! [A,B]: ((~ (convergent_lines(A,B)) | unorthogonal_lines(A,B))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO222+2 : TPTP v8.1.0. Released v3.3.0.
@@ -41,9 +41,9 @@ fof(10, axiom, (! [A,B,C]: ((~ (convergent_lines(A,B)) | (~ (apart_point_and_lin
 fof(14, axiom, (! [A,B]: ((~ (convergent_lines(A,B)) | distinct_lines(A,B)))), file('GEO222+2.p',unknown), []).
 fof(15, axiom, (! [A,B]: (~ (convergent_lines(parallel_through_point(A,B),A)))), file('GEO222+2.p',unknown), []).
 fof(18, axiom, (! [A,B,C]: ((~ (convergent_lines(A,B)) | (~ (unorthogonal_lines(A,B)) | (convergent_lines(A,C) | unorthogonal_lines(B,C)))))), file('GEO222+2.p',unknown), []).
-fof(21, axiom, (! [A,B]: (unorthogonal_lines(orthogonal_through_point(A,B),A))), file('GEO222+2.p',unknown), []).
+fof(21, axiom, (! [A,B]: (~ (unorthogonal_lines(orthogonal_through_point(A,B),A)))), file('GEO222+2.p',unknown), []).
 fof(23, axiom, (! [A,B,C,D]: ((~ (distinct_lines(A,B)) | (apart_point_and_line(C,A) | (apart_point_and_line(C,B) | (unorthogonal_lines(A,D) | unorthogonal_lines(B,D))))))), file('GEO222+2.p',unknown), []).
-fof(24, axiom, (! [A,B]: ((convergent_lines(A,B) | unorthogonal_lines(A,B)))), file('GEO222+2.p',unknown), []).
+fof(24, axiom, (! [A,B]: ((~ (convergent_lines(A,B)) | unorthogonal_lines(A,B)))), file('GEO222+2.p',unknown), []).
 fof(25, axiom, convergent_lines(dollar_c1,orthogonal_through_point(orthogonal_through_point(dollar_c1,dollar_c2),dollar_c2)), file('GEO222+2.p',unknown), []).
 fof(26, plain, (! [A,B]: (convergent_lines(orthogonal_through_point(A,B),A))), inference(hyper,[status(thm)],[24,21]), [iquote('hyper,24,21')]).
 fof(28, plain, (! [A,B,C]: ((convergent_lines(orthogonal_through_point(A,B),C) | convergent_lines(A,C)))), inference(hyper,[status(thm)],[26,6]), [iquote('hyper,26,6')]).

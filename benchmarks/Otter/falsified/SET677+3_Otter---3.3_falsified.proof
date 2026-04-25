@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '120':
-%%%%%   Replaced ilf_type(dollar_c2,identity_relation_of_type(dollar_c3))
-%%%%%   With ilf_type(set_type,identity_relation_of_type(dollar_c3))
+%%%%% Mutated formula '6':
+%%%%%   Replaced (! [A,B,C]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,set_type)) | (~ (ilf_type(C,relation_type(A,B))) | (~ (subset(identity_relation_of(B),C)) | (range(A,B,C) = B)))))))
+%%%%%   With (! [A,B,C]: ((~ (ilf_type(A,dollar_c2)) | (~ (ilf_type(B,set_type)) | (~ (ilf_type(C,relation_type(A,B))) | (~ (subset(identity_relation_of(B),C)) | (range(A,B,C) = B)))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET677+3 : TPTP v8.1.0. Released v2.2.0.
@@ -36,7 +36,7 @@
 fof(1, axiom, (! [A,B,C]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,set_type)) | (~ (ilf_type(C,relation_type(B,A))) | (~ (subset(identity_relation_of(B),C)) | (B = domain(B,A,C)))))))), file('SET677+3.p',unknown), []).
 fof(2, plain, (! [A,B,C]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,set_type)) | (~ (ilf_type(C,relation_type(B,A))) | (~ (subset(identity_relation_of(B),C)) | (domain(B,A,C) = B))))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1])]), [iquote('copy,1,flip.5')]).
 fof(5, axiom, (! [A,B,C]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,set_type)) | (~ (ilf_type(C,relation_type(A,B))) | (~ (subset(identity_relation_of(B),C)) | (B = range(A,B,C)))))))), file('SET677+3.p',unknown), []).
-fof(6, plain, (! [A,B,C]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,set_type)) | (~ (ilf_type(C,relation_type(A,B))) | (~ (subset(identity_relation_of(B),C)) | (range(A,B,C) = B))))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[5])]), [iquote('copy,5,flip.5')]).
+fof(6, plain, (! [A,B,C]: ((~ (ilf_type(A,dollar_c2)) | (~ (ilf_type(B,set_type)) | (~ (ilf_type(C,relation_type(A,B))) | (~ (subset(identity_relation_of(B),C)) | (range(A,B,C) = B))))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[5])]), [iquote('copy,5,flip.5')]).
 fof(11, axiom, (! [A,B]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,set_type)) | (~ (ilf_type(B,identity_relation_of_type(A))) | ilf_type(B,relation_type(A,A))))))), file('SET677+3.p',unknown), []).
 fof(65, axiom, ((dollar_c3 != domain(dollar_c3,dollar_c3,dollar_c2)) | (dollar_c3 != range(dollar_c3,dollar_c3,dollar_c2))), file('SET677+3.p',unknown), []).
 fof(66, plain, ((domain(dollar_c3,dollar_c3,dollar_c2) != dollar_c3) | (range(dollar_c3,dollar_c3,dollar_c2) != dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[65])])]), [iquote('copy,65,flip.1,flip.2')]).
@@ -44,7 +44,7 @@ fof(67, plain, (! [A,B]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,relation_ty
 fof(70, plain, (! [A,B]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,relation_type(A,A))) | (~ (subset(identity_relation_of(A),B)) | (range(A,A,B) = A)))))), inference(factor,[status(thm)],[6]), [iquote('factor,6.1.2')]).
 fof(117, axiom, (! [A]: ((A = A))), file('SET677+3.p',unknown), []).
 fof(119, axiom, (! [A]: (ilf_type(A,set_type))), file('SET677+3.p',unknown), []).
-fof(120, axiom, ilf_type(set_type,identity_relation_of_type(dollar_c3)), file('SET677+3.p',unknown), []).
+fof(120, axiom, ilf_type(dollar_c2,identity_relation_of_type(dollar_c3)), file('SET677+3.p',unknown), []).
 fof(121, axiom, subset(identity_relation_of(dollar_c3),dollar_c2), file('SET677+3.p',unknown), []).
 fof(152, plain, ilf_type(dollar_c2,relation_type(dollar_c3,dollar_c3)), inference(hyper,[status(thm)],[120,11,119,119]), [iquote('hyper,120,11,119,119')]).
 fof(236, plain, (range(dollar_c3,dollar_c3,dollar_c2) = dollar_c3), inference(hyper,[status(thm)],[152,70,119,121]), [iquote('hyper,152,70,119,121')]).

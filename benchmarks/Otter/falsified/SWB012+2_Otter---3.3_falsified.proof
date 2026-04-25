@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '288':
-%%%%%   Replaced iext(uri_rdf_first,dollar_c2,dollar_c1)
-%%%%%   With ~ (iext(uri_rdf_first,dollar_c2,dollar_c1))
+%%%%% Mutated formula '289':
+%%%%%   Replaced iext(uri_rdf_rest,dollar_c2,uri_rdf_nil)
+%%%%%   With iext(uri_owl_FunctionalProperty,dollar_c2,uri_rdf_nil)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWB012+2 : TPTP v8.1.0. Released v5.2.0.
@@ -45,8 +45,8 @@ fof(284, axiom, iext(uri_rdf_first,dollar_c4,uri_owl_DatatypeProperty), file('SW
 fof(285, axiom, iext(uri_rdf_rest,dollar_c4,dollar_c3), file('SWB012+2.p',unknown), []).
 fof(286, axiom, iext(uri_rdf_first,dollar_c3,uri_owl_FunctionalProperty), file('SWB012+2.p',unknown), []).
 fof(287, axiom, iext(uri_rdf_rest,dollar_c3,dollar_c2), file('SWB012+2.p',unknown), []).
-fof(288, axiom, ~ (iext(uri_rdf_first,dollar_c2,dollar_c1)), file('SWB012+2.p',unknown), []).
-fof(289, axiom, iext(uri_rdf_rest,dollar_c2,uri_rdf_nil), file('SWB012+2.p',unknown), []).
+fof(288, axiom, iext(uri_rdf_first,dollar_c2,dollar_c1), file('SWB012+2.p',unknown), []).
+fof(289, axiom, iext(uri_owl_FunctionalProperty,dollar_c2,uri_rdf_nil), file('SWB012+2.p',unknown), []).
 fof(291, axiom, iext(uri_owl_onProperty,dollar_c1,uri_rdfs_domain), file('SWB012+2.p',unknown), []).
 fof(292, axiom, iext(uri_owl_hasValue,dollar_c1,uri_foaf_Person), file('SWB012+2.p',unknown), []).
 fof(293, axiom, iext(uri_rdf_type,uri_ex_name,uri_ex_PersonAttribute), file('SWB012+2.p',unknown), []).

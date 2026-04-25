@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '65':
-%%%%%   Replaced (! [A,B]: ((~ (occurrence_of(A,tptp0)) | (~ (subactivity_occurrence(B,A)) | (~ (arboreal(B)) | (leaf_occ(B,A) | next_subocc(B,dollar_f17(B,A),tptp0)))))))
-%%%%%   With (! [A,B]: ((~ (occurrence_of(A,dollar_c2)) | (~ (subactivity_occurrence(B,A)) | (~ (arboreal(B)) | (leaf_occ(B,A) | next_subocc(B,dollar_f17(B,A),tptp0)))))))
+%%%%% Mutated formula '139':
+%%%%%   Replaced leaf(dollar_f15(dollar_c2,dollar_c1),tptp0)
+%%%%%   With leaf(dollar_f15(dollar_c1,dollar_c1),tptp0)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PRO014+2 : TPTP v8.1.0. Released v4.0.0.
@@ -36,7 +36,7 @@
 fof(1, axiom, (! [A,B,C,D]: ((~ (min_precedes(A,B,C)) | (~ (min_precedes(B,D,C)) | min_precedes(A,D,C))))), file('PRO014+2.p',unknown), []).
 fof(5, axiom, (! [A,B,C]: ((~ (next_subocc(A,B,C)) | min_precedes(A,B,C)))), file('PRO014+2.p',unknown), []).
 fof(64, axiom, (! [A,B]: ((~ (occurrence_of(A,tptp0)) | (~ (subactivity_occurrence(B,A)) | (~ (arboreal(B)) | (leaf_occ(B,A) | occurrence_of(dollar_f17(B,A),tptp3))))))), file('PRO014+2.p',unknown), []).
-fof(65, axiom, (! [A,B]: ((~ (occurrence_of(A,dollar_c2)) | (~ (subactivity_occurrence(B,A)) | (~ (arboreal(B)) | (leaf_occ(B,A) | next_subocc(B,dollar_f17(B,A),tptp0))))))), file('PRO014+2.p',unknown), []).
+fof(65, axiom, (! [A,B]: ((~ (occurrence_of(A,tptp0)) | (~ (subactivity_occurrence(B,A)) | (~ (arboreal(B)) | (leaf_occ(B,A) | next_subocc(B,dollar_f17(B,A),tptp0))))))), file('PRO014+2.p',unknown), []).
 fof(67, axiom, (! [A,B]: ((~ (occurrence_of(A,tptp0)) | (~ (subactivity_occurrence(B,A)) | (~ (arboreal(B)) | (leaf_occ(B,A) | next_subocc(dollar_f17(B,A),dollar_f16(B,A),tptp0))))))), file('PRO014+2.p',unknown), []).
 fof(68, axiom, (! [A,B]: ((~ (occurrence_of(A,tptp0)) | (~ (subactivity_occurrence(B,A)) | (~ (arboreal(B)) | (leaf_occ(B,A) | (occurrence_of(dollar_f15(B,A),tptp2) | occurrence_of(dollar_f15(B,A),tptp1)))))))), file('PRO014+2.p',unknown), []).
 fof(69, axiom, (! [A,B]: ((~ (occurrence_of(A,tptp0)) | (~ (subactivity_occurrence(B,A)) | (~ (arboreal(B)) | (leaf_occ(B,A) | next_subocc(dollar_f16(B,A),dollar_f15(B,A),tptp0))))))), file('PRO014+2.p',unknown), []).
@@ -47,7 +47,7 @@ fof(80, axiom, (! [A,B]: ((~ (occurrence_of(A,tptp3)) | (~ (next_subocc(dollar_c
 fof(93, axiom, occurrence_of(dollar_c1,tptp0), file('PRO014+2.p',unknown), []).
 fof(94, axiom, subactivity_occurrence(dollar_c2,dollar_c1), file('PRO014+2.p',unknown), []).
 fof(95, axiom, arboreal(dollar_c2), file('PRO014+2.p',unknown), []).
-fof(139, plain, leaf(dollar_f15(dollar_c2,dollar_c1),tptp0), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[94,70,93,95]),78]), [iquote('hyper,94,70,93,95,unit_del,78')]).
+fof(139, plain, leaf(dollar_f15(dollar_c1,dollar_c1),tptp0), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[94,70,93,95]),78]), [iquote('hyper,94,70,93,95,unit_del,78')]).
 fof(140, plain, next_subocc(dollar_f16(dollar_c2,dollar_c1),dollar_f15(dollar_c2,dollar_c1),tptp0), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[94,69,93,95]),78]), [iquote('hyper,94,69,93,95,unit_del,78')]).
 fof(141, plain, (occurrence_of(dollar_f15(dollar_c2,dollar_c1),tptp2) | occurrence_of(dollar_f15(dollar_c2,dollar_c1),tptp1)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[94,68,93,95]),78]), [iquote('hyper,94,68,93,95,unit_del,78')]).
 fof(142, plain, next_subocc(dollar_f17(dollar_c2,dollar_c1),dollar_f16(dollar_c2,dollar_c1),tptp0), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[94,67,93,95]),78]), [iquote('hyper,94,67,93,95,unit_del,78')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c116':
-%%%%%   Replaced (! [X82,X83]: (greater(vplus(X82,X83),X82)))
-%%%%%   With (! [X82,X83]: (~ (greater(vplus(X82,X83),X82))))
+%%%%% Mutated formula 'c15704':
+%%%%%   Replaced (vd470 = vd471)
+%%%%%   With (vd471 = vd471)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM850+2 : TPTP v8.1.2. Released v4.1.0.
@@ -48,7 +48,7 @@ fof(c75, plain, (! [Vd203,Vd204]: (((Vd203 != Vd204) | ~ (less(Vd203,Vd204))))),
 fof(c76, plain, (! [X55,X56]: (((X55 != X56) | ~ (less(X55,X56))))), inference(variable_rename,[status(thm)],[c75])).
 fof(c77, plain, (! [X154,X155]: (((X154 != X155) | ~ (less(X154,X155))))), inference(split_conjunct,[status(thm)],[c76])).
 fof('ass(cond(189, 0), 0)', axiom, (! [Vd295,Vd296]: (greater(vplus(Vd295,Vd296),Vd295))), file('NUM850+2.p','ass(cond(189, 0), 0)')).
-fof(c116, plain, (! [X82,X83]: (~ (greater(vplus(X82,X83),X82)))), inference(variable_rename,[status(thm)],['ass(cond(189, 0), 0)'])).
+fof(c116, plain, (! [X82,X83]: (greater(vplus(X82,X83),X82))), inference(variable_rename,[status(thm)],['ass(cond(189, 0), 0)'])).
 fof(c117, plain, (! [X144,X143]: (greater(vplus(X144,X143),X144))), inference(split_conjunct,[status(thm)],[c116])).
 fof('ass(cond(140, 0), 0)', axiom, (! [Vd208,Vd209]: ((greater(Vd208,Vd209) => less(Vd209,Vd208)))), file('NUM850+2.p','ass(cond(140, 0), 0)')).
 fof(c80, plain, (! [Vd208,Vd209]: ((~ (greater(Vd208,Vd209)) | less(Vd209,Vd208)))), inference(fof_nnf,[status(thm)],['ass(cond(140, 0), 0)'])).
@@ -73,5 +73,5 @@ fof(c52, plain, (! [X35,X36]: (((X35 = X36) | ((? [X37]: ((X35 = vplus(X36,X37))
 fof(c53, plain, (! [X35,X36]: (((X35 = X36) | ((X35 = vplus(X36,skolem0001(X35,X36))) | (X36 = vplus(X35,skolem0002(X35,X36))))))), inference(skolemize,[status(esa)],[c52])).
 fof(c54, plain, (! [X330,X329]: (((X330 = X329) | ((X330 = vplus(X329,skolem0001(X330,X329))) | (X329 = vplus(X330,skolem0002(X330,X329))))))), inference(split_conjunct,[status(thm)],[c53])).
 fof(c439, plain, ((vd470 = vd471) | (vd471 = vplus(vd470,skolem0002(vd470,vd471)))), inference(resolution,[status(thm)],[c54,c186])).
-fof(c15704, plain, (vd470 = vd471), inference(resolution,[status(thm)],[c439,c738])).
+fof(c15704, plain, (vd471 = vd471), inference(resolution,[status(thm)],[c439,c738])).
 fof(c15807, plain, $false, inference(resolution,[status(thm)],[c15704,c189])).

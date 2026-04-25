@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c1':
-%%%%%   Replaced (? [X]: (((~ (f(X)) | g(X)) & ((~ (g(X)) | h(X)) & (f(X) & ~ (h(X)))))))
-%%%%%   With (? [X]: (((~ (f(X)) | g(X)) | ((~ (g(X)) | h(X)) & (f(X) & ~ (h(X)))))))
+%%%%% Mutated formula 'c5':
+%%%%%   Replaced (~ (g(skolem0001)) | h(skolem0001))
+%%%%%   With (g(skolem0001) | h(skolem0001))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN403+1 : TPTP v8.1.2. Released v2.0.0.
@@ -38,13 +38,13 @@
 %%% Generated on Tue Apr 14 15:06:51 CEST 2026 using command 'transform(fof)'.
 fof(kalish234, conjecture, (! [X]: ((((f(X) => g(X)) & (g(X) => h(X))) => (f(X) => h(X))))), file('SYN403+1.p',kalish234)).
 fof(c0, negated_conjecture, ~ ((! [X]: ((((f(X) => g(X)) & (g(X) => h(X))) => (f(X) => h(X)))))), inference(assume_negation,[status(cth)],[kalish234])).
-fof(c1, negated_conjecture, (? [X]: (((~ (f(X)) | g(X)) | ((~ (g(X)) | h(X)) & (f(X) & ~ (h(X))))))), inference(fof_nnf,[status(thm)],[c0])).
+fof(c1, negated_conjecture, (? [X]: (((~ (f(X)) | g(X)) & ((~ (g(X)) | h(X)) & (f(X) & ~ (h(X))))))), inference(fof_nnf,[status(thm)],[c0])).
 fof(c2, negated_conjecture, (? [X2]: (((~ (f(X2)) | g(X2)) & ((~ (g(X2)) | h(X2)) & (f(X2) & ~ (h(X2))))))), inference(variable_rename,[status(thm)],[c1])).
 fof(c3, negated_conjecture, ((~ (f(skolem0001)) | g(skolem0001)) & ((~ (g(skolem0001)) | h(skolem0001)) & (f(skolem0001) & ~ (h(skolem0001))))), inference(skolemize,[status(esa)],[c2])).
 fof(c7, negated_conjecture, ~ (h(skolem0001)), inference(split_conjunct,[status(thm)],[c3])).
 fof(c6, negated_conjecture, f(skolem0001), inference(split_conjunct,[status(thm)],[c3])).
 fof(c4, negated_conjecture, (~ (f(skolem0001)) | g(skolem0001)), inference(split_conjunct,[status(thm)],[c3])).
 fof(c8, plain, g(skolem0001), inference(resolution,[status(thm)],[c4,c6])).
-fof(c5, negated_conjecture, (~ (g(skolem0001)) | h(skolem0001)), inference(split_conjunct,[status(thm)],[c3])).
+fof(c5, negated_conjecture, (g(skolem0001) | h(skolem0001)), inference(split_conjunct,[status(thm)],[c3])).
 fof(c9, plain, h(skolem0001), inference(resolution,[status(thm)],[c5,c8])).
 fof(c10, plain, $false, inference(resolution,[status(thm)],[c9,c7])).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '36':
-%%%%%   Replaced ~ (tptpofobject(c_tptpridgeline_topographical,f_tptpquantityfn_13(n_468)))
-%%%%%   With tptpofobject(c_tptpridgeline_topographical,f_tptpquantityfn_13(n_468))
+%%%%% Mutated formula '42':
+%%%%%   Replaced genlmt(c_tptp_spindlecollectormt,c_tptp_member235_mt)
+%%%%%   With ~ (genlmt(c_tptp_spindlecollectormt,c_tptp_member235_mt))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR065+1 : TPTP v8.1.0. Released v3.4.0.
@@ -36,9 +36,9 @@
 fof(1, axiom, (~ (mtvisible(c_cyclistsmt)) | ridgeline_topographical(c_tptpridgeline_topographical)), file('CSR065+1.p',unknown), []).
 fof(2, axiom, (! [A]: ((~ (mtvisible(c_tptp_member235_mt)) | (~ (ridgeline_topographical(A)) | tptpofobject(A,f_tptpquantityfn_13(n_468)))))), file('CSR065+1.p',unknown), []).
 fof(31, axiom, (! [A,B]: ((~ (mtvisible(A)) | (~ (genlmt(A,B)) | mtvisible(B))))), file('CSR065+1.p',unknown), []).
-fof(36, axiom, tptpofobject(c_tptpridgeline_topographical,f_tptpquantityfn_13(n_468)), file('CSR065+1.p',unknown), []).
+fof(36, axiom, ~ (tptpofobject(c_tptpridgeline_topographical,f_tptpquantityfn_13(n_468))), file('CSR065+1.p',unknown), []).
 fof(41, axiom, genlmt(c_tptp_spindleheadmt,c_cyclistsmt), file('CSR065+1.p',unknown), []).
-fof(42, axiom, genlmt(c_tptp_spindlecollectormt,c_tptp_member235_mt), file('CSR065+1.p',unknown), []).
+fof(42, axiom, ~ (genlmt(c_tptp_spindlecollectormt,c_tptp_member235_mt)), file('CSR065+1.p',unknown), []).
 fof(43, axiom, genlmt(c_tptp_member3993_mt,c_tptp_spindleheadmt), file('CSR065+1.p',unknown), []).
 fof(44, axiom, genlmt(c_tptp_spindlecollectormt,c_tptp_member3993_mt), file('CSR065+1.p',unknown), []).
 fof(50, axiom, mtvisible(c_tptp_spindlecollectormt), file('CSR065+1.p',unknown), []).

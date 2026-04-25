@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '27':
-%%%%%   Replaced (stock_of_knowledge(dollar_c3,dollar_c1) = stock_of_knowledge(dollar_c3,dollar_c2))
-%%%%%   With (stock_of_knowledge(dollar_c2,dollar_c1) = stock_of_knowledge(dollar_c3,dollar_c2))
+%%%%% Mutated formula '121':
+%%%%%   Replaced (position(dollar_c3,dollar_c2) = position(dollar_c3,dollar_c1))
+%%%%%   With (position(dollar_c1,dollar_c2) = position(dollar_c3,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT043+1 : TPTP v8.1.0. Released v2.4.0.
@@ -44,14 +44,14 @@ fof(20, axiom, ~ (has_immunity(dollar_c3,dollar_c1)), file('MGT043+1.p',unknown)
 fof(21, axiom, ~ (greater(hazard_of_mortality(dollar_c3,dollar_c1),hazard_of_mortality(dollar_c3,dollar_c2))), file('MGT043+1.p',unknown), []).
 fof(24, axiom, (! [A]: ((A = A))), file('MGT043+1.p',unknown), []).
 fof(26, axiom, organization(dollar_c3), file('MGT043+1.p',unknown), []).
-fof(27, axiom, (stock_of_knowledge(dollar_c2,dollar_c1) = stock_of_knowledge(dollar_c3,dollar_c2)), file('MGT043+1.p',unknown), []).
+fof(27, axiom, (stock_of_knowledge(dollar_c3,dollar_c1) = stock_of_knowledge(dollar_c3,dollar_c2)), file('MGT043+1.p',unknown), []).
 fof(28, plain, (stock_of_knowledge(dollar_c3,dollar_c2) = stock_of_knowledge(dollar_c3,dollar_c1)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[27])]), [iquote('copy,27,flip.1')]).
 fof(30, axiom, greater(internal_friction(dollar_c3,dollar_c1),internal_friction(dollar_c3,dollar_c2)), file('MGT043+1.p',unknown), []).
 fof(31, axiom, (external_ties(dollar_c3,dollar_c2) = external_ties(dollar_c3,dollar_c1)), file('MGT043+1.p',unknown), []).
 fof(33, plain, (! [A]: (greater_or_e_qual(A,A))), inference(hyper,[status(thm)],[24,6]), [iquote('hyper,24,6')]).
 fof(34, plain, (! [A]: (smaller_or_e_qual(A,A))), inference(hyper,[status(thm)],[24,3]), [iquote('hyper,24,3')]).
 fof(43, plain, (! [A]: ((~ (smaller_or_e_qual(stock_of_knowledge(dollar_c3,A),stock_of_knowledge(dollar_c3,dollar_c1))) | (~ (greater(internal_friction(dollar_c3,A),internal_friction(dollar_c3,dollar_c2))) | smaller(capability(dollar_c3,A),capability(dollar_c3,dollar_c2)))))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[28,15]),26]), [iquote('para_from,28.1.1,15.2.2,unit_del,26')]).
-fof(121, plain, (position(dollar_c3,dollar_c2) = position(dollar_c3,dollar_c1)), inference(hyper,[status(thm)],[31,18,26]), [iquote('hyper,31,18,26')]).
+fof(121, plain, (position(dollar_c1,dollar_c2) = position(dollar_c3,dollar_c1)), inference(hyper,[status(thm)],[31,18,26]), [iquote('hyper,31,18,26')]).
 fof(192, plain, (! [A]: ((has_immunity(dollar_c3,A) | (~ (greater(capability(dollar_c3,dollar_c2),capability(dollar_c3,A))) | (~ (greater_or_e_qual(position(dollar_c3,dollar_c1),position(dollar_c3,A))) | smaller(hazard_of_mortality(dollar_c3,dollar_c2),hazard_of_mortality(dollar_c3,A))))))), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[121,11]),26,19]), [iquote('para_from,121.1.1,11.5.1,unit_del,26,19')]).
 fof(1716, plain, smaller(capability(dollar_c3,dollar_c1),capability(dollar_c3,dollar_c2)), inference(hyper,[status(thm)],[43,34,30]), [iquote('hyper,43,34,30')]).
 fof(1869, plain, greater(capability(dollar_c3,dollar_c2),capability(dollar_c3,dollar_c1)), inference(hyper,[status(thm)],[1716,7]), [iquote('hyper,1716,7')]).

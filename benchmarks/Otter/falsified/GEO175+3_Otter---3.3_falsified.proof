@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '5515':
-%%%%%   Replaced (! [A]: (convergent_lines(parallel_through_point(dollar_c1,A),dollar_c1)))
-%%%%%   With (! [A]: (~ (convergent_lines(parallel_through_point(dollar_c1,A),dollar_c1))))
+%%%%% Mutated formula '16':
+%%%%%   Replaced (! [A,B]: (~ (convergent_lines(parallel_through_point(A,B),A))))
+%%%%%   With (! [A,B]: (convergent_lines(parallel_through_point(A,B),A)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO175+3 : TPTP v8.1.0. Released v4.0.0.
@@ -44,7 +44,7 @@ fof(10, axiom, (! [A,B]: ((~ (convergent_lines(A,B)) | ~ (apart_point_and_line(i
 fof(11, axiom, (! [A,B,C,D]: ((~ (distinct_points(A,B)) | (~ (distinct_lines(C,D)) | (apart_point_and_line(A,C) | (apart_point_and_line(A,D) | (apart_point_and_line(B,C) | apart_point_and_line(B,D)))))))), file('GEO175+3.p',unknown), []).
 fof(14, axiom, (! [A,B,C]: ((~ (convergent_lines(A,B)) | (distinct_lines(B,C) | convergent_lines(A,C))))), file('GEO175+3.p',unknown), []).
 fof(15, axiom, (! [A,B]: ((~ (distinct_lines(A,B)) | convergent_lines(A,B)))), file('GEO175+3.p',unknown), []).
-fof(16, axiom, (! [A,B]: (~ (convergent_lines(parallel_through_point(A,B),A)))), file('GEO175+3.p',unknown), []).
+fof(16, axiom, (! [A,B]: (convergent_lines(parallel_through_point(A,B),A))), file('GEO175+3.p',unknown), []).
 fof(38, axiom, ~ (apart_point_and_line(dollar_c4,dollar_c2)), file('GEO175+3.p',unknown), []).
 fof(39, axiom, ~ (apart_point_and_line(dollar_c4,dollar_c1)), file('GEO175+3.p',unknown), []).
 fof(47, axiom, convergent_lines(dollar_c2,dollar_c1), file('GEO175+3.p',unknown), []).
@@ -61,5 +61,5 @@ fof(636, plain, (! [A]: ((convergent_lines(dollar_c2,A) | convergent_lines(A,dol
 fof(753, plain, (! [A,B]: ((convergent_lines(A,dollar_c1) | (convergent_lines(dollar_c2,B) | convergent_lines(A,B))))), inference(hyper,[status(thm)],[636,6]), [iquote('hyper,636,6')]).
 fof(4696, plain, (! [A,B]: ((convergent_lines(parallel_through_point(A,B),dollar_c1) | convergent_lines(dollar_c2,A)))), inference(hyper,[status(thm)],[753,16]), [iquote('hyper,753,16')]).
 fof(5511, plain, apart_point_and_line(intersection_point(dollar_c2,dollar_c1),dollar_c2), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[629,10,4696]),16]), [iquote('hyper,629,10,4696,unit_del,16')]).
-fof(5515, plain, (! [A]: (~ (convergent_lines(parallel_through_point(dollar_c1,A),dollar_c1)))), inference(hyper,[status(thm)],[5511,9,4696]), [iquote('hyper,5511,9,4696')]).
+fof(5515, plain, (! [A]: (convergent_lines(parallel_through_point(dollar_c1,A),dollar_c1))), inference(hyper,[status(thm)],[5511,9,4696]), [iquote('hyper,5511,9,4696')]).
 fof(5516, plain, $false, inference(binary,[status(thm)],[5515,16]), [iquote('binary,5515.1,16.1')]).

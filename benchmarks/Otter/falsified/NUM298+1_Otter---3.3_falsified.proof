@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '461':
-%%%%%   Replaced less(n2,nn2)
-%%%%%   With ~ (less(n2,nn2))
+%%%%% Mutated formula '215':
+%%%%%   Replaced rdn_translate(nn2,rdn_neg(rdnn(n2)))
+%%%%%   With rdn_translate(n2,rdn_neg(rdnn(n2)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM298+1 : TPTP v8.1.0. Released v3.1.0.
@@ -36,7 +36,7 @@
 fof(8, axiom, (! [A,B,C,D]: ((~ (rdn_translate(A,rdn_neg(B))) | (~ (rdn_translate(C,rdn_pos(D))) | less(A,C))))), file('NUM298+1.p',unknown), []).
 fof(10, axiom, (! [A,B]: ((~ (less(A,B)) | ~ (less(B,A))))), file('NUM298+1.p',unknown), []).
 fof(88, axiom, rdn_translate(n2,rdn_pos(rdnn(n2))), file('NUM298+1.p',unknown), []).
-fof(215, axiom, rdn_translate(nn2,rdn_neg(rdnn(n2))), file('NUM298+1.p',unknown), []).
-fof(461, axiom, ~ (less(n2,nn2)), file('NUM298+1.p',unknown), []).
+fof(215, axiom, rdn_translate(n2,rdn_neg(rdnn(n2))), file('NUM298+1.p',unknown), []).
+fof(461, axiom, less(n2,nn2), file('NUM298+1.p',unknown), []).
 fof(1631, plain, less(nn2,n2), inference(hyper,[status(thm)],[215,8,88]), [iquote('hyper,215,8,88')]).
 fof(1680, plain, $false, inference(hyper,[status(thm)],[1631,10,461]), [iquote('hyper,1631,10,461')]).

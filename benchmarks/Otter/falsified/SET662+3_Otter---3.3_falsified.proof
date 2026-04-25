@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '37':
-%%%%%   Replaced ~ (ilf_type(empty_set,relation_type(dollar_c2,dollar_c1)))
-%%%%%   With ilf_type(empty_set,relation_type(dollar_c2,dollar_c1))
+%%%%% Mutated formula '66':
+%%%%%   Replaced empty(empty_set)
+%%%%%   With ~ (empty(empty_set))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET662+3 : TPTP v8.1.0. Released v2.2.0.
@@ -39,8 +39,8 @@ fof(15, axiom, (! [A,B]: ((~ (ilf_type(A,set_type)) | (~ (empty(A)) | (~ (ilf_ty
 fof(20, axiom, (! [A,B]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,set_type)) | (member(A,power_set(B)) | member(dollar_f5(A,B),A)))))), file('SET662+3.p',unknown), []).
 fof(22, axiom, (! [A]: ((~ (ilf_type(A,set_type)) | ~ (empty(power_set(A)))))), file('SET662+3.p',unknown), []).
 fof(25, axiom, (! [A,B]: ((~ (ilf_type(A,set_type)) | (empty(B) | (~ (ilf_type(B,set_type)) | (ilf_type(A,member_type(B)) | ~ (member(A,B)))))))), file('SET662+3.p',unknown), []).
-fof(37, axiom, ilf_type(empty_set,relation_type(dollar_c2,dollar_c1)), file('SET662+3.p',unknown), []).
-fof(66, axiom, empty(empty_set), file('SET662+3.p',unknown), []).
+fof(37, axiom, ~ (ilf_type(empty_set,relation_type(dollar_c2,dollar_c1))), file('SET662+3.p',unknown), []).
+fof(66, axiom, ~ (empty(empty_set)), file('SET662+3.p',unknown), []).
 fof(68, axiom, (! [A]: (ilf_type(A,set_type))), file('SET662+3.p',unknown), []).
 fof(75, plain, (! [A,B]: ((member(A,power_set(B)) | member(dollar_f5(A,B),A)))), inference(hyper,[status(thm)],[68,20,68]), [iquote('hyper,68,20,68')]).
 fof(119, plain, (! [A]: (member(empty_set,power_set(A)))), inference(hyper,[status(thm)],[75,15,68,66,68]), [iquote('hyper,75,15,68,66,68')]).

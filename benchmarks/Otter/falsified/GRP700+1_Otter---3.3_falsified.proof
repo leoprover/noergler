@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '12':
-%%%%%   Replaced (! [A]: ((mult(A,unit) = A)))
-%%%%%   With (! [A]: (~ ((mult(A,unit) = A))))
+%%%%% Mutated formula '156':
+%%%%%   Replaced (! [A,B]: ((rd(mult(A,mult(mult(B,A),A)),A) = mult(mult(A,B),A))))
+%%%%%   With (! [A,B]: (~ ((rd(mult(A,mult(mult(B,A),A)),A) = mult(mult(A,B),A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GRP700+1 : TPTP v8.1.0. Released v4.0.0.
@@ -37,13 +37,13 @@ fof(1, axiom, (! [A]: (((mult(A,dollar_c1) != unit) | (mult(dollar_c1,A) != unit
 fof(2, axiom, (! [A]: ((A = A))), file('GRP700+1.p',unknown), []).
 fof(7, axiom, (! [A,B]: ((mult(rd(A,B),B) = A))), file('GRP700+1.p',unknown), []).
 fof(10, axiom, (! [A,B]: ((rd(mult(A,B),B) = A))), file('GRP700+1.p',unknown), []).
-fof(12, axiom, (! [A]: (~ ((mult(A,unit) = A)))), file('GRP700+1.p',unknown), []).
+fof(12, axiom, (! [A]: ((mult(A,unit) = A))), file('GRP700+1.p',unknown), []).
 fof(13, axiom, (! [A]: ((mult(unit,A) = A))), file('GRP700+1.p',unknown), []).
 fof(15, axiom, (! [A,B,C]: ((mult(mult(mult(A,B),A),mult(A,C)) = mult(A,mult(mult(mult(B,A),A),C))))), file('GRP700+1.p',unknown), []).
 fof(30, plain, (! [A]: (((A != unit) | (mult(dollar_c1,rd(A,dollar_c1)) != unit)))), inference(para_from,[status(thm),theory(equality)],[7,1]), [iquote('para_from,7.1.1,1.1.1')]).
 fof(32, plain, (! [A]: ((rd(A,A) = unit))), inference(para_into,[status(thm),theory(equality)],[10,13]), [iquote('para_into,9.1.1.1,13.1.1')]).
 fof(45, plain, (! [A,B]: ((mult(mult(mult(A,B),A),A) = mult(A,mult(mult(B,A),A))))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[15,12]),12]), [iquote('para_into,15.1.1.2,11.1.1,demod,12')]).
-fof(156, plain, (! [A,B]: ((rd(mult(A,mult(mult(B,A),A)),A) = mult(mult(A,B),A)))), inference(para_from,[status(thm),theory(equality)],[45,10]), [iquote('para_from,45.1.1,9.1.1.1')]).
+fof(156, plain, (! [A,B]: (~ ((rd(mult(A,mult(mult(B,A),A)),A) = mult(mult(A,B),A))))), inference(para_from,[status(thm),theory(equality)],[45,10]), [iquote('para_from,45.1.1,9.1.1.1')]).
 fof(274, plain, (! [A,B]: ((rd(mult(A,mult(B,A)),A) = mult(mult(A,rd(B,A)),A)))), inference(para_into,[status(thm),theory(equality)],[156,7]), [iquote('para_into,156.1.1.1.2.1,7.1.1')]).
 fof(370, plain, (! [A]: ((mult(mult(A,rd(unit,A)),A) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[274,13]),10])]), [iquote('para_into,274.1.1.1.2,13.1.1,demod,10,flip.1')]).
 fof(379, plain, (! [A]: ((mult(A,rd(unit,A)) = unit))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[370,10]),32])]), [iquote('para_from,370.1.1,9.1.1.1,demod,32,flip.1')]).

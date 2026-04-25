@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '9':
-%%%%%   Replaced (! [A]: (subset(cartesian_product2(dollar_c4,A),cartesian_product2(dollar_c3,A))))
-%%%%%   With (! [A]: (~ (subset(cartesian_product2(dollar_c4,A),cartesian_product2(dollar_c3,A)))))
+%%%%% Mutated formula '6':
+%%%%%   Replaced subset(dollar_c4,dollar_c3)
+%%%%%   With subset(dollar_c3,dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU167+1 : TPTP v8.1.0. Released v3.3.0.
@@ -37,9 +37,9 @@ fof(1, axiom, (! [A,B,C]: ((~ (subset(A,B)) | subset(cartesian_product2(A,C),car
 fof(2, axiom, (! [A,B,C]: ((~ (subset(A,B)) | subset(cartesian_product2(C,A),cartesian_product2(C,B))))), file('SEU167+1.p',unknown), []).
 fof(3, axiom, ~ (subset(cartesian_product2(dollar_c4,dollar_c2),cartesian_product2(dollar_c3,dollar_c1))), file('SEU167+1.p',unknown), []).
 fof(4, axiom, (! [A,B,C]: ((~ (subset(A,B)) | (~ (subset(B,C)) | subset(A,C))))), file('SEU167+1.p',unknown), []).
-fof(6, axiom, subset(dollar_c4,dollar_c3), file('SEU167+1.p',unknown), []).
+fof(6, axiom, subset(dollar_c3,dollar_c3), file('SEU167+1.p',unknown), []).
 fof(7, axiom, subset(dollar_c2,dollar_c1), file('SEU167+1.p',unknown), []).
-fof(9, plain, (! [A]: (~ (subset(cartesian_product2(dollar_c4,A),cartesian_product2(dollar_c3,A))))), inference(hyper,[status(thm)],[6,1]), [iquote('hyper,6,1')]).
+fof(9, plain, (! [A]: (subset(cartesian_product2(dollar_c4,A),cartesian_product2(dollar_c3,A)))), inference(hyper,[status(thm)],[6,1]), [iquote('hyper,6,1')]).
 fof(10, plain, (! [A]: (subset(cartesian_product2(A,dollar_c2),cartesian_product2(A,dollar_c1)))), inference(hyper,[status(thm)],[7,2]), [iquote('hyper,7,2')]).
 fof(17, plain, subset(cartesian_product2(dollar_c4,dollar_c2),cartesian_product2(dollar_c3,dollar_c1)), inference(hyper,[status(thm)],[10,4,9]), [iquote('hyper,10,4,9')]).
 fof(18, plain, $false, inference(binary,[status(thm)],[17,3]), [iquote('binary,17.1,3.1')]).

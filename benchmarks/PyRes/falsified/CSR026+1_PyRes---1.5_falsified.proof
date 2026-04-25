@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c209':
-%%%%%   Replaced (~ (mtvisible(c_tptp_spindleheadmt)) | mtvisible(c_cyclistsmt))
-%%%%%   With (~ (mtvisible(c_tptp_member2701_mt)) | mtvisible(c_cyclistsmt))
+%%%%% Mutated formula 'c1':
+%%%%%   Replaced (mtvisible(c_tptp_spindlecollectormt) & ~ (tptpofobject(c_tptprunningshorts,f_tptpquantityfn_2(n_756))))
+%%%%%   With (~ (mtvisible(c_tptp_spindlecollectormt)) & ~ (tptpofobject(c_tptprunningshorts,f_tptpquantityfn_2(n_756))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR026+1 : TPTP v8.1.2. Released v3.4.0.
@@ -38,7 +38,7 @@
 %%% Generated on Tue Apr 14 15:05:31 CEST 2026 using command 'transform(fof)'.
 fof(query26, conjecture, (mtvisible(c_tptp_spindlecollectormt) => tptpofobject(c_tptprunningshorts,f_tptpquantityfn_2(n_756))), file('CSR026+1.p',query26)).
 fof(c0, negated_conjecture, ~ ((mtvisible(c_tptp_spindlecollectormt) => tptpofobject(c_tptprunningshorts,f_tptpquantityfn_2(n_756)))), inference(assume_negation,[status(cth)],[query26])).
-fof(c1, negated_conjecture, (mtvisible(c_tptp_spindlecollectormt) & ~ (tptpofobject(c_tptprunningshorts,f_tptpquantityfn_2(n_756)))), inference(fof_nnf,[status(thm)],[c0])).
+fof(c1, negated_conjecture, (~ (mtvisible(c_tptp_spindlecollectormt)) & ~ (tptpofobject(c_tptprunningshorts,f_tptpquantityfn_2(n_756)))), inference(fof_nnf,[status(thm)],[c0])).
 fof(c3, negated_conjecture, ~ (tptpofobject(c_tptprunningshorts,f_tptpquantityfn_2(n_756))), inference(split_conjunct,[status(thm)],[c1])).
 fof(c2, negated_conjecture, mtvisible(c_tptp_spindlecollectormt), inference(split_conjunct,[status(thm)],[c1])).
 fof(just6, axiom, genlmt(c_tptp_spindlecollectormt,c_tptp_member2701_mt), file('CSR026+1.p',just6)).
@@ -54,7 +54,7 @@ fof(c154, plain, (~ (mtvisible(c_cyclistsmt)) | runningshorts(c_tptprunningshort
 fof(c155, plain, (~ (mtvisible(c_cyclistsmt)) | runningshorts(c_tptprunningshorts)), inference(split_conjunct,[status(thm)],[c154])).
 fof(just5, axiom, genlmt(c_tptp_spindleheadmt,c_cyclistsmt), file('CSR026+1.p',just5)).
 fof(c164, plain, genlmt(c_tptp_spindleheadmt,c_cyclistsmt), inference(split_conjunct,[status(thm)],[just5])).
-fof(c209, plain, (~ (mtvisible(c_tptp_member2701_mt)) | mtvisible(c_cyclistsmt)), inference(resolution,[status(thm)],[c32,c164])).
+fof(c209, plain, (~ (mtvisible(c_tptp_spindleheadmt)) | mtvisible(c_cyclistsmt)), inference(resolution,[status(thm)],[c32,c164])).
 fof(just7, axiom, genlmt(c_tptp_member3993_mt,c_tptp_spindleheadmt), file('CSR026+1.p',just7)).
 fof(c162, plain, genlmt(c_tptp_member3993_mt,c_tptp_spindleheadmt), inference(split_conjunct,[status(thm)],[just7])).
 fof(c208, plain, (~ (mtvisible(c_tptp_member3993_mt)) | mtvisible(c_tptp_spindleheadmt)), inference(resolution,[status(thm)],[c32,c162])).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '623':
-%%%%%   Replaced (! [A]: (r1(dollar_f13(dollar_f16(A)))))
-%%%%%   With (! [A]: (~ (r1(dollar_f13(dollar_f16(A))))))
+%%%%% Mutated formula '95':
+%%%%%   Replaced (! [A]: (id(dollar_c1,dollar_f12(A))))
+%%%%%   With (! [A]: (~ (id(dollar_c1,dollar_f12(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUN076+1 : TPTP v8.1.0. Released v7.3.0.
@@ -55,9 +55,9 @@ fof(71, plain, (! [A]: (id(dollar_f14(A),dollar_c1))), inference(hyper,[status(t
 fof(72, plain, (! [A]: (id(dollar_f15(A),dollar_c1))), inference(hyper,[status(thm)],[61,1]), [iquote('hyper,61,1')]).
 fof(80, plain, (! [A]: (id(A,dollar_f13(A)))), inference(hyper,[status(thm)],[55,9]), [iquote('hyper,55,9')]).
 fof(89, plain, (! [A]: (r2(A,dollar_f1(dollar_f13(A))))), inference(hyper,[status(thm)],[68,13,55,44]), [iquote('hyper,68,13,55,44')]).
-fof(95, plain, (! [A]: (id(dollar_c1,dollar_f12(A)))), inference(hyper,[status(thm)],[70,9]), [iquote('hyper,70,9')]).
+fof(95, plain, (! [A]: (~ (id(dollar_c1,dollar_f12(A))))), inference(hyper,[status(thm)],[70,9]), [iquote('hyper,70,9')]).
 fof(271, plain, (! [A]: (r1(dollar_f16(A)))), inference(hyper,[status(thm)],[60,12,61]), [iquote('hyper,60,12,61')]).
 fof(274, plain, (! [A]: (id(dollar_f16(A),dollar_c1))), inference(hyper,[status(thm)],[60,10,72]), [iquote('hyper,60,10,72')]).
-fof(623, plain, (! [A]: (~ (r1(dollar_f13(dollar_f16(A)))))), inference(hyper,[status(thm)],[271,12,55]), [iquote('hyper,271,12,55')]).
+fof(623, plain, (! [A]: (r1(dollar_f13(dollar_f16(A))))), inference(hyper,[status(thm)],[271,12,55]), [iquote('hyper,271,12,55')]).
 fof(3499, plain, (! [A]: (r3(A,dollar_c1,A))), inference(hyper,[status(thm)],[57,16,44,95,80]), [iquote('hyper,57,16,44,95,80')]).
 fof(3943, plain, $false, inference(hyper,[status(thm)],[59,21,274,89,623,89,71,3499]), [iquote('hyper,59,21,274,89,623,89,71,3499')]).

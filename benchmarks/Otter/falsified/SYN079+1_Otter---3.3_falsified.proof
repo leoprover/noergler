@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '4':
 %%%%%   Replaced big_f(f(b,c),f(a,c))
-%%%%%   With big_f(f(a,c),f(a,c))
+%%%%%   With big_f(f(c,c),f(a,c))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN079+1 : TPTP v8.1.0. Released v2.0.0.
@@ -36,6 +36,6 @@
 fof(1, axiom, (! [A,B,C]: ((~ (big_f(A,B)) | (~ (big_f(B,C)) | big_f(A,C))))), file('SYN079+1.p',unknown), []).
 fof(2, axiom, ~ (big_f(f(a,b),f(a,c))), file('SYN079+1.p',unknown), []).
 fof(3, axiom, big_f(f(a,b),f(b,c)), file('SYN079+1.p',unknown), []).
-fof(4, axiom, big_f(f(a,c),f(a,c)), file('SYN079+1.p',unknown), []).
+fof(4, axiom, big_f(f(c,c),f(a,c)), file('SYN079+1.p',unknown), []).
 fof(5, plain, big_f(f(a,b),f(a,c)), inference(hyper,[status(thm)],[4,1,3]), [iquote('hyper,4,1,3')]).
 fof(6, plain, $false, inference(binary,[status(thm)],[5,2]), [iquote('binary,5.1,2.1')]).

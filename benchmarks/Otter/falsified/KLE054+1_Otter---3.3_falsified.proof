@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '91':
-%%%%%   Replaced (! [A,B]: ((addition(multiplication(A,domain(B)),A) = A)))
-%%%%%   With (! [A,B]: (~ ((addition(multiplication(A,domain(B)),A) = A))))
+%%%%% Mutated formula '32':
+%%%%%   Replaced (! [A,B]: ((domain(multiplication(A,domain(B))) = domain(multiplication(A,B)))))
+%%%%%   With (! [A,B]: (~ ((domain(multiplication(A,domain(B))) = domain(multiplication(A,B))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE054+1 : TPTP v8.1.0. Released v4.0.0.
@@ -37,9 +37,9 @@ fof(3, axiom, (addition(domain(multiplication(dollar_c2,dollar_c1)),domain(dolla
 fof(17, axiom, (! [A]: ((multiplication(A,one) = A))), file('KLE054+1.p',unknown), []).
 fof(20, axiom, (! [A,B,C]: ((multiplication(A,addition(B,C)) = addition(multiplication(A,B),multiplication(A,C))))), file('KLE054+1.p',unknown), []).
 fof(30, axiom, (! [A,B]: ((domain(multiplication(A,B)) = domain(multiplication(A,domain(B)))))), file('KLE054+1.p',unknown), []).
-fof(32, plain, (! [A,B]: ((domain(multiplication(A,domain(B))) = domain(multiplication(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[30])]), [iquote('copy,30,flip.1')]).
+fof(32, plain, (! [A,B]: (~ ((domain(multiplication(A,domain(B))) = domain(multiplication(A,B)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[30])]), [iquote('copy,30,flip.1')]).
 fof(33, axiom, (! [A]: ((addition(domain(A),one) = one))), file('KLE054+1.p',unknown), []).
 fof(37, axiom, (! [A,B]: ((domain(addition(A,B)) = addition(domain(A),domain(B))))), file('KLE054+1.p',unknown), []).
-fof(91, plain, (! [A,B]: (~ ((addition(multiplication(A,domain(B)),A) = A)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[20,33]),17,17])]), [iquote('para_into,20.1.1.2,33.1.1,demod,17,17,flip.1')]).
+fof(91, plain, (! [A,B]: ((addition(multiplication(A,domain(B)),A) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[20,33]),17,17])]), [iquote('para_into,20.1.1.2,33.1.1,demod,17,17,flip.1')]).
 fof(337, plain, (! [A,B]: ((addition(domain(multiplication(A,B)),domain(A)) = domain(A)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[91,37]),32])]), [iquote('para_from,91.1.1,37.1.1.1,demod,32,flip.1')]).
 fof(339, plain, $false, inference(binary,[status(thm)],[337,3]), [iquote('binary,337.1,3.1')]).

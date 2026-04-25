@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '58':
-%%%%%   Replaced greater(vplus(vd329,vd330),vplus(vd328,vd330))
-%%%%%   With ~ (greater(vplus(vd329,vd330),vplus(vd328,vd330)))
+%%%%% Mutated formula '111':
+%%%%%   Replaced ((vd329 = vd328) | less(vd329,vd328))
+%%%%%   With ((vd329 = vd328) & less(vd329,vd328))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM840+2 : TPTP v8.1.0. Released v4.1.0.
@@ -47,10 +47,10 @@ fof(29, axiom, (! [A,B]: (((A = B) | ((A = vplus(B,dollar_f3(A,B))) | (B = vplus
 fof(30, plain, (! [A,B]: (((A = B) | ((vplus(B,dollar_f3(A,B)) = A) | (vplus(A,dollar_f4(A,B)) = B))))), inference(flip,[status(thm),theory(equality)],[inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[29])])]), [iquote('copy,29,flip.2,flip.3')]).
 fof(31, axiom, (! [A,B]: ((vplus(A,B) = vplus(B,A)))), file('NUM840+2.p',unknown), []).
 fof(39, axiom, (! [A,B,C]: ((vplus(vplus(A,B),C) = vplus(A,vplus(B,C))))), file('NUM840+2.p',unknown), []).
-fof(58, plain, ~ (greater(vplus(vd329,vd330),vplus(vd328,vd330))), inference(hyper,[status(thm)],[27,8]), [iquote('hyper,27,8')]).
+fof(58, plain, greater(vplus(vd329,vd330),vplus(vd328,vd330)), inference(hyper,[status(thm)],[27,8]), [iquote('hyper,27,8')]).
 fof(71, plain, (! [A,B,C]: (((A = B) | (greater(A,B) | less(vplus(A,C),vplus(B,C)))))), inference(hyper,[status(thm)],[28,5]), [iquote('hyper,28,5')]).
 fof(72, plain, ((vd329 = vd328) | greater(vd328,vd329)), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[28,1])]), [iquote('hyper,28,1,flip.1')]).
-fof(111, plain, ((vd329 = vd328) | less(vd329,vd328)), inference(hyper,[status(thm)],[72,9]), [iquote('hyper,72,9')]).
+fof(111, plain, ((vd329 = vd328) & less(vd329,vd328)), inference(hyper,[status(thm)],[72,9]), [iquote('hyper,72,9')]).
 fof(318, plain, greater(vplus(vd330,vd329),vplus(vd328,vd330)), inference(para_into,[status(thm),theory(equality)],[58,31]), [iquote('para_into,58.1.1,31.1.1')]).
 fof(354, plain, (! [A,B,C]: ((vplus(A,vplus(B,C)) != vplus(A,B)))), inference(para_from,[status(thm),theory(equality)],[39,25]), [iquote('para_from,38.1.1,25.1.1')]).
 fof(468, plain, greater(vplus(vd330,vd329),vplus(vd330,vd328)), inference(para_into,[status(thm),theory(equality)],[318,31]), [iquote('para_into,318.1.2,31.1.1')]).

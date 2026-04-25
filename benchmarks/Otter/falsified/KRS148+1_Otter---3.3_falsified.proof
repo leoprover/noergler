@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '234':
-%%%%%   Replaced cC140(iV5475)
-%%%%%   With cC140(dollar_c1)
+%%%%% Mutated formula '220':
+%%%%%   Replaced (~ (cowlThing(dollar_c1)) | (cowlNothing(dollar_c1) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (~ (cC138(iV5475)) | (~ (cowlThing(iV5475)) | (~ (cC116(iV5475)) | ~ (cC140(iV5475)))))))))
+%%%%%   With (cowlThing(dollar_c1) | (cowlNothing(dollar_c1) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (~ (cC138(iV5475)) | (~ (cowlThing(iV5475)) | (~ (cC116(iV5475)) | ~ (cC140(iV5475)))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS148+1 : TPTP v8.1.0. Released v3.1.0.
@@ -40,13 +40,13 @@ fof(205, axiom, (! [A]: ((~ (cTEST(A)) | cC140(A)))), file('KRS148+1.p',unknown)
 fof(206, axiom, (! [A]: ((~ (cTEST(A)) | cC116(A)))), file('KRS148+1.p',unknown), []).
 fof(218, axiom, (~ (cowlThing(dollar_c1)) | (cowlNothing(dollar_c1) | (xsd_string(dollar_c2) | (~ (xsd_integer(dollar_c2)) | (~ (cC138(iV5475)) | (~ (cowlThing(iV5475)) | (~ (cC116(iV5475)) | ~ (cC140(iV5475))))))))), file('KRS148+1.p',unknown), []).
 fof(219, plain, (~ (cowlThing(dollar_c1)) | (xsd_string(dollar_c2) | (~ (xsd_integer(dollar_c2)) | (~ (cC138(iV5475)) | (~ (cowlThing(iV5475)) | (~ (cC116(iV5475)) | ~ (cC140(iV5475)))))))), inference(unit_del,[status(thm)],[inference(copy,[status(thm)],[218]),1]), [iquote('copy,218,unit_del,1')]).
-fof(220, axiom, (~ (cowlThing(dollar_c1)) | (cowlNothing(dollar_c1) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (~ (cC138(iV5475)) | (~ (cowlThing(iV5475)) | (~ (cC116(iV5475)) | ~ (cC140(iV5475))))))))), file('KRS148+1.p',unknown), []).
+fof(220, axiom, (cowlThing(dollar_c1) | (cowlNothing(dollar_c1) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (~ (cC138(iV5475)) | (~ (cowlThing(iV5475)) | (~ (cC116(iV5475)) | ~ (cC140(iV5475))))))))), file('KRS148+1.p',unknown), []).
 fof(221, plain, (~ (cowlThing(dollar_c1)) | (~ (xsd_string(dollar_c2)) | (xsd_integer(dollar_c2) | (~ (cC138(iV5475)) | (~ (cowlThing(iV5475)) | (~ (cC116(iV5475)) | ~ (cC140(iV5475)))))))), inference(unit_del,[status(thm)],[inference(copy,[status(thm)],[220]),1]), [iquote('copy,220,unit_del,1')]).
 fof(222, axiom, (! [A]: (cowlThing(A))), file('KRS148+1.p',unknown), []).
 fof(223, axiom, (! [A]: ((xsd_string(A) | xsd_integer(A)))), file('KRS148+1.p',unknown), []).
 fof(229, axiom, cTEST(iV5475), file('KRS148+1.p',unknown), []).
 fof(233, plain, cC116(iV5475), inference(hyper,[status(thm)],[229,206]), [iquote('hyper,229,206')]).
-fof(234, plain, cC140(dollar_c1), inference(hyper,[status(thm)],[229,205]), [iquote('hyper,229,205')]).
+fof(234, plain, cC140(iV5475), inference(hyper,[status(thm)],[229,205]), [iquote('hyper,229,205')]).
 fof(235, plain, cC138(iV5475), inference(hyper,[status(thm)],[234,71]), [iquote('hyper,234,71')]).
 fof(236, plain, xsd_integer(dollar_c2), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[235,221,222,223,222,233,234])]), [iquote('hyper,235,221,222,223,222,233,234,factor_simp')]).
 fof(239, plain, xsd_string(dollar_c2), inference(hyper,[status(thm)],[236,219,222,235,222,233,234]), [iquote('hyper,236,219,222,235,222,233,234')]).

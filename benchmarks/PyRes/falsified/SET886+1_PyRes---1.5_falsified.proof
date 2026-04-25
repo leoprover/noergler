@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c3637':
-%%%%%   Replaced (! [X549]: ((unordered_pair(skolem0001,X549) = unordered_pair(skolem0002,X549))))
-%%%%%   With (! [X549]: ((unordered_pair(skolem0002,X549) = unordered_pair(skolem0002,X549))))
+%%%%% Mutated formula 'c5096':
+%%%%%   Replaced (! [X639]: ((unordered_pair(X639,skolem0002) = unordered_pair(skolem0001,X639))))
+%%%%%   With (! [X639]: (~ ((unordered_pair(X639,skolem0002) = unordered_pair(skolem0001,X639)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SET886+1 : TPTP v8.1.2. Released v3.2.0.
@@ -74,8 +74,8 @@ fof(c311, plain, (! [X512]: (((singleton(skolem0003) != X512) | subset(unordered
 fof(c3585, plain, subset(unordered_pair(skolem0002,skolem0001),singleton(skolem0001)), inference(resolution,[status(thm)],[c311,c73])).
 fof(c3597, plain, (skolem0002 = skolem0001), inference(resolution,[status(thm)],[c3585,c14])).
 fof(c3609, plain, (skolem0001 = skolem0002), inference(resolution,[status(thm)],[c3597,symmetry])).
-fof(c3637, plain, (! [X549]: ((unordered_pair(skolem0002,X549) = unordered_pair(skolem0002,X549)))), inference(resolution,[status(thm)],[c3609,c37])).
+fof(c3637, plain, (! [X549]: ((unordered_pair(skolem0001,X549) = unordered_pair(skolem0002,X549)))), inference(resolution,[status(thm)],[c3609,c37])).
 fof(c4380, plain, (! [X584]: ((unordered_pair(skolem0001,X584) = unordered_pair(X584,skolem0002)))), inference(resolution,[status(thm)],[c3637,c44])).
-fof(c5096, plain, (! [X639]: ((unordered_pair(X639,skolem0002) = unordered_pair(skolem0001,X639)))), inference(resolution,[status(thm)],[c4380,symmetry])).
+fof(c5096, plain, (! [X639]: (~ ((unordered_pair(X639,skolem0002) = unordered_pair(skolem0001,X639))))), inference(resolution,[status(thm)],[c4380,symmetry])).
 fof(c6563, plain, (unordered_pair(skolem0001,skolem0002) = singleton(skolem0003)), inference(resolution,[status(thm)],[c5096,c264])).
 fof(c7781, plain, $false, inference(resolution,[status(thm)],[c6563,c11])).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '368':
-%%%%%   Replaced (! [A]: ((meet(meet(A,A),top) = meet(A,A))))
-%%%%%   With (! [A]: (~ ((meet(meet(A,A),top) = meet(A,A)))))
+%%%%% Mutated formula '263':
+%%%%%   Replaced (! [A]: ((join(zero,meet(A,A)) = A)))
+%%%%%   With (! [A]: ((join(one,meet(A,A)) = A)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : REL002+1 : TPTP v8.1.0. Released v4.0.0.
@@ -77,7 +77,7 @@ fof(215, plain, (join(zero,zero) = zero), inference(demod,[status(thm),theory(eq
 fof(226, plain, (meet(meet(top,top),zero) = zero), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[99]),215]), [iquote('back_demod,99,demod,215')]).
 fof(228, plain, (complement(zero) = meet(top,top)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[87]),215]), [iquote('back_demod,87,demod,215')]).
 fof(243, plain, (! [A]: ((complement(complement(A)) = meet(A,A)))), inference(para_from,[status(thm),theory(equality)],[183,12]), [iquote('para_from,182.1.1,11.1.1.1')]).
-fof(263, plain, (! [A]: ((join(zero,meet(A,A)) = A))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[35,34]),183,243]), [iquote('para_into,35.1.1.1,33.1.1,demod,183,243')]).
+fof(263, plain, (! [A]: ((join(one,meet(A,A)) = A))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[35,34]),183,243]), [iquote('para_into,35.1.1.1,33.1.1,demod,183,243')]).
 fof(275, plain, (! [A]: ((join(meet(A,A),zero) = A))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[35,37]),46]), [iquote('para_into,35.1.1.2.1,37.1.1,demod,46')]).
 fof(290, plain, (join(zero,meet(meet(top,top),top)) = meet(top,top)), inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[226,35]),57]), [iquote('para_from,226.1.1,35.1.1.1,demod,57')]).
 fof(302, plain, (! [A]: ((meet(top,complement(A)) = complement(A)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[243,64]),263])]), [iquote('para_from,242.1.1,64.1.1.1.2,demod,263,flip.1')]).
@@ -85,7 +85,7 @@ fof(304, plain, (! [A]: ((meet(complement(A),top) = complement(A)))), inference(
 fof(312, plain, (! [A]: ((join(complement(A),meet(A,A)) = top))), inference(para_from,[status(thm),theory(equality)],[243,30]), [iquote('para_from,242.1.1,30.1.1.2')]).
 fof(317, plain, (! [A]: ((join(top,meet(A,A)) = join(top,A)))), inference(flip,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[263,77])]), [iquote('para_from,262.1.1,77.1.1.2,flip.1')]).
 fof(364, plain, (! [A,B]: ((meet(top,meet(A,B)) = meet(A,B)))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[302,12]),12]), [iquote('para_into,302.1.1.2,11.1.1,demod,12')]).
-fof(368, plain, (! [A]: (~ ((meet(meet(A,A),top) = meet(A,A))))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[304,243]),243]), [iquote('para_into,304.1.1.1,242.1.1,demod,243')]).
+fof(368, plain, (! [A]: ((meet(meet(A,A),top) = meet(A,A)))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[304,243]),243]), [iquote('para_into,304.1.1.1,242.1.1,demod,243')]).
 fof(378, plain, (meet(top,top) = top), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[290]),368,263])]), [iquote('back_demod,290,demod,368,263,flip.1')]).
 fof(383, plain, (complement(zero) = top), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[228]),378]), [iquote('back_demod,228,demod,378')]).
 fof(387, plain, (! [A]: ((join(complement(A),complement(join(meet(A,A),top))) = complement(A)))), inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[304,35]),243]), [iquote('para_from,304.1.1,35.1.1.1,demod,243')]).

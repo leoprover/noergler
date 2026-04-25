@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '89':
-%%%%%   Replaced rdn_translate(n2,rdn_pos(rdnn(n2)))
-%%%%%   With rdn_translate(n3,rdn_pos(rdnn(n2)))
+%%%%% Mutated formula '354':
+%%%%%   Replaced rdn_positive_less(rdnn(n2),rdnn(n3))
+%%%%%   With ~ (rdn_positive_less(rdnn(n2),rdnn(n3)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM290+1 : TPTP v8.1.0. Released v3.1.0.
@@ -35,8 +35,8 @@
 %%% Generated on Tue Apr 14 19:15:53 CEST 2026 using command 'transform(fof)'.
 fof(7, axiom, (! [A,B,C,D]: ((~ (rdn_translate(A,rdn_pos(B))) | (~ (rdn_translate(C,rdn_pos(D))) | (~ (rdn_positive_less(B,D)) | less(A,C)))))), file('NUM290+1.p',unknown), []).
 fof(32, axiom, ~ (less(n2,n3)), file('NUM290+1.p',unknown), []).
-fof(89, axiom, rdn_translate(n3,rdn_pos(rdnn(n2))), file('NUM290+1.p',unknown), []).
+fof(89, axiom, rdn_translate(n2,rdn_pos(rdnn(n2))), file('NUM290+1.p',unknown), []).
 fof(90, axiom, rdn_translate(n3,rdn_pos(rdnn(n3))), file('NUM290+1.p',unknown), []).
-fof(354, axiom, rdn_positive_less(rdnn(n2),rdnn(n3)), file('NUM290+1.p',unknown), []).
+fof(354, axiom, ~ (rdn_positive_less(rdnn(n2),rdnn(n3))), file('NUM290+1.p',unknown), []).
 fof(18721, plain, less(n2,n3), inference(hyper,[status(thm)],[354,7,89,90]), [iquote('hyper,354,7,89,90')]).
 fof(18722, plain, $false, inference(binary,[status(thm)],[18721,32]), [iquote('binary,18721.1,32.1')]).

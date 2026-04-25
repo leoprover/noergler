@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '202':
-%%%%%   Replaced (image4(dollar_c3,dollar_c4,dollar_c2,inverse4(dollar_c3,dollar_c4,dollar_c2,dollar_c4)) = image4(dollar_c3,dollar_c4,dollar_c2,dollar_c3))
-%%%%%   With ~ ((image4(dollar_c3,dollar_c4,dollar_c2,inverse4(dollar_c3,dollar_c4,dollar_c2,dollar_c4)) = image4(dollar_c3,dollar_c4,dollar_c2,dollar_c3)))
+%%%%% Mutated formula '200':
+%%%%%   Replaced (inverse4(dollar_c3,dollar_c4,dollar_c2,image4(dollar_c3,dollar_c4,dollar_c2,dollar_c3)) = inverse4(dollar_c3,dollar_c4,dollar_c2,dollar_c4))
+%%%%%   With ~ ((inverse4(dollar_c3,dollar_c4,dollar_c2,image4(dollar_c3,dollar_c4,dollar_c2,dollar_c3)) = inverse4(dollar_c3,dollar_c4,dollar_c2,dollar_c4)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET675+3 : TPTP v8.1.0. Released v2.2.0.
@@ -64,6 +64,6 @@ fof(166, plain, ((image4(dollar_c3,dollar_c4,dollar_c2,inverse4(dollar_c3,dollar
 fof(168, plain, (range_of(dollar_c2) = image4(dollar_c3,dollar_c4,dollar_c2,dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[154]),163]), [iquote('back_demod,154,demod,163')]).
 fof(190, plain, relation_like(dollar_c2), inference(hyper,[status(thm)],[159,45,112,112]), [iquote('hyper,159,45,112,112')]).
 fof(197, plain, ilf_type(dollar_c2,binary_relation_type), inference(hyper,[status(thm)],[190,20,112]), [iquote('hyper,190,20,112')]).
-fof(200, plain, (inverse4(dollar_c3,dollar_c4,dollar_c2,image4(dollar_c3,dollar_c4,dollar_c2,dollar_c3)) = inverse4(dollar_c3,dollar_c4,dollar_c2,dollar_c4)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[197,3]),168,149,165]), [iquote('hyper,197,3,demod,168,149,165')]).
-fof(202, plain, ~ ((image4(dollar_c3,dollar_c4,dollar_c2,inverse4(dollar_c3,dollar_c4,dollar_c2,dollar_c4)) = image4(dollar_c3,dollar_c4,dollar_c2,dollar_c3))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[197,2]),168,165,152])]), [iquote('hyper,197,2,demod,168,165,152,flip.1')]).
+fof(200, plain, ~ ((inverse4(dollar_c3,dollar_c4,dollar_c2,image4(dollar_c3,dollar_c4,dollar_c2,dollar_c3)) = inverse4(dollar_c3,dollar_c4,dollar_c2,dollar_c4))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[197,3]),168,149,165]), [iquote('hyper,197,3,demod,168,149,165')]).
+fof(202, plain, (image4(dollar_c3,dollar_c4,dollar_c2,inverse4(dollar_c3,dollar_c4,dollar_c2,dollar_c4)) = image4(dollar_c3,dollar_c4,dollar_c2,dollar_c3)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[197,2]),168,165,152])]), [iquote('hyper,197,2,demod,168,165,152,flip.1')]).
 fof(203, plain, $false, inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[166]),202,200]),110,110]), [iquote('back_demod,166,demod,202,200,unit_del,110,110')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '8':
-%%%%%   Replaced (! [A,B]: ((big_p(A,dollar_f1(A)) | big_p(B,B))))
-%%%%%   With (! [A,B]: ((~ (big_p(A,dollar_f1(A))) | big_p(B,B))))
+%%%%% Mutated formula '6':
+%%%%%   Replaced (! [A]: ((big_p(A,dollar_f1(A)) | big_p(g(f(A,dollar_f1(A))),dollar_f1(g(f(A,dollar_f1(A))))))))
+%%%%%   With (! [A]: ((big_p(A,dollar_f1(A)) & big_p(g(f(A,dollar_f1(A))),dollar_f1(g(f(A,dollar_f1(A))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN364+1 : TPTP v8.1.0. Released v2.0.0.
@@ -38,7 +38,7 @@ fof(2, axiom, (! [A]: ((~ (big_q(A)) | ~ (big_m(g(A)))))), file('SYN364+1.p',unk
 fof(3, axiom, (! [A]: ((~ (big_p(g(dollar_c1),A)) | ~ (big_p(dollar_c1,dollar_c1))))), file('SYN364+1.p',unknown), []).
 fof(4, axiom, (! [A]: ((big_p(A,dollar_f1(A)) | big_m(A)))), file('SYN364+1.p',unknown), []).
 fof(5, axiom, (! [A]: ((big_p(A,dollar_f1(A)) | big_q(f(A,dollar_f1(A)))))), file('SYN364+1.p',unknown), []).
-fof(6, plain, (! [A]: ((big_p(A,dollar_f1(A)) | big_p(g(f(A,dollar_f1(A))),dollar_f1(g(f(A,dollar_f1(A)))))))), inference(hyper,[status(thm)],[5,2,4]), [iquote('hyper,5,2,4')]).
-fof(8, plain, (! [A,B]: ((~ (big_p(A,dollar_f1(A))) | big_p(B,B)))), inference(hyper,[status(thm)],[6,1]), [iquote('hyper,6,1')]).
+fof(6, plain, (! [A]: ((big_p(A,dollar_f1(A)) & big_p(g(f(A,dollar_f1(A))),dollar_f1(g(f(A,dollar_f1(A)))))))), inference(hyper,[status(thm)],[5,2,4]), [iquote('hyper,5,2,4')]).
+fof(8, plain, (! [A,B]: ((big_p(A,dollar_f1(A)) | big_p(B,B)))), inference(hyper,[status(thm)],[6,1]), [iquote('hyper,6,1')]).
 fof(9, plain, (! [A]: (big_p(A,A))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[8,1])]), [iquote('hyper,8,1,factor_simp')]).
 fof(11, plain, $false, inference(hyper,[status(thm)],[9,3,9]), [iquote('hyper,9,3,9')]).

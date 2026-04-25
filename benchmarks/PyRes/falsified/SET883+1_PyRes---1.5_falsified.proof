@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c3':
-%%%%%   Replaced (! [A,B]: ((~ (subset(singleton(A),singleton(B))) | (A = B))))
-%%%%%   With (! [A,B]: ((subset(singleton(A),singleton(B)) | (A = B))))
+%%%%% Mutated formula 'c27':
+%%%%%   Replaced (skolem0001 = skolem0002)
+%%%%%   With ~ ((skolem0001 = skolem0002))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SET883+1 : TPTP v8.1.2. Released v3.2.0.
@@ -44,8 +44,8 @@ fof(c9, negated_conjecture, (subset(singleton(skolem0001),singleton(skolem0002))
 fof(c11, negated_conjecture, (skolem0001 != skolem0002), inference(split_conjunct,[status(thm)],[c9])).
 fof(c10, negated_conjecture, subset(singleton(skolem0001),singleton(skolem0002)), inference(split_conjunct,[status(thm)],[c9])).
 fof(t6_zfmisc_1, axiom, (! [A,B]: ((subset(singleton(A),singleton(B)) => (A = B)))), file('SET883+1.p',t6_zfmisc_1)).
-fof(c3, plain, (! [A,B]: ((subset(singleton(A),singleton(B)) | (A = B)))), inference(fof_nnf,[status(thm)],[t6_zfmisc_1])).
+fof(c3, plain, (! [A,B]: ((~ (subset(singleton(A),singleton(B))) | (A = B)))), inference(fof_nnf,[status(thm)],[t6_zfmisc_1])).
 fof(c4, plain, (! [X2,X3]: ((~ (subset(singleton(X2),singleton(X3))) | (X2 = X3)))), inference(variable_rename,[status(thm)],[c3])).
 fof(c5, plain, (! [X27,X26]: ((~ (subset(singleton(X27),singleton(X26))) | (X27 = X26)))), inference(split_conjunct,[status(thm)],[c4])).
-fof(c27, plain, (skolem0001 = skolem0002), inference(resolution,[status(thm)],[c5,c10])).
+fof(c27, plain, ~ ((skolem0001 = skolem0002)), inference(resolution,[status(thm)],[c5,c10])).
 fof(c32, plain, $false, inference(resolution,[status(thm)],[c27,c11])).

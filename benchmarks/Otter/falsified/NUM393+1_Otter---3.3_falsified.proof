@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '64':
-%%%%%   Replaced ordinal(dollar_c12)
-%%%%%   With ordinal(dollar_c13)
+%%%%% Mutated formula '14':
+%%%%%   Replaced (! [A,B]: ((~ (ordinal(A)) | (~ (ordinal(B)) | (~ (ordinal_subset(A,B)) | subset(A,B))))))
+%%%%%   With (! [A,B]: ((ordinal(A) | (~ (ordinal(B)) | (~ (ordinal_subset(A,B)) | subset(A,B))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM393+1 : TPTP v8.1.0. Released v3.2.0.
@@ -36,10 +36,10 @@
 fof(8, axiom, (! [A,B]: ((~ (ordinal(A)) | (~ (ordinal(B)) | (ordinal_subset(A,B) | ordinal_subset(B,A)))))), file('NUM393+1.p',unknown), []).
 fof(10, axiom, (! [A,B]: ((inclusion_comparable(A,B) | ~ (subset(A,B))))), file('NUM393+1.p',unknown), []).
 fof(11, axiom, (! [A,B]: ((inclusion_comparable(A,B) | ~ (subset(B,A))))), file('NUM393+1.p',unknown), []).
-fof(14, axiom, (! [A,B]: ((~ (ordinal(A)) | (~ (ordinal(B)) | (~ (ordinal_subset(A,B)) | subset(A,B)))))), file('NUM393+1.p',unknown), []).
+fof(14, axiom, (! [A,B]: ((ordinal(A) | (~ (ordinal(B)) | (~ (ordinal_subset(A,B)) | subset(A,B)))))), file('NUM393+1.p',unknown), []).
 fof(20, axiom, ~ (inclusion_comparable(dollar_c13,dollar_c12)), file('NUM393+1.p',unknown), []).
 fof(63, axiom, ordinal(dollar_c13), file('NUM393+1.p',unknown), []).
-fof(64, axiom, ordinal(dollar_c13), file('NUM393+1.p',unknown), []).
+fof(64, axiom, ordinal(dollar_c12), file('NUM393+1.p',unknown), []).
 fof(99, plain, (ordinal_subset(dollar_c13,dollar_c12) | ordinal_subset(dollar_c12,dollar_c13)), inference(hyper,[status(thm)],[64,8,63]), [iquote('hyper,64,8,63')]).
 fof(217, plain, (ordinal_subset(dollar_c12,dollar_c13) | subset(dollar_c13,dollar_c12)), inference(hyper,[status(thm)],[99,14,63,64]), [iquote('hyper,99,14,63,64')]).
 fof(321, plain, ordinal_subset(dollar_c12,dollar_c13), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[217,10]),20]), [iquote('hyper,217,10,unit_del,20')]).

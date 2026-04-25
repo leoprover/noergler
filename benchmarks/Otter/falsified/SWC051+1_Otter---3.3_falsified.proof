@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '448':
-%%%%%   Replaced ssList(dollar_c4)
-%%%%%   With ssList(dollar_c5)
+%%%%% Mutated formula '453':
+%%%%%   Replaced (dollar_c6 = dollar_c4)
+%%%%%   With (dollar_c5 = dollar_c4)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC051+1 : TPTP v8.1.0. Released v2.4.0.
@@ -37,9 +37,9 @@ fof(126, axiom, (! [A]: ((~ (ssList(A)) | rearsegP(A,A)))), file('SWC051+1.p',un
 fof(182, axiom, (! [A]: ((~ (ssList(A)) | (~ (ne_q(A,nil)) | (~ (rearsegP(dollar_c5,A)) | ~ (rearsegP(dollar_c6,A))))))), file('SWC051+1.p',unknown), []).
 fof(184, axiom, (~ (ne_q(dollar_c3,nil)) | ne_q(dollar_c4,nil)), file('SWC051+1.p',unknown), []).
 fof(185, axiom, (~ (ne_q(dollar_c3,nil)) | rearsegP(dollar_c3,dollar_c4)), file('SWC051+1.p',unknown), []).
-fof(448, axiom, ssList(dollar_c5), file('SWC051+1.p',unknown), []).
+fof(448, axiom, ssList(dollar_c4), file('SWC051+1.p',unknown), []).
 fof(451, axiom, (dollar_c5 = dollar_c3), file('SWC051+1.p',unknown), []).
-fof(453, axiom, (dollar_c6 = dollar_c4), file('SWC051+1.p',unknown), []).
+fof(453, axiom, (dollar_c5 = dollar_c4), file('SWC051+1.p',unknown), []).
 fof(454, axiom, ne_q(dollar_c5,nil), file('SWC051+1.p',unknown), []).
 fof(455, plain, ne_q(dollar_c3,nil), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[454]),451]), [iquote('copy,454,demod,451')]).
 fof(456, plain, (! [A]: ((~ (ssList(A)) | (~ (ne_q(A,nil)) | (~ (rearsegP(dollar_c3,A)) | ~ (rearsegP(dollar_c4,A))))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),451,453]), [iquote('back_demod,182,demod,451,453')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '97':
-%%%%%   Replaced sdtmndtasgtdt0(xu,xR,xb)
-%%%%%   With ~ (sdtmndtasgtdt0(xu,xR,xb))
+%%%%% Mutated formula '101':
+%%%%%   Replaced aElement0(xw)
+%%%%%   With aElement0(xa)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : COM020+1 : TPTP v8.1.0. Released v4.0.0.
@@ -48,8 +48,8 @@ fof(90, axiom, aElement0(xa), file('COM020+1.p',unknown), []).
 fof(91, axiom, aElement0(xb), file('COM020+1.p',unknown), []).
 fof(95, axiom, aElement0(xu), file('COM020+1.p',unknown), []).
 fof(96, axiom, aReductOfIn0(xu,xa,xR), file('COM020+1.p',unknown), []).
-fof(97, axiom, ~ (sdtmndtasgtdt0(xu,xR,xb)), file('COM020+1.p',unknown), []).
-fof(101, axiom, aElement0(xw), file('COM020+1.p',unknown), []).
+fof(97, axiom, sdtmndtasgtdt0(xu,xR,xb), file('COM020+1.p',unknown), []).
+fof(101, axiom, aElement0(xa), file('COM020+1.p',unknown), []).
 fof(102, axiom, sdtmndtasgtdt0(xu,xR,xw), file('COM020+1.p',unknown), []).
 fof(104, axiom, aNormalFormOfIn0(xd,xw,xR), file('COM020+1.p',unknown), []).
 fof(147, plain, sdtmndtplgtdt0(xa,xR,xu), inference(hyper,[status(thm)],[96,5,90,87,95]), [iquote('hyper,96,5,90,87,95')]).

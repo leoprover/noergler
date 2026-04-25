@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c18':
-%%%%%   Replaced aInteger0(skolem0002)
-%%%%%   With ~ (aInteger0(skolem0002))
+%%%%% Mutated formula 'c9':
+%%%%%   Replaced (! [X80]: ((~ (aInteger0(X80)) | (sdtasdt0(xq,X80) != sdtpldt0(xb,smndt0(xc))))))
+%%%%%   With (! [X80]: ((aInteger0(X80) | (sdtasdt0(xq,X80) != sdtpldt0(xb,smndt0(xc))))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM430+3 : TPTP v8.1.2. Released v4.0.0.
@@ -39,12 +39,12 @@
 fof(m__853, plain, ((? [W0]: ((aInteger0(W0) & (sdtasdt0(xq,W0) = sdtpldt0(xa,smndt0(xb)))))) & (aDivisorOf0(xq,sdtpldt0(xa,smndt0(xb))) & (sdteqdtlpzmzozddtrp0(xa,xb,xq) & ((? [W0]: ((aInteger0(W0) & (sdtasdt0(xq,W0) = sdtpldt0(xb,smndt0(xc)))))) & (aDivisorOf0(xq,sdtpldt0(xb,smndt0(xc))) & sdteqdtlpzmzozddtrp0(xb,xc,xq)))))), file('NUM430+3.p',m__853)).
 fof(c12, plain, ((? [X3]: ((aInteger0(X3) & (sdtasdt0(xq,X3) = sdtpldt0(xa,smndt0(xb)))))) & (aDivisorOf0(xq,sdtpldt0(xa,smndt0(xb))) & (sdteqdtlpzmzozddtrp0(xa,xb,xq) & ((? [X4]: ((aInteger0(X4) & (sdtasdt0(xq,X4) = sdtpldt0(xb,smndt0(xc)))))) & (aDivisorOf0(xq,sdtpldt0(xb,smndt0(xc))) & sdteqdtlpzmzozddtrp0(xb,xc,xq)))))), inference(variable_rename,[status(thm)],[m__853])).
 fof(c13, plain, (aInteger0(skolem0001) & ((sdtasdt0(xq,skolem0001) = sdtpldt0(xa,smndt0(xb))) & (aDivisorOf0(xq,sdtpldt0(xa,smndt0(xb))) & (sdteqdtlpzmzozddtrp0(xa,xb,xq) & (aInteger0(skolem0002) & ((sdtasdt0(xq,skolem0002) = sdtpldt0(xb,smndt0(xc))) & (aDivisorOf0(xq,sdtpldt0(xb,smndt0(xc))) & sdteqdtlpzmzozddtrp0(xb,xc,xq)))))))), inference(skolemize,[status(esa)],[c12])).
-fof(c18, plain, ~ (aInteger0(skolem0002)), inference(split_conjunct,[status(thm)],[c13])).
+fof(c18, plain, aInteger0(skolem0002), inference(split_conjunct,[status(thm)],[c13])).
 fof(m__, conjecture, (? [W0]: ((aInteger0(W0) & (sdtasdt0(xq,W0) = sdtpldt0(xb,smndt0(xc)))))), file('NUM430+3.p',m__)).
 fof(c6, negated_conjecture, ~ ((? [W0]: ((aInteger0(W0) & (sdtasdt0(xq,W0) = sdtpldt0(xb,smndt0(xc))))))), inference(assume_negation,[status(cth)],[m__])).
 fof(c7, negated_conjecture, (! [W0]: ((~ (aInteger0(W0)) | (sdtasdt0(xq,W0) != sdtpldt0(xb,smndt0(xc)))))), inference(fof_nnf,[status(thm)],[c6])).
 fof(c8, negated_conjecture, (! [X2]: ((~ (aInteger0(X2)) | (sdtasdt0(xq,X2) != sdtpldt0(xb,smndt0(xc)))))), inference(variable_rename,[status(thm)],[c7])).
-fof(c9, negated_conjecture, (! [X80]: ((~ (aInteger0(X80)) | (sdtasdt0(xq,X80) != sdtpldt0(xb,smndt0(xc)))))), inference(split_conjunct,[status(thm)],[c8])).
+fof(c9, negated_conjecture, (! [X80]: ((aInteger0(X80) | (sdtasdt0(xq,X80) != sdtpldt0(xb,smndt0(xc)))))), inference(split_conjunct,[status(thm)],[c8])).
 fof(c19, plain, (sdtasdt0(xq,skolem0002) = sdtpldt0(xb,smndt0(xc))), inference(split_conjunct,[status(thm)],[c13])).
 fof(c302, plain, ~ (aInteger0(skolem0002)), inference(resolution,[status(thm)],[c19,c9])).
 fof(c307, plain, $false, inference(resolution,[status(thm)],[c302,c18])).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '56':
-%%%%%   Replaced (vmul(vd436,vplus(vd437,vd439)) = vplus(vmul(vd436,vd437),vmul(vd436,vd439)))
-%%%%%   With ~ ((vmul(vd436,vplus(vd437,vd439)) = vplus(vmul(vd436,vd437),vmul(vd436,vd439))))
+%%%%% Mutated formula '58':
+%%%%%   Replaced (vplus(vmul(vd436,vd437),vmul(vd436,vd439)) = vmul(vd436,vplus(vd437,vd439)))
+%%%%%   With (vplus(vmul(vd437,vd437),vmul(vd436,vd439)) = vmul(vd436,vplus(vd437,vd439)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM846+1 : TPTP v8.1.0. Released v4.1.0.
@@ -36,7 +36,7 @@
 fof(1, axiom, (vplus(vmul(vd436,vplus(vd437,vd439)),vd436) != vplus(vplus(vmul(vd436,vd437),vmul(vd436,vd439)),vd436)), file('NUM846+1.p',unknown), []).
 fof(2, plain, (vplus(vplus(vmul(vd436,vd437),vmul(vd436,vd439)),vd436) != vplus(vmul(vd436,vplus(vd437,vd439)),vd436)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[1])]), [iquote('copy,1,flip.1')]).
 fof(50, axiom, (! [A]: ((A = A))), file('NUM846+1.p',unknown), []).
-fof(56, axiom, ~ ((vmul(vd436,vplus(vd437,vd439)) = vplus(vmul(vd436,vd437),vmul(vd436,vd439)))), file('NUM846+1.p',unknown), []).
-fof(58, plain, (vplus(vmul(vd436,vd437),vmul(vd436,vd439)) = vmul(vd436,vplus(vd437,vd439))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[56])]), [iquote('copy,56,flip.1')]).
+fof(56, axiom, (vmul(vd436,vplus(vd437,vd439)) = vplus(vmul(vd436,vd437),vmul(vd436,vd439))), file('NUM846+1.p',unknown), []).
+fof(58, plain, (vplus(vmul(vd437,vd437),vmul(vd436,vd439)) = vmul(vd436,vplus(vd437,vd439))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[56])]), [iquote('copy,56,flip.1')]).
 fof(92, plain, (vplus(vmul(vd436,vplus(vd437,vd439)),vd436) != vplus(vmul(vd436,vplus(vd437,vd439)),vd436)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[2]),58]), [iquote('back_demod,2,demod,58')]).
 fof(93, plain, $false, inference(binary,[status(thm)],[92,50]), [iquote('binary,92.1,50.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '525':
 %%%%%   Replaced accept_number(christiansufferterrahumanitarianorganization,n3)
-%%%%%   With ~ (accept_number(christiansufferterrahumanitarianorganization,n3))
+%%%%%   With accept_number(countryafirstaidorganization,n3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : AGT005+2 : TPTP v8.1.0. Bugfixed v3.1.0.
@@ -37,6 +37,6 @@ fof(4, axiom, (! [A,B,C,D]: ((accept_team(A,B,C,D) | (~ (accept_city(A,C)) | (~ 
 fof(150, axiom, ~ (accept_team(christiansufferterrahumanitarianorganization,countryafirstaidorganization,towna,n3)), file('AGT005+2.p',unknown), []).
 fof(442, axiom, accept_city(christiansufferterrahumanitarianorganization,towna), file('AGT005+2.p',unknown), []).
 fof(443, axiom, accept_leader(christiansufferterrahumanitarianorganization,countryafirstaidorganization), file('AGT005+2.p',unknown), []).
-fof(525, axiom, ~ (accept_number(christiansufferterrahumanitarianorganization,n3)), file('AGT005+2.p',unknown), []).
+fof(525, axiom, accept_number(countryafirstaidorganization,n3), file('AGT005+2.p',unknown), []).
 fof(1607, plain, accept_team(christiansufferterrahumanitarianorganization,countryafirstaidorganization,towna,n3), inference(hyper,[status(thm)],[525,4,442,443]), [iquote('hyper,525,4,442,443')]).
 fof(1608, plain, $false, inference(binary,[status(thm)],[1607,150]), [iquote('binary,1607.1,150.1')]).

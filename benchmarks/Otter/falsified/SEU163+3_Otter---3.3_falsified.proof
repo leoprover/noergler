@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '7':
-%%%%%   Replaced in(dollar_c4,dollar_c3)
-%%%%%   With in(dollar_c3,dollar_c3)
+%%%%% Mutated formula '8':
+%%%%%   Replaced subset(dollar_c4,union(dollar_c3))
+%%%%%   With ~ (subset(dollar_c4,union(dollar_c3)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU163+3 : TPTP v8.1.0. Released v3.2.0.
@@ -35,6 +35,6 @@
 %%% Generated on Tue Apr 14 19:20:31 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, ~ (subset(dollar_c4,union(dollar_c3))), file('SEU163+3.p',unknown), []).
 fof(4, axiom, (! [A,B]: ((~ (in(A,B)) | subset(A,union(B))))), file('SEU163+3.p',unknown), []).
-fof(7, axiom, in(dollar_c3,dollar_c3), file('SEU163+3.p',unknown), []).
-fof(8, plain, subset(dollar_c4,union(dollar_c3)), inference(hyper,[status(thm)],[7,4]), [iquote('hyper,7,4')]).
+fof(7, axiom, in(dollar_c4,dollar_c3), file('SEU163+3.p',unknown), []).
+fof(8, plain, ~ (subset(dollar_c4,union(dollar_c3))), inference(hyper,[status(thm)],[7,4]), [iquote('hyper,7,4')]).
 fof(9, plain, $false, inference(binary,[status(thm)],[8,3]), [iquote('binary,8.1,3.1')]).

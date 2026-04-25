@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '108':
-%%%%%   Replaced aNaturalNumber0(sz00)
-%%%%%   With ~ (aNaturalNumber0(sz00))
+%%%%% Mutated formula '5557':
+%%%%%   Replaced ~ (sdtlse_qdt0(sz00,sz00))
+%%%%%   With sdtlse_qdt0(sz00,sz00)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM463+1 : TPTP v8.1.0. Released v4.0.0.
@@ -43,7 +43,7 @@ fof(43, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | ((A = sz00) | ((A = sz10) | (s
 fof(44, axiom, (! [A]: ((~ (aNaturalNumber0(A)) | ((A = sz00) | ((A = sz10) | sdtlse_qdt0(sz10,A)))))), file('NUM463+1.p',unknown), []).
 fof(45, axiom, (xm != sz00), file('NUM463+1.p',unknown), []).
 fof(46, axiom, ~ (sdtlse_qdt0(xn,sdtasdt0(xn,xm))), file('NUM463+1.p',unknown), []).
-fof(108, axiom, ~ (aNaturalNumber0(sz00)), file('NUM463+1.p',unknown), []).
+fof(108, axiom, aNaturalNumber0(sz00), file('NUM463+1.p',unknown), []).
 fof(109, axiom, aNaturalNumber0(sz10), file('NUM463+1.p',unknown), []).
 fof(110, axiom, aNaturalNumber0(xm), file('NUM463+1.p',unknown), []).
 fof(111, axiom, aNaturalNumber0(xn), file('NUM463+1.p',unknown), []).
@@ -58,5 +58,5 @@ fof(1023, plain, sdtlse_qdt0(sz10,xm), inference(factor_simp,[status(thm)],[infe
 fof(1164, plain, ((xn = sz00) | (xm = sz10)), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[1023,42,111,109,110]),661]),781])]), [iquote('hyper,1023,42,111,109,110,demod,661,unit_del,781,flip.2')]).
 fof(5516, plain, (xm != sz10), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[781,43]),661]),580,110,45])]), [iquote('para_into,781.1.2.1,43.3.1,demod,661,unit_del,580,110,45,flip.1')]).
 fof(5555, plain, (xn = sz00), inference(hyper,[status(thm)],[1164,5516]), [iquote('hyper,1164,5516')]).
-fof(5557, plain, ~ (sdtlse_qdt0(sz00,sz00)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[781]),5555,5555,334]), [iquote('back_demod,781,demod,5555,5555,334')]).
+fof(5557, plain, sdtlse_qdt0(sz00,sz00), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[781]),5555,5555,334]), [iquote('back_demod,781,demod,5555,5555,334')]).
 fof(5558, plain, $false, inference(binary,[status(thm)],[5557,122]), [iquote('binary,5557.1,122.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c200':
-%%%%%   Replaced (! [X119]: ((~ (microtheory(X119)) | aspatialinformationstore(X119))))
-%%%%%   With (! [X119]: ((~ (microtheory(X119)) & aspatialinformationstore(X119))))
+%%%%% Mutated formula 'c203':
+%%%%%   Replaced (! [X111]: ((~ (aspatialinformationstore(X111)) | aspatialthing(X111))))
+%%%%%   With (! [X111]: ((~ (aspatialinformationstore(X111)) & aspatialthing(X111))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR041+1 : TPTP v8.1.2. Released v3.4.0.
@@ -42,7 +42,7 @@ fof(c1, negated_conjecture, (mtvisible(c_tptp_member2831_mt) & ~ (aspatialthing(
 fof(c3, negated_conjecture, ~ (aspatialthing(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_wwwinformationblastcomtechnical_university_of_munichhtml)),c_translation_3))), inference(split_conjunct,[status(thm)],[c1])).
 fof(just2, axiom, (! [OBJ]: ((aspatialinformationstore(OBJ) => aspatialthing(OBJ)))), file('CSR041+1.p',just2)).
 fof(c202, plain, (! [OBJ]: ((~ (aspatialinformationstore(OBJ)) | aspatialthing(OBJ)))), inference(fof_nnf,[status(thm)],[just2])).
-fof(c203, plain, (! [X111]: ((~ (aspatialinformationstore(X111)) | aspatialthing(X111)))), inference(variable_rename,[status(thm)],[c202])).
+fof(c203, plain, (! [X111]: ((~ (aspatialinformationstore(X111)) & aspatialthing(X111)))), inference(variable_rename,[status(thm)],[c202])).
 fof(c204, plain, (! [X123]: ((~ (aspatialinformationstore(X123)) | aspatialthing(X123)))), inference(split_conjunct,[status(thm)],[c203])).
 fof(just41, axiom, (! [ARG1,ARG2]: (microtheory(f_contentmtofcdafromeventfn(ARG1,ARG2)))), file('CSR041+1.p',just41)).
 fof(c107, plain, (! [X55,X56]: (microtheory(f_contentmtofcdafromeventfn(X55,X56)))), inference(variable_rename,[status(thm)],[just41])).
@@ -50,7 +50,7 @@ fof(c108, plain, (! [X115,X114]: (microtheory(f_contentmtofcdafromeventfn(X115,X
 fof(just4, axiom, (! [OBJ]: ((microtheory(OBJ) => aspatialinformationstore(OBJ)))), file('CSR041+1.p',just4)).
 fof(c198, plain, (! [OBJ]: ((~ (microtheory(OBJ)) | aspatialinformationstore(OBJ)))), inference(fof_nnf,[status(thm)],[just4])).
 fof(c199, plain, (! [X110]: ((~ (microtheory(X110)) | aspatialinformationstore(X110)))), inference(variable_rename,[status(thm)],[c198])).
-fof(c200, plain, (! [X119]: ((~ (microtheory(X119)) & aspatialinformationstore(X119)))), inference(split_conjunct,[status(thm)],[c199])).
+fof(c200, plain, (! [X119]: ((~ (microtheory(X119)) | aspatialinformationstore(X119)))), inference(split_conjunct,[status(thm)],[c199])).
 fof(c207, plain, (! [X125,X124]: (aspatialinformationstore(f_contentmtofcdafromeventfn(X125,X124)))), inference(resolution,[status(thm)],[c200,c108])).
 fof(c210, plain, (! [X127,X126]: (aspatialthing(f_contentmtofcdafromeventfn(X127,X126)))), inference(resolution,[status(thm)],[c207,c204])).
 fof(c211, plain, $false, inference(resolution,[status(thm)],[c210,c3])).

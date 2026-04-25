@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '186':
-%%%%%   Replaced (host(dollar_c2) = s(index(pendack,host(dollar_c1))))
-%%%%%   With (host(dollar_c6) = s(index(pendack,host(dollar_c1))))
+%%%%% Mutated formula '22':
+%%%%%   Replaced (! [A,B]: ((m_Down(A) != m_Halt(B))))
+%%%%%   With (! [A,B]: (~ ((m_Down(A) != m_Halt(B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWV464+1 : TPTP v8.1.0. Released v4.0.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:23:01 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, (! [A,B]: (((s(host(A)) != host(B)) | (host(A) != host(B))))), file('SWV464+1.p',unknown), []).
 fof(16, axiom, (! [A,B,C]: ((m_Ack(A,B) != m_Halt(C)))), file('SWV464+1.p',unknown), []).
-fof(22, axiom, (! [A,B]: ((m_Down(A) != m_Halt(B)))), file('SWV464+1.p',unknown), []).
+fof(22, axiom, (! [A,B]: (~ ((m_Down(A) != m_Halt(B))))), file('SWV464+1.p',unknown), []).
 fof(53, axiom, (! [A,B,C]: ((~ (elem(A,snoc(B,C))) | ((A = C) | elem(A,B))))), file('SWV464+1.p',unknown), []).
 fof(77, axiom, (! [A]: (~ (le_q(s(A),A)))), file('SWV464+1.p',unknown), []).
 fof(78, axiom, (! [A,B]: ((~ (le_q(A,B)) | (~ (le_q(B,A)) | (A = B))))), file('SWV464+1.p',unknown), []).
@@ -52,7 +52,7 @@ fof(180, axiom, elem(m_Down(dollar_c2),snoc(queue(host(dollar_c1)),m_Halt(dollar
 fof(181, axiom, elem(m_Ack(dollar_c1,dollar_c3),snoc(queue(host(dollar_c1)),m_Halt(dollar_c6))), file('SWV464+1.p',unknown), []).
 fof(182, axiom, (index(status,host(dollar_c1)) = elec_2), file('SWV464+1.p',unknown), []).
 fof(184, axiom, (host(dollar_c3) = index(pendack,host(dollar_c1))), file('SWV464+1.p',unknown), []).
-fof(186, axiom, (host(dollar_c6) = s(index(pendack,host(dollar_c1)))), file('SWV464+1.p',unknown), []).
+fof(186, axiom, (host(dollar_c2) = s(index(pendack,host(dollar_c1)))), file('SWV464+1.p',unknown), []).
 fof(188, plain, (s(index(pendack,host(dollar_c1))) = host(dollar_c2)), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[186])]), [iquote('copy,186,flip.1')]).
 fof(189, axiom, setIn(dollar_c4,alive), file('SWV464+1.p',unknown), []).
 fof(190, axiom, (index(ldr,host(dollar_c4)) = host(dollar_c4)), file('SWV464+1.p',unknown), []).

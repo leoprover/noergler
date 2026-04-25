@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '62':
-%%%%%   Replaced line(dollar_c1)
-%%%%%   With line(dollar_c2)
+%%%%% Mutated formula '61':
+%%%%%   Replaced line(dollar_c2)
+%%%%%   With ~ (line(dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO227+1 : TPTP v8.1.0. Bugfixed v6.4.0.
@@ -36,6 +36,6 @@
 fof(34, axiom, (! [A,B]: ((~ (line(A)) | (~ (line(B)) | (une_qually_directed_lines(A,B) | une_qually_directed_lines(A,reverse_line(B))))))), file('GEO227+1.p',unknown), []).
 fof(52, axiom, ~ (une_qually_directed_lines(dollar_c2,dollar_c1)), file('GEO227+1.p',unknown), []).
 fof(53, axiom, ~ (une_qually_directed_lines(dollar_c2,reverse_line(dollar_c1))), file('GEO227+1.p',unknown), []).
-fof(61, axiom, line(dollar_c2), file('GEO227+1.p',unknown), []).
-fof(62, axiom, line(dollar_c2), file('GEO227+1.p',unknown), []).
+fof(61, axiom, ~ (line(dollar_c2)), file('GEO227+1.p',unknown), []).
+fof(62, axiom, line(dollar_c1), file('GEO227+1.p',unknown), []).
 fof(67, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[62,34,61]),52,53]), [iquote('hyper,62,34,61,unit_del,52,53')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '382':
-%%%%%   Replaced (aElementOf0(dollar_f17(xp),xT) | aElementOf0(xp,xP))
-%%%%%   With (aElementOf0(dollar_f17(xT),xT) | aElementOf0(xp,xP))
+%%%%% Mutated formula '199':
+%%%%%   Replaced (! [A,B]: ((~ (aElementOf0(A,xU)) | (~ (aElementOf0(B,xU)) | (~ (sdtlse_qdt0(A,B)) | sdtlse_qdt0(sdtlpdtrp0(xf,A),sdtlpdtrp0(xf,B)))))))
+%%%%%   With (! [A,B]: ((aElementOf0(A,xU) | (~ (aElementOf0(B,xU)) | (~ (sdtlse_qdt0(A,B)) | sdtlse_qdt0(sdtlpdtrp0(xf,A),sdtlpdtrp0(xf,B)))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : LAT387+4 : TPTP v8.1.0. Released v4.0.0.
@@ -76,11 +76,11 @@ fof(193, plain, ((sdtlpdtrp0(xf,xp) != xp) | (aElementOf0(dollar_c1,xT) | ~ (sdt
 fof(194, plain, ((sdtlpdtrp0(xf,xp) != xp) | (aElementOf0(dollar_c1,xT) | aUpperBoundOfIn0(dollar_c2,xT,xS))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[116]),164]),176]), [iquote('back_demod,116,demod,164,unit_del,176')]).
 fof(196, plain, ((sdtlpdtrp0(xf,xp) != xp) | (aElementOf0(dollar_c1,xT) | aElementOf0(dollar_c2,xS))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[114]),164]),176]), [iquote('back_demod,114,demod,164,unit_del,176')]).
 fof(198, plain, (! [A]: ((~ (aElementOf0(A,xS)) | aElementOf0(A,xU)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[95]),164]), [iquote('back_demod,95,demod,164')]).
-fof(199, plain, (! [A,B]: ((~ (aElementOf0(A,xU)) | (~ (aElementOf0(B,xU)) | (~ (sdtlse_qdt0(A,B)) | sdtlse_qdt0(sdtlpdtrp0(xf,A),sdtlpdtrp0(xf,B))))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[94]),164,164]), [iquote('back_demod,94,demod,164,164')]).
+fof(199, plain, (! [A,B]: ((aElementOf0(A,xU) | (~ (aElementOf0(B,xU)) | (~ (sdtlse_qdt0(A,B)) | sdtlse_qdt0(sdtlpdtrp0(xf,A),sdtlpdtrp0(xf,B))))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[94]),164,164]), [iquote('back_demod,94,demod,164,164')]).
 fof(225, plain, (! [A]: ((~ (aElementOf0(A,xU)) | aElementOf0(sdtlpdtrp0(xf,A),xU)))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[164,43]),182]),157]), [iquote('para_from,163.1.1,43.2.2,demod,182,unit_del,157')]).
 fof(299, plain, aElement0(xp), inference(hyper,[status(thm)],[176,1,155]), [iquote('hyper,176,1,155')]).
 fof(347, plain, sdtlse_qdt0(sdtlpdtrp0(xf,xp),xp), inference(hyper,[status(thm)],[179,111]), [iquote('hyper,179,111')]).
-fof(382, plain, (aElementOf0(dollar_f17(xT),xT) | aElementOf0(xp,xP)), inference(hyper,[status(thm)],[347,105,176]), [iquote('hyper,347,105,176')]).
+fof(382, plain, (aElementOf0(dollar_f17(xp),xT) | aElementOf0(xp,xP)), inference(hyper,[status(thm)],[347,105,176]), [iquote('hyper,347,105,176')]).
 fof(619, plain, (aElementOf0(xp,xP) | sdtlse_qdt0(dollar_f17(xp),sdtlpdtrp0(xf,xp))), inference(hyper,[status(thm)],[382,113]), [iquote('hyper,382,113')]).
 fof(624, plain, (aElementOf0(xp,xP) | aElement0(dollar_f17(xp))), inference(hyper,[status(thm)],[382,1,170]), [iquote('hyper,382,1,170')]).
 fof(1352, plain, aElementOf0(sdtlpdtrp0(xf,xp),xU), inference(hyper,[status(thm)],[225,176]), [iquote('hyper,225,176')]).

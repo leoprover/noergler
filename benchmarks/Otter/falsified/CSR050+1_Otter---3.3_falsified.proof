@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3':
-%%%%%   Replaced (~ (mtvisible(c_currentworlddatacollectormt_nonhomocentric)) | tptptypes_9_693(f_subcollectionofwithrelationtofn(c_ship,c_objectfoundinlocation,c_cityofbostonma),c_tptpcol_16_26939))
-%%%%%   With (mtvisible(c_currentworlddatacollectormt_nonhomocentric) | tptptypes_9_693(f_subcollectionofwithrelationtofn(c_ship,c_objectfoundinlocation,c_cityofbostonma),c_tptpcol_16_26939))
+%%%%% Mutated formula '51':
+%%%%%   Replaced genlmt(c_ldscdemonstrationspindleheadmt,c_currentworlddatacollectormt_nonhomocentric)
+%%%%%   With genlmt(c_cityofbostonma,c_currentworlddatacollectormt_nonhomocentric)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR050+1 : TPTP v8.1.0. Released v3.4.0.
@@ -35,11 +35,11 @@
 %%% Generated on Tue Apr 14 19:11:08 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B]: ((~ (tptptypes_8_692(A,B)) | tptptypes_7_691(B,A)))), file('CSR050+1.p',unknown), []).
 fof(2, axiom, (! [A,B]: ((~ (tptptypes_9_693(A,B)) | tptptypes_8_692(A,B)))), file('CSR050+1.p',unknown), []).
-fof(3, axiom, (mtvisible(c_currentworlddatacollectormt_nonhomocentric) | tptptypes_9_693(f_subcollectionofwithrelationtofn(c_ship,c_objectfoundinlocation,c_cityofbostonma),c_tptpcol_16_26939)), file('CSR050+1.p',unknown), []).
+fof(3, axiom, (~ (mtvisible(c_currentworlddatacollectormt_nonhomocentric)) | tptptypes_9_693(f_subcollectionofwithrelationtofn(c_ship,c_objectfoundinlocation,c_cityofbostonma),c_tptpcol_16_26939)), file('CSR050+1.p',unknown), []).
 fof(45, axiom, (! [A,B]: ((~ (mtvisible(A)) | (~ (genlmt(A,B)) | mtvisible(B))))), file('CSR050+1.p',unknown), []).
 fof(48, axiom, (! [A,B,C]: ((~ (genlmt(A,B)) | (~ (genlmt(B,C)) | genlmt(A,C))))), file('CSR050+1.p',unknown), []).
 fof(50, axiom, ~ (tptptypes_7_691(c_tptpcol_16_26939,f_subcollectionofwithrelationtofn(c_ship,c_objectfoundinlocation,c_cityofbostonma))), file('CSR050+1.p',unknown), []).
-fof(51, axiom, genlmt(c_ldscdemonstrationspindleheadmt,c_currentworlddatacollectormt_nonhomocentric), file('CSR050+1.p',unknown), []).
+fof(51, axiom, genlmt(c_cityofbostonma,c_currentworlddatacollectormt_nonhomocentric), file('CSR050+1.p',unknown), []).
 fof(54, axiom, genlmt(f_contentmtofcdafromeventfn(f_urlreferentfn(f_urlfn(s_http_memberstripodcomindygalfordtriviahtm)),c_translation_32),c_machinelearningspindleheadmt), file('CSR050+1.p',unknown), []).
 fof(55, axiom, genlmt(c_machinelearningspindleheadmt,c_miptdatabase19681997_termsmt), file('CSR050+1.p',unknown), []).
 fof(56, axiom, genlmt(c_miptdatabase19681997_termsmt,c_ldscgeneralcollectormt), file('CSR050+1.p',unknown), []).

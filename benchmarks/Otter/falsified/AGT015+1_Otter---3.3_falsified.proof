@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '355':
-%%%%%   Replaced accept_number(muslimcountrybhumanitarianorganization,n6)
-%%%%%   With accept_number(cityb,n6)
+%%%%% Mutated formula '156':
+%%%%%   Replaced accept_team(muslimcountrybhumanitarianorganization,countrybhumanitarianorganization,cityb,n4)
+%%%%%   With accept_team(towna,countrybhumanitarianorganization,cityb,n4)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : AGT015+1 : TPTP v8.1.0. Bugfixed v3.1.0.
@@ -36,8 +36,8 @@
 fof(2, axiom, (! [A,B,C,D]: ((~ (accept_team(A,B,C,D)) | accept_leader(A,B)))), file('AGT015+1.p',unknown), []).
 fof(4, axiom, (! [A,B,C,D]: ((accept_team(A,B,C,D) | (~ (accept_city(A,C)) | (~ (accept_leader(A,B)) | ~ (accept_number(A,D))))))), file('AGT015+1.p',unknown), []).
 fof(121, axiom, ~ (accept_team(muslimcountrybhumanitarianorganization,countrybhumanitarianorganization,towna,n6)), file('AGT015+1.p',unknown), []).
-fof(156, axiom, accept_team(muslimcountrybhumanitarianorganization,countrybhumanitarianorganization,cityb,n4), file('AGT015+1.p',unknown), []).
-fof(355, axiom, accept_number(cityb,n6), file('AGT015+1.p',unknown), []).
+fof(156, axiom, accept_team(towna,countrybhumanitarianorganization,cityb,n4), file('AGT015+1.p',unknown), []).
+fof(355, axiom, accept_number(muslimcountrybhumanitarianorganization,n6), file('AGT015+1.p',unknown), []).
 fof(633, axiom, (! [A,B]: (accept_city(A,B))), file('AGT015+1.p',unknown), []).
 fof(730, plain, accept_leader(muslimcountrybhumanitarianorganization,countrybhumanitarianorganization), inference(hyper,[status(thm)],[156,2]), [iquote('hyper,156,2')]).
 fof(859, plain, (! [A]: (accept_team(muslimcountrybhumanitarianorganization,countrybhumanitarianorganization,A,n6))), inference(hyper,[status(thm)],[730,4,633,355]), [iquote('hyper,730,4,633,355')]).

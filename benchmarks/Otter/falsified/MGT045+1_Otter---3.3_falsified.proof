@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '19':
 %%%%%   Replaced greater(age(dollar_c3,dollar_c1),age(dollar_c3,dollar_c2))
-%%%%%   With ~ (greater(age(dollar_c3,dollar_c1),age(dollar_c3,dollar_c2)))
+%%%%%   With greater(age(dollar_c2,dollar_c1),age(dollar_c3,dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT045+1 : TPTP v8.1.0. Released v2.4.0.
@@ -37,7 +37,7 @@ fof(11, axiom, (! [A,B,C]: ((~ (organization(A)) | (~ (greater(external_ties(A,B
 fof(13, axiom, (! [A,B,C]: ((~ (organization(A)) | (~ (greater(age(A,B),age(A,C))) | greater(external_ties(A,B),external_ties(A,C)))))), file('MGT045+1.p',unknown), []).
 fof(14, axiom, ~ (greater(position(dollar_c3,dollar_c1),position(dollar_c3,dollar_c2))), file('MGT045+1.p',unknown), []).
 fof(18, axiom, organization(dollar_c3), file('MGT045+1.p',unknown), []).
-fof(19, axiom, ~ (greater(age(dollar_c3,dollar_c1),age(dollar_c3,dollar_c2))), file('MGT045+1.p',unknown), []).
+fof(19, axiom, greater(age(dollar_c2,dollar_c1),age(dollar_c3,dollar_c2)), file('MGT045+1.p',unknown), []).
 fof(24, plain, greater(external_ties(dollar_c3,dollar_c1),external_ties(dollar_c3,dollar_c2)), inference(hyper,[status(thm)],[19,13,18]), [iquote('hyper,19,13,18')]).
 fof(64, plain, greater(position(dollar_c3,dollar_c1),position(dollar_c3,dollar_c2)), inference(hyper,[status(thm)],[24,11,18]), [iquote('hyper,24,11,18')]).
 fof(65, plain, $false, inference(binary,[status(thm)],[64,14]), [iquote('binary,64.1,14.1')]).

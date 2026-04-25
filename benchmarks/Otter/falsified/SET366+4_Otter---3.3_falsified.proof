@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '822':
-%%%%%   Replaced (! [A,B]: (member(A,difference(unordered_pair(A,B),empty_set))))
-%%%%%   With (! [A,B]: (~ (member(A,difference(unordered_pair(A,B),empty_set)))))
+%%%%% Mutated formula '113':
+%%%%%   Replaced (! [A,B]: ((member(dollar_f1(A,B),A) | member(A,power_set(B)))))
+%%%%%   With (! [A,B]: ((member(dollar_f1(A,B),A) & member(A,power_set(B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET366+4 : TPTP v8.1.0. Released v2.2.0.
@@ -46,8 +46,8 @@ fof(38, plain, (! [A,B]: (member(A,unordered_pair(A,B)))), inference(hyper,[stat
 fof(39, plain, (! [A]: (member(A,singleton(A)))), inference(hyper,[status(thm)],[34,19]), [iquote('hyper,34,19')]).
 fof(42, plain, (! [A,B]: ((member(A,difference(singleton(A),B)) | member(A,B)))), inference(hyper,[status(thm)],[39,17]), [iquote('hyper,39,17')]).
 fof(69, plain, (! [A,B,C]: ((member(A,difference(unordered_pair(A,B),C)) | member(A,C)))), inference(hyper,[status(thm)],[38,17]), [iquote('hyper,38,17')]).
-fof(113, plain, (! [A,B]: ((member(dollar_f1(A,B),A) | member(A,power_set(B))))), inference(hyper,[status(thm)],[35,7]), [iquote('hyper,35,7')]).
+fof(113, plain, (! [A,B]: ((member(dollar_f1(A,B),A) & member(A,power_set(B))))), inference(hyper,[status(thm)],[35,7]), [iquote('hyper,35,7')]).
 fof(647, plain, (! [A]: (member(A,difference(singleton(A),empty_set)))), inference(hyper,[status(thm)],[42,14]), [iquote('hyper,42,14')]).
-fof(822, plain, (! [A,B]: (~ (member(A,difference(unordered_pair(A,B),empty_set))))), inference(hyper,[status(thm)],[69,16,647]), [iquote('hyper,69,16,647')]).
+fof(822, plain, (! [A,B]: (member(A,difference(unordered_pair(A,B),empty_set)))), inference(hyper,[status(thm)],[69,16,647]), [iquote('hyper,69,16,647')]).
 fof(889, plain, (! [A]: (member(empty_set,power_set(A)))), inference(hyper,[status(thm)],[113,16,822]), [iquote('hyper,113,16,822')]).
 fof(890, plain, $false, inference(binary,[status(thm)],[889,28]), [iquote('binary,889.1,28.1')]).

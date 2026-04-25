@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '40':
-%%%%%   Replaced animal(dollar_c3)
-%%%%%   With ~ (animal(dollar_c3))
+%%%%% Mutated formula '6':
+%%%%%   Replaced (! [A]: ((~ (snail(A)) | animal(A))))
+%%%%%   With (! [A]: ((snail(A) | animal(A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PUZ031+3 : TPTP v8.1.0. Released v4.1.0.
@@ -36,7 +36,7 @@
 fof(2, axiom, (! [A]: ((~ (wolf(A)) | animal(A)))), file('PUZ031+3.p',unknown), []).
 fof(3, axiom, (! [A]: ((~ (fox(A)) | animal(A)))), file('PUZ031+3.p',unknown), []).
 fof(4, axiom, (! [A]: ((~ (bird(A)) | animal(A)))), file('PUZ031+3.p',unknown), []).
-fof(6, axiom, (! [A]: ((~ (snail(A)) | animal(A)))), file('PUZ031+3.p',unknown), []).
+fof(6, axiom, (! [A]: ((snail(A) | animal(A)))), file('PUZ031+3.p',unknown), []).
 fof(8, axiom, (! [A]: ((~ (grain(A)) | plant(A)))), file('PUZ031+3.p',unknown), []).
 fof(9, axiom, (! [A,B,C,D]: ((~ (animal(A)) | (~ (plant(B)) | (eats(A,B) | (~ (animal(C)) | (~ (much_smaller(C,A)) | (~ (plant(D)) | (~ (eats(C,D)) | eats(A,C)))))))))), file('PUZ031+3.p',unknown), []).
 fof(10, axiom, (! [A,B]: ((~ (bird(A)) | (~ (snail(B)) | much_smaller(B,A))))), file('PUZ031+3.p',unknown), []).
@@ -53,7 +53,7 @@ fof(33, axiom, fox(dollar_c4), file('PUZ031+3.p',unknown), []).
 fof(34, axiom, bird(dollar_c5), file('PUZ031+3.p',unknown), []).
 fof(36, axiom, snail(dollar_c7), file('PUZ031+3.p',unknown), []).
 fof(38, axiom, grain(dollar_c9), file('PUZ031+3.p',unknown), []).
-fof(40, plain, ~ (animal(dollar_c3)), inference(hyper,[status(thm)],[32,2]), [iquote('hyper,32,2')]).
+fof(40, plain, animal(dollar_c3), inference(hyper,[status(thm)],[32,2]), [iquote('hyper,32,2')]).
 fof(41, plain, much_smaller(dollar_c4,dollar_c3), inference(hyper,[status(thm)],[33,13,32]), [iquote('hyper,33,13,32')]).
 fof(42, plain, animal(dollar_c4), inference(hyper,[status(thm)],[33,3]), [iquote('hyper,33,3')]).
 fof(43, plain, much_smaller(dollar_c5,dollar_c4), inference(hyper,[status(thm)],[34,12,33]), [iquote('hyper,34,12,33')]).

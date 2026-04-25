@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1210':
-%%%%%   Replaced (! [A,B]: ((dollar_f1(vplus(A,B),A) = B)))
-%%%%%   With (! [A,B]: (~ ((dollar_f1(vplus(A,B),A) = B))))
+%%%%% Mutated formula '84':
+%%%%%   Replaced (vplus(vmul(vd488,vd487),dollar_f2(vmul(vd488,vd487),vmul(vd486,vd487))) = vmul(vd486,vd487))
+%%%%%   With ~ ((vplus(vmul(vd488,vd487),dollar_f2(vmul(vd488,vd487),vmul(vd486,vd487))) = vmul(vd486,vd487)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM853+2 : TPTP v8.1.0. Released v4.1.0.
@@ -59,7 +59,7 @@ fof(47, axiom, (! [A,B]: ((vplus(A,B) = vplus(B,A)))), file('NUM853+2.p',unknown
 fof(66, plain, (! [A,B]: (less(A,vplus(A,B)))), inference(hyper,[status(thm)],[29,15]), [iquote('hyper,29,15')]).
 fof(71, plain, (! [A,B,C]: (((A = B) | (vplus(C,B) != vplus(C,A))))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[39,22]),39]), [iquote('para_into,38.1.1,22.1.1,demod,39')]).
 fof(78, plain, (! [A,B]: (((A = B) | (B != A)))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[42,3]),42]), [iquote('para_into,41.1.1,3.2.1,demod,42')]).
-fof(84, plain, (vplus(vmul(vd488,vd487),dollar_f2(vmul(vd488,vd487),vmul(vd486,vd487))) = vmul(vd486,vd487)), inference(hyper,[status(thm)],[30,17]), [iquote('hyper,30,17')]).
+fof(84, plain, ~ ((vplus(vmul(vd488,vd487),dollar_f2(vmul(vd488,vd487),vmul(vd486,vd487))) = vmul(vd486,vd487))), inference(hyper,[status(thm)],[30,17]), [iquote('hyper,30,17')]).
 fof(88, plain, (! [A]: (greater(vmul(vd486,vmul(vd487,A)),vmul(vd488,vmul(vd487,A))))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[30,4]),32,32]), [iquote('hyper,30,4,demod,32,32')]).
 fof(97, plain, (! [A,B]: ((vplus(A,dollar_f1(vplus(A,B),A)) = vplus(A,B)))), inference(hyper,[status(thm)],[66,14]), [iquote('hyper,66,14')]).
 fof(112, plain, (! [A,B,C]: ((~ (less(A,B)) | ((vplus(A,C) = B) | (C != dollar_f1(B,A)))))), inference(para_from,[status(thm),theory(equality)],[78,14]), [iquote('para_from,78.1.1,14.2.1.2')]).
@@ -69,7 +69,7 @@ fof(214, plain, (! [A,B]: (((A = B) | (greater(A,B) | greater(B,A))))), inferenc
 fof(216, plain, (! [A,B,C]: (((A = B) | (greater(A,B) | less(vmul(A,C),vmul(B,C)))))), inference(hyper,[status(thm)],[44,2]), [iquote('hyper,44,2')]).
 fof(1112, plain, (vmul(vd488,vd487) != vmul(vd486,vd487)), inference(flip,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[84,28])]), [iquote('para_from,84.1.1,28.1.1,flip.1')]).
 fof(1132, plain, (vmul(vd487,vd488) != vmul(vd486,vd487)), inference(para_into,[status(thm),theory(equality)],[1112,36]), [iquote('para_into,1112.1.1,36.1.1')]).
-fof(1210, plain, (! [A,B]: (~ ((dollar_f1(vplus(A,B),A) = B)))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[97,71])]), [iquote('hyper,97,71,flip.1')]).
+fof(1210, plain, (! [A,B]: ((dollar_f1(vplus(A,B),A) = B))), inference(flip,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[97,71])]), [iquote('hyper,97,71,flip.1')]).
 fof(1214, plain, (! [A,B]: ((dollar_f1(vplus(A,B),B) = A))), inference(para_into,[status(thm),theory(equality)],[1210,47]), [iquote('para_into,1210.1.1.1,47.1.1')]).
 fof(1888, plain, ((vd488 = vd486) | greater(vd488,vd486)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[214,144,1214,47]),1214,1214])]), [iquote('hyper,214,144,1213,47,demod,1214,1214,flip.1')]).
 fof(1893, plain, greater(vd488,vd486), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[1888,1132]),36]), [iquote('para_from,1888.1.1,1132.1.1.2,unit_del,36')]).

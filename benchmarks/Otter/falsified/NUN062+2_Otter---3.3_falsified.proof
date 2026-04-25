@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '115':
-%%%%%   Replaced (! [A]: (r1(A)))
-%%%%%   With (! [A]: (~ (r1(A))))
+%%%%% Mutated formula '23':
+%%%%%   Replaced (! [A,B]: (r3(A,B,dollar_f6(A,B))))
+%%%%%   With (! [A,B]: (~ (r3(A,B,dollar_f6(A,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUN062+2 : TPTP v8.1.0. Released v7.3.0.
@@ -39,9 +39,9 @@ fof(11, axiom, (! [A,B,C]: ((r1(dollar_f20(A,B)) | (~ (r3(dollar_c2,B,C)) | (C !
 fof(12, axiom, (! [A,B,C]: (((A = dollar_f20(B,A)) | (~ (r3(dollar_c2,A,C)) | (C != B))))), file('NUN062+2.p',unknown), []).
 fof(13, plain, (! [A,B,C]: (((dollar_f20(A,B) = B) | (~ (r3(dollar_c2,B,C)) | (C != A))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[12])]), [iquote('copy,12,flip.1')]).
 fof(15, axiom, (! [A]: ((A = A))), file('NUN062+2.p',unknown), []).
-fof(23, axiom, (! [A,B]: (r3(A,B,dollar_f6(A,B)))), file('NUN062+2.p',unknown), []).
+fof(23, axiom, (! [A,B]: (~ (r3(A,B,dollar_f6(A,B))))), file('NUN062+2.p',unknown), []).
 fof(32, axiom, (! [A]: ((dollar_f13(A) = A))), file('NUN062+2.p',unknown), []).
 fof(51, plain, (! [A]: (r2(A,dollar_f1(A)))), inference(hyper,[status(thm)],[15,4]), [iquote('hyper,15,4')]).
 fof(114, plain, (! [A]: ((dollar_f20(dollar_f6(dollar_c2,A),A) = A))), inference(hyper,[status(thm)],[23,13,15]), [iquote('hyper,23,13,15')]).
-fof(115, plain, (! [A]: (~ (r1(A)))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[23,11,15]),114]), [iquote('hyper,23,11,15,demod,114')]).
+fof(115, plain, (! [A]: (r1(A))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[23,11,15]),114]), [iquote('hyper,23,11,15,demod,114')]).
 fof(121, plain, $false, inference(hyper,[status(thm)],[115,10,32,51]), [iquote('hyper,115,10,32,51')]).

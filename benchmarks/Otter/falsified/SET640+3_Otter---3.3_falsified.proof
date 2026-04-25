@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '314':
-%%%%%   Replaced (! [A]: ((member(dollar_f4(dollar_c1,A),dollar_c1) | subset(dollar_c4,A))))
-%%%%%   With (! [A]: ((member(dollar_f4(dollar_c1,A),dollar_c1) & subset(dollar_c4,A))))
+%%%%% Mutated formula '155':
+%%%%%   Replaced ilf_type(dollar_c1,subset_type(cross_product(dollar_c3,dollar_c2)))
+%%%%%   With ~ (ilf_type(dollar_c1,subset_type(cross_product(dollar_c3,dollar_c2))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET640+3 : TPTP v8.1.0. Released v2.2.0.
@@ -55,14 +55,14 @@ fof(149, plain, (! [A]: ((empty(A) | ilf_type(dollar_f7(A),member_type(A))))), i
 fof(150, plain, (! [A,B]: ((member(A,power_set(B)) | member(dollar_f6(A,B),A)))), inference(hyper,[status(thm)],[142,24,142]), [iquote('hyper,142,24,142')]).
 fof(152, plain, (! [A]: (ilf_type(dollar_f5(A),subset_type(A)))), inference(hyper,[status(thm)],[142,20]), [iquote('hyper,142,20')]).
 fof(153, plain, (! [A,B]: ((subset(A,B) | member(dollar_f4(A,B),A)))), inference(hyper,[status(thm)],[142,15,142]), [iquote('hyper,142,15,142')]).
-fof(155, plain, ilf_type(dollar_c1,subset_type(cross_product(dollar_c3,dollar_c2))), inference(hyper,[status(thm)],[143,11,142,142]), [iquote('hyper,143,11,142,142')]).
+fof(155, plain, ~ (ilf_type(dollar_c1,subset_type(cross_product(dollar_c3,dollar_c2)))), inference(hyper,[status(thm)],[143,11,142,142]), [iquote('hyper,143,11,142,142')]).
 fof(159, plain, (! [A]: (ilf_type(dollar_f5(A),member_type(power_set(A))))), inference(hyper,[status(thm)],[152,18,142,142]), [iquote('hyper,152,18,142,142')]).
 fof(164, plain, ilf_type(dollar_c1,member_type(power_set(cross_product(dollar_c3,dollar_c2)))), inference(hyper,[status(thm)],[155,18,142,142]), [iquote('hyper,155,18,142,142')]).
 fof(166, plain, (! [A]: (ilf_type(dollar_f7(power_set(A)),member_type(power_set(A))))), inference(hyper,[status(thm)],[149,26,142]), [iquote('hyper,149,26,142')]).
 fof(167, plain, (! [A]: ((empty(power_set(A)) | member(dollar_f5(A),power_set(A))))), inference(hyper,[status(thm)],[159,28,142,142]), [iquote('hyper,159,28,142,142')]).
 fof(226, plain, (! [A]: (member(A,power_set(A)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[150,84,142])]), [iquote('hyper,150,84,142,factor_simp')]).
 fof(302, plain, (empty(power_set(cross_product(dollar_c3,dollar_c2))) | member(dollar_c1,power_set(cross_product(dollar_c3,dollar_c2)))), inference(hyper,[status(thm)],[164,28,142,142]), [iquote('hyper,164,28,142,142')]).
-fof(314, plain, (! [A]: ((member(dollar_f4(dollar_c1,A),dollar_c1) & subset(dollar_c4,A)))), inference(hyper,[status(thm)],[153,1,142,142,142,144]), [iquote('hyper,153,1,142,142,142,144')]).
+fof(314, plain, (! [A]: ((member(dollar_f4(dollar_c1,A),dollar_c1) | subset(dollar_c4,A)))), inference(hyper,[status(thm)],[153,1,142,142,142,144]), [iquote('hyper,153,1,142,142,142,144')]).
 fof(316, plain, (! [A]: ((empty(power_set(A)) | member(dollar_f7(power_set(A)),power_set(A))))), inference(hyper,[status(thm)],[166,28,142,142]), [iquote('hyper,166,28,142,142')]).
 fof(465, plain, (! [A]: (member(dollar_f5(A),power_set(A)))), inference(hyper,[status(thm)],[167,31,142,142,226]), [iquote('hyper,167,31,142,142,226')]).
 fof(1057, plain, member(dollar_f4(dollar_c1,cross_product(dollar_c3,dollar_c2)),dollar_c1), inference(hyper,[status(thm)],[314,43]), [iquote('hyper,314,43')]).

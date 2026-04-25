@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c17687':
-%%%%%   Replaced (sdtasasdt0(xs,xs) = sz0z00)
-%%%%%   With (sdtasasdt0(sz0z00,xs) = sz0z00)
+%%%%% Mutated formula 'c24':
+%%%%%   Replaced (! [W0,W1]: ((~ (aVector0(W0)) | (~ (aVector0(W1)) | ((aDimensionOf0(W0) != aDimensionOf0(W1)) | ((aDimensionOf0(W1) != sz00) | (sdtasasdt0(W0,W1) = sz0z00)))))))
+%%%%%   With (! [W0,W1]: ((~ (aVector0(W0)) & (~ (aVector0(W1)) | ((aDimensionOf0(W0) != aDimensionOf0(W1)) | ((aDimensionOf0(W1) != sz00) | (sdtasasdt0(W0,W1) = sz0z00)))))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : RNG050+1 : TPTP v8.1.2. Released v4.0.0.
@@ -56,12 +56,12 @@ fof(c20, plain, aVector0(xs), inference(split_conjunct,[status(thm)],[m__1542]))
 fof(c15, negated_conjecture, ((aDimensionOf0(xs) = sz00) | sdtlseqdt0(sz0z00,sdtasasdt0(xs,xs))), inference(split_conjunct,[status(thm)],[c14])).
 fof(c333, plain, (aDimensionOf0(xs) = sz00), inference(resolution,[status(thm)],[c15,c16])).
 fof(mDefSPZ, axiom, (! [W0,W1]: (((aVector0(W0) & aVector0(W1)) => (((aDimensionOf0(W0) = aDimensionOf0(W1)) & (aDimensionOf0(W1) = sz00)) => (sdtasasdt0(W0,W1) = sz0z00))))), file('RNG050+1.p',mDefSPZ)).
-fof(c24, plain, (! [W0,W1]: ((~ (aVector0(W0)) | (~ (aVector0(W1)) | ((aDimensionOf0(W0) != aDimensionOf0(W1)) | ((aDimensionOf0(W1) != sz00) | (sdtasasdt0(W0,W1) = sz0z00))))))), inference(fof_nnf,[status(thm)],[mDefSPZ])).
+fof(c24, plain, (! [W0,W1]: ((~ (aVector0(W0)) & (~ (aVector0(W1)) | ((aDimensionOf0(W0) != aDimensionOf0(W1)) | ((aDimensionOf0(W1) != sz00) | (sdtasasdt0(W0,W1) = sz0z00))))))), inference(fof_nnf,[status(thm)],[mDefSPZ])).
 fof(c25, plain, (! [X5,X6]: ((~ (aVector0(X5)) | (~ (aVector0(X6)) | ((aDimensionOf0(X5) != aDimensionOf0(X6)) | ((aDimensionOf0(X6) != sz00) | (sdtasasdt0(X5,X6) = sz0z00))))))), inference(variable_rename,[status(thm)],[c24])).
 fof(c26, plain, (! [X143,X142]: ((~ (aVector0(X143)) | (~ (aVector0(X142)) | ((aDimensionOf0(X143) != aDimensionOf0(X142)) | ((aDimensionOf0(X142) != sz00) | (sdtasasdt0(X143,X142) = sz0z00))))))), inference(split_conjunct,[status(thm)],[c25])).
 fof(c401, plain, (! [X420]: ((~ (aVector0(X420)) | ((aDimensionOf0(X420) != sz00) | (sdtasasdt0(X420,X420) = sz0z00))))), inference(resolution,[status(thm)],[c26,reflexivity])).
 fof(c15405, plain, (~ (aVector0(xs)) | (sdtasasdt0(xs,xs) = sz0z00)), inference(resolution,[status(thm)],[c401,c333])).
-fof(c17687, plain, (sdtasasdt0(sz0z00,xs) = sz0z00), inference(resolution,[status(thm)],[c15405,c20])).
+fof(c17687, plain, (sdtasasdt0(xs,xs) = sz0z00), inference(resolution,[status(thm)],[c15405,c20])).
 fof(c17742, plain, (sz0z00 = sdtasasdt0(xs,xs)), inference(resolution,[status(thm)],[c17687,symmetry])).
 fof(c17795, plain, (! [X474]: (((sz0z00 != X474) | sdtlseqdt0(X474,sdtasasdt0(xs,xs))))), inference(resolution,[status(thm)],[c17742,c291])).
 fof(c19731, plain, sdtlseqdt0(sz0z00,sdtasasdt0(xs,xs)), inference(resolution,[status(thm)],[c17795,reflexivity])).

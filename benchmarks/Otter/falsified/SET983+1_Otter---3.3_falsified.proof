@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '25':
-%%%%%   Replaced in(dollar_c7,cartesian_product2(dollar_c4,dollar_c3))
-%%%%%   With in(dollar_c5,cartesian_product2(dollar_c4,dollar_c3))
+%%%%% Mutated formula '21':
+%%%%%   Replaced (! [A,B,C,D]: ((cartesian_product2(set_intersection2(A,B),set_intersection2(C,D)) = set_intersection2(cartesian_product2(A,C),cartesian_product2(B,D)))))
+%%%%%   With (! [A,B,C,D]: (~ ((cartesian_product2(set_intersection2(A,B),set_intersection2(C,D)) = set_intersection2(cartesian_product2(A,C),cartesian_product2(B,D))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET983+1 : TPTP v8.1.0. Released v3.2.0.
@@ -36,9 +36,9 @@
 fof(4, axiom, (! [A,B,C,D]: (((A != set_intersection2(B,C)) | (in(D,A) | (~ (in(D,B)) | ~ (in(D,C))))))), file('SET983+1.p',unknown), []).
 fof(7, axiom, ~ (in(dollar_c7,cartesian_product2(set_intersection2(dollar_c6,dollar_c4),set_intersection2(dollar_c5,dollar_c3)))), file('SET983+1.p',unknown), []).
 fof(19, axiom, (! [A]: ((set_intersection2(A,A) = A))), file('SET983+1.p',unknown), []).
-fof(21, axiom, (! [A,B,C,D]: ((cartesian_product2(set_intersection2(A,B),set_intersection2(C,D)) = set_intersection2(cartesian_product2(A,C),cartesian_product2(B,D))))), file('SET983+1.p',unknown), []).
+fof(21, axiom, (! [A,B,C,D]: (~ ((cartesian_product2(set_intersection2(A,B),set_intersection2(C,D)) = set_intersection2(cartesian_product2(A,C),cartesian_product2(B,D)))))), file('SET983+1.p',unknown), []).
 fof(23, plain, (! [A,B,C,D]: ((set_intersection2(cartesian_product2(A,B),cartesian_product2(C,D)) = cartesian_product2(set_intersection2(A,C),set_intersection2(B,D))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[21])]), [iquote('copy,21,flip.1')]).
 fof(24, axiom, in(dollar_c7,cartesian_product2(dollar_c6,dollar_c5)), file('SET983+1.p',unknown), []).
-fof(25, axiom, in(dollar_c5,cartesian_product2(dollar_c4,dollar_c3)), file('SET983+1.p',unknown), []).
+fof(25, axiom, in(dollar_c7,cartesian_product2(dollar_c4,dollar_c3)), file('SET983+1.p',unknown), []).
 fof(52, plain, in(dollar_c7,cartesian_product2(set_intersection2(dollar_c6,dollar_c4),set_intersection2(dollar_c5,dollar_c3))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[25,4,19,24]),23,23,19]), [iquote('hyper,25,4,18,24,demod,23,23,19')]).
 fof(53, plain, $false, inference(binary,[status(thm)],[52,7]), [iquote('binary,52.1,7.1')]).

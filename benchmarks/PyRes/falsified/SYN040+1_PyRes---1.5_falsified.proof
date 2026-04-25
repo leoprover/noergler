@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c11':
-%%%%%   Replaced (~ (p) | q)
-%%%%%   With (p | q)
+%%%%% Mutated formula 'c13':
+%%%%%   Replaced q
+%%%%%   With ~ (q)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN040+1 : TPTP v8.1.2. Released v2.0.0.
@@ -46,6 +46,6 @@ fof(c10, plain, ~ (q), inference(factor,[status(thm)],[c6])).
 fof(c5, negated_conjecture, (p | p), inference(split_conjunct,[status(thm)],[c3])).
 fof(c9, plain, p, inference(factor,[status(thm)],[c5])).
 fof(c8, negated_conjecture, (~ (p) | (q | (q | ~ (p)))), inference(split_conjunct,[status(thm)],[c3])).
-fof(c11, plain, (p | q), inference(factor,[status(thm)],[c8])).
-fof(c13, plain, q, inference(resolution,[status(thm)],[c11,c9])).
+fof(c11, plain, (~ (p) | q), inference(factor,[status(thm)],[c8])).
+fof(c13, plain, ~ (q), inference(resolution,[status(thm)],[c11,c9])).
 fof(c14, plain, $false, inference(resolution,[status(thm)],[c13,c10])).

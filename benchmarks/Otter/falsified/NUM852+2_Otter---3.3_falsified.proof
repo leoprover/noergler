@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '39':
-%%%%%   Replaced (vplus(vmul(vd480,vd469),vmul(vskolem9(vd481,vd480),vd469)) = vmul(vd481,vd469))
-%%%%%   With ~ ((vplus(vmul(vd480,vd469),vmul(vskolem9(vd481,vd480),vd469)) = vmul(vd481,vd469)))
+%%%%% Mutated formula '9':
+%%%%%   Replaced (! [A,B]: ((~ (greater(A,B)) | (vplus(B,vskolem9(A,B)) = A))))
+%%%%%   With (! [A,B]: ((~ (greater(A,B)) & (vplus(B,vskolem9(A,B)) = A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM852+2 : TPTP v8.1.0. Released v4.1.0.
@@ -37,12 +37,12 @@ fof(1, axiom, ~ (greater(vmul(vd481,vd469),vmul(vd480,vd469))), file('NUM852+2.p
 fof(4, axiom, (! [A,B]: ((~ (greater(A,B)) | (vmul(vplus(B,vskolem9(A,B)),vd469) = vplus(vmul(B,vd469),vmul(vskolem9(A,B),vd469)))))), file('NUM852+2.p',unknown), []).
 fof(5, plain, (! [A,B]: ((~ (greater(A,B)) | (vplus(vmul(B,vd469),vmul(vskolem9(A,B),vd469)) = vmul(vplus(B,vskolem9(A,B)),vd469))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[4])]), [iquote('copy,4,flip.2')]).
 fof(8, axiom, (! [A,B]: ((~ (greater(A,B)) | (A = vplus(B,vskolem9(A,B)))))), file('NUM852+2.p',unknown), []).
-fof(9, plain, (! [A,B]: ((~ (greater(A,B)) | (vplus(B,vskolem9(A,B)) = A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[8])]), [iquote('copy,8,flip.2')]).
+fof(9, plain, (! [A,B]: ((~ (greater(A,B)) & (vplus(B,vskolem9(A,B)) = A)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[8])]), [iquote('copy,8,flip.2')]).
 fof(20, axiom, (! [A,B,C]: ((greater(A,B) | (A != vplus(B,C))))), file('NUM852+2.p',unknown), []).
 fof(21, axiom, (! [A]: ((A = A))), file('NUM852+2.p',unknown), []).
 fof(22, axiom, greater(vd481,vd480), file('NUM852+2.p',unknown), []).
 fof(33, plain, (! [A,B]: (greater(vplus(A,B),A))), inference(hyper,[status(thm)],[21,20]), [iquote('hyper,21,20')]).
 fof(38, plain, (vplus(vd480,vskolem9(vd481,vd480)) = vd481), inference(hyper,[status(thm)],[22,9]), [iquote('hyper,22,9')]).
-fof(39, plain, ~ ((vplus(vmul(vd480,vd469),vmul(vskolem9(vd481,vd480),vd469)) = vmul(vd481,vd469))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[22,5]),38]), [iquote('hyper,22,5,demod,38')]).
+fof(39, plain, (vplus(vmul(vd480,vd469),vmul(vskolem9(vd481,vd480),vd469)) = vmul(vd481,vd469)), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[22,5]),38]), [iquote('hyper,22,5,demod,38')]).
 fof(298, plain, greater(vmul(vd481,vd469),vmul(vd480,vd469)), inference(para_from,[status(thm),theory(equality)],[39,33]), [iquote('para_from,39.1.1,33.1.1')]).
 fof(299, plain, $false, inference(binary,[status(thm)],[298,1]), [iquote('binary,298.1,1.1')]).

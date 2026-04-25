@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '141':
-%%%%%   Replaced genls(c_tptpcol_11_93764,c_tptpcol_10_93700)
-%%%%%   With genls(c_tptpcol_14_93774,c_tptpcol_10_93700)
+%%%%% Mutated formula '302':
+%%%%%   Replaced genls(c_tptpcol_9_93699,c_tptpcol_5_90114)
+%%%%%   With genls(c_tptpcol_1_65536,c_tptpcol_5_90114)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR039+1 : TPTP v8.1.0. Released v3.4.0.
@@ -59,7 +59,7 @@ fof(137, axiom, genls(c_tptpcol_7_93186,c_tptpcol_6_92162), file('CSR039+1.p',un
 fof(138, axiom, genls(c_tptpcol_8_93698,c_tptpcol_7_93186), file('CSR039+1.p',unknown), []).
 fof(139, axiom, genls(c_tptpcol_9_93699,c_tptpcol_8_93698), file('CSR039+1.p',unknown), []).
 fof(140, axiom, genls(c_tptpcol_10_93700,c_tptpcol_9_93699), file('CSR039+1.p',unknown), []).
-fof(141, axiom, genls(c_tptpcol_14_93774,c_tptpcol_10_93700), file('CSR039+1.p',unknown), []).
+fof(141, axiom, genls(c_tptpcol_11_93764,c_tptpcol_10_93700), file('CSR039+1.p',unknown), []).
 fof(142, axiom, genls(c_tptpcol_12_93765,c_tptpcol_11_93764), file('CSR039+1.p',unknown), []).
 fof(143, axiom, genls(c_tptpcol_13_93766,c_tptpcol_12_93765), file('CSR039+1.p',unknown), []).
 fof(144, axiom, genls(c_tptpcol_14_93774,c_tptpcol_13_93766), file('CSR039+1.p',unknown), []).
@@ -83,7 +83,7 @@ fof(269, plain, genls(c_tptpcol_5_16388,c_tptpcol_1_1), inference(hyper,[status(
 fof(277, plain, genls(c_tptpcol_9_18439,c_tptpcol_5_16388), inference(hyper,[status(thm)],[197,101,191]), [iquote('hyper,197,101,191')]).
 fof(288, plain, genls(c_tptpcol_13_18664,c_tptpcol_9_18439), inference(hyper,[status(thm)],[208,101,203]), [iquote('hyper,208,101,203')]).
 fof(294, plain, genls(c_tptpcol_5_90114,c_tptpcol_1_65536), inference(hyper,[status(thm)],[222,101,215]), [iquote('hyper,222,101,215')]).
-fof(302, plain, genls(c_tptpcol_9_93699,c_tptpcol_5_90114), inference(hyper,[status(thm)],[234,101,228]), [iquote('hyper,234,101,228')]).
+fof(302, plain, genls(c_tptpcol_1_65536,c_tptpcol_5_90114), inference(hyper,[status(thm)],[234,101,228]), [iquote('hyper,234,101,228')]).
 fof(310, plain, genls(c_tptpcol_13_93766,c_tptpcol_9_93699), inference(hyper,[status(thm)],[245,101,240]), [iquote('hyper,245,101,240')]).
 fof(334, plain, disjointwith(c_tptpcol_1_65536,c_tptpcol_5_16388), inference(hyper,[status(thm)],[269,41,257]), [iquote('hyper,269,41,257')]).
 fof(357, plain, genls(c_tptpcol_13_18664,c_tptpcol_5_16388), inference(hyper,[status(thm)],[288,101,277]), [iquote('hyper,288,101,277')]).

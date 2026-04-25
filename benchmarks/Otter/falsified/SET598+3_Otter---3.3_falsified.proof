@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '482':
-%%%%%   Replaced subset(dollar_c1,dollar_c2)
-%%%%%   With ~ (subset(dollar_c1,dollar_c2))
+%%%%% Mutated formula '9':
+%%%%%   Replaced (! [A,B]: (((A = B) | (~ (subset(A,B)) | ~ (subset(B,A))))))
+%%%%%   With (! [A,B]: ((~ ((A = B)) | (~ (subset(A,B)) | ~ (subset(B,A))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET598+3 : TPTP v8.1.0. Released v2.2.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:18:36 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B,C]: ((~ (subset(A,B)) | (~ (subset(A,C)) | subset(A,intersection(B,C)))))), file('SET598+3.p',unknown), []).
 fof(8, axiom, (! [A,B]: (((A != B) | subset(B,A)))), file('SET598+3.p',unknown), []).
-fof(9, axiom, (! [A,B]: (((A = B) | (~ (subset(A,B)) | ~ (subset(B,A)))))), file('SET598+3.p',unknown), []).
+fof(9, axiom, (! [A,B]: ((~ ((A = B)) | (~ (subset(A,B)) | ~ (subset(B,A)))))), file('SET598+3.p',unknown), []).
 fof(13, axiom, (! [A]: (((dollar_c4 = intersection(dollar_c3,dollar_c2)) | (~ (subset(A,dollar_c3)) | (~ (subset(A,dollar_c2)) | subset(A,dollar_c4)))))), file('SET598+3.p',unknown), []).
 fof(14, plain, (! [A]: (((intersection(dollar_c3,dollar_c2) = dollar_c4) | (~ (subset(A,dollar_c3)) | (~ (subset(A,dollar_c2)) | subset(A,dollar_c4)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[13])]), [iquote('copy,13,flip.1')]).
 fof(15, axiom, ((dollar_c4 != intersection(dollar_c3,dollar_c2)) | (~ (subset(dollar_c4,dollar_c3)) | (~ (subset(dollar_c4,dollar_c2)) | subset(dollar_c1,dollar_c3)))), file('SET598+3.p',unknown), []).
@@ -61,7 +61,7 @@ fof(422, plain, subset(dollar_c4,dollar_c2), inference(factor_simp,[status(thm)]
 fof(426, plain, subset(dollar_c4,intersection(dollar_c3,dollar_c2)), inference(hyper,[status(thm)],[422,1,366]), [iquote('hyper,422,1,366')]).
 fof(447, plain, (intersection(dollar_c3,dollar_c2) = dollar_c4), inference(hyper,[status(thm)],[426,9,110]), [iquote('hyper,426,9,110')]).
 fof(481, plain, ~ (subset(dollar_c1,dollar_c4)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[20]),447]),25,366,422]), [iquote('back_demod,20,demod,447,unit_del,25,366,422')]).
-fof(482, plain, ~ (subset(dollar_c1,dollar_c2)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[18]),447]),25,366,422]), [iquote('back_demod,18,demod,447,unit_del,25,366,422')]).
+fof(482, plain, subset(dollar_c1,dollar_c2), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[18]),447]),25,366,422]), [iquote('back_demod,18,demod,447,unit_del,25,366,422')]).
 fof(483, plain, subset(dollar_c1,dollar_c3), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[16]),447]),25,366,422]), [iquote('back_demod,16,demod,447,unit_del,25,366,422')]).
 fof(511, plain, subset(dollar_c1,dollar_c4), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[483,1,482]),447]), [iquote('hyper,483,1,482,demod,447')]).
 fof(512, plain, $false, inference(binary,[status(thm)],[511,481]), [iquote('binary,511.1,481.1')]).

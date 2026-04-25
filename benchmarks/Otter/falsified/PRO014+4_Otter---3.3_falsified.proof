@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1786':
-%%%%%   Replaced min_precedes(dollar_c2,dollar_f13(dollar_c2,dollar_c1),tptp0)
-%%%%%   With ~ (min_precedes(dollar_c2,dollar_f13(dollar_c2,dollar_c1),tptp0))
+%%%%% Mutated formula '92':
+%%%%%   Replaced subactivity_occurrence(dollar_c2,dollar_c1)
+%%%%%   With subactivity_occurrence(tptp2,dollar_c1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PRO014+4 : TPTP v8.1.0. Released v4.0.0.
@@ -58,7 +58,7 @@ fof(76, axiom, (! [A,B]: ((~ (occurrence_of(A,tptp3)) | (~ (next_subocc(dollar_c
 fof(77, axiom, (! [A,B]: ((~ (occurrence_of(A,tptp3)) | (~ (next_subocc(dollar_c2,A,tptp0)) | (~ (occurrence_of(B,tptp1)) | (~ (min_precedes(A,B,tptp0)) | ~ (leaf(B,tptp0)))))))), file('PRO014+4.p',unknown), []).
 fof(80, plain, (! [A]: (~ (earlier(A,A)))), inference(factor,[status(thm)],[42]), [iquote('factor,42.1.2')]).
 fof(91, axiom, occurrence_of(dollar_c1,tptp0), file('PRO014+4.p',unknown), []).
-fof(92, axiom, subactivity_occurrence(dollar_c2,dollar_c1), file('PRO014+4.p',unknown), []).
+fof(92, axiom, subactivity_occurrence(tptp2,dollar_c1), file('PRO014+4.p',unknown), []).
 fof(93, axiom, arboreal(dollar_c2), file('PRO014+4.p',unknown), []).
 fof(152, plain, leaf(dollar_f13(dollar_c2,dollar_c1),tptp0), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[92,67,91,93]),75]), [iquote('hyper,92,67,91,93,unit_del,75')]).
 fof(153, plain, next_subocc(dollar_f14(dollar_c2,dollar_c1),dollar_f13(dollar_c2,dollar_c1),tptp0), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[92,66,91,93]),75]), [iquote('hyper,92,66,91,93,unit_del,75')]).
@@ -87,7 +87,7 @@ fof(1738, plain, subactivity_occurrence(dollar_f14(dollar_c2,dollar_c1),dollar_f
 fof(1753, plain, subactivity_occurrence(dollar_f15(dollar_c2,dollar_c1),dollar_f4(dollar_f13(dollar_c2,dollar_c1),tptp0)), inference(hyper,[status(thm)],[1738,56,1362,458]), [iquote('hyper,1738,56,1362,458')]).
 fof(1754, plain, subactivity_occurrence(dollar_c2,dollar_f4(dollar_f13(dollar_c2,dollar_c1),tptp0)), inference(hyper,[status(thm)],[1753,56,786,458]), [iquote('hyper,1753,56,786,458')]).
 fof(1755, plain, (min_precedes(dollar_c2,dollar_f13(dollar_c2,dollar_c1),tptp0) | (dollar_f13(dollar_c2,dollar_c1) = dollar_c2)), inference(hyper,[status(thm)],[1754,4,458,457,93]), [iquote('hyper,1754,4,458,457,93')]).
-fof(1786, plain, ~ (min_precedes(dollar_c2,dollar_f13(dollar_c2,dollar_c1),tptp0)), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[1755,1712]),80]), [iquote('para_from,1755.2.1,1712.1.2,unit_del,80')]).
+fof(1786, plain, min_precedes(dollar_c2,dollar_f13(dollar_c2,dollar_c1),tptp0), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[1755,1712]),80]), [iquote('para_from,1755.2.1,1712.1.2,unit_del,80')]).
 fof(1787, plain, min_precedes(dollar_f15(dollar_c2,dollar_c1),dollar_f13(dollar_c2,dollar_c1),tptp0), inference(hyper,[status(thm)],[1786,60,786,1731]), [iquote('hyper,1786,60,786,1731')]).
 fof(1793, plain, occurrence_of(dollar_f13(dollar_c2,dollar_c1),tptp2), inference(hyper,[status(thm)],[1787,77,158,157,154,152]), [iquote('hyper,1787,77,158,157,154,152')]).
 fof(1797, plain, $false, inference(hyper,[status(thm)],[1793,76,158,157,1787,152]), [iquote('hyper,1793,76,158,157,1787,152')]).

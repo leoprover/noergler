@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '17':
-%%%%%   Replaced organization(dollar_c7,dollar_c1)
-%%%%%   With organization(dollar_c3,dollar_c1)
+%%%%% Mutated formula '11':
+%%%%%   Replaced (! [A,B,C,D]: ((~ (organization(A,B)) | (~ (size(A,C,B)) | (~ (size(A,D,B)) | ((B != B) | (C = D)))))))
+%%%%%   With (! [A,B,C,D]: ((organization(A,B) | (~ (size(A,C,B)) | (~ (size(A,D,B)) | ((B != B) | (C = D)))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT014+1 : TPTP v8.1.0. Released v2.0.0.
@@ -41,10 +41,10 @@ fof(6, axiom, (! [E,A,B,C,D]: ((~ (organization(A,B)) | (~ (organization(A,C)) |
 fof(7, axiom, (! [E,A,B,C,D]: ((~ (organization(A,B)) | (~ (organization(A,C)) | (~ (reorganization_free(A,B,C)) | (~ (size(A,D,B)) | (~ (size(A,E,C)) | (~ (greater(C,B)) | ~ (greater(D,E)))))))))), file('MGT014+1.p',unknown), []).
 fof(8, axiom, (! [E,A,B,C,D]: ((~ (organization(A,B)) | (~ (organization(A,C)) | (~ (reorganization_free(A,B,C)) | (~ (complexity(A,D,B)) | (~ (complexity(A,E,C)) | (~ (greater(C,B)) | ~ (greater(D,E)))))))))), file('MGT014+1.p',unknown), []).
 fof(9, plain, (! [A]: (~ (greater(A,A)))), inference(factor,[status(thm)],[2]), [iquote('factor,2.1.2')]).
-fof(11, plain, (! [A,B,C,D]: ((~ (organization(A,B)) | (~ (size(A,C,B)) | (~ (size(A,D,B)) | ((B != B) | (C = D))))))), inference(factor,[status(thm)],[6]), [iquote('factor,6.1.2')]).
+fof(11, plain, (! [A,B,C,D]: ((organization(A,B) | (~ (size(A,C,B)) | (~ (size(A,D,B)) | ((B != B) | (C = D))))))), inference(factor,[status(thm)],[6]), [iquote('factor,6.1.2')]).
 fof(15, axiom, (! [A]: ((A = A))), file('MGT014+1.p',unknown), []).
 fof(16, axiom, organization(dollar_c7,dollar_c2), file('MGT014+1.p',unknown), []).
-fof(17, axiom, organization(dollar_c3,dollar_c1), file('MGT014+1.p',unknown), []).
+fof(17, axiom, organization(dollar_c7,dollar_c1), file('MGT014+1.p',unknown), []).
 fof(18, axiom, reorganization_free(dollar_c7,dollar_c2,dollar_c1), file('MGT014+1.p',unknown), []).
 fof(19, axiom, complexity(dollar_c7,dollar_c6,dollar_c2), file('MGT014+1.p',unknown), []).
 fof(20, axiom, complexity(dollar_c7,dollar_c5,dollar_c1), file('MGT014+1.p',unknown), []).

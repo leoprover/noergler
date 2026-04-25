@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '233':
-%%%%%   Replaced (occurrence_of(dollar_f17(dollar_c2,dollar_c1),tptp2) | occurrence_of(dollar_f17(dollar_c2,dollar_c1),tptp1))
-%%%%%   With (occurrence_of(dollar_f17(tptp1,dollar_c1),tptp2) | occurrence_of(dollar_f17(dollar_c2,dollar_c1),tptp1))
+%%%%% Mutated formula '1818':
+%%%%%   Replaced precedes(dollar_f19(dollar_c2,dollar_c1),dollar_f18(dollar_c2,dollar_c1))
+%%%%%   With precedes(dollar_f19(tptp3,dollar_c1),dollar_f18(dollar_c2,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PRO014+3 : TPTP v8.1.0. Released v4.0.0.
@@ -61,7 +61,7 @@ fof(121, axiom, subactivity_occurrence(dollar_c2,dollar_c1), file('PRO014+3.p',u
 fof(122, axiom, arboreal(dollar_c2), file('PRO014+3.p',unknown), []).
 fof(231, plain, leaf(dollar_f17(dollar_c2,dollar_c1),tptp0), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[121,89,120,122]),97]), [iquote('hyper,121,89,120,122,unit_del,97')]).
 fof(232, plain, next_subocc(dollar_f18(dollar_c2,dollar_c1),dollar_f17(dollar_c2,dollar_c1),tptp0), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[121,88,120,122]),97]), [iquote('hyper,121,88,120,122,unit_del,97')]).
-fof(233, plain, (occurrence_of(dollar_f17(tptp1,dollar_c1),tptp2) | occurrence_of(dollar_f17(dollar_c2,dollar_c1),tptp1)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[121,87,120,122]),97]), [iquote('hyper,121,87,120,122,unit_del,97')]).
+fof(233, plain, (occurrence_of(dollar_f17(dollar_c2,dollar_c1),tptp2) | occurrence_of(dollar_f17(dollar_c2,dollar_c1),tptp1)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[121,87,120,122]),97]), [iquote('hyper,121,87,120,122,unit_del,97')]).
 fof(234, plain, next_subocc(dollar_f19(dollar_c2,dollar_c1),dollar_f18(dollar_c2,dollar_c1),tptp0), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[121,86,120,122]),97]), [iquote('hyper,121,86,120,122,unit_del,97')]).
 fof(236, plain, next_subocc(dollar_c2,dollar_f19(dollar_c2,dollar_c1),tptp0), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[121,84,120,122]),97]), [iquote('hyper,121,84,120,122,unit_del,97')]).
 fof(237, plain, occurrence_of(dollar_f19(dollar_c2,dollar_c1),tptp3), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[121,83,120,122]),97]), [iquote('hyper,121,83,120,122,unit_del,97')]).
@@ -74,7 +74,7 @@ fof(1777, plain, min_precedes(dollar_f19(dollar_c2,dollar_c1),dollar_f18(dollar_
 fof(1801, plain, precedes(dollar_f18(dollar_c2,dollar_c1),dollar_f17(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[1773,26]), [iquote('hyper,1773,26')]).
 fof(1805, plain, legal(dollar_f17(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[1801,15]), [iquote('hyper,1801,15')]).
 fof(1806, plain, earlier(dollar_f18(dollar_c2,dollar_c1),dollar_f17(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[1801,14]), [iquote('hyper,1801,14')]).
-fof(1818, plain, precedes(dollar_f19(dollar_c2,dollar_c1),dollar_f18(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[1777,26]), [iquote('hyper,1777,26')]).
+fof(1818, plain, precedes(dollar_f19(tptp3,dollar_c1),dollar_f18(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[1777,26]), [iquote('hyper,1777,26')]).
 fof(1822, plain, earlier(dollar_f19(dollar_c2,dollar_c1),dollar_f18(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[1818,14]), [iquote('hyper,1818,14')]).
 fof(1824, plain, earlier(dollar_f19(dollar_c2,dollar_c1),dollar_f17(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[1822,8,1806]), [iquote('hyper,1822,8,1806')]).
 fof(1828, plain, precedes(dollar_f19(dollar_c2,dollar_c1),dollar_f17(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[1824,16,1805]), [iquote('hyper,1824,16,1805')]).

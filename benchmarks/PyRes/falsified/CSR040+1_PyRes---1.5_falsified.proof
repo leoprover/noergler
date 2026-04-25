@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c334':
-%%%%%   Replaced (! [X154]: ((~ (tptpcol_7_108547(X154)) | tptpcol_6_108546(X154))))
-%%%%%   With (! [X154]: ((~ (tptpcol_7_108547(X154)) & tptpcol_6_108546(X154))))
+%%%%% Mutated formula 'c393':
+%%%%%   Replaced tptpcol_9_109060(c_tptpcol_16_62187)
+%%%%%   With ~ (tptpcol_9_109060(c_tptpcol_16_62187))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR040+1 : TPTP v8.1.2. Released v3.4.0.
@@ -70,7 +70,7 @@ fof(just37, axiom, (! [OBJ]: ((tptpcol_10_109061(OBJ) => tptpcol_9_109060(OBJ)))
 fof(c321, plain, (! [OBJ]: ((~ (tptpcol_10_109061(OBJ)) | tptpcol_9_109060(OBJ)))), inference(fof_nnf,[status(thm)],[just37])).
 fof(c322, plain, (! [X151]: ((~ (tptpcol_10_109061(X151)) | tptpcol_9_109060(X151)))), inference(variable_rename,[status(thm)],[c321])).
 fof(c323, plain, (! [X181]: ((~ (tptpcol_10_109061(X181)) | tptpcol_9_109060(X181)))), inference(split_conjunct,[status(thm)],[c322])).
-fof(c393, plain, tptpcol_9_109060(c_tptpcol_16_62187), inference(resolution,[status(thm)],[c323,c392])).
+fof(c393, plain, ~ (tptpcol_9_109060(c_tptpcol_16_62187)), inference(resolution,[status(thm)],[c323,c392])).
 fof(just35, axiom, (! [OBJ]: ((tptpcol_9_109060(OBJ) => tptpcol_8_109059(OBJ)))), file('CSR040+1.p',just35)).
 fof(c325, plain, (! [OBJ]: ((~ (tptpcol_9_109060(OBJ)) | tptpcol_8_109059(OBJ)))), inference(fof_nnf,[status(thm)],[just35])).
 fof(c326, plain, (! [X152]: ((~ (tptpcol_9_109060(X152)) | tptpcol_8_109059(X152)))), inference(variable_rename,[status(thm)],[c325])).
@@ -83,7 +83,7 @@ fof(c331, plain, (! [X185]: ((~ (tptpcol_8_109059(X185)) | tptpcol_7_108547(X185
 fof(c395, plain, tptpcol_7_108547(c_tptpcol_16_62187), inference(resolution,[status(thm)],[c331,c394])).
 fof(just31, axiom, (! [OBJ]: ((tptpcol_7_108547(OBJ) => tptpcol_6_108546(OBJ)))), file('CSR040+1.p',just31)).
 fof(c333, plain, (! [OBJ]: ((~ (tptpcol_7_108547(OBJ)) | tptpcol_6_108546(OBJ)))), inference(fof_nnf,[status(thm)],[just31])).
-fof(c334, plain, (! [X154]: ((~ (tptpcol_7_108547(X154)) & tptpcol_6_108546(X154)))), inference(variable_rename,[status(thm)],[c333])).
+fof(c334, plain, (! [X154]: ((~ (tptpcol_7_108547(X154)) | tptpcol_6_108546(X154)))), inference(variable_rename,[status(thm)],[c333])).
 fof(c335, plain, (! [X186]: ((~ (tptpcol_7_108547(X186)) | tptpcol_6_108546(X186)))), inference(split_conjunct,[status(thm)],[c334])).
 fof(c396, plain, tptpcol_6_108546(c_tptpcol_16_62187), inference(resolution,[status(thm)],[c335,c395])).
 fof(just29, axiom, (! [OBJ]: ((tptpcol_6_108546(OBJ) => tptpcol_5_106498(OBJ)))), file('CSR040+1.p',just29)).

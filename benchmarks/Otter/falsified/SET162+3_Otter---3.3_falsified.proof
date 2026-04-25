@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '30':
-%%%%%   Replaced (! [A]: (((union(A,dollar_c1) != dollar_c1) | (~ (subset(empty_set,A)) | ~ (subset(A,empty_set))))))
-%%%%%   With (! [A]: (((union(A,empty_set) != dollar_c1) | (~ (subset(empty_set,A)) | ~ (subset(A,empty_set))))))
+%%%%% Mutated formula '58':
+%%%%%   Replaced (! [A,B]: (((A != dollar_c1) | (~ (subset(empty_set,B)) | (~ (subset(B,empty_set)) | (~ (member(dollar_f3(union(dollar_c1,B),A),union(dollar_c1,B))) | ~ (member(dollar_f3(union(dollar_c1,B),A),A))))))))
+%%%%%   With (! [A,B]: ((~ ((A != dollar_c1)) | (~ (subset(empty_set,B)) | (~ (subset(B,empty_set)) | (~ (member(dollar_f3(union(dollar_c1,B),A),union(dollar_c1,B))) | ~ (member(dollar_f3(union(dollar_c1,B),A),A))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET162+3 : TPTP v8.1.0. Released v2.2.0.
@@ -44,9 +44,9 @@ fof(19, axiom, (! [A,B]: ((union(A,B) = union(B,A)))), file('SET162+3.p',unknown
 fof(21, axiom, (! [A]: (subset(A,A))), file('SET162+3.p',unknown), []).
 fof(23, axiom, (! [A,B]: (((A = B) | (member(dollar_f3(A,B),A) | member(dollar_f3(A,B),B))))), file('SET162+3.p',unknown), []).
 fof(29, plain, (union(empty_set,dollar_c1) != dollar_c1), inference(para_from,[status(thm),theory(equality)],[19,14]), [iquote('para_from,19.1.1,14.1.1')]).
-fof(30, plain, (! [A]: (((union(A,empty_set) != dollar_c1) | (~ (subset(empty_set,A)) | ~ (subset(A,empty_set)))))), inference(para_into,[status(thm),theory(equality)],[29,7]), [iquote('para_into,29.1.1.1,7.1.1')]).
+fof(30, plain, (! [A]: (((union(A,dollar_c1) != dollar_c1) | (~ (subset(empty_set,A)) | ~ (subset(A,empty_set)))))), inference(para_into,[status(thm),theory(equality)],[29,7]), [iquote('para_into,29.1.1.1,7.1.1')]).
 fof(44, plain, (! [A]: (((union(dollar_c1,A) != dollar_c1) | (~ (subset(empty_set,A)) | ~ (subset(A,empty_set)))))), inference(para_into,[status(thm),theory(equality)],[30,19]), [iquote('para_into,30.1.1,19.1.1')]).
-fof(58, plain, (! [A,B]: (((A != dollar_c1) | (~ (subset(empty_set,B)) | (~ (subset(B,empty_set)) | (~ (member(dollar_f3(union(dollar_c1,B),A),union(dollar_c1,B))) | ~ (member(dollar_f3(union(dollar_c1,B),A),A)))))))), inference(para_into,[status(thm),theory(equality)],[44,13]), [iquote('para_into,44.1.1,13.1.1')]).
+fof(58, plain, (! [A,B]: ((~ ((A != dollar_c1)) | (~ (subset(empty_set,B)) | (~ (subset(B,empty_set)) | (~ (member(dollar_f3(union(dollar_c1,B),A),union(dollar_c1,B))) | ~ (member(dollar_f3(union(dollar_c1,B),A),A)))))))), inference(para_into,[status(thm),theory(equality)],[44,13]), [iquote('para_into,44.1.1,13.1.1')]).
 fof(63, plain, (! [A]: (((A != dollar_c1) | (~ (member(dollar_f3(union(dollar_c1,empty_set),A),union(dollar_c1,empty_set))) | ~ (member(dollar_f3(union(dollar_c1,empty_set),A),A)))))), inference(unit_del,[status(thm)],[inference(factor,[status(thm)],[58]),21]), [iquote('factor,58.2.3,unit_del,21')]).
 fof(72, plain, (! [A,B,C]: (((union(A,B) = C) | (member(dollar_f3(union(A,B),C),C) | (member(dollar_f3(union(A,B),C),A) | member(dollar_f3(union(A,B),C),B)))))), inference(hyper,[status(thm)],[23,1]), [iquote('hyper,23,1')]).
 fof(3733, plain, member(dollar_f3(union(dollar_c1,empty_set),dollar_c1),dollar_c1), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[72,63,18,23]),14,4,14])]), [iquote('hyper,72,63,18,23,unit_del,14,4,14,factor_simp')]).

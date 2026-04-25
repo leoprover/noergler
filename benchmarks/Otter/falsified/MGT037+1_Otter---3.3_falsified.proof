@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '11':
-%%%%%   Replaced (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | subpopulation(efficient_producers,A,B)))))
-%%%%%   With (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | subpopulation(first_movers,A,B)))))
+%%%%% Mutated formula '16':
+%%%%%   Replaced (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | (~ (greater(number_of_organizations(A,B),zero)) | (~ (greater(e_quilibrium(A),B)) | decreases(resources(A,B))))))))
+%%%%%   With (! [A,B]: ((environment(A) | (~ (in_environment(A,B)) | (~ (greater(number_of_organizations(A,B),zero)) | (~ (greater(e_quilibrium(A),B)) | decreases(resources(A,B))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT037+1 : TPTP v8.1.0. Released v2.0.0.
@@ -40,12 +40,12 @@ fof(6, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | (decre
 fof(7, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | (decreases(number_of_organizations(A,B)) | greater(cardinality_at_time(dollar_f2(A,B),B),zero)))))), file('MGT037+1.p',unknown), []).
 fof(8, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | (decreases(number_of_organizations(A,B)) | ~ (greater(zero,growth_rate(dollar_f2(A,B),B)))))))), file('MGT037+1.p',unknown), []).
 fof(9, axiom, (! [A,B,C]: ((~ (environment(A)) | (~ (in_environment(A,B)) | ((number_of_organizations(A,B) != zero) | (~ (subpopulation(C,A,B)) | (cardinality_at_time(C,B) = zero))))))), file('MGT037+1.p',unknown), []).
-fof(11, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | subpopulation(first_movers,A,B))))), file('MGT037+1.p',unknown), []).
+fof(11, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | subpopulation(efficient_producers,A,B))))), file('MGT037+1.p',unknown), []).
 fof(12, axiom, (! [A,B]: (((cardinality_at_time(A,B) != zero) | ~ (greater(zero,growth_rate(A,B)))))), file('MGT037+1.p',unknown), []).
 fof(13, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | ((cardinality_at_time(efficient_producers,B) = zero) | greater(cardinality_at_time(efficient_producers,B),zero)))))), file('MGT037+1.p',unknown), []).
 fof(14, axiom, (! [A]: ((~ (constant(A)) | ~ (decreases(A))))), file('MGT037+1.p',unknown), []).
 fof(15, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | (greater_or_e_qual(B,appear(an_organisation,A)) | greater(appear(an_organisation,A),B)))))), file('MGT037+1.p',unknown), []).
-fof(16, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | (~ (greater(number_of_organizations(A,B),zero)) | (~ (greater(e_quilibrium(A),B)) | decreases(resources(A,B)))))))), file('MGT037+1.p',unknown), []).
+fof(16, axiom, (! [A,B]: ((environment(A) | (~ (in_environment(A,B)) | (~ (greater(number_of_organizations(A,B),zero)) | (~ (greater(e_quilibrium(A),B)) | decreases(resources(A,B)))))))), file('MGT037+1.p',unknown), []).
 fof(17, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | (~ (greater(number_of_organizations(A,B),zero)) | (greater(e_quilibrium(A),B) | constant(resources(A,B)))))))), file('MGT037+1.p',unknown), []).
 fof(18, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | (~ (greater_or_e_qual(B,appear(an_organisation,A))) | greater(number_of_organizations(A,B),zero)))))), file('MGT037+1.p',unknown), []).
 fof(19, axiom, (! [A,B]: ((~ (environment(A)) | (~ (in_environment(A,B)) | (~ (decreases(resources(A,B))) | ~ (decreases(number_of_organizations(A,B)))))))), file('MGT037+1.p',unknown), []).

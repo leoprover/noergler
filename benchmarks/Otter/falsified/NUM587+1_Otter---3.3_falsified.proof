@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '203':
-%%%%%   Replaced aSubsetOf0(sdtlcdtrc0(xc,szDzozmdt0(xc)),xT)
-%%%%%   With ~ (aSubsetOf0(sdtlcdtrc0(xc,szDzozmdt0(xc)),xT))
+%%%%% Mutated formula '224':
+%%%%%   Replaced aElementOf0(sdtlpdtrp0(xc,sdtpldt0(xQ,szmzizndt0(sdtlpdtrp0(xN,xi)))),sdtlcdtrc0(xc,szDzozmdt0(xc)))
+%%%%%   With aElementOf0(sdtlpdtrp0(xi,sdtpldt0(xQ,szmzizndt0(sdtlpdtrp0(xN,xi)))),sdtlcdtrc0(xc,szDzozmdt0(xc)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM587+1 : TPTP v8.1.0. Released v4.0.0.
@@ -37,11 +37,11 @@ fof(8, axiom, (! [A,B,C]: ((~ (aSet0(A)) | (~ (aSubsetOf0(B,A)) | (~ (aElementOf
 fof(152, axiom, ~ (aElementOf0(xx,xT)), file('NUM587+1.p',unknown), []).
 fof(195, axiom, aSet0(xT), file('NUM587+1.p',unknown), []).
 fof(202, axiom, (szDzozmdt0(xc) = slbdtsldtrb0(xS,xK)), file('NUM587+1.p',unknown), []).
-fof(203, axiom, ~ (aSubsetOf0(sdtlcdtrc0(xc,szDzozmdt0(xc)),xT)), file('NUM587+1.p',unknown), []).
+fof(203, axiom, aSubsetOf0(sdtlcdtrc0(xc,szDzozmdt0(xc)),xT), file('NUM587+1.p',unknown), []).
 fof(204, plain, aSubsetOf0(sdtlcdtrc0(xc,slbdtsldtrb0(xS,xK)),xT), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[203]),202]), [iquote('copy,203,demod,202')]).
 fof(221, axiom, (xx = sdtlpdtrp0(xc,sdtpldt0(xQ,szmzizndt0(sdtlpdtrp0(xN,xi))))), file('NUM587+1.p',unknown), []).
 fof(223, plain, (sdtlpdtrp0(xc,sdtpldt0(xQ,szmzizndt0(sdtlpdtrp0(xN,xi)))) = xx), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[221])]), [iquote('copy,221,flip.1')]).
-fof(224, axiom, aElementOf0(sdtlpdtrp0(xc,sdtpldt0(xQ,szmzizndt0(sdtlpdtrp0(xN,xi)))),sdtlcdtrc0(xc,szDzozmdt0(xc))), file('NUM587+1.p',unknown), []).
+fof(224, axiom, aElementOf0(sdtlpdtrp0(xi,sdtpldt0(xQ,szmzizndt0(sdtlpdtrp0(xN,xi)))),sdtlcdtrc0(xc,szDzozmdt0(xc))), file('NUM587+1.p',unknown), []).
 fof(225, plain, aElementOf0(xx,sdtlcdtrc0(xc,slbdtsldtrb0(xS,xK))), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[224]),223,202]), [iquote('copy,224,demod,223,202')]).
 fof(396, plain, aElementOf0(xx,xT), inference(hyper,[status(thm)],[225,8,195,204]), [iquote('hyper,225,8,195,204')]).
 fof(397, plain, $false, inference(binary,[status(thm)],[396,152]), [iquote('binary,396.1,152.1')]).

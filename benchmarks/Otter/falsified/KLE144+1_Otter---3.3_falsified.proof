@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '861':
-%%%%%   Replaced (! [A,B]: (le_q(A,multiplication(strong_iteration(one),B))))
-%%%%%   With (! [A,B]: (~ (le_q(A,multiplication(strong_iteration(one),B)))))
+%%%%% Mutated formula '635':
+%%%%%   Replaced (! [A]: (le_q(one,strong_iteration(A))))
+%%%%%   With (! [A]: (~ (le_q(one,strong_iteration(A)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE144+1 : TPTP v8.1.0. Released v4.0.0.
@@ -61,10 +61,10 @@ fof(582, plain, (! [A,B]: (le_q(A,addition(A,B)))), inference(hyper,[status(thm)
 fof(614, plain, (! [A,B]: (le_q(A,multiplication(strong_iteration(B),A)))), inference(hyper,[status(thm)],[582,54]), [iquote('hyper,582,54')]).
 fof(620, plain, (! [A]: (le_q(one,star(A)))), inference(para_into,[status(thm),theory(equality)],[582,31]), [iquote('para_into,582.1.2,31.1.1')]).
 fof(622, plain, (! [A,B]: (le_q(A,addition(B,A)))), inference(para_into,[status(thm),theory(equality)],[582,8]), [iquote('para_into,582.1.2,8.1.1')]).
-fof(635, plain, (! [A]: (le_q(one,strong_iteration(A)))), inference(para_into,[status(thm),theory(equality)],[622,34]), [iquote('para_into,622.1.2,34.1.1')]).
+fof(635, plain, (! [A]: (~ (le_q(one,strong_iteration(A))))), inference(para_into,[status(thm),theory(equality)],[622,34]), [iquote('para_into,622.1.2,34.1.1')]).
 fof(638, plain, (! [A,B,C]: (le_q(A,addition(B,addition(C,A))))), inference(para_into,[status(thm),theory(equality)],[622,10]), [iquote('para_into,622.1.2,10.1.1')]).
 fof(771, plain, (! [A,B,C]: ((le_q(A,addition(B,C)) | ~ (le_q(A,C))))), inference(para_into,[status(thm),theory(equality)],[638,52]), [iquote('para_into,638.1.2.2,52.1.1')]).
-fof(861, plain, (! [A,B]: (~ (le_q(A,multiplication(strong_iteration(one),B))))), inference(hyper,[status(thm)],[62,582]), [iquote('hyper,62,582')]).
+fof(861, plain, (! [A,B]: (le_q(A,multiplication(strong_iteration(one),B)))), inference(hyper,[status(thm)],[62,582]), [iquote('hyper,62,582')]).
 fof(867, plain, (! [A]: (le_q(A,strong_iteration(one)))), inference(para_into,[status(thm),theory(equality)],[861,20]), [iquote('para_into,861.1.2,19.1.1')]).
 fof(868, plain, (! [A]: ((addition(strong_iteration(one),A) = strong_iteration(one)))), inference(hyper,[status(thm)],[867,52]), [iquote('hyper,867,52')]).
 fof(997, plain, (! [A]: ((~ (le_q(strong_iteration(one),A)) | (strong_iteration(one) = A)))), inference(para_from,[status(thm),theory(equality)],[868,4]), [iquote('para_from,868.1.1,4.2.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '96':
-%%%%%   Replaced two(dollar_c6,dollar_c1)
-%%%%%   With ~ (two(dollar_c6,dollar_c1))
+%%%%% Mutated formula '1318':
+%%%%%   Replaced man(dollar_c6,dollar_f1(dollar_c6,dollar_c1))
+%%%%%   With ~ (man(dollar_c6,dollar_f1(dollar_c6,dollar_c1)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NLP147+1 : TPTP v8.1.0. Released v2.4.0.
@@ -47,12 +47,12 @@ fof(61, axiom, (! [A,B]: ((~ (two(A,B)) | member(A,dollar_f1(A,B),B)))), file('N
 fof(69, axiom, (! [A]: ((~ (member(dollar_c6,A,dollar_c1)) | frontseat(dollar_c6,dollar_f4(A))))), file('NLP147+1.p',unknown), []).
 fof(71, axiom, (! [A]: ((~ (member(dollar_c6,A,dollar_c1)) | be(dollar_c6,dollar_f5(A),A,dollar_f4(A))))), file('NLP147+1.p',unknown), []).
 fof(73, axiom, (! [A]: ((~ (member(dollar_c6,A,dollar_c1)) | fellow(dollar_c6,A)))), file('NLP147+1.p',unknown), []).
-fof(96, axiom, ~ (two(dollar_c6,dollar_c1)), file('NLP147+1.p',unknown), []).
+fof(96, axiom, two(dollar_c6,dollar_c1), file('NLP147+1.p',unknown), []).
 fof(320, plain, member(dollar_c6,dollar_f1(dollar_c6,dollar_c1),dollar_c1), inference(hyper,[status(thm)],[96,61]), [iquote('hyper,96,61')]).
 fof(1278, plain, fellow(dollar_c6,dollar_f1(dollar_c6,dollar_c1)), inference(hyper,[status(thm)],[320,73]), [iquote('hyper,320,73')]).
 fof(1280, plain, be(dollar_c6,dollar_f5(dollar_f1(dollar_c6,dollar_c1)),dollar_f1(dollar_c6,dollar_c1),dollar_f4(dollar_f1(dollar_c6,dollar_c1))), inference(hyper,[status(thm)],[320,71]), [iquote('hyper,320,71')]).
 fof(1282, plain, frontseat(dollar_c6,dollar_f4(dollar_f1(dollar_c6,dollar_c1))), inference(hyper,[status(thm)],[320,69]), [iquote('hyper,320,69')]).
-fof(1318, plain, man(dollar_c6,dollar_f1(dollar_c6,dollar_c1)), inference(hyper,[status(thm)],[1278,49]), [iquote('hyper,1278,49')]).
+fof(1318, plain, ~ (man(dollar_c6,dollar_f1(dollar_c6,dollar_c1))), inference(hyper,[status(thm)],[1278,49]), [iquote('hyper,1278,49')]).
 fof(1320, plain, male(dollar_c6,dollar_f1(dollar_c6,dollar_c1)), inference(hyper,[status(thm)],[1318,37]), [iquote('hyper,1318,37')]).
 fof(1350, plain, seat(dollar_c6,dollar_f4(dollar_f1(dollar_c6,dollar_c1))), inference(hyper,[status(thm)],[1282,3]), [iquote('hyper,1282,3')]).
 fof(1358, plain, furniture(dollar_c6,dollar_f4(dollar_f1(dollar_c6,dollar_c1))), inference(hyper,[status(thm)],[1350,2]), [iquote('hyper,1350,2')]).

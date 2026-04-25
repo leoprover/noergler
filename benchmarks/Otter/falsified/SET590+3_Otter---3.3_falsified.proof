@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '13':
-%%%%%   Replaced subset(difference(dollar_c2,dollar_c1),dollar_c2)
-%%%%%   With subset(difference(dollar_c1,dollar_c1),dollar_c2)
+%%%%% Mutated formula '6':
+%%%%%   Replaced ~ (subset(difference(dollar_c2,dollar_c1),dollar_c2))
+%%%%%   With subset(difference(dollar_c2,dollar_c1),dollar_c2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET590+3 : TPTP v8.1.0. Released v2.2.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:18:34 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B,C]: ((~ (member(A,difference(B,C))) | member(A,B)))), file('SET590+3.p',unknown), []).
 fof(5, axiom, (! [A,B]: ((subset(A,B) | ~ (member(dollar_f1(A,B),B))))), file('SET590+3.p',unknown), []).
-fof(6, axiom, ~ (subset(difference(dollar_c2,dollar_c1),dollar_c2)), file('SET590+3.p',unknown), []).
+fof(6, axiom, subset(difference(dollar_c2,dollar_c1),dollar_c2), file('SET590+3.p',unknown), []).
 fof(7, axiom, (! [A,B]: ((subset(A,B) | member(dollar_f1(A,B),A)))), file('SET590+3.p',unknown), []).
 fof(9, plain, member(dollar_f1(difference(dollar_c2,dollar_c1),dollar_c2),difference(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[7,6]), [iquote('hyper,7,6')]).
 fof(12, plain, member(dollar_f1(difference(dollar_c2,dollar_c1),dollar_c2),dollar_c2), inference(hyper,[status(thm)],[9,1]), [iquote('hyper,9,1')]).
-fof(13, plain, subset(difference(dollar_c1,dollar_c1),dollar_c2), inference(hyper,[status(thm)],[12,5]), [iquote('hyper,12,5')]).
+fof(13, plain, subset(difference(dollar_c2,dollar_c1),dollar_c2), inference(hyper,[status(thm)],[12,5]), [iquote('hyper,12,5')]).
 fof(14, plain, $false, inference(binary,[status(thm)],[13,6]), [iquote('binary,13.1,6.1')]).

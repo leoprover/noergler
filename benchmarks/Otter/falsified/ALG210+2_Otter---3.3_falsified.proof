@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '24':
-%%%%%   Replaced (! [A,B,C,D]: ((times(times(A,times(B,C)),D) = times(B,times(D,times(C,A))))))
-%%%%%   With (! [A,B,C,D]: (~ ((times(times(A,times(B,C)),D) = times(B,times(D,times(C,A)))))))
+%%%%% Mutated formula '174':
+%%%%%   Replaced (times(dollar_c2,times(dollar_c1,dollar_c2)) = times(dollar_c1,times(dollar_c1,dollar_c1)))
+%%%%%   With ~ ((times(dollar_c2,times(dollar_c1,dollar_c2)) = times(dollar_c1,times(dollar_c1,dollar_c1))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG210+2 : TPTP v8.1.0. Released v3.1.0.
@@ -50,7 +50,7 @@ fof(16, plain, (times(dollar_c3,times(dollar_c3,dollar_c3)) = dollar_c3), infere
 fof(19, plain, (dollar_f1(dollar_c2) = times(dollar_c2,dollar_c2)), inference(hyper,[status(thm)],[9,3]), [iquote('hyper,9,3')]).
 fof(20, plain, (times(dollar_c2,times(dollar_c2,dollar_c2)) = dollar_c2), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[9,1]),19]), [iquote('hyper,9,1,demod,19')]).
 fof(23, plain, (! [A]: ((times(dollar_c2,times(A,dollar_c3)) = times(dollar_c1,A)))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[7,12])]), [iquote('para_into,7.1.1.1,11.1.1,flip.1')]).
-fof(24, plain, (! [A,B,C,D]: (~ ((times(times(A,times(B,C)),D) = times(B,times(D,times(C,A))))))), inference(para_into,[status(thm),theory(equality)],[7,7]), [iquote('para_into,7.1.1.1,7.1.1')]).
+fof(24, plain, (! [A,B,C,D]: ((times(times(A,times(B,C)),D) = times(B,times(D,times(C,A)))))), inference(para_into,[status(thm),theory(equality)],[7,7]), [iquote('para_into,7.1.1.1,7.1.1')]).
 fof(25, plain, (! [A,B]: (((times(dollar_f1(A),times(B,A)) = times(A,B)) | ~ (element(A))))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[7,1])]), [iquote('para_into,7.1.1.1,1.2.1,flip.1')]).
 fof(27, plain, (! [A,B,C,D]: ((times(A,times(B,times(C,D))) = times(times(D,times(A,C)),B)))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[24])]), [iquote('copy,24,flip.1')]).
 fof(31, plain, (! [A]: ((times(times(dollar_c3,dollar_c3),times(A,dollar_c3)) = times(dollar_c3,A)))), inference(flip,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[16,7])]), [iquote('para_from,16.1.1,7.1.1.1,flip.1')]).
@@ -63,7 +63,7 @@ fof(130, plain, (! [A]: ((times(times(dollar_c3,dollar_c3),times(A,dollar_c1)) =
 fof(135, plain, (times(dollar_c1,times(dollar_c3,dollar_c1)) = times(dollar_c1,dollar_c2)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[124,23]),23])]), [iquote('para_from,124.1.1,22.1.1.2,demod,23,flip.1')]).
 fof(142, plain, (times(times(dollar_c1,dollar_c1),dollar_c3) = times(dollar_c1,dollar_c2)), inference(para_into,[status(thm),theory(equality)],[135,13]), [iquote('para_into,135.1.1,13.1.1')]).
 fof(155, plain, ((times(dollar_c3,times(dollar_c3,dollar_c1)) = dollar_c1) | ~ (element(dollar_c3))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[25,124]),15,31,12])]), [iquote('para_into,25.1.1.2,124.1.1,demod,15,31,12,flip.1')]).
-fof(174, plain, (times(dollar_c2,times(dollar_c1,dollar_c2)) = times(dollar_c1,times(dollar_c1,dollar_c1))), inference(para_from,[status(thm),theory(equality)],[142,23]), [iquote('para_from,142.1.1,22.1.1.2')]).
+fof(174, plain, ~ ((times(dollar_c2,times(dollar_c1,dollar_c2)) = times(dollar_c1,times(dollar_c1,dollar_c1)))), inference(para_from,[status(thm),theory(equality)],[142,23]), [iquote('para_from,142.1.1,22.1.1.2')]).
 fof(180, plain, (times(dollar_c3,times(dollar_c3,dollar_c1)) = dollar_c1), inference(hyper,[status(thm)],[155,8]), [iquote('hyper,155,8')]).
 fof(183, plain, (times(times(dollar_c1,dollar_c3),dollar_c3) = dollar_c1), inference(para_into,[status(thm),theory(equality)],[180,13]), [iquote('para_into,180.1.1,13.1.1')]).
 fof(196, plain, (times(dollar_c2,dollar_c1) = times(dollar_c1,times(dollar_c1,dollar_c3))), inference(para_from,[status(thm),theory(equality)],[183,23]), [iquote('para_from,183.1.1,22.1.1.2')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '457':
-%%%%%   Replaced ~ (segmentP(dollar_c3,dollar_c4))
-%%%%%   With ~ (segmentP(dollar_c4,dollar_c4))
+%%%%% Mutated formula '448':
+%%%%%   Replaced (dollar_c5 = dollar_c3)
+%%%%%   With (dollar_c4 = dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC358+1 : TPTP v8.1.0. Released v2.4.0.
@@ -36,11 +36,11 @@
 fof(133, axiom, (! [A]: ((~ (ssList(A)) | segmentP(A,A)))), file('SWC358+1.p',unknown), []).
 fof(182, axiom, ~ (segmentP(dollar_c5,dollar_c6)), file('SWC358+1.p',unknown), []).
 fof(446, axiom, ssList(dollar_c3), file('SWC358+1.p',unknown), []).
-fof(448, axiom, (dollar_c5 = dollar_c3), file('SWC358+1.p',unknown), []).
+fof(448, axiom, (dollar_c4 = dollar_c3), file('SWC358+1.p',unknown), []).
 fof(450, axiom, (dollar_c6 = dollar_c4), file('SWC358+1.p',unknown), []).
 fof(454, axiom, ((nil = dollar_c3) | segmentP(dollar_c3,dollar_c4)), file('SWC358+1.p',unknown), []).
 fof(456, axiom, ((nil = dollar_c4) | segmentP(dollar_c3,dollar_c4)), file('SWC358+1.p',unknown), []).
-fof(457, plain, ~ (segmentP(dollar_c4,dollar_c4)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),448,450]), [iquote('back_demod,182,demod,448,450')]).
+fof(457, plain, ~ (segmentP(dollar_c3,dollar_c4)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[182]),448,450]), [iquote('back_demod,182,demod,448,450')]).
 fof(904, plain, segmentP(dollar_c3,dollar_c3), inference(hyper,[status(thm)],[446,133]), [iquote('hyper,446,133')]).
 fof(918, plain, (nil = dollar_c3), inference(hyper,[status(thm)],[454,457]), [iquote('hyper,454,457')]).
 fof(939, plain, (dollar_c4 = dollar_c3), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[456]),918]),457])]), [iquote('back_demod,456,demod,918,unit_del,457,flip.1')]).

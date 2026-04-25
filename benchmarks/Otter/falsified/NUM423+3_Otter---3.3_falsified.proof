@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '33':
-%%%%%   Replaced (! [A,B,C]: ((~ (aInteger0(A)) | (aDivisorOf0(B,A) | (~ (aInteger0(B)) | ((B = sz00) | (~ (aInteger0(C)) | (sdtasdt0(B,C) != A))))))))
-%%%%%   With (! [A,B,C]: ((~ (aInteger0(A)) | (aDivisorOf0(B,A) | (~ (aInteger0(B)) | ((B = xa) | (~ (aInteger0(C)) | (sdtasdt0(B,C) != A))))))))
+%%%%% Mutated formula '577':
+%%%%%   Replaced (sdtasdt0(xq,sz00) = sz00)
+%%%%%   With (sdtasdt0(sz10,sz00) = sz00)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM423+3 : TPTP v8.1.0. Released v4.0.0.
@@ -36,7 +36,7 @@
 fof(10, axiom, (! [A]: ((~ (aInteger0(A)) | (sdtpldt0(A,smndt0(A)) = sz00)))), file('NUM423+3.p',unknown), []).
 fof(23, axiom, (! [A]: ((~ (aInteger0(A)) | (sdtasdt0(A,sz00) = sz00)))), file('NUM423+3.p',unknown), []).
 fof(27, axiom, (! [A]: ((~ (aInteger0(A)) | (smndt0(A) = sdtasdt0(A,smndt0(sz10)))))), file('NUM423+3.p',unknown), []).
-fof(33, axiom, (! [A,B,C]: ((~ (aInteger0(A)) | (aDivisorOf0(B,A) | (~ (aInteger0(B)) | ((B = xa) | (~ (aInteger0(C)) | (sdtasdt0(B,C) != A)))))))), file('NUM423+3.p',unknown), []).
+fof(33, axiom, (! [A,B,C]: ((~ (aInteger0(A)) | (aDivisorOf0(B,A) | (~ (aInteger0(B)) | ((B = sz00) | (~ (aInteger0(C)) | (sdtasdt0(B,C) != A)))))))), file('NUM423+3.p',unknown), []).
 fof(36, axiom, (xq != sz00), file('NUM423+3.p',unknown), []).
 fof(38, axiom, ~ (aDivisorOf0(xq,sdtpldt0(xa,smndt0(xa)))), file('NUM423+3.p',unknown), []).
 fof(58, plain, (! [A,B]: ((~ (aInteger0(A)) | (aDivisorOf0(B,A) | (~ (aInteger0(B)) | ((B = sz00) | (sdtasdt0(B,A) != A))))))), inference(factor,[status(thm)],[33]), [iquote('factor,33.1.5')]).
@@ -46,5 +46,5 @@ fof(77, axiom, aInteger0(xq), file('NUM423+3.p',unknown), []).
 fof(283, plain, (smndt0(xa) = sdtasdt0(xa,smndt0(sz10))), inference(hyper,[status(thm)],[76,27]), [iquote('hyper,76,27')]).
 fof(341, plain, (sdtpldt0(xa,sdtasdt0(xa,smndt0(sz10))) = sz00), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[76,10]),283]), [iquote('hyper,76,10,demod,283')]).
 fof(366, plain, ~ (aDivisorOf0(xq,sz00)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[38]),283,341]), [iquote('back_demod,38,demod,283,341')]).
-fof(577, plain, (sdtasdt0(xq,sz00) = sz00), inference(hyper,[status(thm)],[77,23]), [iquote('hyper,77,23')]).
+fof(577, plain, (sdtasdt0(sz10,sz00) = sz00), inference(hyper,[status(thm)],[77,23]), [iquote('hyper,77,23')]).
 fof(5465, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[577,58,74,77]),366,36]), [iquote('hyper,577,58,74,77,unit_del,366,36')]).

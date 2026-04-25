@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c7':
-%%%%%   Replaced subpopulations(first_movers,efficient_producers,skolem0001,skolem0002)
-%%%%%   With subpopulations(efficient_producers,efficient_producers,skolem0001,skolem0002)
+%%%%% Mutated formula 'c28':
+%%%%%   Replaced (! [X34]: ((~ (environment(X34)) | (~ (subpopulations(efficient_producers,first_movers,X34,skolem0002)) | outcompetes(first_movers,efficient_producers,skolem0002)))))
+%%%%%   With (! [X34]: ((~ (environment(X34)) | (~ (subpopulations(skolem0002,first_movers,X34,skolem0002)) | outcompetes(first_movers,efficient_producers,skolem0002)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : MGT036+3 : TPTP v8.1.2. Released v2.0.0.
@@ -40,7 +40,7 @@ fof(a13_star, plain, (? [E,T]: ((environment(E) & (subpopulations(first_movers,e
 fof(c4, plain, (? [X4,X5]: ((environment(X4) & (subpopulations(first_movers,efficient_producers,X4,X5) & (greater_or_equal(growth_rate(first_movers,X5),zero) & greater(zero,growth_rate(efficient_producers,X5))))))), inference(variable_rename,[status(thm)],[a13_star])).
 fof(c5, plain, (environment(skolem0001) & (subpopulations(first_movers,efficient_producers,skolem0001,skolem0002) & (greater_or_equal(growth_rate(first_movers,skolem0002),zero) & greater(zero,growth_rate(efficient_producers,skolem0002))))), inference(skolemize,[status(esa)],[c4])).
 fof(c6, plain, environment(skolem0001), inference(split_conjunct,[status(thm)],[c5])).
-fof(c7, plain, subpopulations(efficient_producers,efficient_producers,skolem0001,skolem0002), inference(split_conjunct,[status(thm)],[c5])).
+fof(c7, plain, subpopulations(first_movers,efficient_producers,skolem0001,skolem0002), inference(split_conjunct,[status(thm)],[c5])).
 fof(prove_t5_star, conjecture, (? [E,T]: ((environment(E) & (subpopulations(first_movers,efficient_producers,E,T) & outcompetes(first_movers,efficient_producers,T))))), file('MGT036+3.p',prove_t5_star)).
 fof(c0, negated_conjecture, ~ ((? [E,T]: ((environment(E) & (subpopulations(first_movers,efficient_producers,E,T) & outcompetes(first_movers,efficient_producers,T)))))), inference(assume_negation,[status(cth)],[prove_t5_star])).
 fof(c1, negated_conjecture, (! [E,T]: ((~ (environment(E)) | (~ (subpopulations(first_movers,efficient_producers,E,T)) | ~ (outcompetes(first_movers,efficient_producers,T)))))), inference(fof_nnf,[status(thm)],[c0])).
@@ -61,7 +61,7 @@ fof(c11, plain, (! [X6,X7,X8,X9]: ((~ (environment(X6)) | (~ (subpopulations(X7,
 fof(c12, plain, (! [X6,X7,X8,X9]: (((~ (environment(X6)) | (~ (subpopulations(X7,X8,X6,X9)) | (~ (greater_or_equal(growth_rate(X8,X9),zero)) | (~ (greater(zero,growth_rate(X7,X9))) | outcompetes(X8,X7,X9))))) & ((~ (environment(X6)) | (~ (subpopulations(X7,X8,X6,X9)) | (~ (outcompetes(X8,X7,X9)) | greater_or_equal(growth_rate(X8,X9),zero)))) & (~ (environment(X6)) | (~ (subpopulations(X7,X8,X6,X9)) | (~ (outcompetes(X8,X7,X9)) | greater(zero,growth_rate(X7,X9))))))))), inference(distribute,[status(thm)],[c11])).
 fof(c13, plain, (! [X27,X26,X25,X24]: ((~ (environment(X27)) | (~ (subpopulations(X26,X25,X27,X24)) | (~ (greater_or_equal(growth_rate(X25,X24),zero)) | (~ (greater(zero,growth_rate(X26,X24))) | outcompetes(X25,X26,X24))))))), inference(split_conjunct,[status(thm)],[c12])).
 fof(c25, plain, (! [X33,X32]: ((~ (environment(X33)) | (~ (subpopulations(efficient_producers,X32,X33,skolem0002)) | (~ (greater_or_equal(growth_rate(X32,skolem0002),zero)) | outcompetes(X32,efficient_producers,skolem0002)))))), inference(resolution,[status(thm)],[c13,c9])).
-fof(c28, plain, (! [X34]: ((~ (environment(X34)) | (~ (subpopulations(efficient_producers,first_movers,X34,skolem0002)) | outcompetes(first_movers,efficient_producers,skolem0002))))), inference(resolution,[status(thm)],[c25,c8])).
+fof(c28, plain, (! [X34]: ((~ (environment(X34)) | (~ (subpopulations(skolem0002,first_movers,X34,skolem0002)) | outcompetes(first_movers,efficient_producers,skolem0002))))), inference(resolution,[status(thm)],[c25,c8])).
 fof(c29, plain, (~ (environment(skolem0001)) | outcompetes(first_movers,efficient_producers,skolem0002)), inference(resolution,[status(thm)],[c28,c21])).
 fof(c30, plain, outcompetes(first_movers,efficient_producers,skolem0002), inference(resolution,[status(thm)],[c29,c6])).
 fof(c31, plain, ~ (environment(skolem0001)), inference(resolution,[status(thm)],[c30,c20])).

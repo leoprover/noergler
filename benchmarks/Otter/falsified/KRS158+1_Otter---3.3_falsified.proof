@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '72':
-%%%%%   Replaced xsd_string(dollar_c2)
-%%%%%   With xsd_string(dollar_c1)
+%%%%% Mutated formula '69':
+%%%%%   Replaced xsd_integer(dollar_c2)
+%%%%%   With ~ (xsd_integer(dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS158+1 : TPTP v8.1.0. Released v3.1.0.
@@ -58,6 +58,6 @@ fof(62, plain, cC12(iV16562), inference(hyper,[status(thm)],[57,11,56]), [iquote
 fof(63, plain, cC16(iV16560), inference(hyper,[status(thm)],[58,19]), [iquote('hyper,58,19')]).
 fof(65, plain, cC8(iV16560), inference(hyper,[status(thm)],[63,16]), [iquote('hyper,63,16')]).
 fof(66, plain, cC14(iV16560), inference(hyper,[status(thm)],[63,15]), [iquote('hyper,63,15')]).
-fof(69, plain, xsd_integer(dollar_c2), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[66,44,45,46,58,65,63,45,59,45,62,45])]), [iquote('hyper,66,44,45,46,58,65,63,45,59,45,62,45,factor_simp')]).
-fof(72, plain, xsd_string(dollar_c1), inference(hyper,[status(thm)],[69,42,45,58,66,65,63,45,59,45,62,45]), [iquote('hyper,69,42,45,58,66,65,63,45,59,45,62,45')]).
+fof(69, plain, ~ (xsd_integer(dollar_c2)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[66,44,45,46,58,65,63,45,59,45,62,45])]), [iquote('hyper,66,44,45,46,58,65,63,45,59,45,62,45,factor_simp')]).
+fof(72, plain, xsd_string(dollar_c2), inference(hyper,[status(thm)],[69,42,45,58,66,65,63,45,59,45,62,45]), [iquote('hyper,69,42,45,58,66,65,63,45,59,45,62,45')]).
 fof(73, plain, $false, inference(hyper,[status(thm)],[72,2,69]), [iquote('hyper,72,2,69')]).

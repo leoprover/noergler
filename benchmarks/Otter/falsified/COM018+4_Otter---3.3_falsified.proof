@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1395':
-%%%%%   Replaced aElement0(xw)
-%%%%%   With ~ (aElement0(xw))
+%%%%% Mutated formula '1434':
+%%%%%   Replaced aNormalFormOfIn0(dollar_f13(xR,xw),xw,xR)
+%%%%%   With aNormalFormOfIn0(dollar_f13(xw,xw),xw,xR)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : COM018+4 : TPTP v8.1.0. Released v4.0.0.
@@ -37,6 +37,6 @@ fof(39, axiom, (! [A,B]: ((~ (aRewritingSystem0(A)) | (~ (isTerminating0(A)) | (
 fof(542, axiom, (! [A]: (~ (aNormalFormOfIn0(A,xw,xR)))), file('COM018+4.p',unknown), []).
 fof(1367, axiom, aRewritingSystem0(xR), file('COM018+4.p',unknown), []).
 fof(1369, axiom, isTerminating0(xR), file('COM018+4.p',unknown), []).
-fof(1395, axiom, ~ (aElement0(xw)), file('COM018+4.p',unknown), []).
-fof(1434, plain, aNormalFormOfIn0(dollar_f13(xR,xw),xw,xR), inference(hyper,[status(thm)],[1395,39,1367,1369]), [iquote('hyper,1395,39,1367,1369')]).
+fof(1395, axiom, aElement0(xw), file('COM018+4.p',unknown), []).
+fof(1434, plain, aNormalFormOfIn0(dollar_f13(xw,xw),xw,xR), inference(hyper,[status(thm)],[1395,39,1367,1369]), [iquote('hyper,1395,39,1367,1369')]).
 fof(1435, plain, $false, inference(binary,[status(thm)],[1434,542]), [iquote('binary,1434.1,542.1')]).

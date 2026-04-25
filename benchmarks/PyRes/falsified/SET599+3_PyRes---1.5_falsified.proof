@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c47':
-%%%%%   Replaced (! [X163,X162]: ((symmetric_difference(X163,X162) = union(difference(X163,X162),difference(X162,X163)))))
-%%%%%   With (! [X163,X162]: (~ ((symmetric_difference(X163,X162) = union(difference(X163,X162),difference(X162,X163))))))
+%%%%% Mutated formula 'c80':
+%%%%%   Replaced (! [X196,X198,X197,X199]: (((X196 != X198) | ((union(X196,X197) != X199) | subset(X198,X199)))))
+%%%%%   With (! [X196,X198,X197,X199]: (((X196 != X198) & ((union(X196,X197) != X199) | subset(X198,X199)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SET599+3 : TPTP v8.1.2. Released v2.2.0.
@@ -47,11 +47,11 @@ fof(subset_of_union, axiom, (! [B,C]: (subset(B,union(B,C)))), file('SET599+3.p'
 fof(c44, plain, (! [X28,X29]: (subset(X28,union(X28,X29)))), inference(variable_rename,[status(thm)],[subset_of_union])).
 fof(c45, plain, (! [X35,X34]: (subset(X35,union(X35,X34)))), inference(split_conjunct,[status(thm)],[c44])).
 fof(c3, axiom, (! [X100,X98,X97,X99]: (((X100 != X98) | ((X97 != X99) | (~ (subset(X100,X97)) | subset(X98,X99)))))), theory(equality)).
-fof(c80, plain, (! [X196,X198,X197,X199]: (((X196 != X198) | ((union(X196,X197) != X199) | subset(X198,X199))))), inference(resolution,[status(thm)],[c3,c45])).
+fof(c80, plain, (! [X196,X198,X197,X199]: (((X196 != X198) & ((union(X196,X197) != X199) | subset(X198,X199))))), inference(resolution,[status(thm)],[c3,c45])).
 fof(symmetry, axiom, (! [X36,X37]: (((X36 != X37) | (X37 = X36)))), theory(equality)).
 fof(symmetric_difference_defn, axiom, (! [B,C]: ((symmetric_difference(B,C) = union(difference(B,C),difference(C,B))))), file('SET599+3.p',symmetric_difference_defn)).
 fof(c46, plain, (! [X30,X31]: ((symmetric_difference(X30,X31) = union(difference(X30,X31),difference(X31,X30))))), inference(variable_rename,[status(thm)],[symmetric_difference_defn])).
-fof(c47, plain, (! [X163,X162]: (~ ((symmetric_difference(X163,X162) = union(difference(X163,X162),difference(X162,X163)))))), inference(split_conjunct,[status(thm)],[c46])).
+fof(c47, plain, (! [X163,X162]: ((symmetric_difference(X163,X162) = union(difference(X163,X162),difference(X162,X163))))), inference(split_conjunct,[status(thm)],[c46])).
 fof(c153, plain, (! [X313,X314]: ((union(difference(X313,X314),difference(X314,X313)) = symmetric_difference(X313,X314)))), inference(resolution,[status(thm)],[c47,symmetry])).
 fof(c446, plain, (! [X324,X325,X326]: (((difference(X324,X325) != X326) | subset(X326,symmetric_difference(X324,X325))))), inference(resolution,[status(thm)],[c153,c80])).
 fof(c491, plain, (! [X328,X327]: (subset(difference(X328,X327),symmetric_difference(X328,X327)))), inference(resolution,[status(thm)],[c446,reflexivity])).

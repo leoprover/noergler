@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1044':
-%%%%%   Replaced reachable(dollar_f5(initial_world),dollar_f4(initial_world))
-%%%%%   With ~ (reachable(dollar_f5(initial_world),dollar_f4(initial_world)))
+%%%%% Mutated formula '136':
+%%%%%   Replaced (reachable(dollar_f5(initial_world),dollar_f2(initial_world)) | reachable(dollar_f5(initial_world),dollar_f4(initial_world)))
+%%%%%   With (reachable(dollar_f5(initial_world),dollar_f2(initial_world)) & reachable(dollar_f5(initial_world),dollar_f4(initial_world)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN549+1 : TPTP v8.1.0. Released v2.2.0.
@@ -64,7 +64,7 @@ fof(36, plain, (reachable(dollar_f5(initial_world),dollar_f2(initial_world)) | (
 fof(37, plain, (reachable(dollar_f5(initial_world),dollar_f2(initial_world)) | (p(dollar_f3(initial_world)) | reachable(dollar_f5(initial_world),dollar_f4(initial_world)))), inference(hyper,[status(thm)],[27,5]), [iquote('hyper,27,5')]).
 fof(38, plain, (reachable(dollar_f5(initial_world),dollar_f2(initial_world)) | (reachable(dollar_f5(initial_world),dollar_f3(initial_world)) | q(dollar_f4(initial_world)))), inference(hyper,[status(thm)],[27,4]), [iquote('hyper,27,4')]).
 fof(39, plain, (reachable(dollar_f5(initial_world),dollar_f2(initial_world)) | (reachable(dollar_f5(initial_world),dollar_f3(initial_world)) | reachable(dollar_f5(initial_world),dollar_f4(initial_world)))), inference(hyper,[status(thm)],[27,3]), [iquote('hyper,27,3')]).
-fof(136, plain, (reachable(dollar_f5(initial_world),dollar_f2(initial_world)) | reachable(dollar_f5(initial_world),dollar_f4(initial_world))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[39,16,27,37])])]), [iquote('hyper,39,16,27,37,factor_simp,factor_simp')]).
+fof(136, plain, (reachable(dollar_f5(initial_world),dollar_f2(initial_world)) & reachable(dollar_f5(initial_world),dollar_f4(initial_world))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[39,16,27,37])])]), [iquote('hyper,39,16,27,37,factor_simp,factor_simp')]).
 fof(137, plain, (reachable(dollar_f5(initial_world),dollar_f2(initial_world)) | reachable(dollar_f5(initial_world),dollar_f3(initial_world))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[39,25,27,27,38])])]), [iquote('hyper,39,25,27,27,38,factor_simp,factor_simp')]).
 fof(138, plain, (reachable(dollar_f5(initial_world),dollar_f4(initial_world)) | (reachable(dollar_f2(initial_world),dollar_f1(initial_world)) | p(dollar_f3(initial_world)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[136,16,27,33])]), [iquote('hyper,136,16,27,33,factor_simp')]).
 fof(140, plain, (reachable(dollar_f5(initial_world),dollar_f2(initial_world)) | p(dollar_f3(initial_world))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[136,25,27,27,36])]), [iquote('hyper,136,25,27,27,36,factor_simp')]).
@@ -85,7 +85,7 @@ fof(962, plain, (p(dollar_f2(initial_world)) | (reachable(dollar_f5(initial_worl
 fof(963, plain, (p(dollar_f2(initial_world)) | (p(dollar_f3(initial_world)) | q(dollar_f4(initial_world)))), inference(hyper,[status(thm)],[947,25,27,27,28]), [iquote('hyper,947,25,27,27,28')]).
 fof(1040, plain, (reachable(dollar_f5(initial_world),dollar_f4(initial_world)) | reachable(dollar_f5(initial_world),dollar_f3(initial_world))), inference(hyper,[status(thm)],[385,16,27,201]), [iquote('hyper,385,16,27,201')]).
 fof(1042, plain, (reachable(dollar_f5(initial_world),dollar_f3(initial_world)) | p(dollar_f2(initial_world))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[1040,25,27,27,962])]), [iquote('hyper,1040,25,27,27,962,factor_simp')]).
-fof(1044, plain, ~ (reachable(dollar_f5(initial_world),dollar_f4(initial_world))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[1040,16,27,581])]), [iquote('hyper,1040,16,27,581,factor_simp')]).
+fof(1044, plain, reachable(dollar_f5(initial_world),dollar_f4(initial_world)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[1040,16,27,581])]), [iquote('hyper,1040,16,27,581,factor_simp')]).
 fof(1045, plain, (p(dollar_f2(initial_world)) | p(dollar_f3(initial_world))), inference(hyper,[status(thm)],[1044,25,27,27,963]), [iquote('hyper,1044,25,27,27,963')]).
 fof(1060, plain, p(dollar_f3(initial_world)), inference(hyper,[status(thm)],[1045,16,27,201]), [iquote('hyper,1045,16,27,201')]).
 fof(1076, plain, reachable(dollar_f5(initial_world),dollar_f3(initial_world)), inference(hyper,[status(thm)],[1042,16,27,201]), [iquote('hyper,1042,16,27,201')]).

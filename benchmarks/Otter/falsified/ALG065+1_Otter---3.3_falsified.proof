@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '888':
-%%%%%   Replaced ((op(e0,e3) = e0) | ((op(e2,e3) = e0) | ((op(e3,e3) = e0) | (op(e4,e4) = e4))))
-%%%%%   With ((op(e0,e3) = e0) & ((op(e2,e3) = e0) | ((op(e3,e3) = e0) | (op(e4,e4) = e4))))
+%%%%% Mutated formula '358':
+%%%%%   Replaced (op(unit,e4) = e4)
+%%%%%   With (op(e3,e4) = e4)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG065+1 : TPTP v8.1.0. Released v2.7.0.
@@ -89,7 +89,7 @@ fof(350, axiom, (op(unit,e2) = e2), file('ALG065+1.p',unknown), []).
 fof(352, axiom, (op(e2,unit) = e2), file('ALG065+1.p',unknown), []).
 fof(354, axiom, (op(unit,e3) = e3), file('ALG065+1.p',unknown), []).
 fof(356, axiom, (op(e3,unit) = e3), file('ALG065+1.p',unknown), []).
-fof(358, axiom, (op(unit,e4) = e4), file('ALG065+1.p',unknown), []).
+fof(358, axiom, (op(e3,e4) = e4), file('ALG065+1.p',unknown), []).
 fof(360, axiom, (op(e4,unit) = e4), file('ALG065+1.p',unknown), []).
 fof(362, axiom, ((unit = e0) | ((unit = e1) | ((unit = e2) | ((unit = e3) | (unit = e4))))), file('ALG065+1.p',unknown), []).
 fof(367, axiom, ((op(e0,e0) = e2) | ((op(e0,e1) = e2) | ((op(e0,e2) = e2) | ((op(e0,e3) = e2) | (op(e0,e4) = e2))))), file('ALG065+1.p',unknown), []).
@@ -123,7 +123,7 @@ fof(749, plain, ((op(e4,e3) != e0) | (op(e4,e4) = e4)), inference(flip,[status(t
 fof(758, plain, ((op(e0,e4) != e4) | (op(e4,e4) = e0)), inference(flip,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[713,88])]), [iquote('para_from,713.2.1,88.1.1,flip.1')]).
 fof(781, plain, ((op(e0,e0) = e2) | ((op(e0,e1) = e2) | ((op(e0,e3) = e2) | ((op(e0,e4) = e2) | (op(e2,e2) = e0))))), inference(hyper,[status(thm)],[367,659]), [iquote('hyper,367,659')]).
 fof(884, plain, ((op(e4,e4) = e0) | ((op(e0,e0) = e4) | ((op(e0,e1) = e4) | ((op(e0,e2) = e4) | (op(e0,e3) = e4))))), inference(hyper,[status(thm)],[758,371]), [iquote('hyper,758,371')]).
-fof(888, plain, ((op(e0,e3) = e0) & ((op(e2,e3) = e0) | ((op(e3,e3) = e0) | (op(e4,e4) = e4)))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[394,749]),506]), [iquote('hyper,394,749,unit_del,506')]).
+fof(888, plain, ((op(e0,e3) = e0) | ((op(e2,e3) = e0) | ((op(e3,e3) = e0) | (op(e4,e4) = e4)))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[394,749]),506]), [iquote('hyper,394,749,unit_del,506')]).
 fof(1167, plain, ((unit = e0) | ((unit = e3) | (unit = e4))), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[729,360]),418]),214]), [iquote('para_from,729.2.1,360.1.1.2,demod,418,unit_del,214')]).
 fof(1189, plain, ((unit = e0) | (unit = e4)), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[1167,348]),536]), [iquote('para_from,1167.2.1,348.1.1.2,unit_del,536')]).
 fof(1207, plain, ((op(e4,e0) = e4) | (unit = e4)), inference(para_from,[status(thm),theory(equality)],[1189,360]), [iquote('para_from,1189.1.1,360.1.1.2')]).

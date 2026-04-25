@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '25':
-%%%%%   Replaced iext(uri_rdf_type,uri_ex_p,uri_owl_ObjectProperty)
-%%%%%   With ~ (iext(uri_rdf_type,uri_ex_p,uri_owl_ObjectProperty))
+%%%%% Mutated formula '12':
+%%%%%   Replaced (~ (iext(uri_rdf_type,uri_ex_s,uri_rdfs_Resource)) | (~ (iext(uri_rdf_type,uri_ex_s,uri_owl_Thing)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_rdfs_Resource)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_owl_Thing)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_rdf_Property)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_owl_ObjectProperty)) | (~ (iext(uri_rdf_type,uri_ex_o,uri_rdfs_Resource)) | ~ (iext(uri_rdf_type,uri_ex_o,uri_owl_Thing)))))))))
+%%%%%   With (~ (iext(uri_ex_s,uri_ex_s,uri_rdfs_Resource)) | (~ (iext(uri_rdf_type,uri_ex_s,uri_owl_Thing)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_rdfs_Resource)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_owl_Thing)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_rdf_Property)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_owl_ObjectProperty)) | (~ (iext(uri_rdf_type,uri_ex_o,uri_rdfs_Resource)) | ~ (iext(uri_rdf_type,uri_ex_o,uri_owl_Thing)))))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWB005+2 : TPTP v8.1.0. Released v5.2.0.
@@ -39,7 +39,7 @@ fof(5, axiom, (! [A,B]: ((iext(uri_rdf_type,A,B) | ~ (icext(B,A))))), file('SWB0
 fof(6, axiom, (! [A]: ((~ (ir(A)) | icext(uri_rdfs_Resource,A)))), file('SWB005+2.p',unknown), []).
 fof(9, axiom, (! [A]: ((icext(uri_owl_Thing,A) | ~ (ir(A))))), file('SWB005+2.p',unknown), []).
 fof(11, axiom, (! [A]: ((icext(uri_owl_ObjectProperty,A) | ~ (ip(A))))), file('SWB005+2.p',unknown), []).
-fof(12, axiom, (~ (iext(uri_rdf_type,uri_ex_s,uri_rdfs_Resource)) | (~ (iext(uri_rdf_type,uri_ex_s,uri_owl_Thing)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_rdfs_Resource)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_owl_Thing)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_rdf_Property)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_owl_ObjectProperty)) | (~ (iext(uri_rdf_type,uri_ex_o,uri_rdfs_Resource)) | ~ (iext(uri_rdf_type,uri_ex_o,uri_owl_Thing))))))))), file('SWB005+2.p',unknown), []).
+fof(12, axiom, (~ (iext(uri_ex_s,uri_ex_s,uri_rdfs_Resource)) | (~ (iext(uri_rdf_type,uri_ex_s,uri_owl_Thing)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_rdfs_Resource)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_owl_Thing)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_rdf_Property)) | (~ (iext(uri_rdf_type,uri_ex_p,uri_owl_ObjectProperty)) | (~ (iext(uri_rdf_type,uri_ex_o,uri_rdfs_Resource)) | ~ (iext(uri_rdf_type,uri_ex_o,uri_owl_Thing))))))))), file('SWB005+2.p',unknown), []).
 fof(13, axiom, (! [A]: (ir(A))), file('SWB005+2.p',unknown), []).
 fof(14, axiom, iext(uri_ex_p,uri_ex_s,uri_ex_o), file('SWB005+2.p',unknown), []).
 fof(15, plain, (! [A]: (icext(uri_owl_Thing,A))), inference(hyper,[status(thm)],[13,9]), [iquote('hyper,13,9')]).
@@ -49,5 +49,5 @@ fof(18, plain, (! [A]: (iext(uri_rdf_type,A,uri_rdfs_Resource))), inference(hype
 fof(19, plain, ip(uri_ex_p), inference(hyper,[status(thm)],[14,1]), [iquote('hyper,14,1')]).
 fof(20, plain, icext(uri_owl_ObjectProperty,uri_ex_p), inference(hyper,[status(thm)],[19,11]), [iquote('hyper,19,11')]).
 fof(21, plain, iext(uri_rdf_type,uri_ex_p,uri_rdf_Property), inference(hyper,[status(thm)],[19,3]), [iquote('hyper,19,3')]).
-fof(25, plain, ~ (iext(uri_rdf_type,uri_ex_p,uri_owl_ObjectProperty)), inference(hyper,[status(thm)],[20,5]), [iquote('hyper,20,5')]).
+fof(25, plain, iext(uri_rdf_type,uri_ex_p,uri_owl_ObjectProperty), inference(hyper,[status(thm)],[20,5]), [iquote('hyper,20,5')]).
 fof(29, plain, $false, inference(hyper,[status(thm)],[25,12,18,17,18,17,21,18,17]), [iquote('hyper,25,12,18,17,18,17,21,18,17')]).

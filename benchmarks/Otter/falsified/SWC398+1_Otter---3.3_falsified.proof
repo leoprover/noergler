@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '448':
-%%%%%   Replaced ssList(dollar_c6)
-%%%%%   With ~ (ssList(dollar_c6))
+%%%%% Mutated formula '451':
+%%%%%   Replaced (dollar_c7 = dollar_c5)
+%%%%%   With ~ ((dollar_c7 = dollar_c5))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC398+1 : TPTP v8.1.0. Released v2.4.0.
@@ -35,8 +35,8 @@
 %%% Generated on Tue Apr 14 19:22:02 CEST 2026 using command 'transform(fof)'.
 fof(107, axiom, (! [A,B,C]: ((~ (ssItem(A)) | (~ (ssList(B)) | (~ (ssList(C)) | (memberP(app(B,C),A) | ~ (memberP(B,A)))))))), file('SWC398+1.p',unknown), []).
 fof(183, axiom, ~ (memberP(dollar_c7,dollar_c4)), file('SWC398+1.p',unknown), []).
-fof(448, axiom, ~ (ssList(dollar_c6)), file('SWC398+1.p',unknown), []).
-fof(451, axiom, (dollar_c7 = dollar_c5), file('SWC398+1.p',unknown), []).
+fof(448, axiom, ssList(dollar_c6), file('SWC398+1.p',unknown), []).
+fof(451, axiom, ~ ((dollar_c7 = dollar_c5)), file('SWC398+1.p',unknown), []).
 fof(453, axiom, (dollar_c8 = dollar_c6), file('SWC398+1.p',unknown), []).
 fof(454, axiom, ssList(dollar_c3), file('SWC398+1.p',unknown), []).
 fof(456, axiom, (app(dollar_c6,dollar_c3) = dollar_c5), file('SWC398+1.p',unknown), []).

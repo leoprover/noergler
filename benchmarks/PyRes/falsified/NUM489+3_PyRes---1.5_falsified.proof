@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c19':
-%%%%%   Replaced (sdtpldt0(xp,xr) = xn)
-%%%%%   With ~ ((sdtpldt0(xp,xr) = xn))
+%%%%% Mutated formula 'c387':
+%%%%%   Replaced (xn = sdtpldt0(xp,xr))
+%%%%%   With (xr = sdtpldt0(xp,xr))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : NUM489+3 : TPTP v8.1.2. Released v4.0.0.
@@ -42,6 +42,6 @@ fof(c10, negated_conjecture, (xn != sdtpldt0(xp,xr)), inference(fof_simplificati
 fof(c11, negated_conjecture, (xn != sdtpldt0(xp,xr)), inference(split_conjunct,[status(thm)],[c10])).
 fof(symmetry, axiom, (! [X101,X100]: (((X101 != X100) | (X100 = X101)))), theory(equality)).
 fof(m__1883, plain, (aNaturalNumber0(xr) & ((sdtpldt0(xp,xr) = xn) & (xr = sdtmndt0(xn,xp)))), file('NUM489+3.p',m__1883)).
-fof(c19, plain, ~ ((sdtpldt0(xp,xr) = xn)), inference(split_conjunct,[status(thm)],[m__1883])).
-fof(c387, plain, (xn = sdtpldt0(xp,xr)), inference(resolution,[status(thm)],[c19,symmetry])).
+fof(c19, plain, (sdtpldt0(xp,xr) = xn), inference(split_conjunct,[status(thm)],[m__1883])).
+fof(c387, plain, (xr = sdtpldt0(xp,xr)), inference(resolution,[status(thm)],[c19,symmetry])).
 fof(c421, plain, $false, inference(resolution,[status(thm)],[c387,c11])).

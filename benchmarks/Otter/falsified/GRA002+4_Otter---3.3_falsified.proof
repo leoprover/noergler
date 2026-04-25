@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '101':
-%%%%%   Replaced (number_of_in(triangles,dollar_c3) = number_of_in(se_quential_pairs,dollar_c3))
-%%%%%   With ~ ((number_of_in(triangles,dollar_c3) = number_of_in(se_quential_pairs,dollar_c3)))
+%%%%% Mutated formula '99':
+%%%%%   Replaced complete
+%%%%%   With ~ (complete)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GRA002+4 : TPTP v8.1.0. Bugfixed v3.2.0.
@@ -41,9 +41,9 @@ fof(77, axiom, (! [A,B,C]: ((~ (complete) | (~ (shortest_path(A,B,C)) | (number_
 fof(78, plain, (! [A,B,C]: ((~ (complete) | (~ (shortest_path(A,B,C)) | (number_of_in(triangles,C) = number_of_in(se_quential_pairs,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[77])]), [iquote('copy,77,flip.3')]).
 fof(79, axiom, ~ (less_or_e_qual(minus(length_of(dollar_c3),n1),number_of_in(triangles,graph))), file('GRA002+4.p',unknown), []).
 fof(98, axiom, (! [A,B]: (less_or_e_qual(number_of_in(A,B),number_of_in(A,graph)))), file('GRA002+4.p',unknown), []).
-fof(99, axiom, complete, file('GRA002+4.p',unknown), []).
+fof(99, axiom, ~ (complete), file('GRA002+4.p',unknown), []).
 fof(100, axiom, shortest_path(dollar_c2,dollar_c1,dollar_c3), file('GRA002+4.p',unknown), []).
-fof(101, plain, ~ ((number_of_in(triangles,dollar_c3) = number_of_in(se_quential_pairs,dollar_c3))), inference(hyper,[status(thm)],[100,78,99]), [iquote('hyper,100,78,99')]).
+fof(101, plain, (number_of_in(triangles,dollar_c3) = number_of_in(se_quential_pairs,dollar_c3)), inference(hyper,[status(thm)],[100,78,99]), [iquote('hyper,100,78,99')]).
 fof(103, plain, path(dollar_c2,dollar_c1,dollar_c3), inference(hyper,[status(thm)],[100,52]), [iquote('hyper,100,52')]).
 fof(131, plain, (minus(length_of(dollar_c3),n1) = number_of_in(se_quential_pairs,dollar_c3)), inference(hyper,[status(thm)],[103,68]), [iquote('hyper,103,68')]).
 fof(134, plain, (length_of(dollar_c3) = number_of_in(edges,dollar_c3)), inference(hyper,[status(thm)],[103,66]), [iquote('hyper,103,66')]).

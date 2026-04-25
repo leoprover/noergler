@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '4881':
-%%%%%   Replaced member(dollar_f2(union(dollar_c1,dollar_c2),dollar_c1),dollar_c1)
-%%%%%   With ~ (member(dollar_f2(union(dollar_c1,dollar_c2),dollar_c1),dollar_c1))
+%%%%% Mutated formula '73':
+%%%%%   Replaced (! [A,B,C]: (((union(A,B) = C) | (member(dollar_f2(union(A,B),C),C) | member(dollar_f2(union(A,B),C),union(B,A))))))
+%%%%%   With (! [A,B,C]: (((union(A,B) = C) & (member(dollar_f2(union(A,B),C),C) | member(dollar_f2(union(A,B),C),union(B,A))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET185+3 : TPTP v8.1.0. Released v2.2.0.
@@ -46,7 +46,7 @@ fof(21, axiom, subset(dollar_c2,dollar_c1), file('SET185+3.p',unknown), []).
 fof(27, plain, (! [A,B,C]: (((A = union(B,C)) | (~ (member(dollar_f2(union(C,B),A),union(C,B))) | ~ (member(dollar_f2(union(C,B),A),A)))))), inference(para_into,[status(thm),theory(equality)],[18,11]), [iquote('para_into,18.1.1,11.1.1')]).
 fof(29, plain, (union(dollar_c1,dollar_c2) != dollar_c1), inference(para_from,[status(thm),theory(equality)],[18,12]), [iquote('para_from,18.1.1,12.1.1')]).
 fof(34, plain, (! [A]: (((A != dollar_c1) | (~ (member(dollar_f2(union(dollar_c1,dollar_c2),A),union(dollar_c1,dollar_c2))) | ~ (member(dollar_f2(union(dollar_c1,dollar_c2),A),A)))))), inference(para_into,[status(thm),theory(equality)],[29,11]), [iquote('para_into,29.1.1,11.1.1')]).
-fof(73, plain, (! [A,B,C]: (((union(A,B) = C) | (member(dollar_f2(union(A,B),C),C) | member(dollar_f2(union(A,B),C),union(B,A)))))), inference(hyper,[status(thm)],[20,10,18]), [iquote('hyper,20,10,18')]).
+fof(73, plain, (! [A,B,C]: (((union(A,B) = C) & (member(dollar_f2(union(A,B),C),C) | member(dollar_f2(union(A,B),C),union(B,A)))))), inference(hyper,[status(thm)],[20,10,18]), [iquote('hyper,20,10,18')]).
 fof(78, plain, (! [A,B,C]: (((union(A,B) = C) | (member(dollar_f2(union(A,B),C),C) | (member(dollar_f2(union(A,B),C),A) | member(dollar_f2(union(A,B),C),B)))))), inference(hyper,[status(thm)],[20,1]), [iquote('hyper,20,1')]).
 fof(83, plain, (! [A,B,C]: (((A = B) | (member(dollar_f2(A,B),A) | member(dollar_f2(A,B),union(C,B)))))), inference(hyper,[status(thm)],[20,3]), [iquote('hyper,20,3')]).
 fof(91, plain, (! [A,B]: (((union(A,B) = A) | (member(dollar_f2(union(A,B),A),A) | member(dollar_f2(union(A,B),A),B))))), inference(factor,[status(thm)],[78]), [iquote('factor,78.2.3')]).
@@ -54,6 +54,6 @@ fof(96, plain, (! [A,B]: (((union(A,B) = B) | member(dollar_f2(union(A,B),B),uni
 fof(4668, plain, member(dollar_f2(union(dollar_c1,dollar_c2),dollar_c1),union(dollar_c2,dollar_c1)), inference(factor_simp,[status(thm)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[83,34,16,73]),29,29])]), [iquote('hyper,83,34,16,73,unit_del,29,29,factor_simp')]).
 fof(4669, plain, member(dollar_f2(union(dollar_c1,dollar_c2),dollar_c1),union(dollar_c1,dollar_c2)), inference(hyper,[status(thm)],[4668,10,18]), [iquote('hyper,4668,10,18')]).
 fof(4879, plain, member(dollar_f2(union(dollar_c1,dollar_c2),dollar_c1),dollar_c2), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[91,34,16,4669]),29]), [iquote('hyper,91,34,16,4669,unit_del,29')]).
-fof(4881, plain, ~ (member(dollar_f2(union(dollar_c1,dollar_c2),dollar_c1),dollar_c1)), inference(hyper,[status(thm)],[4879,4,21]), [iquote('hyper,4879,4,21')]).
+fof(4881, plain, member(dollar_f2(union(dollar_c1,dollar_c2),dollar_c1),dollar_c1), inference(hyper,[status(thm)],[4879,4,21]), [iquote('hyper,4879,4,21')]).
 fof(4896, plain, member(dollar_f2(union(dollar_c2,dollar_c1),dollar_c1),dollar_c1), inference(para_into,[status(thm),theory(equality)],[4881,18]), [iquote('para_into,4881.1.1.1,18.1.1')]).
 fof(4955, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[96,27,4896]),12,29]), [iquote('hyper,96,27,4896,unit_del,12,29')]).

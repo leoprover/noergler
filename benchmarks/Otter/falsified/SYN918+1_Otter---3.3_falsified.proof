@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '16':
-%%%%%   Replaced (! [A]: ((f(dollar_f1(A)) | h(A))))
-%%%%%   With (! [A]: ((f(dollar_f1(A)) & h(A))))
+%%%%% Mutated formula '25':
+%%%%%   Replaced (! [A]: (f(A)))
+%%%%%   With (! [A]: (~ (f(A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN918+1 : TPTP v8.1.0. Released v3.1.0.
@@ -42,11 +42,11 @@ fof(6, axiom, (! [A]: ((~ (f(A)) | (~ (h(A)) | g(A))))), file('SYN918+1.p',unkno
 fof(7, axiom, (! [A]: ((~ (f(A)) | (~ (g(A)) | h(A))))), file('SYN918+1.p',unknown), []).
 fof(9, axiom, (! [A]: ((f(A) | f(dollar_f1(A))))), file('SYN918+1.p',unknown), []).
 fof(10, axiom, (! [A]: ((g(A) | f(dollar_f1(A))))), file('SYN918+1.p',unknown), []).
-fof(16, plain, (! [A]: ((f(dollar_f1(A)) & h(A)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[10,7,9])]), [iquote('hyper,10,7,9,factor_simp')]).
+fof(16, plain, (! [A]: ((f(dollar_f1(A)) | h(A)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[10,7,9])]), [iquote('hyper,10,7,9,factor_simp')]).
 fof(19, plain, (! [A]: (f(dollar_f1(A)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[16,3])]), [iquote('hyper,16,3,factor_simp')]).
 fof(21, plain, (! [A,B]: ((g(dollar_f1(A)) | h(dollar_f1(B))))), inference(hyper,[status(thm)],[19,5,19]), [iquote('hyper,19,5,19')]).
 fof(22, plain, (! [A]: (g(dollar_f1(A)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[21,6,19])]), [iquote('hyper,21,6,19,factor_simp')]).
 fof(24, plain, (! [A]: (g(A))), inference(hyper,[status(thm)],[22,2]), [iquote('hyper,22,2')]).
-fof(25, plain, (! [A]: (f(A))), inference(hyper,[status(thm)],[22,1]), [iquote('hyper,22,1')]).
+fof(25, plain, (! [A]: (~ (f(A)))), inference(hyper,[status(thm)],[22,1]), [iquote('hyper,22,1')]).
 fof(26, plain, (! [A]: (h(A))), inference(hyper,[status(thm)],[25,7,24]), [iquote('hyper,25,7,24')]).
 fof(27, plain, $false, inference(hyper,[status(thm)],[26,4,24]), [iquote('hyper,26,4,24')]).

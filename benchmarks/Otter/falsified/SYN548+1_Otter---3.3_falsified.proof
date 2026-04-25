@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '35':
-%%%%%   Replaced (reachable(dollar_f5(initial_world),dollar_f2(initial_world)) | reachable(dollar_f5(initial_world),dollar_f3(initial_world)))
-%%%%%   With (~ (reachable(dollar_f5(initial_world),dollar_f2(initial_world))) | reachable(dollar_f5(initial_world),dollar_f3(initial_world)))
+%%%%% Mutated formula '7177':
+%%%%%   Replaced reachable(dollar_f5(initial_world),dollar_f1(dollar_f3(initial_world)))
+%%%%%   With ~ (reachable(dollar_f5(initial_world),dollar_f1(dollar_f3(initial_world))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN548+1 : TPTP v8.1.0. Released v2.2.0.
@@ -54,7 +54,7 @@ fof(20, axiom, (! [A]: ((~ (reachable(initial_world,A)) | (~ (q(dollar_f1(A))) |
 fof(25, plain, (! [A,B,C]: ((~ (reachable(initial_world,A)) | (~ (reachable(dollar_f5(A),B)) | (p(B) | (~ (reachable(B,C)) | (q(C) | ~ (reachable(dollar_f5(A),C))))))))), inference(factor,[status(thm)],[4]), [iquote('factor,4.5.7')]).
 fof(30, axiom, (! [A]: (reachable(A,A))), file('SYN548+1.p',unknown), []).
 fof(33, plain, (reachable(dollar_f2(initial_world),dollar_f1(initial_world)) | reachable(dollar_f5(initial_world),dollar_f3(initial_world))), inference(hyper,[status(thm)],[30,13]), [iquote('hyper,30,13')]).
-fof(35, plain, (~ (reachable(dollar_f5(initial_world),dollar_f2(initial_world))) | reachable(dollar_f5(initial_world),dollar_f3(initial_world))), inference(hyper,[status(thm)],[30,5]), [iquote('hyper,30,5')]).
+fof(35, plain, (reachable(dollar_f5(initial_world),dollar_f2(initial_world)) | reachable(dollar_f5(initial_world),dollar_f3(initial_world))), inference(hyper,[status(thm)],[30,5]), [iquote('hyper,30,5')]).
 fof(36, plain, reachable(initial_world,dollar_f5(initial_world)), inference(hyper,[status(thm)],[30,2]), [iquote('hyper,30,2')]).
 fof(152, plain, (reachable(dollar_f5(initial_world),dollar_f3(initial_world)) | reachable(dollar_f5(initial_world),dollar_f1(initial_world))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[35,1,33])]), [iquote('hyper,35,1,33,factor_simp')]).
 fof(464, plain, (reachable(dollar_f5(initial_world),dollar_f3(initial_world)) | (p(dollar_f2(initial_world)) | q(dollar_f1(initial_world)))), inference(factor_simp,[status(thm)],[inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[152,25,30,35,33])])]), [iquote('hyper,152,25,30,35,33,factor_simp,factor_simp')]).
@@ -120,7 +120,7 @@ fof(7108, plain, (p(dollar_f3(initial_world)) | q(dollar_f4(dollar_f3(initial_wo
 fof(7160, plain, reachable(dollar_f5(dollar_f3(initial_world)),dollar_f2(dollar_f3(initial_world))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[7091,10,30,6473])]), [iquote('hyper,7091,10,30,6473,factor_simp')]).
 fof(7163, plain, reachable(dollar_f5(initial_world),dollar_f2(dollar_f3(initial_world))), inference(hyper,[status(thm)],[7160,1,1973]), [iquote('hyper,7160,1,1973')]).
 fof(7165, plain, reachable(dollar_f3(initial_world),dollar_f2(dollar_f3(initial_world))), inference(hyper,[status(thm)],[7160,1,1961]), [iquote('hyper,7160,1,1961')]).
-fof(7177, plain, reachable(dollar_f5(initial_world),dollar_f1(dollar_f3(initial_world))), inference(hyper,[status(thm)],[7163,1,6392]), [iquote('hyper,7163,1,6392')]).
+fof(7177, plain, ~ (reachable(dollar_f5(initial_world),dollar_f1(dollar_f3(initial_world)))), inference(hyper,[status(thm)],[7163,1,6392]), [iquote('hyper,7163,1,6392')]).
 fof(7179, plain, reachable(dollar_f3(initial_world),dollar_f1(dollar_f3(initial_world))), inference(hyper,[status(thm)],[7165,1,6392]), [iquote('hyper,7165,1,6392')]).
 fof(7182, plain, (p(dollar_f3(initial_world)) | q(dollar_f1(dollar_f3(initial_world)))), inference(hyper,[status(thm)],[7179,25,30,1952,7177]), [iquote('hyper,7179,25,30,1952,7177')]).
 fof(7184, plain, p(dollar_f3(initial_world)), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[7182,20,1955,7108])]), [iquote('hyper,7182,20,1955,7108,factor_simp')]).

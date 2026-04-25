@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '184':
-%%%%%   Replaced (set_difference(unordered_pair(dollar_c4,dollar_c4),dollar_c4) != set_difference(unordered_pair(dollar_c4,dollar_c3),set_difference(unordered_pair(dollar_c3,dollar_c3),dollar_c3)))
-%%%%%   With ~ ((set_difference(unordered_pair(dollar_c4,dollar_c4),dollar_c4) != set_difference(unordered_pair(dollar_c4,dollar_c3),set_difference(unordered_pair(dollar_c3,dollar_c3),dollar_c3))))
+%%%%% Mutated formula '7':
+%%%%%   Replaced (! [A,B,C]: (((set_difference(unordered_pair(A,B),C) = singleton(A)) | (in(A,C) | ~ (in(B,C))))))
+%%%%%   With (! [A,B,C]: ((~ ((set_difference(unordered_pair(A,B),C) = singleton(A))) | (in(A,C) | ~ (in(B,C))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET882+1 : TPTP v8.1.0. Released v3.2.0.
@@ -37,7 +37,7 @@ fof(1, axiom, (! [A,B]: ((~ (in(A,B)) | ~ (in(B,A))))), file('SET882+1.p',unknow
 fof(2, axiom, (! [A,B,C]: (((A != singleton(B)) | (~ (in(C,A)) | (C = B))))), file('SET882+1.p',unknown), []).
 fof(3, axiom, (! [A,B,C]: (((A != singleton(B)) | (in(C,A) | (C != B))))), file('SET882+1.p',unknown), []).
 fof(5, axiom, (! [A,B,C]: (((set_difference(unordered_pair(A,B),C) != singleton(A)) | ~ (in(A,C))))), file('SET882+1.p',unknown), []).
-fof(7, axiom, (! [A,B,C]: (((set_difference(unordered_pair(A,B),C) = singleton(A)) | (in(A,C) | ~ (in(B,C)))))), file('SET882+1.p',unknown), []).
+fof(7, axiom, (! [A,B,C]: ((~ ((set_difference(unordered_pair(A,B),C) = singleton(A))) | (in(A,C) | ~ (in(B,C)))))), file('SET882+1.p',unknown), []).
 fof(8, axiom, (! [A,B,C]: (((set_difference(unordered_pair(A,B),C) = singleton(A)) | (in(A,C) | (A != B))))), file('SET882+1.p',unknown), []).
 fof(10, axiom, (dollar_c4 != dollar_c3), file('SET882+1.p',unknown), []).
 fof(11, axiom, (set_difference(unordered_pair(dollar_c4,dollar_c3),singleton(dollar_c3)) != singleton(dollar_c4)), file('SET882+1.p',unknown), []).
@@ -50,7 +50,7 @@ fof(96, plain, (! [A]: ((singleton(A) = set_difference(unordered_pair(A,A),A))))
 fof(97, plain, (! [A,B,C]: (((set_difference(unordered_pair(A,A),B) = set_difference(unordered_pair(A,A),A)) | ((set_difference(unordered_pair(C,A),B) = set_difference(unordered_pair(C,C),C)) | in(C,B))))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[18,7]),96,96]), [iquote('hyper,18,7,demod,96,96')]).
 fof(98, plain, (! [A,B]: (((set_difference(unordered_pair(A,A),set_difference(unordered_pair(B,B),B)) = set_difference(unordered_pair(A,A),A)) | (A = B)))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[18,2,14]),96,96]), [iquote('hyper,18,2,14,demod,96,96')]).
 fof(181, plain, (! [A]: (in(A,set_difference(unordered_pair(A,A),A)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[19]),96]), [iquote('back_demod,19,demod,96')]).
-fof(184, plain, ~ ((set_difference(unordered_pair(dollar_c4,dollar_c4),dollar_c4) != set_difference(unordered_pair(dollar_c4,dollar_c3),set_difference(unordered_pair(dollar_c3,dollar_c3),dollar_c3)))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[12]),96,96]), [iquote('back_demod,12,demod,96,96')]).
+fof(184, plain, (set_difference(unordered_pair(dollar_c4,dollar_c4),dollar_c4) != set_difference(unordered_pair(dollar_c4,dollar_c3),set_difference(unordered_pair(dollar_c3,dollar_c3),dollar_c3))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[12]),96,96]), [iquote('back_demod,12,demod,96,96')]).
 fof(188, plain, (! [A,B,C]: (((set_difference(unordered_pair(A,B),C) != set_difference(unordered_pair(A,A),A)) | ~ (in(A,C))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[5]),96]), [iquote('back_demod,5,demod,96')]).
 fof(191, plain, (! [A,B,C]: (((A != set_difference(unordered_pair(B,B),B)) | (~ (in(C,A)) | (C = B))))), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[2]),96]), [iquote('back_demod,2,demod,96')]).
 fof(196, plain, (! [A,B]: (((A != dollar_c3) | ((B != set_difference(unordered_pair(A,A),A)) | ~ (in(dollar_c4,B)))))), inference(para_from,[status(thm),theory(equality)],[191,10]), [iquote('para_from,191.3.1,10.1.1')]).

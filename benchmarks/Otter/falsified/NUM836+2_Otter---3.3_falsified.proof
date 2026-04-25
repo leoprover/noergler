@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '16':
-%%%%%   Replaced less(vd203,vd204)
-%%%%%   With less(vd204,vd204)
+%%%%% Mutated formula '115':
+%%%%%   Replaced less(vd204,vd203)
+%%%%%   With less(vd203,vd203)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM836+2 : TPTP v8.1.0. Released v4.1.0.
@@ -42,12 +42,12 @@ fof(10, axiom, (! [A,B,C,D]: (((A != vplus(B,C)) | (B != vplus(A,D))))), file('N
 fof(13, plain, (! [A,B]: ((vplus(A,B) != A))), inference(flip,[status(thm),theory(equality)],[inference(factor,[status(thm)],[10])]), [iquote('factor,10.1.2,flip.1')]).
 fof(14, axiom, (! [A]: ((A = A))), file('NUM836+2.p',unknown), []).
 fof(15, axiom, greater(vd203,vd204), file('NUM836+2.p',unknown), []).
-fof(16, axiom, less(vd204,vd204), file('NUM836+2.p',unknown), []).
+fof(16, axiom, less(vd203,vd204), file('NUM836+2.p',unknown), []).
 fof(19, axiom, (! [A,B,C]: ((vplus(vplus(A,B),C) = vplus(A,vplus(B,C))))), file('NUM836+2.p',unknown), []).
 fof(28, plain, (! [A,B]: (less(A,vplus(A,B)))), inference(hyper,[status(thm)],[14,5]), [iquote('hyper,14,5')]).
 fof(33, plain, (vplus(vd203,dollar_f1(vd204,vd203)) = vd204), inference(hyper,[status(thm)],[16,4]), [iquote('hyper,16,4')]).
 fof(44, plain, (! [A,B]: ((less(A,B) | ~ (greater(B,A))))), inference(para_into,[status(thm),theory(equality)],[28,7]), [iquote('para_into,28.1.2,7.2.1')]).
-fof(115, plain, less(vd204,vd203), inference(hyper,[status(thm)],[44,15]), [iquote('hyper,44,15')]).
+fof(115, plain, less(vd203,vd203), inference(hyper,[status(thm)],[44,15]), [iquote('hyper,44,15')]).
 fof(133, plain, (vplus(vd204,dollar_f1(vd203,vd204)) = vd203), inference(hyper,[status(thm)],[115,4]), [iquote('hyper,115,4')]).
 fof(164, plain, (! [A]: ((vplus(vd203,vplus(dollar_f1(vd204,vd203),A)) = vplus(vd204,A)))), inference(flip,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[33,19])]), [iquote('para_from,33.1.1,19.1.1.1,flip.1')]).
 fof(1011, plain, (! [A]: ((vplus(vd204,A) != vd203))), inference(para_from,[status(thm),theory(equality)],[164,13]), [iquote('para_from,164.1.1,13.1.1')]).

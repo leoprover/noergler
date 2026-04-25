@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '18':
-%%%%%   Replaced (! [A,B]: ((~ (dissimilar(A,B,B)) | ~ (is_aligned(A,B)))))
-%%%%%   With (! [A,B]: ((dissimilar(A,B,B) | ~ (is_aligned(A,B)))))
+%%%%% Mutated formula '24':
+%%%%%   Replaced is_aligned(dollar_c2,dollar_c1)
+%%%%%   With ~ (is_aligned(dollar_c2,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT052+1 : TPTP v8.1.0. Released v2.4.0.
@@ -36,7 +36,7 @@
 fof(12, axiom, (! [A,B,C]: ((~ (dissimilar(A,B,C)) | (is_aligned(A,B) | is_aligned(A,C))))), file('MGT052+1.p',unknown), []).
 fof(13, axiom, (! [A,B,C]: ((~ (dissimilar(A,B,C)) | (~ (is_aligned(A,B)) | ~ (is_aligned(A,C)))))), file('MGT052+1.p',unknown), []).
 fof(17, plain, (! [A,B]: ((~ (dissimilar(A,B,B)) | is_aligned(A,B)))), inference(factor,[status(thm)],[12]), [iquote('factor,12.2.3')]).
-fof(18, plain, (! [A,B]: ((dissimilar(A,B,B) | ~ (is_aligned(A,B))))), inference(factor,[status(thm)],[13]), [iquote('factor,13.2.3')]).
+fof(18, plain, (! [A,B]: ((~ (dissimilar(A,B,B)) | ~ (is_aligned(A,B))))), inference(factor,[status(thm)],[13]), [iquote('factor,13.2.3')]).
 fof(21, axiom, dissimilar(dollar_c2,dollar_c1,dollar_c1), file('MGT052+1.p',unknown), []).
-fof(24, plain, is_aligned(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[21,17]), [iquote('hyper,21,17')]).
+fof(24, plain, ~ (is_aligned(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[21,17]), [iquote('hyper,21,17')]).
 fof(40, plain, $false, inference(hyper,[status(thm)],[24,18,21]), [iquote('hyper,24,18,21')]).

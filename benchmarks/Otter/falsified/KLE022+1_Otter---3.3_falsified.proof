@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '144':
-%%%%%   Replaced (! [A]: ((addition(multiplication(A,c(dollar_c1)),multiplication(A,dollar_c1)) = A)))
-%%%%%   With (! [A]: ((addition(multiplication(A,c(dollar_c2)),multiplication(A,dollar_c1)) = A)))
+%%%%% Mutated formula '30':
+%%%%%   Replaced (! [A,B,C]: ((multiplication(A,addition(B,C)) = addition(multiplication(A,B),multiplication(A,C)))))
+%%%%%   With (! [A,B,C]: (~ ((multiplication(A,addition(B,C)) = addition(multiplication(A,B),multiplication(A,C))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE022+1 : TPTP v8.1.0. Released v4.0.0.
@@ -40,10 +40,10 @@ fof(12, plain, (addition(multiplication(dollar_c2,dollar_c1),multiplication(doll
 fof(14, axiom, (! [A]: ((A = A))), file('KLE022+1.p',unknown), []).
 fof(15, axiom, (! [A,B]: ((addition(A,B) = addition(B,A)))), file('KLE022+1.p',unknown), []).
 fof(27, axiom, (! [A]: ((multiplication(A,one) = A))), file('KLE022+1.p',unknown), []).
-fof(30, axiom, (! [A,B,C]: ((multiplication(A,addition(B,C)) = addition(multiplication(A,B),multiplication(A,C))))), file('KLE022+1.p',unknown), []).
+fof(30, axiom, (! [A,B,C]: (~ ((multiplication(A,addition(B,C)) = addition(multiplication(A,B),multiplication(A,C)))))), file('KLE022+1.p',unknown), []).
 fof(39, axiom, test(dollar_c1), file('KLE022+1.p',unknown), []).
 fof(41, plain, complement(dollar_c1,c(dollar_c1)), inference(hyper,[status(thm)],[39,9,14]), [iquote('hyper,39,9,14')]).
 fof(43, plain, (addition(c(dollar_c1),dollar_c1) = one), inference(hyper,[status(thm)],[41,7]), [iquote('hyper,41,7')]).
 fof(60, plain, (addition(multiplication(dollar_c2,c(dollar_c1)),multiplication(dollar_c2,dollar_c1)) != dollar_c2), inference(para_from,[status(thm),theory(equality)],[15,12]), [iquote('para_from,15.1.1,12.1.1')]).
-fof(144, plain, (! [A]: ((addition(multiplication(A,c(dollar_c2)),multiplication(A,dollar_c1)) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[43,30]),27])]), [iquote('para_from,43.1.1,30.1.1.2,demod,27,flip.1')]).
+fof(144, plain, (! [A]: ((addition(multiplication(A,c(dollar_c1)),multiplication(A,dollar_c1)) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_from,[status(thm),theory(equality)],[43,30]),27])]), [iquote('para_from,43.1.1,30.1.1.2,demod,27,flip.1')]).
 fof(146, plain, $false, inference(binary,[status(thm)],[144,60]), [iquote('binary,144.1,60.1')]).

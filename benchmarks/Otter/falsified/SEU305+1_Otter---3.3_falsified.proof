@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '61':
-%%%%%   Replaced join_commutative(dollar_c6)
-%%%%%   With ~ (join_commutative(dollar_c6))
+%%%%% Mutated formula '202':
+%%%%%   Replaced (join(dollar_c6,dollar_c4,dollar_c5) = dollar_c4)
+%%%%%   With (join(dollar_c5,dollar_c4,dollar_c5) = dollar_c4)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU305+1 : TPTP v8.1.0. Released v3.3.0.
@@ -38,7 +38,7 @@ fof(7, axiom, (! [A,B,C]: ((empty_carrier(A) | (~ (join_semilatt_str(A)) | (~ (e
 fof(23, axiom, (! [A,B,C]: ((empty_carrier(A) | (~ (join_commutative(A)) | (~ (join_semilatt_str(A)) | (~ (element(B,the_carrier(A))) | (~ (element(C,the_carrier(A))) | (join_commut(A,B,C) = join(A,B,C))))))))), file('SEU305+1.p',unknown), []).
 fof(27, axiom, ~ (empty_carrier(dollar_c6)), file('SEU305+1.p',unknown), []).
 fof(28, axiom, (dollar_c5 != dollar_c4), file('SEU305+1.p',unknown), []).
-fof(61, axiom, ~ (join_commutative(dollar_c6)), file('SEU305+1.p',unknown), []).
+fof(61, axiom, join_commutative(dollar_c6), file('SEU305+1.p',unknown), []).
 fof(62, axiom, join_semilatt_str(dollar_c6), file('SEU305+1.p',unknown), []).
 fof(63, axiom, element(dollar_c5,the_carrier(dollar_c6)), file('SEU305+1.p',unknown), []).
 fof(64, axiom, element(dollar_c4,the_carrier(dollar_c6)), file('SEU305+1.p',unknown), []).
@@ -47,5 +47,5 @@ fof(66, axiom, below(dollar_c6,dollar_c4,dollar_c5), file('SEU305+1.p',unknown),
 fof(161, plain, (join_commut(dollar_c6,dollar_c5,dollar_c4) = join(dollar_c6,dollar_c5,dollar_c4)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[64,23,61,62,63]),27]), [iquote('hyper,64,23,61,62,63,unit_del,27')]).
 fof(165, plain, (join_commut(dollar_c6,dollar_c4,dollar_c5) = join(dollar_c6,dollar_c4,dollar_c5)), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[64,23,61,62,63]),27]), [iquote('hyper,64,23,61,62,63,unit_del,27')]).
 fof(181, plain, (join(dollar_c6,dollar_c5,dollar_c4) = join(dollar_c6,dollar_c4,dollar_c5)), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[64,5,61,62,63]),161,165]),27]), [iquote('hyper,64,5,61,62,63,demod,161,165,unit_del,27')]).
-fof(202, plain, (join(dollar_c6,dollar_c4,dollar_c5) = dollar_c4), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[65,7,62,63,64]),181]),27]), [iquote('hyper,65,7,62,63,64,demod,181,unit_del,27')]).
+fof(202, plain, (join(dollar_c5,dollar_c4,dollar_c5) = dollar_c4), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[65,7,62,63,64]),181]),27]), [iquote('hyper,65,7,62,63,64,demod,181,unit_del,27')]).
 fof(219, plain, $false, inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[66,7,62,64,63]),202]),27,28]), [iquote('hyper,66,7,62,64,63,demod,202,unit_del,27,28')]).

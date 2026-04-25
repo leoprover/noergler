@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '92':
-%%%%%   Replaced (! [A,B]: ((addition(multiplication(A,domain(B)),A) = A)))
-%%%%%   With (! [A,B]: (~ ((addition(multiplication(A,domain(B)),A) = A))))
+%%%%% Mutated formula '33':
+%%%%%   Replaced (! [A]: ((addition(domain(A),one) = one)))
+%%%%%   With (! [A]: ((addition(domain(A),dollar_c2) = one)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE070+1 : TPTP v8.1.0. Released v4.0.0.
@@ -37,7 +37,7 @@ fof(3, axiom, (addition(domain(dollar_c2),multiplication(domain(dollar_c2),domai
 fof(5, axiom, (! [A,B]: ((addition(A,B) = addition(B,A)))), file('KLE070+1.p',unknown), []).
 fof(17, axiom, (! [A]: ((multiplication(A,one) = A))), file('KLE070+1.p',unknown), []).
 fof(20, axiom, (! [A,B,C]: ((multiplication(A,addition(B,C)) = addition(multiplication(A,B),multiplication(A,C))))), file('KLE070+1.p',unknown), []).
-fof(33, axiom, (! [A]: ((addition(domain(A),one) = one))), file('KLE070+1.p',unknown), []).
+fof(33, axiom, (! [A]: ((addition(domain(A),dollar_c2) = one))), file('KLE070+1.p',unknown), []).
 fof(47, plain, (addition(multiplication(domain(dollar_c2),domain(dollar_c1)),domain(dollar_c2)) != domain(dollar_c2)), inference(para_from,[status(thm),theory(equality)],[5,3]), [iquote('para_from,5.1.1,3.1.1')]).
-fof(92, plain, (! [A,B]: (~ ((addition(multiplication(A,domain(B)),A) = A)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[20,33]),17,17])]), [iquote('para_into,20.1.1.2,33.1.1,demod,17,17,flip.1')]).
+fof(92, plain, (! [A,B]: ((addition(multiplication(A,domain(B)),A) = A))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[20,33]),17,17])]), [iquote('para_into,20.1.1.2,33.1.1,demod,17,17,flip.1')]).
 fof(94, plain, $false, inference(binary,[status(thm)],[92,47]), [iquote('binary,92.1,47.1')]).

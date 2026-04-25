@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '32':
-%%%%%   Replaced (! [A,B]: ((empty(A) | (~ (preboolean(A)) | (~ (element(B,A)) | (prebool_difference(A,B,B) = set_difference(B,B)))))))
-%%%%%   With (! [A,B]: ((~ (empty(A)) | (~ (preboolean(A)) | (~ (element(B,A)) | (prebool_difference(A,B,B) = set_difference(B,B)))))))
+%%%%% Mutated formula '35':
+%%%%%   Replaced (! [A]: (element(dollar_f1(A),A)))
+%%%%%   With (! [A]: (~ (element(dollar_f1(A),A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU107+1 : TPTP v8.1.0. Released v3.2.0.
@@ -41,8 +41,8 @@ fof(20, axiom, (! [A,B]: ((~ (element(A,B)) | (empty(B) | in(A,B))))), file('SEU
 fof(22, axiom, (! [A,B]: (((set_difference(A,B) = empty_set) | ~ (subset(A,B))))), file('SEU107+1.p',unknown), []).
 fof(29, axiom, (! [A,B]: ((~ (empty(A)) | ((A = B) | ~ (empty(B)))))), file('SEU107+1.p',unknown), []).
 fof(31, plain, (! [A,B]: ((empty(A) | (~ (preboolean(A)) | (~ (element(B,A)) | element(prebool_difference(A,B,B),A)))))), inference(factor,[status(thm)],[7]), [iquote('factor,7.3.4')]).
-fof(32, plain, (! [A,B]: ((~ (empty(A)) | (~ (preboolean(A)) | (~ (element(B,A)) | (prebool_difference(A,B,B) = set_difference(B,B))))))), inference(factor,[status(thm)],[16]), [iquote('factor,16.3.4')]).
-fof(35, axiom, (! [A]: (element(dollar_f1(A),A))), file('SEU107+1.p',unknown), []).
+fof(32, plain, (! [A,B]: ((empty(A) | (~ (preboolean(A)) | (~ (element(B,A)) | (prebool_difference(A,B,B) = set_difference(B,B))))))), inference(factor,[status(thm)],[16]), [iquote('factor,16.3.4')]).
+fof(35, axiom, (! [A]: (~ (element(dollar_f1(A),A)))), file('SEU107+1.p',unknown), []).
 fof(36, axiom, empty(empty_set), file('SEU107+1.p',unknown), []).
 fof(43, axiom, empty(dollar_c3), file('SEU107+1.p',unknown), []).
 fof(60, axiom, (! [A]: (subset(A,A))), file('SEU107+1.p',unknown), []).

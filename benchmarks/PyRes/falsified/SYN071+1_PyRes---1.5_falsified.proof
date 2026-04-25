@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c31':
-%%%%%   Replaced ((c = d) | ((b = d) | (b = c)))
-%%%%%   With ((c = d) & ((b = d) | (b = c)))
+%%%%% Mutated formula 'c3':
+%%%%%   Replaced (b != c)
+%%%%%   With (a != c)
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN071+1 : TPTP v8.1.2. Released v2.0.0.
@@ -39,7 +39,7 @@
 fof(pel48, conjecture, ((a = d) | (b = c)), file('SYN071+1.p',pel48)).
 fof(c0, negated_conjecture, ~ (((a = d) | (b = c))), inference(assume_negation,[status(cth)],[pel48])).
 fof(c1, negated_conjecture, ((a != d) & (b != c)), inference(fof_nnf,[status(thm)],[c0])).
-fof(c3, negated_conjecture, (b != c), inference(split_conjunct,[status(thm)],[c1])).
+fof(c3, negated_conjecture, (a != c), inference(split_conjunct,[status(thm)],[c1])).
 fof(symmetry, axiom, (! [X3,X4]: (((X3 != X4) | (X4 = X3)))), theory(equality)).
 fof(transitivity, axiom, (! [X7,X8,X6]: (((X7 != X8) | ((X8 != X6) | (X7 = X6))))), theory(equality)).
 fof(c2, negated_conjecture, (a != d), inference(split_conjunct,[status(thm)],[c1])).
@@ -51,7 +51,7 @@ fof(c10, plain, (! [X12]: (((b = d) | ((X12 != a) | (X12 = c))))), inference(res
 fof(pel48_1, axiom, ((a = b) | (c = d)), file('SYN071+1.p',pel48_1)).
 fof(c5, plain, ((a = b) | (c = d)), inference(split_conjunct,[status(thm)],[pel48_1])).
 fof(c13, plain, ((c = d) | (b = a)), inference(resolution,[status(thm)],[c5,symmetry])).
-fof(c31, plain, ((c = d) & ((b = d) | (b = c))), inference(resolution,[status(thm)],[c13,c10])).
+fof(c31, plain, ((c = d) | ((b = d) | (b = c))), inference(resolution,[status(thm)],[c13,c10])).
 fof(c102, plain, ((c = d) | (b = d)), inference(resolution,[status(thm)],[c31,c3])).
 fof(c108, plain, ((b = d) | (d = c)), inference(resolution,[status(thm)],[c102,symmetry])).
 fof(c121, plain, ((b = d) | (d = a)), inference(resolution,[status(thm)],[c108,c20])).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c15060':
-%%%%%   Replaced (! [X1078,X1077,X1076]: ((big_f(X1078,skolem0002(X1078,X1077,X1076),X1077) | (~ (big_f(X1076,X1078,X1077)) | big_f(X1078,X1077,X1076)))))
-%%%%%   With (! [X1078,X1077,X1076]: ((big_f(X1078,skolem0002(X1078,X1077,X1076),X1077) & (~ (big_f(X1076,X1078,X1077)) | big_f(X1078,X1077,X1076)))))
+%%%%% Mutated formula 'c93':
+%%%%%   Replaced (! [X168,X169,X170]: ((~ (big_f(X168,X169,X170)) | (big_f(X170,X168,X169) | big_f(X168,skolem0002(X168,X170,skolem0002(X170,X168,X169)),X170)))))
+%%%%%   With (! [X168,X169,X170]: ((~ (big_f(X168,X169,X170)) & (big_f(X170,X168,X169) | big_f(X168,skolem0002(X168,X170,skolem0002(X170,X168,X169)),X170)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN353+1 : TPTP v8.1.2. Released v2.0.0.
@@ -67,7 +67,7 @@ fof(c7833, plain, (! [X692]: ((big_f(X692,skolem0001,skolem0001) | (big_f(skolem
 fof(c99, plain, (! [X171,X173,X172]: ((~ (big_f(X171,X173,X172)) | (big_f(X173,X172,X171) | big_f(X171,skolem0002(X171,X172,skolem0002(X172,X171,X173)),X172))))), inference(resolution,[status(thm)],[c14,c11])).
 fof(c414, plain, (! [X455,X457,X456]: ((big_f(X455,X457,X456) | (big_f(X456,skolem0002(X456,X457,skolem0002(X457,X456,X455)),X457) | big_f(X457,X455,skolem0002(X455,X457,X456)))))), inference(resolution,[status(thm)],[c99,c7])).
 fof(c8, negated_conjecture, (! [X30,X29,X28]: ((~ (big_f(X30,X29,X28)) | (~ (big_f(X29,X28,X30)) | big_f(X29,X30,skolem0002(X30,X29,X28)))))), inference(split_conjunct,[status(thm)],[c5])).
-fof(c93, plain, (! [X168,X169,X170]: ((~ (big_f(X168,X169,X170)) | (big_f(X170,X168,X169) | big_f(X168,skolem0002(X168,X170,skolem0002(X170,X168,X169)),X170))))), inference(resolution,[status(thm)],[c13,c11])).
+fof(c93, plain, (! [X168,X169,X170]: ((~ (big_f(X168,X169,X170)) & (big_f(X170,X168,X169) | big_f(X168,skolem0002(X168,X170,skolem0002(X170,X168,X169)),X170))))), inference(resolution,[status(thm)],[c13,c11])).
 fof(c384, plain, (! [X447,X446,X445]: ((big_f(X447,X446,X445) | (big_f(X446,skolem0002(X446,X447,skolem0002(X447,X446,X445)),X447) | big_f(X447,X445,skolem0002(X445,X447,X446)))))), inference(resolution,[status(thm)],[c93,c7])).
 fof(c3580, plain, (! [X666,X665,X667]: ((big_f(X666,skolem0002(X666,X665,skolem0002(X665,X666,X667)),X665) | (big_f(X665,X667,skolem0002(X667,X665,X666)) | ~ (big_f(X667,X665,X666)))))), inference(resolution,[status(thm)],[c384,c8])).
 fof(c7382, plain, (! [X670,X669,X668]: ((big_f(X670,skolem0002(X670,X669,skolem0002(X669,X670,X668)),X669) | big_f(X669,X668,skolem0002(X668,X669,X670))))), inference(resolution,[status(thm)],[c3580,c414])).
@@ -88,7 +88,7 @@ fof(c13568, plain, (! [X939,X938,X937]: ((~ (big_f(X939,X938,X937)) | (big_f(X93
 fof(c14752, plain, (! [X959,X958,X957]: ((big_f(X959,skolem0002(X959,X958,X957),X958) | big_f(skolem0002(X959,X958,X957),X958,X959)))), inference(resolution,[status(thm)],[c13568,c444])).
 fof(c14802, plain, (! [X1062,X1060,X1061]: ((big_f(X1062,X1060,X1061) | (big_f(X1060,X1061,X1062) | big_f(X1060,skolem0002(X1060,X1061,X1062),X1061))))), inference(resolution,[status(thm)],[c13568,c11])).
 fof(c14696, plain, (! [X952,X951,X950]: ((big_f(X952,X951,skolem0002(X951,X952,X950)) | big_f(X951,skolem0002(X951,X952,X950),X952)))), inference(resolution,[status(thm)],[c13568,c444])).
-fof(c15060, plain, (! [X1078,X1077,X1076]: ((big_f(X1078,skolem0002(X1078,X1077,X1076),X1077) & (~ (big_f(X1076,X1078,X1077)) | big_f(X1078,X1077,X1076))))), inference(resolution,[status(thm)],[c14696,c9])).
+fof(c15060, plain, (! [X1078,X1077,X1076]: ((big_f(X1078,skolem0002(X1078,X1077,X1076),X1077) | (~ (big_f(X1076,X1078,X1077)) | big_f(X1078,X1077,X1076))))), inference(resolution,[status(thm)],[c14696,c9])).
 fof(c17520, plain, (! [X1082,X1083,X1084]: ((big_f(X1082,skolem0002(X1082,X1083,X1084),X1083) | big_f(X1082,X1083,X1084)))), inference(resolution,[status(thm)],[c15060,c14802])).
 fof(c17720, plain, (! [X1086,X1087,X1085]: ((big_f(X1086,X1087,X1085) | ~ (big_f(X1087,X1085,X1086))))), inference(resolution,[status(thm)],[c17520,c13])).
 fof(c17816, plain, (! [X1099,X1098,X1100]: (big_f(X1099,skolem0002(X1099,X1098,X1100),X1098))), inference(resolution,[status(thm)],[c17720,c14752])).

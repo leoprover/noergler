@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '91':
-%%%%%   Replaced nevera(dollar_c20,dollar_c19)
-%%%%%   With ~ (nevera(dollar_c20,dollar_c19))
+%%%%% Mutated formula '38':
+%%%%%   Replaced (! [A,B]: (status(A,B,dollar_c20)))
+%%%%%   With (! [A,B]: (~ (status(A,B,dollar_c20))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KRS180+1 : TPTP v8.1.0. Bugfixed v5.4.0.
@@ -37,10 +37,10 @@ fof(5, axiom, (! [A,B,C,D]: ((~ (status(A,B,C)) | (status(A,B,D) | ~ (isa(C,D)))
 fof(8, axiom, (! [A,B]: ((~ (status(dollar_f6(A,B),dollar_f5(A,B),B)) | ~ (nota(A,B))))), file('KRS180+1.p',unknown), []).
 fof(9, axiom, (! [A,B,C,D]: ((~ (status(A,B,C)) | (~ (status(A,B,D)) | ~ (nevera(C,D)))))), file('KRS180+1.p',unknown), []).
 fof(13, axiom, (! [A,B,C,D]: ((~ (status(A,B,C)) | (~ (status(A,B,D)) | ~ (xora(C,D)))))), file('KRS180+1.p',unknown), []).
-fof(38, axiom, (! [A,B]: (status(A,B,dollar_c20))), file('KRS180+1.p',unknown), []).
+fof(38, axiom, (! [A,B]: (~ (status(A,B,dollar_c20)))), file('KRS180+1.p',unknown), []).
 fof(39, axiom, isa(dollar_c20,dollar_c19), file('KRS180+1.p',unknown), []).
 fof(40, axiom, (nota(dollar_c20,dollar_c19) | (nevera(dollar_c20,dollar_c19) | xora(dollar_c20,dollar_c19))), file('KRS180+1.p',unknown), []).
 fof(46, plain, (! [A,B]: (status(A,B,dollar_c19))), inference(hyper,[status(thm)],[38,5,39]), [iquote('hyper,38,5,39')]).
 fof(72, plain, (nota(dollar_c20,dollar_c19) | nevera(dollar_c20,dollar_c19)), inference(hyper,[status(thm)],[40,13,38,46]), [iquote('hyper,40,13,38,46')]).
-fof(91, plain, ~ (nevera(dollar_c20,dollar_c19)), inference(hyper,[status(thm)],[72,8,46]), [iquote('hyper,72,8,46')]).
+fof(91, plain, nevera(dollar_c20,dollar_c19), inference(hyper,[status(thm)],[72,8,46]), [iquote('hyper,72,8,46')]).
 fof(92, plain, $false, inference(hyper,[status(thm)],[91,9,38,46]), [iquote('hyper,91,9,38,46')]).

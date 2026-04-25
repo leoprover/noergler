@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c1274':
-%%%%%   Replaced genls(c_tptpcol_16_92269,c_tptpcol_11_92230)
-%%%%%   With ~ (genls(c_tptpcol_16_92269,c_tptpcol_11_92230))
+%%%%% Mutated formula 'c538':
+%%%%%   Replaced (! [X412]: ((~ (genls(X412,c_tptpcol_9_92165)) | genls(X412,c_tptpcol_8_92164))))
+%%%%%   With (! [X412]: ((~ (genls(X412,c_tptpcol_9_92165)) & genls(X412,c_tptpcol_8_92164))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : CSR049+1 : TPTP v8.1.2. Released v3.4.0.
@@ -152,7 +152,7 @@ fof(c535, plain, (! [X409]: ((~ (genls(X409,c_tptpcol_10_92166)) | genls(X409,c_
 fof(c1010, plain, genls(c_tptpcol_11_92230,c_tptpcol_9_92165), inference(resolution,[status(thm)],[c535,c371])).
 fof(just51, axiom, genls(c_tptpcol_9_92165,c_tptpcol_8_92164), file('CSR049+1.p',just51)).
 fof(c379, plain, genls(c_tptpcol_9_92165,c_tptpcol_8_92164), inference(split_conjunct,[status(thm)],[just51])).
-fof(c538, plain, (! [X412]: ((~ (genls(X412,c_tptpcol_9_92165)) | genls(X412,c_tptpcol_8_92164)))), inference(resolution,[status(thm)],[c61,c379])).
+fof(c538, plain, (! [X412]: ((~ (genls(X412,c_tptpcol_9_92165)) & genls(X412,c_tptpcol_8_92164)))), inference(resolution,[status(thm)],[c61,c379])).
 fof(c1037, plain, genls(c_tptpcol_11_92230,c_tptpcol_8_92164), inference(resolution,[status(thm)],[c538,c1010])).
 fof(just49, axiom, genls(c_tptpcol_8_92164,c_tptpcol_7_92163), file('CSR049+1.p',just49)).
 fof(c383, plain, genls(c_tptpcol_8_92164,c_tptpcol_7_92163), inference(split_conjunct,[status(thm)],[just49])).
@@ -178,7 +178,7 @@ fof(just59, axiom, genls(c_tptpcol_13_92263,c_tptpcol_12_92262), file('CSR049+1.
 fof(c363, plain, genls(c_tptpcol_13_92263,c_tptpcol_12_92262), inference(split_conjunct,[status(thm)],[just59])).
 fof(c552, plain, (! [X426]: ((~ (genls(X426,c_tptpcol_13_92263)) | genls(X426,c_tptpcol_12_92262)))), inference(resolution,[status(thm)],[c61,c363])).
 fof(c1191, plain, genls(c_tptpcol_16_92269,c_tptpcol_12_92262), inference(resolution,[status(thm)],[c552,c1124])).
-fof(c1274, plain, ~ (genls(c_tptpcol_16_92269,c_tptpcol_11_92230)), inference(resolution,[status(thm)],[c1191,c547])).
+fof(c1274, plain, genls(c_tptpcol_16_92269,c_tptpcol_11_92230), inference(resolution,[status(thm)],[c1191,c547])).
 fof(c1434, plain, (! [X858]: ((~ (disjointwith(X858,c_tptpcol_11_92230)) | disjointwith(X858,c_tptpcol_16_92269)))), inference(resolution,[status(thm)],[c1274,c287])).
 fof(c5532, plain, disjointwith(c_tptpcol_9_26885,c_tptpcol_16_92269), inference(resolution,[status(thm)],[c1434,c3979])).
 fof(c9763, plain, disjointwith(c_tptpcol_16_26926,c_tptpcol_16_92269), inference(resolution,[status(thm)],[c5532,c1829])).

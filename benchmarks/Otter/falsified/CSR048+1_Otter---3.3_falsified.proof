@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '30':
 %%%%%   Replaced genlmt(c_tptpgeo_spindlecollectormt,c_tptpgeo_member1_mt)
-%%%%%   With ~ (genlmt(c_tptpgeo_spindlecollectormt,c_tptpgeo_member1_mt))
+%%%%%   With genlmt(c_tptpgeo_member1_mt,c_tptpgeo_member1_mt)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR048+1 : TPTP v8.1.0. Released v3.4.0.
@@ -36,7 +36,7 @@
 fof(1, axiom, (~ (mtvisible(c_tptpgeo_member1_mt)) | borderson(c_georegion_l4_x45_y9,c_georegion_l4_x45_y10)), file('CSR048+1.p',unknown), []).
 fof(24, axiom, (! [A,B]: ((~ (mtvisible(A)) | (~ (genlmt(A,B)) | mtvisible(B))))), file('CSR048+1.p',unknown), []).
 fof(29, axiom, (! [A]: (~ (borderson(c_georegion_l4_x45_y9,A)))), file('CSR048+1.p',unknown), []).
-fof(30, axiom, ~ (genlmt(c_tptpgeo_spindlecollectormt,c_tptpgeo_member1_mt)), file('CSR048+1.p',unknown), []).
+fof(30, axiom, genlmt(c_tptpgeo_member1_mt,c_tptpgeo_member1_mt), file('CSR048+1.p',unknown), []).
 fof(33, axiom, mtvisible(c_tptpgeo_spindlecollectormt), file('CSR048+1.p',unknown), []).
 fof(36, plain, mtvisible(c_tptpgeo_member1_mt), inference(hyper,[status(thm)],[33,24,30]), [iquote('hyper,33,24,30')]).
 fof(39, plain, borderson(c_georegion_l4_x45_y9,c_georegion_l4_x45_y10), inference(hyper,[status(thm)],[36,1]), [iquote('hyper,36,1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1122':
-%%%%%   Replaced aspatialinformationstore(c_wamt_evalinitial_p14)
-%%%%%   With ~ (aspatialinformationstore(c_wamt_evalinitial_p14))
+%%%%% Mutated formula '1911':
+%%%%%   Replaced collection(c_wamt_evalinitial_p14)
+%%%%%   With ~ (collection(c_wamt_evalinitial_p14))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR045+2 : TPTP v8.1.0. Released v3.4.0.
@@ -43,9 +43,9 @@ fof(170, axiom, (! [A]: ((~ (aspatialinformationstore(A)) | intangibleindividual
 fof(803, axiom, applicationcontext(c_wamt_evalinitial_p14), file('CSR045+2.p',unknown), []).
 fof(1102, axiom, genls(c_wamt_evalinitial_p14,c_tptpcol_15_80088), file('CSR045+2.p',unknown), []).
 fof(1105, plain, microtheory(c_wamt_evalinitial_p14), inference(hyper,[status(thm)],[803,79]), [iquote('hyper,803,79')]).
-fof(1122, plain, ~ (aspatialinformationstore(c_wamt_evalinitial_p14)), inference(hyper,[status(thm)],[1105,69]), [iquote('hyper,1105,69')]).
+fof(1122, plain, aspatialinformationstore(c_wamt_evalinitial_p14), inference(hyper,[status(thm)],[1105,69]), [iquote('hyper,1105,69')]).
 fof(1142, plain, intangibleindividual(c_wamt_evalinitial_p14), inference(hyper,[status(thm)],[1122,170]), [iquote('hyper,1122,170')]).
 fof(1160, plain, partiallyintangibleindividual(c_wamt_evalinitial_p14), inference(hyper,[status(thm)],[1142,145]), [iquote('hyper,1142,145')]).
 fof(1176, plain, individual(c_wamt_evalinitial_p14), inference(hyper,[status(thm)],[1160,16]), [iquote('hyper,1160,16')]).
-fof(1911, plain, collection(c_wamt_evalinitial_p14), inference(hyper,[status(thm)],[1102,105]), [iquote('hyper,1102,105')]).
+fof(1911, plain, ~ (collection(c_wamt_evalinitial_p14)), inference(hyper,[status(thm)],[1102,105]), [iquote('hyper,1102,105')]).
 fof(1912, plain, $false, inference(hyper,[status(thm)],[1911,130,1176]), [iquote('hyper,1911,130,1176')]).

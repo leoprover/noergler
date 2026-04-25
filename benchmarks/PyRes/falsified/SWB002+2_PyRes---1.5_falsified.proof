@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c4':
-%%%%%   Replaced ~ ((? [BNODE_x,BNODE_y]: ((iext(uri_ex_p,BNODE_x,BNODE_y) & iext(uri_ex_q,BNODE_y,BNODE_x)))))
-%%%%%   With (? [BNODE_x,BNODE_y]: ((iext(uri_ex_p,BNODE_x,BNODE_y) & iext(uri_ex_q,BNODE_y,BNODE_x))))
+%%%%% Mutated formula 'c2':
+%%%%%   Replaced iext(uri_ex_p,uri_ex_s,skolem0001)
+%%%%%   With ~ (iext(uri_ex_p,uri_ex_s,skolem0001))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SWB002+2 : TPTP v8.1.2. Released v5.2.0.
@@ -39,10 +39,10 @@
 fof(testcase_premise_fullish_002_Existential_Blank_Nodes, axiom, (? [BNODE_o]: ((iext(uri_ex_p,uri_ex_s,BNODE_o) & iext(uri_ex_q,BNODE_o,uri_ex_s)))), file('SWB002+2.p',testcase_premise_fullish_002_Existential_Blank_Nodes)).
 fof(c0, plain, (? [X2]: ((iext(uri_ex_p,uri_ex_s,X2) & iext(uri_ex_q,X2,uri_ex_s)))), inference(variable_rename,[status(thm)],[testcase_premise_fullish_002_Existential_Blank_Nodes])).
 fof(c1, plain, (iext(uri_ex_p,uri_ex_s,skolem0001) & iext(uri_ex_q,skolem0001,uri_ex_s)), inference(skolemize,[status(esa)],[c0])).
-fof(c2, plain, iext(uri_ex_p,uri_ex_s,skolem0001), inference(split_conjunct,[status(thm)],[c1])).
+fof(c2, plain, ~ (iext(uri_ex_p,uri_ex_s,skolem0001)), inference(split_conjunct,[status(thm)],[c1])).
 fof(c3, plain, iext(uri_ex_q,skolem0001,uri_ex_s), inference(split_conjunct,[status(thm)],[c1])).
 fof(testcase_conclusion_fullish_002_Existential_Blank_Nodes, conjecture, (? [BNODE_x,BNODE_y]: ((iext(uri_ex_p,BNODE_x,BNODE_y) & iext(uri_ex_q,BNODE_y,BNODE_x)))), file('SWB002+2.p',testcase_conclusion_fullish_002_Existential_Blank_Nodes)).
-fof(c4, negated_conjecture, (? [BNODE_x,BNODE_y]: ((iext(uri_ex_p,BNODE_x,BNODE_y) & iext(uri_ex_q,BNODE_y,BNODE_x)))), inference(assume_negation,[status(cth)],[testcase_conclusion_fullish_002_Existential_Blank_Nodes])).
+fof(c4, negated_conjecture, ~ ((? [BNODE_x,BNODE_y]: ((iext(uri_ex_p,BNODE_x,BNODE_y) & iext(uri_ex_q,BNODE_y,BNODE_x))))), inference(assume_negation,[status(cth)],[testcase_conclusion_fullish_002_Existential_Blank_Nodes])).
 fof(c5, negated_conjecture, (! [BNODE_x,BNODE_y]: ((~ (iext(uri_ex_p,BNODE_x,BNODE_y)) | ~ (iext(uri_ex_q,BNODE_y,BNODE_x))))), inference(fof_nnf,[status(thm)],[c4])).
 fof(c6, negated_conjecture, (! [X3,X4]: ((~ (iext(uri_ex_p,X3,X4)) | ~ (iext(uri_ex_q,X4,X3))))), inference(variable_rename,[status(thm)],[c5])).
 fof(c7, negated_conjecture, (! [X6,X5]: ((~ (iext(uri_ex_p,X6,X5)) | ~ (iext(uri_ex_q,X5,X6))))), inference(split_conjunct,[status(thm)],[c6])).

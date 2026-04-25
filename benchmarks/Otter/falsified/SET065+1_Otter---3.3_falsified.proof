@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '84':
-%%%%%   Replaced (! [A]: (subclass(A,universal_class)))
-%%%%%   With (! [A]: (subclass(A,dollar_c1)))
+%%%%% Mutated formula '110':
+%%%%%   Replaced inductive(dollar_c1)
+%%%%%   With ~ (inductive(dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET065+1 : TPTP v8.1.0. Bugfixed v5.4.0.
@@ -36,8 +36,8 @@
 fof(1, axiom, (! [A,B,C]: ((~ (subclass(A,B)) | (~ (member(C,A)) | member(C,B))))), file('SET065+1.p',unknown), []).
 fof(43, axiom, (! [A]: ((~ (inductive(A)) | member(null_class,A)))), file('SET065+1.p',unknown), []).
 fof(68, axiom, ~ (member(null_class,universal_class)), file('SET065+1.p',unknown), []).
-fof(84, axiom, (! [A]: (subclass(A,dollar_c1))), file('SET065+1.p',unknown), []).
-fof(110, axiom, inductive(dollar_c1), file('SET065+1.p',unknown), []).
+fof(84, axiom, (! [A]: (subclass(A,universal_class))), file('SET065+1.p',unknown), []).
+fof(110, axiom, ~ (inductive(dollar_c1)), file('SET065+1.p',unknown), []).
 fof(132, plain, member(null_class,dollar_c1), inference(hyper,[status(thm)],[110,43]), [iquote('hyper,110,43')]).
 fof(195, plain, member(null_class,universal_class), inference(hyper,[status(thm)],[132,1,84]), [iquote('hyper,132,1,84')]).
 fof(196, plain, $false, inference(binary,[status(thm)],[195,68]), [iquote('binary,195.1,68.1')]).

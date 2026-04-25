@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '287':
-%%%%%   Replaced pred_attacker(tuple_client_B_in_5(tuple_true))
-%%%%%   With pred_attacker(tuple_client_B_in_5(name_objective))
+%%%%% Mutated formula '1945':
+%%%%%   Replaced pred_attacker(tuple_client_B_out_6(name_objective))
+%%%%%   With pred_attacker(tuple_client_B_out_6(name_A))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWW959+1 : TPTP v8.1.0. Released v7.4.0.
@@ -43,7 +43,7 @@ fof(248, axiom, (! [A,B]: (pred_e_q_bitstring_bitstring(A,B))), file('SWW959+1.p
 fof(249, axiom, pred_attacker(tuple_true), file('SWW959+1.p',unknown), []).
 fof(285, plain, pred_attacker(tuple_client_B_in_2(tuple_true)), inference(hyper,[status(thm)],[249,191]), [iquote('hyper,249,191')]).
 fof(286, plain, pred_attacker(tuple_client_B_in_3(tuple_true)), inference(hyper,[status(thm)],[249,189]), [iquote('hyper,249,189')]).
-fof(287, plain, pred_attacker(tuple_client_B_in_5(name_objective)), inference(hyper,[status(thm)],[249,187]), [iquote('hyper,249,187')]).
-fof(1945, plain, pred_attacker(tuple_client_B_out_6(name_objective)), inference(hyper,[status(thm)],[287,215,248,248,286,248,285]), [iquote('hyper,287,215,248,248,286,248,285')]).
+fof(287, plain, pred_attacker(tuple_client_B_in_5(tuple_true)), inference(hyper,[status(thm)],[249,187]), [iquote('hyper,249,187')]).
+fof(1945, plain, pred_attacker(tuple_client_B_out_6(name_A)), inference(hyper,[status(thm)],[287,215,248,248,286,248,285]), [iquote('hyper,287,215,248,248,286,248,285')]).
 fof(1949, plain, pred_attacker(name_objective), inference(hyper,[status(thm)],[1945,181]), [iquote('hyper,1945,181')]).
 fof(1950, plain, $false, inference(binary,[status(thm)],[1949,218]), [iquote('binary,1949.1,218.1')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '69':
-%%%%%   Replaced before_on_line(dollar_c3,dollar_c1,dollar_c2)
-%%%%%   With ~ (before_on_line(dollar_c3,dollar_c1,dollar_c2))
+%%%%% Mutated formula '73':
+%%%%%   Replaced e_qually_directed_lines(dollar_c3,line_connecting(dollar_c2,dollar_c1))
+%%%%%   With ~ (e_qually_directed_lines(dollar_c3,line_connecting(dollar_c2,dollar_c1)))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO255+3 : TPTP v8.1.0. Released v4.0.0.
@@ -44,9 +44,9 @@ fof(61, plain, (! [A,B]: ((~ (une_qually_directed_lines(A,A)) | une_qually_direc
 fof(63, axiom, (! [A,B]: ((e_qually_directed_lines(A,B) | une_qually_directed_lines(A,B)))), file('GEO255+3.p',unknown), []).
 fof(66, axiom, (! [A,B]: ((une_qually_directed_lines(A,B) | une_qually_directed_lines(A,reverse_line(B))))), file('GEO255+3.p',unknown), []).
 fof(68, axiom, before_on_line(dollar_c3,dollar_c2,dollar_c1), file('GEO255+3.p',unknown), []).
-fof(69, axiom, ~ (before_on_line(dollar_c3,dollar_c1,dollar_c2)), file('GEO255+3.p',unknown), []).
+fof(69, axiom, before_on_line(dollar_c3,dollar_c1,dollar_c2), file('GEO255+3.p',unknown), []).
 fof(71, plain, (! [A,B,C]: ((e_qually_directed_lines(A,B) | (une_qually_directed_lines(A,C) | une_qually_directed_lines(B,C))))), inference(hyper,[status(thm)],[63,36]), [iquote('hyper,63,36')]).
-fof(73, plain, e_qually_directed_lines(dollar_c3,line_connecting(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[68,24]), [iquote('hyper,68,24')]).
+fof(73, plain, ~ (e_qually_directed_lines(dollar_c3,line_connecting(dollar_c2,dollar_c1))), inference(hyper,[status(thm)],[68,24]), [iquote('hyper,68,24')]).
 fof(76, plain, distinct_points(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[68,21]), [iquote('hyper,68,21')]).
 fof(79, plain, e_qually_directed_lines(line_connecting(dollar_c2,dollar_c1),reverse_line(line_connecting(dollar_c1,dollar_c2))), inference(hyper,[status(thm)],[76,52]), [iquote('hyper,76,52')]).
 fof(83, plain, e_qually_directed_lines(dollar_c3,line_connecting(dollar_c1,dollar_c2)), inference(hyper,[status(thm)],[69,24]), [iquote('hyper,69,24')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '75':
-%%%%%   Replaced subset(dollar_c4,dollar_c3)
-%%%%%   With subset(dollar_c1,dollar_c3)
+%%%%% Mutated formula '74':
+%%%%%   Replaced ilf_type(dollar_c1,relation_type(dollar_c4,dollar_c2))
+%%%%%   With ilf_type(set_type,relation_type(dollar_c4,dollar_c2))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET653+3 : TPTP v8.1.0. Released v2.2.0.
@@ -38,8 +38,8 @@ fof(2, axiom, (! [A,B,C]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,set_type))
 fof(4, axiom, (! [A,B,C,D]: ((~ (ilf_type(A,set_type)) | (~ (ilf_type(B,set_type)) | (~ (ilf_type(C,set_type)) | (~ (ilf_type(D,relation_type(A,C))) | (~ (subset(domain_of(D),B)) | ilf_type(D,relation_type(B,C))))))))), file('SET653+3.p',unknown), []).
 fof(41, axiom, ~ (ilf_type(dollar_c1,relation_type(dollar_c3,dollar_c2))), file('SET653+3.p',unknown), []).
 fof(73, axiom, (! [A]: (ilf_type(A,set_type))), file('SET653+3.p',unknown), []).
-fof(74, axiom, ilf_type(dollar_c1,relation_type(dollar_c4,dollar_c2)), file('SET653+3.p',unknown), []).
-fof(75, axiom, subset(dollar_c1,dollar_c3), file('SET653+3.p',unknown), []).
+fof(74, axiom, ilf_type(set_type,relation_type(dollar_c4,dollar_c2)), file('SET653+3.p',unknown), []).
+fof(75, axiom, subset(dollar_c4,dollar_c3), file('SET653+3.p',unknown), []).
 fof(89, plain, subset(domain_of(dollar_c1),dollar_c4), inference(hyper,[status(thm)],[74,2,73,73]), [iquote('hyper,74,2,73,73')]).
 fof(90, plain, subset(domain_of(dollar_c1),dollar_c3), inference(hyper,[status(thm)],[89,1,73,73,73,75]), [iquote('hyper,89,1,73,73,73,75')]).
 fof(91, plain, ilf_type(dollar_c1,relation_type(dollar_c3,dollar_c2)), inference(hyper,[status(thm)],[90,4,73,73,73,74]), [iquote('hyper,90,4,73,73,73,74')]).

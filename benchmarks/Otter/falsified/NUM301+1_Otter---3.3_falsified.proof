@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '217':
-%%%%%   Replaced rdn_translate(nn3,rdn_neg(rdnn(n3)))
-%%%%%   With rdn_translate(n3,rdn_neg(rdnn(n3)))
+%%%%% Mutated formula '18720':
+%%%%%   Replaced less(nn3,nn2)
+%%%%%   With less(n3,nn2)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM301+1 : TPTP v8.1.0. Released v3.1.0.
@@ -36,7 +36,7 @@
 fof(9, axiom, (! [A,B,C,D]: ((~ (rdn_translate(A,rdn_neg(B))) | (~ (rdn_translate(C,rdn_neg(D))) | (~ (rdn_positive_less(D,B)) | less(A,C)))))), file('NUM301+1.p',unknown), []).
 fof(32, axiom, (! [A]: (~ (less(A,nn2)))), file('NUM301+1.p',unknown), []).
 fof(216, axiom, rdn_translate(nn2,rdn_neg(rdnn(n2))), file('NUM301+1.p',unknown), []).
-fof(217, axiom, rdn_translate(n3,rdn_neg(rdnn(n3))), file('NUM301+1.p',unknown), []).
+fof(217, axiom, rdn_translate(nn3,rdn_neg(rdnn(n3))), file('NUM301+1.p',unknown), []).
 fof(354, axiom, rdn_positive_less(rdnn(n2),rdnn(n3)), file('NUM301+1.p',unknown), []).
-fof(18720, plain, less(nn3,nn2), inference(hyper,[status(thm)],[354,9,217,216]), [iquote('hyper,354,9,217,216')]).
+fof(18720, plain, less(n3,nn2), inference(hyper,[status(thm)],[354,9,217,216]), [iquote('hyper,354,9,217,216')]).
 fof(18721, plain, $false, inference(binary,[status(thm)],[18720,32]), [iquote('binary,18720.1,32.1')]).

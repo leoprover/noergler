@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '9':
-%%%%%   Replaced s(dollar_c2)
-%%%%%   With ~ (s(dollar_c2))
+%%%%% Mutated formula '13':
+%%%%%   Replaced (! [A,B]: (p(A,B)))
+%%%%%   With (! [A,B]: (~ (p(A,B))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN979+1 : TPTP v8.1.0. Released v3.1.0.
@@ -35,6 +35,6 @@
 %%% Generated on Tue Apr 14 19:24:41 CEST 2026 using command 'transform(fof)'.
 fof(3, axiom, (! [A,B]: ((~ (s(dollar_c2)) | p(A,B)))), file('SYN979+1.p',unknown), []).
 fof(4, axiom, ~ (p(dollar_c2,dollar_c1)), file('SYN979+1.p',unknown), []).
-fof(9, axiom, ~ (s(dollar_c2)), file('SYN979+1.p',unknown), []).
-fof(13, plain, (! [A,B]: (p(A,B))), inference(hyper,[status(thm)],[9,3]), [iquote('hyper,9,3')]).
+fof(9, axiom, s(dollar_c2), file('SYN979+1.p',unknown), []).
+fof(13, plain, (! [A,B]: (~ (p(A,B)))), inference(hyper,[status(thm)],[9,3]), [iquote('hyper,9,3')]).
 fof(14, plain, $false, inference(binary,[status(thm)],[13,4]), [iquote('binary,13.1,4.1')]).

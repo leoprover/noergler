@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '13':
-%%%%%   Replaced (! [A,B,C]: ((~ (apart_point_and_line(A,B)) | (distinct_lines(B,C) | apart_point_and_line(A,C)))))
-%%%%%   With (! [A,B,C]: ((apart_point_and_line(A,B) | (distinct_lines(B,C) | apart_point_and_line(A,C)))))
+%%%%% Mutated formula '80':
+%%%%%   Replaced (! [A,B,C]: ((distinct_points(A,dollar_c2) | (distinct_points(A,B) | (distinct_points(dollar_c1,C) | distinct_points(B,C))))))
+%%%%%   With (! [A,B,C]: ((distinct_points(A,dollar_c2) & (distinct_points(A,B) | (distinct_points(dollar_c1,C) | distinct_points(B,C))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO177+1 : TPTP v8.1.0. Released v3.3.0.
@@ -38,7 +38,7 @@ fof(4, axiom, (! [A,B,C]: ((~ (distinct_points(A,B)) | (distinct_points(A,C) | d
 fof(7, axiom, (! [A,B]: ((~ (distinct_points(A,B)) | ~ (apart_point_and_line(A,line_connecting(A,B)))))), file('GEO177+1.p',unknown), []).
 fof(8, axiom, (! [A,B]: ((~ (distinct_points(A,B)) | ~ (apart_point_and_line(B,line_connecting(A,B)))))), file('GEO177+1.p',unknown), []).
 fof(11, axiom, (! [A,B,C,D]: ((~ (distinct_points(A,B)) | (~ (distinct_lines(C,D)) | (apart_point_and_line(A,C) | (apart_point_and_line(A,D) | (apart_point_and_line(B,C) | apart_point_and_line(B,D)))))))), file('GEO177+1.p',unknown), []).
-fof(13, axiom, (! [A,B,C]: ((apart_point_and_line(A,B) | (distinct_lines(B,C) | apart_point_and_line(A,C))))), file('GEO177+1.p',unknown), []).
+fof(13, axiom, (! [A,B,C]: ((~ (apart_point_and_line(A,B)) | (distinct_lines(B,C) | apart_point_and_line(A,C))))), file('GEO177+1.p',unknown), []).
 fof(15, axiom, ~ (apart_point_and_line(dollar_c2,line_connecting(dollar_c4,dollar_c3))), file('GEO177+1.p',unknown), []).
 fof(16, axiom, ~ (apart_point_and_line(dollar_c1,line_connecting(dollar_c4,dollar_c3))), file('GEO177+1.p',unknown), []).
 fof(17, axiom, distinct_points(dollar_c4,dollar_c3), file('GEO177+1.p',unknown), []).
@@ -58,7 +58,7 @@ fof(42, plain, (! [A]: ((distinct_points(dollar_c1,A) | distinct_points(A,dollar
 fof(45, plain, (! [A,B]: ((distinct_points(A,dollar_c2) | (distinct_points(dollar_c1,B) | distinct_points(A,B))))), inference(hyper,[status(thm)],[42,4]), [iquote('hyper,42,4')]).
 fof(56, plain, (! [A]: ((apart_point_and_line(dollar_c3,line_connecting(dollar_c2,dollar_c1)) | (apart_point_and_line(dollar_c4,A) | (apart_point_and_line(dollar_c1,line_connecting(dollar_c2,dollar_c1)) | (apart_point_and_line(dollar_c1,A) | (apart_point_and_line(dollar_c2,line_connecting(dollar_c2,dollar_c1)) | apart_point_and_line(dollar_c2,A)))))))), inference(hyper,[status(thm)],[28,11,26]), [iquote('hyper,28,11,26')]).
 fof(74, plain, (! [A]: ((distinct_points(A,dollar_c4) | distinct_points(A,dollar_c3)))), inference(hyper,[status(thm)],[37,1]), [iquote('hyper,37,1')]).
-fof(80, plain, (! [A,B,C]: ((distinct_points(A,dollar_c2) | (distinct_points(A,B) | (distinct_points(dollar_c1,C) | distinct_points(B,C)))))), inference(hyper,[status(thm)],[45,4]), [iquote('hyper,45,4')]).
+fof(80, plain, (! [A,B,C]: ((distinct_points(A,dollar_c2) & (distinct_points(A,B) | (distinct_points(dollar_c1,C) | distinct_points(B,C)))))), inference(hyper,[status(thm)],[45,4]), [iquote('hyper,45,4')]).
 fof(265, plain, (! [A,B,C,D]: ((distinct_points(A,dollar_c2) | (distinct_points(A,B) | (distinct_points(B,C) | (distinct_points(dollar_c1,D) | distinct_points(C,D))))))), inference(hyper,[status(thm)],[80,4]), [iquote('hyper,80,4')]).
 fof(266, plain, (! [A,B]: ((distinct_points(A,dollar_c2) | (distinct_points(A,B) | distinct_points(B,dollar_c1))))), inference(hyper,[status(thm)],[80,1]), [iquote('hyper,80,1')]).
 fof(720, plain, (apart_point_and_line(dollar_c3,line_connecting(dollar_c2,dollar_c1)) | (apart_point_and_line(dollar_c1,line_connecting(dollar_c2,dollar_c1)) | apart_point_and_line(dollar_c2,line_connecting(dollar_c2,dollar_c1)))), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[56,7,74]),16,15,1]), [iquote('hyper,56,7,74,unit_del,16,15,1')]).

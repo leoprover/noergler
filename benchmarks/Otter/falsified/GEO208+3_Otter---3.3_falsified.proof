@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '38':
-%%%%%   Replaced ~ (e_qual_lines(dollar_c2,dollar_c1))
-%%%%%   With e_qual_lines(dollar_c2,dollar_c1)
+%%%%% Mutated formula '52':
+%%%%%   Replaced distinct_lines(dollar_c2,dollar_c1)
+%%%%%   With ~ (distinct_lines(dollar_c2,dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO208+3 : TPTP v8.1.0. Released v4.0.0.
@@ -35,9 +35,9 @@
 %%% Generated on Tue Apr 14 19:12:22 CEST 2026 using command 'transform(fof)'.
 fof(15, axiom, (! [A,B]: ((~ (distinct_lines(A,B)) | convergent_lines(A,B)))), file('GEO208+3.p',unknown), []).
 fof(35, axiom, (! [A,B]: ((~ (parallel_lines(A,B)) | ~ (convergent_lines(A,B))))), file('GEO208+3.p',unknown), []).
-fof(38, axiom, e_qual_lines(dollar_c2,dollar_c1), file('GEO208+3.p',unknown), []).
+fof(38, axiom, ~ (e_qual_lines(dollar_c2,dollar_c1)), file('GEO208+3.p',unknown), []).
 fof(41, axiom, (! [A,B]: ((e_qual_lines(A,B) | distinct_lines(A,B)))), file('GEO208+3.p',unknown), []).
 fof(47, axiom, parallel_lines(dollar_c2,dollar_c1), file('GEO208+3.p',unknown), []).
-fof(52, plain, distinct_lines(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[41,38]), [iquote('hyper,41,38')]).
+fof(52, plain, ~ (distinct_lines(dollar_c2,dollar_c1)), inference(hyper,[status(thm)],[41,38]), [iquote('hyper,41,38')]).
 fof(54, plain, convergent_lines(dollar_c2,dollar_c1), inference(hyper,[status(thm)],[52,15]), [iquote('hyper,52,15')]).
 fof(56, plain, $false, inference(hyper,[status(thm)],[54,35,47]), [iquote('hyper,54,35,47')]).

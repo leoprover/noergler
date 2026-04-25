@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c10':
-%%%%%   Replaced (! [X8,X9,X10,X11]: (an_open_function_from_onto(the_projection_function(X8,X9,X10),the_product_top_space_over(X11,X10),apply(X11,X8))))
-%%%%%   With (! [X8,X9,X10,X11]: (~ (an_open_function_from_onto(the_projection_function(X8,X9,X10),the_product_top_space_over(X11,X10),apply(X11,X8)))))
+%%%%% Mutated formula 'c1':
+%%%%%   Replaced (? [X1,A1]: ((a_locally_compact_top_space(the_product_top_space_over(X1,A1)) & (? [A]: (~ (a_locally_compact_top_space(apply(X1,A))))))))
+%%%%%   With (? [X1,A1]: ((~ (a_locally_compact_top_space(the_product_top_space_over(X1,A1))) & (? [A]: (~ (a_locally_compact_top_space(apply(X1,A))))))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : TOP021+1 : TPTP v8.1.2. Released v3.1.0.
@@ -38,14 +38,14 @@
 %%% Generated on Tue Apr 14 15:06:56 CEST 2026 using command 'transform(fof)'.
 fof(kelley_5_19a, conjecture, (! [X1,A1]: ((a_locally_compact_top_space(the_product_top_space_over(X1,A1)) => (! [A]: (a_locally_compact_top_space(apply(X1,A))))))), file('TOP021+1.p',kelley_5_19a)).
 fof(c0, negated_conjecture, ~ ((! [X1,A1]: ((a_locally_compact_top_space(the_product_top_space_over(X1,A1)) => (! [A]: (a_locally_compact_top_space(apply(X1,A)))))))), inference(assume_negation,[status(cth)],[kelley_5_19a])).
-fof(c1, negated_conjecture, (? [X1,A1]: ((a_locally_compact_top_space(the_product_top_space_over(X1,A1)) & (? [A]: (~ (a_locally_compact_top_space(apply(X1,A)))))))), inference(fof_nnf,[status(thm)],[c0])).
+fof(c1, negated_conjecture, (? [X1,A1]: ((~ (a_locally_compact_top_space(the_product_top_space_over(X1,A1))) & (? [A]: (~ (a_locally_compact_top_space(apply(X1,A)))))))), inference(fof_nnf,[status(thm)],[c0])).
 fof(c2, negated_conjecture, (? [X1]: (((? [A1]: (a_locally_compact_top_space(the_product_top_space_over(X1,A1)))) & (? [A]: (~ (a_locally_compact_top_space(apply(X1,A)))))))), inference(shift_quantors,[status(thm)],[c1])).
 fof(c3, negated_conjecture, (? [X2]: (((? [X3]: (a_locally_compact_top_space(the_product_top_space_over(X2,X3)))) & (? [X4]: (~ (a_locally_compact_top_space(apply(X2,X4)))))))), inference(variable_rename,[status(thm)],[c2])).
 fof(c4, negated_conjecture, (a_locally_compact_top_space(the_product_top_space_over(skolem0001,skolem0002)) & ~ (a_locally_compact_top_space(apply(skolem0001,skolem0003)))), inference(skolemize,[status(esa)],[c3])).
 fof(c6, negated_conjecture, ~ (a_locally_compact_top_space(apply(skolem0001,skolem0003))), inference(split_conjunct,[status(thm)],[c4])).
 fof(c5, negated_conjecture, a_locally_compact_top_space(the_product_top_space_over(skolem0001,skolem0002)), inference(split_conjunct,[status(thm)],[c4])).
 fof(kelley_3_2, axiom, (! [A,X,A1,X1]: (an_open_function_from_onto(the_projection_function(A,X,A1),the_product_top_space_over(X1,A1),apply(X1,A)))), file('TOP021+1.p',kelley_3_2)).
-fof(c10, plain, (! [X8,X9,X10,X11]: (~ (an_open_function_from_onto(the_projection_function(X8,X9,X10),the_product_top_space_over(X11,X10),apply(X11,X8))))), inference(variable_rename,[status(thm)],[kelley_3_2])).
+fof(c10, plain, (! [X8,X9,X10,X11]: (an_open_function_from_onto(the_projection_function(X8,X9,X10),the_product_top_space_over(X11,X10),apply(X11,X8)))), inference(variable_rename,[status(thm)],[kelley_3_2])).
 fof(c11, plain, (! [X16,X15,X17,X18]: (an_open_function_from_onto(the_projection_function(X16,X15,X17),the_product_top_space_over(X18,X17),apply(X18,X16)))), inference(split_conjunct,[status(thm)],[c10])).
 fof(kelley_p90a, axiom, (! [A,X,A1]: (a_continuous_function_from_onto(the_projection_function(A,X,A1),the_product_top_space_over(X,A1),apply(X,A)))), file('TOP021+1.p',kelley_p90a)).
 fof(c12, plain, (! [X12,X13,X14]: (a_continuous_function_from_onto(the_projection_function(X12,X13,X14),the_product_top_space_over(X13,X14),apply(X13,X12)))), inference(variable_rename,[status(thm)],[kelley_p90a])).

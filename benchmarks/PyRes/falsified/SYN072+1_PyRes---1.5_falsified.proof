@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c1':
-%%%%%   Replaced ~ ((! [X]: (big_p(X))))
-%%%%%   With (! [X]: (big_p(X)))
+%%%%% Mutated formula 'pel49_2':
+%%%%%   Replaced big_p(a)
+%%%%%   With ~ (big_p(a))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SYN072+1 : TPTP v8.1.2. Released v2.0.0.
@@ -40,12 +40,12 @@ fof(pel49_4, axiom, (a != b), file('SYN072+1.p',pel49_4)).
 fof(c6, plain, (a != b), inference(split_conjunct,[status(thm)],[pel49_4])).
 fof(symmetry, axiom, (! [X8,X7]: (((X8 != X7) | (X7 = X8)))), theory(equality)).
 fof(pel49, conjecture, (! [X]: (big_p(X))), file('SYN072+1.p',pel49)).
-fof(c1, negated_conjecture, (! [X]: (big_p(X))), inference(assume_negation,[status(cth)],[pel49])).
+fof(c1, negated_conjecture, ~ ((! [X]: (big_p(X)))), inference(assume_negation,[status(cth)],[pel49])).
 fof(c2, negated_conjecture, (? [X]: (~ (big_p(X)))), inference(fof_nnf,[status(thm)],[c1])).
 fof(c3, negated_conjecture, (? [X2]: (~ (big_p(X2)))), inference(variable_rename,[status(thm)],[c2])).
 fof(c4, negated_conjecture, ~ (big_p(skolem0001)), inference(skolemize,[status(esa)],[c3])).
 fof(c5, negated_conjecture, ~ (big_p(skolem0001)), inference(split_conjunct,[status(thm)],[c4])).
-fof(pel49_2, axiom, big_p(a), file('SYN072+1.p',pel49_2)).
+fof(pel49_2, axiom, ~ (big_p(a)), file('SYN072+1.p',pel49_2)).
 fof(c8, plain, big_p(a), inference(split_conjunct,[status(thm)],[pel49_2])).
 fof(c0, axiom, (! [X11,X10]: (((X11 != X10) | (~ (big_p(X11)) | big_p(X10))))), theory(equality)).
 fof(pel49_1, axiom, (? [X,Y]: ((! [Z]: (((Z = X) | (Z = Y)))))), file('SYN072+1.p',pel49_1)).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '9':
-%%%%%   Replaced (! [A]: (big_f(A)))
-%%%%%   With (! [A]: (~ (big_f(A))))
+%%%%% Mutated formula '10':
+%%%%%   Replaced (! [A]: (big_h(A)))
+%%%%%   With (! [A]: (~ (big_h(A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN319+1 : TPTP v8.1.0. Released v2.0.0.
@@ -38,6 +38,6 @@ fof(5, axiom, (! [A]: ((~ (big_g(A)) | big_h(A)))), file('SYN319+1.p',unknown), 
 fof(6, axiom, (! [A,B]: (~ (big_h(dollar_f1(A,B))))), file('SYN319+1.p',unknown), []).
 fof(7, axiom, (! [A,B]: ((big_f(A) | big_g(B)))), file('SYN319+1.p',unknown), []).
 fof(8, plain, (! [A,B]: ((big_f(A) | big_h(B)))), inference(hyper,[status(thm)],[7,5]), [iquote('hyper,7,5')]).
-fof(9, plain, (! [A]: (~ (big_f(A)))), inference(hyper,[status(thm)],[8,6]), [iquote('hyper,8,6')]).
-fof(10, plain, (! [A]: (big_h(A))), inference(hyper,[status(thm)],[9,4]), [iquote('hyper,9,4')]).
+fof(9, plain, (! [A]: (big_f(A))), inference(hyper,[status(thm)],[8,6]), [iquote('hyper,8,6')]).
+fof(10, plain, (! [A]: (~ (big_h(A)))), inference(hyper,[status(thm)],[9,4]), [iquote('hyper,9,4')]).
 fof(11, plain, $false, inference(binary,[status(thm)],[10,6]), [iquote('binary,10.1,6.1')]).

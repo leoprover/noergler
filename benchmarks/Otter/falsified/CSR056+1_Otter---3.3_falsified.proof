@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '83':
-%%%%%   Replaced mtvisible(c_cyclistsmt)
-%%%%%   With mtvisible(c_tptp_spindleheadmt)
+%%%%% Mutated formula '86':
+%%%%%   Replaced artsupplies(c_tptpartsupplies)
+%%%%%   With ~ (artsupplies(c_tptpartsupplies))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR056+1 : TPTP v8.1.0. Released v3.4.0.
@@ -42,8 +42,8 @@ fof(50, axiom, genlmt(c_tptp_spindleheadmt,c_cyclistsmt), file('CSR056+1.p',unkn
 fof(51, axiom, genlmt(c_tptp_member3717_mt,c_tptp_spindleheadmt), file('CSR056+1.p',unknown), []).
 fof(57, axiom, mtvisible(c_tptp_member3717_mt), file('CSR056+1.p',unknown), []).
 fof(81, plain, mtvisible(c_tptp_spindleheadmt), inference(hyper,[status(thm)],[51,30,57]), [iquote('hyper,51,30,57')]).
-fof(83, plain, mtvisible(c_tptp_spindleheadmt), inference(hyper,[status(thm)],[81,30,50]), [iquote('hyper,81,30,50')]).
-fof(86, plain, artsupplies(c_tptpartsupplies), inference(hyper,[status(thm)],[83,4]), [iquote('hyper,83,4')]).
+fof(83, plain, mtvisible(c_cyclistsmt), inference(hyper,[status(thm)],[81,30,50]), [iquote('hyper,81,30,50')]).
+fof(86, plain, ~ (artsupplies(c_tptpartsupplies)), inference(hyper,[status(thm)],[83,4]), [iquote('hyper,83,4')]).
 fof(89, plain, supplies(c_tptpartsupplies), inference(hyper,[status(thm)],[86,1]), [iquote('hyper,86,1')]).
 fof(91, plain, tptpofobject(c_tptpartsupplies,f_tptpquantityfn_14(n_232)), inference(hyper,[status(thm)],[89,2,81]), [iquote('hyper,89,2,81')]).
 fof(92, plain, $false, inference(binary,[status(thm)],[91,43]), [iquote('binary,91.1,43.1')]).

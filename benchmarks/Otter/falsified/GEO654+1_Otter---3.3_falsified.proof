@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3770':
-%%%%%   Replaced cyclic(dollar_c13,dollar_c13,dollar_c15,dollar_c15)
-%%%%%   With ~ (cyclic(dollar_c13,dollar_c13,dollar_c15,dollar_c15))
+%%%%% Mutated formula '1915':
+%%%%%   Replaced coll(dollar_c12,dollar_c13,dollar_c15)
+%%%%%   With coll(dollar_c10,dollar_c13,dollar_c15)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO654+1 : TPTP v8.1.0. Released v7.5.0.
@@ -75,7 +75,7 @@ fof(1881, plain, coll(dollar_c11,dollar_c15,dollar_c13), inference(hyper,[status
 fof(1882, plain, coll(dollar_c12,dollar_c15,dollar_c13), inference(hyper,[status(thm)],[1872,3,345]), [iquote('hyper,1872,3,345')]).
 fof(1901, plain, coll(dollar_c15,dollar_c13,dollar_c15), inference(hyper,[status(thm)],[1880,1]), [iquote('hyper,1880,1')]).
 fof(1908, plain, coll(dollar_c11,dollar_c13,dollar_c15), inference(hyper,[status(thm)],[1881,1]), [iquote('hyper,1881,1')]).
-fof(1915, plain, coll(dollar_c12,dollar_c13,dollar_c15), inference(hyper,[status(thm)],[1882,1]), [iquote('hyper,1882,1')]).
+fof(1915, plain, coll(dollar_c10,dollar_c13,dollar_c15), inference(hyper,[status(thm)],[1882,1]), [iquote('hyper,1882,1')]).
 fof(1964, plain, coll(dollar_c15,dollar_c15,dollar_c15), inference(hyper,[status(thm)],[1901,114]), [iquote('hyper,1901,114')]).
 fof(1965, plain, coll(dollar_c13,dollar_c15,dollar_c15), inference(hyper,[status(thm)],[1901,3,1869]), [iquote('hyper,1901,3,1869')]).
 fof(1972, plain, coll(dollar_c15,dollar_c15,dollar_c11), inference(hyper,[status(thm)],[1908,114]), [iquote('hyper,1908,114')]).
@@ -83,7 +83,7 @@ fof(1989, plain, coll(dollar_c15,dollar_c15,dollar_c12), inference(hyper,[status
 fof(3767, plain, cyclic(dollar_c13,dollar_c12,dollar_c15,dollar_c15), inference(hyper,[status(thm)],[1870,43,1989]), [iquote('hyper,1870,43,1989')]).
 fof(3768, plain, cyclic(dollar_c13,dollar_c11,dollar_c15,dollar_c15), inference(hyper,[status(thm)],[1870,43,1972]), [iquote('hyper,1870,43,1972')]).
 fof(3769, plain, cyclic(dollar_c13,dollar_c15,dollar_c15,dollar_c15), inference(hyper,[status(thm)],[1870,43,1964]), [iquote('hyper,1870,43,1964')]).
-fof(3770, plain, ~ (cyclic(dollar_c13,dollar_c13,dollar_c15,dollar_c15)), inference(hyper,[status(thm)],[1870,43,1880]), [iquote('hyper,1870,43,1880')]).
+fof(3770, plain, cyclic(dollar_c13,dollar_c13,dollar_c15,dollar_c15), inference(hyper,[status(thm)],[1870,43,1880]), [iquote('hyper,1870,43,1880')]).
 fof(3782, plain, cyclic(dollar_c13,dollar_c15,dollar_c12,dollar_c15), inference(hyper,[status(thm)],[3767,15]), [iquote('hyper,3767,15')]).
 fof(3785, plain, cyclic(dollar_c13,dollar_c15,dollar_c11,dollar_c15), inference(hyper,[status(thm)],[3768,15]), [iquote('hyper,3768,15')]).
 fof(3788, plain, cyclic(dollar_c13,dollar_c15,dollar_c13,dollar_c15), inference(hyper,[status(thm)],[3770,15]), [iquote('hyper,3770,15')]).

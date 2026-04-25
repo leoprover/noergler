@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '420':
 %%%%%   Replaced coll(dollar_c1,dollar_c3,dollar_c6)
-%%%%%   With ~ (coll(dollar_c1,dollar_c3,dollar_c6))
+%%%%%   With coll(dollar_c3,dollar_c3,dollar_c6)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO566+1 : TPTP v8.1.0. Released v7.5.0.
@@ -52,7 +52,7 @@ fof(262, plain, coll(dollar_c7,dollar_c7,dollar_c8), inference(hyper,[status(thm
 fof(322, plain, coll(dollar_c6,dollar_c6,dollar_c7), inference(hyper,[status(thm)],[186,114]), [iquote('hyper,186,114')]).
 fof(336, plain, coll(dollar_c7,dollar_c7,dollar_c3), inference(hyper,[status(thm)],[187,114]), [iquote('hyper,187,114')]).
 fof(404, plain, coll(dollar_c8,dollar_c8,dollar_c2), inference(hyper,[status(thm)],[202,114]), [iquote('hyper,202,114')]).
-fof(420, plain, ~ (coll(dollar_c1,dollar_c3,dollar_c6)), inference(hyper,[status(thm)],[215,3,185]), [iquote('hyper,215,3,185')]).
+fof(420, plain, coll(dollar_c3,dollar_c3,dollar_c6), inference(hyper,[status(thm)],[215,3,185]), [iquote('hyper,215,3,185')]).
 fof(508, plain, coll(dollar_c8,dollar_c8,dollar_c7), inference(hyper,[status(thm)],[262,114]), [iquote('hyper,262,114')]).
 fof(627, plain, coll(dollar_c1,dollar_c7,dollar_c6), inference(hyper,[status(thm)],[322,3,215]), [iquote('hyper,322,3,215')]).
 fof(656, plain, coll(dollar_c8,dollar_c3,dollar_c7), inference(hyper,[status(thm)],[336,3,262]), [iquote('hyper,336,3,262')]).

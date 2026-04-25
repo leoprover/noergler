@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '45':
-%%%%%   Replaced ~ (surjection(g))
-%%%%%   With surjection(g)
+%%%%% Mutated formula '337':
+%%%%%   Replaced element(dollar_f14(dollar_f4(g,b,e)),b)
+%%%%%   With ~ (element(dollar_f14(dollar_f4(g,b,e)),b))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : HAL003+3 : TPTP v8.1.0. Released v2.6.0.
@@ -39,11 +39,11 @@ fof(24, axiom, (! [A,B,C]: ((~ (element(A,B)) | (~ (element(C,B)) | element(subt
 fof(42, axiom, (! [A]: ((~ (element(A,e)) | element(dollar_f15(A),b)))), file('HAL003+3.p',unknown), []).
 fof(43, axiom, (! [A]: ((~ (element(A,e)) | element(dollar_f14(A),b)))), file('HAL003+3.p',unknown), []).
 fof(44, axiom, (! [A]: ((~ (element(A,e)) | (apply(g,subtract(b,dollar_f15(A),dollar_f14(A))) = A)))), file('HAL003+3.p',unknown), []).
-fof(45, axiom, surjection(g), file('HAL003+3.p',unknown), []).
+fof(45, axiom, ~ (surjection(g)), file('HAL003+3.p',unknown), []).
 fof(109, axiom, morphism(g,b,e), file('HAL003+3.p',unknown), []).
 fof(199, plain, element(dollar_f4(g,b,e),e), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[109,10]),45]), [iquote('hyper,109,10,unit_del,45')]).
 fof(335, plain, (apply(g,subtract(b,dollar_f15(dollar_f4(g,b,e)),dollar_f14(dollar_f4(g,b,e)))) = dollar_f4(g,b,e)), inference(hyper,[status(thm)],[199,44]), [iquote('hyper,199,44')]).
-fof(337, plain, element(dollar_f14(dollar_f4(g,b,e)),b), inference(hyper,[status(thm)],[199,43]), [iquote('hyper,199,43')]).
+fof(337, plain, ~ (element(dollar_f14(dollar_f4(g,b,e)),b)), inference(hyper,[status(thm)],[199,43]), [iquote('hyper,199,43')]).
 fof(338, plain, element(dollar_f15(dollar_f4(g,b,e)),b), inference(hyper,[status(thm)],[199,42]), [iquote('hyper,199,42')]).
 fof(477, plain, element(subtract(b,dollar_f15(dollar_f4(g,b,e)),dollar_f14(dollar_f4(g,b,e))),b), inference(hyper,[status(thm)],[338,24,337]), [iquote('hyper,338,24,337')]).
 fof(494, plain, surjection(g), inference(hyper,[status(thm)],[335,11,109,477]), [iquote('hyper,335,11,109,477')]).

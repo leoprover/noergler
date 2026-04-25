@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '450':
-%%%%%   Replaced (dollar_c5 = dollar_c3)
-%%%%%   With (dollar_c4 = dollar_c3)
+%%%%% Mutated formula '455':
+%%%%%   Replaced ((nil != dollar_c4) | (nil != dollar_c3))
+%%%%%   With (~ ((nil != dollar_c4)) | (nil != dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWC026+1 : TPTP v8.1.0. Released v2.4.0.
@@ -37,11 +37,11 @@ fof(182, axiom, ((nil = dollar_c3) | (nil != dollar_c4)), file('SWC026+1.p',unkn
 fof(183, axiom, ((nil = dollar_c4) | (nil != dollar_c3)), file('SWC026+1.p',unknown), []).
 fof(184, axiom, ((nil != dollar_c6) | (nil != dollar_c5)), file('SWC026+1.p',unknown), []).
 fof(434, axiom, (! [A]: ((A = A))), file('SWC026+1.p',unknown), []).
-fof(450, axiom, (dollar_c4 = dollar_c3), file('SWC026+1.p',unknown), []).
+fof(450, axiom, (dollar_c5 = dollar_c3), file('SWC026+1.p',unknown), []).
 fof(452, axiom, (dollar_c6 = dollar_c4), file('SWC026+1.p',unknown), []).
 fof(453, axiom, ((nil = dollar_c5) | (nil = dollar_c6)), file('SWC026+1.p',unknown), []).
 fof(454, plain, ((nil = dollar_c3) | (nil = dollar_c4)), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[453]),450,452]), [iquote('copy,453,demod,450,452')]).
-fof(455, plain, ((nil != dollar_c4) | (nil != dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[184]),452,450]), [iquote('back_demod,184,demod,452,450')]).
+fof(455, plain, (~ ((nil != dollar_c4)) | (nil != dollar_c3)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[184]),452,450]), [iquote('back_demod,184,demod,452,450')]).
 fof(928, plain, (nil = dollar_c4), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[454,183])]), [iquote('hyper,454,183,factor_simp')]).
 fof(930, plain, (dollar_c4 = dollar_c3), inference(factor_simp,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[454,182]),928,928])]), [iquote('hyper,454,182,demod,928,928,factor_simp')]).
 fof(952, plain, $false, inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[455]),928,930,930,928,930]),434,434]), [iquote('back_demod,455,demod,928,930,930,928,930,unit_del,434,434')]).

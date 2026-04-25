@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '192':
-%%%%%   Replaced leaf_occ(dollar_f17(dollar_c1),dollar_c1)
-%%%%%   With leaf_occ(dollar_f17(tptp0),dollar_c1)
+%%%%% Mutated formula '2272':
+%%%%%   Replaced arboreal(dollar_c1)
+%%%%%   With ~ (arboreal(dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : PRO010+3 : TPTP v8.1.0. Released v4.0.0.
@@ -39,10 +39,10 @@ fof(89, axiom, (! [A]: ((~ (occurrence_of(A,tptp0)) | leaf_occ(dollar_f17(A),A))
 fof(90, axiom, ~ (atomic(tptp0)), file('PRO010+3.p',unknown), []).
 fof(106, axiom, (! [A,B]: ((~ (leaf_occ(A,dollar_c1)) | (min_precedes(B,dollar_f20(B,A),tptp0) | min_precedes(B,dollar_f21(B,A),tptp0))))), file('PRO010+3.p',unknown), []).
 fof(127, axiom, occurrence_of(dollar_c1,tptp0), file('PRO010+3.p',unknown), []).
-fof(192, plain, leaf_occ(dollar_f17(tptp0),dollar_c1), inference(hyper,[status(thm)],[127,89]), [iquote('hyper,127,89')]).
+fof(192, plain, leaf_occ(dollar_f17(dollar_c1),dollar_c1), inference(hyper,[status(thm)],[127,89]), [iquote('hyper,127,89')]).
 fof(358, plain, (! [A]: ((min_precedes(A,dollar_f20(A,dollar_f17(dollar_c1)),tptp0) | min_precedes(A,dollar_f21(A,dollar_f17(dollar_c1)),tptp0)))), inference(hyper,[status(thm)],[192,106]), [iquote('hyper,192,106')]).
 fof(2267, plain, (! [A]: ((min_precedes(A,dollar_f21(A,dollar_f17(dollar_c1)),tptp0) | arboreal(A)))), inference(hyper,[status(thm)],[358,80]), [iquote('hyper,358,80')]).
 fof(2271, plain, min_precedes(dollar_c1,dollar_f21(dollar_c1,dollar_f17(dollar_c1)),tptp0), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[2267,10,127]),90]), [iquote('hyper,2267,10,127,unit_del,90')]).
-fof(2272, plain, arboreal(dollar_c1), inference(hyper,[status(thm)],[2271,80]), [iquote('hyper,2271,80')]).
+fof(2272, plain, ~ (arboreal(dollar_c1)), inference(hyper,[status(thm)],[2271,80]), [iquote('hyper,2271,80')]).
 fof(2281, plain, atomic(tptp0), inference(hyper,[status(thm)],[2272,10,127]), [iquote('hyper,2272,10,127')]).
 fof(2282, plain, $false, inference(binary,[status(thm)],[2281,90]), [iquote('binary,2281.1,90.1')]).

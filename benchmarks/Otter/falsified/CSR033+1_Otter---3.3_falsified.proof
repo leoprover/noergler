@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '4':
-%%%%%   Replaced (~ (mtvisible(c_tptpgeo_member2_mt)) | geographicalsubregions(c_georegion_l2_x8_y2,c_georegion_l3_x25_y7))
-%%%%%   With (~ (mtvisible(c_georegion_l3_x25_y7)) | geographicalsubregions(c_georegion_l2_x8_y2,c_georegion_l3_x25_y7))
+%%%%% Mutated formula '49':
+%%%%%   Replaced genlmt(c_tptpgeo_spindleheadmt,c_worldgeographymt)
+%%%%%   With ~ (genlmt(c_tptpgeo_spindleheadmt,c_worldgeographymt))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR033+1 : TPTP v8.1.0. Released v3.4.0.
@@ -36,14 +36,14 @@
 fof(1, axiom, (! [A,B]: ((~ (geographicalsubregions(A,B)) | inregion(B,A)))), file('CSR033+1.p',unknown), []).
 fof(2, axiom, (~ (mtvisible(c_worldgeographymt)) | geolevel_1(c_georegion_l1_x2_y0)), file('CSR033+1.p',unknown), []).
 fof(3, axiom, (~ (mtvisible(c_tptpgeo_member2_mt)) | geographicalsubregions(c_georegion_l1_x2_y0,c_georegion_l2_x8_y2)), file('CSR033+1.p',unknown), []).
-fof(4, axiom, (~ (mtvisible(c_georegion_l3_x25_y7)) | geographicalsubregions(c_georegion_l2_x8_y2,c_georegion_l3_x25_y7)), file('CSR033+1.p',unknown), []).
+fof(4, axiom, (~ (mtvisible(c_tptpgeo_member2_mt)) | geographicalsubregions(c_georegion_l2_x8_y2,c_georegion_l3_x25_y7)), file('CSR033+1.p',unknown), []).
 fof(5, axiom, (~ (mtvisible(c_tptpgeo_member2_mt)) | geographicalsubregions(c_georegion_l3_x25_y7,c_georegion_l4_x76_y23)), file('CSR033+1.p',unknown), []).
 fof(6, axiom, (~ (mtvisible(c_tptpgeo_member2_mt)) | inregion(c_geolocation_x76_y23,c_georegion_l4_x76_y23)), file('CSR033+1.p',unknown), []).
 fof(22, axiom, (! [A,B,C]: ((~ (geographicalsubregions(A,B)) | (~ (geographicalsubregions(B,C)) | geographicalsubregions(A,C))))), file('CSR033+1.p',unknown), []).
 fof(32, axiom, (! [A,B,C]: ((~ (inregion(A,B)) | (~ (inregion(B,C)) | inregion(A,C))))), file('CSR033+1.p',unknown), []).
 fof(37, axiom, (! [A,B]: ((~ (mtvisible(A)) | (~ (genlmt(A,B)) | mtvisible(B))))), file('CSR033+1.p',unknown), []).
 fof(42, axiom, (~ (inregion(c_geolocation_x76_y23,c_georegion_l1_x2_y0)) | ~ (geolevel_1(c_georegion_l1_x2_y0))), file('CSR033+1.p',unknown), []).
-fof(49, axiom, genlmt(c_tptpgeo_spindleheadmt,c_worldgeographymt), file('CSR033+1.p',unknown), []).
+fof(49, axiom, ~ (genlmt(c_tptpgeo_spindleheadmt,c_worldgeographymt)), file('CSR033+1.p',unknown), []).
 fof(50, axiom, genlmt(c_tptpgeo_spindlecollectormt,c_tptpgeo_member2_mt), file('CSR033+1.p',unknown), []).
 fof(51, axiom, genlmt(c_tptpgeo_member8_mt,c_tptpgeo_spindleheadmt), file('CSR033+1.p',unknown), []).
 fof(52, axiom, genlmt(c_tptpgeo_spindlecollectormt,c_tptpgeo_member8_mt), file('CSR033+1.p',unknown), []).

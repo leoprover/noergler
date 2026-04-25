@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '16':
-%%%%%   Replaced subset(dollar_c1,empty_set)
-%%%%%   With subset(empty_set,empty_set)
+%%%%% Mutated formula '18':
+%%%%%   Replaced (empty_set = dollar_c1)
+%%%%%   With ~ ((empty_set = dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET063+3 : TPTP v8.1.0. Released v2.2.0.
@@ -37,6 +37,6 @@ fof(6, axiom, (! [A,B]: (((A = B) | (~ (subset(A,B)) | ~ (subset(B,A)))))), file
 fof(8, axiom, (dollar_c1 != empty_set), file('SET063+3.p',unknown), []).
 fof(9, plain, (empty_set != dollar_c1), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[8])]), [iquote('copy,8,flip.1')]).
 fof(12, axiom, (! [A]: (subset(empty_set,A))), file('SET063+3.p',unknown), []).
-fof(16, axiom, subset(empty_set,empty_set), file('SET063+3.p',unknown), []).
-fof(18, plain, (empty_set = dollar_c1), inference(hyper,[status(thm)],[16,6,12]), [iquote('hyper,16,6,12')]).
+fof(16, axiom, subset(dollar_c1,empty_set), file('SET063+3.p',unknown), []).
+fof(18, plain, ~ ((empty_set = dollar_c1)), inference(hyper,[status(thm)],[16,6,12]), [iquote('hyper,16,6,12')]).
 fof(20, plain, $false, inference(binary,[status(thm)],[18,9]), [iquote('binary,18.1,9.1')]).

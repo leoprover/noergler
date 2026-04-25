@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '215':
-%%%%%   Replaced rdn_translate(nn1,rdn_neg(rdnn(n1)))
-%%%%%   With ~ (rdn_translate(nn1,rdn_neg(rdnn(n1))))
+%%%%% Mutated formula '87':
+%%%%%   Replaced rdn_translate(n0,rdn_pos(rdnn(n0)))
+%%%%%   With ~ (rdn_translate(n0,rdn_pos(rdnn(n0))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM300+1 : TPTP v8.1.0. Released v3.1.0.
@@ -35,7 +35,7 @@
 %%% Generated on Tue Apr 14 19:15:56 CEST 2026 using command 'transform(fof)'.
 fof(8, axiom, (! [A,B,C,D]: ((~ (rdn_translate(A,rdn_neg(B))) | (~ (rdn_translate(C,rdn_pos(D))) | less(A,C))))), file('NUM300+1.p',unknown), []).
 fof(32, axiom, (! [A]: (~ (less(A,n0)))), file('NUM300+1.p',unknown), []).
-fof(87, axiom, rdn_translate(n0,rdn_pos(rdnn(n0))), file('NUM300+1.p',unknown), []).
-fof(215, axiom, ~ (rdn_translate(nn1,rdn_neg(rdnn(n1)))), file('NUM300+1.p',unknown), []).
+fof(87, axiom, ~ (rdn_translate(n0,rdn_pos(rdnn(n0)))), file('NUM300+1.p',unknown), []).
+fof(215, axiom, rdn_translate(nn1,rdn_neg(rdnn(n1))), file('NUM300+1.p',unknown), []).
 fof(833, plain, less(nn1,n0), inference(hyper,[status(thm)],[215,8,87]), [iquote('hyper,215,8,87')]).
 fof(834, plain, $false, inference(binary,[status(thm)],[833,32]), [iquote('binary,833.1,32.1')]).

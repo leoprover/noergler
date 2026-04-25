@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '221':
-%%%%%   Replaced (op2(h(e11),h(e11)) = h(e10))
-%%%%%   With (op2(h(e13),h(e11)) = h(e10))
+%%%%% Mutated formula '236':
+%%%%%   Replaced (op2(h(e12),h(e11)) = op2(h(e11),h(e12)))
+%%%%%   With ~ ((op2(h(e12),h(e11)) = op2(h(e11),h(e12))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG080+1 : TPTP v8.1.0. Released v2.7.0.
@@ -83,13 +83,13 @@ fof(203, plain, (op2(h(e10),h(e10)) = h(e10)), inference(flip,[status(thm),theor
 fof(208, axiom, (h(op1(e10,e12)) = op2(h(e10),h(e12))), file('ALG080+1.p',unknown), []).
 fof(209, plain, (op2(h(e10),h(e12)) = h(e12)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[208]),97])]), [iquote('copy,208,demod,97,flip.1')]).
 fof(220, axiom, (h(op1(e11,e11)) = op2(h(e11),h(e11))), file('ALG080+1.p',unknown), []).
-fof(221, plain, (op2(h(e13),h(e11)) = h(e10)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[220]),105])]), [iquote('copy,220,demod,105,flip.1')]).
+fof(221, plain, (op2(h(e11),h(e11)) = h(e10)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[220]),105])]), [iquote('copy,220,demod,105,flip.1')]).
 fof(223, axiom, (h(op1(e11,e12)) = op2(h(e11),h(e12))), file('ALG080+1.p',unknown), []).
 fof(225, plain, (h(e14) = op2(h(e11),h(e12))), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[223]),107]), [iquote('copy,223,demod,107')]).
 fof(229, axiom, (h(op1(e11,e14)) = op2(h(e11),h(e14))), file('ALG080+1.p',unknown), []).
 fof(231, plain, (h(e13) = op2(h(e11),op2(h(e11),h(e12)))), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[229]),111,225]), [iquote('copy,229,demod,111,225')]).
 fof(235, axiom, (h(op1(e12,e11)) = op2(h(e12),h(e11))), file('ALG080+1.p',unknown), []).
-fof(236, plain, (op2(h(e12),h(e11)) = op2(h(e11),h(e12))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[235]),115,225])]), [iquote('copy,235,demod,115,225,flip.1')]).
+fof(236, plain, ~ ((op2(h(e12),h(e11)) = op2(h(e11),h(e12)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[235]),115,225])]), [iquote('copy,235,demod,115,225,flip.1')]).
 fof(238, axiom, (h(op1(e12,e12)) = op2(h(e12),h(e12))), file('ALG080+1.p',unknown), []).
 fof(239, plain, (op2(h(e12),h(e12)) = op2(h(e11),op2(h(e11),h(e12)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[238]),117,231])]), [iquote('copy,238,demod,117,231,flip.1')]).
 fof(253, axiom, (h(op1(e13,e12)) = op2(h(e13),h(e12))), file('ALG080+1.p',unknown), []).

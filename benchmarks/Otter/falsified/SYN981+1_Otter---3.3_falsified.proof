@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3':
-%%%%%   Replaced (! [A]: (~ (r(A))))
-%%%%%   With (! [A]: (r(A)))
+%%%%% Mutated formula '5':
+%%%%%   Replaced (! [A]: (q(A)))
+%%%%%   With (! [A]: (~ (q(A))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN981+1 : TPTP v8.1.0. Released v3.1.0.
@@ -35,8 +35,8 @@
 %%% Generated on Tue Apr 14 19:24:42 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A]: ((~ (p(A)) | q(A)))), file('SYN981+1.p',unknown), []).
 fof(2, axiom, (~ (q(dollar_c1)) | r(dollar_c1)), file('SYN981+1.p',unknown), []).
-fof(3, axiom, (! [A]: (r(A))), file('SYN981+1.p',unknown), []).
+fof(3, axiom, (! [A]: (~ (r(A)))), file('SYN981+1.p',unknown), []).
 fof(4, axiom, (! [A]: (p(A))), file('SYN981+1.p',unknown), []).
-fof(5, plain, (! [A]: (q(A))), inference(hyper,[status(thm)],[4,1]), [iquote('hyper,4,1')]).
+fof(5, plain, (! [A]: (~ (q(A)))), inference(hyper,[status(thm)],[4,1]), [iquote('hyper,4,1')]).
 fof(6, plain, r(dollar_c1), inference(hyper,[status(thm)],[5,2]), [iquote('hyper,5,2')]).
 fof(7, plain, $false, inference(binary,[status(thm)],[6,3]), [iquote('binary,6.1,3.1')]).

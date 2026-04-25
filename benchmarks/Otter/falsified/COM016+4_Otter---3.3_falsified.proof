@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '1370':
-%%%%%   Replaced aElement0(xb)
-%%%%%   With ~ (aElement0(xb))
+%%%%% Mutated formula '1482':
+%%%%%   Replaced aElement0(dollar_c1)
+%%%%%   With aElement0(xa)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : COM016+4 : TPTP v8.1.0. Released v4.0.0.
@@ -41,11 +41,11 @@ fof(549, plain, (! [A,B]: ((~ (aElement0(A)) | (~ (aRewritingSystem0(B)) | (sdtm
 fof(1365, axiom, (! [A]: ((A = A))), file('COM016+4.p',unknown), []).
 fof(1366, axiom, aRewritingSystem0(xR), file('COM016+4.p',unknown), []).
 fof(1369, axiom, aElement0(xa), file('COM016+4.p',unknown), []).
-fof(1370, axiom, ~ (aElement0(xb)), file('COM016+4.p',unknown), []).
+fof(1370, axiom, aElement0(xb), file('COM016+4.p',unknown), []).
 fof(1373, axiom, (aReductOfIn0(xb,xa,xR) | aReductOfIn0(dollar_c1,xa,xR)), file('COM016+4.p',unknown), []).
 fof(1374, axiom, (aReductOfIn0(xb,xa,xR) | sdtmndtplgtdt0(dollar_c1,xR,xb)), file('COM016+4.p',unknown), []).
 fof(1390, plain, sdtmndtasgtdt0(xb,xR,xb), inference(hyper,[status(thm)],[1370,549,1366,1365]), [iquote('hyper,1370,549,1366,1365')]).
 fof(1460, plain, aReductOfIn0(dollar_c1,xa,xR), inference(hyper,[status(thm)],[1373,541,1370,1390]), [iquote('hyper,1373,541,1370,1390')]).
-fof(1482, plain, aElement0(dollar_c1), inference(hyper,[status(thm)],[1460,1,1369,1366]), [iquote('hyper,1460,1,1369,1366')]).
+fof(1482, plain, aElement0(xa), inference(hyper,[status(thm)],[1460,1,1369,1366]), [iquote('hyper,1460,1,1369,1366')]).
 fof(1501, plain, aReductOfIn0(xb,xa,xR), inference(hyper,[status(thm)],[1374,540,1482,1460]), [iquote('hyper,1374,540,1482,1460')]).
 fof(1532, plain, $false, inference(hyper,[status(thm)],[1501,541,1370,1390]), [iquote('hyper,1501,541,1370,1390')]).

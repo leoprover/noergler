@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '65':
 %%%%%   Replaced id(dollar_c4,dollar_c5)
-%%%%%   With id(dollar_c5,dollar_c5)
+%%%%%   With ~ (id(dollar_c4,dollar_c5))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUN089+1 : TPTP v8.1.0. Released v7.3.0.
@@ -35,6 +35,6 @@
 %%% Generated on Tue Apr 14 19:17:23 CEST 2026 using command 'transform(fof)'.
 fof(20, axiom, (! [A,B,C]: ((~ (id(A,B)) | (~ (r1(A)) | ~ (r2(C,B)))))), file('NUN089+1.p',unknown), []).
 fof(64, axiom, r2(dollar_c3,dollar_c5), file('NUN089+1.p',unknown), []).
-fof(65, axiom, id(dollar_c5,dollar_c5), file('NUN089+1.p',unknown), []).
+fof(65, axiom, ~ (id(dollar_c4,dollar_c5)), file('NUN089+1.p',unknown), []).
 fof(66, axiom, r1(dollar_c4), file('NUN089+1.p',unknown), []).
 fof(82, plain, $false, inference(hyper,[status(thm)],[65,20,66,64]), [iquote('hyper,65,20,66,64')]).

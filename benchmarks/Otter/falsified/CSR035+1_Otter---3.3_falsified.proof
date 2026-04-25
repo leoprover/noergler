@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '35':
-%%%%%   Replaced mtvisible(c_englishmt)
-%%%%%   With ~ (mtvisible(c_englishmt))
+%%%%% Mutated formula '36':
+%%%%%   Replaced prettystring(f_instancewithrelationtofn(c_footballteam,c_affiliatedwith,c_beloitcollege),s_thefootballteamwhohasbeenaffiliatedwithbeloitcollege)
+%%%%%   With prettystring(f_instancewithrelationtofn(c_englishmt,c_affiliatedwith,c_beloitcollege),s_thefootballteamwhohasbeenaffiliatedwithbeloitcollege)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : CSR035+1 : TPTP v8.1.0. Released v3.4.0.
@@ -35,6 +35,6 @@
 %%% Generated on Tue Apr 14 19:10:59 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (~ (mtvisible(c_englishmt)) | prettystring(f_instancewithrelationtofn(c_footballteam,c_affiliatedwith,c_beloitcollege),s_thefootballteamwhohasbeenaffiliatedwithbeloitcollege)), file('CSR035+1.p',unknown), []).
 fof(28, axiom, (! [A]: (~ (prettystring(f_instancewithrelationtofn(c_footballteam,c_affiliatedwith,c_beloitcollege),A)))), file('CSR035+1.p',unknown), []).
-fof(35, axiom, ~ (mtvisible(c_englishmt)), file('CSR035+1.p',unknown), []).
-fof(36, plain, prettystring(f_instancewithrelationtofn(c_footballteam,c_affiliatedwith,c_beloitcollege),s_thefootballteamwhohasbeenaffiliatedwithbeloitcollege), inference(hyper,[status(thm)],[35,1]), [iquote('hyper,35,1')]).
+fof(35, axiom, mtvisible(c_englishmt), file('CSR035+1.p',unknown), []).
+fof(36, plain, prettystring(f_instancewithrelationtofn(c_englishmt,c_affiliatedwith,c_beloitcollege),s_thefootballteamwhohasbeenaffiliatedwithbeloitcollege), inference(hyper,[status(thm)],[35,1]), [iquote('hyper,35,1')]).
 fof(37, plain, $false, inference(binary,[status(thm)],[36,28]), [iquote('binary,36.1,28.1')]).

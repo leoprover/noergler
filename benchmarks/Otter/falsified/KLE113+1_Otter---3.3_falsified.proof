@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '32':
-%%%%%   Replaced (! [A]: ((addition(antidomain(antidomain(A)),antidomain(A)) = one)))
-%%%%%   With (! [A]: (~ ((addition(antidomain(antidomain(A)),antidomain(A)) = one))))
+%%%%% Mutated formula '48':
+%%%%%   Replaced (! [A,B]: ((multiplication(antidomain(antidomain(A)),antidomain(B)) = domain_difference(A,B))))
+%%%%%   With (! [A,B]: (~ ((multiplication(antidomain(antidomain(A)),antidomain(B)) = domain_difference(A,B)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE113+1 : TPTP v8.1.0. Released v4.0.0.
@@ -39,10 +39,10 @@ fof(17, axiom, (! [A]: ((multiplication(A,one) = A))), file('KLE113+1.p',unknown
 fof(19, axiom, (! [A]: ((multiplication(one,A) = A))), file('KLE113+1.p',unknown), []).
 fof(25, axiom, (! [A]: ((multiplication(A,zero) = zero))), file('KLE113+1.p',unknown), []).
 fof(28, axiom, (! [A]: ((multiplication(antidomain(A),A) = zero))), file('KLE113+1.p',unknown), []).
-fof(32, axiom, (! [A]: (~ ((addition(antidomain(antidomain(A)),antidomain(A)) = one)))), file('KLE113+1.p',unknown), []).
+fof(32, axiom, (! [A]: ((addition(antidomain(antidomain(A)),antidomain(A)) = one))), file('KLE113+1.p',unknown), []).
 fof(35, axiom, (! [A]: ((domain(A) = antidomain(antidomain(A))))), file('KLE113+1.p',unknown), []).
 fof(47, axiom, (! [A,B]: ((domain_difference(A,B) = multiplication(domain(A),antidomain(B))))), file('KLE113+1.p',unknown), []).
-fof(48, plain, (! [A,B]: ((multiplication(antidomain(antidomain(A)),antidomain(B)) = domain_difference(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[47]),35])]), [iquote('copy,47,demod,35,flip.1')]).
+fof(48, plain, (! [A,B]: (~ ((multiplication(antidomain(antidomain(A)),antidomain(B)) = domain_difference(A,B))))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[47]),35])]), [iquote('copy,47,demod,35,flip.1')]).
 fof(50, axiom, (! [A,B]: ((forward_diamond(A,B) = domain(multiplication(A,domain(B)))))), file('KLE113+1.p',unknown), []).
 fof(51, plain, (! [A,B]: ((antidomain(antidomain(multiplication(A,antidomain(antidomain(B))))) = forward_diamond(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[50]),35,35])]), [iquote('copy,50,demod,35,35,flip.1')]).
 fof(83, plain, (antidomain(one) = zero), inference(para_into,[status(thm),theory(equality)],[28,17]), [iquote('para_into,28.1.1,16.1.1')]).

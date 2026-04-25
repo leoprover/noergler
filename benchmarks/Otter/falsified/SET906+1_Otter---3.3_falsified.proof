@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '785':
-%%%%%   Replaced in(dollar_c5,dollar_c3)
-%%%%%   With in(dollar_c3,dollar_c3)
+%%%%% Mutated formula '17':
+%%%%%   Replaced ~ (in(dollar_c5,dollar_c3))
+%%%%%   With ~ (in(dollar_c3,dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET906+1 : TPTP v8.1.0. Released v3.2.0.
@@ -36,11 +36,11 @@
 fof(3, axiom, (! [A,B,C,D]: (((A != unordered_pair(B,C)) | (in(D,A) | (D != B))))), file('SET906+1.p',unknown), []).
 fof(8, axiom, (! [A,B,C,D]: (((A != set_union2(B,C)) | (in(D,A) | ~ (in(D,B)))))), file('SET906+1.p',unknown), []).
 fof(12, axiom, (! [A,B,C]: ((~ (subset(A,B)) | (~ (in(C,A)) | in(C,B))))), file('SET906+1.p',unknown), []).
-fof(17, axiom, ~ (in(dollar_c5,dollar_c3)), file('SET906+1.p',unknown), []).
+fof(17, axiom, ~ (in(dollar_c3,dollar_c3)), file('SET906+1.p',unknown), []).
 fof(23, axiom, (! [A]: ((A = A))), file('SET906+1.p',unknown), []).
 fof(30, axiom, (! [A]: ((set_union2(A,A) = A))), file('SET906+1.p',unknown), []).
 fof(33, axiom, subset(set_union2(unordered_pair(dollar_c5,dollar_c4),dollar_c3),dollar_c3), file('SET906+1.p',unknown), []).
 fof(40, plain, (! [A,B]: (in(A,unordered_pair(A,B)))), inference(hyper,[status(thm)],[23,3,23]), [iquote('hyper,23,3,23')]).
 fof(78, plain, (! [A,B,C]: (in(A,set_union2(unordered_pair(A,B),C)))), inference(demod,[status(thm),theory(equality)],[inference(hyper,[status(thm)],[40,8,30]),30]), [iquote('hyper,40,8,29,demod,30')]).
-fof(785, plain, in(dollar_c3,dollar_c3), inference(hyper,[status(thm)],[78,12,33]), [iquote('hyper,78,12,33')]).
+fof(785, plain, in(dollar_c5,dollar_c3), inference(hyper,[status(thm)],[78,12,33]), [iquote('hyper,78,12,33')]).
 fof(786, plain, $false, inference(binary,[status(thm)],[785,17]), [iquote('binary,785.1,17.1')]).

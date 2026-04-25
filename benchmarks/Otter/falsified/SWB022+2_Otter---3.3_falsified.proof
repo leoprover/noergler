@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '133':
-%%%%%   Replaced iext(uri_rdf_rest,dollar_c5,dollar_c4)
-%%%%%   With iext(dollar_c8,dollar_c5,dollar_c4)
+%%%%% Mutated formula '137':
+%%%%%   Replaced iext(uri_skos_memberList,uri_ex_MyOrderedCollection,dollar_c3)
+%%%%%   With iext(uri_ex_X,uri_ex_MyOrderedCollection,dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SWB022+2 : TPTP v8.1.0. Released v5.2.0.
@@ -44,10 +44,10 @@ fof(129, axiom, iext(uri_rdf_first,dollar_c6,uri_rdf_first), file('SWB022+2.p',u
 fof(130, axiom, iext(uri_rdf_rest,dollar_c6,uri_rdf_nil), file('SWB022+2.p',unknown), []).
 fof(131, axiom, iext(uri_owl_propertyChainAxiom,dollar_c8,dollar_c5), file('SWB022+2.p',unknown), []).
 fof(132, axiom, iext(uri_rdf_first,dollar_c5,dollar_c8), file('SWB022+2.p',unknown), []).
-fof(133, axiom, iext(dollar_c8,dollar_c5,dollar_c4), file('SWB022+2.p',unknown), []).
+fof(133, axiom, iext(uri_rdf_rest,dollar_c5,dollar_c4), file('SWB022+2.p',unknown), []).
 fof(134, axiom, iext(uri_rdf_first,dollar_c4,uri_rdf_rest), file('SWB022+2.p',unknown), []).
 fof(135, axiom, iext(uri_rdf_rest,dollar_c4,uri_rdf_nil), file('SWB022+2.p',unknown), []).
-fof(137, axiom, iext(uri_skos_memberList,uri_ex_MyOrderedCollection,dollar_c3), file('SWB022+2.p',unknown), []).
+fof(137, axiom, iext(uri_ex_X,uri_ex_MyOrderedCollection,dollar_c3), file('SWB022+2.p',unknown), []).
 fof(138, axiom, iext(uri_rdf_first,dollar_c3,uri_ex_X), file('SWB022+2.p',unknown), []).
 fof(139, axiom, iext(uri_rdf_rest,dollar_c3,dollar_c2), file('SWB022+2.p',unknown), []).
 fof(140, axiom, iext(uri_rdf_first,dollar_c2,uri_ex_Y), file('SWB022+2.p',unknown), []).

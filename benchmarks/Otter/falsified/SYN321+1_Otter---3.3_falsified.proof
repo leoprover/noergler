@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '3':
-%%%%%   Replaced (! [A,B]: ((~ (big_f(A,B)) | ~ (big_g(A,dollar_f1(A,B))))))
-%%%%%   With (! [A,B]: ((big_f(A,B) | ~ (big_g(A,dollar_f1(A,B))))))
+%%%%% Mutated formula '5':
+%%%%%   Replaced (! [A,B]: (big_f(A,B)))
+%%%%%   With (! [A,B]: (~ (big_f(A,B))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SYN321+1 : TPTP v8.1.0. Released v2.0.0.
@@ -35,8 +35,8 @@
 %%% Generated on Tue Apr 14 19:23:26 CEST 2026 using command 'transform(fof)'.
 fof(1, axiom, (! [A,B,C]: ((~ (big_f(A,B)) | big_g(A,C)))), file('SYN321+1.p',unknown), []).
 fof(2, axiom, (! [A,B]: ((~ (big_g(A,A)) | big_f(A,B)))), file('SYN321+1.p',unknown), []).
-fof(3, axiom, (! [A,B]: ((big_f(A,B) | ~ (big_g(A,dollar_f1(A,B)))))), file('SYN321+1.p',unknown), []).
+fof(3, axiom, (! [A,B]: ((~ (big_f(A,B)) | ~ (big_g(A,dollar_f1(A,B)))))), file('SYN321+1.p',unknown), []).
 fof(4, axiom, (! [A,B,C]: ((big_f(A,B) | big_g(A,C)))), file('SYN321+1.p',unknown), []).
-fof(5, plain, (! [A,B]: (big_f(A,B))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[4,2])]), [iquote('hyper,4,2,factor_simp')]).
+fof(5, plain, (! [A,B]: (~ (big_f(A,B)))), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[4,2])]), [iquote('hyper,4,2,factor_simp')]).
 fof(6, plain, (! [A,B]: (big_g(A,B))), inference(hyper,[status(thm)],[5,1]), [iquote('hyper,5,1')]).
 fof(7, plain, $false, inference(hyper,[status(thm)],[6,3,5]), [iquote('hyper,6,3,5')]).

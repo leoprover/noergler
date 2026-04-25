@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '26':
-%%%%%   Replaced (! [A,B,C]: ((multiplication(A,multiplication(B,C)) = multiplication(multiplication(A,B),C))))
-%%%%%   With (! [A,B,C]: (~ ((multiplication(A,multiplication(B,C)) = multiplication(multiplication(A,B),C)))))
+%%%%% Mutated formula '34':
+%%%%%   Replaced (! [A,B,C]: ((multiplication(A,addition(B,C)) = addition(multiplication(A,B),multiplication(A,C)))))
+%%%%%   With (! [A,B,C]: (~ ((multiplication(A,addition(B,C)) = addition(multiplication(A,B),multiplication(A,C))))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : KLE035+2 : TPTP v8.1.0. Released v4.0.0.
@@ -37,9 +37,9 @@ fof(1, axiom, (! [A,B]: ((~ (le_q(A,B)) | (addition(A,B) = B)))), file('KLE035+2
 fof(13, axiom, ~ (le_q(multiplication(multiplication(dollar_c2,addition(dollar_c4,dollar_c3)),c(dollar_c1)),zero)), file('KLE035+2.p',unknown), []).
 fof(18, axiom, (! [A,B]: ((addition(A,B) = addition(B,A)))), file('KLE035+2.p',unknown), []).
 fof(23, axiom, (! [A]: ((addition(A,zero) = A))), file('KLE035+2.p',unknown), []).
-fof(26, axiom, (! [A,B,C]: (~ ((multiplication(A,multiplication(B,C)) = multiplication(multiplication(A,B),C))))), file('KLE035+2.p',unknown), []).
+fof(26, axiom, (! [A,B,C]: ((multiplication(A,multiplication(B,C)) = multiplication(multiplication(A,B),C)))), file('KLE035+2.p',unknown), []).
 fof(28, plain, (! [A,B,C]: ((multiplication(multiplication(A,B),C) = multiplication(A,multiplication(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[26])]), [iquote('copy,26,flip.1')]).
-fof(34, axiom, (! [A,B,C]: ((multiplication(A,addition(B,C)) = addition(multiplication(A,B),multiplication(A,C))))), file('KLE035+2.p',unknown), []).
+fof(34, axiom, (! [A,B,C]: (~ ((multiplication(A,addition(B,C)) = addition(multiplication(A,B),multiplication(A,C)))))), file('KLE035+2.p',unknown), []).
 fof(36, axiom, (! [A,B,C]: ((multiplication(addition(A,B),C) = addition(multiplication(A,C),multiplication(B,C))))), file('KLE035+2.p',unknown), []).
 fof(44, axiom, le_q(multiplication(multiplication(dollar_c2,dollar_c4),c(dollar_c1)),zero), file('KLE035+2.p',unknown), []).
 fof(45, plain, le_q(multiplication(dollar_c2,multiplication(dollar_c4,c(dollar_c1))),zero), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[44]),28]), [iquote('copy,44,demod,28')]).

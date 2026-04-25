@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '7':
-%%%%%   Replaced (! [A,B,C]: ((~ (subset(A,B)) | (~ (in(C,A)) | in(C,B)))))
-%%%%%   With (! [A,B,C]: ((subset(A,B) | (~ (in(C,A)) | in(C,B)))))
+%%%%% Mutated formula '135':
+%%%%%   Replaced in(dollar_c3,dollar_c1)
+%%%%%   With in(dollar_c1,dollar_c1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU159+1 : TPTP v8.1.0. Released v3.3.0.
@@ -36,7 +36,7 @@
 fof(2, axiom, (! [A,B,C,D]: (((A != unordered_pair(B,C)) | (~ (in(D,A)) | ((D = B) | (D = C)))))), file('SEU159+1.p',unknown), []).
 fof(3, axiom, (! [A,B,C,D]: (((A != unordered_pair(B,C)) | (in(D,A) | (D != B))))), file('SEU159+1.p',unknown), []).
 fof(4, axiom, (! [A,B,C,D]: (((A != unordered_pair(B,C)) | (in(D,A) | (D != C))))), file('SEU159+1.p',unknown), []).
-fof(7, axiom, (! [A,B,C]: ((subset(A,B) | (~ (in(C,A)) | in(C,B))))), file('SEU159+1.p',unknown), []).
+fof(7, axiom, (! [A,B,C]: ((~ (subset(A,B)) | (~ (in(C,A)) | in(C,B))))), file('SEU159+1.p',unknown), []).
 fof(8, axiom, (! [A,B]: ((subset(A,B) | ~ (in(dollar_f2(A,B),B))))), file('SEU159+1.p',unknown), []).
 fof(9, axiom, (~ (subset(unordered_pair(dollar_c3,dollar_c2),dollar_c1)) | (~ (in(dollar_c3,dollar_c1)) | ~ (in(dollar_c2,dollar_c1)))), file('SEU159+1.p',unknown), []).
 fof(12, axiom, (! [A]: ((A = A))), file('SEU159+1.p',unknown), []).
@@ -47,7 +47,7 @@ fof(18, axiom, (subset(unordered_pair(dollar_c3,dollar_c2),dollar_c1) | in(dolla
 fof(20, plain, (! [A,B]: (in(A,unordered_pair(B,A)))), inference(hyper,[status(thm)],[12,4,12]), [iquote('hyper,12,4,12')]).
 fof(21, plain, (! [A,B]: (in(A,unordered_pair(A,B)))), inference(hyper,[status(thm)],[12,3,12]), [iquote('hyper,12,3,12')]).
 fof(39, plain, (~ (subset(unordered_pair(dollar_c2,dollar_c3),dollar_c1)) | (~ (in(dollar_c3,dollar_c1)) | ~ (in(dollar_c2,dollar_c1)))), inference(para_from,[status(thm),theory(equality)],[13,9]), [iquote('para_from,13.1.1,9.1.1')]).
-fof(135, plain, in(dollar_c3,dollar_c1), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[17,7,21])]), [iquote('hyper,17,7,21,factor_simp')]).
+fof(135, plain, in(dollar_c1,dollar_c1), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[17,7,21])]), [iquote('hyper,17,7,21,factor_simp')]).
 fof(151, plain, in(dollar_c2,dollar_c1), inference(factor_simp,[status(thm)],[inference(hyper,[status(thm)],[18,7,20])]), [iquote('hyper,18,7,20,factor_simp')]).
 fof(168, plain, in(dollar_f2(unordered_pair(dollar_c3,dollar_c2),dollar_c1),unordered_pair(dollar_c3,dollar_c2)), inference(hyper,[status(thm)],[151,9,15,135]), [iquote('hyper,151,9,15,135')]).
 fof(366, plain, ((dollar_f2(unordered_pair(dollar_c3,dollar_c2),dollar_c1) = dollar_c2) | (dollar_f2(unordered_pair(dollar_c3,dollar_c2),dollar_c1) = dollar_c3)), inference(hyper,[status(thm)],[168,2,13]), [iquote('hyper,168,2,13')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c6':
-%%%%%   Replaced ~ (p1(skolem0001))
-%%%%%   With p1(skolem0001)
+%%%%% Mutated formula 'c2':
+%%%%%   Replaced (? [X]: ((p1(X) & ~ (p1(X)))))
+%%%%%   With (? [X]: ((~ (p1(X)) & ~ (p1(X)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : LCL662+1.001 : TPTP v8.1.2. Released v4.0.0.
@@ -39,9 +39,9 @@
 fof(main, conjecture, ~ ((? [X]: (~ ((~ (p1(X)) | p1(X)))))), file('LCL662+1.001.p',main)).
 fof(c0, negated_conjecture, ~ (~ ((? [X]: (~ ((~ (p1(X)) | p1(X))))))), inference(assume_negation,[status(cth)],[main])).
 fof(c1, negated_conjecture, ~ (~ ((? [X]: (~ ((~ (p1(X)) | p1(X))))))), inference(fof_simplification,[status(thm)],[c0])).
-fof(c2, negated_conjecture, (? [X]: ((p1(X) & ~ (p1(X))))), inference(fof_nnf,[status(thm)],[c1])).
+fof(c2, negated_conjecture, (? [X]: ((~ (p1(X)) & ~ (p1(X))))), inference(fof_nnf,[status(thm)],[c1])).
 fof(c3, negated_conjecture, (? [X2]: ((p1(X2) & ~ (p1(X2))))), inference(variable_rename,[status(thm)],[c2])).
 fof(c4, negated_conjecture, (p1(skolem0001) & ~ (p1(skolem0001))), inference(skolemize,[status(esa)],[c3])).
 fof(c5, negated_conjecture, p1(skolem0001), inference(split_conjunct,[status(thm)],[c4])).
-fof(c6, negated_conjecture, p1(skolem0001), inference(split_conjunct,[status(thm)],[c4])).
+fof(c6, negated_conjecture, ~ (p1(skolem0001)), inference(split_conjunct,[status(thm)],[c4])).
 fof(c7, plain, $false, inference(resolution,[status(thm)],[c6,c5])).

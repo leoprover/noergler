@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '534':
-%%%%%   Replaced aSubsetOf0(xS,xS)
-%%%%%   With ~ (aSubsetOf0(xS,xS))
+%%%%% Mutated formula '116':
+%%%%%   Replaced aElementOf0(sz00,szNzAzT0)
+%%%%%   With aElementOf0(xS,szNzAzT0)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : NUM545+1 : TPTP v8.1.0. Released v4.0.0.
@@ -43,14 +43,14 @@ fof(71, axiom, (! [A,B]: ((~ (aSubsetOf0(A,szNzAzT0)) | (~ (isFinite0(A)) | ((A 
 fof(89, axiom, (! [A]: ((~ (aElementOf0(A,szNzAzT0)) | ~ (aSubsetOf0(xS,slbdtrb0(A)))))), file('NUM545+1.p',unknown), []).
 fof(112, axiom, (! [A]: ((A = A))), file('NUM545+1.p',unknown), []).
 fof(114, axiom, aSet0(szNzAzT0), file('NUM545+1.p',unknown), []).
-fof(116, axiom, aElementOf0(sz00,szNzAzT0), file('NUM545+1.p',unknown), []).
+fof(116, axiom, aElementOf0(xS,szNzAzT0), file('NUM545+1.p',unknown), []).
 fof(117, axiom, (slbdtrb0(sz00) = slcrc0), file('NUM545+1.p',unknown), []).
 fof(119, axiom, aSubsetOf0(xS,szNzAzT0), file('NUM545+1.p',unknown), []).
 fof(120, axiom, isFinite0(xS), file('NUM545+1.p',unknown), []).
 fof(121, axiom, ((xS = slcrc0) | aSubsetOf0(xS,slbdtrb0(szszuzczcdt0(szmzazxdt0(xS))))), file('NUM545+1.p',unknown), []).
 fof(423, plain, ((xS = slcrc0) | aElementOf0(szmzazxdt0(xS),xS)), inference(hyper,[status(thm)],[119,71,120,112]), [iquote('hyper,119,71,120,112')]).
 fof(425, plain, aSet0(xS), inference(hyper,[status(thm)],[119,7,114]), [iquote('hyper,119,7,114')]).
-fof(534, plain, ~ (aSubsetOf0(xS,xS)), inference(hyper,[status(thm)],[425,12]), [iquote('hyper,425,12')]).
+fof(534, plain, aSubsetOf0(xS,xS), inference(hyper,[status(thm)],[425,12]), [iquote('hyper,425,12')]).
 fof(637, plain, ~ (aSubsetOf0(xS,slcrc0)), inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[117,89]),116]), [iquote('para_from,117.1.1,89.2.2,unit_del,116')]).
 fof(1241, plain, aSubsetOf0(xS,slbdtrb0(szszuzczcdt0(szmzazxdt0(xS)))), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[534,121]),637]), [iquote('para_into,534.1.2,121.1.1,unit_del,637')]).
 fof(1244, plain, (sbrdtbr0(xS) != sz00), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[534,60]),637,425]), [iquote('para_into,534.1.2,60.3.1,unit_del,637,425')]).

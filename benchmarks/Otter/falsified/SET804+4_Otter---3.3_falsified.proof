@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '124':
-%%%%%   Replaced member(dollar_c3,dollar_c4)
-%%%%%   With ~ (member(dollar_c3,dollar_c4))
+%%%%% Mutated formula '202':
+%%%%%   Replaced apply(dollar_c5,dollar_c1,dollar_c3)
+%%%%%   With ~ (apply(dollar_c5,dollar_c1,dollar_c3))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SET804+4 : TPTP v8.1.0. Released v3.2.0.
@@ -41,10 +41,10 @@ fof(86, axiom, (dollar_c3 != dollar_c2), file('SET804+4.p',unknown), []).
 fof(113, axiom, min(dollar_c3,dollar_c5,dollar_c4), file('SET804+4.p',unknown), []).
 fof(114, axiom, min(dollar_c2,dollar_c5,dollar_c4), file('SET804+4.p',unknown), []).
 fof(115, axiom, least(dollar_c1,dollar_c5,dollar_c4), file('SET804+4.p',unknown), []).
-fof(124, plain, ~ (member(dollar_c3,dollar_c4)), inference(hyper,[status(thm)],[113,68]), [iquote('hyper,113,68')]).
+fof(124, plain, member(dollar_c3,dollar_c4), inference(hyper,[status(thm)],[113,68]), [iquote('hyper,113,68')]).
 fof(147, plain, member(dollar_c2,dollar_c4), inference(hyper,[status(thm)],[114,68]), [iquote('hyper,114,68')]).
 fof(201, plain, apply(dollar_c5,dollar_c1,dollar_c2), inference(hyper,[status(thm)],[115,59,147]), [iquote('hyper,115,59,147')]).
-fof(202, plain, apply(dollar_c5,dollar_c1,dollar_c3), inference(hyper,[status(thm)],[115,59,124]), [iquote('hyper,115,59,124')]).
+fof(202, plain, ~ (apply(dollar_c5,dollar_c1,dollar_c3)), inference(hyper,[status(thm)],[115,59,124]), [iquote('hyper,115,59,124')]).
 fof(203, plain, member(dollar_c1,dollar_c4), inference(hyper,[status(thm)],[115,58]), [iquote('hyper,115,58')]).
 fof(278, plain, (dollar_c2 = dollar_c1), inference(hyper,[status(thm)],[201,69,114,203]), [iquote('hyper,201,69,114,203')]).
 fof(298, plain, (dollar_c3 != dollar_c1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[86]),278]), [iquote('back_demod,86,demod,278')]).

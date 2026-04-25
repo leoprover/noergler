@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '462':
-%%%%%   Replaced (op(e2,e2) != e2)
-%%%%%   With ~ ((op(e2,e2) != e2))
+%%%%% Mutated formula '109':
+%%%%%   Replaced ((op(e0,e0) != e0) | ((op(e1,e1) != e0) | ((op(e2,e2) != e0) | (op(e3,e3) != e0))))
+%%%%%   With ((op(e3,e0) != e0) | ((op(e1,e1) != e0) | ((op(e2,e2) != e0) | (op(e3,e3) != e0))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG036+1 : TPTP v8.1.0. Released v2.7.0.
@@ -43,7 +43,7 @@ fof(99, axiom, (e0 != e2), file('ALG036+1.p',unknown), []).
 fof(100, plain, (e2 != e0), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[99])]), [iquote('copy,99,flip.1')]).
 fof(101, axiom, (e0 != e3), file('ALG036+1.p',unknown), []).
 fof(102, plain, (e3 != e0), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[101])]), [iquote('copy,101,flip.1')]).
-fof(109, axiom, ((op(e0,e0) != e0) | ((op(e1,e1) != e0) | ((op(e2,e2) != e0) | (op(e3,e3) != e0)))), file('ALG036+1.p',unknown), []).
+fof(109, axiom, ((op(e3,e0) != e0) | ((op(e1,e1) != e0) | ((op(e2,e2) != e0) | (op(e3,e3) != e0)))), file('ALG036+1.p',unknown), []).
 fof(113, axiom, (! [A]: ((A = A))), file('ALG036+1.p',unknown), []).
 fof(132, axiom, (op(e0,unit) = e0), file('ALG036+1.p',unknown), []).
 fof(136, axiom, (op(e1,unit) = e1), file('ALG036+1.p',unknown), []).
@@ -55,7 +55,7 @@ fof(394, axiom, ((op(e3,e3) = e0) | ((op(e1,e1) = e1) | ((op(e2,e2) = e2) | (op(
 fof(438, plain, (op(e2,e0) = e2), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[140]),180]), [iquote('back_demod,140,demod,180')]).
 fof(442, plain, (op(e1,e0) = e1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[136]),180]), [iquote('back_demod,136,demod,180')]).
 fof(446, plain, (op(e0,e0) = e0), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[132]),180]), [iquote('back_demod,132,demod,180')]).
-fof(462, plain, ~ ((op(e2,e2) != e2)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[76]),438]), [iquote('back_demod,76,demod,438')]).
+fof(462, plain, (op(e2,e2) != e2), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[76]),438]), [iquote('back_demod,76,demod,438')]).
 fof(474, plain, (op(e1,e1) != e1), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[62]),442]), [iquote('back_demod,62,demod,442')]).
 fof(486, plain, (op(e3,e3) = e0), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[394]),446]),474,462,102]), [iquote('back_demod,394,demod,446,unit_del,474,462,102')]).
 fof(488, plain, (op(e2,e2) = e0), inference(unit_del,[status(thm)],[inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[366]),486,486,446]),98,100,102]), [iquote('back_demod,366,demod,486,486,446,unit_del,98,100,102')]).

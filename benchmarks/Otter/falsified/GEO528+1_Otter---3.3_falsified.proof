@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '495':
-%%%%%   Replaced (! [A,B]: (s_m(A,midpoint(A,B),B)))
-%%%%%   With (! [A,B]: (~ (s_m(A,midpoint(A,B),B))))
+%%%%% Mutated formula '1019':
+%%%%%   Replaced ~ (s_col(dollar_c4,dollar_c3,dollar_c1))
+%%%%%   With s_col(dollar_c4,dollar_c3,dollar_c1)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : GEO528+1 : TPTP v8.1.0. Released v7.0.0.
@@ -42,13 +42,13 @@ fof(198, axiom, ~ (s_col(dollar_c4,dollar_c3,dollar_c2)), file('GEO528+1.p',unkn
 fof(199, axiom, ~ (opposite(dollar_c2,dollar_c4,dollar_c3,dollar_c1)), file('GEO528+1.p',unknown), []).
 fof(233, axiom, (! [A,B,C]: ((~ (s_m(A,B,C)) | s_t(A,B,C)))), file('GEO528+1.p',unknown), []).
 fof(251, axiom, (! [E,A,B,C,D]: (((A = B) | (s_col(A,B,C) | (s_col(A,B,D) | (~ (s_t(C,E,D)) | (~ (s_col(A,B,E)) | opposite(C,A,B,D)))))))), file('GEO528+1.p',unknown), []).
-fof(495, axiom, (! [A,B]: (~ (s_m(A,midpoint(A,B),B)))), file('GEO528+1.p',unknown), []).
+fof(495, axiom, (! [A,B]: (s_m(A,midpoint(A,B),B))), file('GEO528+1.p',unknown), []).
 fof(499, axiom, (! [A,B,C]: (((A = B) | s_col(A,B,midpoint(C,reflect(A,B,C)))))), file('GEO528+1.p',unknown), []).
 fof(504, axiom, (reflect(dollar_c4,dollar_c3,dollar_c2) = dollar_c1), file('GEO528+1.p',unknown), []).
 fof(902, plain, (! [A,B]: (s_t(A,midpoint(A,B),B))), inference(hyper,[status(thm)],[495,233]), [iquote('hyper,495,233')]).
 fof(911, plain, (reflect(dollar_c4,dollar_c3,dollar_c1) = dollar_c2), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[504,188]),197])]), [iquote('hyper,504,188,unit_del,197,flip.1')]).
 fof(913, plain, (dollar_c2 != dollar_c1), inference(flip,[status(thm),theory(equality)],[inference(unit_del,[status(thm)],[inference(para_from,[status(thm),theory(equality)],[504,190]),197,198])]), [iquote('para_from,504.1.1,190.2.1,unit_del,197,198,flip.1')]).
 fof(1014, plain, (! [A,B]: (s_t(A,midpoint(B,A),B))), inference(hyper,[status(thm)],[902,18]), [iquote('hyper,902,18')]).
-fof(1019, plain, ~ (s_col(dollar_c4,dollar_c3,dollar_c1)), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[911,191]),913,197]), [iquote('para_into,911.1.1,191.3.1,unit_del,913,197')]).
+fof(1019, plain, s_col(dollar_c4,dollar_c3,dollar_c1), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[911,191]),913,197]), [iquote('para_into,911.1.1,191.3.1,unit_del,913,197')]).
 fof(1085, plain, s_col(dollar_c4,dollar_c3,midpoint(dollar_c1,dollar_c2)), inference(unit_del,[status(thm)],[inference(para_into,[status(thm),theory(equality)],[499,911]),197]), [iquote('para_into,499.2.3.2,911.1.1,unit_del,197')]).
 fof(1107, plain, $false, inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[1085,251,1014]),197,198,1019,199]), [iquote('hyper,1085,251,1014,unit_del,197,198,1019,199')]).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
 %%%%% Mutated formula '10':
 %%%%%   Replaced (efficient_producer(dollar_c2) | number_of_routines(dollar_c2,dollar_c1,low))
-%%%%%   With (efficient_producer(dollar_c2) & number_of_routines(dollar_c2,dollar_c1,low))
+%%%%%   With (~ (efficient_producer(dollar_c2)) | number_of_routines(dollar_c2,dollar_c1,low))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : MGT041+2 : TPTP v8.1.0. Released v2.0.0.
@@ -42,6 +42,6 @@ fof(6, axiom, organisation_at_time(dollar_c2,dollar_c1), file('MGT041+2.p',unkno
 fof(7, axiom, founding_time(dollar_c2,dollar_c1), file('MGT041+2.p',unknown), []).
 fof(8, axiom, number_of_routines(dollar_c2,dollar_c1,high), file('MGT041+2.p',unknown), []).
 fof(9, plain, (first_mover(dollar_c2) | efficient_producer(dollar_c2)), inference(hyper,[status(thm)],[6,5]), [iquote('hyper,6,5')]).
-fof(10, plain, (efficient_producer(dollar_c2) & number_of_routines(dollar_c2,dollar_c1,low)), inference(hyper,[status(thm)],[9,3,6,7]), [iquote('hyper,9,3,6,7')]).
+fof(10, plain, (~ (efficient_producer(dollar_c2)) | number_of_routines(dollar_c2,dollar_c1,low)), inference(hyper,[status(thm)],[9,3,6,7]), [iquote('hyper,9,3,6,7')]).
 fof(11, plain, number_of_routines(dollar_c2,dollar_c1,low), inference(unit_del,[status(thm)],[inference(hyper,[status(thm)],[10,2,6,7]),4]), [iquote('hyper,10,2,6,7,unit_del,4')]).
 fof(12, plain, $false, inference(hyper,[status(thm)],[11,1,8]), [iquote('hyper,11,1,8')]).

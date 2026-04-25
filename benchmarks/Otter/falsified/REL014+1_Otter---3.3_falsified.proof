@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '14':
-%%%%%   Replaced (! [A,B,C]: ((composition(composition(A,B),C) = composition(A,composition(B,C)))))
-%%%%%   With (! [A,B,C]: (~ ((composition(composition(A,B),C) = composition(A,composition(B,C))))))
+%%%%% Mutated formula '37':
+%%%%%   Replaced ((dollar_c1 != dollar_c1) | (composition(one,dollar_c1) != dollar_c1))
+%%%%%   With ((dollar_c1 != dollar_c1) & (composition(one,dollar_c1) != dollar_c1))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : REL014+1 : TPTP v8.1.0. Released v4.0.0.
@@ -36,11 +36,11 @@
 fof(1, axiom, ((composition(dollar_c1,one) != dollar_c1) | (composition(one,dollar_c1) != dollar_c1)), file('REL014+1.p',unknown), []).
 fof(2, axiom, (! [A]: ((A = A))), file('REL014+1.p',unknown), []).
 fof(13, axiom, (! [A,B,C]: ((composition(A,composition(B,C)) = composition(composition(A,B),C)))), file('REL014+1.p',unknown), []).
-fof(14, plain, (! [A,B,C]: (~ ((composition(composition(A,B),C) = composition(A,composition(B,C)))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[13])]), [iquote('copy,13,flip.1')]).
+fof(14, plain, (! [A,B,C]: ((composition(composition(A,B),C) = composition(A,composition(B,C))))), inference(flip,[status(thm),theory(equality)],[inference(copy,[status(thm)],[13])]), [iquote('copy,13,flip.1')]).
 fof(17, axiom, (! [A]: ((composition(A,one) = A))), file('REL014+1.p',unknown), []).
 fof(22, axiom, (! [A]: ((converse(converse(A)) = A))), file('REL014+1.p',unknown), []).
 fof(25, axiom, (! [A,B]: ((converse(composition(A,B)) = composition(converse(B),converse(A))))), file('REL014+1.p',unknown), []).
-fof(37, plain, ((dollar_c1 != dollar_c1) | (composition(one,dollar_c1) != dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1]),17]), [iquote('back_demod,1,demod,17')]).
+fof(37, plain, ((dollar_c1 != dollar_c1) & (composition(one,dollar_c1) != dollar_c1)), inference(demod,[status(thm),theory(equality)],[inference(back_demod,[status(thm)],[1]),17]), [iquote('back_demod,1,demod,17')]).
 fof(83, plain, (! [A,B]: ((composition(A,composition(one,B)) = composition(A,B)))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[14,17])]), [iquote('para_into,14.1.1.1,16.1.1,flip.1')]).
 fof(166, plain, (! [A]: ((composition(converse(one),converse(A)) = converse(A)))), inference(flip,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[25,17])]), [iquote('para_into,25.1.1.1,16.1.1,flip.1')]).
 fof(173, plain, (! [A]: ((composition(converse(one),A) = A))), inference(demod,[status(thm),theory(equality)],[inference(para_into,[status(thm),theory(equality)],[166,22]),22]), [iquote('para_into,166.1.1.2,21.1.1,demod,22')]).

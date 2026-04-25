@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c11':
-%%%%%   Replaced object(skolem0003)
-%%%%%   With ~ (object(skolem0003))
+%%%%% Mutated formula 'c56':
+%%%%%   Replaced exemplifies_property(skolem0001,skolem0003)
+%%%%%   With ~ (exemplifies_property(skolem0001,skolem0003))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : PHI011+1 : TPTP v8.1.2. Released v7.2.0.
@@ -42,7 +42,7 @@ fof(c5, negated_conjecture, (? [F]: ((property(F) & ((? [Y]: ((object(Y) & is_th
 fof(c6, negated_conjecture, (? [X2]: ((property(X2) & ((? [X3]: ((object(X3) & is_the(X3,X2)))) & (? [X4]: ((object(X4) & (is_the(X4,X2) & ~ (exemplifies_property(X2,X4)))))))))), inference(variable_rename,[status(thm)],[c5])).
 fof(c7, negated_conjecture, (property(skolem0001) & (object(skolem0002) & (is_the(skolem0002,skolem0001) & (object(skolem0003) & (is_the(skolem0003,skolem0001) & ~ (exemplifies_property(skolem0001,skolem0003))))))), inference(skolemize,[status(esa)],[c6])).
 fof(c13, negated_conjecture, ~ (exemplifies_property(skolem0001,skolem0003)), inference(split_conjunct,[status(thm)],[c7])).
-fof(c11, negated_conjecture, ~ (object(skolem0003)), inference(split_conjunct,[status(thm)],[c7])).
+fof(c11, negated_conjecture, object(skolem0003), inference(split_conjunct,[status(thm)],[c7])).
 fof(c8, negated_conjecture, property(skolem0001), inference(split_conjunct,[status(thm)],[c7])).
 fof(c12, negated_conjecture, is_the(skolem0003,skolem0001), inference(split_conjunct,[status(thm)],[c7])).
 fof(reflexivity, axiom, (! [X13]: ((X13 = X13))), theory(equality)).
@@ -53,5 +53,5 @@ fof(c16, plain, (! [X50,X48,X49]: ((~ (object(X50)) | (~ (property(X48)) | (~ (o
 fof(c44, plain, (! [X56,X55]: ((~ (object(X56)) | (~ (property(X55)) | (~ (is_the(X56,X55)) | exemplifies_property(X55,X56)))))), inference(resolution,[status(thm)],[c16,reflexivity])).
 fof(c49, plain, (~ (object(skolem0003)) | (~ (property(skolem0001)) | exemplifies_property(skolem0001,skolem0003))), inference(resolution,[status(thm)],[c44,c12])).
 fof(c55, plain, (~ (object(skolem0003)) | exemplifies_property(skolem0001,skolem0003)), inference(resolution,[status(thm)],[c49,c8])).
-fof(c56, plain, exemplifies_property(skolem0001,skolem0003), inference(resolution,[status(thm)],[c55,c11])).
+fof(c56, plain, ~ (exemplifies_property(skolem0001,skolem0003)), inference(resolution,[status(thm)],[c55,c11])).
 fof(c59, plain, $false, inference(resolution,[status(thm)],[c56,c13])).

@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '198':
-%%%%%   Replaced ((j(e21) = e10) | ((j(e21) = e11) | ((j(e21) = e12) | ((j(e21) = e13) | (j(e21) = e14)))))
-%%%%%   With (~ ((j(e21) = e10)) | ((j(e21) = e11) | ((j(e21) = e12) | ((j(e21) = e13) | (j(e21) = e14)))))
+%%%%% Mutated formula '397':
+%%%%%   Replaced ((op2(e24,h(e10)) = h(e10)) | ((h(e10) = e20) | ((h(e10) = e21) | ((h(e10) = e22) | (h(e10) = e23)))))
+%%%%%   With (~ ((op2(e24,h(e10)) = h(e10))) | ((h(e10) = e20) | ((h(e10) = e21) | ((h(e10) = e22) | (h(e10) = e23)))))
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : ALG088+1 : TPTP v8.1.0. Released v2.7.0.
@@ -58,7 +58,7 @@ fof(167, axiom, (op2(e22,e22) = e21), file('ALG088+1.p',unknown), []).
 fof(179, axiom, (op2(e23,e23) = e21), file('ALG088+1.p',unknown), []).
 fof(191, axiom, (op2(e24,e24) = e21), file('ALG088+1.p',unknown), []).
 fof(192, axiom, ((h(e10) = e20) | ((h(e10) = e21) | ((h(e10) = e22) | ((h(e10) = e23) | (h(e10) = e24))))), file('ALG088+1.p',unknown), []).
-fof(198, axiom, (~ ((j(e21) = e10)) | ((j(e21) = e11) | ((j(e21) = e12) | ((j(e21) = e13) | (j(e21) = e14))))), file('ALG088+1.p',unknown), []).
+fof(198, axiom, ((j(e21) = e10) | ((j(e21) = e11) | ((j(e21) = e12) | ((j(e21) = e13) | (j(e21) = e14))))), file('ALG088+1.p',unknown), []).
 fof(202, axiom, (h(op1(e10,e10)) = op2(h(e10),h(e10))), file('ALG088+1.p',unknown), []).
 fof(203, plain, (op2(h(e10),h(e10)) = h(e10)), inference(flip,[status(thm),theory(equality)],[inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[202]),93])]), [iquote('copy,202,demod,93,flip.1')]).
 fof(220, axiom, (h(op1(e11,e11)) = op2(h(e11),h(e11))), file('ALG088+1.p',unknown), []).
@@ -76,7 +76,7 @@ fof(356, axiom, (h(j(e22)) = e22), file('ALG088+1.p',unknown), []).
 fof(357, plain, (h(op1(j(e21),j(e21))) = e22), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[356]),297]), [iquote('copy,356,demod,297')]).
 fof(362, axiom, (h(j(e24)) = e24), file('ALG088+1.p',unknown), []).
 fof(363, plain, (h(op1(j(e21),op1(j(e21),op1(j(e21),j(e21))))) = e24), inference(demod,[status(thm),theory(equality)],[inference(copy,[status(thm)],[362]),303]), [iquote('copy,362,demod,303')]).
-fof(397, plain, ((op2(e24,h(e10)) = h(e10)) | ((h(e10) = e20) | ((h(e10) = e21) | ((h(e10) = e22) | (h(e10) = e23))))), inference(para_into,[status(thm),theory(equality)],[203,192]), [iquote('para_into,203.1.1.1,192.5.1')]).
+fof(397, plain, (~ ((op2(e24,h(e10)) = h(e10))) | ((h(e10) = e20) | ((h(e10) = e21) | ((h(e10) = e22) | (h(e10) = e23))))), inference(para_into,[status(thm),theory(equality)],[203,192]), [iquote('para_into,203.1.1.1,192.5.1')]).
 fof(512, plain, ((h(e10) = e21) | ((j(e21) = e11) | ((j(e21) = e12) | ((j(e21) = e13) | (j(e21) = e14))))), inference(para_from,[status(thm),theory(equality)],[198,354]), [iquote('para_from,198.1.1,354.1.1.1')]).
 fof(2200, plain, ((h(e11) = e21) | ((h(e10) = e21) | ((j(e21) = e12) | ((j(e21) = e13) | (j(e21) = e14))))), inference(para_from,[status(thm),theory(equality)],[512,354]), [iquote('para_from,512.2.1,354.1.1.1')]).
 fof(2422, plain, ((h(e12) = e21) | ((h(e11) = e21) | ((h(e10) = e21) | ((j(e21) = e13) | (j(e21) = e14))))), inference(para_from,[status(thm),theory(equality)],[2200,354]), [iquote('para_from,2200.3.1,354.1.1.1')]).

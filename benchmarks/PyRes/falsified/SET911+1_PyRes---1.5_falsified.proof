@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula 'c5':
-%%%%%   Replaced (! [X2,X3]: ((~ (in(X2,X3)) | (set_intersection2(X3,singleton(X2)) = singleton(X2)))))
-%%%%%   With (! [X2,X3]: ((in(X2,X3) | (set_intersection2(X3,singleton(X2)) = singleton(X2)))))
+%%%%% Mutated formula 'l32_zfmisc_1':
+%%%%%   Replaced (! [A,B]: ((in(A,B) => (set_intersection2(B,singleton(A)) = singleton(A)))))
+%%%%%   With (! [A,B]: ((~ (in(A,B)) => (set_intersection2(B,singleton(A)) = singleton(A)))))
 %------------------------------------------------------------------------------
 % File     : PyRes---1.5
 % Problem  : SET911+1 : TPTP v8.1.2. Released v3.2.0.
@@ -43,9 +43,9 @@ fof(c9, negated_conjecture, (? [X4,X5]: ((in(X4,X5) & (set_intersection2(X5,sing
 fof(c10, negated_conjecture, (in(skolem0001,skolem0002) & (set_intersection2(skolem0002,singleton(skolem0001)) != singleton(skolem0001))), inference(skolemize,[status(esa)],[c9])).
 fof(c12, negated_conjecture, (set_intersection2(skolem0002,singleton(skolem0001)) != singleton(skolem0001)), inference(split_conjunct,[status(thm)],[c10])).
 fof(c11, negated_conjecture, in(skolem0001,skolem0002), inference(split_conjunct,[status(thm)],[c10])).
-fof(l32_zfmisc_1, axiom, (! [A,B]: ((in(A,B) => (set_intersection2(B,singleton(A)) = singleton(A))))), file('SET911+1.p',l32_zfmisc_1)).
+fof(l32_zfmisc_1, axiom, (! [A,B]: ((~ (in(A,B)) => (set_intersection2(B,singleton(A)) = singleton(A))))), file('SET911+1.p',l32_zfmisc_1)).
 fof(c4, plain, (! [A,B]: ((~ (in(A,B)) | (set_intersection2(B,singleton(A)) = singleton(A))))), inference(fof_nnf,[status(thm)],[l32_zfmisc_1])).
-fof(c5, plain, (! [X2,X3]: ((in(X2,X3) | (set_intersection2(X3,singleton(X2)) = singleton(X2))))), inference(variable_rename,[status(thm)],[c4])).
+fof(c5, plain, (! [X2,X3]: ((~ (in(X2,X3)) | (set_intersection2(X3,singleton(X2)) = singleton(X2))))), inference(variable_rename,[status(thm)],[c4])).
 fof(c6, plain, (! [X60,X59]: ((~ (in(X60,X59)) | (set_intersection2(X59,singleton(X60)) = singleton(X60))))), inference(split_conjunct,[status(thm)],[c5])).
 fof(c71, plain, (set_intersection2(skolem0002,singleton(skolem0001)) = singleton(skolem0001)), inference(resolution,[status(thm)],[c6,c11])).
 fof(c412, plain, $false, inference(resolution,[status(thm)],[c71,c12])).

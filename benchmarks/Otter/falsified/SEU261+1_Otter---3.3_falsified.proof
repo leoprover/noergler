@@ -1,7 +1,7 @@
 %%%%% proof automtaically falsified using the following operations:
-%%%%% Mutated formula '29':
-%%%%%   Replaced transitive(dollar_c3)
-%%%%%   With transitive(dollar_c2)
+%%%%% Mutated formula '21':
+%%%%%   Replaced well_founded_relation(dollar_c4)
+%%%%%   With well_founded_relation(dollar_c3)
 %------------------------------------------------------------------------------
 % File     : Otter---3.3
 % Problem  : SEU261+1 : TPTP v8.1.0. Released v3.3.0.
@@ -51,7 +51,7 @@ fof(17, axiom, relation(dollar_c2), file('SEU261+1.p',unknown), []).
 fof(18, axiom, function(dollar_c2), file('SEU261+1.p',unknown), []).
 fof(19, axiom, well_ordering(dollar_c4), file('SEU261+1.p',unknown), []).
 fof(20, axiom, relation_isomorphism(dollar_c4,dollar_c3,dollar_c2), file('SEU261+1.p',unknown), []).
-fof(21, plain, well_founded_relation(dollar_c4), inference(hyper,[status(thm)],[19,5,15]), [iquote('hyper,19,5,15')]).
+fof(21, plain, well_founded_relation(dollar_c3), inference(hyper,[status(thm)],[19,5,15]), [iquote('hyper,19,5,15')]).
 fof(22, plain, connected(dollar_c4), inference(hyper,[status(thm)],[19,4,15]), [iquote('hyper,19,4,15')]).
 fof(23, plain, antisymmetric(dollar_c4), inference(hyper,[status(thm)],[19,3,15]), [iquote('hyper,19,3,15')]).
 fof(24, plain, transitive(dollar_c4), inference(hyper,[status(thm)],[19,2,15]), [iquote('hyper,19,2,15')]).
@@ -59,7 +59,7 @@ fof(25, plain, reflexive(dollar_c4), inference(hyper,[status(thm)],[19,1,15]), [
 fof(26, plain, well_founded_relation(dollar_c3), inference(hyper,[status(thm)],[20,11,15,16,17,18,21]), [iquote('hyper,20,11,15,16,17,18,21')]).
 fof(27, plain, antisymmetric(dollar_c3), inference(hyper,[status(thm)],[20,10,15,16,17,18,23]), [iquote('hyper,20,10,15,16,17,18,23')]).
 fof(28, plain, connected(dollar_c3), inference(hyper,[status(thm)],[20,9,15,16,17,18,22]), [iquote('hyper,20,9,15,16,17,18,22')]).
-fof(29, plain, transitive(dollar_c2), inference(hyper,[status(thm)],[24,8,15,16,17,18,20]), [iquote('hyper,24,8,15,16,17,18,20')]).
+fof(29, plain, transitive(dollar_c3), inference(hyper,[status(thm)],[24,8,15,16,17,18,20]), [iquote('hyper,24,8,15,16,17,18,20')]).
 fof(30, plain, reflexive(dollar_c3), inference(hyper,[status(thm)],[25,7,15,16,17,18,20]), [iquote('hyper,25,7,15,16,17,18,20')]).
 fof(31, plain, well_ordering(dollar_c3), inference(hyper,[status(thm)],[30,6,16,29,27,28,26]), [iquote('hyper,30,6,16,29,27,28,26')]).
 fof(32, plain, $false, inference(binary,[status(thm)],[31,12]), [iquote('binary,31.1,12.1')]).
