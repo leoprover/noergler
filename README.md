@@ -1,22 +1,28 @@
 Nörgler TSTP proof checker
 
 ```
-usage: noergler [options] <problem file> <proof file>
+usage: noergler [options] [--problem <problem file>] <proof file>
 
  Nörgler is a proof checker for proofs from automated theorem provers
- in the TSTP format from the TPTP infrastructure. Currently, only
- checking of refutational FOF proofs is supported.
- The TSTP proof of <problem file> is supplied in <proof file>.
+ in the TSTP format from the TPTP infrastructure. Checking of refutations
+ of FOF, TFF and THF formulae is supported.
 
- Nörgler will check the following things:
+ The proof is supplied in <proof file>. If a <problem file> is also provided,
+ Nörgler will verify the proof relative to the problem's axioms and conjecture.
+
+ Nörgler will always check the following structural and logical properties:
    - Uniqueness of formula names
    - Conclusion of proof with $false
    - Acyclicity of inference parent graph (from $false upward)
    - Existence of inference parents in each proof step earlier in proof
-   - Correctness of copies of axioms/conjecture from problem file
-   - Correctness of negation of conjecture
    - Correctness of Skolemization steps wrt. simple internal skolemization procedure
    - Provability of thm/cth steps in proof using external provers
+   - Conjecture is never directly used in refutation (only as negated conjecture)
+   - Only the conjecture is negated using a cth status inference.
+
+ If a <problem file> is provided, Nörgler additionally checks:
+   - Correctness of copies of axioms/conjecture from problem file
+   - Correctness of negation of conjecture
 
  If one of these steps fail with an error, Nörgler will return SZS status
  FailedVerified.
@@ -26,8 +32,8 @@ usage: noergler [options] <problem file> <proof file>
  does not make any claims with regard to correctness.
 
  Options:
-  --timeout t  Timeout after n seconds (soft limit, best effort).
-               A timeout will result in a SZS status NotVerified output.
+  --timeout t      Timeout after n seconds (soft limit, best effort).
+                   A timeout will result in a SZS status NotVerified output.
 
   --prover name(s) Select the prover(s) to use for verifying thm/cth steps.
                    Options: 'eprover', 'vampire', 'all' (use all available),
@@ -38,18 +44,18 @@ usage: noergler [options] <problem file> <proof file>
                    Otherwise, they are run in parallel.
                    Default:'eprover'
 
-  --eprover path
-               Path to eprover, if not findable by `which eprover`.
+  --eprover-path path
+                  Path to eprover, if not findable by `which eprover`.
 
   --vampire-path path
                   Path to vampire, if not findable by `which vampire`.
 
+  --mace4-path path
+                  Path to mace4, if not findable by `which mace4`.
+
   --model-finder  Select the model finder to be used.
                   Options:'mace4'
                   Default:'mace4'
-
-  --mace4-path path
-                  Path to mace4, if not findable by `which mace4`.
 
   --parallel-mode mode Set the parallelization strategy.
                   Options:
@@ -68,6 +74,13 @@ usage: noergler [options] <problem file> <proof file>
                      - offset: start countermodel-finder in parallel after running
                        provers without success for 1 second.
 
+  --verbosity n   Set the verbosity of logging to std.err. If n = 0, logging is disabled;
+                  n = 6 is maximal verbosity (very fine-grained logging output).
+
+  --version       Print the version number of the executable and terminate.
+
+  --help          Print this description and terminate.
+
   --up-to-esa     If set, Nörgler will not attempt to verify ESA steps (including Skolemization).
                   Recommended for provers that do not follow to precise Skolemization annotation format.
 
@@ -85,7 +98,7 @@ usage: noergler [options] <problem file> <proof file>
 
   --relax-specified-inference-checks
                   Effects those steps derived by inferences with specified inference rules that trigger
-                  checks via comparison to internally derived results (currently negate3d_conjecture
+                  checks via comparison to internally derived results (currently negated_conjecture
                   and Skolemization). If set, Nörgler will test if the step of the proof is derivable from the
                   internally produced version, as a fallback if formulas are not identical.
 
@@ -93,12 +106,4 @@ usage: noergler [options] <problem file> <proof file>
                   If set, Nörgler will allow axioms with an annotation other than file, but print a warning
                   indicating that an axiom was introduced. Recommended for provers that introduce built-in
                   theory axioms.
-
-  --verbosity n
-               Set the verbosity of logging to std.err. If n = 0, logging is disabled;
-               n = 6 is maximal verbosity (very fine-grained logging output).
-
-  --version    Print the version number of the executable and terminate.
-
-  --help       Print this description and terminate.
 ```
