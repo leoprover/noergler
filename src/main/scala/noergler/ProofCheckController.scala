@@ -415,11 +415,11 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
         configuration.parallelCountermodelMode match {
           case ProofCheckController.NoModelFinder =>
-            val allSystemsToRun: Iterator[ProofSystem] = provers.toIterator
+            val allSystemsToRun: Iterator[ProofSystem] = provers.iterator
             allSystemsToRun.map(prover => runSingleProver(prover, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
           case ProofCheckController.Fallback =>
             val allSystemsToRun: Set[ProofSystem] = provers.map(p => p: ProofSystem) + modelFinder
-            allSystemsToRun.toIterator.map(prover => runSingleProver(prover, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
+            allSystemsToRun.iterator.map(prover => runSingleProver(prover, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
           case ProofCheckController.Offset(t) =>
             // start running the provers in sequence and if there is no result after x seconds, also start the counter model finder
             ???
