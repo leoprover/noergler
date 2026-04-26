@@ -1,4 +1,7 @@
-Nörgler TSTP proof checker
+# Nörgler TSTP proof checker
+
+Nörgler may be cited as [![DOI](https://zenodo.org/badge/1193577802.svg)](https://doi.org/10.5281/zenodo.19787117).
+
 
 ```
 usage: noergler [options] [--problem <problem file>] <proof file>
