@@ -9,7 +9,7 @@ import java.nio.file.{InvalidPathException, Path}
 
 object Noergler {
   final val name: String = "noergler"
-  final val version: String = "0.1"
+  final val version: String = "1.0"
 
   private[this] final val logger: Logger = Logger.getLogger("Nörgler")
   private[this] var inputProblemName: Option[String] = None
@@ -123,8 +123,8 @@ object Noergler {
     println(
       s"""
          | Nörgler is a proof checker for proofs from automated theorem provers
-         | in the TSTP format from the TPTP infrastructure. Currently, only
-         | checking of refutational FOF proofs is supported.
+         | in the TSTP format from the TPTP infrastructure. Checking of refutations
+         | of FOF, TFF and THF formulae is supported.
          |
          | The proof is supplied in <proof file>. If a <problem file> is also provided,
          | Nörgler will verify the proof relative to the problem's axioms and conjecture.
@@ -136,6 +136,8 @@ object Noergler {
          |   - Existence of inference parents in each proof step earlier in proof
          |   - Correctness of Skolemization steps wrt. simple internal skolemization procedure
          |   - Provability of thm/cth steps in proof using external provers
+         |   - Conjecture is never directly used in refutation (only as negated conjecture)
+         |   - Only the conjecture is negated using a cth status inference.
          |
          | If a <problem file> is provided, Nörgler additionally checks:
          |   - Correctness of copies of axioms/conjecture from problem file
