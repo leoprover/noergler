@@ -12,11 +12,13 @@ object Noergler {
   final val version: String = "1.0"
 
   private[this] final val logger: Logger = Logger.getLogger("Nörgler")
+  /** TPTP directory for resolving import statements */
+  private[this] val tptpHomeDirectory: Option[String] = sys.env.get("TPTP")
+
   private[this] var inputProblemName: Option[String] = None
   private[this] var inputProofName: String = ""
   private[this] var parameters: Seq[ProofCheckController.Parameter] = Seq.empty
   private[this] var verbosity: Level = Level.INFO
-  private[this] val tptpHomeDirectory: Option[String] = sys.env.get("TPTP")
 
   final def main(args: Array[String]): Unit = {
     if (args.contains("--help")) {
@@ -41,16 +43,14 @@ object Noergler {
         val ch = new ConsoleHandler
         ch.setLevel(Level.ALL)
         logger.addHandler(ch)
+        // logging crap end
         logger.fine(s"Nörgler started.")
-        // Read input
-        val (problemPath, problem): (Option[Path], Option[TPTP.Problem]) = if (inputProblemName.isDefined) {
-          val problemPath0 = Path.of(inputProblemName.get).toAbsolutePath
-          // Parse input problem
-          (Some(problemPath0),Some(parseTPTPFile(problemPath0)))
-        } else (None, None)
+        // Read input: Problem (if any)
+        val problemPath: Option[Path] = inputProblemName.map(Path.of(_).toAbsolutePath)
+        val problem: Option[TPTP.Problem] = problemPath.map(parseTPTPFile)
         problemFileParsed = true
+        // Read input: Proof
         val proofPath = Path.of(inputProofName).toAbsolutePath
-        // Parse input proof
         val proof: TPTP.Problem = parseTPTPFile(proofPath)
         // Call checker controller
         val result: Result = ProofCheckController.apply(problemPath, proofPath, problem, proof, parameters)
@@ -84,7 +84,7 @@ object Noergler {
   }
 
   private[this] def parseTPTPFile(path: Path): TPTP.Problem = {
-    if (tptpHomeDirectory.isDefined) leo.modules.tptputils.parseTPTPFileWithIncludes(path, tptpHomeDirectory) else leo.modules.tptputils.parseTPTPFileWithoutIncludes(path)
+    leo.modules.tptputils.parseTPTPFileWithIncludes(path, tptpHomeDirectory)
   }
 
   private final def generateSZSResult(szsWord: String, szsStatus: String, result: String, szsDatatype: String, withPrefix: Boolean, extraTSTPMessage: String = "") = {
@@ -173,8 +173,8 @@ object Noergler {
          |                  Path to mace4, if not findable by `which mace4`.
          |
          |  --model-finder  Select the model finder to be used.
-         |                  Options:'mace4'
-         |                  Default:'mace4'
+         |                  Options: 'mace4'
+         |                  Default: 'mace4'
          |
          |  --parallel-mode mode Set the parallelization strategy.
          |                  Options:
@@ -228,65 +228,69 @@ object Noergler {
          |""".stripMargin)
   }
 
-  //todo: other potential model finders: princess, metis, fest, alloy, Nitpick, kodkod
-
   private[this] final def parseArgs(args: Seq[String]): Unit = {
     var args0 = args
+    def nextArg(): String = {
+      val arg = args0.tail.head
+      args0 = args0.tail
+      arg
+    }
+
     try {
       var hd = args0.head
       while (hd.startsWith("--")) { // Optional flags
         hd match {
           case "--problem" =>
-            val path = args0.tail.head
+            val path = nextArg()
             inputProblemName = Some(path)
-            args0 = args0.tail
+
           case "--timeout" =>
-            val to = args0.tail.head
+            val to = nextArg()
             parameters = parameters :+ ProofCheckController.Timeout(to.toInt)
-            args0 = args0.tail
+
           case "--prover" =>
-            val input = args0.tail.head
+            val input = nextArg()
             val selectedProvers = if (input == "all") {
               List("eprover", "vampire")
             } else {
               input.split(",").map(_.trim).toList
             }
             parameters = parameters :+ ProofCheckController.ProverSelection(selectedProvers)
-            args0 = args0.tail
+
           case "--eprover-path" =>
-            val path = args0.tail.head
+            val path = nextArg()
             parameters = parameters :+ ProofCheckController.EproverPath(Path.of(path))
-            args0 = args0.tail
+
           case "--model-finder" =>
-            val input = args0.tail.head
+            val input = nextArg()
             parameters = parameters :+ ProofCheckController.ModelFinderSelection(input)
-            args0 = args0.tail
+
           case "--vampire-path" =>
-            val path = args0.tail.head
+            val path = nextArg()
             parameters = parameters :+ ProofCheckController.VampirePath(Path.of(path))
-            args0 = args0.tail
+
           case "--mace4-path" =>
-            val path = args0.tail.head
+            val path = nextArg()
             parameters = parameters :+ ProofCheckController.Mace4Path(Path.of(path))
-            args0 = args0.tail
+
           case "--parallel-mode" =>
-            val mode = args0.tail.head
+            val mode = nextArg()
             val validModes = Set("none", "steps", "provers", "hybrid")
             if (!validModes.contains(mode)) {
               throw new IllegalArgumentException(s"Invalid parallel-mode '$mode'. Must be one of: ${validModes.mkString(", ")}")
             }
             parameters = parameters :+ ProofCheckController.SetParallelMode(mode)
-            args0 = args0.tail
+
           case "--parallel-model-finder-mode" =>
-            val mode = args0.tail.head
+            val mode = nextArg()
             val validModes = Set("none", "fallback", "always", "offset")
             if (!validModes.contains(mode)) {
               throw new IllegalArgumentException(s"Invalid parallel-countermodel-mode '$mode'. Must be one of: ${validModes.mkString(", ")}")
             }
             parameters = parameters :+ ProofCheckController.SetParallelCountermodelMode(mode)
-            args0 = args0.tail
+
           case "--verbosity" =>
-            val arg = args0.tail.head.toInt
+            val arg = nextArg().toInt
             val level = arg match {
               case _ if arg <= 0  => Level.OFF
               case 1 => Level.SEVERE
@@ -297,7 +301,7 @@ object Noergler {
               case _ if arg >= 6 => Level.FINEST
             }
             verbosity = level
-            args0 = args0.tail
+
           case "--relax-annotation-format" =>
             parameters = parameters :+ ProofCheckController.RelaxAnnotationFormat
           case "--relax-problem-check" =>
