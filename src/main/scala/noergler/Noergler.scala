@@ -250,12 +250,7 @@ object Noergler {
 
           case "--prover" =>
             val input = nextArg()
-            val selectedProvers = if (input == "all") {
-              List("eprover", "vampire")
-            } else {
-              input.split(",").map(_.trim).toList
-            }
-            parameters = parameters :+ ProofCheckController.ProverSelection(selectedProvers)
+            parameters = parameters :+ ProofCheckController.ProverSelection.parseArg(input)
 
           case "--eprover-path" =>
             val path = nextArg()
@@ -275,19 +270,11 @@ object Noergler {
 
           case "--parallel-mode" =>
             val mode = nextArg()
-            val validModes = Set("none", "steps", "provers", "hybrid")
-            if (!validModes.contains(mode)) {
-              throw new IllegalArgumentException(s"Invalid parallel-mode '$mode'. Must be one of: ${validModes.mkString(", ")}")
-            }
-            parameters = parameters :+ ProofCheckController.SetParallelMode(mode)
+            parameters = parameters :+ ProofCheckController.SetParallelMode.parseArg(mode)
 
           case "--parallel-model-finder-mode" =>
             val mode = nextArg()
-            val validModes = Set("none", "fallback", "always", "offset")
-            if (!validModes.contains(mode)) {
-              throw new IllegalArgumentException(s"Invalid parallel-countermodel-mode '$mode'. Must be one of: ${validModes.mkString(", ")}")
-            }
-            parameters = parameters :+ ProofCheckController.SetParallelCountermodelMode(mode)
+            parameters = parameters :+ ProofCheckController.SetParallelCountermodelMode.parseArg(mode)
 
           case "--verbosity" =>
             val arg = nextArg().toInt

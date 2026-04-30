@@ -487,47 +487,36 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 object ProofCheckController {
 
   // Provers
-
   sealed trait ProofSystem {
     def name: String
     def path: Path
-
     def kind: String
   }
 
-  sealed trait Prover extends ProofSystem{
-    val kind = "prover"
+  sealed trait Prover extends ProofSystem {
+    override final val kind = "prover"
   }
 
-  sealed trait ModelFinder extends ProofSystem{
-    val kind = "modelFinder"
+  sealed trait ModelFinder extends ProofSystem {
+    override final val kind = "modelFinder"
   }
 
-
-
-  case class EProver(path: Path) extends Prover {val name = "eprover"}
-  case class Vampire(path: Path) extends Prover {val name = "vampire"}
-
-  case class Mace4(path: Path) extends  ModelFinder {val name = "mace4"}
+  case class EProver(path: Path) extends Prover { override final val name = "eprover" }
+  case class Vampire(path: Path) extends Prover { override final val name = "vampire" }
+  case class Mace4(path: Path) extends ModelFinder { override final val name = "mace4" }
 
   // Parallelization Modes
   sealed trait ParallelMode
-
   case object Sequential extends ParallelMode
   case object ParallelSteps extends ParallelMode
   case object ParallelProvers extends ParallelMode
   case object Hybrid extends ParallelMode
 
   sealed trait ParallelCountermodelMode
-
   case object NoModelFinder extends ParallelCountermodelMode
   case object Fallback extends ParallelCountermodelMode
-
   case class Offset(t: Int) extends ParallelCountermodelMode
-
   case object Always extends ParallelCountermodelMode
-
-
 
   val StepParallelisazionModes = Seq(ParallelSteps, Hybrid)
   val ProverParallelisazionModes = Seq(ParallelProvers, Hybrid)
@@ -573,30 +562,50 @@ object ProofCheckController {
   sealed abstract class Parameter
   final case class Timeout(timeout: Int) extends Parameter
   final case class SetParallelMode(mode: String) extends Parameter
+  case object SetParallelMode {
+    final def parseArg(arg: String): SetParallelMode = {
+      val validModes = Set("none", "steps", "provers", "hybrid")
+      if (!validModes.contains(arg)) {
+        throw new IllegalArgumentException(s"Invalid parallel-mode '$arg'. Must be one of: ${validModes.mkString(", ")}")
+      }
+      SetParallelMode(arg)
+    }
+  }
 
   final case class SetParallelCountermodelMode(mode: String) extends Parameter
+  object SetParallelCountermodelMode {
+    final def parseArg(arg: String): SetParallelCountermodelMode = {
+      val validModes = Set("none", "fallback", "always", "offset")
+      if (!validModes.contains(arg)) {
+        throw new IllegalArgumentException(s"Invalid parallel-countermodel-mode '$arg'. Must be one of: ${validModes.mkString(", ")}")
+      }
+      SetParallelCountermodelMode(arg)
+    }
+  }
 
   final case object IgnoreFileAnnotations extends Parameter
   final case object RelaxAnnotationFormat extends Parameter
-
   final case object RelaxProblemCheck extends Parameter
-
   final case object RelaxSpecifiedInferenceCheck extends Parameter
-
   final case object AllowProverAxioms extends Parameter
-
   final case object UpToESA extends Parameter
 
   final case class ProverSelection(provers: Seq[String]) extends Parameter
-
+  object ProverSelection {
+    final def parseArg(arg: String): ProverSelection = {
+      val selectedProvers = if (arg == "all") {
+        List("eprover", "vampire")
+      } else {
+        arg.split(",").map(_.trim).toList
+      }
+      ProverSelection(selectedProvers)
+    }
+  }
   final case class ModelFinderSelection(modelFinder: String) extends Parameter
   final case class EproverPath(path: Path) extends Parameter
-
   final case class VampirePath(path: Path) extends Parameter
-
   final case class Mace4Path(path: Path) extends Parameter
-
-
+  
   /** Factory method for a [[ProofCheckController]] based on the given arguments. */
   final def apply(problemPath: Option[Path],
                   proofPath:  Path,
