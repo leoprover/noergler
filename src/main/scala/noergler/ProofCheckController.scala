@@ -91,8 +91,6 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     //////////////////////////////////////////////////////////
     // Actual checking
     //////////////////////////////////////////////////////////
-    // create/start check tasks. for first iteration just sequental.
-    // TODO: refactor to switch to parallel check
     logger.fine("Processing proof ...")
     try {
       //////////////////
@@ -191,32 +189,13 @@ class ProofCheckController(problem: Option[TPTP.Problem],
       }
 
       if (StepParallelisazionModes.contains(configuration.parallelMode)) {
-//        logger.info(s"Waiting for verification tasks to finish ...")
-//        val totalNumberOfFutures = openFutures.size
-//        blocking {
-//          while (openFutures.nonEmpty) {
-//            try {
-//              val (finishedFutures, notYetFinishedFutures) = openFutures.partition(_.isCompleted)
-//              openFutures = notYetFinishedFutures
-//              finishedFutures.foreach { f =>
-//                f.value.get match {
-//                  case Failure(exception) => throw exception
-//                  case Success(_) => () // We don't care about the value, do we?
-//                } }
-//              logger.info(s"${totalNumberOfFutures-notYetFinishedFutures.size}/${totalNumberOfFutures} tasks done.")
-//              Thread.sleep(10)
-//            } catch {
-//              case _:InterruptedException => ()
-//            }
-//          }
-//        }
-
         already_showed_false.get() match {
           case Some(exception) =>
             throw exception
           case None =>
             logger.info(s"Waiting for verification tasks to finish ...")
             Await.result(Future.sequence(openFutures), configuration.timeout.seconds)
+            // TODO: Isnt this the same as before with extra steps? Discuss
             logger.info(s"All checks succeeded.")
         }
       }
@@ -237,9 +216,9 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     }
   }
 
-  // TODO: We can add parallelism in these check methods below
-  // What do parellize? I think probably just the generic thm steps, everything
-  // else can be done internally and sequentially (quick fast, I think).
+  //////////////////////////////////////////////////////////
+  // Check delegate methods BEGIN
+  //////////////////////////////////////////////////////////
   private def checkProofEndsInFalse(): Unit = {
     logger.fine("Check for $false at the end of proof.")
     val endsWithFalseCheck = ProofEndsInFalseCheck.apply(proof)
@@ -282,13 +261,12 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     if (!statusNotCthCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' is not the negation of the conjecture but has status cth.")
   }
 
-
+  private final val allowedRoles = Seq("axiom", "conjecture", "negated_conjecture", "plain", "type", "definition")
   private def checkRole(proofstep: TPTP.AnnotatedFormula): Unit = {
     if (problem.isEmpty && proofstep.role == "conjecture") {
       logger.finer(s"Found conjecture in proof: ${proofstep.name}")
       problemConjectureName = Some(proofstep.name)
     }
-    val allowedRoles = Seq("axiom", "conjecture", "negated_conjecture", "plain", "type")
     val roleCheck = allowedRoles.contains(proofstep.role)
     if (!roleCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' has unknown role.")
   }
@@ -321,9 +299,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
         usedSkolemSymbols = usedSkolemSymbols + skolemSymbolIntroduced
     }
     logger.fine(s"Skolemization correct (${proofstep.name}): ${checkSkolemize.isRight}")
-
   }
-
 
   private def checkGenericInference(rule: String, proofstep: TPTP.AnnotatedFormula, status: Either[THM.type , CTH.type], provers: Set[Prover], modelFinder: ModelFinder, custumProofFormulas:  Option[Map[String, TPTP.AnnotatedFormula]] = None): Unit = {
 
@@ -483,6 +459,9 @@ class ProofCheckController(problem: Option[TPTP.Problem],
     logger.fine(s"Formula equivalent to problem statement (${proofstep.name}): $checkFormulaFromFile")
     if (!checkFormulaFromFile) throw new VerificationFailedException(s"Proof step '${proofstep.name}' does not use correct formula from file.")
   }
+  //////////////////////////////////////////////////////////
+  // Check delegate methods END
+  //////////////////////////////////////////////////////////
 }
 object ProofCheckController {
 
