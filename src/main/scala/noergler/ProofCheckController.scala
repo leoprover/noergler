@@ -2,9 +2,9 @@ package noergler
 
 import leo.datastructures.TPTP
 import leo.datastructures.TPTP.FOF
-import noergler.ProofCheckController.{Configuration, ModelFinder, Prover, ProverParallelisazionModes, StepParallelisazionModes, VerificationFailedException, VerificationTimedOutException, defaultRelaxAnnotationFormat}
-import noergler.checks.GenericInferenceCheck.{constructInferenceProblem, logger}
-import noergler.ProofCheckController.{ModelFinder, ProofSystem, Prover}
+import noergler.ProofCheckController.{Configuration, ModelFinder, Prover, ProverParallelisazionModes, StepParallelisazionModes, VerificationFailedException, VerificationTimedOutException}
+import noergler.checks.GenericInferenceCheck.logger
+import noergler.ProofCheckController.ProofSystem
 import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsAreNotConjecture, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
 
 import java.nio.file.Path
@@ -46,7 +46,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
   private var problemConjectureName: Option[String] = None
 
   /** The sequence of proof steps as they appear in the proof. */
-  private var proofSteps: Seq[TPTP.AnnotatedFormula] = Vector.from(proof.formulas)
+  private val proofSteps: Seq[TPTP.AnnotatedFormula] = Vector.from(proof.formulas)
   /** Map of proof file TPTP annotated formula name (hopefully unique) -> the formula */
   private var proofFormulas: Map[String, TPTP.AnnotatedFormula] = Map.empty
 
@@ -111,7 +111,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
       //////////////////
       /** All the steps that have already been processed. Initially empty. */
       var previousProofSteps: Seq[TPTP.AnnotatedFormula] = Vector.empty
-      for (proofstep <- proofSteps if !already_showed_false.get().isDefined) {
+      for (proofstep <- proofSteps if already_showed_false.get().isEmpty) {
         var addedNewFuture = false
         var skippedStep = false
         logger.finer(s"Checking proof step '${proofstep.name}' with annotation '${proofstep.annotations.map(_._1.pretty).getOrElse("")}' ...")
@@ -180,7 +180,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
               else throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown record '$record'.")
           }
           case None if proofstep.role == "type" =>
-            if (!problem.isDefined) declarations = declarations :+ proofstep
+            if (problem.isEmpty) declarations = declarations :+ proofstep
           logger.fine(s"found type annotation ${proofstep.pretty}")
           case None => // no annotation is an error for all steps.
             logger.severe(s"Proof step '${proofstep.name}' has no or malformed annotation.")
@@ -284,7 +284,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
 
 
   private def checkRole(proofstep: TPTP.AnnotatedFormula): Unit = {
-    if (!problem.isDefined && proofstep.role == "conjecture") {
+    if (problem.isEmpty && proofstep.role == "conjecture") {
       logger.finer(s"Found conjecture in proof: ${proofstep.name}")
       problemConjectureName = Some(proofstep.name)
     }
@@ -420,7 +420,7 @@ class ProofCheckController(problem: Option[TPTP.Problem],
           case ProofCheckController.Fallback =>
             val allSystemsToRun: Set[ProofSystem] = provers.map(p => p: ProofSystem) + modelFinder
             allSystemsToRun.iterator.map(prover => runSingleProver(prover, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
-          case ProofCheckController.Offset(t) =>
+          case ProofCheckController.Offset(_) =>
             // start running the provers in sequence and if there is no result after x seconds, also start the counter model finder
             ???
           case ProofCheckController.Always =>
@@ -507,19 +507,19 @@ object ProofCheckController {
 
   // Parallelization Modes
   sealed trait ParallelMode
-  case object Sequential extends ParallelMode
-  case object ParallelSteps extends ParallelMode
-  case object ParallelProvers extends ParallelMode
-  case object Hybrid extends ParallelMode
+  private case object Sequential extends ParallelMode
+  private case object ParallelSteps extends ParallelMode
+  private case object ParallelProvers extends ParallelMode
+  private case object Hybrid extends ParallelMode
 
   sealed trait ParallelCountermodelMode
-  case object NoModelFinder extends ParallelCountermodelMode
-  case object Fallback extends ParallelCountermodelMode
-  case class Offset(t: Int) extends ParallelCountermodelMode
-  case object Always extends ParallelCountermodelMode
+  private case object NoModelFinder extends ParallelCountermodelMode
+  private case object Fallback extends ParallelCountermodelMode
+  private case class Offset(t: Int) extends ParallelCountermodelMode
+  private case object Always extends ParallelCountermodelMode
 
-  val StepParallelisazionModes = Seq(ParallelSteps, Hybrid)
-  val ProverParallelisazionModes = Seq(ParallelProvers, Hybrid)
+  private final val StepParallelisazionModes: Seq[ParallelMode] = Seq(ParallelSteps, Hybrid)
+  private final val ProverParallelisazionModes: Seq[ParallelMode] = Seq(ParallelProvers, Hybrid)
   //val ModelCheckerParallelisazionModes = Seq(Offset(_), Always)
 
   final case class Configuration(problemPath: Option[Path],
@@ -561,14 +561,17 @@ object ProofCheckController {
 
   sealed abstract class Parameter
   final case class Timeout(timeout: Int) extends Parameter
-  final case class SetParallelMode(mode: String) extends Parameter
+  final case class SetParallelMode(mode: ParallelMode) extends Parameter
   case object SetParallelMode {
     final def parseArg(arg: String): SetParallelMode = {
-      val validModes = Set("none", "steps", "provers", "hybrid")
-      if (!validModes.contains(arg)) {
-        throw new IllegalArgumentException(s"Invalid parallel-mode '$arg'. Must be one of: ${validModes.mkString(", ")}")
+      val mode = arg match {
+        case "none" => Sequential
+        case "steps" => ParallelSteps
+        case "provers" => ParallelProvers
+        case "hybrid" => Hybrid
+        case _ => throw new IllegalArgumentException(s"Invalid parallel-mode '$arg'. Must be one of: 'none', 'steps', 'provers', 'hybrid'.")
       }
-      SetParallelMode(arg)
+      SetParallelMode(mode)
     }
   }
 
@@ -583,12 +586,12 @@ object ProofCheckController {
     }
   }
 
-  final case object IgnoreFileAnnotations extends Parameter
-  final case object RelaxAnnotationFormat extends Parameter
-  final case object RelaxProblemCheck extends Parameter
-  final case object RelaxSpecifiedInferenceCheck extends Parameter
-  final case object AllowProverAxioms extends Parameter
-  final case object UpToESA extends Parameter
+  case object IgnoreFileAnnotations extends Parameter //FIXME: Never parsed from CLI arguments
+  case object RelaxAnnotationFormat extends Parameter
+  case object RelaxProblemCheck extends Parameter
+  case object RelaxSpecifiedInferenceCheck extends Parameter
+  case object AllowProverAxioms extends Parameter
+  case object UpToESA extends Parameter
 
   final case class ProverSelection(provers: Seq[String]) extends Parameter
   object ProverSelection {
@@ -605,7 +608,7 @@ object ProofCheckController {
   final case class EproverPath(path: Path) extends Parameter
   final case class VampirePath(path: Path) extends Parameter
   final case class Mace4Path(path: Path) extends Parameter
-  
+
   /** Factory method for a [[ProofCheckController]] based on the given arguments. */
   final def apply(problemPath: Option[Path],
                   proofPath:  Path,
@@ -632,12 +635,7 @@ object ProofCheckController {
     for (parameter <- parameters) {
       parameter match {
         case Timeout(to) => timeout = to
-        case SetParallelMode(mode0) => parallel = mode0 match {
-          case "steps" => ParallelSteps
-          case "provers" => ParallelProvers
-          case "hybrid" => Hybrid
-          case _ => Sequential //todo: print message
-        }
+        case SetParallelMode(mode) => parallel = mode
         case SetParallelCountermodelMode(mode0) => parallelCountermodel = mode0 match {
           case "none" => NoModelFinder
           case "fallback" => useModelFinders = true; Fallback
@@ -661,10 +659,10 @@ object ProofCheckController {
 
     var provers: Set[Prover] = selectedProvers.map {
       case "eprover" =>
-        if (!eproverPath.isDefined) throw new IllegalArgumentException("eprover path unknown")
+        if (eproverPath.isEmpty) throw new IllegalArgumentException("eprover path unknown")
         EProver(eproverPath.get)
       case "vampire" =>
-        if (!vampirePath.isDefined) throw new IllegalArgumentException("vampire path unknown")
+        if (vampirePath.isEmpty) throw new IllegalArgumentException("vampire path unknown")
         Vampire(vampirePath.get)
       case p => throw new IllegalArgumentException(s"Unknown prover '$p' requested")
     }
@@ -672,23 +670,20 @@ object ProofCheckController {
     val modelFinders: ModelFinder = {
       selectedModelFinders match {
         case "mace4" =>
-          if (!mace4Path.isDefined) throw new IllegalArgumentException("mace4 path unknown")
+          if (mace4Path.isEmpty) throw new IllegalArgumentException("mace4 path unknown")
           Mace4(mace4Path.get)
         case p => throw new IllegalArgumentException(s"Unknown model-finder '$p' requested")
       }
     }
 
-    assert(provers.size > 0)
+    assert(provers.nonEmpty) //FIXME: Should we really use an assert here? maybe an if/else with exception?
     // check if parallelisazion mode requires mutliple provers and if multiple provers were chosen
     if (ProverParallelisazionModes.contains(parallel) && provers.size == 1){
       throw new IllegalArgumentException(s"Selected parallelisazion mode $parallel requires multiple provers, but only ${provers.head.name} was chosen. Either provide multiple provers explicitly, or set '--prover all'")
     }
     if (provers.size > 1 && parallel == Sequential) {
       parallelCountermodel match {
-        case Offset(t) =>
-          logger.info(s"Sequential use of multiple provers in combination with model-checker parallelization is currently not supported. Only using ${provers.head.name} instead of ${provers.map(_.name).mkString(", ")}")
-          provers = Set(provers.head)
-        case Always =>
+        case Offset(_) | Always =>
           logger.info(s"Sequential use of multiple provers in combination with model-checker parallelization is currently not supported. Only using ${provers.head.name} instead of ${provers.map(_.name).mkString(", ")}")
           provers = Set(provers.head)
         case _ => // nothing to do

@@ -24,7 +24,7 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
                                  (implicit ec: ExecutionContext) {
 
   // todo: we probably do not want to spend as much time on model finding, but what is a sensible output?
-  val modelFinderTimeout = timeout / 3
+  private val modelFinderTimeout: Int = Math.round(timeout / 3)
 
   private final case class RunningProver( process: RunningProcess,
                                           stdout: StringBuffer,
@@ -135,11 +135,11 @@ object GenericInferenceCheck {
                                          declarations: Seq[TPTP.AnnotatedFormula]
                                         )
 
-  final def constructInferenceProblem(proofstep: TPTP.AnnotatedFormula,
-                                      names: Seq[String],
-                                      proofFormulas: Map[String, TPTP.AnnotatedFormula],
-                                      declarations: Seq[TPTP.AnnotatedFormula],
-                                      status: Either[THM.type , CTH.type]): (Seq[TPTP.AnnotatedFormula], TPTP.AnnotatedFormula) = {
+  private final def constructInferenceProblem(proofstep: TPTP.AnnotatedFormula,
+                                              names: Seq[String],
+                                              proofFormulas: Map[String, TPTP.AnnotatedFormula],
+                                              declarations: Seq[TPTP.AnnotatedFormula],
+                                              status: Either[THM.type , CTH.type]): (Seq[TPTP.AnnotatedFormula], TPTP.AnnotatedFormula) = {
     import TPTP.{THF, TFF, FOF, TCF, CNF}
     val inferenceParents = names.map(proofFormulas) // safe as we checked the existence of all parents before
     logger.finer(s"Inference parents: ${names.mkString(",")}")
@@ -195,11 +195,11 @@ object GenericInferenceCheck {
     }
   }
 
-  type RunningEntry = (RunningProcess, Future[Option[Boolean]])
+  private type RunningEntry = (RunningProcess, Future[Option[Boolean]])
 
-  def destroyRunningProcesses( running: TrieMap[ProofSystem, RunningEntry], keep: Option[ProofSystem] = None): Unit = {
+  private def destroyRunningProcesses(running: TrieMap[ProofSystem, RunningEntry], keep: Option[ProofSystem] = None): Unit = {
     running.foreach {
-      case (system, (proc, _)) if keep.forall(_ != system) =>
+      case (system, (proc, _)) if !keep.contains(system) =>
         logger.fine(s"Destroying ${system.kind} ${system.name}")
         try proc.destroy()
         catch {
@@ -268,7 +268,7 @@ object GenericInferenceCheck {
         if (config.modelFinder.isDefined){
           val startModelChecker = new Runnable {
             override def run(): Unit = {
-              if (!completed.get() && !already_showed_false.get().isDefined) {
+              if (!completed.get() && already_showed_false.get().isEmpty) {
                 logger.info(s"No prover finished after ${config.offset} seconds, starting model finder")
                 startProcess(config.modelFinder.get, premises, annotatedToBeProved)
               }
