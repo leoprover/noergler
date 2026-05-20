@@ -19,54 +19,48 @@ object SkolemizationCheck {
     // read of variable V that was skolemized
     val inferenceRecord = extractSkolemizeRecordInfos(proofstep.annotations)
     inferenceRecord match {
-      case Some((status, newSymbol, variable, bind)) =>
+      case Some((status, newSymbol, bind)) =>
         // fail fast if that's not well-formed, has non-esa status, is missing information
         if (status == "esa") {
-          if (variable == bind._1) {
-            if (!alreadyUsedSkolemSymbols.contains(newSymbol)) {
-              // read of parent from proof step (we know it exists)
-              val inferenceParent = proofStepParentsAsFormulas(proofstep, proofFormulas, relaxAnnotationFormat)
-              inferenceParent match {
-                case Some(Seq(parent)) =>
-                  // execute trusted skolemization via ask using name N and variable V
-                  logger.fine(s"Formula to Skolemize: ${parent.pretty}")
-                  val ask = new leo.modules.skolemizer.SingleFormulaSkolemizer(newSymbol,
-                    skolemizeAll = false, variableToSkolemize = Some(variable), choiceTerms = false)
-                  val manuallySkolemizedFormula = ask.apply(parent)
-                  val skolemTermUsedByAsk = ask.fofSkolemTerms.get(variable)
-                  logger.fine(s"Skolemized from proof: ${proofstep.formula.pretty}")
-                  logger.fine(s"Manually Skolemized result: ${manuallySkolemizedFormula.formula.pretty}")
-                  logger.finer(s"Skolem term by ask: ${skolemTermUsedByAsk.map(_.pretty).getOrElse("")}")
-                  logger.finer(s"Bind information: ${bind._2.pretty}")
-                  skolemTermUsedByAsk match {
-                    case Some(askBind) =>
-                      if (askBind == bind._2)
-                        Either.cond(
-                          manuallySkolemizedFormula.formula == proofstep.formula,
-                          newSymbol,
-                          s"Skolemization result in proof step ${proofstep.name} wrong. It should be ${manuallySkolemizedFormula.pretty}")
-                      else {
-                        val error = s"Skolemization bind record incorrect in step '${proofstep.name}'."
-                        logger.severe(error)
-                        fail(error)
-                      }
-                    case None =>
-                      val error = s"Skolemization bind record cannot be compared to internal bind in step '${proofstep.name}'."
+          if (!alreadyUsedSkolemSymbols.contains(newSymbol)) {
+            // read of parent from proof step (we know it exists)
+            val inferenceParent = proofStepParentsAsFormulas(proofstep, proofFormulas, relaxAnnotationFormat)
+            inferenceParent match {
+              case Some(Seq(parent)) =>
+                // execute trusted skolemization via ask using name N and variable V
+                logger.fine(s"Formula to Skolemize: ${parent.pretty}")
+                val ask = new leo.modules.skolemizer.SingleFormulaSkolemizer(newSymbol,
+                  skolemizeAll = false, variableToSkolemize = Some(bind._1), choiceTerms = false)
+                val manuallySkolemizedFormula = ask.apply(parent)
+                val skolemTermUsedByAsk = ask.fofSkolemTerms.get(bind._1)
+                logger.fine(s"Skolemized from proof: ${proofstep.formula.pretty}")
+                logger.fine(s"Manually Skolemized result: ${manuallySkolemizedFormula.formula.pretty}")
+                logger.finer(s"Skolem term by ask: ${skolemTermUsedByAsk.map(_.pretty).getOrElse("")}")
+                logger.finer(s"Bind information: ${bind._2.pretty}")
+                skolemTermUsedByAsk match {
+                  case Some(askBind) =>
+                    if (askBind == bind._2)
+                      Either.cond(
+                        manuallySkolemizedFormula.formula == proofstep.formula,
+                        newSymbol,
+                        s"Skolemization result in proof step ${proofstep.name} wrong. It should be ${manuallySkolemizedFormula.pretty}")
+                    else {
+                      val error = s"Skolemization bind record incorrect in step '${proofstep.name}'."
                       logger.severe(error)
                       fail(error)
-                  }
-                case _ =>
-                  val error = s"Skolemization parents not well-formed in step '${proofstep.name}'."
-                  logger.severe(error)
-                  fail(error)
-              }
-            } else {
-              val error = s"Skolemization inference record in step '${proofstep.name}' uses symbol that was already in use ('$newSymbol')."
-              logger.severe(error)
-              fail(error)
+                    }
+                  case None =>
+                    val error = s"Skolemization bind record cannot be compared to internal bind in step '${proofstep.name}'."
+                    logger.severe(error)
+                    fail(error)
+                }
+              case _ =>
+                val error = s"Skolemization parents not well-formed in step '${proofstep.name}'."
+                logger.severe(error)
+                fail(error)
             }
           } else {
-            val error = s"Skolemization inference record in step '${proofstep.name}' uses wrong variable name in binding record (${bind._1} := ${bind._2.toString})"
+            val error = s"Skolemization inference record in step '${proofstep.name}' uses symbol that was already in use ('$newSymbol')."
             logger.severe(error)
             fail(error)
           }
@@ -84,15 +78,16 @@ object SkolemizationCheck {
 
   private type Status = String
   private type NewSymbol = String
-  private type SkolemizedVariable = String
   private type Bind = (String, TPTP.FOF.Term)
-  private type SkolemizeRecord = (Status, NewSymbol, SkolemizedVariable, Bind)
-  /** None means not well-formed record --> error case. */
+  private type SkolemizeRecord = (Status, NewSymbol, Bind)
+  /** Extract skolemization annotation. Has the form:
+   * `inference(skolemize,[status(esa),new_symbols(skolem,[sK0]),skolemize(Bride,sK0(Marriage))],[marriage])`.
+   *
+   * Return value `None` means not well-formed record --> error case. */
   private final def extractSkolemizeRecordInfos(annotation: TPTP.Annotations): Option[SkolemizeRecord] = {
     var malformed = false
     var status: Option[Status] = None
     var newsymbol: Option[NewSymbol] = None
-    var skolemizedVariable: Option[SkolemizedVariable] = None
     var bind: Option[Bind] = None
 
     annotation match {
@@ -119,14 +114,7 @@ object SkolemizationCheck {
                           else newsymbol = Some(symb)
                         case _ => malformed = true
                       }
-                    case Seq(TPTP.MetaFunctionData("skolemized", args)) =>
-                      args match {
-                        case Seq(TPTP.GeneralTerm(Seq(TPTP.MetaVariable(v)), None)) =>
-                          if (skolemizedVariable.isDefined) malformed = true
-                          else skolemizedVariable = Some(v)
-                        case _ => malformed = true
-                      }
-                    case Seq(TPTP.MetaFunctionData("bind", args)) =>
+                    case Seq(TPTP.MetaFunctionData("skolemize", args)) =>
                       args match {
                         case Seq(TPTP.GeneralTerm(Seq(TPTP.MetaVariable(v)), None),
                                  TPTP.GeneralTerm(Seq(data), None)) =>
@@ -138,8 +126,8 @@ object SkolemizationCheck {
                     case _ => malformed = true // error
                   }
                 }
-                if (malformed || Seq(status, newsymbol, skolemizedVariable, bind).exists(_.isEmpty)) None
-                else Some((status.get, newsymbol.get, skolemizedVariable.get, bind.get))
+                if (malformed || Seq(status, newsymbol, bind).exists(_.isEmpty)) None
+                else Some((status.get, newsymbol.get, bind.get))
               case None => None
             }
           } else None
