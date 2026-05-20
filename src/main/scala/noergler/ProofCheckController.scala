@@ -22,9 +22,10 @@ import scala.util.Failure
  * @param proof The proof to be checked
  * @param configuration The checking configuration
  */
-class ProofCheckController(problem: Option[TPTP.Problem],
-                           proof: TPTP.Problem,
+class ProofCheckController(proof: TPTP.Problem,
+                           problem: Option[TPTP.Problem],
                            configuration: Configuration) {
+
   final val logger: Logger = Logger.getLogger("Nörgler.Controller")
   final private def threadCount: Int = Runtime.getRuntime.availableProcessors()*2
 
@@ -533,10 +534,9 @@ object ProofCheckController {
   private final val defaultUpToESA: Boolean = false
   private final val defaultProvers: Set[String] = Set("eprover")
   private final val defaultModelFinder: String = "mace4"
-  // a bit hacky:
-  private final val defaulteproverPath: Option[String] = scala.sys.process.Process("which eprover").lazyLines_!.headOption
-  private final val defaultvampirePath: Option[String] = scala.sys.process.Process("which vampire").lazyLines_!.headOption
-  private final val defaultMace4Path: Option[String] = scala.sys.process.Process("which mace4").lazyLines_!.headOption
+  private final val defaulteproverPath: Option[String] = runSimpleCommand("which eprover")._1.headOption
+  private final val defaultvampirePath: Option[String] = runSimpleCommand("which vampire")._1.headOption
+  private final val defaultMace4Path: Option[String] = runSimpleCommand("which mace4")._1.headOption
 
   sealed abstract class Parameter
   final case class Timeout(timeout: Int) extends Parameter
@@ -672,7 +672,7 @@ object ProofCheckController {
     logger.info(s"prover size: ${provers.size}, parallel mode: $parallel, parallel countermodel: $parallelCountermodel")
 
     val config = Configuration(problemPath, proofPath, timeout, parallel, parallelCountermodel, provers, modelFinders, ignoreFileAnnotations, relaxAnnotationFormat, relaxProblemCheck, relaxSpecifiedInferenceCheck, allowProverAxioms, upToESA)
-    val controller = new ProofCheckController(problem: Option[TPTP.Problem], proof: TPTP.Problem, config)
+    val controller = new ProofCheckController(proof, problem, config)
     controller.apply()
   }
 }

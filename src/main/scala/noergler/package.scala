@@ -213,4 +213,12 @@ package object noergler {
     else name
   }
 
+  final def runSimpleCommand(cmd: String): (Seq[String], Seq[String]) = {
+    import scala.sys.process.{Process, ProcessLogger}
+    val out: collection.mutable.Buffer[String] = collection.mutable.Buffer.empty
+    val err: collection.mutable.Buffer[String] = collection.mutable.Buffer.empty
+    Process(cmd) ! ProcessLogger(out append _, err append _)
+    (out.toSeq, err.toSeq)
+  }
+
 }

@@ -74,10 +74,7 @@ object Noergler {
         case e: Throwable =>
           error = Some(s"Unexpected error: ${e.getMessage} (${e.printStackTrace()}). This is considered an implementation error; please report this!")
       } finally {
-        if (error.nonEmpty) {
-          if (inputProblemName.nonEmpty) println(s"% SZS status Error for $inputProblemName : ${error.get}\n")
-          else println(s"% SZS status Error : ${error.get}\n")
-        }
+        if (error.nonEmpty) println(s"% SZS status Error for $inputProofName : ${error.get}\n")
         if (error.nonEmpty) System.exit(1)
       }
     }
