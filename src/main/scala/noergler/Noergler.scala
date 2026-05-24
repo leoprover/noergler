@@ -62,7 +62,7 @@ object Noergler {
             case NotVerified(reason) => generateSZSResult("status", "NotVerified", "", "", withPrefix = true, extraTSTPMessage = reason)
           }
         }
-        println(reporting)
+        print(reporting)
         System.exit(0) // to make sure threads are killed etc.
       } catch {
         case e: IllegalArgumentException =>
