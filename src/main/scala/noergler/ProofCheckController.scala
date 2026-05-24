@@ -455,10 +455,12 @@ class ProofCheckController(proof: TPTP.Problem,
   private def checkFormulaFromFile(proofstep: TPTP.AnnotatedFormula, relaxProblemCheck: Boolean): Unit = {
     logger.finer("Check for correct premise usage from problem file.")
     assert(configuration.problemPath.isDefined)
-    val problemFileName = configuration.problemPath.get.getFileName.toString
-    val checkFormulaFromFile = CorrectFormulaFromFileCheck.apply(proofstep, problemFileName, problemFormulas, relaxProblemCheck)
+    val proofPath = configuration.proofPath
+    val problemPath = configuration.problemPath.get
+    val checkFormulaFromFile = CorrectFormulaFromFileCheck.apply(proofstep, proofPath: Path, problemPath, problemFormulas, relaxProblemCheck)
     logger.fine(s"Formula equivalent to problem statement (${proofstep.name}): $checkFormulaFromFile")
-    if (!checkFormulaFromFile) throw new VerificationFailedException(s"Proof step '${proofstep.name}' does not use correct formula from file.")
+    checkFormulaFromFile.foreach(err => throw new VerificationFailedException(err))
+//    if (checkFormulaFromFile) throw new VerificationFailedException(s"Proof step '${proofstep.name}' does not use correct formula from file.")
   }
   //////////////////////////////////////////////////////////
   // Check delegate methods END
