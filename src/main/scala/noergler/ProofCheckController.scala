@@ -162,12 +162,12 @@ class ProofCheckController(proof: TPTP.Problem,
                         if (StepParallelisazionModes.contains(configuration.parallelMode)) addedNewFuture = true
                       case _ => // Error case: unknown inference rule with non-THM/CTH status
                         logger.severe(s"Unknown inference '$inference' with status '${inferenceStatus0.getOrElse("")}' in proof step '${proofstep.name}'.")
-                        throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown inference rule '$inference' with non-thm/cth status ('${inferenceStatus0.getOrElse("")}') and cannot be checked.")
+                        throw new VerificationFailedException(s"Unknown inference rule '$inference' with non-thm/cth status ('${inferenceStatus0.getOrElse("")}'), cannot be checked.", Some(proofstep))
                     }
                 }
                 case None => // Unknown annotation, abort
                   logger.severe(s"Annotation of proof step '${proofstep.name}' unknown.")
-                  throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses malformed inference annotation.")
+                  throw new VerificationFailedException(s"Malformed inference annotation.", Some(proofstep))
               }
             case "file" => if (configuration.problemPath.isDefined) checkFormulaFromFile(proofstep, configuration.relaxProblemCheck)
             case "introduced" => ??? // TODO
@@ -176,14 +176,14 @@ class ProofCheckController(proof: TPTP.Problem,
                 skippedStep = true
                 logger.info(s"Prover introduced axiom ${proofstep.formula.pretty} (step '${proofstep.name}')")
               }
-              else throw new VerificationFailedException(s"Proof step '${proofstep.name}' uses unknown record '$record'.")
+              else throw new VerificationFailedException(s"Unknown annotation record '$record'.", Some(proofstep))
           }
           case None if proofstep.role == "type" =>
             if (problem.isEmpty) declarations = declarations :+ proofstep
           logger.fine(s"found type annotation ${proofstep.pretty}")
           case None => // no annotation is an error for all steps.
             logger.severe(s"Proof step '${proofstep.name}' has no or malformed annotation.")
-            throw new VerificationFailedException(s"Proof step '${proofstep.name}' has no or malformed annotation.")
+            throw new VerificationFailedException(s"No or malformed annotation.", Some(proofstep))
         }
         if (!skippedStep && (!StepParallelisazionModes.contains(configuration.parallelMode) || !addedNewFuture)) logger.info(s"Check succeeded for step '${proofstep.name}'.") // Assuming we fail fast if anything happens before
         previousProofSteps = previousProofSteps :+ proofstep
@@ -206,6 +206,7 @@ class ProofCheckController(proof: TPTP.Problem,
       Verified
     } catch {
       case e: VerificationFailedException =>
+        if (e.proofstep.isDefined) logger.info(s"Check failed for step '${e.proofstep.get.name}'.")
         FailedVerified(e.getMessage)
       case e: VerificationTimedOutException =>
         NotVerified(e.getMessage)
@@ -224,14 +225,14 @@ class ProofCheckController(proof: TPTP.Problem,
     logger.fine("Check for $false at the end of proof.")
     val endsWithFalseCheck = ProofEndsInFalseCheck.apply(proof)
     logger.info(s"Proof ends in $$false: $endsWithFalseCheck")
-    if (!endsWithFalseCheck) throw new VerificationFailedException("Proof does not end in false")
+    if (!endsWithFalseCheck) throw new VerificationFailedException("Proof does not end in false.")
   }
 
   private def checkFormulaNamesAreUnique(): Unit = {
     logger.fine("Check for uniqueness of formula names.")
     val namesUniqueCheck = FormulaNamesUniquenessCheck.apply(proofSteps)
     logger.info(s"Formula names unique: ${namesUniqueCheck.isEmpty}")
-    if (namesUniqueCheck.isDefined) throw new VerificationFailedException(s"Name '${namesUniqueCheck.get}' is used multiple times.")
+    if (namesUniqueCheck.isDefined) throw new VerificationFailedException(s"Annotated formula name '${namesUniqueCheck.get}' is used multiple times.")
   }
 
   private def checkInferencesAreAcyclic(): Unit = {
@@ -245,21 +246,21 @@ class ProofCheckController(proof: TPTP.Problem,
     logger.finer("Check for existence of inference parents (if any).")
     val inferenceParentsCheck = InferenceParentsExistCheck.apply(proofstep, previousProofSteps, configuration.relaxAnnotationFormat)
     logger.fine(s"Inference parents exist (${proofstep.name}): $inferenceParentsCheck")
-    if (!inferenceParentsCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' has unknown inference parents.")
+    if (!inferenceParentsCheck) throw new VerificationFailedException(s"(Some) inference parents unknown.", Some(proofstep))
   }
 
   private def checkInferenceParentsAreNotConjecture(proofstep: TPTP.AnnotatedFormula): Unit = {
     logger.finer("Check that the inference parents (if any) are not the conjecture.")
     val inferenceParentsNotConjCheck = InferenceParentsAreNotConjecture.apply(proofstep, problemConjectureName, configuration.relaxAnnotationFormat)
     logger.fine(s"Inference parents are not the conjecture (${proofstep.name}): $inferenceParentsNotConjCheck")
-    if (!inferenceParentsNotConjCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' has the conjecture as a parent.")
+    if (!inferenceParentsNotConjCheck) throw new VerificationFailedException(s"Conjecture used as an inference parent.", Some(proofstep))
   }
 
   private def checkStatusIsNotCth(proofstep: TPTP.AnnotatedFormula, inferenceStatus0: Option[InferenceStatus]): Unit = {
     logger.finer("Check that the status of step (that is not the negation of the conjecture) is not cth.")
     val statusNotCthCheck = !inferenceStatus0.contains(CTH)
     logger.fine(s"Status of step (that is not the negation of the conjecture) is not cth (${proofstep.name}): $statusNotCthCheck")
-    if (!statusNotCthCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' is not the negation of the conjecture but has status cth.")
+    if (!statusNotCthCheck) throw new VerificationFailedException(s"It's not the negation of the conjecture but has status cth.", Some(proofstep))
   }
 
   private final val allowedRoles = Seq("axiom", "conjecture", "negated_conjecture", "plain", "type", "definition")
@@ -269,7 +270,7 @@ class ProofCheckController(proof: TPTP.Problem,
       problemConjectureName = Some(proofstep.name)
     }
     val roleCheck = allowedRoles.contains(proofstep.role)
-    if (!roleCheck) throw new VerificationFailedException(s"Proof step '${proofstep.name}' has unknown role.")
+    if (!roleCheck) throw new VerificationFailedException(s"Unknown role.", Some(proofstep))
   }
 
   private def checkNegatedInference(proofstep: TPTP.AnnotatedFormula): Unit = {
@@ -286,7 +287,7 @@ class ProofCheckController(proof: TPTP.Problem,
         //if (StepParallelisazionModes.contains(configuration.parallelMode)) addedNewFuture = true
         // todo: signal that new future was added
       }
-      else throw new VerificationFailedException("Negation of conjecture is incorrect. Consider rerunning with flag --relax-specified-inference-check .")
+      else throw new VerificationFailedException("Negation of conjecture is incorrect. Consider rerunning with flag --relax-specified-inference-check .", Some(proofstep))
     }
   }
 
@@ -295,7 +296,7 @@ class ProofCheckController(proof: TPTP.Problem,
     val checkSkolemize = SkolemizationCheck.apply(proofstep, proofFormulas, usedSkolemSymbols ++ problemSymbols, relaxAnnotationFormat)
     checkSkolemize match {
       case Left(msg) =>
-        throw new VerificationFailedException(s"Skolemization in step '${proofstep.name}' is incorrect: $msg")
+        throw new VerificationFailedException(s"Skolemization seems incorrect: $msg", Some(proofstep))
       case Right(skolemSymbolIntroduced) =>
         usedSkolemSymbols = usedSkolemSymbols + skolemSymbolIntroduced
     }
@@ -410,7 +411,7 @@ class ProofCheckController(proof: TPTP.Problem,
       checkEntailment match {
         case Some(check) =>
           logger.fine(s"${usedProver.name} found entailment result for ${proofstep.name}: $check")
-          if (!check) throw new VerificationFailedException(s"Proof step '${proofstep.name}' is not correct.")
+          if (!check) throw new VerificationFailedException(s"Inference is provably incorrect.", Some(proofstep))
         case None => throw new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out.")
       }
     }
@@ -459,8 +460,7 @@ class ProofCheckController(proof: TPTP.Problem,
     val problemPath = configuration.problemPath.get
     val checkFormulaFromFile = CorrectFormulaFromFileCheck.apply(proofstep, proofPath: Path, problemPath, problemFormulas, relaxProblemCheck)
     logger.fine(s"Formula equivalent to problem statement (${proofstep.name}): $checkFormulaFromFile")
-    checkFormulaFromFile.foreach(err => throw new VerificationFailedException(err))
-//    if (checkFormulaFromFile) throw new VerificationFailedException(s"Proof step '${proofstep.name}' does not use correct formula from file.")
+    checkFormulaFromFile.foreach(err => throw new VerificationFailedException(err, Some(proofstep)))
   }
   //////////////////////////////////////////////////////////
   // Check delegate methods END
@@ -520,7 +520,14 @@ object ProofCheckController {
 
   /** Thrown during the check if some step yields that the proof definitely cannot be verified
    * because it's not a valid proof. */
-  private class VerificationFailedException(msg: String) extends RuntimeException(msg)
+  private final class VerificationFailedException(msg: String, val proofstep: Option[TPTP.AnnotatedFormula] = None) extends RuntimeException(msg) {
+    override def getMessage: String = {
+      proofstep match {
+        case Some(formula) => s"Verification failed for proof step: '${formula.name}'. ${super.getMessage}"
+        case None => super.getMessage
+      }
+    }
+  }
 
   /** Thrown during the check by some step if it gives up (e.g. timeout of external prover). */
   private class VerificationTimedOutException(msg: String) extends RuntimeException(msg)
