@@ -9,6 +9,11 @@ import java.util.logging.Logger
 object CorrectFormulaFromFileCheck {
   final val logger: Logger = Logger.getLogger("Nörgler.checks.CorrectFormulaFromFileCheck")
 
+  /**
+   * Run the check.
+   * @return `None` if check succeeds, `Some(err)` if check fails, where
+   *         `err` is a String describung why the check failed.
+   */
   final def apply(proofstep: TPTP.AnnotatedFormula,
                   proofPath: Path,
                   problemPath: Path,
