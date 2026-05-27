@@ -136,8 +136,8 @@ class ProofCheckController(proof: TPTP.Problem,
               inferenceName(annotation) match {
                 case Some(inference) => inference match {
                   // (III.1) if a "negated_conjecture" entry, does it correctly negate and has correct role?
-                  case "negated_conjecture" if inferenceStatus0.contains(CTH) => checkNegatedInference(proofstep)
-                  case _ if configuration.relaxAnnotationFormat && inferenceStatus0.contains(CTH) && proofstep.role == "negated_conjecture" => checkNegatedInference(proofstep)
+                  case "negated_conjecture" => checkNegatedInference(proofstep, inferenceStatus0)
+                  case _ if configuration.relaxAnnotationFormat && proofstep.role == "negated_conjecture" => checkNegatedInference(proofstep, inferenceStatus0)
                   // All cases that are not the negation of the conjecture
                   case non_conjecture_negation_cases =>
                     // (III.2) check that none of the inference parents (if any) are the conjecture
@@ -273,22 +273,25 @@ class ProofCheckController(proof: TPTP.Problem,
     if (!roleCheck) throw new VerificationFailedException(s"Unknown role.", Some(proofstep))
   }
 
-  private def checkNegatedInference(proofstep: TPTP.AnnotatedFormula): Unit = {
-    logger.finer("Check for correct negation of conjecture")
-    val conjFormula =
-      if (problem.isDefined) problemConjectureName.flatMap(problemFormulas.get)
-      else problemConjectureName.flatMap(proofFormulas.get)
-    val checkNegation = ConjectureNegationCheck.apply(proofstep, conjFormula)
-    logger.fine(s"Negation of conjecture correct (${proofstep.name}): ${checkNegation._1}")
-    if (!checkNegation._1) {
-      if (configuration.relaxSpecifiedInferenceCheck && checkNegation._2.isDefined){
-        logger.info(s"Negation of the conjecture in the proof is not identical to internally derived negation. Fallback: Checking for entailment.")
-        runFallbackEntailmentCheck(proofstep,checkNegation._2.get,Left(noergler.THM))
-        //if (StepParallelisazionModes.contains(configuration.parallelMode)) addedNewFuture = true
-        // todo: signal that new future was added
+  private def checkNegatedInference(proofstep: TPTP.AnnotatedFormula, inferenceStatus0: Option[InferenceStatus]): Unit = {
+    if (inferenceStatus0.contains(CTH)){
+      logger.finer("Check for correct negation of conjecture")
+      val conjFormula =
+        if (problem.isDefined) problemConjectureName.flatMap(problemFormulas.get)
+        else problemConjectureName.flatMap(proofFormulas.get)
+      val checkNegation = ConjectureNegationCheck.apply(proofstep, conjFormula)
+      logger.fine(s"Negation of conjecture correct (${proofstep.name}): ${checkNegation._1}")
+      if (!checkNegation._1) {
+        if (configuration.relaxSpecifiedInferenceCheck && checkNegation._2.isDefined) {
+          logger.info(s"Negation of the conjecture in the proof is not identical to internally derived negation. Fallback: Checking for entailment.")
+          runFallbackEntailmentCheck(proofstep, checkNegation._2.get, Left(noergler.THM))
+          //if (StepParallelisazionModes.contains(configuration.parallelMode)) addedNewFuture = true
+          // todo: signal that new future was added
+        }
+        else throw new VerificationFailedException("Negation of conjecture is incorrect. Consider rerunning with flag --relax-specified-inference-check .", Some(proofstep))
       }
-      else throw new VerificationFailedException("Negation of conjecture is incorrect. Consider rerunning with flag --relax-specified-inference-check .", Some(proofstep))
     }
+    else throw new VerificationFailedException(s"Negation of the conjecture does not have the status cth.")
   }
 
   private def checkSkolemization(proofstep: TPTP.AnnotatedFormula, relaxAnnotationFormat: Boolean): Unit = {
