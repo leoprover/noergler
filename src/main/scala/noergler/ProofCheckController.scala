@@ -175,7 +175,7 @@ class ProofCheckController(proof: TPTP.Problem,
                 case Some(inference) => inference match {
                   // (III.1) if a "negated_conjecture" entry, does it correctly negate and has correct role?
                   case "negated_conjecture" => checkNegatedInference(proofstep, inferenceStatus0)
-                  case _ if configuration.relaxAnnotationFormat && proofstep.role == "negated_conjecture" => checkNegatedInference(proofstep, inferenceStatus0)
+                  case _ if configuration.relaxAnnotationFormat && proofstep.role == "negated_conjecture" && inferenceStatus0.contains(CTH) => checkNegatedInference(proofstep, inferenceStatus0)
                   // All cases that are not the negation of the conjecture
                   case non_conjecture_negation_cases =>
                     // (III.2) check that none of the inference parents (if any) are the conjecture
@@ -329,7 +329,7 @@ class ProofCheckController(proof: TPTP.Problem,
         else throw new VerificationFailedException("Negation of conjecture is incorrect. Consider rerunning with flag --relax-specified-inference-check .", Some(proofstep))
       }
     }
-    else throw new VerificationFailedException(s"Negation of the conjecture does not have the status cth.")
+    else throw new VerificationFailedException(s"Negation of the conjecture does not have the status cth (step ${proofstep.name}).")
   }
 
   private def checkSkolemization(proofstep: TPTP.AnnotatedFormula, relaxAnnotationFormat: Boolean): Unit = {
