@@ -3,16 +3,17 @@ package noergler
 import leo.datastructures.TPTP
 import leo.datastructures.TPTP.FOF
 import noergler.ProofCheckController.{Configuration, ModelFinder, Prover, ProverParallelisazionModes, StepParallelisazionModes, VerificationFailedException, VerificationTimedOutException}
-import noergler.checks.GenericInferenceCheck.logger
+import noergler.checks.GenericInferenceCheck.{GenericInferenceCheckConfig, logger}
 import noergler.ProofCheckController.ProofSystem
 import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsAreNotConjecture, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
 
 import java.nio.file.Path
 import java.util.concurrent.Executors
+import java.util.concurrent.atomic.AtomicBoolean
 import java.util.logging.Logger
 import scala.concurrent.duration.DurationInt
 import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutorService, Future}
-import scala.util.Failure
+import scala.util.{Failure, Success}
 
 /**
  * The Controller coordinates the checking process, i.e., how and when
@@ -64,8 +65,45 @@ class ProofCheckController(proof: TPTP.Problem,
       problemFormulas.flatMap(_.symbols).toSet
     }
 
-  private var openFutures: Seq[Future[Any]] = Seq.empty
+  private final case class FutureHandle(result: Future[Unit],
+                              kill: () => Unit) // kill all running processes/ cancel schedules ones
+
+  private val killSignalAlreadySent = new AtomicBoolean(false)
+
+  private var openFutures: Seq[FutureHandle] = Seq.empty
+
   val already_showed_false: java.util.concurrent.atomic.AtomicReference[Option[Throwable]] = new java.util.concurrent.atomic.AtomicReference(None)
+  val already_showed_not_verifiable: java.util.concurrent.atomic.AtomicReference[Option[Throwable]] = new java.util.concurrent.atomic.AtomicReference(None)
+
+  private def setFailedException(ex: VerificationFailedException) = {
+    already_showed_false.compareAndSet(None, Some(ex))
+
+    if (killSignalAlreadySent.compareAndSet(false, true)) {
+      logger.fine(s"Stopping all running proof checks because: ${ex.getMessage}")
+      openFutures.foreach(_.kill())
+    }
+  }
+
+  private def setNotVerifiableException(ex: VerificationTimedOutException) = {
+    if (killSignalAlreadySent.compareAndSet(false, true)) {
+
+      already_showed_not_verifiable.compareAndSet(None, Some(ex))
+
+      // todo change policy here to add tryHard2Fail mode
+
+      logger.fine(s"Stopping all running proof checks because: ${ex.getMessage}")
+      openFutures.foreach(_.kill())
+    }
+  }
+
+  def stoppingException: java.util.concurrent.atomic.AtomicReference[Option[Throwable]] =
+    if (already_showed_false.get().isDefined) already_showed_false
+    else already_showed_not_verifiable
+  //todo: tryHard2fail mode that only accepts shown_false as stopping Exception and continues checking after a not_verifiable has been found
+
+  def endAll() = {
+    openFutures.foreach(_.kill)
+  }
 
   final def apply(): Result = {
     //////////////////////////////////////////////////////////
@@ -110,7 +148,7 @@ class ProofCheckController(proof: TPTP.Problem,
       //////////////////
       /** All the steps that have already been processed. Initially empty. */
       var previousProofSteps: Seq[TPTP.AnnotatedFormula] = Vector.empty
-      for (proofstep <- proofSteps if already_showed_false.get().isEmpty) {
+      for (proofstep <- proofSteps if (!killSignalAlreadySent.get())) {
         var addedNewFuture = false
         var skippedStep = false
         logger.finer(s"Checking proof step '${proofstep.name}' with annotation '${proofstep.annotations.map(_._1.pretty).getOrElse("")}' ...")
@@ -190,12 +228,12 @@ class ProofCheckController(proof: TPTP.Problem,
       }
 
       if (StepParallelisazionModes.contains(configuration.parallelMode)) {
-        already_showed_false.get() match {
+        stoppingException.get() match {
           case Some(exception) =>
             throw exception
           case None =>
             logger.info(s"Waiting for verification tasks to finish ...")
-            Await.result(Future.sequence(openFutures), configuration.timeout.seconds)
+            Await.result(Future.sequence(openFutures.map(_.result)), configuration.timeout.seconds)
             // TODO: Isnt this the same as before with extra steps? Discuss
             logger.info(s"All checks succeeded.")
         }
@@ -308,128 +346,58 @@ class ProofCheckController(proof: TPTP.Problem,
 
   private def checkGenericInference(rule: String, proofstep: TPTP.AnnotatedFormula, status: Either[THM.type , CTH.type], provers: Set[Prover], modelFinder: ModelFinder, custumProofFormulas:  Option[Map[String, TPTP.AnnotatedFormula]] = None): Unit = {
 
-    // todo: clean up, adding the model finders here resulted in terrible branching
-
-
     val usedProofFormulas = custumProofFormulas.getOrElse(proofFormulas)
-    //val modelFinderToUse: Option[ModelFinder] =
-    //  if (ModelCheckerParallelisazionModes.contains(configuration.parallelCountermodelMode)) Some(modelFinder)
-    //  else None
 
-    def runSingleProver(proverToUse: ProofSystem, timeout: Int): (Option[Boolean], ProofSystem) = {
-      if (already_showed_false.get().isDefined) {
-        logger.fine(s"Cancelling verification of step '${proofstep.name}' as proof has already shown to be false")
-        return (None, provers.head)
-      }
-      val inferenceConfiguration = GenericInferenceCheck.SerialInferenceConfig(proverToUse, timeout, configuration.relaxAnnotationFormat, declarations)
-      val res = GenericInferenceCheck.apply_serial(proofstep, usedProofFormulas, status, inferenceConfiguration)(proverEc)
-      (res, proverToUse)
-    }
 
-    def runParallelProvers(provers: Set[Prover], modelFinder: Option[ModelFinder], timeout: Int, offset: Int): (Option[Boolean], ProofSystem) = {
-      if (already_showed_false.get().isDefined) {
-        logger.fine(s"Cancelling verification of step '${proofstep.name}' as proof has already shown to be false")
-        return (None, provers.head)
-      }
-      val inferenceConfiguration = GenericInferenceCheck.ParallelInferenceConfig(provers, modelFinder, offset, timeout, configuration.relaxAnnotationFormat, declarations)
-      val res = GenericInferenceCheck.apply_parallel(proofstep, usedProofFormulas, status, already_showed_false, inferenceConfiguration)(proverEc)
-      res
-    }
-
-    def runInSequence(systems: Iterator[ProofSystem], individual_run_timeout: Int):(Option[Boolean], ProofSystem) = {
-      systems.map(system =>
-        runSingleProver(system, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
-    }
-
-    def run(): Unit = {
-      if (already_showed_false.get().isDefined) {
-        logger.fine(s"Cancelling verification of step '${proofstep.name}' as proof has already shown to be false")
-        return
-      }
+    def run(): FutureHandle = {
       logger.finer(s"Check for correct entailment of inference rule '$rule'.")
       val individual_run_timeout = configuration.timeout // / 2 // todo: rasonable?
       assert(provers.nonEmpty)
-      val (checkEntailment, usedProver): (Option[Boolean], ProofSystem) =
-        if (provers.size == 1){
-        val proverToUse = provers.head
+      val inferenceCheckConfig = GenericInferenceCheckConfig(provers, modelFinder, ProverParallelisazionModes.contains(configuration.parallelMode), configuration.parallelCountermodelMode, configuration.relaxAnnotationFormat, individual_run_timeout)
+      val stepHandle = GenericInferenceCheck(proofstep, usedProofFormulas, declarations, status, killSignalAlreadySent, inferenceCheckConfig)
 
-        configuration.parallelCountermodelMode match {
-          case ProofCheckController.NoModelFinder =>
-            // we do not apply model finders in parallel, just start the prover
-            runSingleProver(proverToUse, individual_run_timeout)
-          case ProofCheckController.Fallback =>
-            // we do not apply model finders in parallel, just start the prover
-            val systemsToRun: Iterator[ProofSystem] = Iterator(proverToUse, modelFinder)
-            runInSequence(systemsToRun,individual_run_timeout)
-          case ProofCheckController.Offset(t) =>
-            // we start proof checker after waiting for a given time
-            runParallelProvers(Set(proverToUse),Some(modelFinder),individual_run_timeout,t)
-          case ProofCheckController.Always =>
-            // just start the model-finders without an offset todo: this can probably be done more nicely
-            runParallelProvers(Set(proverToUse),Some(modelFinder),individual_run_timeout,0)
-        }
+      val checkedFu0 = stepHandle.result.flatMap {
+        case Some((true, usedProver)) =>
+          logger.fine(s"${usedProver.name} found entailment result for ${proofstep.name}: true")
+          Future.successful(())
 
-        // if we have set multiple provers, we use them differently depending on the parallelization mode set.
-      }else if (ProverParallelisazionModes.contains(configuration.parallelMode)){
-          // multiple provers were given and should be run in parallel
+        case Some((false, usedProver)) =>
+          logger.fine(s"${usedProver.name} found entailment result for ${proofstep.name}: false")
+          val exception = new VerificationFailedException(s"Inference ${proofstep.name} is provably incorrect.", Some(proofstep))
+          setFailedException(exception)
+          Future.failed(exception)
 
-        configuration.parallelCountermodelMode match {
-          case ProofCheckController.NoModelFinder =>
-            runParallelProvers(provers, None, individual_run_timeout, 0) //todo: redefine offset and mf as a option pair
-          case ProofCheckController.Fallback =>
-            // run the provers in parallel and if none of them are successful, start the model finder as well.
-            val parallelResult = runParallelProvers(provers, None, individual_run_timeout, 0)
-            parallelResult._1 match {
-              case Some(_) => parallelResult
-              case None =>
-                logger.fine(s"None of the chosen provers found a proof for step ${proofstep.name}, running ${modelFinder.name}")
-                runSingleProver(modelFinder, individual_run_timeout)
-            }
-          case ProofCheckController.Offset(t) =>
-            runParallelProvers(provers, Some(modelFinder), individual_run_timeout, t)
-          case ProofCheckController.Always =>
-            runParallelProvers(provers, Some(modelFinder), individual_run_timeout, 0)
-        }
+        // do not generate more failed futures if we already sent the kill signal
+        case None if killSignalAlreadySent.get() =>
+          Future.successful(())
 
-      } else {
-          // multiple provers were given and should be run in sequence
-
-        configuration.parallelCountermodelMode match {
-          case ProofCheckController.NoModelFinder =>
-            val allSystemsToRun: Iterator[ProofSystem] = provers.iterator
-            allSystemsToRun.map(prover => runSingleProver(prover, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
-          case ProofCheckController.Fallback =>
-            val allSystemsToRun: Set[ProofSystem] = provers.map(p => p: ProofSystem) + modelFinder
-            allSystemsToRun.iterator.map(prover => runSingleProver(prover, individual_run_timeout)).find(_._1.isDefined).getOrElse((None, provers.head))
-          case ProofCheckController.Offset(_) =>
-            // start running the provers in sequence and if there is no result after x seconds, also start the counter model finder
-            ???
-          case ProofCheckController.Always =>
-            // at the same time start running the provers in sequence and in parallel to that also start the model finder in parallel
-            ???
-        }
-
+        case None =>
+          val exception = new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out.")
+          setNotVerifiableException(exception)
+          Future.failed(exception)
       }
 
-      checkEntailment match {
-        case Some(check) =>
-          logger.fine(s"${usedProver.name} found entailment result for ${proofstep.name}: $check")
-          if (!check) throw new VerificationFailedException(s"Inference is provably incorrect.", Some(proofstep))
-        case None => throw new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out.")
-      }
+      // todo: how to best store the maps of running and planned processes so that I can easily kill them once a proof has been found?
+      //  and should i even still have both the killing in the generic inference class and here in the controller?
+
+      FutureHandle(checkedFu0,stepHandle.kill)
     }
+
     if (StepParallelisazionModes.contains(configuration.parallelMode)) {
-      if (already_showed_false.get().isDefined) {
+      if (killSignalAlreadySent.get()) {
         logger.fine(s"Cancelling verification of step '${proofstep.name}' as proof has already shown to be false")
         return
       }
-      val f = Future.apply(run()).andThen {
-        case Failure(e) => already_showed_false.compareAndSet(None, Some(e))
-      }
-      openFutures = openFutures :+ f
+      val fu = run()
+      if (killSignalAlreadySent.get()) {
+        fu.kill
+      } else {
+        openFutures = openFutures :+ fu
+    }
       logger.fine(s"Scheduled parallel inference check.")
     } else {
-      run()
+      val fu = run()
+      Await.result(fu.result,configuration.timeout.seconds) // todo i need no further catch here, right?
     }
 
   }
@@ -498,10 +466,10 @@ object ProofCheckController {
   private case object Hybrid extends ParallelMode
 
   sealed trait ParallelCountermodelMode
-  private case object NoModelFinder extends ParallelCountermodelMode
-  private case object Fallback extends ParallelCountermodelMode
-  private case class Offset(t: Int) extends ParallelCountermodelMode
-  private case object Always extends ParallelCountermodelMode
+  case object NoModelFinder extends ParallelCountermodelMode
+  case object Fallback extends ParallelCountermodelMode
+  case class Offset(t: Int) extends ParallelCountermodelMode
+  case object Always extends ParallelCountermodelMode
 
   private final val StepParallelisazionModes: Seq[ParallelMode] = Seq(ParallelSteps, Hybrid)
   private final val ProverParallelisazionModes: Seq[ParallelMode] = Seq(ParallelProvers, Hybrid)

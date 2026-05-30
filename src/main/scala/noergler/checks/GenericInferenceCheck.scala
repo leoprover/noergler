@@ -2,58 +2,257 @@ package noergler.checks
 
 import leo.datastructures.TPTP
 import noergler.ProofCheckController.{ModelFinder, ProofSystem, Prover}
-import noergler.checks.GenericInferenceCheck.logger
+import noergler.checks.GenericInferenceCheck.{GenericInferenceCheckConfig, RunningSystemMap, ScheduledSystemMap, logger}
 import noergler.{CTH, ProofCheckController, THM, proofStepParents}
 
-import java.io.ByteArrayInputStream
-import java.nio.file.Path
 import java.util.concurrent.atomic.{AtomicBoolean, AtomicReference}
 import java.util.logging.Logger
 import scala.collection.concurrent.TrieMap
-import scala.concurrent.duration.DurationInt
-import scala.concurrent.{Await, ExecutionContext, Future, Promise}
-import scala.sys.process
-import scala.sys.process.{ProcessLogger, Process => RunningProcess}
-import java.util.concurrent.{Executors, TimeUnit}
+import scala.concurrent.{ExecutionContext, Future, Promise}
+import scala.util.{Failure, Success}
+import scala.sys.process.{Process => RunningProcess}
+import java.util.concurrent.{Executors, ScheduledFuture, TimeUnit}
 
 final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
                                   conjecture: TPTP.AnnotatedFormula,
-                                  system: ProofSystem,
-                                  //already_showed_false: AtomicReference[Option[Throwable]],
-                                  timeout: Int)
+                                  externalKillSignal: AtomicBoolean,
+                                  config: GenericInferenceCheckConfig)
                                  (implicit ec: ExecutionContext) {
-  def apply_parallel(): (RunningProcess, Future[Option[Boolean]]) = ProofSystemRunner(premises, conjecture, system, timeout).apply()
+
+  val running = TrieMap.empty[ProofSystem, (RunningProcess, Future[Option[Boolean]])]
+  val scheduled = TrieMap.empty[ProofSystem, ScheduledFuture[_]]
+  val scheduler = Executors.newSingleThreadScheduledExecutor()
+
+  private val ended = new AtomicBoolean(false)
+  def endAll(): Unit = {
+    if (ended.compareAndSet(false, true)) {
+      cancelPlannedProcesses(scheduled)
+      destroyRunningProcesses(running)
+      scheduler.shutdown()
+    }
+  }
+  val winner = Promise[Option[(Boolean, ProofSystem)]]()
+  winner.future.onComplete { _ =>
+    endAll()
+  }
+
+  /**
+   * Run single prover, update the vars in case of definate result, keep track of running systems
+   *
+   * @param system
+   * @return
+   */
+  def startSingleSystem0(system: ProofSystem): Future[Option[Boolean]] = {
+    val (newProc, fut) = ProofSystemRunner(premises, conjecture, system, config.individualStepTimeout).apply()
+    running.put(system, (newProc, fut))
+
+    fut.onComplete { tr =>
+      running.remove(system)
+      val res = tr.toOption.flatten
+
+      if (res.isDefined) {
+        // system returned a definite result => set the system as the winner
+        winner.trySuccess(Some(res.get, system))
+      }
+    }(ec)
+    fut
+  }
+
+  def tagFutureWithSystem(system: ProofSystem, fu: Future[Option[Boolean]]): Future[Option[(Boolean, ProofSystem)]] = {
+    fu.map{
+      case Some(res) =>
+        Some(res,system)
+      case None =>
+        None
+    }
+  }
+
+  def startSingleSystem(system: ProofSystem): Future[Option[(Boolean, ProofSystem)]] = {
+    if (winner.isCompleted) {
+      logger.fine(s"Cancelling run of ${system.name} as step has already been verified/ shown to be false")
+      Future.successful(None)
+    }else if (externalKillSignal.get()) {
+      logger.fine(s"Cancelling run of ${system.name} as proof has shown to be false")
+      Future.successful(None)
+    } else {
+      val fu = startSingleSystem0(system)
+
+      tagFutureWithSystem(system,fu)
+    }
+  }
+
+  def startSerialSystems(systems: Seq[ProofSystem]): Future[Option[(Boolean, ProofSystem)]] = {
+    if (winner.isCompleted) {
+      logger.fine(s"Step already verified/ shown false. Cancelling serial run of provers.")
+      Future.successful(None) //return
+    } else if (externalKillSignal.get()) {
+      logger.fine(s"Cancelling run of serial systems, as proof has shown to be false")
+      Future.successful(None)
+    } else{
+      systems match {
+        case Nil =>
+          // no more provers to run => step cannot be verified, all systems timed out or gave up
+          Future.successful(None)
+
+        case system :: rest =>
+          // run the system
+          val fut = startSingleSystem(system)
+          fut.flatMap {
+            case None =>
+              startSerialSystems(rest)
+            case res@Some(_) =>
+              Future.successful(res)
+          }
+      }
+    }
+  }
+
+  def runProversParallel(systems: Set[Prover]): Future[Option[(Boolean, ProofSystem)]] = {
+    val futures = systems.map(startSingleSystem)
+    Future.sequence(futures).map(_.collectFirst { case Some(result) => result })
+  }
+
+  private def destroyRunningProcesses(running: TrieMap[ProofSystem, (RunningProcess, Future[Option[Boolean]])], keep: Option[ProofSystem] = None): Unit = {
+    running.foreach {
+      case (system, (proc, _)) if !keep.contains(system) =>
+        logger.fine(s"Destroying ${system.kind} ${system.name}")
+        try proc.destroy()
+        catch {
+          case ex: Throwable =>
+            logger.fine(s"Failed to destroy ${system.name}: ${ex.getMessage}")
+        }
+
+      case _ => ()
+    }
+  }
+
+  private def cancelPlannedProcesses(scheduled: TrieMap[ProofSystem, ScheduledFuture[_]], keep: Option[ProofSystem] = None): Unit = {
+    scheduled.foreach {
+      case (system, fu) if !keep.contains(system) =>
+        logger.fine(s"Canceling ${system.kind} ${system.name}")
+        try fu.cancel(true)
+        catch {
+          case ex: Throwable =>
+            logger.fine(s"Failed to cancel ${system.name}: ${ex.getMessage}")
+        }
+
+      case _ => ()
+    }
+  }
+
+  def apply(): Future[Option[(Boolean, ProofSystem)]] = {
 
 
-  def apply_serial(): Option[Boolean] = {
-    val (_, fut0) = apply_parallel()
+    ///////////////////////////////////////////////////////
+    // 1. Start the provers
+    val proverFuture: Future[Option[(Boolean, ProofSystem)]] =
+      if (config.provers.size == 1) {
+        startSingleSystem(config.provers.head)
 
-    try {
-      Await.result(fut0, timeout.seconds)
-    } catch {
-      case _: java.util.concurrent.TimeoutException => None
+      } else if (config.parallelProvers){
+        // start all selected provers in parallel
+        runProversParallel(config.provers)
 
+      } else {
+        // run all provers in sequence
+        startSerialSystems(config.provers.toSeq)
+      }
+
+    ///////////////////////////////////////////////////////
+    // 2. Start the model finders
+    val combinedFuture: Future[Option[(Boolean, ProofSystem)]] = config.parallelCountermodelMode match {
+      case ProofCheckController.NoModelFinder =>
+        proverFuture
+
+      case ProofCheckController.Fallback =>
+        // start model finder after all the provers have run and only if none of them gave a conclusive result
+        proverFuture.flatMap{
+          case fu@Some(_) =>
+            Future.successful(fu)
+
+          case None =>
+            startSingleSystem(config.modelFinder)
+        }
+
+      case ProofCheckController.Offset(of_t) =>
+        // If there is no result from the provers after x seconds, also start the counter model finder
+
+        val mfStarted = new AtomicBoolean(false)
+        val mfRunPromise = Promise[Future[Option[(Boolean, ProofSystem)]]]()
+
+        def startModelFinder(): Unit = {
+          if (mfStarted.compareAndSet(false, true)) {
+            mfRunPromise.trySuccess(startSingleSystem(config.modelFinder))
+          }
+        }
+
+        // schedule the model finder run after given offset
+        val scheduledFuture = {
+          // start model finder after given offset if none of the provers found a result
+          val startModelChecker = new Runnable {
+            override def run(): Unit = {
+              if (!winner.isCompleted && !externalKillSignal.get()) {
+                logger.info(s"No prover finished after ${of_t} seconds, starting model finder")
+                startModelFinder()
+              } else {
+                mfRunPromise.trySuccess(Future.successful(None))
+              }
+            }
+          }
+          scheduler.schedule(startModelChecker, of_t.toLong, TimeUnit.SECONDS)
+        }
+        scheduled.put(config.modelFinder, scheduledFuture)
+
+        // in case all provers finish before timeout, start MF earlier
+        proverFuture.flatMap {
+          case fu@Some(_) =>
+            scheduled.remove(config.modelFinder).foreach(_.cancel(false))
+            Future.successful(fu)
+
+          case None =>
+            scheduled.remove(config.modelFinder).foreach(_.cancel(false))
+            startModelFinder()
+            mfRunPromise.future.flatten
+        }
+
+      case ProofCheckController.Always =>
+        // at the same time start running the provers in sequence and in parallel to that also start the model finder in parallel
+        val mfFuture = startSingleSystem(config.modelFinder)
+        Future.sequence(Seq(proverFuture,mfFuture)).map(_.collectFirst { case Some(result) => result })
     }
 
+    ///////////////////////////////////////////////////////
+    // 3. Return a result
+
+    combinedFuture.onComplete {
+      case Success(res) =>
+        winner.trySuccess(res)
+
+      case Failure(ex) =>
+        logger.warning(s"Parallel run of proof systems failed: ${ex.getMessage}")
+        winner.trySuccess(None)
+    }
+
+    winner.future
   }
 }
 
   object GenericInferenceCheck {
-    final val logger: Logger = Logger.getLogger("Nörgler.Controller") //todo: should this live here or elsewhere?
 
-    final case class SerialInferenceConfig(prover: ProofSystem,
-                                           timeout: Int,
+    type RunningSystemMap = TrieMap[ProofSystem, (RunningProcess, Future[Option[Boolean]])]
+    type ScheduledSystemMap = TrieMap[ProofSystem, ScheduledFuture[_]]
+
+    final val logger: Logger = Logger.getLogger("Nörgler.Controller")
+
+    final case class StepHandle (result: Future[Option[(Boolean, ProofSystem)]],
+                                 kill: () => Unit)
+
+    case class GenericInferenceCheckConfig(provers: Set[Prover],
+                                           modelFinder: ModelFinder,
+                                           parallelProvers: Boolean,
+                                           parallelCountermodelMode: ProofCheckController.ParallelCountermodelMode,
                                            relaxAnnotationFormat: Boolean,
-                                           declarations: Seq[TPTP.AnnotatedFormula]
-                                          )
-
-    final case class ParallelInferenceConfig(provers: Set[Prover],
-                                             modelFinder: Option[ModelFinder],
-                                             offset: Int,
-                                             timeout: Int,
-                                             relaxAnnotationFormat: Boolean,
-                                             declarations: Seq[TPTP.AnnotatedFormula]
-                                            )
+                                           individualStepTimeout: Int)
 
     private final def constructInferenceProblem(proofstep: TPTP.AnnotatedFormula,
                                                 names: Seq[String],
@@ -99,132 +298,28 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
       (declarations ++ premises, annotatedToBeProved)
     }
 
-    final def apply_serial(proofstep: TPTP.AnnotatedFormula,
-                           proofFormulas: Map[String, TPTP.AnnotatedFormula],
-                           status: Either[THM.type, CTH.type],
-                           config: SerialInferenceConfig)
-                          (implicit ec: ExecutionContext): Option[Boolean] = {
-      val inferenceParentsNames: Option[Seq[String]] = proofStepParents(proofstep.annotations, config.relaxAnnotationFormat)
-      inferenceParentsNames match {
-        case Some(names) =>
-          val (premises, annotatedToBeProved) = constructInferenceProblem(proofstep, names, proofFormulas, config.declarations, status)
-          new GenericInferenceCheck(premises, annotatedToBeProved, config.prover, config.timeout).apply_serial()
-        case None =>
-          logger.severe(s"Entailment check impossible (${proofstep.name}), inference parents entry malformed.")
-          Some(false)
-      }
-    }
-
-
-    private type RunningEntry = (RunningProcess, Future[Option[Boolean]])
-
-    private def destroyRunningProcesses(running: TrieMap[ProofSystem, RunningEntry], keep: Option[ProofSystem] = None): Unit = {
-      running.foreach {
-        case (system, (proc, _)) if !keep.contains(system) =>
-          logger.fine(s"Destroying ${system.kind} ${system.name}")
-          try proc.destroy()
-          catch {
-            case ex: Throwable =>
-              logger.fine(s"Failed to destroy ${system.name}: ${ex.getMessage}")
-          }
-
-        case _ => ()
-      }
-    }
-
-    final def apply_parallel(proofstep: TPTP.AnnotatedFormula,
+    final def apply(proofstep: TPTP.AnnotatedFormula,
                              proofFormulas: Map[String, TPTP.AnnotatedFormula],
+                             declarations: Seq[TPTP.AnnotatedFormula],
                              status: Either[THM.type, CTH.type],
-                             already_showed_false: AtomicReference[Option[Throwable]],
-                             config: ParallelInferenceConfig)
-                            (implicit ec: ExecutionContext): (Option[Boolean], ProofSystem) = {
-
-      val completed = new AtomicBoolean(false)
-      val winner = Promise[(Option[Boolean], ProofSystem)]()
-      val running = TrieMap.empty[ProofSystem, (RunningProcess, Future[Option[Boolean]])]
-      // keep track of finished results to not wait for entire timeout if provers give up early
-      val remaining = new java.util.concurrent.atomic.AtomicInteger(0)
-
-      def startProcess(system: ProofSystem, premises: Seq[TPTP.AnnotatedFormula], annotatedToBeProved: TPTP.AnnotatedFormula): Unit = {
-        if (already_showed_false.get().isDefined) {
-          logger.fine(s"Cancelling verification of step '${proofstep.name}' as proof has already shown to be false")
-          return
-        }
-
-        remaining.incrementAndGet()
-
-        val checker = new GenericInferenceCheck(premises, annotatedToBeProved, system, config.timeout)(ec)
-        val (proc, fut) = checker.apply_parallel()
-
-        running.put(system, (proc, fut))
-
-        fut.onComplete { tr =>
-          val res = tr.toOption.flatten
-
-          if (res.isDefined && completed.compareAndSet(false, true)) {
-            winner.trySuccess((res, system))
-          } else {
-            val left = remaining.decrementAndGet()
-            if (left == 0 && completed.compareAndSet(false, true)) {
-              winner.trySuccess((None, config.provers.head))
-            }
-          }
-        }(ec)
-      }
+                             externalKill: AtomicBoolean,
+                             config: GenericInferenceCheckConfig)
+                            (implicit ec: ExecutionContext): StepHandle = {
 
       val inferenceParentsNames = proofStepParents(proofstep.annotations, config.relaxAnnotationFormat)
       inferenceParentsNames match {
         case Some(names) =>
           // construct the inference problem
-          val (premises, annotatedToBeProved) = constructInferenceProblem(proofstep, names, proofFormulas, config.declarations, status)
+          val (premises, annotatedToBeProved) = constructInferenceProblem(proofstep, names, proofFormulas, declarations, status)
+          val check = new GenericInferenceCheck(premises,annotatedToBeProved,externalKill,config)(ec)
 
-          // start all provers
-          config.provers.foreach { prover =>
-            startProcess(prover, premises, annotatedToBeProved)
-          }
+          val fu = check.apply()
 
-          val scheduler = Executors.newSingleThreadScheduledExecutor()
-
-          // start model finder after given offset if none of the provers found a result
-          if (config.modelFinder.isDefined) {
-            val startModelChecker = new Runnable {
-              override def run(): Unit = {
-                if (!completed.get() && already_showed_false.get().isEmpty) {
-                  logger.info(s"No prover finished after ${config.offset} seconds, starting model finder")
-                  startProcess(config.modelFinder.get, premises, annotatedToBeProved)
-                }
-              }
-            }
-            scheduler.schedule(startModelChecker, config.offset.toLong, TimeUnit.SECONDS)
-          }
-
-          try {
-            val result = Await.result(winner.future, (config.timeout + 5).seconds)
-
-            // kill all other processes
-            logger.info(s"Destroying external systems for step ${proofstep.name}...")
-            destroyRunningProcesses(running, Some(result._2))
-
-            result
-          } catch {
-            case _: java.util.concurrent.TimeoutException =>
-              // nobody produced Some(...) in time -> kill all
-              running.foreach {
-                case (_, (proc, _)) =>
-                  try proc.destroy()
-                  catch {
-                    case ex: Throwable =>
-                      logger.fine(s"Failed to destroy prover process: ${ex.getMessage}")
-                  }
-              }
-              (None, config.provers.head)
-          } finally {
-            scheduler.shutdown()
-          }
+          StepHandle(fu, check.endAll)
 
         case None =>
           logger.severe(s"Entailment check impossible (${proofstep.name}), inference parents entry malformed.")
-          (Some(false), config.provers.head)
+          StepHandle(Future.successful(Some((false, config.provers.head))),() => ())
       }
     }
 

@@ -3,19 +3,15 @@ package noergler.checks
 import leo.datastructures.TPTP
 import noergler.ProofCheckController.{ModelFinder, ProofSystem, Prover}
 import noergler.checks.GenericInferenceCheck.logger
-//import noergler.checks.GenericInferenceCheck.logger
-import noergler.{CTH, ProofCheckController, THM, proofStepParents}
+
+import scala.concurrent.blocking
+import noergler.{ProofCheckController}
 
 import java.io.ByteArrayInputStream
 import java.nio.file.Path
-import java.util.concurrent.atomic.{AtomicBoolean, AtomicReference}
-import java.util.logging.Logger
-import scala.collection.concurrent.TrieMap
-import scala.concurrent.duration.DurationInt
-import scala.concurrent.{Await, ExecutionContext, Future, Promise}
+import scala.concurrent.{ExecutionContext, Future}
 import scala.sys.process
 import scala.sys.process.{ProcessLogger, Process => RunningProcess}
-import java.util.concurrent.{Executors, TimeUnit}
 
 final class ProofSystemRunner(premises: Seq[TPTP.AnnotatedFormula],
                                   conjecture: TPTP.AnnotatedFormula,
@@ -26,12 +22,12 @@ final class ProofSystemRunner(premises: Seq[TPTP.AnnotatedFormula],
   import ProofSystemRunner.RunningProver
 
   // todo: we probably do not want to spend as much time on model finding, but what is a sensible output?
-  private val modelFinderTimeout: Int = Math.round(timeout / 3)
+  private val modelFinderTimeout: Int = math.max(1, timeout / 3)
 
   def apply(): (RunningProcess, Future[Option[Boolean]]) = {
     val started = ProofSystemRunner(premises, conjecture, system, timeout).startProcess()
     val resultFuture = Future {
-      collectResult(started)
+      blocking{collectResult(started)}
     }
     (started.process, resultFuture)
   }
@@ -67,13 +63,20 @@ final class ProofSystemRunner(premises: Seq[TPTP.AnnotatedFormula],
   }
 
   private def collectResult(started: RunningProver): Option[Boolean] = {
-    val exitCode = started.process.exitValue() // blocks until process exits
-    val errResult = started.stderr.toString
-    logger.finest(s"${system.name} stderr: $errResult")
-    val result = started.stdout.toString
-    logger.finest(s"${system.name} exit code: $exitCode")
-    logger.finest(s"${system.name} response: $result")
-    parse_TSTP_output(result)
+    try {
+      val exitCode = started.process.exitValue() // blocks until process exits
+      val errResult = started.stderr.toString
+      logger.finest(s"${system.name} stderr: $errResult")
+      val result = started.stdout.toString
+      logger.finest(s"${system.name} exit code: $exitCode")
+      logger.finest(s"${system.name} response: $result")
+      parse_TSTP_output(result)
+    } catch {
+          // if we destroy running processes, we need to catch the cases
+          case ex: Throwable =>
+            logger.fine(s"${system.name} result collection failed: ${ex.getMessage}")
+            None
+    }
   }
 
   private def parse_TSTP_output(result: String): Option[Boolean] = {
