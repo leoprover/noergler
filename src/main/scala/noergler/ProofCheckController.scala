@@ -354,7 +354,7 @@ class ProofCheckController(proof: TPTP.Problem,
       val individual_run_timeout = configuration.timeout // / 2 // todo: rasonable?
       assert(provers.nonEmpty)
       val inferenceCheckConfig = GenericInferenceCheckConfig(provers, modelFinder, ProverParallelisazionModes.contains(configuration.parallelMode), configuration.parallelCountermodelMode, configuration.relaxAnnotationFormat, individual_run_timeout)
-      val stepHandle = GenericInferenceCheck(proofstep, usedProofFormulas, declarations, status, killSignalAlreadySent, inferenceCheckConfig)
+      val stepHandle = GenericInferenceCheck(proofstep, usedProofFormulas, declarations, status, killSignalAlreadySent, inferenceCheckConfig)(proverEc)
 
       val checkedFu0 = stepHandle.result.flatMap {
         case Some((true, usedProver)) =>
