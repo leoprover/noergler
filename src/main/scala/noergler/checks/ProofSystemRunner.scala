@@ -1,34 +1,31 @@
 package noergler.checks
 
 import leo.datastructures.TPTP
+import noergler.ProofCheckController
 import noergler.ProofCheckController.{ModelFinder, ProofSystem, Prover}
 import noergler.checks.GenericInferenceCheck.logger
 
-import scala.concurrent.blocking
-import noergler.{ProofCheckController}
-
 import java.io.ByteArrayInputStream
 import java.nio.file.Path
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ExecutionContext, Future, blocking}
 import scala.sys.process
 import scala.sys.process.{ProcessLogger, Process => RunningProcess}
 
 final class ProofSystemRunner(premises: Seq[TPTP.AnnotatedFormula],
-                                  conjecture: TPTP.AnnotatedFormula,
-                                  system: ProofSystem,
-                                  //already_showed_false: AtomicReference[Option[Throwable]],
-                                  timeout: Int)
-                                 (implicit ec: ExecutionContext) {
+                              conjecture: TPTP.AnnotatedFormula,
+                              system: ProofSystem,
+                              timeout: Int)
+                             (implicit externalSystemEc: ExecutionContext){
   import ProofSystemRunner.RunningProver
 
   // todo: we probably do not want to spend as much time on model finding, but what is a sensible output?
   private val modelFinderTimeout: Int = math.max(1, timeout / 3)
 
   def apply(): (RunningProcess, Future[Option[Boolean]]) = {
-    val started = ProofSystemRunner(premises, conjecture, system, timeout).startProcess()
+    val started = ProofSystemRunner(premises, conjecture, system, timeout)(externalSystemEc).startProcess()
     val resultFuture = Future {
       blocking{collectResult(started)}
-    }
+    }(externalSystemEc)
     (started.process, resultFuture)
   }
 
@@ -72,10 +69,10 @@ final class ProofSystemRunner(premises: Seq[TPTP.AnnotatedFormula],
       logger.finest(s"${system.name} response: $result")
       parse_TSTP_output(result)
     } catch {
-          // if we destroy running processes, we need to catch the cases
-          case ex: Throwable =>
-            logger.fine(s"${system.name} result collection failed: ${ex.getMessage}")
-            None
+      // if we destroy running processes, we need to catch the cases
+      case ex: Throwable =>
+        logger.fine(s"${system.name} result collection failed: ${ex.getMessage}")
+        None
     }
   }
 
@@ -113,16 +110,14 @@ final class ProofSystemRunner(premises: Seq[TPTP.AnnotatedFormula],
 }
 object ProofSystemRunner {
 
-  final case class RunningProver(process: RunningProcess,
+  private final case class RunningProver(process: RunningProcess,
                                          stdout: StringBuffer,
                                          stderr: StringBuffer)
 
   def apply(premises: Seq[TPTP.AnnotatedFormula],
-             conjecture: TPTP.AnnotatedFormula,
-             system: ProofSystem,
-             //already_showed_false: AtomicReference[Option[Throwable]],
-             timeout: Int)
-           (implicit ec: ExecutionContext) = new ProofSystemRunner(premises, conjecture, system, timeout)
-
-
+            conjecture: TPTP.AnnotatedFormula,
+            system: ProofSystem,
+            timeout: Int)
+           (implicit externalSystemEc: ExecutionContext)
+  = new ProofSystemRunner(premises, conjecture, system, timeout)(externalSystemEc)
 }

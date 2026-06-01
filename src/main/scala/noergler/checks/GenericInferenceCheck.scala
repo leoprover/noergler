@@ -2,22 +2,24 @@ package noergler.checks
 
 import leo.datastructures.TPTP
 import noergler.ProofCheckController.{ModelFinder, ProofSystem, Prover}
-import noergler.checks.GenericInferenceCheck.{GenericInferenceCheckConfig, RunningSystemMap, ScheduledSystemMap, logger}
+import noergler.checks.GenericInferenceCheck.{GenericInferenceCheckConfig, logger}
 import noergler.{CTH, ProofCheckController, THM, proofStepParents}
 
-import java.util.concurrent.atomic.{AtomicBoolean, AtomicReference}
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.{Executors, ScheduledFuture, TimeUnit}
 import java.util.logging.Logger
 import scala.collection.concurrent.TrieMap
 import scala.concurrent.{ExecutionContext, Future, Promise}
-import scala.util.{Failure, Success}
 import scala.sys.process.{Process => RunningProcess}
-import java.util.concurrent.{Executors, ScheduledFuture, TimeUnit}
+import scala.util.{Failure, Success}
 
 final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
                                   conjecture: TPTP.AnnotatedFormula,
                                   externalKillSignal: AtomicBoolean,
-                                  config: GenericInferenceCheckConfig)
-                                 (implicit ec: ExecutionContext) {
+                                  config: GenericInferenceCheckConfig,
+                                  externalSystemEc: ExecutionContext)
+                                 (implicit orchestrationEc: ExecutionContext)
+{
 
   val running = TrieMap.empty[ProofSystem, (RunningProcess, Future[Option[Boolean]])]
   val scheduled = TrieMap.empty[ProofSystem, ScheduledFuture[_]]
@@ -43,7 +45,7 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
    * @return
    */
   def startSingleSystem0(system: ProofSystem): Future[Option[Boolean]] = {
-    val (newProc, fut) = ProofSystemRunner(premises, conjecture, system, config.individualStepTimeout).apply()
+    val (newProc, fut) = ProofSystemRunner(premises, conjecture, system, config.individualStepTimeout)(externalSystemEc).apply()
     running.put(system, (newProc, fut))
 
     fut.onComplete { tr =>
@@ -54,7 +56,7 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
         // system returned a definite result => set the system as the winner
         winner.trySuccess(Some(res.get, system))
       }
-    }(ec)
+    }
     fut
   }
 
@@ -146,17 +148,17 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
     ///////////////////////////////////////////////////////
     // 1. Start the provers
     val proverFuture: Future[Option[(Boolean, ProofSystem)]] =
-      if (config.provers.size == 1) {
-        startSingleSystem(config.provers.head)
+    if (config.provers.size == 1) {
+      startSingleSystem(config.provers.head)
 
-      } else if (config.parallelProvers){
-        // start all selected provers in parallel
-        runProversParallel(config.provers)
+    } else if (config.parallelProvers){
+      // start all selected provers in parallel
+      runProversParallel(config.provers)
 
-      } else {
-        // run all provers in sequence
-        startSerialSystems(config.provers.toSeq)
-      }
+    } else {
+      // run all provers in sequence
+      startSerialSystems(config.provers.toSeq)
+    }
 
     ///////////////////////////////////////////////////////
     // 2. Start the model finders
@@ -237,90 +239,91 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
   }
 }
 
-  object GenericInferenceCheck {
+object GenericInferenceCheck {
 
-    type RunningSystemMap = TrieMap[ProofSystem, (RunningProcess, Future[Option[Boolean]])]
-    type ScheduledSystemMap = TrieMap[ProofSystem, ScheduledFuture[_]]
+  type RunningSystemMap = TrieMap[ProofSystem, (RunningProcess, Future[Option[Boolean]])]
+  type ScheduledSystemMap = TrieMap[ProofSystem, ScheduledFuture[_]]
 
-    final val logger: Logger = Logger.getLogger("Nörgler.Controller")
+  final val logger: Logger = Logger.getLogger("Nörgler.Controller")
 
-    final case class StepHandle (result: Future[Option[(Boolean, ProofSystem)]],
-                                 kill: () => Unit)
+  final case class StepHandle (result: Future[Option[(Boolean, ProofSystem)]],
+                               kill: () => Unit)
 
-    case class GenericInferenceCheckConfig(provers: Set[Prover],
-                                           modelFinder: ModelFinder,
-                                           parallelProvers: Boolean,
-                                           parallelCountermodelMode: ProofCheckController.ParallelCountermodelMode,
-                                           relaxAnnotationFormat: Boolean,
-                                           individualStepTimeout: Int)
+  case class GenericInferenceCheckConfig(provers: Set[Prover],
+                                         modelFinder: ModelFinder,
+                                         parallelProvers: Boolean,
+                                         parallelCountermodelMode: ProofCheckController.ParallelCountermodelMode,
+                                         relaxAnnotationFormat: Boolean,
+                                         individualStepTimeout: Int)
 
-    private final def constructInferenceProblem(proofstep: TPTP.AnnotatedFormula,
-                                                names: Seq[String],
-                                                proofFormulas: Map[String, TPTP.AnnotatedFormula],
-                                                declarations: Seq[TPTP.AnnotatedFormula],
-                                                status: Either[THM.type, CTH.type]): (Seq[TPTP.AnnotatedFormula], TPTP.AnnotatedFormula) = {
-      import TPTP.{THF, TFF, FOF, TCF, CNF}
-      val inferenceParents = names.map(proofFormulas) // safe as we checked the existence of all parents before
-      logger.finer(s"Inference parents: ${names.mkString(",")}")
-      val premises: Seq[TPTP.AnnotatedFormula] = inferenceParents.map {
-        case TPTP.THFAnnotated(name, _, formula, _) => TPTP.THFAnnotated(name, "axiom", formula, None)
-        case TPTP.TFFAnnotated(name, _, formula, _) => TPTP.TFFAnnotated(name, "axiom", formula, None)
-        case TPTP.FOFAnnotated(name, _, formula, _) => TPTP.FOFAnnotated(name, "axiom", formula, None)
-        case TPTP.TCFAnnotated(name, _, formula, _) => TPTP.TCFAnnotated(name, "axiom", formula, None)
-        case TPTP.CNFAnnotated(name, _, formula, _) => TPTP.CNFAnnotated(name, "axiom", formula, None)
-        case TPTP.TPIAnnotated(name, _, formula, _) => TPTP.TPIAnnotated(name, "axiom", formula, None)
-      }
-      val formulatoBeProved: proofstep.F = status match {
-        case Left(_) => proofstep.formula
-        case Right(_) => proofstep.formula match {
-          case THF.Logical(formula) => THF.Logical(THF.UnaryFormula(THF.~, formula)).asInstanceOf[proofstep.F]
-          case TFF.Logical(formula) => TFF.Logical(TFF.UnaryFormula(TFF.~, formula)).asInstanceOf[proofstep.F]
-          case FOF.Logical(formula) => FOF.Logical(FOF.UnaryFormula(FOF.~, formula)).asInstanceOf[proofstep.F]
-          case TCF.Logical(_) => ??? // TODO
-          case CNF.Logical(_) => ??? // TODO
-          case _ => throw new IllegalArgumentException("TPI formulas cannot be used for verification.")
-        }
-      }
-      val annotatedToBeProved: TPTP.AnnotatedFormula = proofstep match {
-        case TPTP.THFAnnotated(name, _, _, _) =>
-          TPTP.THFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.THF.Statement], None)
-        case TPTP.TFFAnnotated(name, _, _, _) =>
-          TPTP.TFFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.TFF.Statement], None)
-        case TPTP.FOFAnnotated(name, _, _, _) =>
-          TPTP.FOFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.FOF.Statement], None)
-        case TPTP.TCFAnnotated(name, _, _, _) => // FIXME: I think TCF/CNF does not have conjectures
-          TPTP.TCFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.TCF.Statement], None)
-        case TPTP.CNFAnnotated(name, _, _, _) =>
-          TPTP.CNFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.CNF.Statement], None)
+  private final def constructInferenceProblem(proofstep: TPTP.AnnotatedFormula,
+                                              names: Seq[String],
+                                              proofFormulas: Map[String, TPTP.AnnotatedFormula],
+                                              declarations: Seq[TPTP.AnnotatedFormula],
+                                              status: Either[THM.type, CTH.type]): (Seq[TPTP.AnnotatedFormula], TPTP.AnnotatedFormula) = {
+    import TPTP._
+    val inferenceParents = names.map(proofFormulas) // safe as we checked the existence of all parents before
+    logger.finer(s"Inference parents: ${names.mkString(",")}")
+    val premises: Seq[TPTP.AnnotatedFormula] = inferenceParents.map {
+      case TPTP.THFAnnotated(name, _, formula, _) => TPTP.THFAnnotated(name, "axiom", formula, None)
+      case TPTP.TFFAnnotated(name, _, formula, _) => TPTP.TFFAnnotated(name, "axiom", formula, None)
+      case TPTP.FOFAnnotated(name, _, formula, _) => TPTP.FOFAnnotated(name, "axiom", formula, None)
+      case TPTP.TCFAnnotated(name, _, formula, _) => TPTP.TCFAnnotated(name, "axiom", formula, None)
+      case TPTP.CNFAnnotated(name, _, formula, _) => TPTP.CNFAnnotated(name, "axiom", formula, None)
+      case TPTP.TPIAnnotated(name, _, formula, _) => TPTP.TPIAnnotated(name, "axiom", formula, None)
+    }
+    val formulatoBeProved: proofstep.F = status match {
+      case Left(_) => proofstep.formula
+      case Right(_) => proofstep.formula match {
+        case THF.Logical(formula) => THF.Logical(THF.UnaryFormula(THF.~, formula)).asInstanceOf[proofstep.F]
+        case TFF.Logical(formula) => TFF.Logical(TFF.UnaryFormula(TFF.~, formula)).asInstanceOf[proofstep.F]
+        case FOF.Logical(formula) => FOF.Logical(FOF.UnaryFormula(FOF.~, formula)).asInstanceOf[proofstep.F]
+        case TCF.Logical(_) => ??? // TODO
+        case CNF.Logical(_) => ??? // TODO
         case _ => throw new IllegalArgumentException("TPI formulas cannot be used for verification.")
       }
-      //todo: only pass the declarations that are actually necessary?
-      (declarations ++ premises, annotatedToBeProved)
     }
-
-    final def apply(proofstep: TPTP.AnnotatedFormula,
-                             proofFormulas: Map[String, TPTP.AnnotatedFormula],
-                             declarations: Seq[TPTP.AnnotatedFormula],
-                             status: Either[THM.type, CTH.type],
-                             externalKill: AtomicBoolean,
-                             config: GenericInferenceCheckConfig)
-                            (implicit ec: ExecutionContext): StepHandle = {
-
-      val inferenceParentsNames = proofStepParents(proofstep.annotations, config.relaxAnnotationFormat)
-      inferenceParentsNames match {
-        case Some(names) =>
-          // construct the inference problem
-          val (premises, annotatedToBeProved) = constructInferenceProblem(proofstep, names, proofFormulas, declarations, status)
-          val check = new GenericInferenceCheck(premises,annotatedToBeProved,externalKill,config)(ec)
-
-          val fu = check.apply()
-
-          StepHandle(fu, check.endAll)
-
-        case None =>
-          logger.severe(s"Entailment check impossible (${proofstep.name}), inference parents entry malformed.")
-          StepHandle(Future.successful(Some((false, config.provers.head))),() => ())
-      }
+    val annotatedToBeProved: TPTP.AnnotatedFormula = proofstep match {
+      case TPTP.THFAnnotated(name, _, _, _) =>
+        TPTP.THFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.THF.Statement], None)
+      case TPTP.TFFAnnotated(name, _, _, _) =>
+        TPTP.TFFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.TFF.Statement], None)
+      case TPTP.FOFAnnotated(name, _, _, _) =>
+        TPTP.FOFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.FOF.Statement], None)
+      case TPTP.TCFAnnotated(name, _, _, _) => // FIXME: I think TCF/CNF does not have conjectures
+        TPTP.TCFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.TCF.Statement], None)
+      case TPTP.CNFAnnotated(name, _, _, _) =>
+        TPTP.CNFAnnotated(name, "conjecture", formulatoBeProved.asInstanceOf[TPTP.CNF.Statement], None)
+      case _ => throw new IllegalArgumentException("TPI formulas cannot be used for verification.")
     }
+    //todo: only pass the declarations that are actually necessary?
+    (declarations ++ premises, annotatedToBeProved)
+  }
+
+  final def apply(proofstep: TPTP.AnnotatedFormula,
+                  proofFormulas: Map[String, TPTP.AnnotatedFormula],
+                  declarations: Seq[TPTP.AnnotatedFormula],
+                  status: Either[THM.type, CTH.type],
+                  externalKill: AtomicBoolean,
+                  config: GenericInferenceCheckConfig,
+                  externalSystemEc: ExecutionContext)
+                 (implicit orchestrationEc: ExecutionContext)= {
+
+    val inferenceParentsNames = proofStepParents(proofstep.annotations, config.relaxAnnotationFormat)
+    inferenceParentsNames match {
+      case Some(names) =>
+        // construct the inference problem
+        val (premises, annotatedToBeProved) = constructInferenceProblem(proofstep, names, proofFormulas, declarations, status)
+        val check = new GenericInferenceCheck(premises,annotatedToBeProved,externalKill,config,externalSystemEc)(orchestrationEc)
+
+        val fu = check.apply()
+
+        StepHandle(fu, check.endAll)
+
+      case None =>
+        logger.severe(s"Entailment check impossible (${proofstep.name}), inference parents entry malformed.")
+        StepHandle(Future.successful(Some((false, config.provers.head))),() => ())
+    }
+  }
 
 }

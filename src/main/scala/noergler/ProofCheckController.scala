@@ -2,18 +2,17 @@ package noergler
 
 import leo.datastructures.TPTP
 import leo.datastructures.TPTP.FOF
-import noergler.ProofCheckController.{Configuration, ModelFinder, Prover, ProverParallelisazionModes, StepParallelisazionModes, VerificationFailedException, VerificationTimedOutException}
+import noergler.ProofCheckController._
 import noergler.checks.GenericInferenceCheck.{GenericInferenceCheckConfig, logger}
-import noergler.ProofCheckController.ProofSystem
-import noergler.checks.{ConjectureNegationCheck, CorrectFormulaFromFileCheck, FormulaNamesUniquenessCheck, GenericInferenceCheck, InferenceParentsAcyclicityCheck, InferenceParentsAreNotConjecture, InferenceParentsExistCheck, ProofEndsInFalseCheck, SkolemizationCheck}
+import noergler.checks._
 
 import java.nio.file.Path
-import java.util.concurrent.Executors
+import java.util
 import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.{Callable, Executors, RejectedExecutionException, TimeUnit}
 import java.util.logging.Logger
 import scala.concurrent.duration.DurationInt
 import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutorService, Future}
-import scala.util.{Failure, Success}
 
 /**
  * The Controller coordinates the checking process, i.e., how and when
@@ -28,19 +27,73 @@ class ProofCheckController(proof: TPTP.Problem,
                            configuration: Configuration) {
 
   final val logger: Logger = Logger.getLogger("Nörgler.Controller")
+
+  private final class QuietShutdownEC(underlying: ExecutionContextExecutorService,
+                                      isShuttingDown: () => Boolean
+                                     ) extends ExecutionContextExecutorService {
+
+    override def execute(runnable: Runnable): Unit = {
+      try {
+        underlying.execute(runnable)
+      } catch {
+        case _: RejectedExecutionException if isShuttingDown() =>
+          ()
+      }
+    }
+
+    override def reportFailure(cause: Throwable): Unit = {
+      cause match {
+        case _: RejectedExecutionException if isShuttingDown() =>
+          () // expected during shutdown; silence
+
+        case other =>
+          underlying.reportFailure(other)
+      }
+    }
+
+    override def shutdown(): Unit = underlying.shutdown()
+    override def shutdownNow(): util.List[Runnable] = underlying.shutdownNow()
+    override def isShutdown: Boolean = underlying.isShutdown
+    override def isTerminated: Boolean = underlying.isTerminated
+    override def awaitTermination(timeout: Long, unit: TimeUnit): Boolean = underlying.awaitTermination(timeout, unit)
+    override def submit[T](task: Callable[T]): util.concurrent.Future[T] = underlying.submit[T](task: Callable[T])
+    override def submit[T](task: Runnable, result: T): util.concurrent.Future[T] = underlying.submit[T](task: Runnable, result: T)
+    override def submit(task: Runnable): util.concurrent.Future[_] = underlying.submit(task: Runnable)
+    override def invokeAll[T](tasks: util.Collection[_ <: Callable[T]]): util.List[util.concurrent.Future[T]] = underlying.invokeAll[T](tasks: util.Collection[_ <: Callable[T]])
+    override def invokeAll[T](tasks: util.Collection[_ <: Callable[T]], timeout: Long, unit: TimeUnit): util.List[util.concurrent.Future[T]] = underlying.invokeAll[T](tasks: util.Collection[_ <: Callable[T]], timeout: Long, unit: TimeUnit)
+    override def invokeAny[T](tasks: util.Collection[_ <: Callable[T]]): T = underlying.invokeAny[T](tasks: util.Collection[_ <: Callable[T]])
+    override def invokeAny[T](tasks: util.Collection[_ <: Callable[T]], timeout: Long, unit: TimeUnit): T = underlying.invokeAny[T](tasks: util.Collection[_ <: Callable[T]], timeout: Long, unit: TimeUnit)
+  }
+
+  private val shuttingDownECs = new AtomicBoolean(false)
+
   final private def threadCount: Int = Runtime.getRuntime.availableProcessors()*2
 
-  private val stepEc: ExecutionContextExecutorService =
+  private val orchestrationEC0: ExecutionContextExecutorService =
     ExecutionContext.fromExecutorService(
       Executors.newFixedThreadPool(threadCount)
     )
 
-  private implicit val ec: ExecutionContext = stepEc
+  private val orchestrationEC: ExecutionContextExecutorService =
+    new QuietShutdownEC(orchestrationEC0, () => shuttingDownECs.get())
 
-  private val proverEc: ExecutionContextExecutorService =
+  private implicit val ec: ExecutionContext = orchestrationEC
+
+  private val externalSystemEc0: ExecutionContextExecutorService =
     ExecutionContext.fromExecutorService(
       Executors.newFixedThreadPool(threadCount * 4)
     )
+
+  private val externalSystemEc: ExecutionContextExecutorService =
+    new QuietShutdownEC(externalSystemEc0, () => shuttingDownECs.get())
+
+  Thread.setDefaultUncaughtExceptionHandler {
+    case (thread, _: InterruptedException) if shuttingDownECs.get() &&
+        thread.getName.startsWith("ThreadProcess-spawn-Thread") => ()
+
+    case (_, ex) =>
+      ex.printStackTrace()
+  }
 
   /** Map of problem file TPTP annotated formula name (hopefully unique) -> the formula */
   private var problemFormulas: Map[String, TPTP.AnnotatedFormula] = Map.empty
@@ -65,17 +118,16 @@ class ProofCheckController(proof: TPTP.Problem,
       problemFormulas.flatMap(_.symbols).toSet
     }
 
-  private final case class FutureHandle(result: Future[Unit],
-                              kill: () => Unit) // kill all running processes/ cancel schedules ones
+  private final case class FutureHandle(result: Future[Unit], kill: () => Unit)
 
   private val killSignalAlreadySent = new AtomicBoolean(false)
 
   private var openFutures: Seq[FutureHandle] = Seq.empty
 
-  val already_showed_false: java.util.concurrent.atomic.AtomicReference[Option[Throwable]] = new java.util.concurrent.atomic.AtomicReference(None)
-  val already_showed_not_verifiable: java.util.concurrent.atomic.AtomicReference[Option[Throwable]] = new java.util.concurrent.atomic.AtomicReference(None)
+  private val already_showed_false: java.util.concurrent.atomic.AtomicReference[Option[Throwable]] = new java.util.concurrent.atomic.AtomicReference(None)
+  private val already_showed_not_verifiable: java.util.concurrent.atomic.AtomicReference[Option[Throwable]] = new java.util.concurrent.atomic.AtomicReference(None)
 
-  private def setFailedException(ex: VerificationFailedException) = {
+  private def setFailedException(ex: VerificationFailedException): Unit = {
     already_showed_false.compareAndSet(None, Some(ex))
 
     if (killSignalAlreadySent.compareAndSet(false, true)) {
@@ -84,7 +136,7 @@ class ProofCheckController(proof: TPTP.Problem,
     }
   }
 
-  private def setNotVerifiableException(ex: VerificationTimedOutException) = {
+  private def setNotVerifiableException(ex: VerificationTimedOutException): Unit = {
     if (killSignalAlreadySent.compareAndSet(false, true)) {
 
       already_showed_not_verifiable.compareAndSet(None, Some(ex))
@@ -96,12 +148,12 @@ class ProofCheckController(proof: TPTP.Problem,
     }
   }
 
-  def stoppingException: java.util.concurrent.atomic.AtomicReference[Option[Throwable]] =
+  private def stoppingException: java.util.concurrent.atomic.AtomicReference[Option[Throwable]] =
     if (already_showed_false.get().isDefined) already_showed_false
     else already_showed_not_verifiable
   //todo: tryHard2fail mode that only accepts shown_false as stopping Exception and continues checking after a not_verifiable has been found
 
-  def endAll() = {
+  def endAll(): Unit = {
     openFutures.foreach(_.kill)
   }
 
@@ -148,7 +200,7 @@ class ProofCheckController(proof: TPTP.Problem,
       //////////////////
       /** All the steps that have already been processed. Initially empty. */
       var previousProofSteps: Seq[TPTP.AnnotatedFormula] = Vector.empty
-      for (proofstep <- proofSteps if (!killSignalAlreadySent.get())) {
+      for (proofstep <- proofSteps if !killSignalAlreadySent.get()) {
         var addedNewFuture = false
         var skippedStep = false
         logger.finer(s"Checking proof step '${proofstep.name}' with annotation '${proofstep.annotations.map(_._1.pretty).getOrElse("")}' ...")
@@ -218,7 +270,7 @@ class ProofCheckController(proof: TPTP.Problem,
           }
           case None if proofstep.role == "type" =>
             if (problem.isEmpty) declarations = declarations :+ proofstep
-          logger.fine(s"found type annotation ${proofstep.pretty}")
+            logger.fine(s"found type annotation ${proofstep.pretty}")
           case None => // no annotation is an error for all steps.
             logger.severe(s"Proof step '${proofstep.name}' has no or malformed annotation.")
             throw new VerificationFailedException(s"No or malformed annotation.", Some(proofstep))
@@ -251,8 +303,11 @@ class ProofCheckController(proof: TPTP.Problem,
       case _: concurrent.TimeoutException =>
         NotVerified("Timed out.")
     } finally {
-      stepEc.shutdown()
-      proverEc.shutdown()
+      endAll()
+
+      shuttingDownECs.set(true)
+      orchestrationEC.shutdown()
+      externalSystemEc.shutdown()
     }
   }
 
@@ -354,7 +409,7 @@ class ProofCheckController(proof: TPTP.Problem,
       val individual_run_timeout = configuration.timeout // / 2 // todo: rasonable?
       assert(provers.nonEmpty)
       val inferenceCheckConfig = GenericInferenceCheckConfig(provers, modelFinder, ProverParallelisazionModes.contains(configuration.parallelMode), configuration.parallelCountermodelMode, configuration.relaxAnnotationFormat, individual_run_timeout)
-      val stepHandle = GenericInferenceCheck(proofstep, usedProofFormulas, declarations, status, killSignalAlreadySent, inferenceCheckConfig)(proverEc)
+      val stepHandle = GenericInferenceCheck(proofstep, usedProofFormulas, declarations, status, killSignalAlreadySent, inferenceCheckConfig,externalSystemEc)(orchestrationEC)
 
       val checkedFu0 = stepHandle.result.flatMap {
         case Some((true, usedProver)) =>
@@ -393,7 +448,7 @@ class ProofCheckController(proof: TPTP.Problem,
         fu.kill
       } else {
         openFutures = openFutures :+ fu
-    }
+      }
       logger.fine(s"Scheduled parallel inference check.")
     } else {
       val fu = run()
@@ -475,19 +530,19 @@ object ProofCheckController {
   private final val ProverParallelisazionModes: Seq[ParallelMode] = Seq(ParallelProvers, Hybrid)
   //val ModelCheckerParallelisazionModes = Seq(Offset(_), Always)
 
-  final case class Configuration(problemPath: Option[Path],
-                                 proofPath: Path,
-                                 timeout: Int,
-                                 parallelMode: ParallelMode,
-                                 parallelCountermodelMode: ParallelCountermodelMode,
-                                 provers: Set[Prover],
-                                 modelFinder: ModelFinder,
-                                 ignoreFileAnnotations: Boolean,
-                                 relaxAnnotationFormat: Boolean,
-                                 relaxProblemCheck: Boolean,
-                                 relaxSpecifiedInferenceCheck: Boolean,
-                                 allowProverAxioms: Boolean,
-                                 upToESA: Boolean)
+  private final case class Configuration(problemPath: Option[Path],
+                                         proofPath: Path,
+                                         timeout: Int,
+                                         parallelMode: ParallelMode,
+                                         parallelCountermodelMode: ParallelCountermodelMode,
+                                         provers: Set[Prover],
+                                         modelFinder: ModelFinder,
+                                         ignoreFileAnnotations: Boolean,
+                                         relaxAnnotationFormat: Boolean,
+                                         relaxProblemCheck: Boolean,
+                                         relaxSpecifiedInferenceCheck: Boolean,
+                                         allowProverAxioms: Boolean,
+                                         upToESA: Boolean)
 
   /** Thrown during the check if some step yields that the proof definitely cannot be verified
    * because it's not a valid proof. */
@@ -545,7 +600,7 @@ object ProofCheckController {
     }
   }
 
-  case object IgnoreFileAnnotations extends Parameter //FIXME: Never parsed from CLI arguments
+  private case object IgnoreFileAnnotations extends Parameter //FIXME: Never parsed from CLI arguments
   case object RelaxAnnotationFormat extends Parameter
   case object RelaxProblemCheck extends Parameter
   case object RelaxSpecifiedInferenceCheck extends Parameter
