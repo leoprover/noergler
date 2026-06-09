@@ -137,21 +137,20 @@ class ProofCheckController(proof: TPTP.Problem,
   }
 
   private def setNotVerifiableException(ex: VerificationTimedOutException): Unit = {
-    if (killSignalAlreadySent.compareAndSet(false, true)) {
+    already_showed_not_verifiable.compareAndSet(None, Some(ex))
 
-      already_showed_not_verifiable.compareAndSet(None, Some(ex))
-
-      // todo change policy here to add tryHard2Fail mode
-
+    // only send the killsignal if we are not trying to find a failing step if present
+    if (!configuration.findFailingStep && killSignalAlreadySent.compareAndSet(false, true)){
       logger.fine(s"Stopping all running proof checks because: ${ex.getMessage}")
       openFutures.foreach(_.kill())
     }
   }
 
-  private def stoppingException: java.util.concurrent.atomic.AtomicReference[Option[Throwable]] =
-    if (already_showed_false.get().isDefined) already_showed_false
-    else already_showed_not_verifiable
-  //todo: tryHard2fail mode that only accepts shown_false as stopping Exception and continues checking after a not_verifiable has been found
+  private def stoppingException: Option[Throwable] = {
+    if (already_showed_false.get().isDefined) already_showed_false.get()
+    else if (!configuration.findFailingStep) already_showed_not_verifiable.get()
+    else None
+  }
 
   def endAll(): Unit = {
     openFutures.foreach(_.kill)
@@ -280,20 +279,23 @@ class ProofCheckController(proof: TPTP.Problem,
       }
 
       if (StepParallelisazionModes.contains(configuration.parallelMode)) {
-        stoppingException.get() match {
+        stoppingException match {
           case Some(exception) =>
             throw exception
           case None =>
             logger.info(s"Waiting for verification tasks to finish ...")
             Await.result(Future.sequence(openFutures.map(_.result)), configuration.timeout.seconds)
             // TODO: Isnt this the same as before with extra steps? Discuss
-            logger.info(s"All checks succeeded.")
+            logger.info(s"All checks completed.")
         }
       }
 
-      // report success
-      logger.info("Proof verified.")
-      Verified
+      // in find-failing-step mode we may have found all steps without throwing even if there are non-verifiable steps
+      if (configuration.findFailingStep && already_showed_not_verifiable.get().isDefined) throw already_showed_not_verifiable.get().get
+      else {// report success
+        logger.info("Proof verified.")
+        Verified
+      }
     } catch {
       case e: VerificationFailedException =>
         if (e.proofstep.isDefined) logger.info(s"Check failed for step '${e.proofstep.get.name}'.")
@@ -427,13 +429,11 @@ class ProofCheckController(proof: TPTP.Problem,
           Future.successful(())
 
         case None =>
-          val exception = new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out.")
+          val exception = new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out or gaveup.")
           setNotVerifiableException(exception)
-          Future.failed(exception)
+          if (configuration.findFailingStep) Future.successful(())
+          else Future.failed(exception)
       }
-
-      // todo: how to best store the maps of running and planned processes so that I can easily kill them once a proof has been found?
-      //  and should i even still have both the killing in the generic inference class and here in the controller?
 
       FutureHandle(checkedFu0,stepHandle.kill)
     }
@@ -452,7 +452,7 @@ class ProofCheckController(proof: TPTP.Problem,
       logger.fine(s"Scheduled parallel inference check.")
     } else {
       val fu = run()
-      Await.result(fu.result,configuration.timeout.seconds) // todo i need no further catch here, right?
+      Await.result(fu.result,configuration.timeout.seconds)
     }
 
   }
