@@ -542,7 +542,9 @@ object ProofCheckController {
                                          relaxProblemCheck: Boolean,
                                          relaxSpecifiedInferenceCheck: Boolean,
                                          allowProverAxioms: Boolean,
-                                         upToESA: Boolean)
+                                         upToESA: Boolean,
+                                         findFailingStep: Boolean,
+                                         enforceProofOrder: Boolean)
 
   /** Thrown during the check if some step yields that the proof definitely cannot be verified
    * because it's not a valid proof. */
@@ -566,6 +568,8 @@ object ProofCheckController {
   private final val defaultRelaxProblemCheck: Boolean = false
   private final val defaultRelaxSpecifiedInferenceCheck: Boolean = false
   private final val defaultAllowProverAxioms: Boolean = false
+  private final val defaultEnforceProofOrder: Boolean = false
+  private final val defaultFindFailingStep: Boolean = false
   private final val defaultUpToESA: Boolean = false
   private final val defaultProvers: Set[String] = Set("eprover")
   private final val defaultModelFinder: String = "mace4"
@@ -605,6 +609,8 @@ object ProofCheckController {
   case object RelaxProblemCheck extends Parameter
   case object RelaxSpecifiedInferenceCheck extends Parameter
   case object AllowProverAxioms extends Parameter
+  case object EnforceProofOrder extends Parameter
+  case object FindFailingStep extends Parameter
   case object UpToESA extends Parameter
 
   final case class ProverSelection(provers: Seq[String]) extends Parameter
@@ -639,6 +645,8 @@ object ProofCheckController {
     var relaxProblemCheck = defaultRelaxProblemCheck
     var relaxSpecifiedInferenceCheck = defaultRelaxSpecifiedInferenceCheck
     var allowProverAxioms = defaultAllowProverAxioms
+    var enforceProofOrder = defaultEnforceProofOrder
+    var findFailingStep = defaultFindFailingStep
     var upToESA = defaultUpToESA
     var eproverPath: Option[Path] = defaulteproverPath.map(p => Path.of(p))
     var vampirePath: Option[Path] = defaultvampirePath.map(p => Path.of(p))
@@ -664,6 +672,8 @@ object ProofCheckController {
         case RelaxProblemCheck => relaxProblemCheck = true
         case RelaxSpecifiedInferenceCheck => relaxSpecifiedInferenceCheck = true
         case AllowProverAxioms => allowProverAxioms = true
+        case EnforceProofOrder => enforceProofOrder = true
+        case FindFailingStep => findFailingStep = true
         case UpToESA => upToESA = true
         case EproverPath(p) => eproverPath = Some(p)
         case VampirePath(p) => vampirePath = Some(p)
@@ -706,7 +716,7 @@ object ProofCheckController {
 
     logger.info(s"prover size: ${provers.size}, parallel mode: $parallel, parallel countermodel: $parallelCountermodel")
 
-    val config = Configuration(problemPath, proofPath, timeout, parallel, parallelCountermodel, provers, modelFinders, ignoreFileAnnotations, relaxAnnotationFormat, relaxProblemCheck, relaxSpecifiedInferenceCheck, allowProverAxioms, upToESA)
+    val config = Configuration(problemPath, proofPath, timeout, parallel, parallelCountermodel, provers, modelFinders, ignoreFileAnnotations, relaxAnnotationFormat, relaxProblemCheck, relaxSpecifiedInferenceCheck, allowProverAxioms, upToESA, findFailingStep, enforceProofOrder)
     val controller = new ProofCheckController(proof, problem, config)
     controller.apply()
   }
