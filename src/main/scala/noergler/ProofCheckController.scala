@@ -348,7 +348,7 @@ class ProofCheckController(proof: TPTP.Problem,
     val relevantSteps = if (configuration.enforceProofOrder) previousProofSteps else proofSteps
     val inferenceParentsCheck = InferenceParentsExistCheck.apply(proofstep, relevantSteps, configuration.relaxAnnotationFormat)
     logger.fine(s"Inference parents exist (${proofstep.name}): $inferenceParentsCheck")
-    if (!inferenceParentsCheck) throw new VerificationFailedException(s"(Some) inference parents unknown.", Some(proofstep))
+    if (!inferenceParentsCheck) throw new VerificationFailedException(s"(Some) inference parents did not appear earlier in the proof.", Some(proofstep))
   }
 
   private def checkInferenceParentsAreNotConjecture(proofstep: TPTP.AnnotatedFormula): Unit = {
