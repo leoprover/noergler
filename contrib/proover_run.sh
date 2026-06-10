@@ -23,4 +23,4 @@ PROBLEM="$PROOFPATH/$PROBLEMREL"
 #echo "% proof path: $PROOFPATH"
 #echo "% problem path: $PROBLEM"
 
-$NOERGLER --problem "$PROBLEM" --verbosity 1 --mace4-path "$MACE4" --eprover-path "$EPROVER" --parallel-mode steps --parallel-model-finder-mode offset "$PROOF"
+$NOERGLER --problem "$PROBLEM" --verbosity 1 --mace4-path "$MACE4" --eprover-path "$EPROVER" --parallel-mode steps --parallel-model-finder-mode offset --find-failing-step "$PROOF"
