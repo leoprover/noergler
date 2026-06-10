@@ -44,26 +44,23 @@ object ProofEndsInFalseCheck {
   final def findSinks(proofSteps: Seq[TPTP.AnnotatedFormula],
                       proofFormulas: Map[String, TPTP.AnnotatedFormula],
                       relaxAnnotationFormat: Boolean): Option[Set[TPTP.AnnotatedFormula]] = {
-    // every formula that is an inference and has no children is a sink.
     var parents: Set[TPTP.AnnotatedFormula] = Set.empty // accumulator of all formulas that are parents of any other formula
-    var inferences: Set[TPTP.AnnotatedFormula] = Set.empty // accumulator of all inferences in the given file
 
     proofSteps.foreach { proofStep =>
       val annotation = proofStep.annotations
       annotationType(annotation) match {
         case Some(annotationType) => annotationType match {
           case "inference" =>
-            inferences = inferences + proofStep
             val currentParents = proofStepParentsAsFormulas(proofStep, proofFormulas, relaxAnnotationFormat)
             if (currentParents.isDefined) parents = parents ++ currentParents.get
             else return None // sinks could not be identified due to malformed annotation format
-          case _ => //don't care
+          case _ => // other cases -> don't care
         }
-        case None => // don't care
+        case None => // cases like type declarations, don't care
       }
     }
 
-    Some(inferences.diff(parents))
+    Some(proofSteps.toSet.diff(parents))
   }
 
   final def apply(proof: TPTP.Problem,
