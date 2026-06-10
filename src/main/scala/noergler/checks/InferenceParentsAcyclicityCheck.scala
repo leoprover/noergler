@@ -8,9 +8,12 @@ object InferenceParentsAcyclicityCheck {
   final def apply(proofSteps: Seq[TPTP.AnnotatedFormula], proofFormulas: Map[String, TPTP.AnnotatedFormula], relaxAnnotationFormat:Boolean): Boolean = {
     if (proofSteps.isEmpty) true
     else {
-      val lastStep = proofSteps.last
-      dfs(proofFormulas, lastStep, mutable.Set.empty, mutable.Set.empty,relaxAnnotationFormat)
+      val done: scala.collection.mutable.Set[String] = mutable.Set.empty
+
+      proofSteps.forall { step =>
+        dfs(proofFormulas, step, mutable.Set.empty, done, relaxAnnotationFormat)
       }
+    }
   }
 
   private final def dfs(proofFormulas: Map[String, TPTP.AnnotatedFormula],

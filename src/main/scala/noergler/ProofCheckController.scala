@@ -318,9 +318,14 @@ class ProofCheckController(proof: TPTP.Problem,
   //////////////////////////////////////////////////////////
   private def checkProofEndsInFalse(): Unit = {
     logger.fine("Check for $false at the end of proof.")
-    val endsWithFalseCheck = ProofEndsInFalseCheck.apply(proof)
-    logger.info(s"Proof ends in $$false: $endsWithFalseCheck")
-    if (!endsWithFalseCheck) throw new VerificationFailedException("Proof does not end in false.")
+    val endsWithFalseCheck = ProofEndsInFalseCheck.apply(proof,proofFormulas,configuration.relaxAnnotationFormat, configuration.enforceProofOrder)
+    endsWithFalseCheck match {
+      case Some(result) =>
+        logger.info(s"Proof ends in $$false: $result")
+        if (!result) throw new VerificationFailedException("Proof does not end in false.")
+      case None =>
+        throw new VerificationFailedException("Unable to infer inference relationships due to malformed annotations")
+    }
   }
 
   private def checkFormulaNamesAreUnique(): Unit = {
@@ -339,7 +344,9 @@ class ProofCheckController(proof: TPTP.Problem,
 
   private def checkInferenceParentsExist(proofstep: TPTP.AnnotatedFormula, previousProofSteps: Seq[TPTP.AnnotatedFormula]): Unit = {
     logger.finer("Check for existence of inference parents (if any).")
-    val inferenceParentsCheck = InferenceParentsExistCheck.apply(proofstep, previousProofSteps, configuration.relaxAnnotationFormat)
+    // if we want to enforce strict step order, we only consider previous steps, otherwise we just need to check existence in proof
+    val relevantSteps = if (configuration.enforceProofOrder) previousProofSteps else proofSteps
+    val inferenceParentsCheck = InferenceParentsExistCheck.apply(proofstep, relevantSteps, configuration.relaxAnnotationFormat)
     logger.fine(s"Inference parents exist (${proofstep.name}): $inferenceParentsCheck")
     if (!inferenceParentsCheck) throw new VerificationFailedException(s"(Some) inference parents unknown.", Some(proofstep))
   }
@@ -348,7 +355,7 @@ class ProofCheckController(proof: TPTP.Problem,
     logger.finer("Check that the inference parents (if any) are not the conjecture.")
     val inferenceParentsNotConjCheck = InferenceParentsAreNotConjecture.apply(proofstep, problemConjectureName, configuration.relaxAnnotationFormat)
     logger.fine(s"Inference parents are not the conjecture (${proofstep.name}): $inferenceParentsNotConjCheck")
-    if (!inferenceParentsNotConjCheck) throw new VerificationFailedException(s"Conjecture used as an inference parent.", Some(proofstep))
+    if (!inferenceParentsNotConjCheck) throw new VerificationFailedException(s"Conjecture used as an inference parent for a step that is not the negation of the conjecture.", Some(proofstep))
   }
 
   private def checkStatusIsNotCth(proofstep: TPTP.AnnotatedFormula, inferenceStatus0: Option[InferenceStatus]): Unit = {
