@@ -222,6 +222,15 @@ object Noergler {
          |                  If set, Nörgler will allow axioms with an annotation other than file, but print a warning
          |                  indicating that an axiom was introduced. Recommended for provers that introduce built-in
          |                  theory axioms.
+         |
+         |  --enforce-proof-order
+         |                  If set, Nörgler will only accept proofs where the order of formulas corresponds to the otder
+         |                  of the steps in the actual proof.
+         |
+         |  --find-failing-step
+         |                  If set, Nörgler does not stop the verification process after finding a step that results in an
+         |                  inconclusive result (e.g. Gaveup or Timeout), but instead continues until it identifies a step
+         |                  that is verifiably wrong.
          |""".stripMargin)
   }
 
@@ -294,6 +303,10 @@ object Noergler {
             parameters = parameters :+ ProofCheckController.RelaxSpecifiedInferenceCheck
           case "--allow-prover-axioms" =>
             parameters = parameters :+ ProofCheckController.AllowProverAxioms
+          case "--enforce-proof-order" =>
+            parameters = parameters :+ ProofCheckController.EnforceProofOrder
+          case "--find-failing-step" =>
+            parameters = parameters :+ ProofCheckController.FindFailingStep
           case "--up-to-esa" =>
             parameters = parameters :+ ProofCheckController.UpToESA
 
