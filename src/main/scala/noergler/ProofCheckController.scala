@@ -491,7 +491,7 @@ class ProofCheckController(proof: TPTP.Problem,
     assert(configuration.problemPath.isDefined)
     val proofPath = configuration.proofPath
     val problemPath = configuration.problemPath.get
-    val checkFormulaFromFile = CorrectFormulaFromFileCheck.apply(proofstep, proofPath: Path, problemPath, problemFormulas, relaxProblemCheck)
+    val checkFormulaFromFile = CorrectFormulaFromFileCheck.apply(proofstep, proofPath, problemPath, problemFormulas, relaxProblemCheck)
     logger.fine(s"Formula equivalent to problem statement (${proofstep.name}): $checkFormulaFromFile")
     checkFormulaFromFile.foreach(err => throw new VerificationFailedException(err, Some(proofstep)))
   }

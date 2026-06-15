@@ -224,7 +224,7 @@ object Noergler {
          |                  theory axioms.
          |
          |  --enforce-proof-order
-         |                  If set, Nörgler will only accept proofs where the order of formulas corresponds to the otder
+         |                  If set, Nörgler will only accept proofs where the order of formulas corresponds to the order
          |                  of the steps in the actual proof.
          |
          |  --find-failing-step
