@@ -99,6 +99,8 @@ class ProofCheckController(proof: TPTP.Problem,
   private var problemFormulas: Map[String, TPTP.AnnotatedFormula] = Map.empty
   /** Name of the conjecture from the problem file, if known  */
   private var problemConjectureName: Option[String] = None
+  /** Name of the conjecture from the proof file */
+  private var proofConjectureName: Option[String] = None
 
   /** The sequence of proof steps as they appear in the proof. */
   private val proofSteps: Seq[TPTP.AnnotatedFormula] = Vector.from(proof.formulas)
@@ -175,6 +177,10 @@ class ProofCheckController(proof: TPTP.Problem,
     }
     // process proof file, read to map, initialize conjecture name
     for (af <- proof.formulas) {
+      if (af.role == "conjecture") {
+        proofConjectureName = Some(af.name)
+        logger.info(s"Conjecture in proof found: ${proofConjectureName.toString}.")
+      }
       proofFormulas += (af.name -> af)
     }
 
@@ -355,7 +361,7 @@ class ProofCheckController(proof: TPTP.Problem,
 
   private def checkInferenceParentsAreNotConjecture(proofstep: TPTP.AnnotatedFormula): Unit = {
     logger.finer("Check that the inference parents (if any) are not the conjecture.")
-    val inferenceParentsNotConjCheck = InferenceParentsAreNotConjecture.apply(proofstep, problemConjectureName, configuration.relaxAnnotationFormat)
+    val inferenceParentsNotConjCheck = InferenceParentsAreNotConjecture.apply(proofstep, proofConjectureName, configuration.relaxAnnotationFormat)
     logger.fine(s"Inference parents are not the conjecture (${proofstep.name}): $inferenceParentsNotConjCheck")
     if (!inferenceParentsNotConjCheck) throw new VerificationFailedException(s"Conjecture used as an inference parent for a step that is not the negation of the conjecture.", Some(proofstep))
   }
@@ -369,10 +375,10 @@ class ProofCheckController(proof: TPTP.Problem,
 
   private final val allowedRoles = Seq("axiom", "conjecture", "negated_conjecture", "plain", "type", "definition")
   private def checkRole(proofstep: TPTP.AnnotatedFormula): Unit = {
-    if (problem.isEmpty && proofstep.role == "conjecture") {
-      logger.finer(s"Found conjecture in proof: ${proofstep.name}")
-      problemConjectureName = Some(proofstep.name)
-    }
+    //if (problem.isEmpty && proofstep.role == "conjecture") {
+    //  logger.finer(s"Found conjecture in proof: ${proofstep.name}")
+    //  problemConjectureName = Some(proofstep.name)
+    //}
     val roleCheck = allowedRoles.contains(proofstep.role)
     if (!roleCheck) throw new VerificationFailedException(s"Unknown role.", Some(proofstep))
   }
@@ -382,7 +388,7 @@ class ProofCheckController(proof: TPTP.Problem,
       logger.finer("Check for correct negation of conjecture")
       val conjFormula =
         if (problem.isDefined) problemConjectureName.flatMap(problemFormulas.get)
-        else problemConjectureName.flatMap(proofFormulas.get)
+        else proofConjectureName.flatMap(proofFormulas.get)
       val checkNegation = ConjectureNegationCheck.apply(proofstep, conjFormula)
       logger.fine(s"Negation of conjecture correct (${proofstep.name}): ${checkNegation._1}")
       if (!checkNegation._1) {
