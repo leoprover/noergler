@@ -57,9 +57,10 @@ object Noergler {
         // Generate SZS result
         val reporting: String = {
           result match {
-            case Verified => generateSZSResult("status", "Verified", "", "", withPrefix = true)
-            case FailedVerified(reason) => generateSZSResult("status", "FailedVerified", "", "", withPrefix = true, extraTSTPMessage = reason)
-            case NotVerified(reason) => generateSZSResult("status", "NotVerified", "", "", withPrefix = true, extraTSTPMessage = reason)
+            case VerifiedGood => generateSZSResult("status", "VerifiedGood", "", "", withPrefix = true)
+            case VerifiedBad(reason) => generateSZSResult("status", "VerifiedBad", "", "", withPrefix = true, extraTSTPMessage = reason)
+            case VerifiedUnknown(reason) => generateSZSResult("status", "Unknown", "", "", withPrefix = true, extraTSTPMessage = reason)
+            case VerifiedTimeout(system) => generateSZSResult("status", "Timeout", "", "", withPrefix = true, extraTSTPMessage = system)
           }
         }
         print(reporting)
@@ -141,15 +142,15 @@ object Noergler {
          |   - Correctness of negation of conjecture
          |
          | If one of these steps fail with an error, Nörgler will return SZS status
-         | FailedVerified.
-         | If one of these steps time out (most likely the check of provability of thm/cth steps)
-         | SZS status NotVerified is returned.
+         | VerifiedBad.
+         | If one of these steps times out (most likely the check of provability of thm/cth steps)
+         | SZS status Timeout is returned.
          | The former SZS status claims that the proof is incorrect, while the latter status
          | does not make any claims with regard to correctness.
          |
          | Options:
          |  --timeout t      Timeout after n seconds (soft limit, best effort).
-         |                   A timeout will result in a SZS status NotVerified output.
+         |                   A timeout will result in a SZS status Timeout output.
          |
          |  --prover name(s) Select the prover(s) to use for verifying thm/cth steps.
          |                   Options: 'eprover', 'vampire', 'all' (use all available),

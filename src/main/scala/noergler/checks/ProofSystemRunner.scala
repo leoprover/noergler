@@ -16,12 +16,12 @@ final class ProofSystemRunner(premises: Seq[TPTP.AnnotatedFormula],
                               system: ProofSystem,
                               timeout: Int)
                              (implicit externalSystemEc: ExecutionContext){
-  import ProofSystemRunner.RunningProver
+  import ProofSystemRunner._
 
   // todo: we probably do not want to spend as much time on model finding, but what is a sensible output?
   private val modelFinderTimeout: Int = math.max(1, timeout / 3)
 
-  def apply(): (RunningProcess, Future[Option[Boolean]]) = {
+  def apply(): (RunningProcess, Future[SZSRes]) = {
     val started = ProofSystemRunner(premises, conjecture, system, timeout)(externalSystemEc).startProcess()
     val resultFuture = Future {
       blocking{collectResult(started)}
@@ -59,7 +59,7 @@ final class ProofSystemRunner(premises: Seq[TPTP.AnnotatedFormula],
     RunningProver(running, stdout, stderr)
   }
 
-  private def collectResult(started: RunningProver): Option[Boolean] = {
+  private def collectResult(started: RunningProver): SZSRes = {
     try {
       val exitCode = started.process.exitValue() // blocks until process exits
       val errResult = started.stderr.toString
@@ -72,18 +72,19 @@ final class ProofSystemRunner(premises: Seq[TPTP.AnnotatedFormula],
       // if we destroy running processes, we need to catch the cases
       case ex: Throwable =>
         logger.fine(s"${system.name} result collection failed: ${ex.getMessage}")
-        None
+        VerificationUnknown(s"${system.name} result collection failed: ${ex.getMessage}")
     }
   }
 
-  private def parse_TSTP_output(result: String): Option[Boolean] = {
+  private def parse_TSTP_output(result: String): SZSRes = {
     // TODO: Improve handling below
-    if (result.contains("SZS status Theorem")) Some(true)
-    else if (result.contains("SZS status ContradictoryAxioms")) Some(true)
-    else if (result.contains("SZS status CounterSatisfiable")) Some(false)
-    else if (result.contains("SZS status GaveUp")) None
-    else if (result.contains("SZS status Unknown")) None
-    else None
+    if (result.contains("SZS status Theorem")) VerificationSuccess
+    else if (result.contains("SZS status ContradictoryAxioms")) VerificationSuccess
+    else if (result.contains("SZS status CounterSatisfiable")) VerificationFail
+    else if (result.contains("SZS status Timeout")) VerificationTimeout
+    else if (result.contains("SZS status GaveUp")) VerificationUnknown("SZS status GaveUp")
+    else if (result.contains("SZS status Unknown")) VerificationUnknown("SZS status Unknown")
+    else VerificationUnknown("Unknown SZS status")
   }
 
   private def run_eprover(eproverPath: Path, problem: TPTP.Problem): process.ProcessBuilder = {
@@ -109,6 +110,12 @@ final class ProofSystemRunner(premises: Seq[TPTP.AnnotatedFormula],
 
 }
 object ProofSystemRunner {
+
+  sealed trait SZSRes
+  case object VerificationSuccess extends SZSRes
+  case object VerificationFail extends SZSRes
+  case object VerificationTimeout extends SZSRes
+  case class VerificationUnknown(status: String) extends SZSRes
 
   private final case class RunningProver(process: RunningProcess,
                                          stdout: StringBuffer,

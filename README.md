@@ -28,9 +28,9 @@ usage: noergler [options] [--problem <problem file>] <proof file>
    - Correctness of negation of conjecture
 
  If one of these steps fail with an error, Nörgler will return SZS status
- FailedVerified.
+ VerifiedBad.
  If one of these steps time out (most likely the check of provability of thm/cth steps)
- SZS status NotVerified is returned.
+ SZS status Timout is returned, other non-success reults are returned as SZS status Unknown.
  The former SZS status claims that the proof is incorrect, while the latter status
  does not make any claims with regard to correctness.
 

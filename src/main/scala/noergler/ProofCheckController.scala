@@ -3,7 +3,7 @@ package noergler
 import leo.datastructures.TPTP
 import leo.datastructures.TPTP.FOF
 import noergler.ProofCheckController._
-import noergler.checks.GenericInferenceCheck.{GenericInferenceCheckConfig, logger}
+import noergler.checks.GenericInferenceCheck.{CountermodelFound, EntailmentFound, GenericInferenceCheckConfig, InferenceTimedOut, InferenceUnknown, logger}
 import noergler.checks._
 
 import java.nio.file.Path
@@ -136,7 +136,7 @@ class ProofCheckController(proof: TPTP.Problem,
     }
   }
 
-  private def setNotVerifiableException(ex: VerificationTimedOutException): Unit = {
+  private def setNotVerifiableException(ex: RuntimeException): Unit = {
     already_showed_not_verifiable.compareAndSet(None, Some(ex))
 
     // only send the killsignal if we are not trying to find a failing step if present
@@ -294,16 +294,18 @@ class ProofCheckController(proof: TPTP.Problem,
       if (configuration.findFailingStep && already_showed_not_verifiable.get().isDefined) throw already_showed_not_verifiable.get().get
       else {// report success
         logger.info("Proof verified.")
-        Verified
+        VerifiedGood
       }
     } catch {
       case e: VerificationFailedException =>
         if (e.proofstep.isDefined) logger.info(s"Check failed for step '${e.proofstep.get.name}'.")
-        FailedVerified(e.getMessage)
+        VerifiedBad(e.getMessage)
       case e: VerificationTimedOutException =>
-        NotVerified(e.getMessage)
+        VerifiedTimeout(e.getMessage)
+      case e: VerificationUnknownException =>
+        VerifiedUnknown(e.getMessage)
       case _: concurrent.TimeoutException =>
-        NotVerified("Timed out.")
+        VerifiedTimeout("Timed out.")
     } finally {
       endAll()
 
@@ -421,22 +423,35 @@ class ProofCheckController(proof: TPTP.Problem,
       val stepHandle = GenericInferenceCheck(proofstep, usedProofFormulas, declarations, status, killSignalAlreadySent, inferenceCheckConfig,externalSystemEc)(orchestrationEC)
 
       val checkedFu0 = stepHandle.result.flatMap {
-        case Some((true, usedProver)) =>
+        case Some(EntailmentFound(usedProver)) =>
           logger.fine(s"${usedProver.name} found entailment result for ${proofstep.name}: true")
           Future.successful(())
 
-        case Some((false, usedProver)) =>
+        case Some(CountermodelFound(usedProver)) =>
           logger.fine(s"${usedProver.name} found entailment result for ${proofstep.name}: false")
           val exception = new VerificationFailedException(s"Inference ${proofstep.name} is provably incorrect.", Some(proofstep))
           setFailedException(exception)
           Future.failed(exception)
+
+        case Some(InferenceTimedOut(_)) =>
+          val exception = new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out.")
+          setNotVerifiableException(exception)
+          if (configuration.findFailingStep) Future.successful(())
+          else Future.failed(exception)
+
+        case Some(InferenceUnknown(reasons)) =>
+          val detail = if (reasons.nonEmpty) reasons.mkString("; ") else "unknown proof system result"
+          val exception = new VerificationUnknownException(s"Verification of proof step '${proofstep.name}' returned unknown status: $detail.")
+          setNotVerifiableException(exception)
+          if (configuration.findFailingStep) Future.successful(())
+          else Future.failed(exception)
 
         // do not generate more failed futures if we already sent the kill signal
         case None if killSignalAlreadySent.get() =>
           Future.successful(())
 
         case None =>
-          val exception = new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out or gaveup.")
+          val exception = new VerificationUnknownException(s"Verification of proof step '${proofstep.name}' produced no proof system result.")
           setNotVerifiableException(exception)
           if (configuration.findFailingStep) Future.successful(())
           else Future.failed(exception)
@@ -566,6 +581,8 @@ object ProofCheckController {
 
   /** Thrown during the check by some step if it gives up (e.g. timeout of external prover). */
   private class VerificationTimedOutException(msg: String) extends RuntimeException(msg)
+
+  private class VerificationUnknownException(msg: String) extends RuntimeException(msg)
 
   private final val defaultTimeout: Int = 60
   private final val defaultParallelMode: ParallelMode = Sequential

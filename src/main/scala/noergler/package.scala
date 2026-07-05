@@ -2,9 +2,10 @@ import leo.datastructures.TPTP
 
 package object noergler {
   sealed abstract class Result
-  final case object Verified extends Result
-  final case class FailedVerified(reason: String) extends Result
-  final case class NotVerified(reason: String) extends Result
+  final case object VerifiedGood extends Result
+  final case class VerifiedBad(reason: String) extends Result
+  final case class VerifiedUnknown(reason: String) extends Result
+  final case class VerifiedTimeout(system: String) extends Result
 
   final def annotationType(annotation: TPTP.Annotations): Option[String] = {
     annotation match {

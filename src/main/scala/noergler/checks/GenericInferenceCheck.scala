@@ -2,7 +2,7 @@ package noergler.checks
 
 import leo.datastructures.TPTP
 import noergler.ProofCheckController.{ModelFinder, ProofSystem, Prover}
-import noergler.checks.GenericInferenceCheck.{GenericInferenceCheckConfig, logger}
+import noergler.checks.GenericInferenceCheck._
 import noergler.{CTH, ProofCheckController, THM, proofStepParents}
 
 import java.util.concurrent.atomic.AtomicBoolean
@@ -21,7 +21,7 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
                                  (implicit orchestrationEc: ExecutionContext)
 {
 
-  val running = TrieMap.empty[ProofSystem, (RunningProcess, Future[Option[Boolean]])]
+  val running = TrieMap.empty[ProofSystem, (RunningProcess, Future[ProofSystemRunner.SZSRes])]
   val scheduled = TrieMap.empty[ProofSystem, ScheduledFuture[_]]
   val scheduler = Executors.newSingleThreadScheduledExecutor()
 
@@ -33,7 +33,7 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
       scheduler.shutdown()
     }
   }
-  val winner = Promise[Option[(Boolean, ProofSystem)]]()
+  val winner = Promise[Option[InferenceCheckResult]]()
   winner.future.onComplete { _ =>
     endAll()
   }
@@ -44,32 +44,25 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
    * @param system
    * @return
    */
-  def startSingleSystem0(system: ProofSystem): Future[Option[Boolean]] = {
+  def startSingleSystem0(system: ProofSystem): Future[ProofSystemRunner.SZSRes] = {
     val (newProc, fut) = ProofSystemRunner(premises, conjecture, system, config.individualStepTimeout)(externalSystemEc).apply()
     running.put(system, (newProc, fut))
 
     fut.onComplete { tr =>
       running.remove(system)
-      val res = tr.toOption.flatten
-
-      if (res.isDefined) {
+      tr.toOption.flatMap(res => toDefiniteResult(system, res)).foreach { res =>
         // system returned a definite result => set the system as the winner
-        winner.trySuccess(Some(res.get, system))
+        winner.trySuccess(Some(res))
       }
     }
     fut
   }
 
-  def tagFutureWithSystem(system: ProofSystem, fu: Future[Option[Boolean]]): Future[Option[(Boolean, ProofSystem)]] = {
-    fu.map{
-      case Some(res) =>
-        Some(res,system)
-      case None =>
-        None
-    }
+  def tagFutureWithSystem(system: ProofSystem, fu: Future[ProofSystemRunner.SZSRes]): Future[Option[InferenceCheckResult]] = {
+    fu.map(res => Some(toInferenceResult(system, res)))
   }
 
-  def startSingleSystem(system: ProofSystem): Future[Option[(Boolean, ProofSystem)]] = {
+  def startSingleSystem(system: ProofSystem): Future[Option[InferenceCheckResult]] = {
     if (winner.isCompleted) {
       logger.fine(s"Cancelling run of ${system.name} as step has already been verified/ shown to be false")
       Future.successful(None)
@@ -83,7 +76,7 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
     }
   }
 
-  def startSerialSystems(systems: Seq[ProofSystem]): Future[Option[(Boolean, ProofSystem)]] = {
+  def startSerialSystems(systems: Seq[ProofSystem], inconclusiveResults: Vector[InferenceCheckResult] = Vector.empty): Future[Option[InferenceCheckResult]] = {
     if (winner.isCompleted) {
       logger.fine(s"Step already verified/ shown false. Cancelling serial run of provers.")
       Future.successful(None) //return
@@ -94,27 +87,29 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
       systems match {
         case Nil =>
           // no more provers to run => step cannot be verified, all systems timed out or gave up
-          Future.successful(None)
+          Future.successful(aggregateResults(inconclusiveResults.map(Some(_))))
 
         case system :: rest =>
           // run the system
           val fut = startSingleSystem(system)
           fut.flatMap {
+            case Some(res) if isDefinite(res) =>
+              Future.successful(Some(res))
+            case Some(res) =>
+              startSerialSystems(rest, inconclusiveResults :+ res)
             case None =>
-              startSerialSystems(rest)
-            case res@Some(_) =>
-              Future.successful(res)
+              startSerialSystems(rest, inconclusiveResults)
           }
       }
     }
   }
 
-  def runProversParallel(systems: Set[Prover]): Future[Option[(Boolean, ProofSystem)]] = {
+  def runProversParallel(systems: Set[Prover]): Future[Option[InferenceCheckResult]] = {
     val futures = systems.map(startSingleSystem)
-    Future.sequence(futures).map(_.collectFirst { case Some(result) => result })
+    Future.sequence(futures).map(aggregateResults)
   }
 
-  private def destroyRunningProcesses(running: TrieMap[ProofSystem, (RunningProcess, Future[Option[Boolean]])], keep: Option[ProofSystem] = None): Unit = {
+  private def destroyRunningProcesses(running: TrieMap[ProofSystem, (RunningProcess, Future[ProofSystemRunner.SZSRes])], keep: Option[ProofSystem] = None): Unit = {
     running.foreach {
       case (system, (proc, _)) if !keep.contains(system) =>
         logger.fine(s"Destroying ${system.kind} ${system.name}")
@@ -142,12 +137,12 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
     }
   }
 
-  def apply(): Future[Option[(Boolean, ProofSystem)]] = {
+  def apply(): Future[Option[InferenceCheckResult]] = {
 
 
     ///////////////////////////////////////////////////////
     // 1. Start the provers
-    val proverFuture: Future[Option[(Boolean, ProofSystem)]] =
+    val proverFuture: Future[Option[InferenceCheckResult]] =
     if (config.provers.size == 1) {
       startSingleSystem(config.provers.head)
 
@@ -162,25 +157,27 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
 
     ///////////////////////////////////////////////////////
     // 2. Start the model finders
-    val combinedFuture: Future[Option[(Boolean, ProofSystem)]] = config.parallelCountermodelMode match {
+    val combinedFuture: Future[Option[InferenceCheckResult]] = config.parallelCountermodelMode match {
       case ProofCheckController.NoModelFinder =>
         proverFuture
 
       case ProofCheckController.Fallback =>
         // start model finder after all the provers have run and only if none of them gave a conclusive result
         proverFuture.flatMap{
-          case fu@Some(_) =>
+          case fu@Some(res) if isDefinite(res) =>
             Future.successful(fu)
 
-          case None =>
-            startSingleSystem(config.modelFinder)
+          case proverRes =>
+            startSingleSystem(config.modelFinder).map { modelFinderRes =>
+              aggregateResults(Seq(proverRes, modelFinderRes))
+            }
         }
 
       case ProofCheckController.Offset(of_t) =>
         // If there is no result from the provers after x seconds, also start the counter model finder
 
         val mfStarted = new AtomicBoolean(false)
-        val mfRunPromise = Promise[Future[Option[(Boolean, ProofSystem)]]]()
+        val mfRunPromise = Promise[Future[Option[InferenceCheckResult]]]()
 
         def startModelFinder(): Unit = {
           if (mfStarted.compareAndSet(false, true)) {
@@ -207,20 +204,22 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
 
         // in case all provers finish before timeout, start MF earlier
         proverFuture.flatMap {
-          case fu@Some(_) =>
+          case fu@Some(res) if isDefinite(res) =>
             scheduled.remove(config.modelFinder).foreach(_.cancel(false))
             Future.successful(fu)
 
-          case None =>
+          case proverRes =>
             scheduled.remove(config.modelFinder).foreach(_.cancel(false))
             startModelFinder()
-            mfRunPromise.future.flatten
+            mfRunPromise.future.flatten.map { modelFinderRes =>
+              aggregateResults(Seq(proverRes, modelFinderRes))
+            }
         }
 
       case ProofCheckController.Always =>
         // at the same time start running the provers in sequence and in parallel to that also start the model finder in parallel
         val mfFuture = startSingleSystem(config.modelFinder)
-        Future.sequence(Seq(proverFuture,mfFuture)).map(_.collectFirst { case Some(result) => result })
+        Future.sequence(Seq(proverFuture,mfFuture)).map(aggregateResults)
     }
 
     ///////////////////////////////////////////////////////
@@ -241,12 +240,53 @@ final class GenericInferenceCheck(premises: Seq[TPTP.AnnotatedFormula],
 
 object GenericInferenceCheck {
 
-  type RunningSystemMap = TrieMap[ProofSystem, (RunningProcess, Future[Option[Boolean]])]
+  type RunningSystemMap = TrieMap[ProofSystem, (RunningProcess, Future[ProofSystemRunner.SZSRes])]
   type ScheduledSystemMap = TrieMap[ProofSystem, ScheduledFuture[_]]
 
   final val logger: Logger = Logger.getLogger("Nörgler.Controller")
 
-  final case class StepHandle (result: Future[Option[(Boolean, ProofSystem)]],
+  sealed trait InferenceCheckResult
+  final case class EntailmentFound(system: ProofSystem) extends InferenceCheckResult
+  final case class CountermodelFound(system: ProofSystem) extends InferenceCheckResult
+  final case class InferenceTimedOut(systems: Seq[String]) extends InferenceCheckResult
+  final case class InferenceUnknown(reasons: Seq[String]) extends InferenceCheckResult
+
+  private final def isDefinite(result: InferenceCheckResult): Boolean = result match {
+    case EntailmentFound(_) | CountermodelFound(_) => true
+    case InferenceTimedOut(_) | InferenceUnknown(_) => false
+  }
+
+  private final def toInferenceResult(system: ProofSystem, result: ProofSystemRunner.SZSRes): InferenceCheckResult = {
+    result match {
+      case ProofSystemRunner.VerificationSuccess => EntailmentFound(system)
+      case ProofSystemRunner.VerificationFail => CountermodelFound(system)
+      case ProofSystemRunner.VerificationTimeout => InferenceTimedOut(Seq(system.name))
+      case ProofSystemRunner.VerificationUnknown(status) => InferenceUnknown(Seq(s"${system.name}: $status"))
+    }
+  }
+
+  private final def toDefiniteResult(system: ProofSystem, result: ProofSystemRunner.SZSRes): Option[InferenceCheckResult] = {
+    toInferenceResult(system, result) match {
+      case res if isDefinite(res) => Some(res)
+      case _ => None
+    }
+  }
+
+  private final def aggregateResults(results: Iterable[Option[InferenceCheckResult]]): Option[InferenceCheckResult] = {
+    val observed = results.flatten.toSeq
+    observed.collectFirst {
+      case res if isDefinite(res) => res
+    }.orElse {
+      val timedOutSystems = observed.collect { case InferenceTimedOut(systems) => systems }.flatten.distinct
+      val unknownReasons = observed.collect { case InferenceUnknown(reasons) => reasons }.flatten.distinct
+      if (timedOutSystems.nonEmpty && unknownReasons.isEmpty) Some(InferenceTimedOut(timedOutSystems))
+      else if (timedOutSystems.isEmpty && unknownReasons.nonEmpty) Some(InferenceUnknown(unknownReasons))
+      else if (timedOutSystems.nonEmpty || unknownReasons.nonEmpty) Some(InferenceUnknown(Seq(s"none of the selected systems returned a conclusive SZS status")))
+      else None
+    }
+  }
+
+  final case class StepHandle (result: Future[Option[InferenceCheckResult]],
                                kill: () => Unit)
 
   case class GenericInferenceCheckConfig(provers: Set[Prover],
@@ -322,7 +362,7 @@ object GenericInferenceCheck {
 
       case None =>
         logger.severe(s"Entailment check impossible (${proofstep.name}), inference parents entry malformed.")
-        StepHandle(Future.successful(Some((false, config.provers.head))),() => ())
+        StepHandle(Future.successful(Some(CountermodelFound(config.provers.head))),() => ())
     }
   }
 
