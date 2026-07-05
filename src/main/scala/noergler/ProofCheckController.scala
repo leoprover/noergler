@@ -186,12 +186,12 @@ class ProofCheckController(proof: TPTP.Problem,
       //////////////////
       // specific checks
       //////////////////
-      // (I.1) does the proof end with false?
-      checkProofEndsInFalse()
-      // (I.2) are the annotated formulas names in the proof unique?
-      checkFormulaNamesAreUnique()
-      // (I.3) are the inference parents acyclic?
+      // (I.1) are the inference parents acyclic?
       checkInferencesAreAcyclic()
+      // (I.2) does the proof end with false?
+      checkProofEndsInFalse()
+      // (I.3) are the annotated formulas names in the proof unique?
+      checkFormulaNamesAreUnique()
       // ... more?
 
       //////////////////
