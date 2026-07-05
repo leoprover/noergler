@@ -384,11 +384,16 @@ class ProofCheckController(proof: TPTP.Problem,
   }
 
   private def checkNegatedInference(proofstep: TPTP.AnnotatedFormula, inferenceStatus0: Option[InferenceStatus]): Unit = {
+    val conjFormula =
+      if (problem.isDefined) problemConjectureName.flatMap(problemFormulas.get)
+      else proofConjectureName.flatMap(proofFormulas.get)
+
     if (inferenceStatus0.contains(CTH)){
+      if (!proofConjectureName.exists(parentsContain(proofstep, _, configuration.relaxAnnotationFormat))) {
+        throw new VerificationFailedException("No conjecture given as a parent to the negated conjecture.", Some(proofstep))
+      }
       logger.finer("Check for correct negation of conjecture")
-      val conjFormula =
-        if (problem.isDefined) problemConjectureName.flatMap(problemFormulas.get)
-        else proofConjectureName.flatMap(proofFormulas.get)
+
       val checkNegation = ConjectureNegationCheck.apply(proofstep, conjFormula)
       logger.fine(s"Negation of conjecture correct (${proofstep.name}): ${checkNegation._1}")
       if (!checkNegation._1) {
@@ -485,8 +490,7 @@ class ProofCheckController(proof: TPTP.Problem,
 
   }
 
-
-  private def runFallbackEntailmentCheck(toBeProved: TPTP.AnnotatedFormula, premise: TPTP.FOF.Formula, status: Either[THM.type, CTH.type]): Unit = {
+  def runFallbackEntailmentCheck(toBeProved: TPTP.AnnotatedFormula, premise: TPTP.FOF.Formula, status: Either[THM.type, CTH.type]): Unit = {
 
     // construct an annotated formula for the premise
     val namePremise = toBeProved.name + "_manually_created"
@@ -501,8 +505,6 @@ class ProofCheckController(proof: TPTP.Problem,
       case f0@FOF.Logical(_) => TPTP.FOFAnnotated("c", "conjecture", f0, annotations)
       case _ => ??? //todo: other logics
     }
-
-
     // run generic inference check
     checkGenericInference("Fallback_entailment_check", annotatedToBeProved, status, configuration.provers, configuration.modelFinder, Some(custumProofFormulas))
   }

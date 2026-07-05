@@ -21,6 +21,20 @@ package object noergler {
     }
   }
 
+  final def parentsContain(proofstep: TPTP.AnnotatedFormula,
+                           conjectureName: String,
+                           relaxAnnotationFormat: Boolean): Boolean = {
+    val parentsOfStep = noergler.proofStepParents(proofstep, relaxAnnotationFormat)
+    parentsOfStep match {
+      case Some(parentNames) =>
+        // names in annotations may be enclosed in single quotes while they are stripped from formula names during parsing
+        val stippedParentNames = parentNames.map(stripQuotes)
+        if (stippedParentNames.nonEmpty) stippedParentNames.contains(conjectureName)
+        else false
+      case None => true
+    }
+  }
+
   final def constructInferenceAnnotation(ruleName: String, parents: Seq[String]): TPTP.Annotations = {
     val nameTerm = TPTP.GeneralTerm(Seq(TPTP.MetaFunctionData(ruleName, Seq.empty)), None)
 
