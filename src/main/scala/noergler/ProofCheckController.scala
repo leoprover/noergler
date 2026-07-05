@@ -326,7 +326,7 @@ class ProofCheckController(proof: TPTP.Problem,
         logger.info(s"Proof ends in $$false: $result")
         if (!result) throw new VerificationFailedException("Proof does not end in false.")
       case None =>
-        throw new VerificationFailedException("Unable to infer inference relationships due to malformed annotations")
+        throw new VerificationFailedException("Unable to infer inference relationships due to malformed annotations or missing parents")
     }
   }
 
