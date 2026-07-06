@@ -248,6 +248,10 @@ class ProofCheckController(proof: TPTP.Problem,
                         }
                         // (III.4) if a "skolemize" entry, does it correctly skolemize (use ASK)
                         else if (rule == "skolemize") checkSkolemization(proofstep, configuration.relaxAnnotationFormat)
+                        else {
+                          logger.severe(s"Unknown inference '$inference' with status '${inferenceStatus0.getOrElse("")}' in proof step '${proofstep.name}'.")
+                          throw new VerificationFailedException(s"Unknown esa status inference rule '$inference' cannot be checked. To skip verification of such steps, run with flag --up-to-esa", Some(proofstep))
+                        }
                       // (III.5) if generic status(thm)/status(cth) entry, does it follow from its parents? (using external ATPs)
                       case rule if inferenceStatus0.contains(THM) =>
                         checkGenericInference(rule, proofstep, Left(THM), configuration.provers, configuration.modelFinder)
@@ -490,7 +494,7 @@ class ProofCheckController(proof: TPTP.Problem,
 
   }
 
-  def runFallbackEntailmentCheck(toBeProved: TPTP.AnnotatedFormula, premise: TPTP.FOF.Formula, status: Either[THM.type, CTH.type]): Unit = {
+  private def runFallbackEntailmentCheck(toBeProved: TPTP.AnnotatedFormula, premise: TPTP.FOF.Formula, status: Either[THM.type, CTH.type]): Unit = {
 
     // construct an annotated formula for the premise
     val namePremise = toBeProved.name + "_manually_created"
