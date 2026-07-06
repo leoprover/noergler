@@ -388,9 +388,12 @@ class ProofCheckController(proof: TPTP.Problem,
   }
 
   private def checkNegatedInference(proofstep: TPTP.AnnotatedFormula, inferenceStatus0: Option[InferenceStatus]): Unit = {
-    val conjFormula =
-      if (problem.isDefined) problemConjectureName.flatMap(problemFormulas.get)
-      else proofConjectureName.flatMap(proofFormulas.get)
+    val conjFormula = {
+      if (proofConjectureName.isDefined) proofConjectureName.flatMap(proofFormulas.get)
+      else if (problem.isDefined) problemConjectureName.flatMap(problemFormulas.get)
+      //todo: some cnf problems may not actually import the conjecture itself at all, hence it may make sense to also allow this, right?
+      else throw new VerificationFailedException(s"Failed to verify the negated conjecture: No conjecture could be found in the proof or the problem")
+    }
 
     if (inferenceStatus0.contains(CTH)){
       if (!proofConjectureName.exists(parentsContain(proofstep, _, configuration.relaxAnnotationFormat))) {
