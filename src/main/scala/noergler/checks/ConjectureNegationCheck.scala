@@ -2,6 +2,7 @@ package noergler.checks
 
 import leo.datastructures.TPTP
 import leo.datastructures.TPTP.FOF
+import noergler.normalization.CanonicalVariables
 
 import java.util.logging.Logger
 
@@ -25,7 +26,12 @@ final class ConjectureNegationCheck(proofstep: TPTP.AnnotatedFormula,
 
             logger.fine(s"Manually negated conjecture NF: ${manualNF.pretty}")
             logger.fine(s"negated conjecture from proof NF: ${deFactoNF.pretty}")
-            val correctNegation = manualNF == deFactoNF
+            val correctNegation = {
+              //manualNF == deFactoNF
+              val canonicalManualNF = CanonicalVariables.apply(manualNF)
+              val canonicalDeFactoNF = CanonicalVariables.apply(deFactoNF)
+              canonicalManualNF == canonicalDeFactoNF
+            }
             val correctRole = proofstep.role == "negated_conjecture"
 
             if (correctRole) {
