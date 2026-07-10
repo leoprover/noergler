@@ -9,7 +9,7 @@ import java.nio.file.{InvalidPathException, Path}
 
 object Noergler {
   final val name: String = "noergler"
-  final val version: String = "1.0"
+  final val version: String = "1.1"
 
   private[this] final val logger: Logger = Logger.getLogger("Nörgler")
   /** TPTP directory for resolving import statements */

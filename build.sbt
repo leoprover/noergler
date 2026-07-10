@@ -2,7 +2,7 @@ lazy val root = (project in file("."))
   .settings(
     name := "noergler",
     organization := "org.leo",
-    version := "1.0",
+    version := "1.1",
     scalaVersion := "2.13.18",
     Compile/mainClass := Some("noergler.Noergler"),
     assembly/mainClass := Some("noergler.Noergler"),
