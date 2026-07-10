@@ -2,9 +2,10 @@ import leo.datastructures.TPTP
 
 package object noergler {
   sealed abstract class Result
-  final case object Verified extends Result
-  final case class FailedVerified(reason: String) extends Result
-  final case class NotVerified(reason: String) extends Result
+  final case object VerifiedGood extends Result
+  final case class VerifiedBad(reason: String) extends Result
+  final case class VerifiedUnknown(reason: String) extends Result
+  final case class VerifiedTimeout(system: String) extends Result
 
   final def annotationType(annotation: TPTP.Annotations): Option[String] = {
     annotation match {
@@ -17,6 +18,20 @@ package object noergler {
           }
         } else None
       case None => None
+    }
+  }
+
+  final def parentsContain(proofstep: TPTP.AnnotatedFormula,
+                           conjectureName: String,
+                           relaxAnnotationFormat: Boolean): Boolean = {
+    val parentsOfStep = noergler.proofStepParents(proofstep, relaxAnnotationFormat)
+    parentsOfStep match {
+      case Some(parentNames) =>
+        // names in annotations may be enclosed in single quotes while they are stripped from formula names during parsing
+        val stippedParentNames = parentNames.map(stripQuotes)
+        if (stippedParentNames.nonEmpty) stippedParentNames.contains(conjectureName)
+        else false
+      case None => true
     }
   }
 

@@ -153,6 +153,17 @@ object CanonicalVariables {
    * @return Canonically variable renamed formula.
    * @throws scala.IllegalArgumentException if a non-logical formula is passed
    */
+
+  @inline final def apply(formula: TPTP.THF.Formula): TPTP.THF.Formula = apply0().thfFormula(formula)
+  /** @see [[apply()]] */
+  @inline final def apply(formula: TPTP.TFF.Formula): TPTP.TFF.Formula = apply0().tffFormula(formula)
+  /** @see [[apply()]] */
+  @inline final def apply(formula: TPTP.FOF.Formula): TPTP.FOF.Formula = apply0().fofFormula(formula)
+  /** @see [[apply()]] */
+  @inline final def apply(formula: TPTP.TCF.Formula): TPTP.TCF.Formula = apply0().tcfFormula(formula)
+  /** @see [[apply()]] */
+  @inline final def apply(formula: TPTP.CNF.Formula): TPTP.CNF.Formula = apply0().cnfFormula(formula)
+  /** @see [[apply()]] */
   @inline final def apply(formula: TPTP.AnnotatedFormula#F): TPTP.AnnotatedFormula#F = apply0().apply(formula)
   /** @see [[apply()]] */
   @inline final def thfFormula(formula: TPTP.THF.Formula): TPTP.THF.Formula = apply0().thfFormula(formula)

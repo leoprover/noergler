@@ -35,7 +35,10 @@ object ProofEndsInFalseCheck {
         case _ => false
       }
       case TPTP.CNFAnnotated(_, _, formula, _) => formula match {
-        case CNF.Logical(formula1) => formula1.isEmpty
+        case CNF.Logical(formula1) => formula1 match {
+          case Seq(CNF.PositiveAtomic(CNF.AtomicFormula(`falseFormula`, Seq()))) => true
+          case _ => false
+        }
       }
       case _ => false
     }

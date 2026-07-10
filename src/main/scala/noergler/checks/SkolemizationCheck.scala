@@ -1,6 +1,7 @@
 package noergler.checks
 
 import leo.datastructures.TPTP
+import noergler.normalization.CanonicalVariables
 import noergler.{metaFunctionDataToFOF, proofStepParentsAsFormulas}
 
 import java.util.logging.Logger
@@ -39,12 +40,18 @@ object SkolemizationCheck {
                 logger.finer(s"Bind information: ${bind._2.pretty}")
                 skolemTermUsedByAsk match {
                   case Some(askBind) =>
-                    if (askBind == bind._2)
+                    if (askBind == bind._2) {
+                      val eqCheck = {
+                        val canonicalManualNF = CanonicalVariables.apply(manuallySkolemizedFormula.formula)
+                        val canonicalDeFactoNF = CanonicalVariables.apply(proofstep.formula)
+                        canonicalManualNF == canonicalDeFactoNF
+                      }
                       Either.cond(
-                        manuallySkolemizedFormula.formula == proofstep.formula,
+                        //manuallySkolemizedFormula.formula == proofstep.formula,
+                        eqCheck,
                         newSymbol,
                         s"Skolemization result in proof step ${proofstep.name} wrong. It should be ${manuallySkolemizedFormula.pretty}")
-                    else {
+                    } else {
                       val error = s"Skolemization bind record incorrect in step '${proofstep.name}'."
                       logger.severe(error)
                       fail(error)

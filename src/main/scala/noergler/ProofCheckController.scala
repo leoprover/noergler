@@ -3,7 +3,7 @@ package noergler
 import leo.datastructures.TPTP
 import leo.datastructures.TPTP.FOF
 import noergler.ProofCheckController._
-import noergler.checks.GenericInferenceCheck.{GenericInferenceCheckConfig, logger}
+import noergler.checks.GenericInferenceCheck.{CountermodelFound, EntailmentFound, GenericInferenceCheckConfig, InferenceTimedOut, InferenceUnknown, logger}
 import noergler.checks._
 
 import java.nio.file.Path
@@ -99,6 +99,8 @@ class ProofCheckController(proof: TPTP.Problem,
   private var problemFormulas: Map[String, TPTP.AnnotatedFormula] = Map.empty
   /** Name of the conjecture from the problem file, if known  */
   private var problemConjectureName: Option[String] = None
+  /** Name of the conjecture from the proof file */
+  private var proofConjectureName: Option[String] = None
 
   /** The sequence of proof steps as they appear in the proof. */
   private val proofSteps: Seq[TPTP.AnnotatedFormula] = Vector.from(proof.formulas)
@@ -136,7 +138,7 @@ class ProofCheckController(proof: TPTP.Problem,
     }
   }
 
-  private def setNotVerifiableException(ex: VerificationTimedOutException): Unit = {
+  private def setNotVerifiableException(ex: RuntimeException): Unit = {
     already_showed_not_verifiable.compareAndSet(None, Some(ex))
 
     // only send the killsignal if we are not trying to find a failing step if present
@@ -175,6 +177,10 @@ class ProofCheckController(proof: TPTP.Problem,
     }
     // process proof file, read to map, initialize conjecture name
     for (af <- proof.formulas) {
+      if (af.role == "conjecture") {
+        proofConjectureName = Some(af.name)
+        logger.info(s"Conjecture in proof found: ${proofConjectureName.toString}.")
+      }
       proofFormulas += (af.name -> af)
     }
 
@@ -186,12 +192,12 @@ class ProofCheckController(proof: TPTP.Problem,
       //////////////////
       // specific checks
       //////////////////
-      // (I.1) does the proof end with false?
-      checkProofEndsInFalse()
-      // (I.2) are the annotated formulas names in the proof unique?
-      checkFormulaNamesAreUnique()
-      // (I.3) are the inference parents acyclic?
+      // (I.1) are the inference parents acyclic?
       checkInferencesAreAcyclic()
+      // (I.2) does the proof end with false?
+      checkProofEndsInFalse()
+      // (I.3) are the annotated formulas names in the proof unique?
+      checkFormulaNamesAreUnique()
       // ... more?
 
       //////////////////
@@ -242,6 +248,10 @@ class ProofCheckController(proof: TPTP.Problem,
                         }
                         // (III.4) if a "skolemize" entry, does it correctly skolemize (use ASK)
                         else if (rule == "skolemize") checkSkolemization(proofstep, configuration.relaxAnnotationFormat)
+                        else {
+                          logger.severe(s"Unknown inference '$inference' with status '${inferenceStatus0.getOrElse("")}' in proof step '${proofstep.name}'.")
+                          throw new VerificationFailedException(s"Unknown esa status inference rule '$inference' cannot be checked. To skip verification of such steps, run with flag --up-to-esa", Some(proofstep))
+                        }
                       // (III.5) if generic status(thm)/status(cth) entry, does it follow from its parents? (using external ATPs)
                       case rule if inferenceStatus0.contains(THM) =>
                         checkGenericInference(rule, proofstep, Left(THM), configuration.provers, configuration.modelFinder)
@@ -294,16 +304,18 @@ class ProofCheckController(proof: TPTP.Problem,
       if (configuration.findFailingStep && already_showed_not_verifiable.get().isDefined) throw already_showed_not_verifiable.get().get
       else {// report success
         logger.info("Proof verified.")
-        Verified
+        VerifiedGood
       }
     } catch {
       case e: VerificationFailedException =>
         if (e.proofstep.isDefined) logger.info(s"Check failed for step '${e.proofstep.get.name}'.")
-        FailedVerified(e.getMessage)
+        VerifiedBad(e.getMessage)
       case e: VerificationTimedOutException =>
-        NotVerified(e.getMessage)
+        VerifiedTimeout(e.getMessage)
+      case e: VerificationUnknownException =>
+        VerifiedUnknown(e.getMessage)
       case _: concurrent.TimeoutException =>
-        NotVerified("Timed out.")
+        VerifiedTimeout("Timed out.")
     } finally {
       endAll()
 
@@ -324,7 +336,7 @@ class ProofCheckController(proof: TPTP.Problem,
         logger.info(s"Proof ends in $$false: $result")
         if (!result) throw new VerificationFailedException("Proof does not end in false.")
       case None =>
-        throw new VerificationFailedException("Unable to infer inference relationships due to malformed annotations")
+        throw new VerificationFailedException("Unable to infer inference relationships due to malformed annotations or missing parents")
     }
   }
 
@@ -353,7 +365,7 @@ class ProofCheckController(proof: TPTP.Problem,
 
   private def checkInferenceParentsAreNotConjecture(proofstep: TPTP.AnnotatedFormula): Unit = {
     logger.finer("Check that the inference parents (if any) are not the conjecture.")
-    val inferenceParentsNotConjCheck = InferenceParentsAreNotConjecture.apply(proofstep, problemConjectureName, configuration.relaxAnnotationFormat)
+    val inferenceParentsNotConjCheck = InferenceParentsAreNotConjecture.apply(proofstep, proofConjectureName, configuration.relaxAnnotationFormat)
     logger.fine(s"Inference parents are not the conjecture (${proofstep.name}): $inferenceParentsNotConjCheck")
     if (!inferenceParentsNotConjCheck) throw new VerificationFailedException(s"Conjecture used as an inference parent for a step that is not the negation of the conjecture.", Some(proofstep))
   }
@@ -367,20 +379,28 @@ class ProofCheckController(proof: TPTP.Problem,
 
   private final val allowedRoles = Seq("axiom", "conjecture", "negated_conjecture", "plain", "type", "definition")
   private def checkRole(proofstep: TPTP.AnnotatedFormula): Unit = {
-    if (problem.isEmpty && proofstep.role == "conjecture") {
-      logger.finer(s"Found conjecture in proof: ${proofstep.name}")
-      problemConjectureName = Some(proofstep.name)
-    }
+    //if (problem.isEmpty && proofstep.role == "conjecture") {
+    //  logger.finer(s"Found conjecture in proof: ${proofstep.name}")
+    //  problemConjectureName = Some(proofstep.name)
+    //}
     val roleCheck = allowedRoles.contains(proofstep.role)
     if (!roleCheck) throw new VerificationFailedException(s"Unknown role.", Some(proofstep))
   }
 
   private def checkNegatedInference(proofstep: TPTP.AnnotatedFormula, inferenceStatus0: Option[InferenceStatus]): Unit = {
+    val conjFormula = {
+      if (proofConjectureName.isDefined) proofConjectureName.flatMap(proofFormulas.get)
+      else if (problem.isDefined) problemConjectureName.flatMap(problemFormulas.get)
+      //todo: some cnf problems may not actually import the conjecture itself at all, hence it may make sense to also allow this, right?
+      else throw new VerificationFailedException(s"Failed to verify the negated conjecture: No conjecture could be found in the proof or the problem")
+    }
+
     if (inferenceStatus0.contains(CTH)){
+      if (!proofConjectureName.exists(parentsContain(proofstep, _, configuration.relaxAnnotationFormat))) {
+        throw new VerificationFailedException("No conjecture given as a parent to the negated conjecture.", Some(proofstep))
+      }
       logger.finer("Check for correct negation of conjecture")
-      val conjFormula =
-        if (problem.isDefined) problemConjectureName.flatMap(problemFormulas.get)
-        else problemConjectureName.flatMap(proofFormulas.get)
+
       val checkNegation = ConjectureNegationCheck.apply(proofstep, conjFormula)
       logger.fine(s"Negation of conjecture correct (${proofstep.name}): ${checkNegation._1}")
       if (!checkNegation._1) {
@@ -421,22 +441,35 @@ class ProofCheckController(proof: TPTP.Problem,
       val stepHandle = GenericInferenceCheck(proofstep, usedProofFormulas, declarations, status, killSignalAlreadySent, inferenceCheckConfig,externalSystemEc)(orchestrationEC)
 
       val checkedFu0 = stepHandle.result.flatMap {
-        case Some((true, usedProver)) =>
+        case Some(EntailmentFound(usedProver)) =>
           logger.fine(s"${usedProver.name} found entailment result for ${proofstep.name}: true")
           Future.successful(())
 
-        case Some((false, usedProver)) =>
+        case Some(CountermodelFound(usedProver)) =>
           logger.fine(s"${usedProver.name} found entailment result for ${proofstep.name}: false")
           val exception = new VerificationFailedException(s"Inference ${proofstep.name} is provably incorrect.", Some(proofstep))
           setFailedException(exception)
           Future.failed(exception)
+
+        case Some(InferenceTimedOut(_)) =>
+          val exception = new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out.")
+          setNotVerifiableException(exception)
+          if (configuration.findFailingStep) Future.successful(())
+          else Future.failed(exception)
+
+        case Some(InferenceUnknown(reasons)) =>
+          val detail = if (reasons.nonEmpty) reasons.mkString("; ") else "unknown proof system result"
+          val exception = new VerificationUnknownException(s"Verification of proof step '${proofstep.name}' returned unknown status: $detail.")
+          setNotVerifiableException(exception)
+          if (configuration.findFailingStep) Future.successful(())
+          else Future.failed(exception)
 
         // do not generate more failed futures if we already sent the kill signal
         case None if killSignalAlreadySent.get() =>
           Future.successful(())
 
         case None =>
-          val exception = new VerificationTimedOutException(s"Verification of proof step '${proofstep.name}' timed out or gaveup.")
+          val exception = new VerificationUnknownException(s"Verification of proof step '${proofstep.name}' produced no proof system result.")
           setNotVerifiableException(exception)
           if (configuration.findFailingStep) Future.successful(())
           else Future.failed(exception)
@@ -464,7 +497,6 @@ class ProofCheckController(proof: TPTP.Problem,
 
   }
 
-
   private def runFallbackEntailmentCheck(toBeProved: TPTP.AnnotatedFormula, premise: TPTP.FOF.Formula, status: Either[THM.type, CTH.type]): Unit = {
 
     // construct an annotated formula for the premise
@@ -480,8 +512,6 @@ class ProofCheckController(proof: TPTP.Problem,
       case f0@FOF.Logical(_) => TPTP.FOFAnnotated("c", "conjecture", f0, annotations)
       case _ => ??? //todo: other logics
     }
-
-
     // run generic inference check
     checkGenericInference("Fallback_entailment_check", annotatedToBeProved, status, configuration.provers, configuration.modelFinder, Some(custumProofFormulas))
   }
@@ -566,6 +596,8 @@ object ProofCheckController {
 
   /** Thrown during the check by some step if it gives up (e.g. timeout of external prover). */
   private class VerificationTimedOutException(msg: String) extends RuntimeException(msg)
+
+  private class VerificationUnknownException(msg: String) extends RuntimeException(msg)
 
   private final val defaultTimeout: Int = 60
   private final val defaultParallelMode: ParallelMode = Sequential
